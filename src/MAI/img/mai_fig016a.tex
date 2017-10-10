@@ -1,0 +1,59 @@
+\documentclass[11pt]{standalone}
+\usepackage{xltxtra}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+  \usetikzlibrary{decorations.markings}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+  
+\usepackage{amsmath}
+\usepackage{amsfonts}       % \mathbb{R}
+  
+
+\begin{document}
+  \begin{tikzpicture}[thick,scale=0.7, every node/.style={transform shape}]
+  
+  \tikzset{->-/.style={decoration={
+    markings,
+    mark=at position #1 with {\arrow{stealth}}},postaction={decorate}}}
+    
+    \begin{axis}[
+      xmin = -2.5, xmax = 3, ymin = 0, ymax = 6,  % osy
+      domain = -2:1.9,
+      restrict y to domain=0:6,
+      unit vector ratio=1 1 1,  % axis equal
+      grid = major,   % both
+      grid style={line width=.1pt, draw=gray!20},
+      major grid style={dashed, line width=.2pt, draw=gray!40},
+      minor tick num=4,
+      clip = true,
+      clip mode=individual,
+      /pgfplots/xtick={-2,-1,1,2},
+      /pgfplots/ytick={0,1,2,3,4,5,6}, 
+      axis x line = middle,
+      axis y line = middle,
+      xlabel={$x$}, ylabel={$y$},
+      enlarge y limits={rel=0.07},
+      enlarge x limits={rel=0.07},
+    ]
+    
+      \addplot[color=Gold3, samples=200, smooth, ultra thick, unbounded 
+      coords=jump, no markers] 
+         gnuplot{exp(x)};  
+      \node [fill=white] at (rel axis cs: 0.92,0.9) {\(y=f(x)\)}; 
+      \node [fill=white] at (rel axis cs: 0.53,-0.01)  
+        {\(\mathcal{D}_f\)};
+  
+      \draw[->-=.5, dashed] (1,2.718) -- (1,0); 
+      \draw[->-=.5, dashed] (0,2.718) -- (1,2.718);
+      \draw[->-=.5, dashed] (1.5,0) -- (1.5,4.4816);
+      \draw[->-=.5, dashed] (1.5,4.4816) -- (0,4.4816);
+      \draw[black,fill=black] (1,2.718) circle (.3ex);
+      \draw[black,fill=black] (1.5,4.4816) circle (.3ex);
+      
+      \draw[line width = 3pt, red, line cap=butt] (-2,0) -- (1.9,0);
+      \draw [thick] (-2,-.1) -- (-2,0.1);
+      \draw [thick] (1.9,-.1) -- (1.9,0.1);
+    \end{axis}
+  \end{tikzpicture} 
+\end{document}

@@ -1,0 +1,164 @@
+% ===================================================================================================
+%                                     Page Layout Settings
+% ===================================================================================================
+\NeedsTeXFormat{LaTeX2e}
+% ---------------------------------------------------------------------------------------------------
+% ~~~~~~~~~~ scrhack ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Class scrbook Warning: \float@addtolists detected! use the features of package `tocbasic'
+ \usepackage{scrhack}              % fixing some warnings  
+% ---------------------------------------------------------------------------------------------------
+% zkratka   jméno                              poznámka
+% ===================================================================================================
+% pt   anglosaský typografický bod   1pt = 1/72.27" = 0.35146mm
+% pc   pica (pajka)                  1pc = 12pt = 4.21752mm
+% bp   tzv. "big point"              1bp = 1/72" = 0.35278mm
+% in   palec                         1in = 25,4mm
+% cm   centimetr                     1cm = 10mm
+% mm   milimetr  
+% dd   Didotův bod                   1dd = 0,3759mm
+% cc   cicero                        1cc = 12dd = 4.5108mm
+% sp   tzv. "scaled point"           1pt = 65536sp (1sp je přibližne 5,4*10^-6 mm)
+% em   čtverčík   relativní jednotka - odpovídá stupni nastaveného písma)
+% ex   půlčverčík relativní jednotka - rovná se polovině nastaveného stupně písma)
+% notes:
+%~~~~~~~~~
+% Plovoucí prostředí:
+% h - umístění v místě uvedení ve zdrojovém textu (nefunguje pro dvousloupcové tabulky a obrázky ve
+%     dvousloupcovém režimu stránky) 
+% t - umístění na začátku stránky, na které je prostředí uvedeno ve zdrojovém textu; Pozn: může se
+%     umístit i na stránce následující
+% b - umístění na konci stránky, na které je prostředí uvedeno ve zdrojovém textu (nefunguje pro
+%     dvousloupcové tabulky a obrázky ve dvousloupcovém režimu stránky); Pozn: moc mi to 
+%     nefunguje  
+% p - umístění na stránce, na které není text a která není příliš fyzicky a logicky (v jiné 
+%     sekci) vzdálena od místa uvedení ve zdrojovém textu; může se umístit i na stránku, kde jsou 
+%     i jiné (jen) plovoucí objekty.
+
+% ~~~~~~~~ Libraries ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \RequirePackage[l2tabu, orthodox]{nag}     % Obsolete commands and packages control
+  \RequirePackage{lipsum}
+  \usepackage{xltxtra}                       % fontspec package - not necessary 
+
+%  \usepackage{helvet}                       % font
+%  \usepackage{avant}                        % font
+%  \usepackage{polyglossia}                                
+%    \setdefaultlanguage[variant=british]{english}
+%    \setotherlanguages{latin,greek,russian,czech,german}
+%  \usepackage[onehalfspacing]{setspace}
+  \usepackage[verbose,
+              a3paper,
+              twocolumn,
+%             landscape,
+              scale=0.9, 
+              heightrounded,                 % includeall, 
+              showframe=false,
+%              centering, 
+%              textheight=350mm,
+%              textwidth=250mm
+              ]{geometry}
+              
+% ~~~~~~~~ Table of contents ~~~~~~~~~~~~~~~~~~~~ 
+  \usepackage[nohints]{minitoc}              % formatting table of contents.
+%  \usepackage{tocstyle} 
+%  \usetocstyle{KOMAlike} 
+% ~~~~~~~~ Itemize, Enumerat  ~~~~~~~~~~~~~~~~~~~~
+% The enumerate package allows you to control the display of the enumeration counter. 
+% \usepackage{enumerate} 
+  \usepackage{enumitem}
+  \usepackage[font=small,                    % 
+              labelfont=bf,                  % make all caption labels small and bold or:
+              textfont=it]{caption}          % Captions
+  \usepackage{footnote} 
+
+% ~~~~~~~~~~~ Chapter,section styles ~~~~~~~~~~~~
+% variant A: 
+% KOMA-Script: How to colour just the section numbers
+% http://tex.stackexchange.com/questions/193177/koma-script-how-to-colour-just-the-section-numbers
+% \renewcommand*{\othersectionlevelsformat}[3]{\textcolor{DeepSkyBlue2}{#3}\autodot\enskip}
+
+% variant B:
+% How do i add a blue box around the section number?
+% http://tex.stackexchange.com/questions/209365/how-do-i-add-a-blue-box-around-the-section-number
+%\renewcommand*{\othersectionlevelsformat}[1]{%
+%  \makebox[0pt][r]{%
+%    \fcolorbox{blue}{blue}{\color{white}\csname the#1\endcsname}%
+%    \enskip
+%  }
+%}  
+% ~~~~~~~~~~~ Hyperlinks ~~~~~~~~~~~~~~~~~~~~~~~~ 
+  \usepackage{hyperref}
+  \hypersetup{
+    pdfauthor={Jaroslav Fait},
+    pdftitle={Wiking},
+    pdfsubject={My study notes},
+    pdfkeywords={linear algebra, math, physics, electronics},
+    pdfpagelayout={TwoPageLeft}, % Displays two pages, odd-numbered pages to the left 
+    pdfcreator={Xelatex}
+    bookmarks={true},            %  A set of Acrobat bookmarks are written
+    colorlinks={true},           %  Colors the text of links and anchors. 
+    linkcolor={NavyBlue},        %  Color for normal internal links.
+    anchorcolor={black},         %  Color for anchor text.
+    filecolor={cyan},            %  Color for URLs which open local files.
+    menucolor={red},             %  Color for Acrobat menu items.
+    runcolor={blue},             %  Color for run links (launch annotations).
+    urlcolor={NavyBlue},         %  Color for linked URLs. 
+    citecolor={CornflowerBlue},
+    hypertexnames={false}
+  } 
+% ~~~~~~~~~~~~ Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \setkomafont{chapter}{\fontsize{24bp}{24bp}\selectfont}
+  \setkomafont{section}{\fontsize{16bp}{24bp}\selectfont}
+  \setkomafont{subsection}{\fontsize{12bp}{16bp}\selectfont}
+  \setkomafont{subsubsection}{\fontsize{11bp}{14bp}\selectfont}
+  \setkomafont{paragraph}{\normalsize\mdseries}
+  \setkomafont{subparagraph}{\normalsize\mdseries}
+
+% ~~~~~~~~~~~~ Text style ~~~~~~~~~~~~~~~~~~~~~~~~~
+% text \overline outside of math mode
+\renewcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}
+% ~~~~~~~~~~~~ Page style ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+% ~~~~~~~~~~~~~~~~ Bibliography ~~~~~~~~~~~~~~~~~~
+\newcommand{\ChapterBiblioList}{%
+  \printbibliography[title={Seznam literatury}, heading=subbibliography]
+  \addcontentsline{toc}{section}{Seznam literatury}
+}
+
+% ~~~~~~~~~~~~~~~~ Captions style ~~~~~~~~~~~~~~~~
+  % You can define your own caption fonts with: \DeclareCaptionFont{<name>}{<code>} 
+  % \DeclareCaptionFont{blue}{\color{blue}}
+  % \DeclareCaptionFont{green}{\color{green}} 
+  % \captionsetup{labelfont={blue},textfont={green}}  
+  %  But since the caption package already includes the tricky definition  
+  \DeclareCaptionFont{color}{\color{#1}}
+  % \captionsetup >> For a later change of options the caption package provides the command
+  \captionsetup
+    {labelfont={color=Sepia,bf},
+     textfont={color=OliveGreen},
+     justification={justified},
+     format={plain},            % plain >> Typesets the captions as a normal paragraph. {options: plain, hang}
+     indention={.5cm}           % setup an extra indention starting at the second line of the caption.
+    }
+                
+  \usepackage{sidecap}          % Side captions
+  \usepackage{widetext} 
+  \usepackage{cuted}            % \twocolumn mode 
+  
+% ~~~~~~~~~~ Czech document structure ~~~~~
+\renewcommand\chaptername{Kapitola}
+\renewcommand\partname{Část}
+\renewcommand{\bibname}{Seznam literatury} % Change the bibliography heading title
+% \renewcommand{\bibsection}{Literatura}   % Change the section bibliography heading title
+\renewcommand{\figurename}{Obrázek}        % Redefine caption labels
+\renewcommand{\tablename}{Tabulka}         % Redefine table labels
+\renewcommand\contentsname{Obsah}          % Redefine content labels
+
+% ~~~~~~~~~~ Numbering ~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\numberwithin{equation}{section}           % Number equations within sections:                  
+                                           % (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+%\numberwithin{figure}{section}             % Number figures within sections:                    
+                                           % (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+%\numberwithin{table}{section}              % Number tables within sections: 
+                                           %(i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+%\renewcommand\thepart{\arabic{part}}

@@ -1,0 +1,406 @@
+% !TeX spellcheck = cs_CZ
+{\tikzset{external/prefix={tikz/CES/}}
+ \tikzset{external/figure name/.add={ch10_}{}}
+%---------------------------------------------------------------------------------------------------
+% file architecture_PLD.tex
+%---------------------------------------------------------------------------------------------------
+%================Kapitola: Architektura programovatelných logických obvodů=========================
+\chapter{Architektura}
+\minitoc
+
+  \section{Typy struktur programovatelných logic\-kých obvodů}
+    Programovatelný logický obvod nebo programovatelné logické zařízení, často také \texttt{PLD}
+    (\emph{programmable logic device}) nebo \texttt{FPD} (\emph{Field-Programmable Device}), je
+    elektronická součástka (obvod) používaná pro vytváření digitálních obvodů. Na rozdíl od hradel,
+    registrů a jiných digitálních obvodů není funkce zařízení tohoto druhu v době výroby ještě
+    definovaná. Než může být PLD použito, musí být nejprve naprogramováno.
+    
+    \subsection{Historie}
+      Historické kořeny moderních programovatelných polí jsou v prvních progra\-mo\-va\-tel\-ných
+      pamětech typu \texttt{PROM} (\emph{firma Radiation, 1970}) a jejich zákaznicky
+      programovatelných verzím \texttt{EPROM} (\emph{Intel, 1971}) a \texttt{EEPROM} (\emph{Intel,
+      1978}). Paměť \texttt{PROM} lze využít pro realizaci kombinačních logických funkcí tak, že
+      paměť využijeme jako tzv. \emph{vyhledávací tabulku} \textbf{LUT} (angl. \emph{Lookup
+      Table}). V tomto případě přivádíme na adresové vodiče \texttt{PROM} paměti vstupní signály
+      (proměnné). Obsah paměti \texttt{PROM} vytvoříme tak, že na adresy jejichž hodnota je tvořena
+      vektorem hodnot vstupních proměnních uložíme hodnoty, které jsou tvořeny vektory požadovaných
+      výstupních hodnot. Výstupní datové signály paměti \texttt{PROM} pak reprezentují výstupy
+      kombinančí logiky. Tímto způsobem můžeme např. paměti \texttt{PROM} o velikosti 2 Kb s
+      organizací 256x8 bitů (8 adresových vodičů, 8 datových vodičů), vytvořit programovatelný
+      logický obvod, kterým lze realizovat 8 kombinačních funkcí s 8 vstupními signály
+      (proměnnými). Výhodou takovéto realizace je, že všechny realizované funkce mají stejné
+      zpoždění ze vstupu na výstup a to pro všechny možné kombinace vstupních hodnot. Na principu
+      generátorů logických funkcí pomocí pamětí (\texttt{LUT}) je založena funkce obvodů
+      \texttt{FPGA}.
+      
+      Permanentní paměti, jako takové, ale neumožňovaly úspornou realizaci logické fun\-kce. Mezi
+      první programovatelné logické obvody lze zařadit obvody \texttt{PLA} (angl.
+      \emph{Programmable Logic Array}), neboť v roce 1970 společnost \texttt{Texas Intruments - TI}
+      podařilo vyvinout maskou programovatelný integrovaný obvod \texttt{TMS2000}, založený na
+      paměti \texttt{ROAM} (angl. \emph{Read Only Associative Memory}) společnosti \texttt{IBM}.
+      \texttt{TMS2000} disponoval 17 vstupy, 18 výstupy s 8 \texttt{JK} klopnými obvody. Obvod bylo
+      možné programovat modifikací vodivé propojovací masky během výroby (tj. koncový uživatel jej
+      nemohl programovat). Obvody \texttt{PLA} obsahovaly pole hradel \texttt{AND} následované
+      polem hradel \texttt{OR}. Logická funkce tedy vznikala v disjunktivní formě, tj. jako součet
+      součinů. Tento způsob tvorby logickék funkce se uchytil a na tomto principu je založena
+      funkce dnešních obvodů architektur \texttt{SPLD} a \texttt{CPLD}. Nicméně se tyto obvody na
+      trhu příliš neprosadily.
+      
+      Vývoj však pokračoval dál a v roce 1975 přišla na trh firma \texttt{Signetics Corporation} s
+      obvody nazvanými \texttt{FPLA} - (\emph{Field Programmable Logic Array}), konkrétně se
+      jednalo o obvod 82S100. Po převzetí firmy Signetics firmou \texttt{Philips} byl tento obvod
+      označován také jako PLS100. Obvody \texttt{FPLA} tvořilo programovatelné pole \texttt{AND}
+      následnované programovatelným polem hradel \texttt{OR}. Tyto obvody však měly poměrně dlouhou
+      dobu přenosu signálu ze vstupu na výstup. Pro návrh obvodů neexistoval žádný jazyk, a tak
+      musel návrhář nastavovat přímo hodnoty jednotlivých programovatelných buňek. Tyto nevýhody
+      spolu s poměrně vysokou cenou způsobili malé rozšíření těchto obvodů.
+      
+      Dalším významným krokem bylo uvedení obvodů \texttt{PAL} - (\emph{Programmable Logic Array}).
+      Tyto obvody navrhla firma \texttt{MMI - Monolithic Memories, Inc} v roce 1978. Obvody
+      \texttt{PAL} vycházeli z obvodů \texttt{FPLA} a obsahovaly programovatelné pole hradel
+      \texttt{AND}, které bylo následováno pevným neprogramovatelným polem hradel \texttt{OR}. Ke
+      každému hradlu \texttt{OR} tak bylo možno připojit pouze omezený počet výstupů hradel
+      \texttt{AND} (součinů). Díky tomuto zjednodušení došlo ke snížení doby přenosu signálu ze
+      vstupu na výstup. Oba tyto typy obvodů \texttt{FPLA} i \texttt{PLA} byly totiž založeny na
+      bipolární PROM technologii s programovatelnými pojistkami tzv. \emph{fusible-link}.
+      Programování bylo realizováno vstříknutím dostatečně velkého náboje, který způsobil přepálení
+      vybrané vnitřní pojistky. Zbývající neporušené pojistky se staly součástí implementovaného
+      číslicový obvodu. Pojistky ovšem zvyšují zpoždění signálu v obvodu, zvětšují složitost a ve
+      výsledku i cenu. Počet součinů, které byly připojeny na vstup hradla \texttt{OR}, byl na
+      základě praktických zkušeností stanoven na osm. Velkou výhodou těchto obvodů bylo, že se daly
+      programovat v tehdy již běžných programátorech pamětí \texttt{PROM}. Mezi první obvody řady
+      \texttt{PAL} patří například \texttt{PAL16L8} (kombinační výstupy) a \texttt{PAL16R8}
+      (výstupy s registry).
+      
+      Firma \texttt{MMI} dále napsala pro tyto obvody návrhový software, který umožňoval popsat
+      číslicový systém pomocí velmi jednoduchého jazyka ve formě booleovských rovnic a z něj pak
+      vygenerovat výstup, jímž bylo možné obvody \texttt{PAL} naprogramovat. Tím došlo k významnému
+      zjednodušení vlastního návrhu obsahu těchto obvodů. Tento software se jmenoval
+      \texttt{PALASM} (\emph{PAL Assembler}) a firma \texttt{MMI} ho zveřejnila ve formě zdrojového
+      kódu napsaného v jazyce \texttt{FORTRAN}. Program \texttt{PALASM} umožňoval dokon\-ce
+      softwarovou simulaci navrženého obvodu. Díky funkcím návrhu a simulace  lze \texttt{PALASM}
+      označit za první návrhový systém pro \texttt{PLD} obvody. Všechny zmíněné obvody dnes řadíme
+      do první generace \texttt{PLD}obvodů. Za zmínku ještě stojí, že firmy \texttt{Signetics
+      Corporation} a \texttt{MMI} již mezi dnešními výrobci programovatelných obvodů nenajdeme.
+      
+      Vývoj v oblasti \texttt{PLD} obvodů pokračoval a postupně se začaly objevovat nové
+      \texttt{PLD} obvody, které řadíme již do druhé generace. V roce 1983 uvedla firma
+      \texttt{AMD} (\emph{Advanced Micro Devices}) obvod \texttt{PAL22V10}. Tento obvod byl založen
+      na obvodech \texttt{PAL} popsaných v předchozím odstavci, přinesl však jedno významné
+      vylepšení, a to tzv. \textbf{výstupní makrobuňku} (\texttt{OLMC} - angl. \emph{Output Logic
+      Macro Cell}). Tyto obvody bývají označovány jako obvody \texttt{PAL} s makrobuňkou. Výstupní
+      makrobuňka byla umístěna na každém výstupu obvodu. Každou makrobuňku bylo možné naprogramovat
+      buď jako kombinační nebo registrový výstup. Dále blo možné u jakékoliv makrobuňky
+      programovat, zda má být výstup v přímé nebo negované formě. Výstup makrobuňky byl třístavový,
+      ovládaný jedním logickým součinem, což umož\-ňo\-va\-lo přepnutí makrobuňky z výstupního
+      režimu do funkce vstupu. Tento typ obvodu vyrábělo svého času kromě firmy \texttt{AMD} mnoho
+      dalších firem, např. \texttt{Cypress Semiconductor}, \texttt{Lattice Semiconductor} a
+      \texttt{Texas Instruments}.
+      
+      Všechny dosud zmíněné obvody měly jednu nevýhodu - byly programovatelné pou\-ze jednou
+      (\texttt{OTP} - \emph{One Time Programmable}). Díky rozvoje technologie u pamětí
+      \texttt{EPROM} se dostala tato technologie i do oblasti \texttt{PLD} obvodů a tudíž se na
+      trhu objevili \texttt{PLD} obvody, jejichž obsah bylo možné smazat pomocí ultrafialového
+      záření - obvody lze opakovaně mazat a znovu programovat.
+      
+      V roce 1984 vstoupila na scénu firma \texttt{DATA I/O} se svým návrhovým systémem
+      \textbf{ABEL}, jenž disponoval jazykem vyšší úrovně, určený pro popis číslicových systémů
+      (\texttt{HDL} - \emph{Hardware Description Language}), který byl nazván stejně jako návrhový
+      systém, tj \texttt{ABEL} - \emph{Advanced Boolean Expression Language}. Jazykem \texttt{ABEL}
+      lze popsat číslicový systém pomocí booleovských rovnic, pravdivostní tabulky a stavových
+      automatů, přičemž tyto způsoby je možné kombinovat. Práva na jazyk \texttt{ABEL} získala po
+      několika akvizicíh firma \texttt{XILINX}. Tento jazyk již sedmou revizi a dodnes ho některé
+      současné návrhové systémy podporují (např. Xilinx a Lattice Semiconductor). Pro návrh nových
+      číslicových systémů založených na \texttt{PLD} obvodech se však doporučuje používat některý z
+      novějších \texttt{HDL} jazyků, např. jazyk \texttt{VHDL} nebo jazyk \texttt{Verilog}.
+      
+      Další vývoj \texttt{PLD} obvodů pokračoval s nástupem technologie pamětí \texttt{EEPROM} a
+      jejím využítí v \texttt{PLD} obvodech. Této nové technologie bylo využito zejména u
+      \texttt{PLD} obvodů označovaných jako \texttt{GAL} - \emph{Generic Array Logic}. Obvody
+      \texttt{GAL} lze zařadit do třetí generace \texttt{PLD} obvodů. Obvody typu \texttt{GAL} jsou
+      také zařazovány do třídy jednoduchých programovatelných obvodů (\texttt{SPLD}).
+      
+      Na konci osmdesátých let minulého století nastává v oblasti \texttt{PLD} obvodů bouřlivý
+      vývoj. Vývojem a výrobou \texttt{PLD} se na konci osmdesátých a začátkem devadesátých let již
+      zabývá mnoho firem a vývoj \texttt{PLD} obvodů již nelze od této doby přehledně rozdělit ani
+      stručně popsat. V průběhu tohoto období vznikají nové řady \texttt{PLD} obvodů, nazývané
+      \texttt{CPLD} - \emph{Complex Programmable Logic Device}. Jmenujme např. alespoň obvody
+      \texttt{MACH} firmy \texttt{AMD} a dále vznik první řady obvodů \texttt{MAX}, kterou společně
+      vyvinula firma \texttt{ALTERA} a \texttt{Cypress Semiconductor}. Nové obvody v této době na
+      trh uvádí také firma \texttt{XILINX} (řady \texttt{XC7200} a \texttt{XC7300}),
+      \texttt{QuickLogic}, \texttt{Lattice Semiconductor} a tak by bylo možné pokračovat dál a dál.
+      Z uvedeného je vidět, že cesta vývoje \texttt{PLD} obvodů nebyla a není ani dnes nijak
+      přímočará a byla navíc od svých počátků provázena soudními spory firem o patentová práva a
+      tato situace trvá dodnes.
+      
+      Lze však řicí, že od začátku devadesátých let vyvíjí většina firem dvě od sebe velmi odlišné
+      architektury \texttt{PLD} obvodů. První je architektura \texttt{CPLD} obvodů, založená na
+      programovatelné matici hradel \texttt{AND}, hradlech \texttt{OR} a makrobuňkách (vychází tedy
+      z původní koncepce obvodů \texttt{PAL})  a na programovatelných místech používá buňky
+      \texttt{EEPROM} nebo \texttt{FLASH}.
+      
+      Kvůli rostoucí velikosti obvodů se začalo později místo rozšiřování logických funkcí užívat
+      spíše skládání více matic PLD obvodů do jednoho pouzdra. Vznikly tak obvody, které dnes
+      nazýváme \texttt{CPLD} (\emph{Complex Programmable Logic Device, Altera, 1988}). Od
+      \texttt{CPLD} byl už pak jen malý krok k prvním \texttt{FPGA} obvodům (\emph{Xilinx, 1984}).
+      Dnes dostupná \texttt{FPGA} se ovšem od architektur z poloviny osmdesátých let významně
+      odlišují. Trendem je pozvolný příklon k hrubozrnným architekturám; obvodům, které kromě
+      elementárních programovatelných logických bloků obsahují také další komplexní podpůrné bloky.
+      
+    \newpage
+    \subsection{Obvody typu Simple Programmable Logic Device}  
+      \subsubsection{Programmable Read Only Memory (PROM)}\label{PLO_kap_PROM}
+        Po mnoho let nebyly obvody \texttt{PROM} \emph{Programmable Read Only Memory} zařazovány do
+        skupiny programovatelných logických obvodů, ačkoliv většina nejmenších PROM (např. 32x8)
+        byly používány jako logické prvky (dekodéry, převodní tabulky kódů, znakové generátory).
+
+        \begin{figure}[ht!]
+          \centering
+          \includegraphics[width=0.8\linewidth]{architektura_PROM.pdf}
+          \caption[Architektura PROM]{PLD typu Programmable Read Only Memory (PROM)}
+          \label{PLO:fig_arch_PROM}
+        \end{figure}
+        
+        Obvody \texttt{PROM} představuje matici paměťových buněk, jejíž řádky jsou adresovatelné
+        vstupní signály a datové sloupce představují výstupní signály. Počet adresových a datových
+        signálů determinuje rozměr matice. Např. 4 vstupní signály umožňují adresaci 16 řádků, 4
+        datové signály indikují, že každý řádek se skládá ze 4 pamě\-ťo\-vých buněk. Z pohledu
+        architektury obvodů PLD obsahují PROM pevné propojovací pole hradel \texttt{AND},
+        následované programovatelným polem hradel \texttt{OR} (viz obr. \ref{PLO:fig_arch_PROM})
+
+        \begin{figure}[ht!]
+          \centering
+          \includegraphics[width=0.9\linewidth]{schema_PROM.pdf}
+          \caption[Schéma obvodu PROM]{Schéma obvodu PROM}
+          \label{PLO:fig_sch_PROM}
+        \end{figure}      
+
+        Všeobecně platí, že obvody PROM jsou nejvhodnějším kandidátem implementace takových
+        aplikací, které vyžadují, aby na každou kombinaci vstupních signálů byla jiná odezva
+        výstupních signálů. Překážkou je omezení počtu vstupních signálů, eventuálně je limitující
+        také velikost programovatelné matice. Její velikost se přidá\-ním nového vstupu vždy
+        zdvojnásobí (omezení počtu vstupních signálů jistým způsobem řeší obvody typu PAL viz kap.
+        \ref{PLO_kap_PAL})\cite[s.~59]{PLD_Grada}.
+      
+        Na obr. \ref{PLO:fig_sch_PROM} je uvedena architektura obvodu PROM prostřednictvím
+        symboliky obvodů PLD. Každý term odpovídá jedné z jeho adres. Programovatelná hradlo OR
+        odpovídají datovým bitům obvodu PROM (výstupní slovo). Např. PROM velikosti 32x8
+        představuje obvod PLD s 5 vstupy, 32 součinovými termy ($32=2^5$) a 8 programovatelnými
+        výstupními OR hradly.
+
+     \subsubsection{PLD typu Programmable Logic Array (PLA)}\label{PLO_kap_FPLA}
+        Obvody \texttt{PLA}(\emph{Programmable Logic Array}) patří k průkopníkům v oblasti
+        programovatelných logických polí. Obsahují programovatelné pole hradel AND a zároveň i
+        programovatelné pole hradel OR (viz obr. \ref{PLO:fig_arch_FPLA}).
+        Vstupní signály jsou přivedeny v přímém i invertovaném stavu do pole AND hradel.
+        \begin{figure}[ht!]
+          \centering
+          \includegraphics[width=0.8\linewidth]{architektura_FPLA.pdf}
+          \caption[Architektura obvodů PLA]{Architektura obvodů PLA}
+          \label{PLO:fig_arch_FPLA}
+        \end{figure}
+        
+        Oproti obvodům \texttt{PROM}, mají obvody \texttt{PLA} toto pole programovatelné, takže je
+        možné snadno vytvořit součinové termy z libovolné kombinace vstupních (přímých i
+        negovaných) signálů. Součinové termy jsou přivedeny do programovatelného pole OR hradel,
+        které umožňuje připojení libovolného termu k libovolnému hradlu OR. Jeden term může být
+        přiveden na vstup i několika hradel OR. Na jejich výstupu je formována požadovaná logická
+        funkce ve tvaru "součtu součinů".
+
+        Je-li obvod PLD vybaven programovatelným polem AND, jako je tomu u obvodů \texttt{PLA} (a i
+        např. u PAL kapitola \ref{PLO_kap_PAL}), může být využita pouze polovina programovatelných
+        spínačů propojovacího pole. Tato skutečnost je zřejmá, protože vstupní signály jsou do pole
+        přivedeny v přímém i invertovaném tvaru a v žádném součin se nemůže současně vyskytovat
+        přímý i invertovaný signál (součin by vždy nabýval hodnoty logická nula). Takže nejméně
+        polovina (a v praxi i více, protože všechny součiny vždy neobsahují všechny veličiny) není
+        při konstrukcích logických funkcí využita. Je tedy zřejmé, jak neefektivně je využita
+        plocha křemíkového čipu, na kterém je obvod typu PLA realizován. Tato skutečnost stimuluje
+        další vývoj a vznik nových architektur obvodů PLD \cite[s.~63]{PLD_Grada}.
+        
+     \subsubsection{PLD typu Programmable Array Logic (PAL)}\label{PLO_kap_PAL}
+        Obvody typu PAL jsou dalším z typů programovatelných logických obvodů. Jsou to PLD obvody s
+        programovatelným polem hradel AND a pevným poler hradel OR. K jednomu hradlu OR lze
+        připojit pouze omezený počet součinových termů, přičemž nelze současně jeden term připojit
+        k několika hradlům OR.
+      
+        \begin{figure}[ht!]
+          \centering
+          \includegraphics[width=0.8\linewidth]{architektura_PAL.pdf}
+          \caption[Architektura obvodů PAL]{Architektura obvodů PAL}
+          \label{PLO:fig_arch_PAL}
+        \end{figure}
+        
+        Jednodušší architektura oproti v té době existujícím FPLA obvodům, umožnila zkrácení doby
+        přenosu signálu. Obvody PAL byly navrženy tak, aby "vypadaly" jako standardní obvody PROM a
+        mohly tak být programovány standardními programátory obvodů PROM. Tím se výrobci obvodů PAL
+        vyvarovali požadavků na dodatečné vývojové prostředí, jak tomu bylo v době uvedení na trh v
+        případě FPLA obvodů.
+        
+     \subsubsection{PLD typu Simple Programmable Logic Device - \texttt{SPLD}}\label{PLO_kap_GAL}
+       Obvody typu \texttt{GAL} (\emph{Generic Array Logic}) patří do skupiny elektricky
+       reprogramovatelých obvodů PLD (\texttt{EEPLD} - \emph{Electrically Erasable Programmable
+       Logic Device}). Z hlediska klasifikace PLD obvodů lze obvody \texttt{GAL} charakterizovat
+       jako obvody s programovatelným polem AND hradel a pevným polem hradel OR. Významná
+       od\-liš\-nost od obvodů PAL spočívá v možnosti elektrického reprogramování a využití
+       makro\-buň\-ky (Output Logic Macrocell) na výstupech obvodu.
+       
+        \begin{figure}[hb!]
+          \centering
+          \includegraphics[width=0.7\linewidth]{architektura_GAL.pdf}
+          \caption[Struktura obvodu GAL]{Obecná struktura obvodu \texttt{GAL}}
+          \label{PLO:fig_arch_GAL}
+        \end{figure}
+               
+  \newpage
+  \subsection{Obvody typu Complex Programmable Logic Device - \texttt{CPLD}} 
+    Obvody typu \texttt{CPLD} patří podobně jako obvody \texttt{SPLD} do skupiny elektricky
+    reprogramovatelných \texttt{PLD} obvodů (\texttt{EEPLD}). Většina \texttt{CPLD} obvodů je
+    programovatelná v cílovém systému, nesou tedy i označení \texttt{ISP} (\emph{In-system
+    programming}). Tyto obvody jsou typické, podobně jako obvody \texttt{GAL}, svou
+    programovatelnou maticí hradel AND následovanou hradlem OR a makrobuňkou. Na výstupu hradla OR
+    je tak stejně jako u obvodů \texttt{GAL} formována pořadovaná logická funkce ve tvaru
+    \emph{součtu součinů}. Od obvodů GAL se však obvody CPLD liší hlavně velkým centrálním
+    propojovacím polem. Makrobuňky jsou sdruženy do větších skupin a tvoří tzv. \textbf{funkční
+    bloky} \cite[p~279]{Pinker2006}. Pro architekturu obvodů CPLD jsou charakteristické tyto čtyři
+    struktury:
+    \begin{itemize}
+      \item velké centrální propojovací pole (\emph{Global Routing Pool}),
+      \item programovatelné funkční bloky  (\emph{Generic Logic Block - GLB}), uspořádané ko\-lem
+            propojovacího pole, sestávající z:
+        \begin{itemize}
+          \item programovatelné matice AND,
+          \item několika makrobuňek,
+          \item alokátoru součinů,          
+        \end{itemize}
+      \item výstupní propojovací pole (\emph{Output Routing Pool - ORP}),
+      \item vsutpní/výstupní bloky  (\emph{I/O Blocks}).  
+    \end{itemize}
+
+        \begin{figure}[hb!]
+          \centering
+          \includegraphics[width=0.9\linewidth]{PLD_ispMACH4000_arch.pdf}
+          \caption{Architektura \texttt{CPLD ispMACH4000} společnosti \texttt{Lattice}}
+          \label{PLO:fig_arch_ispMACH4000}
+        \end{figure}  
+            
+    Všechny výše uvedené stavební prkvy mají u různých výrobců různá označení, jejich význam a
+    funkce je však velmi podobná. Pomocí makrobuňek lze realizovat různě složité kombinační a
+    sekvenční logické či paměťové funkce. Přes programovatelné \textbf{vstupní/výstupní bloky} lze
+    přivádět vstupní signály z vývodů obvodu nebo naopak vyvádě výstupní signály. Na rozdíl od
+    jednodušších SPLD, kde vstupní/výstupní obvody jsou přímo spojeny s makrobuňkou, jsou však u
+    CPLD zásadně od makrobuňek odděleny a tvoří samostatný I/O blok, do kterého mohou výstupní
+    signály z makrobuňek vstupovat přes programovatelné \textbf{výstupní propojovací pole}. Tím se
+    všeobecně zlepší využití jak makrobuňek, tak výstupních obvodů.
+    
+    Všechny vstupní/výstupní bloky a všechny makrobuňky lze spolu vzájemně propojit pomocí
+    \textbf{centrálního programovatelného propojovacího pole}.
+
+        \begin{figure}[ht!]
+          \centering
+          \includegraphics[width=0.6\linewidth]{architektura_CPLD.pdf}
+          \caption[Struktura obvodu CPLD]{Obecná struktura obvodu CPLD}
+          \label{PLO:fig_arch_CPLD}
+        \end{figure} 
+           
+  \subsection{Obvody typu Field-Programmable Gate Array - \texttt{FPGA}}   
+    \subsection{Terminologie}
+      \begin{itemize}
+        \item \textbf{PLA} — \emph{Programmable Logic Array} nebo také \textbf{FPLA} \emph{Field
+              Programmable Logic Array}: Obvod obsahuje matici \texttt{AND} za nímž následuje matice
+              \texttt{OR}, jež jsou obě programovatelné.
+              % is a relatively small FPD that contains two levels of logic, an AND-plane and an
+              % OR-plane, where both levels are programmable (note: although PLA structures are
+              % sometimes embedded into full-custom chips, we refer here only to those PLAs that are
+              % provided as separate integrated circuits and are user-programmable).
+        \item \textbf{PAL} - \emph{Programmable Array Logic}\footnote{obchodní známka je v
+              současnosti ve vlastnictví společnosti Lattice Semiconductor}: Relativně jednoduchý
+              PLD obvod obsahující programovatelnou matici \texttt{AND}, za níž následuje pevná
+              matici \texttt{OR} (obr.\ref{PLO:fig_arch_PAL}). %relatively small FPD that has a
+              % programmable AND-plane followed by a fixed OR-plane
+        \item \textbf{SPLD} — \emph{Simple programmable logic device}: Označení je společné pro   
+              \texttt{PLA} a \texttt{PAL} struktury.
+              %refers to any type of Simple PLD, usually either a PLA or PAL
+        \item \textbf{CPLD} — \emph{Complex programmable logic device}: Název zahrnuje obvody   
+              jejichž složitost je někde mezi architekturami obvodů PAL a FPGA a nese rysy obou 
+              těchto architektur. Základním stavebním blokem je tzv. \emph{makrobuňka}, která 
+              realizuje logický výraz ve tvaru normální disjunktivní formy.   
+              %A complex programmable logic device (CPLD) is a programmable logic device with 
+              %complexity between that of PALs and FPGAs, and architectural features of both. The 
+              %building block of a CPLD is the macrocell, which contains logic
+              %implementing disjunctive normal form expressions and more specialized logic 
+              %operations. [wiki] ;a more Complex PLD that consists of an arrangement of multiple 
+              %SPLD-like blocks on a single chip. Alternative names (that will not be used in this 
+              %paper) sometimes adopted for this style of chip are Enhanced PLD (EPLD), Super PAL, 
+              %Mega PAL, and others.
+        \item \textbf{FPGA} — \emph{Field-Programmable Gate Array}: Obvody mají z 
+              programovatelných obvodů nejobecnější strukturu  a obsahují nejvíce logiky. Základním 
+              stavebním blokem jsou logické buňky (\emph{\emph{logic elements}}; Altera), nebo   
+              také řezy (\emph{slices}; Xilinx), jež jsou zpravidla sdruženy do větších logických 
+              bloků\footnote{Výrobci FPGA obvodů používají vlastní názvosloví k popisu jejich 
+              architektur.} (\emph{logic array block}, \texttt{LAB}; Altera) resp.          
+              (\emph{configurable logic block}, \texttt{CLB}; Xilinx). Logické buňky obsahují tzv. 
+              vyhledávací tabulku (\emph{Look-up table}, \texttt{LUT}), která dovoluje realizovat 
+              jednoduché kombinační funkce. LUT má obvykle čtyři vstupní signály, které mají význam 
+              indexu (pointeru) do této tabulky. K propojení \texttt{CLB} slouží programovatelná 
+              propojovací struktura \texttt{PI} (\emph{programmable interconnect}).
+              % The main distinction between FPGA and CPLD device architectures is that FPGAs are 
+              %internally based on Look-up tables (LUTs) while CPLDs form the logic functions with 
+              % sea-of-gates (e.g. sum of products). [wiki];a Field-Programmable Gate Array is an 
+              %FPD featuring a general structure that allows very high logic capacity. Whereas 
+              %CPLDs feature logic resources with a wide number of inputs (AND planes), FPGAs offer 
+              %more narrow logic resources. FPGAs also offer a higher ratio of flip-flops to logic 
+              %resources than do CPLDs.
+    \end{itemize}
+
+  \section{Dynamické parametry PLD}
+     Programovatelné logické obvody mohou pracovat jako obvody kombinační, nebo častěji jako obvody
+     sekvenční \cite[p~593]{Wakerly1999}. Symboly pro doby jenž jsou dále popsány, se v různých
+     firemních publikací liší, význam však zůstáva.
+    \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+      \item $t_{PD}$ - \emph{doba zpoždění} - ve funkci kombinačního obvodu $t_{PD}$ je doba od
+            změny signálů na vstupech obvodu do změny signálů na jeho výstupech. Je podstatná pro
+            režim bez hodinových impulzů u ryze kombinačního  obvodu. U sekvenčního obvodu
+            \emph{Mealyho} typu je to zpoždění obvodu v době mezi hodinovými impulzy,
+      \item $t_{CO}$ - \emph{doba zpoždění po hodinovém impulzu} - doba od aktivní hrany hodinového
+            impulzu do změny výstupního signálu,
+      \item $t_{CF}$ - opět se jedná o zpoždění jako v předchozím případě, tj. je to doba od 
+            aktivní hrany hodinového impulzu do změny výstupního signálu registru, jenž je ovšem 
+            veden jako zpětnovazební vstup. Běžně platí, že $t_{CF}<t_{CO}$ a pokud
+        jej výrobce neuvádí, lze předpokládat $t_{CF}=t_{CO}$
+      \item $t_{SU}$- \emph{doba předstihu} - je doba, po kterou vstupní signál musí být 
+            konstantní až do aktivní hrany hodinového impulzu,
+      \item $t_{H}$ - \emph{doba přesahu} - je doba, po kterou vstupní signál musí být konstantní 
+            po aktivní hraně hodinového impulzu,
+      \item $f_{max}$ - \emph{maximální kmitočet hodinových impulzů} - Je to nejvyšší frekvence, 
+            na které zařízení může pracovat spolehlivě a je ekvivalentní k převrácené hodnotě 
+            minimální periody hodinových impulzů.
+    \end{itemize}
+    
+    \begin{figure}[ht!]
+      \centering
+      \begin{tabular}{c}
+        \subfloat[Doba zpoždění $t_{PD}$]{\label{PLO:fig_PLD_timing_tpd}
+          \includegraphics[width=0.7\linewidth]{PLD_timing_tpd.pdf}}                     \\
+        \subfloat[Doba zpoždění po hodinovém impulzu $t_{CO}$, doba předstihu ]
+          {\label{PLO:fig_PLD_timing_tsu}
+          \includegraphics[width=0.7\linewidth]{PLD_timing_tsu_th_tco_fmax.pdf}}         \\
+        \subfloat[ ]{\label{PLO:fig_PLD_timing_tcf}
+        \includegraphics[width=0.7\linewidth]{PLD_timing_tsu_tcf_fmax.pdf}} 
+      \end{tabular}             
+      \caption{Základní dynamické parametry PLD: $t_{PD}$, $t_{CO}$, $t_{CF}$, $t_{SU}$,
+               $t_{H}$, $f_{max}$}
+      \label{PLO:fig_PLD_timing}
+    \end{figure}  
+        
+     Dynamické parametry u programovatelných logických obvodů jsou závislé na vnitř\-ních cestách 
+     signálů. U obvodů \texttt{CPLD} je situace jednodušší, neboť cesty signálů jsou do jisté míry 
+     pevně dány a jedná se jen o jejich výběr. Výrobci uvádějí korekční vztahy pro výše uvedené 
+     doby, kterými jsou respektovány logické zátěže a způsob využití vnitřních bloků. Složitější
+     situace je u obvodů \texttt{FPGA}, kde cesty signálů nejsou předem definovány a v procesu 
+     návrhu budou teprve vyvtářeny. Jednotlivé doby proto musí dodatečně dopočítat návrhový systém 
+     \cite[p~288]{Pinker2006}.
+
+} % tikzset
+%---------------------------------------------------------------------------------------------------
+\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}

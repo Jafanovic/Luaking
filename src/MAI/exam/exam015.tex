@@ -1,0 +1,34 @@
+% !TeX spellcheck = cs_CZ
+\begin{example}\label{mai:exam015}
+  Rozložte na parciální zlomky lomenou racionální funkci \((x):y=\frac{7x+8}{x^2+x-2}\).
+  \newline\textbf{Řešení:} Nejprve vypočteme nulové body jmenovatele:
+  \begin{align*} 
+     x^2+px+q &=(x-u)(x-v) = x^2-(u+v)x+uv            \\
+              &\rightarrow p=-(u+v),\quad q=uv
+  \end{align*}
+  Kořenové činitele  \(x^2+x-2\rightarrow x_1=1, x_2=-2\) zvolíme za jmenovatele parciálních
+  zlomků a rozklad hledáme ve tvaru \(\frac{7x+8}{x^2+x-2}=\frac{A}{x-1}+\frac{B}{x+2}\)
+  kde \(A\), \(B\) jsou neznámé konstanty. Tyto konstanty určíme tak, aby rozklad platil pro 
+  každé \(x\in\mathcal{R}-\{1,-2\}\). Po jednoduché úpravě dostaneme rovnost dvou polynomů
+  \(7x+8=(A+B)x+2A-B\). Podle \ref{la:eq_eqv_poly} se musí rovnat koeficienty u \(x\) a absolutní 
+  členy obou stran poslední rovnice \(\Rightarrow\) dostaneme soustavu rovnic pro určení \(A\) a 
+  \(B\) ve tvaru:
+  \begin{align}
+    % \nonumber to remove numbering (before each equation)
+    7 &= A+B  \nonumber \\ 
+    8 &= 2A+B \label{la:eq_parc_example}   
+  \end{align}
+  dostáváme \(A=5,\quad B=2\). Postup, který jsme užili, nazýváme \textbf{Metodou neurčitých 
+  koeficientů}.
+  
+  Pro určení koeficientů \(A\), \(B\) se užívají také jiné postupy, např. dosazování
+  kořenů jmenovatele, která je výhodná zejména v případech, kdy jmenovatel lomené racionální
+  funkce má jednoduché kořeny. Postupujeme tak, že rov. \ref{la:eq_parc_example} násobíme
+  součinem kořenových činitelů \((x-1)(x+2)=x^2+x-2\) a dostaneme rovnici 
+  \(7x+8=A(x+2)+B(x-1)\) pro určení koeficientů \(A\), \(B\) dosazováním kořenů.
+    \begin{align*}
+      % \nonumber to remove numbering (before each equation)
+      x=-2 &\rightarrow       -14+8=B(-2-1)      \rightarrow B=2\\
+      x=+1 &\rightarrow  \,\,\,+7+8=A(1+2)\quad  \rightarrow A=5
+    \end{align*}
+\end{example}

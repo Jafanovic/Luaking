@@ -1,0 +1,127 @@
+% !TeX spellcheck = cs_CZ
+% file: prechod_deje.tex
+{\tikzset{external/prefix={tikz/TEO/}}
+ \tikzset{external/figure name/.add={ch10_}{}}
+%========= Kapitola: Dynamické pochody v lineárních obvodechů ======================================
+\chapter[Přechodné děje]{Dynamické pochody v lineárních obvodech}
+\minitoc
+  \section{Fyzikální podstata přechodných dějů}
+    V obvodu, který je v ustáleném stavu, nechť dojde buďto
+    \begin{itemize}
+      \item ke změně parametru aktivního prvku (např. připojení nebo odpojení zdroje napětí nebo  
+            proudu),
+      \item ke změně parametru pasivního prvku (např. zvětšení nebo zmenšení odporu, indukčnosti  
+            nebo kapacity),
+      \item ke změně topologické struktury (např. přerušení větve, spojení větve nakrátko, připojení 
+            další větve).
+    \end{itemize}
+    Kteroukoliv z uvedených změn dostaneme nový obvod jemuž přísluší nový \emph{ustálený stav}; 
+    tento stav však nenastane okamžitě. Zmíněná změna přivede obvod do \emph{ne\-us\-tá\-le\-né\-ho 
+    stavu}, v němž odezvy napětí a proudů - nazýváme je \textbf{přechodnými jevy} - se postupně 
+    přibližují k hodnotám nového ustáleného stavu. Přechodné jevy, ač - přesně vzato - probíhají v 
+    nekonečně dlouhé době, jsou v praxi jevy krátkodobými, neboť odezvy se trvale "dostatečně 
+    těsně" přiblíží k hodnotám nového stavu již v poměrně krátké době - v běžných případech jsou to 
+    mikrosekundy až milisekundy.
+
+    Naskýtá se otázka, proč odezvy obvodu obecně nepřecházejí z původního do nového ustáleného 
+    stavu skokem a proč dochází k neustálenému stavu obvodu. Obvod má elektromagnetickou energii 
+    $W(t)$, která je součtem energií elektrického pole kondenzátoru $W_e(t)$ a energií magnetického 
+    pole cívek $W_m(t)$. Elektromagnetická energie obvodu
+    \begin{equation*}
+      W(t)=\sum_kW_{e_k}(t)+\sum_kW_{m_k}(t)
+    \end{equation*}
+    je tedy funkcí napětí na jeho kondenzátorech a proudů v jeho cívkách. Protože tyto veličiny 
+    určují energetický stav obvodu, nazýváme je \textbf{stavovými veličinami}.
+
+    \begin{figure}[ht!]
+       \centering
+       \includegraphics[width=0.8\linewidth]{prechodny_dej.pdf}
+       \caption[Přechodný jev]{K objasnění pojmů "neustálený stav" a "přechodný jev"}
+       \label{TEO:fig_prechodny_dej}
+    \end{figure}
+
+    Elektrické výkony $P$ v reálném elektrickém obvodu mají z fyzikálních důvodů vždy konečnou 
+    hodnotu. U obvodů, které jsou dostatečně adekvátními modely respektujícími tuto skutečnost 
+    (nazýváme je obvody s konečnými výkony) je to postačující podmínkou pro to, aby jejich energie 
+    $W = W(t)$ byla spojitou funkcí času (neboť $P = \frac{dW}{dt}$). Z uvedených vztahů pro 
+    energii obvodu $W(t)$ je patrné, že $W = W(t)$ bude spojitou funkcí, jsou-li stavové veličiny 
+    \emph{spojitými funkcemi}. To znamená, že hodnota stavových veličin v okamžiku před vznikem 
+    přechodného jevu je táž jako v okamžiku po jeho vzniku. Pro přechodný jev v okamžiku $t=0$ 
+    platí tedy
+    \begin{equation}\label{TEO:eq_spojite_fce}
+      \lim_{t\rightarrow0_-}u_c(t)= \lim_{t\rightarrow0_+}u_c(t); \quad  
+      \lim_{t\rightarrow0_-}i_L(t)= \lim_{t\rightarrow0_+}i_L(t)
+    \end{equation}
+
+     \subsection{Přechodné jevy v jednodušších obvodech; charakteristické pojmy a vlastnosti}
+        % --------example: Transformátor -----------------------
+        % \label{TEO:exam005}
+          \input{../src/TEO/exam/exam005.tex}  
+        %-------------------------------------------------------
+
+        % --------example: Obvod s kondenzátorem ---------------
+        % \label{TEO:ex_10_8}
+        % \input{../src/TEO/exam/exam006.tex}  
+        %-------------------------------------------------------
+            
+  %--------------------- Přechodný jev kmitavého obvodu --------------------------------------------
+  \newpage
+  \section{Přechodný jev kmitavého obvodu}
+    Kmitavým obvodem máme na mysli obvod s jedním stupněm volnosti, složeného z odporu $R$,
+    kapacity $C$ a indukčnosti $L$, zapojených v sérii. Je jedním z nejdůležitějších případů
+    elektrotechnické praxe. Dosud probírané případy (obvod \emph{RL} a \emph{RC}) jsou vždy určitým
+    zjednodušením úplného obvodu s jedním stupněm volnosti, vzniklé tak, že buď indukčnost obvodu,
+    nebo kapacita jsou zanedbatelné vzhledem k ostatním prvkům. Rozbor přechodného stavu kmitavého
+    obvodu (dále stručně obvodu \emph{RLC}) umožňuje stanovit směrnice pro možnost tohoto
+    zjednodušení a jeho důsledky.
+
+    \begin{wrapfigure}{r}{5cm}
+      \centering
+       % \includegraphics[width=0.45\textwidth]{cir_RLC_hlavka.pdf}
+      \begin{circuitikz}[ scale =1.6]
+        \draw
+          (0,0)
+          to[V<, l=$U$] ++(0,1)
+          to [R, l=$R_1$] ++ (1,0) 
+          to[L, l^=$L_1$] ++(0.5,0) 
+          to[C, l=$C_1$] ++(1,0) 
+          to[short] ++ (0,-1)
+          --(0,0);
+          \draw[->] (1.5,0.2) -- +(-0.5,0) node[left] {$i$};
+        \end{circuitikz}         
+        \caption[Schéma sériového kmitavého obvodu]{Schéma sériového kmitavého obvodu}
+        \label{TEO:fig_RLC_00}
+    \end{wrapfigure}
+   
+    Zopakujme, že přechodný stav, je vždy dán superpozicí nového ustáleného stavu a vlastní 
+    přechodné složky, jejíž průběh závisí jen na vlastnostech obvodu a počátečních podmínkách (a 
+    nikoliv na průběhu vstupního signálu), proto nejdříve budeme řešit tzv. \emph{volný stav 
+    obvodu}, tj. stav, kdy vnější působení na vstupu je nulové. Za těchto okolností může v obvodu 
+    existovat přechodný jev, je-li v obvodu (tj. v akumulačních prvcích) na počátku nahromaděná 
+    určitá energie. Vzhledem k tomu, že to může být jednak energie elektrického pole v 
+    kondenzátoru, jednak energie magnetického pole v cívce, je počáteční stav úplně určen, známe-li 
+    hodnoty napětí na kapacitě a proudu v indukčnosti v počátečním okamžiku; matematicky vyjádřeno, 
+    stanovíme počáteční podmínky vždy ve tvaru
+    \begin{equation}\label{TEO:eq_RLC_00}
+      u_C(0) = U_{C_0} \qquad i(0) = I_0.
+    \end{equation}    
+    Protože za volného stavu jsou vstupní svorky spojeny \emph{nakrátko}, je rovnice pro proud v
+    obvodu
+    \begin{align}\label{TEO:eq_RLC_01}
+       u_R + u_L + u_C                                    &= 0 \\
+       Ri + L\der{i}{t} +\frac{1}{C}\int_0^tidt + U_{C_0} &= 0
+    \end{align}     
+    Řešení provedeme pomocí Laplaceovy transformace. K přihlédnutím  k počátečním podmínkám
+    \ref{TEO:eq_RLC_01} dostaneme rovnici
+    \begin{equation}\label{TEO:eq_RLC_02}
+      I(p)(R + Lp + \frac{1}{pC}) = I_0L - \frac{U_{C_0}}{p},
+    \end{equation}     
+    a z ní 
+    \begin{equation}\label{TEO:eq_RLC_03}
+      I(p) = \frac{pCLI_0 - CU_{C_0}}{p^2LC + pRC + 1}.
+    \end{equation}
+
+} % tikzset
+%---------------------------------------------------------------------------------------------------
+%\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}

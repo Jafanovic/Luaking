@@ -1,0 +1,135 @@
+% =================================================================================================
+%                                     Drawing environment 
+% =================================================================================================
+\NeedsTeXFormat{LaTeX2e}
+% ~~~~~~~~ Libraries ~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{expl3}                   % fpeval
+\ExplSyntaxOn
+\cs_set_eq:NN \fpeval \fp_eval:n
+\ExplSyntaxOff
+% ~~~~~~~~~~~ Colors ~~~~~~~~~~~~~~~~~~~~~~~~
+\PassOptionsToPackage{svgnames}{xcolor}
+\PassOptionsToPackage{x11names}{xcolor}
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\PassOptionsToPackage{table}{xcolor}
+\RequirePackage{xcolor}
+  % Define my colors
+  \definecolor{Blue}{rgb}{0.3,0.3,0.9}
+  \definecolor{lstgray}{gray}{0.9}
+  \definecolor{help}{RGB}{0,128,0}
+  \definecolor{keyword}{RGB}{0,0,128}
+  \definecolor{lstnumcolor}{RGB}{.5,.5,.5} % gray
+  \definecolor{Gray}{gray}{0.85}
+  \definecolor{LightCyan}{rgb}{0.88,1,1}
+  \definecolor{mygreen}{rgb}{0,0.6,0}
+  \definecolor{mygray}{rgb}{0.5,0.5,0.5}
+  \definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\RequirePackage{tikz} 
+  \usetikzlibrary{babel}
+  \usetikzlibrary{intersections, calc, positioning, mindmap, trees}
+  \usetikzlibrary{decorations.pathmorphing, decorations.pathreplacing} 
+  \usetikzlibrary{decorations.markings}
+  \usetikzlibrary{matrix, arrows}
+  \usetikzlibrary{topaths, automata, scopes, chains}
+  \usetikzlibrary{quotes, shapes}
+  \usetikzlibrary{fit}
+\usepackage{tikz-3dplot}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+  \usepgfplotslibrary{external} 
+    \tikzset{external/system call={%
+        xelatex -save-size=80000 
+       -pool-size=10000000 
+       -extra-mem-top=50000000 
+       -extra-mem-bot=10000000 
+       -main-memory=90000000 
+        \tikzexternalcheckshellescape
+       -halt-on-error 
+       -shell-escape 
+       -interaction=batchmode
+       -jobname "\image" "\texsource"}}
+    \tikzset{external/up to date check={diff}}
+    \tikzset{external/mode=convert with system call} 
+    \tikzsetexternalprefix{build/}
+
+    
+%    \usepackage{pgfplots}                  % http://www.ctan.org/pkg/pgfplots
+%      \pgfplotsset{compat=newest}
+%      \usepgfplotslibrary{external} 
+  
+  \usepackage{pstricks}                  % PostScript macros for Generic TeX.  
+
+% ~~~~~~~~ TikZ Cheat Sheet ~~~~~~~~~~~~~~~~~~~~~~
+% (x,y)                                    Cartesian coordinates
+% (angle:r)                                polar coordinates
+% ($ (A) + {sin(60)}*(B) $)                coordinate calculations calc
+% ($ (A)!.25!(B) $)                        partway calculations calc
+% ($ (A)!3cm!(B) $)                        3cm from (A) in direction of (B) calc
+% ($ (A)!1.2!30:(B) $)                     stretch by 1:2, then rotate by 30° calc
+% ($ (A)!(B)!(C) $)                        projection of point B onto line AC calc
+% ($ (A)!(B)!30:(C) $)                     project B onto line AC, then rotate by 30° calc
+% \node[above=1cm of somenode.north]       position new node 1cm above existing anchor positioning
+
+%---------------------------------- Tikz graphic ---------------------------------------------------
+\newcommand{\cube}{
+  \begin{tikzpicture}[scale=0.05]
+    \shade[yslant=-0.5,right color=gray!10, left color=black!50] (0,0) rectangle +(3,3);
+    \draw[yslant=-0.5] (0,0) rectangle (3,3);      
+    \shade[yslant=0.5,right color=gray!70,left color=gray!10] (3,-3) rectangle +(3,3);
+    \draw[yslant=0.5] (3,-3) rectangle (6,0);
+    \shade[yslant=0.5,xslant=-1,bottom color=gray!10, top color=black!80] (6,3) rectangle +(-3,-3);
+    \draw[yslant=0.5,xslant=-1] (3,0) rectangle (6,3);
+  \end{tikzpicture}
+}
+% ~~~~~~~~~~~ XY Coordinate ~~~~~~~~~~~~~~~~~~~~~
+% umožňuje zobrazit souřadnice daného bodu - x-ová složka proměnná \XCoord
+% http://tex.stackexchange.com/questions/66125/extract-x-value-from-coordinate-in-tikz
+\newdimen\XCoord
+\newdimen\YCoord
+\newcommand*{\ExtractCoordinate}[1]{\path (#1); \pgfgetlastxy{\XCoord}{\YCoord};}%
+% příklad použití:
+%         \ExtractCoordinate{p5};
+%         \node [below] at (1cm,-1.5cm) {p5 $(\XCoord,\YCoord)$}; 
+%------------------------------------------------
+% Vykreslí XY kříž - pro funkce - nutné použít následující proměnné
+% \def\xmin{-15} % scalebar-x
+% \def\xmax{130} % scalebar-x
+% \def\ymin{-15} % scalebar-y
+% \def\ymax{+90} % scalebar-y
+% \def\zero{0}
+% \def\phase{0}
+% \def\period{48}
+
+% ~~~~~~~~~~~ MyXYcross ~~~~~~~~~~~~~~~~~~~~~~~~~
+\newcommand{\MyXYcross}{% 
+   \draw[name path=axeX,->] (\xmin,\zero) -- (\xmax,\zero)   node[right] {$x$} coordinate(x axis);
+   \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {$y$} coordinate(y axis);
+   \path[name intersections={of=axeX and axeY, name=pocatek}];
+   \node[below left] at (pocatek-1) {$0$};
+   \draw[fill=white] (pocatek-1) circle(2pt);
+}
+
+\newcommand{\XYcross}{% 
+  \draw[name path=axeX,->] 
+    (\xmin,\zero) -- (\xmax,\zero)   node[right] {\xlabel} coordinate(x axis);
+  \draw[name path=axeY,->] 
+    (\phase,\ymin) -- (\phase,\ymax) node[left]  {\ylabel} coordinate(y axis);
+  \path[name intersections={of=axeX and axeY, name=pocatek}];
+  \node[below left] at (pocatek-1) {$0$};
+  \draw[fill=white] (pocatek-1) circle(2pt);
+}
+
+%-------------------------Circuitikz----------------------------------------------------------------
+\usepackage[
+  american, 
+  europeanresistors,
+  cuteinductors,  
+  smartlabels]{circuitikz}
+  \usetikzlibrary{shapes} 
+  \ctikzset{bipoles/thickness=1}
+  \ctikzset{bipoles/length=0.8cm}
+  \ctikzset{bipoles/vsourceam/height/.initial=.7}
+  \ctikzset{bipoles/vsourceam/width/.initial=.7}
+  \tikzstyle{every node}=[font=\small]
+  \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]

@@ -1,0 +1,298 @@
+% !TeX spellcheck = cs_CZ
+{\tikzset{external/prefix={tikz/CES/}}
+ \tikzset{external/figure name/.add={ch11_}{}}
+%---------------------------------------------------------------------------------------------------
+% file VHDL.tex
+%---------------------------------------------------------------------------------------------------
+\lstset{ %
+  language=VHDL,                         % choose the language of the code
+  basicstyle=\small,                     % the size of the fonts that are used for the code: 
+                                         % basicstyle=\small, \footnotesize
+  backgroundcolor=\color{White},         % choose the background color. You must add  
+                                         % \usepackage{color}
+  commentstyle=\color{help}\textit,
+  stringstyle=\ttfamily,                 % typewriter type for strings
+  keywordstyle=\color{keyword}\textbf,
+  breaklines=true,                       % sets automatic line breaking
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  frame=none,	                           % adds a frame around the code - none, single
+  tabsize=8,                             % sets default tabsize to 8 spaces
+  captionpos=b,                          % sets the caption-position to bottom
+  numbers=left,                          % where to put the line-numbers -none, left, right
+  numberstyle=\footnotesize,             % the size of the fonts that are used for the line-numbers
+  stepnumber=1,                          % the step between two line-numbers. If it's 1 each line
+                                         % will be numbered
+  xleftmargin=3em,                       % adjust left margin
+}
+%===========================Kapitola: Jazyk VHDL==================================================
+\chapter{Jazyk VHDL}
+\minitoc
+
+  \section{Návrh číslicového obvodu}
+    \subsection{Popis číslicové funkce}
+      Máme-li představu o funkci a struktuře budoucího číslicového obvodu, nastupuje proces 
+      \emph{zachycení návrhu} (design entry, design capture), při kterém je nutné naše představy 
+      přenést do počítačem zpracovatelné formy. Tuto úlohu, lze splnit na různých úrovních 
+      abstrakce \cite[s.~19]{Stastny2010}:
+      \begin{itemize}
+        \item \textbf{hradlové/schématické} - navrhujeme přímo kreslením schématu budoucího 
+              obvodu. Výhodou tohoto postupu je jeho srozumitelnost a zachycení skuteč\-né podoby 
+              návrhu  - co máme ve schématu je to, co se realizuje. Nevýhody nicméně převyšují 
+              výhody. Kreslení schéma je obvykle specifické pro zvolený obvodu, protože často 
+              používáme struktury, které jsou k dispozici jen na příslušném PLD obvodu. Konverze do 
+              jiného obvou, znamená překreslení schématu. Vlastní proces kreslení je pomalý a 
+              únavný, protože pracujeme na nízké úrovni abstrakce - kreslíme obvod hradldo po 
+              hradle. Chceme-li například realizovat stavový automat, musíme nejprve zminimalizovat 
+              jeho přechodovou a výstupní funkci a pak nakreslit schéma. Snadno se můžeme dostat do 
+              situace, kdy je nutné kompletní překreslení. 
+        \item \textbf{meziregistrových přenosů} - tzv. \texttt{RTL} (\emph{Register Transfer  s  
+              Level}). \texttt{RTL} popis je dnes standardním prostřekdem pro popis číslicové 
+              funkce. Číslicové synchronní obvody se skládají ze dvou základních typů         
+              logických bloků: pamě\-ťo\-vých prvků (registrů) a kombinačních funkcí. Na úrovni 
+              abstrakce, číslicový obvod popisujeme tak, že jednotlivé struktury popíšeme pomocí 
+              těchto dvou typů logiky a doplníme informací o jejich vzájemném propojení          
+              (odkud, kam a přes jaké kombinační logické funkce jsou přelévána data mezi registry). 
+              Popis obvodu je realizován v textové podobě pomocí zápisu ve speciálním 
+              progra\-mo\-va\-cím jazyku (\texttt{HDL} - \emph{Hardware Description         
+              Language}). Pro popis se používají nejčastěji jazyk \texttt{VHDL} a \texttt{Verilog}. 
+              Použití \texttt{RTL} úrovně má nesporné výhody: získáme technologicky nezávislý popis 
+              obvodu na relativně vysoké úrovni abstrakce, přičemž jeden řádek zdrojového kódu je v 
+              hardware reprezentován typicky desítkami/stovkami hradel. To zvyšuje produktivitu 
+              práce, zpřehledňuje vlastní návrh, zjednodušuje přenos návrhu mezi různými 
+              technologiemi a zrychluje jak vlastní návrh, tak pozdější opravy. Jedinou 
+              nevý\-ho\-dou je nevhodnost pro ryze asynchronní návrh, to ale není při práci s     
+              hrad\-lo\-vý\-mi poli omezující, neboť hradlová pole jsou určena právě pro synchronní 
+              číslicové obvody.
+        \item \textbf{algoritmické} - neustále se zkracující délka návrhového cyklu spolu s  
+              rostoucí komplexitou navrhovaných systémů nutí návrháře používat stále vyšší úrovně 
+              abstrakce. Architektura na \texttt{RTL} úrovni je navrhována vždy s ohledem ke 
+              skutečnému časování obvodu a použitém paralelizmu. Systém je na této úrovni narvržen 
+              s odpovídajícím počtem výpočetních jednotek, řídicích bloků, sběrnic, apod. Problém 
+              nastává v okamžiku, kdy v pozdějších fázích návrhu zjistíme, že navržená architektura 
+              nesplňuje očekávání. Právě od\-stra\-ně\-ní informace o paralelismu a časování ze 
+              zdrojového kódu je přínosem \emph{algoritmické syntézy}. Funkce bloku je popsána v 
+              některém z jazyků na ''vyšší úrovni'' - např. \texttt{ANSI C}, \texttt{Handel-C}, 
+              \texttt{SystemC}, nebo \texttt{System Verilogu}. Příslušný syntézní nástroj pak    
+              dostane informaci o počtu funkčních jednotek a časování ve formě jednoduchých oemzení 
+              (například povolíme použití nejvýše dvou násobiček a dvou sčítaček) a na základě 
+              pžedloženého algoritmu vygeneruje \texttt{RTL} kód výsledného systému (datových cest 
+              i řídicích bloků). Kaž\-dá změna v architektuře je triviální - zjistíme-li, že 
+              výpočetní výkon systému je příliš nízký, stačí jen znovu spustit syntézní proces s 
+              jiným počtem aritmetických jednotek. Rychlost celého procesu umožňuje vyzkoušet celou 
+              řadu alternativ architektury a najít nejvhodnější kompromis mezi plochou a rychlostí 
+              obvodu. Zjednodušuje se i verifikace. Použitelnost algoritmické syntézy zatím omezuje 
+              fakt, že výsledek není tak dobrý v porovnání s návrhem od profesionála. 
+      \end{itemize}
+  \section{Úvod}
+    Název VHDL představuje akronym — \texttt{VHSIC} \texttt{Hardware Des\-cription Language}. Samo 
+    označení \texttt{VHSIC} je další akronym představující název projektu, v rámci něhož byl jazyk 
+    VHDL zpracován, a znamená \texttt{Very High Speed Integrated Circuits}. I když označení 
+    \texttt{VHDL} v tomto kontextu není příliš přiléhavé, vžilo se a obecně se používá. Jazyk VHDL 
+    byl původně vyvinut především pro modelování a simulaci rozsáhlých systémů. Na mnoha jeho 
+    konstruktech je to znát, některé z nich nemají pro syntézu vůbec význam. Zde se však budeme 
+    zabývat především použitím jazyka VHDL k vytváření modelů určených pro syntézu číslicových 
+    systémů. České termíny budou v prvním výskytu zapsány tučně. Často tyto termíny nejsou 
+    ustálené, a proto budeme uvádět i jejich anglické ekvivalenty, které již většinou mají 
+    ustálenou podobu.
+
+  % ------------- Základní vlastnosti jazyka VHDL --------------------------------------------------
+  \section{Základní vlastnosti jazyka VHDL}
+     \begin{itemize}
+       \item Je to otevřený standard (\emph{open standard}). K jeho použití pro sestavení  
+             návrhových systémů není třeba licence jeho vlastníka, jako je tomu u jiných jazyků HDL 
+             (například u jazyka \texttt{ABEL}). To je jeden z důvodů, proč je tento jazyk v 
+             návrhových systémech často používán.
+       \item Umožňuje pracovat na návrhu, aniž je předtím zvolen cílový obvod. Ten může být zvolen 
+             až v okamžiku, kdy jsou známy definitivní požadavky na prostředí, v němž má navrhovaný 
+             systém pracovat, a je možno cílový obvod měnit podle potřeby při zachování textu 
+             popisujícího systém, může být zvolen obvod \texttt{PLD} nebo \texttt{FPGA} 
+             (\emph{Device-independent design}).
+       \item Je možno provést simulaci navrženého obvodu na základě téhož zdrojového textu, 
+             který pak bude použit pro syntézu a implementaci v cílovém obvodu. Zdrojový text je 
+             možno zpracovávat v různých simulátorech a v syntetizérech různých výrobců. 
+             Odsimulovaný text může být použit v dalších projektech s různými cílovými obvody, což 
+             je podporováno hierarchickou strukturou jazyka. Této vlastnosti jazyka se říká 
+             přenositelnost (\emph{portability}) kódu.
+       \item V případě úspěšného zavedení výrobku na trh lze popis modelu systému v jazyku VHDL   
+             použít jako podklad pro jeho implementaci do obvodů \texttt{\textbf{ASIC}} vhodných 
+             pro velké série.
+     \end{itemize}
+     \textbf{Některé námitky proti VHDL:}
+     \begin{itemize}
+       \item Jazyk VHDL je dosti „upovídaný", jazykové konstrukty nejsou navrženy tak, aby 
+             zdrojový text byl stručný a při popisu modelu určitého systému se setkáme s 
+             opakováním bloků stejného znění. Ty je však možno snadno vytvářet využitím        
+             kopírování a podobných možností současných editorů.
+       \item V jazyku VHDL je možno vytvořit neefektivní konstrukce, efektivnost nebo její   
+             nedostatek nemusí být na první pohled ze zdrojového textu patrné. To je však vlastnost 
+             i jiných jazyků vyšší úrovně a výsledná efektivnost konstrukce závisí nejen na kvalitě 
+             programových návrhových prostředků, ale také na zkušenosti konstruktéra (návrháře).
+     \end{itemize}
+  
+    Základní verze jazyka VHDL byla přijata jako standard \texttt{IEEE} číslo 1076 v roce 1987. 
+    Konstrukty odpovídající tomuto standardu se označují jako konstrukty jazyka \texttt{VHDL-87}. 
+    Podobně jako další standardy \texttt{IEEE}, i tento standard se v pravidelném pětiletém 
+    intervalu aktualizuje. Upravená verze standardu byla přijata v roce 1993, odkazuje se na ni jako
+    na standard \texttt{VHDL-93}.
+  
+    Vedle jazyka \texttt{VHDL} se setkáme také s jazykem \texttt{Verilog}, který má podobné 
+    použití. Uvádí se, že jazyk \texttt{VHDL} je rozšířený zejména v Evropě, zatímco 
+    \texttt{Verilog} se používá hlavně v asijských zemích. V USA se používají oba tyto jazyky.
+    
+    Vyjadřovací schopnosti jazyku VHDL jsou dány příkazy, jenž mají souběžný nebo sekvenční 
+    charakter. Některé příkazy jsou jen jednoho druhu, jiné mohou být obojího druhu. Toto rozlišení 
+    se týká toho, ve které části popisu se příkazy mohou používat. Pro stručnost budeme dále mluvit 
+    o souběžných a o sekvenčních příkazech, i když jde spíše o to, kde se tyto příkazy nacházejí
+    či mohou nacházet. V následujících kapitolách jsou příkazy rozděleny do dvou velkých skupin: 
+       \begin{itemize}
+         \item \hyperref[Section:VHDL_soubezne_prikazy]{Souběžné příkazy} (\emph{concurrent  
+               statements}): zapisují se v textu jazyka mimo procesy, definice funkcí a procedur.
+         \item \hyperref[Section:VHDL_sekvencni_prikazy]{Sekvenční příkazy} (\emph{sequential  
+               statements}): slouží k algoritmickému vyjádření popisu. Tyto příkazy mohou být 
+               zapsány jen v procesech, v definicích funkcí a procedur.
+       \end{itemize}
+  % ------------------------------------------------------------------------------------------------------------------------------
+  \section{Logické úrovně}
+   Od jazyka určeného k návrhu a modelování integrovaných obvodů očekáváme schopnost modelovat 
+   základní logické úrovně - \emph{log. 0} a \emph{log. 1}. Ty jsou pro jednoduché simulace 
+   postačující, ale již například pro návrh a modelování třístavových budičů sběrnic potřebujeme 
+   mít možnost pracovat se stavem vysoké impedance \emph{Z}. Dalším jednoduchým příkladem může byt 
+   modelování zkratu na sběrnici, který může vzniknout v situaci, kdy dva budiče budí jeden spoj
+   opačnými logickými úrovněmi. Balíček \texttt{std\_logic\_1164} knihovny \texttt{IEEE} pro tyto 
+   účely zavádí \emph{devítistavovou logiku}. 
+   
+   \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+     \item 'U': uninitialized. This signal hasn't been set yet.
+     \item 'X': unknown. Impossible to determine this value/result.
+     \item '0': logic 0
+     \item '1': logic 1
+     \item 'Z': High Impedance
+     \item 'W': Weak signal, can't tell if it should be 0 or 1.
+     \item 'L': Weak signal that should probably go to 0
+     \item 'H': Weak signal that should probably go to 1
+     \item '-': Don't care.
+   \end{itemize}
+   
+   Všimněme si, že tato knihovna je připojena všemi ukázkovými kódy. Logický signál, který má 
+   popsaných hodnot nabývat, je pak definován jako signál typu \texttt{std\_logic}, nebo 
+   \texttt{std\_logic\_vector} pokud se jedná o sběrnici. Pomocí nich modelujeme standardní 
+   propojení logických prvků, tj. ''obyčený kus drátu''.
+   \cite[s.~51]{Stastny2010}
+  \section{Souběžné příkazy} \label{Section:VHDL_soubezne_prikazy}
+  \newpage
+  \section{Sekvenční příkazy}\label{Section:VHDL_sekvencni_prikazy} 
+  \section{Technologicky nezávislá část návrhu}
+    V následujícím textu jsou uvedeny základní způsoby popisu chování sekvenčních (např. klopné 
+    obvody) a kombinačních obvodů. Klopné obvody jsou rozdělovány na \textbf{hranově citlivé} a 
+    \textbf{úrovňově citlivé}. Je možné je popsat jako \emph{jednobitové paměti}. Hranově citlivý 
+    klopný obvod je obvod řízený změnou na vstupu synchronizace (\emph{clock input}).
+    Bývá označován "\emph{flip-flop}".  Úrovňově citlivý klopný obvod je nazýván v české 
+    terminologii \emph{zdrž}. Obvykle je však srozumitelný anglický název "\emph{latch}".
+  
+    \subsection{Dynamicky řízené sekvenční obvody}
+      Obvody řízené změnou signálu na vstupu synchronizace jsou ve VHDL popisovány použitím příkazu 
+      process a podmíněného příkazu  \lstinline[basicstyle=\ttfamily]!if!. V podmíně\-ném příkazu 
+      jsou rozlišovány události (\lstinline[basicstyle=\ttfamily]!events!), které znamenají 
+      vzestupnou hranu nebo sestupnou hranu signálu na vstupu synchronizace. Při popisu je možné 
+      použít dvou různých zápisů, ve kterých se objevuje atribut události synchronizačního
+      signálu \lstinline[basicstyle=\ttfamily]!clk clk'event! nebo volání funkce.
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item \lstinline[basicstyle=\ttfamily]!(clk'event and clk='1')!  	 vzestupná hrana signálu
+        \item \lstinline[basicstyle=\ttfamily]!(clk'event and clk='0')!    sestupná hrana signálu
+        \item \lstinline[basicstyle=\ttfamily]!rising_edge(clk)!		     voláni funkce vzestupné hrany
+        \item \lstinline[basicstyle=\ttfamily]!falling_edge(clk)!		     voláni funkce sestupné hrany
+      \end{itemize}
+      Uvedené příklady ukazují možnosti vyjádření vzestupné a sestupné hrany ve VHDL. Vyjádření 
+      pomocí atributu je častěji používané, protože tento konstrukt je rozeznatelný při syntéze 
+      obvodového řešení. Nicméně použití volání funkce je výhodnější při simulaci, protože nastává 
+      pouze při změně signálu \lstinline[basicstyle=\ttfamily]!clk! z $0\rightarrow1$ a
+      z $1\rightarrow0$, ale ne z $X\rightarrow1$ nebo z $0\rightarrow X$, které nepředstavují 
+      platný přechod z jednoho stavu do druhého. Devět hodnot signálu, které jsou označované jako 
+      \lstinline[basicstyle=\ttfamily]!std_logic! jsou určeny k modelování poruchových stavů 
+      logické sítě. Jsou to hodnoty \emph{'U','X','0','1'¸'Z','W','L','H','-'}.
+ 
+        \subsection{Staticky řízené sekvenční obvody}
+          V následujících odstavcích jsou popisovány klopné obvody řízené úrovní synchronizačního signálu, které jsou známé pod
+          názvem \textbf{zdrž} (\emph{latch}).
+    
+    \subsection{Kombinační obvody} 
+
+  \section{Knihovna LPM}
+    Knihovna \textbf{LPM} (angl. \emph{Library of Parametrized module}) obsahuje parametrizovatelné 
+    moduly jako jsou hrada, čítače, multiplexory, klopné obvody, aritmetické a paměťové funkce. 
+  
+    Standard \texttt{LPM} byl navržen v roce 1990 jako jedna z monžností pro efektivní návrh 
+    číslicových systémů do odlišných technologií, jako jsou např. obvody PLD, hradlová pole a 
+    standardní buňky. Předběžná verze standardu vyšla v roce 1991, další úprava předběžné verze pak 
+    v roce 1992. Standard byl přijat organizací \texttt{EIA} (angl. \emph{Electronic Industires 
+    Alliance}) v dubnu roku 1993 jako doplněk do standardu \texttt{EDIF}.
+  
+    \texttt{EDIF} je formát pro přenos návrhu mezi návrhovými nástroji různých výrobců. Formát 
+    \texttt{EDIF} popisuje syntaxi, která reprezentuje logický netlist. \texttt{LPM} do něj pak 
+    přidává množinu funkcí, která popisuje logické operace netlistu. Před rozšířením o \texttt{LPM} 
+    musel každý \texttt{EDIF} netlit typicky obsahovat technologicky specifické logické funkce,
+    které zabraňovaly tomu, aby byl návrh ve větší míře nezávislý na cílové technologii \cite[s.~72]{Pinker2006}. 
+  
+    \subsection{Posuvný registr - lpm shiftreg}
+  
+    \begin{table*} 
+      \centering
+      \begin{tabular}{|c|p{3.5cm}|p{8cm}|}
+        \hline
+           \rowcolor{CornflowerBlue} {\textbf{Jméno}} & {\textbf{Popis}} & {\textbf{komentář}} \\
+        \hline\hline       
+           \texttt{data[]}   & Data input to the shift register    
+                             & Šířku registru určuje parametr \texttt{LPM\_WIDTH}. \\
+        \hline   
+           \texttt{clock}    & Positive-edge-triggered clok        
+                             & Vstup hodinového signálu. \\
+        \hline     
+           \texttt{enable}   & Clock enable input                  
+                             & Blokuje hodinový signál. \\
+        \hline      
+           \texttt{shiftin}  & Serial shift data input             
+                             & Pro funkci je nutné použit alespoň jeden ze signálů
+                               \texttt{data[]}, \texttt{aset}, \texttt{aclr}, \texttt{sset}, 
+                               \texttt{sclr}, a/nebo \texttt{shiftin}.  \\
+        \hline    
+           \texttt{load}     & Synchronous parallel load           
+                             & (1) load operation (podmínka: \texttt{enable} = 1); (0) shift
+                               operation (výchozí). \\
+        \hline    
+           \texttt{aclr}     & Asynchronnous clear input          
+                             & Signál \texttt{aclr} má vyšší prioritu než signál
+           \texttt{aset}.  \\
+        \hline    
+           \texttt{aset}     & Asynchronnous set input             
+                             & Naplní registr \texttt{g[]} hodnotou \texttt{LPM\_AVALUE} \\
+        \hline 
+           \texttt{sclr}     & Synchronous clear input             
+                             & Signál \texttt{sclr} má vyšší prioritu než signál
+           \texttt{sset}.  \\
+        \hline  
+           \texttt{sset}     & Syncrhonous set input              
+                             & Naplní registr \texttt{g[]} hodnotou \texttt{LPM\_SVALUE} \\
+        \hline  
+           \texttt{q[]}      & Data output from the shift register 
+                             & Šířku registru určuje parametr \texttt{LPM\_WIDTH}. Vyžaduje
+           \texttt{shiftout}.  \\
+        \hline 
+           \texttt{shiftout} & Serial shift data output          
+                             & Vyžaduje registr \texttt{q[]}. \\
+        \hline                                                           
+      \end{tabular}
+      \caption{Popis portů komponenty \texttt{lpm\_shiftreg}.}
+      \label{VHDL:tab_lpm_shiftreg}       
+    \end{table*}
+    
+    %---------------------------------------------------------------
+    \lstinputlisting{../src/CES/VHDL/lpm_shiftreg.vhd}
+    %---------------------------------------------------------------
+
+} % tikzset
+%---------------------------------------------------------------------------------------------------
+\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury} 

@@ -1,0 +1,12 @@
+inkscape --file=f30-01_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig249.pdf
+inkscape --file=f30-02_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig250.pdf
+inkscape --file=f30-03_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig251.pdf
+inkscape --file=f30-04_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig252.pdf
+inkscape --file=f30-05_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig253.pdf
+inkscape --file=f30-06_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig254.pdf
+inkscape --file=f30-07_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig255.pdf
+inkscape --file=f30-08_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig256.pdf
+inkscape --file=f30-09_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig257.pdf
+inkscape --file=f30-10_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig258.pdf
+inkscape --file=f30-11_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig259.pdf
+inkscape --file=f30-12_tc_big.svgz --export-area-drawing --without-gui --export-pdf=fyz_fig260.pdf

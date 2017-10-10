@@ -1,0 +1,32 @@
+% Aplikovaná elektronika
+% notes:
+%~~~~~~~~~
+% \label{ape:eq003}
+% \label{ape:exam000}
+% \label{ape:fig000}
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+\graphicspath{{../src/APE/img/}}
+  \makeatletter
+    \@addtoreset{chapter}{part}
+  \makeatother
+%---------------------------------------------------------------------------------------------------
+% file APE.tex
+%---------------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
+\part{APE}\label{part:APE}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \input{../src/APE/chap/Metodika_navrhu_DPS.tex}
+  \input{../src/APE/chap/kap_LabView.tex} 
+}
+{
+% DEBUG was off
+%========= Kapitola: Metodika návrhu plošných spojů ================================================
+  \input{../src/APE/chap/Metodika_navrhu_DPS.tex}
+%========== Kapitola: Základní zákony elektromagnetismu=============================================
+  \input{../src/APE/chap/kap_LabView.tex} 
+}  % DEBUG was off

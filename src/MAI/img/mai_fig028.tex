@@ -1,0 +1,65 @@
+% !TeX spellcheck = cs_CZ
+
+%Graf funkce $f(x):y=\dfrac{1+x^2}{1-x^2}$
+% xelatex -enable-write18 -shell-escape mai_fig028.tex
+
+\documentclass[11pt]{standalone}
+  \usepackage{helvet}                        % font
+  \usepackage{xltxtra}                       % fontspec package
+  \usepackage{tikz}  
+  \usepackage{amsmath, amsthm, amssymb, amsfonts, amsbsy}
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{intersections}
+  \usetikzlibrary{calc}
+
+  \newcommand{\MyXYcross}{%
+    \draw[name path=axeX,->] (\xmin,\zero)  -- (\xmax,\zero)  node[right] {$x$} coordinate(x axis);
+    \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {$y$} coordinate(y axis);
+    \path[name intersections={of=axeX and axeY, name=pocatek}]; 
+    \node[below left] at (pocatek-1) {$0$};
+    \draw[fill=white] (pocatek-1) circle(2pt);  
+}
+
+\begin{document} 
+  \def\xmin{-180}
+  \def\xmax{180}
+  \def\ymin{-170}
+  \def\ymax{+170}
+  \def\zero{0}
+  \def\phase{0}
+  \def\period{48}
+  \begin{tikzpicture}[scale=0.8, every node/.style={scale=0.8}]
+    \begin{scope}[line join=round, miter limit=4.00,line width=0.5pt, x=50pt,y=50pt, xshift=0, yshift=0]        
+      \draw[name path=fce1, color=blue, smooth] plot[domain=-0.7:0.7] (\x,{(1+\x*\x)/(1-\x*\x)});
+      \draw[name path=fce2, color=blue, smooth] plot[domain=-1.4:-3] (\x,{(1+\x*\x)/(1-\x*\x)});  
+      \draw[name path=fce2, color=blue, smooth] plot[domain=1.4:3] (\x,{(1+\x*\x)/(1-\x*\x)});
+      \draw[name path=asmyptote1, color=brown, smooth] plot[domain=-3:3] (\x,{-1});      
+      \draw[name path=asmyptote2, color=brown, smooth] plot[domain=-3:3] ({-1},\x);
+      \draw[name path=asmyptote3, color=brown, smooth] plot[domain=-3:3] ({1},\x);
+      % xticks and yticks
+          \foreach \x in {1,2,3}{
+            \node at (+\x, 0) [below, fill=white] {$\x$};
+            \node at (-\x, 0) [below, fill=white] {$-\x$};
+            \draw[] (\x,0) -- +(0,+0.1); 
+            \draw[] (-\x,0) -- +(0,+0.1); 
+          }
+          \foreach \y in {1,2,3}{
+            \node at (0,+\y) [left, fill=white] {$\y$}; 
+            \node at (0,-\y) [left, fill=white] {$-\y$};
+            \draw[] (0,+\y) -- +(+0.1,0); 
+            \draw[] (0,-\y) -- +(+0.1,0);
+          } 
+          \foreach \x\y in {1,3,5}{
+            \draw[] (\x/2,0) -- +(0,+0.05); 
+            \draw[] (-\x/2,0) -- +(0,+0.05);
+            \draw[] (0,+\y/2) -- +(+0.05,0); 
+            \draw[] (0,-\y/2) -- +(+0.05,0);
+          }               
+    \end{scope}
+    
+    \begin{scope}[draw=black,line join=round, miter limit=4.00,line width=0.5pt,y=1pt,x=1pt] 
+      \MyXYcross; 
+      \node at (\xmax-30,\ymax-50) [left, fill=white] {$f(x):y=\dfrac{1+x^2}{1-x^2}$};
+    \end{scope}
+  \end{tikzpicture} 
+\end{document}

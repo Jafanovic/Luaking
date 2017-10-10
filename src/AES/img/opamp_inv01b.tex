@@ -1,0 +1,39 @@
+ \documentclass{standalone}
+% \usepackage{fontspec,xltxtra,xunicode,unicode-math} 
+% \usepackage{siunitx}
+% \usepackage{wrapfig}                   % Floats, Figures and Captions  
+% \usepackage{subfigure}                 % Multipart figures
+ \usepackage{tikz}                       % TikZ and PGF picture 
+      \usetikzlibrary{intersections}
+      \usetikzlibrary{calc}
+      \usetikzlibrary{positioning}     
+ \usepackage[american, europeanresistor, cuteinductors,smartlabels]{circuitikz}
+     \ctikzset{bipoles/thickness=1}
+     \ctikzset{bipoles/length=0.8cm}
+     \ctikzset{bipoles/vsourceam/height/.initial=.7}
+     \ctikzset{bipoles/vsourceam/width/.initial=.7}
+     \tikzstyle{every node}=[font=\small]
+     \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+ 
+\begin{document}
+  \begin{circuitikz}[scale=1, every node/.style={scale=1}]
+    \draw (0,0) node[op amp]         (opamp) {};
+    \node [left=0.1cm of opamp.-]       (p1) {};
+    \node [left=0.1cm of opamp.+]       (p2) {};
+    \node [above=0.8cm of p1]           (A)  {};
+    \node [left=1.5cm of A]             (p3) {};
+    \node [right=2.7cm of A, coordinate](C)  {};
+    \node [right=0.8cm of C]            (p6) {};
+    \node [below=0.8cm of p2]         (gnd1) {};
+    \node [below=1.5cm of p3]           (p4) {};
+    \node [right=0.2cm of opamp.out, coordinate] (vo) {};
+    %%% Draw connections
+    \draw (opamp.-)   to[short] (p1) to[short] (A);
+    \draw (opamp.+)   to[short] (p2) to[short] (gnd1) node [ground] {};  
+    \draw (p3) to[R=$R_1$] (A) to[R=$R_2$,*-] (C);
+    \draw (p3 |- gnd1) node [ground] {} to[V, v=$U_s$] (p4) to[R=$R_s$] (p3); 
+    \draw (opamp.out) to[short] (vo);
+    \draw (C) to[short,*-] (C) |- (vo); 
+    \draw (C) to[short,-o] (p6) node[right] {$u_{0}$};
+  \end{circuitikz}  
+\end{document}

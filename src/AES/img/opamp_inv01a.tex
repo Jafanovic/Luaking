@@ -1,0 +1,58 @@
+ \documentclass{standalone}
+% \usepackage{fontspec,xltxtra,xunicode,unicode-math} 
+% \usepackage{siunitx}
+% \usepackage{wrapfig}                   % Floats, Figures and Captions  
+% \usepackage{subfigure}                 % Multipart figures
+ \usepackage{tikz}                       % TikZ and PGF picture 
+      \usetikzlibrary{intersections}
+      \usetikzlibrary{calc}
+      \usetikzlibrary{positioning}     
+ \usepackage[american, europeanresistor, cuteinductors,smartlabels]{circuitikz}
+     \ctikzset{bipoles/thickness=1}
+     \ctikzset{bipoles/length=0.8cm}
+     \ctikzset{bipoles/vsourceam/height/.initial=.7}
+     \ctikzset{bipoles/vsourceam/width/.initial=.7}
+     \tikzstyle{every node}=[font=\small]
+     \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+ 
+\begin{document}
+  \begin{circuitikz}[scale=1, every node/.style={scale=1}]
+    \draw (0,0) node[op amp]         (opamp) {};
+    \node [left=0.1cm of opamp.-]       (p1) {};
+    \node [left=0.1cm of opamp.+]       (p2) {};
+    \node [above=0.8cm of p1]           (A)  {};
+    \node [left=1.5cm of A]             (p3) {};
+    \node [right=2.7cm of A, coordinate](C)  {};
+    \node [right=0.8cm of C]            (p6) {};
+    \node [below=0.8cm of p2]         (gnd1) {};
+    \node [right=0.2cm of opamp.out, coordinate] (vo) {};
+    %%% Draw connections
+    \draw (opamp.-)   to[short] (p1) to[short] (A);
+    \draw (opamp.+)   to[short] (p2) to[short] (gnd1) node [sground] {};  
+    \draw (p3) to[R=$R_1$] (A) to[R=$R_2$,*-] (C);
+    \draw (p3 |- gnd1) node [sground] {} to[V, v=$U_s$] (p3); 
+    \draw (opamp.out) to[short] (vo);
+    \draw (C) to[short,*-] (C) |- (vo); 
+    \draw (C) to[short,-o] (p6) node[right] {$u_{0}$};
+    \draw [<-] (A) -- +(1,1) node[right]{virtuální zem};
+    %%% Draw picture
+    \node [above=2.5cm of p3, coordinate]  (p4) {};
+    \node [right=4.6cm of p4, coordinate]  (p5) {}; 
+    \draw [thick] (p4) to (p5); 
+    \draw [thick, ->] (p4) -- +(0,0.5) coordinate(p7) node[left] {$R_1$};
+    \draw [fill=white] (p7) -- (A |- p4) coordinate(p8);        
+    \draw [name path=rameno] let \p1=(p4), \p2=(p7), \p3=(p8),
+          \n1={atan2(\x3-\x1,\y2-\y1)} in
+          (p8) -- ++(-90+\n1:3cm);
+    \path [name path=odpor] (p5) -- +(0,-3); % R_2
+    \path [name intersections={of=rameno and odpor, name=cross}];
+    \draw (p8) -- (cross-1); % kresli zbytek ramena       
+    \draw [fill=white] (p8) circle(2pt);        
+    % ted uz vim jak ma byt delka ramena R_2 dlouha
+    \draw [->] (p5) -- (cross-1) node[right] {$R_2$}; % rameno R_2
+%         \ExtractCoordinate{p5};
+%         \node [below] at (1cm,-1.5cm) {p5 $(\XCoord,\YCoord)$};             
+%         \ExtractCoordinate{cross-1};
+%         \node [below] at (1cm,-2cm) {cross $(\XCoord,\YCoord)$};        
+  \end{circuitikz}    
+\end{document}

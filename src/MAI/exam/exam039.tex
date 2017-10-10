@@ -1,0 +1,69 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam039}
+  \textbf{Ještě jednou Gaussova eliminační metoda}\newline\small
+  Je zadána soustava rovnic:
+  \begin{alignat*}{7}
+      x_1 &+ 2x_2 &-  x_3 &+  x_4 &- 5x_5 &=  &&0, \\
+    -2x_1 &- 4x_2 &+ 2x_3 &+ 4x_4 &+ 4x_5 &= -&&6, \\
+     -x_1 &- 2x_2 &+  x_3 &+ 5x_4 &-  x_5 &= -&&6.
+  \end{alignat*}
+  Rozšířená matice soustavy má nyní tvar 
+  \begin{equation*}
+    \matr{B} = (\matr{A}|\overline{\matr{B}}) =
+    \left(
+      \begin{array}{rrrrr|r}
+         1 &  2 & -1 & 1 & -5 &  0    \\
+        -2 & -4 &  2 & 4 &  4 & -6    \\
+        -1 & -2 &  1 & 5 & -1 & -6
+      \end{array}
+    \right).
+  \end{equation*}
+  Stejné ekvivalentní úpravy jako v příkladu \ref{mai:exam038} vedou nyní k výsledku
+  \footnotesize %\small \scriptsize \tiny
+  \begin{equation*}
+    \matr{B} \sim
+    \left(
+      \begin{array}{rrrrr|r}
+         1 &  2 & -1 & 1 & -5 &  0         \\
+         \bm{0} &  0 &  0 & 6 & -6 & -6    \\
+         \bm{0} &  0 &  0 & 6 & -6 & -6
+      \end{array}
+    \right) \sim
+    \left(
+      \begin{array}{rrrrr|r}
+              1 &  2 & -1 & 1 & -5 &  0    \\
+              0 &  0 &  0 & 1 & -1 & -1    \\
+              0 &  0 &  0 & 1 & -1 & -1
+      \end{array}
+    \right) \sim
+    \left(
+      \begin{array}{rrrrr|r}
+              1 &  2 & -1 & 1      & -5 &  0    \\
+              0 &  0 &  0 & 1      & -1 & -1    \\
+              0 &  0 &  0 & \bm{0} &  0 &  0
+      \end{array}
+    \right).
+  \end{equation*}\normalsize
+  Nyní platí \(h(\matr{A}) = h(\matr{B}) = 2\). Podle Frobeniovy věty \ref{mai:lemma001} tedy 
+  soustava určitě má řešení. Ekvivalentní soustava má tvar
+  \begin{alignat*}{5}
+         x_1 + 2x_2 - x_3 &+  x_4 &- 5x_5 &=  &&0, \\
+                          &+  x_4 &-  x_5 &= -&&1, \\
+                          &       &     0 &=  &&0.
+  \end{alignat*}
+  Poslední rovnice je identitou a můžeme ji vypustit. Máme pět neznámých a jen dvě nezávislé 
+  rovnice. Dvě z neznámých tedy můžeme vyjádřit pomocí zbývajících. Postupujeme „odzadu“ , začínáme 
+  druhou, jednodušší, rovnicí:
+  \begin{align*}
+                                                x_4 &= -1 + x_5,                \\
+    x_1 = - 2x_2 + x_3 - x_4 + 5x_5 \Rightarrow x_1 &= -2x_2 + x_3 + 4x_5 + 1.
+  \end{align*}
+  Za neznámé vystupující na pravé straně, tj. \(x_2\), \(x_3\) a \(x_5\), můžeme dosazovat cokoli a 
+  vždycky se k nějakým hodnotám \(x_1\) a \(x_4\) dopočítáme. Všechna řešení soustavy \(S\) proto 
+  můžeme zapsat v obecném tvaru
+  \begin{equation}\label{mai:eq040}
+    (-2x_2 + x_3 + 4x_5 + 1, x_2, x_3, x_5 - 1, x_5).
+  \end{equation}
+  \normalsize
+\end{example}

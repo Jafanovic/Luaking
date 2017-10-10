@@ -1,0 +1,65 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam045}
+  \textbf{Vzájemná poloha přímky a roviny}\newline\small
+  Tuto úlohu převeďme na problém vzájemné polohy tří rovin a odpovězme si sami. Společně vyřešíme 
+  konkrétní případ. Rozhodněme o vzájemné poloze přímky a roviny, najděme jejich společné body a 
+  směry:
+  \begin{align*}
+    p       &: x + y + z + 5 = 0, \qquad 2x + 3y + 6z - 10 = 0 \\
+    \varrho &: y + 4z + 17   = 0.
+  \end{align*}
+  \begin{equation*}
+    \matr{B} = (\matr{A}|\overline{\matr{B}}) =
+    \left(
+      \begin{array}{rrr|r}
+         1 & 1 & 1 & -5    \\
+         2 & 3 & 6 &  10   \\
+         0 & 1 & 4 & -17
+      \end{array}
+    \right)\sim
+    \left(
+      \begin{array}{rrr|r}
+         1 & 1 & 1 & -5    \\
+         0 & 1 & 4 &  20   \\
+         0 & 1 & 4 & -17
+      \end{array}
+    \right)\sim
+    \left(
+      \begin{array}{rrr|r}
+         1 & 1 & 1 & -5    \\
+         0 & 1 & 4 &  20   \\
+         0 & 0 & 0 & -37
+      \end{array}
+    \right).
+  \end{equation*}
+  Matice \(\matr{A}\) i \(\matr{B}\) jsme upravili do schodovitého tvaru. Vidíme, že \(h(\matr{A}) 
+  = 2\), \(h(\matr{B}) = 3\). Soustava nemá řešení přímka \(p\) a rovina \(\varrho\) nemají žádný 
+  společný bod. Jediná možnost, jak to zařídit, je, že přímka \(p\) je s rovinou \(\varrho\) 
+  rovnoběžná. Mají společný směr, který je řešením homogenní soustavy o matici
+  \begin{equation*}
+    \matr{A} =
+    \left(
+      \begin{array}{ccc}
+         1 & 1 & 1   \\
+         2 & 3 & 6   \\
+         0 & 1 & 4 
+      \end{array}
+    \right)\sim
+    \left(
+      \begin{array}{ccc}
+         1 & 1 & 1   \\
+         0 & 1 & 4   \\
+         0 & 0 & 0 
+      \end{array}
+    \right).
+  \end{equation*}
+  Schodovitý tvar matice odpovídá ekvivalentní soustavě rovnic
+  \begin{equation*}
+    u_1 + u_2 + u_3 = 0,\qquad u_2 + 4u_3 = 0,
+  \end{equation*}
+  jejíž řešení je tvaru \((u_1, u_2, u_3) = (3u_3, -4u_3, u_3)\). Společný směr přímky \(p\) a 
+  roviny \(\varrho\) je tedy určen například směrovým vektorem \((3, -4, 1)\) (pro \(u_3 = 1\)) 
+  nebo kterýmkoli jeho nenulovým násobkem.
+  \normalsize
+\end{example}

@@ -1,0 +1,29 @@
+\documentclass[11pt]{standalone}
+  \usepackage{helvet}                        % font
+  \usepackage{xltxtra}                       % fontspec package
+  \usepackage{tikz}  
+  \usetikzlibrary{arrows}
+  \usepackage[american, europeanresistor, cuteinductors,smartlabels]{circuitikz}
+    \ctikzset{bipoles/thickness=1}
+    \ctikzset{bipoles/length=0.8cm}
+    \ctikzset{bipoles/vsourceam/height/.initial=.7}
+    \ctikzset{bipoles/vsourceam/width/.initial=.7}
+    \tikzstyle{every node}=[font=\small]
+    \tikzstyle{every path}=[line width=0.4pt,line cap=round,line join=round]
+
+
+\begin{document}
+  \begin{circuitikz}[scale=1, every node/.style={scale=1}]
+      \draw
+      (0,0) coordinate(A)
+          to[short,o-] ++(1cm,0cm)
+          to [R, l^=$R_{\sum_{vst}}$] ++ (0cm,-1cm)
+          to [R, l^=$X_{\sum_{vst}}$] ++ (0cm,-1cm) 
+          to [R, l^=$R_{ztr}$] ++ (0cm,-1cm) 
+          to[short,-o] ++(-1cm,0cm) coordinate(B);
+      \draw[-latex]
+          ([xshift=.0cm,yshift=-0.1cm]A) -- node[left] {$U_{vst}$} 
+          ([xshift=.0cm,yshift=0.1cm]B); 
+      \draw[-open triangle 45]  (0.1,0.3) -- +(.5,0) node[right] {$I_{vst}$};
+  \end{circuitikz} 
+\end{document}

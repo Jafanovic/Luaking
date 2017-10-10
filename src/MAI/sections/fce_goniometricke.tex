@@ -1,0 +1,67 @@
+\subsection{Goniometrické funkce}  
+    \begin{itemize}
+      \item \textbf{Základní vzorce pro goniometrické funkce}
+        \begin{align}
+          \sin^2\alpha &+ \cos^2\alpha = 1       &\forall\alpha\in\realset \label{MA1:eq_sincos} \\ 
+          |\sin\alpha| &= \sqrt{1-\cos^2\alpha}  &\forall\alpha\in\realset \label{MA1:eq_sinabs} \\ 
+          |\cos\alpha| &= \sqrt{1-\sin^2\alpha}  &\forall\alpha\in\realset \label{MA1:eq_cosabs}
+        \end{align}  
+      \item \textbf{Součtové vzorce}
+        \begin{align}
+        % \nonumber to remove numbering (before each equation)
+          \sin(\alpha + \beta) 
+            &= \sin\alpha\cdot\cos\beta 
+             - \sin\beta\cdot\cos\alpha           \label{MA1:eq_sinxpy}  \\ 
+          \sin(\alpha - \beta) 
+            &= \sin\alpha\cdot\cos\beta 
+             + \sin\beta\cdot\cos\alpha           \label{MA1:eq_sinxmy}  \\ 
+          \cos(\alpha + \beta) 
+            &= \cos\alpha\cdot\cos\beta 
+             - \sin\alpha\cdot\sin\beta           \label{MA1:eq_cosxpy}  \\ 
+          \cos(\alpha - \beta) 
+            &= \cos\alpha\cdot\cos\beta 
+             + \sin\alpha\cdot\sin\beta           \label{MA1:eq_cosxmy}  \\ 
+          \tan(\alpha\pm\beta) 
+            &= \frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\cdot\tan\beta} \label{MA1:eq_tanxpmy}\\ 
+          \cot(\alpha\pm\beta) 
+            &= \frac{1\mp\cot\alpha\cdot\cot\beta}{\cot\alpha\pm \cot\beta} \label{MA1:eq_cotxpmy}
+        \end{align}
+        Součtové vzorce lze odvodit několika způsoby; jednoduchý způsob důkazu lze provést pomocí skalárního součinu vektorů.
+      \item \textbf{Vzorce pro dvojnásobný úhel $2\alpha$}
+        \newline Pro každé $\alpha\in R$ platí:
+        \begin{align}
+          \sin(2\alpha)   &= 2\sin\alpha\cos\alpha                \label{MA1:eq_sin2x} \\ 
+          \cos(2\alpha)   &= \cos^2\alpha - \sin^2\alpha          \label{MA1:eq_cos2x} \\ 
+          \tan(2\alpha)   &= \frac{2\tan\alpha}{1-\tan^2\alpha}   \label{MA1:eq_tan2x} \\ 
+          \cot(2\alpha)   &= \frac{\cot^2\alpha - 1}{2\cot\alpha} \label{MA1:eq_cot2x}
+        \end{align}
+      \item \textbf{Vzorce pro poloviční úhel $\displaystyle\frac{\alpha}{2}$}
+        \begin{align}
+          \left|\sin\frac{\alpha}{2}\right|   
+            &= \sqrt{\frac{1-\cos\alpha}{2}}                      \label{MA1:eq_sinx2} \\ 
+          \left|\cos\frac{\alpha}{2}\right|   
+            &= \sqrt{\frac{1+\cos\alpha}{2}}                      \label{MA1:eq_cosx2} \\ 
+          \left|\tan\frac{\alpha}{2}\right|   
+            &= \sqrt{\frac{1-\cos\alpha}{1+\cos\alpha}}           \label{MA1:eq_tanx2} \\ 
+          \left|\cot\frac{\alpha}{2}\right|   
+            &= \sqrt{\frac{1+\cos\alpha}{1-\cos\alpha}}           \label{MA1:eq_cotx2}
+        \end{align}
+    \end{itemize}
+    Vzorce \ref{MA1:eq_sinx2} a \ref{MA1:eq_cosx2} odvodíme pomocí vzorců \ref{MA1:eq_cos2x} a \ref{MA1:eq_sincos}:
+    \begin{align*}
+      \cos\alpha &= 
+      \cos2\frac{\alpha}{2}=\cos^2\frac{\alpha}{2}-\sin^2\frac{\alpha}{2}=1-2\sin^2\frac{\alpha}{2} \\
+      \sin^2\frac{\alpha}{2} &= \frac{1-\cos\alpha}{2}   \\
+      \cos^2\frac{\alpha}{2} &= 1 - \sin^2\frac{\alpha}{2} = \frac{1+\cos\alpha}{2} 
+    \end{align*}
+    a dále užijeme vztahu $\sqrt{a^2}=|a|$ (platí pro každé $a\in\realset$). Užitím součtových vzorců a toho že, 
+	$\sin\frac{\pi}{2} = 1$, $\cos\frac{\pi}{2} = 0$, $\sin\pi = 0$ a $\cos\pi = -1$ lze snadno odvodit, 
+	že pro každé $\alpha\in R$ platí
+    \begin{align*}
+      \sin\left(\frac{\pi}{2}+\alpha\right) &=  \cos\alpha  &   \cos\left(\frac{\pi}{2}+\alpha\right) &= -\sin\alpha \\
+      \sin\left(\frac{\pi}{2}-\alpha\right) &=  \cos\alpha  &   \cos\left(\frac{\pi}{2}-\alpha\right) &=  \sin\alpha \\
+      \sin\left(\pi+\alpha\right)           &= -\sin\alpha  &   \cos\left(\pi+\alpha\right)           &= -\cos\alpha \\
+      \sin\left(\pi-\alpha\right)           &=  \sin\alpha  &   \cos\left(\pi-\alpha\right)           &= -\cos\alpha \\
+    \end{align*}
+    \newline Důkaz provedeme pro první z těchto často užitečných vzorců (u ostatních je odvození obdobné):
+    $$\sin\left(\frac{\pi}{2}+\alpha\right) = \sin\frac{\pi}{2}\cos\alpha + \cos\frac{\pi}{2}\sin\alpha = 1\cdot\cos\alpha + 0\cdot\sin\alpha.$$

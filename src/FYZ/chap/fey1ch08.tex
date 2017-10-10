@@ -1,0 +1,641 @@
+% !TeX spellcheck = cs_CZ
+{\tikzset{external/prefix={tikz/FYZI/}}
+ \tikzset{external/figure name/.add={ch06_}{}}
+%---------------------------------------------------------------------------------------------------
+% file fey1ch08.tex
+%---------------------------------------------------------------------------------------------------
+%================= Kapitola: Pohyb =================================================================
+\chapter{Pohyb}\label{chap:fey_move}
+\minitoc
+  \section{Popis pohybu}
+    Abychom našli zákony, podle nichž probíhají změny s tělesy v průběhu času, musíme umět 
+    \emph{popsat} tyto změny a nějakým způsobem je zaznamenat. Nejjednodušší změna, již je možno 
+    pozorovat v případě tělesa, je zjevná změna jeho polohy s časem, a tu nazýváme pohybem. 
+    Uvažujme nějaký tuhý předmět se stálou značkou, kterou nazveme bodem a kterou můžeme pozorovat. 
+    Budeme si všímat pohybu této malé značky, jíž může být ozdoba na kapotě automobilu nebo střed 
+    padající kuličky, a budeme se snažit popsat tu skutečnost, že se pohybuje a jakým způsobem se 
+    to děje.
+
+    \begin{wraptable}[23]{r}{4cm}      %\ref{fyz:tab002}
+      \centering
+      \renewcommand{\arraystretch}{1.4}
+      \begin{tabular}{>{\centering\arraybackslash}p{3em}|>{\centering\arraybackslash}p{3em}}
+         \hline \(t\)     & \(s\)          \\
+         \([\text{min}]\) & \([\text{m}]\) \\
+         \hline   \num{0} & \num{0}        \\
+                  \num{1} & \num{360}      \\
+                  \num{2} & \num{1200}     \\
+                  \num{3} & \num{2700}     \\
+                  \num{4} & \num{2850}     \\
+                  \num{5} & \num{2880}     \\
+                  \num{6} & \num{3900}     \\
+                  \num{7} & \num{5400}     \\
+                  \num{8} & \num{7050}     \\
+                  \num{9} & \num{7200}     \\
+         \hline 
+      \end{tabular}
+      \caption{Záznam automobilem ujeté vzdálenosti (\cite[s.~109]{Feynman01})}
+      \label{fyz:tab002}
+    \end{wraptable}
+    Tyto příklady se možná zdají příliš jednoduché, ale popis změny zahrnuje mnoho detailů. Některé 
+    změny jsou obtížněji popsatelné než pohyb bodu na tuhém tělese. Takovými jsou například pohyb 
+    mraku, který nejenže pomalu postupuje, ale rychle mění svůj tvar, nebo se odpařuje a takové 
+    jsou i vrtochy ženské mysli. Neznáme jednoduchý způsob analýzy změn mysli, ale mrak si můžeme 
+    představit jako množství molekul, a tak snad v principu můžeme popsat pohyb mraku pomocí pohybu 
+    jednotlivých molekul. Možná i změny v mysli jsou odrazem změn atomů v mozku, ale zatím o tom 
+    nic nevíme.
+
+    Začneme proto pozorovat pohyb bodů; můžeme je považovat za atomy, ale snad bude lepší, 
+    budeme-li zpočátku méně přesní a budeme je považovat za nějaké malé předměty - malé v porovnání 
+    se vzdálenostmi, na nichž se uskutečňuje pohyb. Například při popisu pohybu automobilu, který 
+    ujel \SI{100}{\km}, nemusíme rozlišovat, jestli jde o přední nebo zadní nárazník. Máme-li být 
+    přesní, jsou v tom drobné rozdíly, ale pro běžné účely stačí hovořit o „automobilu“ a nevadí 
+    nám, že naše body nejsou skutečnými body - pro naše účely nemusíme být až tak přesní. Při 
+    prvním pohledu na náš předmět zapomeneme i na trojrozměrnost světa. Soustředíme se jen na pohyb 
+    v jednom směru, jako když jede automobil po silnici. Budeme-li vědět, jak popisovat 
+    jednorozměrný pohyb, vrátíme se k trojrozměrnému prostoru. Jak je možné popsat takový 
+    jednorozměrný pohyb - například pohyb auta? Nic nemůže být jednodušší. Z mnoha možných způsobů 
+    vybereme následující. Abychom určili polohu auta v různých časových okamžicích, budeme měřit 
+    jeho vzdálenost od počátečního bodu a zaznamenávat všechna pozorování. V tab. \ref{fyz:tab002} 
+    představuje \(s\) vzdálenost auta od počátečního bodu v metrech a \(t\) představuje čas v 
+    minutách.
+
+    První řádek představuje nulovou vzdálenost a nulový čas - auto ještě neodstartovalo. Za jednu 
+    minutu od startu ujelo \num{360} metrů.
+
+    Po dvou minutách od startu se dostalo ještě dále - všimněte si, že větší vzdálenost ujelo v 
+    druhé minutě-jeho pohyb se zrychlil. Mezi třetí a čtvrtou minutou se však něco stalo a v páté 
+    minutě auto snad i zastavilo na červenou. Potom se jeho pohyb opět zrychlil a dostalo se do 
+    vzdálenosti \num{3900} metrů na konci šesté minuty, do vzdálenosti \num{5400} metrů na konci 
+    sedmé minuty, do vzdálenosti \num{7050} metrů na konci osmé minuty a v deváté minutě se dostalo 
+    jen do vzdálenosti \num{7200} metrů, neboť ho zastavil policista.
+
+    \begin{wraptable}[14]{r}{4cm}      %\ref{fyz:tab003}
+      \centering
+      \begin{tabular}{>{\centering\arraybackslash}p{2em}|>{\centering\arraybackslash}p{3em}}
+        \hline  \(t\)    & \(s\)          \\
+        \([\text{s}]\)   & \([\text{m}]\)   \\
+         \hline  \num{0} & \num{0}          \\
+                 \num{1} & \num{5}          \\
+                 \num{2} & \num{20}         \\
+                 \num{3} & \num{45}         \\
+                 \num{4} & \num{80}         \\
+                 \num{5} & \num{125}        \\
+                 \num{6} & \num{180}        \\
+        \hline 
+      \end{tabular}
+      \caption{Dráha padajícího míčku (\cite[s.~110]{Feynman01})}
+      \label{fyz:tab003}
+    \end{wraptable}
+    To je jeden způsob popisu pohybu. Druhým způsobem je popis pomocí grafu. Nanášíme-li čas 
+    horizontálně a vzdálenost vertikálně, dostaneme křivku jako na obr. \ref{fyz:fig098a}. S 
+    rostoucím časem roste i vzdálenost, zpočátku velmi pomalu, potom rychleji a ve čtvrté minutě 
+    opět velmi pomalu; potom několik minut roste a nakonec v deváté minutě přestane růst. Tyto 
+    údaje je možno vyčíst z grafu bez použití tabulky. K úplnému popisu bychom samozřejmě 
+    potřebovali i údaje o poloze auta při půlminutových značkách, ale zakreslujeme-li graf jako 
+    spojitou křivku, děláme to proto, že předpokládáme, že auto i v mezičasech musí mít nějakou 
+    polohu.
+    
+    Pohyb auta je složitý. Proto si za další příklad vybereme něco, co se pohybuje jednodušeji, co 
+    vyhovuje jednodušším pohybovým zákonům - vybereme si padající míček. V tab. \ref{fyz:tab003} je 
+    pro padající těleso čas vyjádřený v sekundách a vzdálenost v metrech. V nulté sekundě míček 
+    začíná padat z nulové vzdálenosti a na konci první sekundy se dostal do vzdálenosti \num{5} 
+    metrů. Na konci druhé sekundy je \num{20} metrů pod úrovní začátku, na konci třetí sekundy 
+    \num{45} metrů atd. Vyneseme-li čísla z tabulky do grafu, získáme krásnou parabolu znázorněnou 
+    na obr. \ref{fyz:fig098b}, kterou je možné vyjádřit vztahem
+    
+    \begin{equation}\label{FYZ:eq111}
+      s = 5t^2.
+    \end{equation}
+  
+    \begin{figure}[ht!]  %\ref{fyz:fig098}
+      \centering
+      \begin{tabular}{c}
+        \subfloat[ ]{\label{fyz:fig098a}
+          \includegraphics[width=0.3\textwidth]{fyz_fig098a.pdf}}
+        \hspace{0.1\linewidth}                                                       \\
+        \subfloat[ ]{\label{fyz:fig098b}
+          \includegraphics[width=0.3\textwidth]{fyz_fig098b.pdf}}
+      \end{tabular}
+      \caption{a) Graf závislosti autem ujeté vzdálenosti na čase b) Časová závislost vzdálenosti 
+               padajícího tělesa  
+               (\cite[s.~109]{Feynman01})}
+      \label{fyz:fig098}
+    \end{figure}
+
+
+    Tento vztah nám umožňuje vypočítat vzdálenost v kterémkoli časovém okamžiku. Snad namítneme, že 
+    by měl existovat vztah i pro první graf. Takový vztah je možné zapsat obecně ve tvaru
+    \begin{equation}\label{FYZ:eq112}
+      s = f(t),
+    \end{equation}
+    což znamená, že \(s\) je veličinou, která závisí na \(t\), nebo v matematickém jazyku je \(s\) 
+    funkcí \(t\). Protože nevíme, jaká ta funkce je, nemůžeme ji vyjádřit v konkrétním algebraickém 
+    tvaru.
+
+    Poznali jsme dva příklady pohybu jež byly popsány velmi jednoduchým způsobem bez zvláštní 
+    důmyslnosti. Avšak tyto příklady v sobě přece jen skrývají několik jemností. Především, co 
+    rozumíme časem a prostorem? Ukazuje se, že jde o hluboké filozofické otázky, jež si ve fyzice 
+    vyžadují důkladnou analýzu a ta nebývá snadná. Teorie relativity ukazuje, že představy prostoru 
+    a času nejsou tak jednoduché, jak by se zdály na první pohled. Jenže zatím v našich prvních 
+    úvahách nemusíme být příliš úzkostliví při definování těchto pojmů. Některým z nás se to bude 
+    zdát divné, neboť jsme se učili, že ve vědě je třeba \emph{vše} přesně definovat. Jenže 
+    \emph{vše} přesně definovat nemůžeme! Kdybychom se o to pokusili, dostali bychom se do podobné 
+    situace jako ti dva filozofové, kteří v diskusi říkají jeden druhému: „Sám nevíte, o čem 
+    hovoříte!“ Druhý odpovídá; ,A co to znamená \emph{vědět}? Co znamená \emph{hovořit}? Co znamená 
+    \emph{sáni}?“ Abychom mohli hovořit konstruktivně, musíme se dohodnout, že mluvíme zhruba o 
+    stejné věci. O čase už víme vše, co teď potřebujeme. Musíme si však být vědomi toho, že 
+    existuje řada detailů, jež bude třeba prodiskutovat, ale to uděláme až později.
+    
+    Jednou z takových diskutabilních věcí je již uvedený fakt, že pozorovaný pohybující se bod se 
+    vždy nachází na nějakém místě. (Samozřejmě, když na něj hledíme, je tam, ale bude tam i tehdy, 
+    kdy se na něj nedíváme?) Ukazuje se, že v případě pohybujících se atomů není možné takto 
+    uvažovat - na atomu si nemůžeme zvolit značku a pozorovat její pohyb. S tímto problémem se 
+    setkáme v kvantové mechanice. Nejprve se však budeme zajímat o problémy, v nichž ještě 
+    neuvažujeme takové komplikace, a až \emph{později} provedeme korekce, které si vynucují 
+    nejnovější poznatky. Uspokojíme se proto s jednoduchým pohledem na čas a prostor. Víme, co tyto 
+    pojmy v hrubých rysech představují a ti, kteří již řídili auto, vědí, co znamená rychlost.
+    
+  \section{Rychlost}
+    Ačkoli zhruba víme, co „rychlost“ znamená, přece tu existují určité rafinované záludnosti; 
+    vždyť jen uvažme, že učení Řekové nebyli schopni přiměřeně popsat problémy související s 
+    rychlostí. Taková záludnost se objeví, když se snažíme přesně pochopit, co je třeba rozumět pod 
+    „rychlostí“. Řekové z toho byli velmi zmateni a muselo být objeveno nové odvětví matematiky 
+    (vedle geometrie a algebry Řeků, Arabů a Babylóňanů). Pro ilustraci problémů se pokusme řešit 
+    tento problém jednoduchou algebrou: Balón nafukujeme tak, že jeho objem roste rychlostí 
+    \SI{100}{\cubic\cm} za sekundu; jakou rychlostí roste jeho poloměr, když má balón 
+    \SI{1000}{\cubic\cm}? Řeky jaksi zmátl takovýto problém zejména zásluhou některých úmyslně 
+    matoucích Řeků. Aby poukázal na těžkosti související se studiem rychlosti, Zenon uvedl několik 
+    paradoxů, ze kterých uvedeme jeden pro ilustraci problémů, jež se vyskytly při zkoumání pohybu. 
+    V tomto paradoxu Zenon říká, že Achilles, ačkoli běží l0krát rychleji než želva, přece ji nikdy 
+    nedoběhne. Argumentuje následujícím způsobem: „Předpokládáme-li, že na začátku běhu má želva 
+    stometrový náskok, pak než Achilles uběhne \num{100} metrů a dostane se na místo, kde byla 
+    původně želva, bude želva, která leze desetkrát pomaleji, \num{10} metrů před ním. Achilles 
+    proto musí běžet dalších \num{10} metrů, aby želvu chytil, ale po deseti metrech zjistí, že 
+    želva je \num{1} metr před ním. Když uběhne i ten metr, najde želvu \SI{10}{\cm} před sebou a 
+    tak to půjde \emph{donekonečna}. Proto je v kterémkoli okamžiku želva před Achillem a ten ji 
+    nikdy nedoběhne“. Co je na této argumentaci nesprávné? Je to skutečnost, že konečný čas se dělí 
+    na nekonečně mnoho částí, právě tak jako konečná délka se dá rozdělit na nekonečně mnoho částí 
+    opakovaným dělením dvěma. A tak, ačkoli (při této argumentaci) máme nekonečný počet kroků k 
+    bodu, v němž Achilles dostihne želvu, neznamená to, že jde o nekonečně dlouhý \emph{časový} 
+    interval. Na tomto příkladu je vidět, že při studiu rychlosti je možné narazit na problémy.
+    
+    Abychom si mohli ještě jasněji představit tyto problémy, připomeňme vtip o autě, které zastavil 
+    policista. Nyní si představme, že v tomto autě sedí dáma a policista ji napomíná: „Paní, jela 
+    jste rychlostí \num{90} km za hodinu!“ Dáma odpovídá: „To přece není možné, vždyť cestuji jen 
+    sedm minut! Je to směšné -jak mohu jet rychlostí \num{90} km za hodinu, když jsem hodinu 
+    nejela?“ Jak bychom odpověděli, kdybychom byli policistou? Samozřejmě, kdybychom skutečně byli 
+    policistou, vše by bylo bez problémů. Prostě bychom té dámě řekli, že svoje argumenty může 
+    přednést u soudu. Vyloučíme-li však takové řešení a uspokojíme se s poctivým intelektuálním 
+    přístupem k tomuto problému, v němž chceme této dámě vysvětlit, co znamená jet rychlostí 
+    \num{90} km za hodinu, co musíme udělat? Té dámě bychom vysvětlili, že kdyby pokračovala v 
+    cestě a jela stále stejnou rychlostí, ujela by za hodinu \num{90} kilometrů. Mohla by však 
+    namítnout: „Dala jsem nohu z plynu a auto zpomalovalo, a proto bych neujela \num{90} km, 
+    kdybych takto pokračovala.“ Nebo uvažujme padající míček a předpokládejme, že bychom chtěli 
+    znát jeho rychlost za dobu tří sekund, kdyby se dále pohyboval tak, jak se pohybuje nyní. 
+    Znamenalo by to snad, že si udržuje \emph{zrychlení} a pohybuje se stále rychleji? Ne, 
+    znamenalo by to, že si udržuje stejnou \emph{rychlost}. A to právě chceme definovat! Kdyby 
+    totiž míček setrvával v původním pohybu, pohyboval by se tak, jak se pohybuje. Rychlost proto 
+    musíme lépe definovat. Co se má vlastně zachovat? Ta dáma by také mohla argumentovat 
+    následujícím způsobem: „Kdybych pokračovala v pohybu bez změny další hodinu, narazila bych do 
+    zdi na konci ulice!“ Není tedy tak jednoduché říci, co vlastně máme na mysli.
+    
+    Mnozí fyzici zastávají názor, že měření je jedinou definicí kterékoli veličiny. Pak bychom, 
+    samozřejmě, použili zařízení na měření rychlosti - \textbf{tachometr} - a upozornili bychom 
+    dámu, že její tachometr ukazuje \num{90}. Dáma by však opět mohla namítat, že její tachometr je 
+    pokažený a vůbec neukazuje. Znamená to ale, že se auto nepohybuje? Jsme přesvědčeni, že 
+    existuje něco, čím je možné změřit rychlost dříve, než zkonstruujeme tachometr. Jen tehdy je 
+    možné říci například: „Tachometr nepracuje správně“ nebo „tachometr je rozbitý“. Kdyby nebylo 
+    možné měřit rychlost jinak než tachometrem, byla by tato věta nesmyslem. Máme tedy na mysli 
+    něco, co je nezávislé na tachometru a tachometr slouží jen k měření této myšlenky. Uvažme, zda 
+    je možné lépe definovat rychlost. Jako policista bychom řekli: „Milá paní, kdybyste jela 
+    hodinu, narazila byste na zeď, ale kdybyste jela jednu sekundu, ujela byste \num{25} metrů. 
+    Jela jste tedy rychlostí \num{25} metrů za sekundu a další sekundu byste ujela dalších \num{25} 
+    metrů a ta zeď je mnohem dále.“ Dáma však namítá: „Neexistuje ale takový zákon, který by říkal, 
+    že není dovoleno jet \num{25} metrů za sekundu! Zákon zakazuje jet \num{90} km za hodinu.“ Vy 
+    potom řeknete, že je to přece totéž. Je-li to však totéž, pak by asi nedošlo k takové tahanici 
+    o \num{25} metrů za sekundu. Padající míček se ve skutečnosti nemůže pohybovat stejně v průběhu 
+    ani jedné sekundy, protože stále mění rychlost, a tak budeme muset rychlost nějak definovat.
+    
+    Zdá se, že se dostáváme na správnou stopu. Kdyby dáma pokračovala v cestě další tisícinu 
+    hodiny, ujela by tisícinu z \num{90} km. Jinými slovy: nemusela by jet celou hodinu, důležité 
+    je, že v \emph{daném okamžiku} jede takovou rychlostí. To znamená, že kdyby jela jen o nepatrný 
+    okamžik déle, ujela by navíc takový úsek, jaký by ujelo auto jedoucí \emph{stálou} rychlostí 
+    \num{90} km za hodinu. Myšlenka o \num{25} metrech za sekunduje možná správná; sledujeme, kolik 
+    auto ujelo za poslední sekundu, dělíme to \num{25} metry a když dostaneme \num{1}, rychlost 
+    byla \num{90} km za hodinu. Jinými slovy, rychlost můžeme zjistit tímto způsobem: zjistíme, jak 
+    daleko dojdeme ve velmi krátkém čase, pak tuto vzdálenost dělíme časem, a tak dostaneme 
+    rychlost. Čas je však třeba zvolit co nejkratší, neboť v průběhu tohoto času by se mohla stát 
+    nějaká změna. Kdybychom v případě padajícího tělesa zvolili za takový časový interval hodinu, 
+    bylo by to absurdní. Kdybychom zvolili jednu sekundu, dostali bychom docela dobrý výsledek v 
+    případě auta, kdy je změna rychlosti malá, ale taková volba by nebyla dostatečná pro padající 
+    těleso. Chceme-li zjistit rychlost co nejpřesněji, musíme zvolit časový interval co nejkratší. 
+    Měli bychom tedy zvolit milióntinu sekundy a vzdálenost ujetou za tento čas dělit tou 
+    milióntinou sekundy. Tak bychom dostali vzdálenost za sekundu, neboli to, co rozumíme jako 
+    rychlost a takovýmto způsobem vlastně definujeme rychlost. Takto by bylo třeba odpovědět dámě v 
+    automobilu, taková je definice, kterou budeme používat.
+    
+    Definice rychlosti obsahuje novou myšlenku, jež ve své obe\-cné podobě nebyla dostupná starým 
+    Řekům. Tato myšlenka spočívá v tom, že uvažujeme \emph{nekonečné malou vzdálenost} a 
+    odpovídající \emph{nekonečné malý čas}, uvedeme je do poměru a sledujeme chování tohoto poměru 
+    při zmenšování časového intervalu. Jinak řečeno, zajímáme se o \textbf{limitu} ujeté 
+    vzdálenosti dělenou odpovídajícím časem při \emph{nekonečném} zmenšování tohoto času. Na tuto 
+    myšlenku přišli nezávisle na sobě Newton a Leibniz a představovala zrod nové matematické 
+    disciplíny nazývané \textbf{diferenciální počet}. Tento počet vznikl v souvislosti s popisem 
+    pohybu a jeho první aplikací byl vlastně náš problém související s otázkou: Co znamená jet 
+    \uv{90 km/hod}?
+
+    Pokusme se definovat rychlost trochu přesněji. Předpokládejme, že za krátkou dobu 
+    \(\varepsilon\) urazí auto nebo jiné těleso krátkou vzdálenost \(x\). Pak definujeme rychlost 
+    \(v\) jako
+    \begin{equation}\label{FYZ:eq113}
+      v = \frac{x}{\varepsilon}.
+    \end{equation}
+    přičemž přesnost bude tím větší, čím bude \(\varepsilon\) menší. Chceme-li to vyjádřit 
+    matematicky, můžeme říci, že rychlost je limita podílu \(x/\varepsilon\) při \(\varepsilon\) 
+    blížícím se k nule, tj.
+    \begin{equation}\label{FYZ:eq114}
+      v = \lim_{\varepsilon\to 0}{\frac{x}{\varepsilon}}.
+    \end{equation}
+    
+    V případě dámy s autem nemůžeme provést totéž, neboť naše tabulka je neúplná. Víme jen to, kde 
+    se dáma nachází na hranicích minutových intervalů. Proto si můžeme vytvořit jen přibližný obraz 
+    o její rychlosti z toho, že například po dobu sedmé minuty ujela \num{1500} metrů, ale nevíme, 
+    jaká byla její rychlost přesně na začátku sedmé minuty. Nevíme, zda zrychlovala a na začátku 
+    šesté minuty měla rychlost \SI{1400}{\m/\min} a nyní má rychlost \SI{1600}{\m/\min}, nebo zda 
+    pohyb probíhal jinak. Nevíme to proto, že nám chybí údaje uvnitř intervalu. Z takové tabulky 
+    bychom mohli vypočítat rychlost jen tehdy, kdyby obsahovala nekonečně mnoho údajů. Máme-li však 
+    matematický vztah úplný - takovým je v případě padajícího tělesa rovnice (\ref{FYZ:eq111}) - 
+    můžeme vypočítat takovouto rychlost, neboť umíme určit polohu tělesa v kterémkoli časovém 
+    okamžiku.
+    
+    Jako příklad si určíme rychlost padajícího tělesa v páté sekundě pádu. Jedním ze způsobů jak to 
+    provést by mohlo být zkoumání \emph{tabulky} \ref{fyz:tab003}, z níž je vidět, že v páté 
+    sekundě urazilo těleso \(125 - 80 = \SI{45}{\m}\). Proto by se zdálo, že těleso padalo 
+    rychlostí \SI{45}{\m/\s}. To však není pravda, neboť rychlost se mění a ačkoli v tomto časovém 
+    intervalu je to \emph{y průměru \SI{45}{\m/\s}}, těleso se zrychluje a na konci páté sekundy 
+    padá rychleji než \SI{45}{\m/\s}. Chceme \emph{přesné určit jeho rychlost}. Je možné to udělat 
+    následujícím způsobem: Víme, kde se těleso nacházelo v páté sekundě. V \SI{5.1}{\s} je podle 
+    vztahu (\ref{FYZ:eq111}) vzdálenost, kterou těleso urazilo, rovna \(5\cdot5,1^2 = \SI{130.05} 
+    {\m}\). V páté sekundě bylo těleso ve vzdálenosti \SI{125}{\m} a za další desetinu sekundy 
+    urazilo \(\num{130.05} - \num{125} = \SI{5.05}{\m}\). Protože \SI{5.05}{\m} za \SI{0.1}{\s} je 
+    totéž jako \SI{5.05}{\m\per\s}, zjistili jsme vlastně rychlost, ale ne zcela přesně. Nevíme, 
+    je-li to rychlost v páté sekundě, v \SI{5.1}{\s} nebo \SI{5.05}{\s}, nebo někde mezi těmito 
+    hodnotami. Měli jsme určit rychlost v \SI{5}{\s} a jestliže se nám to zcela nepodařilo, 
+    zpřesníme náš postup. Vezmeme jednu tisícinu sekundy a vypočítáme, kam se až dostalo těleso. 
+    Přidáme-li ještě tento čas k páté sekundě, dostaneme tedy v \SI{5.001}{\s}
+    \begin{equation}\label{FYZ:eq115}
+      s = 5\cdot5,001^2 = 5\cdot25,010001 = \SI{125.050005}{\m}.
+    \end{equation}
+    
+    V poslední tisícině sekundy spadlo těleso \SI{0.050005}{\m} a dělíme-li toto číslo 
+    \SI{0.001}{\s}, dostaneme rychlost \SI{50.005}{\m/\s}. Tento údaj je již přesnější, již je 
+    docela blízký skutečnosti, ale přece jen není zcela přesný. Je však vidět, co musíme udělat, 
+    chceme-li rychlost určit přesně. Bude užitečné formulovat úlohu trochu abstraktněji: Hledáme 
+    rychlost v časovém okamžiku \(t_0\) Jenž v našem původním problému představoval \SI{5}{\s}. 
+    Vzdálenost, do níž se dostalo těleso v čase \(t_0\) a kterou budeme označovat \(s_0\), je rovna 
+    \(5t_0^2\) , tedy \SI{125}{\m} v našem případě. Při hledání rychlosti si klademe otázku: 
+    \uv{Kde je těleso v čase \(t_{0+}\) (malý přírůstek) nebo \(t_0 + \varepsilon\)?} Nová poloha 
+    je \(5(t_0 + \varepsilon)^2 = 5t_0^2 + 10t_0\varepsilon + 5\varepsilon^2\). Těleso je teď dále 
+    než předtím, neboť nejprve bylo vzdáleno jen \(5t_0^2\) . Ta dodatečná vzdálenost je \(s_{0+}\) 
+    (malý přírůstek) nebo \(s_0 + x\) (kde \(x\) je ten přírůstek). Odečteme-li od vzdálenosti 
+    v čase \(t_0 + \varepsilon\) vzdálenost v \(ť_0\), dostaneme \(x\) - přírůstek vzdálenosti jako 
+    \(x = 10t_0\varepsilon +5\varepsilon^2\). V prvním přiblížení bude rychlost rovna
+    \begin{equation}\label{FYZ:eq116}
+      v = \frac{x}{\varepsilon} = 10t_0 +5\varepsilon.
+    \end{equation}
+    
+    Skutečná rychlost je hodnota tohoto poměru \(x/\varepsilon\) při nepatrném \(\varepsilon\). 
+    Jinými slovy, po vytvoření poměru bereme \(\varepsilon\) vždy menší a menší, tj. blížící se k 
+    nule. Rovnice pak přejde do tvaru \(v\)(v čase \(t_0\)) = \(10t_0\). V našem případě bylo \(t_0 
+    = \SI{5}{\s}\), a proto \(v = 10\cdot5 = \SI{50}{\m/\s}\). Předtím, když jsme uvažovali 
+    \(\varepsilon\) nejprve \SI{0.1}{\s} a podruhé \SI{0.001}{\s}, byla hodnota \(v\) trochu větší. 
+    Nyní však vidíme, že skutečná rychlost je přesně \SI{50}{\m/\s}.
+    
+  \section{Rychlost jako derivace}
+    Výpočet, který jsme právě provedli, je v matematice velmi častý a pro veličiny \(\varepsilon\) 
+    a \(x\) se proto zavedlo speciální značení: Namísto \(\varepsilon\) se setkáme s \(\Delta t\) a 
+    namísto \(x\) s \(\Delta s\). Pod \(\Delta t\) rozumíme \uv{malý přírůstek \(t\)}, který je 
+    možné vždy zmenšovat. Přítomnost znaku \(\Delta\) neznamená násobení, právě tak jako 
+    \(\sin\vartheta\) neznamená \(s\cdot i \cdot n \cdot \vartheta\). Jde prostě o časový přírůstek 
+    a znak \(\Delta\) zvýrazňuje jeho zvláštní charakter. Podobnou vlastnost má \(\Delta s\), 
+    rozdíl je jen v tom, že tentokrát jde o vzdálenost \(s\). Protože \(\Delta\) není součinitel, 
+    nevykrátí se v poměru \(\Delta s/\Delta t\) a nedostaneme \(s/t\), právě tak, jako bychom 
+    nedostali \(1/2\) z výrazu \(\sin \vartheta/\sin2\vartheta\). Při takovémto značení je 
+    \emph{rychlost rovna limitě podílu \(\Delta s/\Delta t\) při \(\Delta t\) blížícím se k nule}, 
+    tedy
+    \begin{equation}\label{FYZ:eq117}
+      \boxed{v = \lim_{\Delta t\to 0}{\frac{\Delta s}{\Delta t}}}\,.
+    \end{equation}
+    Tento výraz je stejný, jako vztah (\ref{FYZ:eq114}) s \(\varepsilon\) a \(x\), ale má tu 
+    výhodu, že poukazuje na změnu určitých veličin a ukazuje co a jak se mění.
+    
+    Existuje ještě jeden zákon, který platí s dostatečnou přesností. Ten zákon říká, že vzdálenost 
+    pohybujícího se bodu je možné vyjádřit jako součin rychlosti a časového intervalu, tj. \(\Delta 
+    s = v\Delta t\). Tento zákon je správný tehdy, když se v průběhu uvažovaného časového intervalu 
+    rychlost nemění, ale to obecně platí jen tehdy, kdy je \(\Delta t\) dostatečně malé. Fyzici 
+    jsou zvyklí psát \(\dd{s} = v\dd{t}\), přičemž pod \(\dd{t}\) rozumějí \(\Delta t\) za 
+    podmínek, v nichž je velmi malé. Při takovémto chápání je uvedený zákon dostatečně přesný. 
+    Kdyby \(\Delta t\) bylo velké, mohla by se rychlost v průběhu tohoto intervalu měnit a přesnost 
+    zákona by se zmenšila. Při \(\dd{t}\) blížícím se k nule je výraz \(\dd{s} = v\dd{t}\) zcela 
+    přesný. Pomocí nově zavedených symbolů můžeme vztah (\ref{FYZ:eq117}) přepsat do tvaru
+    \begin{equation}\label{FYZ:eq118}
+      v = \lim_{\Delta t\to 0}{\frac{\Delta s}{\Delta t}} = \der{s}{t}.
+    \end{equation}
+    
+    Veličina \(ds/dt\) se v tomto vztahu nazývá \uv{derivace s podle \(t\)} (takový název nám 
+    připomíná, co se vlastně mění) a složitý proces hledání derivace se nazývá derivováním. 
+    Objevují-li se \(ds\), \(dt\) samostatně, nazývají se \textbf{diferenciály}. Aby se nám stala 
+    nová řeč bližší, připomeňme si, že již dříve jsme počítali derivaci funkce \(5t^2\), o níž jsme 
+    zjistili, že je rovna \(10t\). Zvykneme-li si na novou řeč, budeme snadněji chápat mnohé 
+    myšlenky. Abychom se pocvičili, vypočítáme derivaci složitější fimkce. Uvažujme vztah \(s = 
+    At^3 + Bt+ C\), jenž by mohl popisovat pohyb bodu. Písmena \(A\), \(B\), \(C\), podobně jako ve 
+    známém obecném tvaru kvadratické rovnice, představují konstantní čísla. Naším úkolem je najít 
+    rychlost v kterémkoli okamžiku na základě tohoto vztahu. Abychom to provedli co nejelegantněji, 
+    změníme \(t\) na \(t + \Delta t\), přičemž se změní \(s\) na \(s + \Delta s\) a \(\Delta s\) 
+    vyjádříme pomocí \(\Delta t\) Tak dostaneme
+    \begin{align}\label{FYZ:eq119}
+     s + \Delta s &= A(t + \Delta t)^3 + B(t + \Delta t) + C    \nonumber \\
+                  &= At^3 + Bt + C + 3At^2\Delta t + B\Delta t  \nonumber \\
+                  &+ 3At(\Delta t)^2 + A(\Delta t)^3.
+    \end{align}
+    Protože \(s = At^3 + Bt + C\), můžeme psát
+    \begin{equation}\label{FYZ:eq120}
+         \Delta s = 3At^2\Delta t + B\Delta t + 3At(\Delta t)^2 + A(\Delta t)^3.
+    \end{equation}
+
+    \begin{table}      %\ref{fyz:tab005}
+      \noindent\begin{tabular*}{\columnwidth}{@{\extracolsep{\stretch{1}}}*{2}{l}@{}}
+        \toprule
+        \small Funkce & \small Derivace \\
+        \midrule
+        \(s = t^n\)             & \(\der{s}{t} = nt^{n-1}\)                                      \\
+        \(s=cu\)                & \(\der{s}{t} = c\der{u}{t}\)                                   \\
+        \(s = u+v+w+\ldots\)    & \(\der{s}{t} = \der{u}{t} + \der{v}{t} + \der{w}{t} + \ldots\) \\
+        \(s = c\)               & \(\der{s}{t} = 0\)                                             \\
+        \(s = u^av^bw^c\ldots\) & \(\der{s}{t} = s\left(\frac{a}{u}\der{u}{t} + 
+                                  \frac{b}{v}\der{v}{t} + \frac{c}{w}\der{w}{t} +\ldots\right)\) \\
+        \bottomrule 
+      \end{tabular*}
+      \caption{Stručný přehled derivací: \(s\), \(u\), \(v\), \(w\) jsou libovolné funkce; \(t\), 
+               \(a\), \(b\), \(c\), \(n\) jsou libovolné konstanty  
+               (\cite[s.~114]{Feynman01})}
+      \label{fyz:tab005}
+    \end{table}
+    
+    Jenže my nepotřebujeme \(\Delta s\), ale \(\Delta s\) dělené \(\Delta t\). Proto předcházející 
+    rovnici dělíme \(\Delta t\) a dostáváme
+    \begin{equation}\label{FYZ:eq121}
+       \frac{\Delta s}{\Delta t} = 3At^2 + B + 3At(\Delta t) + A(\Delta t)^2.
+    \end{equation}
+    Jde-li \(\Delta t\) k nule, je \(\frac{\Delta s}{\Delta t}\) rovno \(\der{s}{t}\) a platí
+    \begin{equation}\label{FYZ:eq122}
+       \frac{\Delta s}{\Delta t} = 3At^2 + B.
+    \end{equation}
+    
+    To je základ derivování funkcí. Tento proces je ve skutečnosti ještě jednodušší, než by se na 
+    první pohled zdálo. Všimněme si, že členy obsahující druhou nebo vyšší mocniny \(\Delta t\) je 
+    možné zanedbat, neboť v limitě konvergují k nule.
+    
+    Po krátkém cvičení se celý proces pro nás stane ještě jednodušším, neboť budeme vědět, co je 
+    třeba zanedbat. Existuje velmi mnoho pravidel derivování různých druhů funkcí. Tato pravidla je 
+    možné si pamatovat, nebo je možné je vyhledat v tabulkách. Stručný seznam pravidel je uveden v 
+    tab. \ref{fyz:tab005}.
+  
+  \newpage
+  \section{Vzdálenost jako integrál}
+
+    \begin{wraptable}[13]{r}{3.5cm}      %\ref{fyz:tab004}
+      \centering
+      \begin{tabular}{>{\centering\arraybackslash}p{2em}|>{\centering\arraybackslash}p{3em}}
+        \hline  \(t\)    & \(v\)          \\
+                 \si{\s} & \si{\m\per\s}  \\
+         \hline  \num{0} & \num{0}        \\
+                 \num{1} & \num{10}       \\
+                 \num{2} & \num{20}       \\
+                 \num{3} & \num{30}       \\
+                 \num{4} & \num{40}       \\
+        \hline 
+      \end{tabular}
+      \caption{Rychlost padajícího tělesa (\cite[s.~115]{Feynman01})}
+      \label{fyz:tab004}
+    \end{wraptable}
+    Ještě nám zbývá analyzovat obrácenou úlohu. Předpokládejme, že místo tabulky vzdáleností máme 
+    tabulku rychlostí v různých časech počínaje nulou. Pro padající kuličku jsou tyto rychlosti a 
+    časy znázorněny v tab. \ref{fyz:tab004}. Podobnou tabulku je možné sestavit pro auto, 
+    zaznamenáváme-li údaje tachometru každou minutu nebo každou půlminutu. Víme-li v každém časovém 
+    okamžiku, jak rychle se auto pohybuje, můžeme určit, jak daleko se dostane? Tato úloha je 
+    opakem úlohy, kterou jsme již vyřešili; je dána rychlost a chceme určit vzdálenost. Jak je 
+    možné určit vzdálenost, známe-li rychlost? Není-li rychlost auta konstantní a dáma se chvíli 
+    pohybuje rychlostí \SI{90}{\km\per\hour}, pak zpomalí, opět zrychlí atd., jak můžeme určit, kam 
+    se až dostala? Je to jednoduché. Použijeme stejnou myšlenku jako v předcházejícím případě a 
+    vyjádříme vzdálenost pomocí nekonečně malých částí. Jestliže mělo auto v první sekundě určitou 
+    rychlost, můžeme ze vztahu \(\Delta s = v\Delta t\) vypočítat, kam až se auto při dané 
+    rychlosti v první sekundě dostalo. V další sekundě se rychlost auta liší o málo; kam se auto 
+    dostalo, vypočítáme tak, že vynásobíme novou rychlost časem. Takto dostáváme jistý počet malých 
+    vzdáleností a celková vzdálenost bude součtem těchto malých vzdáleností. To znamená, že 
+    vzdálenost bude součtem součinů rychlostí a časů, tedy \(s=\sum v\Delta t\), kde řecké písmeno 
+    \(\sum\) (sigma) označuje součet. Pro přesnost je třeba poznamenat, že v součtu vystupují 
+    rychlosti v určitém okamžiku, např. \(i\)-tém časovém okamžiku a jsou násobeny \(\Delta t\), tj.
+    \begin{equation}\label{FYZ:eq123}
+      s = \sum_{i}v(t_i)\Delta t.
+    \end{equation}
+    Tyto časové okamžiky vyhovují následující podmínce: \(t_{i+1} = t_i + \Delta t\). Ani takovémto 
+    způsobem určovaná vzdálenost nebude přesná, neboť v průběhu časového intervalu \(\Delta t\) se 
+    může rychlost měnit. K zabezpečení přesnosti musíme časové intervaly brát co nejkratší. 
+    Skutečné \(s\) je
+    \begin{equation}\label{FYZ:eq124}
+      s = \lim_{\Delta t\to0}\sum_{i}v(t_i)\Delta t.
+    \end{equation}
+    Pro takovouto limitu zavedli matematici speciální symbol analogický symbolu pro diferenciál.    
+    \(\Delta\) přechází v \(d\) a zvýrazňuje tak skutečnost, že čas je co nejmenší, o rychlosti 
+    hovoříme jako o \(v\) v čase \(t\) a součet píšeme s trochu deformovaným velkým „S“ \(\int\) 
+    (podle latinského slova \emph{summa}), kterému se dnes říká bohužel jen znak integrálu. Máme 
+    tedy
+    \begin{equation}\label{FYZ:eq125}
+      \boxed{s = \int\sum_{i}v(t_i)\Delta t}\,.
+    \end{equation}
+    
+    Proces sčítání takových výrazů se nazývá \textbf{integrování} a představuje \emph{opak} 
+    derivování. Derivace tohoto integrálu je \(v\), takže jeden operátor (\(d\)) ruší druhý 
+    (\(\int\)). Vzorce pro integrování je možné získat ze vzorců pro derivování jejich obrácením, 
+    neboť jsou vzájemně inverzní. Každý si může sestavit svou tabulku integrálů, bude-li derivovat 
+    všechny druhy funkcí. Z každého diferenciálního vzorce dostaneme integrální, když ho obrátíme.
+    
+    Každou funkci je možné derivovat analyticky, tj. operace probíhá algebraicky a vede k určité 
+    funkci. S integrálem je to však jinak a není možné napsat analytický tvar pro libovolný 
+    integrál. Je sice možné ho vypočítat, například tak, že nejprve provedeme uvedenou sumaci, a 
+    zjemníme-li dostatečně interval \(\Delta t\), dostaneme výsledek téměř přesně. Máme-li však 
+    danou určitou funkci, nemůžeme obecně nalézt analytický výraz pro její integrál. Vždy se můžeme 
+    pokusit najít funkci, která nám po zderivování dá požadovanou funkci. Jenomže taková funkce 
+    nemusí existovat v tom smyslu, že by se dala vyjádřit pomocí funkcí, které již dostaly nějaké 
+    pojmenování.
+    
+  \section{Zrychlení}
+    Dalším krokem na cestě k pohybovým rovnicím je zavedení veličiny, která přesahuje pojem 
+    rychlosti a souvisí se \emph{změnou} rychlosti pohybu. K takovéto veličině přicházíme, když si 
+    klademe otázku, jak se \emph{mění} rychlost. V předcházejících kapitolách jsme hovořili o 
+    případech, v nichž síly způsobovaly změny rychlosti. Určitě jsme již slyšeli vzrušující zprávy 
+    o autech, která za \num{10} sekund dosáhnou z klidu rychlosti \SI{100}{km\per\hour}. Na 
+    takovémto příkladu je vidět, jak se mění rychlost - ale jen v průměru. V dalším stádiu se 
+    budeme zabývat složitějším problémem - rychlostí změny rychlosti. Jinými slovy, o kolik metrů 
+    za sekundu se změní rychlost v průběhu sekundy, tj. o kolik metrů za sekundu za sekundu. Již 
+    dříve jsme odvodili vztah pro rychlost padajícího tělesa v podobě \(v= 10 t\), který je 
+    zaznamenán v tab. \ref{fyz:tab004}, a nyní bychom chtěli zjistit, jak se rychlost mění za 
+    sekundu. Veličinu vyjadřující tuto změnu nazýváme \textbf{zrychlením}.
+    
+    Zrychlení je definováno jako časová změna rychlosti. Z předcházející diskuze již víme dost k 
+    tomu, abychom mohli zapsat zrychlení jako derivaci \(\der{v}{t}\), podobně, jako rychlost byla 
+    časovou derivací vzdálenosti. Derivujeme-li vztah \(v= 10t\), dostaneme zrychlení padajícího 
+    tělesa
+    \begin{equation}\label{FYZ:eq101}
+      a = \der{v}{t} = 10.
+    \end{equation}
+    
+    (Při derivování výrazu \(10t\)l jsme využili výsledek získaný v předcházející úloze, kde jsme 
+    zjistili, že derivace \(Bt\) je prostě \(B\) tedy konstanta. Položením \(B=10\) dostaneme 
+    okamžitě výsledek, že derivace \(10t\) je \num{10}) To znamená, že rychlost padajícího tělesa 
+    roste každou sekundu o \SI{10}{\m\per\s}. Tato skutečnost je zřejmá i z tab. 8.4. Tento příklad 
+    je velmi jednoduchý, ale zrychlení obecně nebývají konstantní. Příčinou konstantního zrychlení 
+    v případě padajícího tělesa je skutečnost, že na něj působí konstantní síla a podle Newtonova 
+    zákona je zrychlení úměrné síle.
+    
+    Jako další příklad si všimněme zrychlení v úloze, kterou jsme již vyřešili, když jsme se 
+    zabývali rychlostí. Když jsme vycházeli ze vztahu \(s = At^3 + Bt + C\), dostali jsme pro 
+    \(v=\der{s}{t}\) vyjádření
+    \begin{equation}\label{FYZ:eq102}
+      v = 3At^2 + B.
+    \end{equation}
+    
+    Protože zrychlení je časová derivace rychlosti, musíme poslední výraz derivovat. Připomeňme si 
+    pravidlo, podle něhož je derivace dvojčlenu rovna součtu derivací jednotlivých členů. Abychom 
+    při derivování prvního členu nemuseli opakovat celý základní proces, připomeňme si, že 
+    kvadratický člen jsme již derivovali při derivování funkce a výsledek byl takový, že koeficient 
+    se zdvojnásobil a t2 se změnilo na t. Proto budeme předpokládat, že totéž se děje i v tomto 
+    případě. Derivace \(3At^2\) proto bude \(6At\). Dále musíme derivovat \(B\), tedy konstantní 
+    člen. Podle předcházejícího pravidla je však derivace \(B\) rovna nule, a tak tento člen 
+    nepřispívá ke zrychlení. Konečný výsledek je proto \(a=\der{v}{t}= 6At\).
+    
+    Uveďme ještě dva užitečné vztahy, jež je možné získat integrací. Pohybuje-li se těleso 
+    vycházející z klidu s konstantním zrychlením \(g\), jeho rychlost v libovolném čase \(t\) je
+    \begin{equation}\label{FYZ:eq103}
+      v = gt.
+    \end{equation}
+    Vzdálenost, kterou těleso až do tohoto okamžiku urazí, je
+    \begin{equation}\label{FYZ:eq104}
+      v = \frac{1}{2}gt^2.
+    \end{equation}
+    
+    Pro zápis derivace se používají různá matematická značení. Protože rychlost je \(ds/dt\) a 
+    zrychlení je časová derivace rychlosti, můžeme psát i
+    \begin{equation}\label{FYZ:eq105}
+      a = \der{ }{t}\left(\der{s}{t}\right) = \dder{s}{t},
+    \end{equation}
+    což představuje běžný zápis druhé derivace.
+    
+    Existuje i jiný zákon, podle něhož je rychlost rovna integrálu zrychlení. To je právě opakem 
+    vztahu \(a = \der{v}{t}\). Protože jsme již zjistili, že vzdálenost je integrálem rychlosti, 
+    můžeme vzdálenost najít \emph{dvojnásobnou integrací zrychlení}.
+    
+    \begin{figure}[ht!]  %\ref{fyz:fig099}
+      \centering
+      \includegraphics[width=0.7\linewidth]{fyz_fig099.pdf}
+      \caption{Popis pohybu tělesa v rovině a výpočet jeho rychlosti
+               (\cite[s.~118]{Feynman01})}
+      \label{fyz:fig099}
+    \end{figure}
+    Předcházející diskuze se zabývala jen jednorozměrným pohybem a nedostatek místa nám dovoluje 
+    jen velmi stručnou analýzu trojrozměrného pohybu. Uvažujme částici P, která se pohybuje 
+    libovolně v trojrozměrném prostoru. Na začátku této kapitoly jsme jednorozměrný pohyb 
+    ilustrovali pohybem auta a sledovali jsme vzdálenost, kterou auto ujede za různou dobu od 
+    počátečního bodu. Pak jsme hovořili o rychlosti jako o časové změně ujeté vzdálenosti a o 
+    zrychlení jako o časové změně rychlosti. Podobně je možné zkoumat trojrozměrný pohyb. 
+    Jednodušší však bude znázornit si pohyb nejprve na dvojrozměrném grafu a výsledky pak zobecnit 
+    na trojrozměrný případ. Zvolme si dvojici navzájem kolmých souřadnicových os a polohu částice v 
+    kterémkoli časovém okamžiku určíme odměřením jeho vzdálenosti od každé ze souřadnicových os. 
+    Každá poloha je tedy určena \(x\)-ovou a \(y\)-ovou vzdáleností a pohyb je možné popsat pomocí 
+    tabulky, v níž jsou tyto vzdálenosti zapsány jako funkce času. (Rozšíření tohoto procesu na 
+    trojrozměrný případ si vyžaduje jen zavedení další osy, kolmé na předcházející osy, a měření 
+    třetí, \(z\)-ové, vzdálenosti. Vzdálenosti se potom neměří od souřadnicových os, ale od 
+    souřadnicových \emph{rovin}.)
+    
+    Jak můžeme určit rychlost, máme-li sestavenou tabulku s \(x\)-ovými a \(y\)-ovými vzdálenostmi? 
+    Nejprve najdeme složky rychlosti v jednotlivých směrech. Horizontální složka rychlosti, tj. 
+    \(x\)-ová složka, je časovou derivací \(x\)-ové vzdálenosti, tedy
+    \begin{equation}\label{FYZ:eq106}
+      v_x = \der{x}{t}.
+    \end{equation}
+    Podobně vertikální složka rychlosti, tj. \(y\)-ová složka je
+    \begin{equation}\label{FYZ:eq108}
+      v_y = \der{y}{t}.
+    \end{equation}
+    V trojrozměrném případě máme ještě
+    \begin{equation}\label{FYZ:eq107}
+      v_z = \der{z}{t}.
+    \end{equation}
+    
+    Jak můžeme určit rychlost podle skutečné dráhy pohybu, známe-li složky rychlosti? V 
+    dvojrozměrném případě uvažujme dvě následující polohy částice lišící se o krátkou vzdálenost 
+    \(\Delta s\) a krátký časový interval \(t_2- t_1 = \Delta t\). V čase \(\Delta t\) urazí 
+    částice horizontálně vzdálenost \(\Delta x \approx  v_x\Delta t\) a vertikálně vzdálenost 
+    \(\Delta y \approx  v_y\Delta t\) (Symbol \uv{\(\approx\)} znamená „přibližně“.) Skutečná 
+    uražená vzdálenost je podle obr. \ref{fyz:fig099} rovna přibližně
+    \begin{equation}\label{FYZ:eq109}
+      \Delta s = \sqrt{(\Delta x)^2 + (\Delta y)^2}.
+    \end{equation}
+    Přibližnou rychlost v průběhu časového intervalu získáme dělením tohoto výrazu \(\Delta t\). 
+    Přibližuje-li se \(\Delta t\), podobně jako na začátku kapitoly, k nule, získáme pro rychlost 
+    vyjádření
+    \begin{equation}\label{FYZ:eq110}
+      v = \der{s}{t} = \sqrt{(\der{x}{t})^2 + (\der{y}{t})^2} = \sqrt{v_x^2 + v_y^2}
+    \end{equation}
+    a v trojrozměrném případě
+    \begin{equation}\label{FYZ:eq097}
+      v = \sqrt{v_x^2 + v_y^2 + v_z^2}.
+    \end{equation}
+
+    Podobně, jako jsme definovali rychlosti, můžeme definovat zrychlení: \(x\)-ová složka zrychlení 
+    \(a_x\) je derivací \(v_x\)-ové složky rychlosti (tj. \(a_x = \dder{x}{t}\) je druhou derivací 
+    \(x\) podle času) a analogicky definujeme ostatní složky zrychlení.
+
+    Uvažujme jeden pěkný příklad složeného pohybu v rovině. Nechť se kulička pohybuje horizontálně 
+    konstantní rychlostí \(u\) a nechť současně vertikálně padá s konstantním zrychlením \(-g\). 
+    Jaký je to vlastně pohyb? Víme, že \(\der{x}{t} = v_x = u\). Protože rychlost \(v\) je 
+    konstantní
+    \begin{equation}\label{FYZ:eq100}
+      x = ut,
+    \end{equation}
+
+    \begin{wrapfigure}[12]{r}{5cm}  %\ref{fyz:fig100}
+      \centering
+      \includegraphics[width=0.7\linewidth]{fyz_fig100.pdf}
+      \caption{Parabola, již opisuje padající těleso, které má počáteční horizontální rychlost
+               (\cite[s.~119]{Feynman01})}
+      \label{fyz:fig100}
+    \end{wrapfigure}
+    a protože při pohybu dolů je zrychlení \(-g\) konstantní, je možné vzdálenost \(y\) padajícího 
+    předmětu zapsat ve tvaru
+    \begin{equation}\label{FYZ:eq098}
+      y = -\frac{1}{2}gt^2.
+    \end{equation}
+    
+    Jak vypadá křivka takovéhoto pohybu, tj. jaký je vztah mezi \(y\) a \(x\)? Z rovnice 
+    (\ref{FYZ:eq098}) můžeme vyloučit čas, neboť \(t= x/u\). Po této substituci dostaneme
+    \begin{equation}\label{FYZ:eq099}
+      y = -\frac{g}{2u^2}x^2.
+    \end{equation}
+    Tento vztah mezi \(x\) a \(y\) je možné považovat za rovnici trajektorie pohybující se kuličky. 
+    Vyneseme-li závislost do grafu, získáme křivku, jež se nazývá \textbf{parabola} (obr. 
+    \ref{fyz:fig100}). Jakékoli padající těleso vystřelené v libovolném směru se bude pohybovat po 
+    parabole. 
+  
+  \newpage
+  \section{Příklady a cvičení}
+    %---------------------------------------------------------------
+      \input{../src/FYZ/exam/exam003.tex}
+    %---------------------------------------------------------------
+
+} %tikzset
+%---------------------------------------------------------------------------------------------------
+\printbibliography[heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}

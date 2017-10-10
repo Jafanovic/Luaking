@@ -1,0 +1,112 @@
+% =================================================================================================
+%                                     Page Layout Settings
+% =================================================================================================
+\NeedsTeXFormat{LaTeX2e}
+
+
+\RequirePackage{wikiDrawing}     % need package xcolor
+% http://tex.stackexchange.com/questions/51867/koma-warning-about-toc
+\usepackage{scrhack}
+%--------------------------------------------------------------------------------------------------
+% zkratka   jméno                              poznámka
+% =================================================================================================
+% pt   anglosaský typografický bod   1pt = 1/72.27" = 0.35146mm
+% pc   pica (pajka)                  1pc = 12pt = 4.21752mm
+% bp   tzv. "big point"              1bp = 1/72" = 0.35278mm
+% in   palec                         1in = 25,4mm
+% cm   centimetr                     1cm = 10mm
+% mm   milimetr  
+% dd   Didotův bod                   1dd = 0,3759mm
+% cc   cicero                        1cc = 12dd = 4.5108mm
+% sp   tzv. "scaled point"           1pt = 65536sp (1sp je přibližne 5,4*10^-6 mm)
+% em   čtverčík   relativní jednotka - odpovídá stupni nastaveného písma)
+% ex   půlčverčík relativní jednotka - rovná se polovině nastaveného stupně písma)
+%--------------------------------------------------------------------------------------------------
+% notes:
+%~~~~~~~~~
+% Plovoucí prostředí:
+% h - umístění v místě uvedení ve zdrojovém textu (nefunguje pro dvousloupcové tabulky a obrázky ve
+%     dvousloupcovém režimu stránky) 
+% t - umístění na začátku stránky, na které je prostředí uvedeno ve zdrojovém textu; Pozn: může se
+%     umístit i na stránce následující
+% b - umístění na konci stránky, na které je prostředí uvedeno ve zdrojovém textu (nefunguje pro
+%     dvousloupcové tabulky a obrázky ve dvousloupcovém režimu stránky); Pozn: moc mi to 
+%     nefunguje  
+% p - umístění na stránce, na které není text a která není příliš fyzicky a logicky (v jiné 
+%     sekci) vzdálena od místa uvedení ve zdrojovém textu; může se umístit i na stránku, kde jsou 
+%     i jiné (jen) plovoucí objekty.
+
+\iftoggle{DEBUG}{
+  \usepackage{showframe}
+}
+
+\addtokomafont{chapterprefix}{\raggedleft}
+
+\RedeclareSectionCommands[tocdynnumwidth]{chapter,section}
+\RedeclareSectionCommands[tocpagenumberbox=\pagenumberbox]
+  {part,chapter,section,subsection,subsubsection,paragraph,subparagraph}
+
+%\RedeclareSectionCommand[beforeskip=0pt,afterskip=0pt,innerskip=0pt]{part}
+%\renewcommand\partheadstartvskip{}
+%\renewcommand\partheadendvskip{}
+\newcommand*\partcolor{\color{blue!50}}
+\renewcommand*\partformat{\partcolor\partname~\thepart\if@altsecnumformat.\fi}
+
+\newcommand\pagenumberbox[1]{%
+  \makebox{\enskip #1}%
+}
+
+
+\usepackage[
+  verbose,
+  a4paper,
+  twocolumn,
+  nomarginpar, % http://tex.stackexchange.com/questions/108213/
+  scale=0.9, 
+  heightrounded, 
+  showframe=false]{geometry}
+
+%http://tex.stackexchange.com/questions/229638
+\usepackage{csquotes}
+\usepackage{polyglossia}
+\setdefaultlanguage{czech}
+% http://tex.stackexchange.com/questions/191709/
+\DeclareQuoteAlias{german}{czech}
+
+\usepackage{xltxtra}
+
+\usepackage[
+  font=small,               % 
+  labelfont=bf,             % make all caption labels small and bold or:
+  justification=justified,
+  textfont=it]{caption}     % Captions
+  \captionsetup
+    {labelfont={color=Sepia,bf},
+     textfont={color=OliveGreen},
+     justification={justified},
+     singlelinecheck=false,
+     format={plain},            % plain >> Typesets the captions as a normal 
+                                % paragraph. {options: plain, hang}
+     indention={.5cm}           % setup an extra indention starting at the second 
+                                % line of the caption.
+    }
+
+% --- Bibliography -------------------------------
+% Bibliography with UTF8 support
+% note: - The backend option is not read correctly 
+%         by the parser, if it is in the first
+%         position (right after the square bracket) 
+%         of the usepackage command. 
+\usepackage[
+  backref=true,              % 
+  hyperref=true,             % 
+  refsection=chapter,        %
+  indexing=true,             %
+  url=true,                  % 
+  style=ieee,          % alphabetic, authoryear, ieee
+  backend=biber,             % 
+  doi=false,
+  isbn=true,
+  texencoding=utf8,
+  bibencoding=utf8]{biblatex}
+  \addbibresource{MasterBiblioLib.bib}

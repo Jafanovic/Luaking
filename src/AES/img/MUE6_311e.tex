@@ -1,0 +1,20 @@
+\def\xmin{-10}
+\def\xmax{90}
+\def\ymin{-40}
+\def\ymax{+40}
+\def\zero{0}
+\def\phase{0}
+\def\xlabel{$t$}
+\def\ylabel{$u(t)$}
+
+\begin{tikzpicture}
+  \begin{scope}[draw=black,line join=round, miter limit=4.00,line width=0.5pt,y=1pt,x=1pt] 
+    \XYcross;
+  \end{scope}
+  
+  \begin{scope}[domain=0:3.1415, line join=round, miter limit=4.00,line width=0.5pt, 
+                x=25pt,y=25pt, xshift=0, yshift=0]    
+    \node at(1.9,1.6) [left, fill=white] {$\delta=0$}; %                         
+    \draw[color=red] plot[id=myfce, samples=20, smooth] (\x, {sin(30*\x r)}); % 
+  \end{scope}  
+\end{tikzpicture}

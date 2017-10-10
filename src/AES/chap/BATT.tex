@@ -1,0 +1,58 @@
+% !TeX spellcheck = cs_CZ
+{\tikzset{external/prefix={tikz/AES/}}
+ \tikzset{external/figure name/.add={ch07_}{}}
+%---------------------------------------------------------------------------------------------------
+% file batt.tex
+%---------------------------------------------------------------------------------------------------
+%========= Kapitola: Autonomní zdroje elektrické energie ===========================================
+\chapter{Autonomní zdroje elektrické energie}
+\minitoc
+  Většina přenosných elektronických zařízení potřebují ke své činnosti zdroj elektrické energie a 
+  to nejčastěji ve formě stejnosměrného DC výkonu. Každý napájecí zdroj lze podle Theveninovy věty 
+  nahradit sériovým spojením ideálního zdroje napětí a jeho vnitřního odporu. Vlastní zátěž lze 
+  často nahradit lineárním rezistorem. Skutečná povaha napájecího zdroje bývá často složitější, 
+  mívají charakter setrvačný, nelineární,pa\-ra\-me\-tri\-cký apod. Dokonce se někdy k malé radosti 
+  setkáme 
+  i se zdroji, které mají vnitřní odpor záporný. Definiční vztahy pro vnitřní a zatěžovací odpor 
+  napájecího zdroje jsou následující
+  \begin{itemize}
+    \item \textbf{Vnitřní (výstupní) odpor zdroje}:
+          \begin{equation}\label{aes:eq010}
+            R_i = \frac{U_{2a}-U_{2b}}{I_{2a} - I{2b}} = -\der{U_2}{I_2}
+          \end{equation}
+    \item \textbf{Zatěžovací odpor}:
+          \begin{equation}\label{aes:eq011}
+            R_z = \frac{U_2}{I_2}
+          \end{equation}
+  \end{itemize}
+  Přitom záporné znaménko ve vztahu (\ref{aes:eq010}) vyjadřuje skutečnost, že v obvyklém případě 
+  zvýšení výstupního odebíraného proudu \(I_2\) způsobí snížení výstupního napětí \(U_2\). Pomocí 
+  těchto dvou jednoduchých vztahů lze také rozlišit \textbf{zdroj napětí} \(– R_i \ll R_L\) od 
+  zdroje proudu \(- R_i\gg R_L\). U elektronických napájecích zdrojů je běžné, že do určitého a 
+  často nastavitelného zatěžovacího proudu se obvod chová jako zdroj napětí, po jeho překročení 
+  jako zdroj proudu. Tomuto opatření říkáme \emph{nadproudová ochrana, omezení proudu, elektronická 
+  pojistka}. Situace je na obr. 1-1.
+  
+  \section{Bateriové způsoby napájení}
+    Bateriové napájení je výhodné svou nezávislostí na napájecí síti a tedy drátovém přívodu. 
+    Vzhledem ke stále klesající spotřebě energie u napájených zařízení a rostoucí kvalitě 
+    chemických zdrojů je tento způsob dnes velmi oblíbený.
+   
+    Je všeobecně známo, že bateriové (chemické) zdroje lze rozdělit na \textbf{primární} 
+    (\emph{nenabíjitelné}) a \textbf{sekundární} (\textbf{a\-ku\-mu\-lá\-to\-ry}) – 
+    \emph{nabíjitelné}. Rozdíly se dnes už stírají, existují např. baterie typu RAM,  které patří 
+    mezi primární s možností nabíjení.
+    
+    \subsection{Primární (galvanické) články}
+      Primární články přeměňují přímo chemickou energii v energii elektrickou a patří k velmi 
+      starým zdrojům.
+    \subsection{Sekundární články, akumulátory}
+    \subsection{Palivové články}
+    \subsection{Termoemisní generátory}
+    \subsection{Termoelektrické články}
+    \subsection{Sluneční (solární) , fotovoltaické články}
+    
+} % tikzset
+%---------------------------------------------------------------------------------------------------
+\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}

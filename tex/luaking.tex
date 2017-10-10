@@ -1,0 +1,326 @@
+% !TeX program = lualatex
+% !TeX encoding = UTF-8
+\documentclass[
+  fontsize=10pt,
+  open=any,
+  chapterprefix=true]{scrbook}
+
+\usepackage{scrlayer-scrpage}
+\usepackage{polyglossia}
+  \setdefaultlanguage{czech}
+
+% ~~~~~~~~ Page Layout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \usepackage[verbose=true,                  % displays the parameter results on the terminal
+              a4paper,                       %
+              twocolumn,landscape,           %
+              includehead,                   % include the head and foot into total body
+              scale=1.0, heightrounded,      %
+              nomarginpar,                   % shrinks spaces for marginal notes to 0pt,
+              left=8pt, right=8pt,           %
+              top=2pt, bottom=6pt,           %
+              headsep=9pt, nofoot,    %
+              columnsep=15pt,                % separation between two columns in twocolumn mode.
+              showframe=false, heightrounded ]{geometry}
+% http://tex.stackexchange.com/questions/51867/koma-warning-about-toc
+\usepackage{scrhack}
+\usepackage{microtype}
+\usepackage{lipsum}
+\usepackage{ifluatex}
+\providecommand\DebugMode{true}
+%\providecommand\DebugMode{false}
+\usepackage{syntonly}
+% --- Koma script ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ---- Part ----------------------------
+\setkomafont{part}{\fontsize{48bp}{48bp}\selectfont}
+\newcommand*\partcolor{\color{blue!50}}
+\renewcommand*\partformat{\partcolor\partname~\thepart\if@altsecnumformat.\fi}
+% ---- Chapter -------------------------
+\setkomafont{chapter}{\fontsize{24bp}{24bp}\selectfont}
+\addtokomafont{chapterprefix}{\raggedleft}
+% https://tex.stackexchange.com/questions/43087/
+\RedeclareSectionCommand[beforeskip=0pt]{chapter}
+\renewcommand*{\chapterformat}{%
+\mbox{\chapappifchapterprefix{\nobreakspace}%
+\scalebox{3}{\color{gray}\thechapter\autodot}\enskip}}
+% ---- Section -------------------------
+\setkomafont{section}{\fontsize{16bp}{24bp}\selectfont}
+
+  \setkomafont{subsection}{\fontsize{12bp}{16bp}\selectfont}
+  \setkomafont{subsubsection}{\fontsize{11bp}{14bp}\selectfont}
+  \setkomafont{paragraph}{\normalsize\mdseries}
+  \setkomafont{subparagraph}{\normalsize\mdseries}
+
+% ---- Header & Footer -----------------
+\setheadtopline{1pt}                 % lines
+\setheadsepline[\textwidth]{0.5pt}   % lines
+\setkomafont{pageheadfoot}{%
+\normalfont\normalcolor\itshape\small
+}
+\setkomafont{pagenumber}{\normalfont\bfseries}
+\ihead{\pagemark}
+\chead{luaking}
+\ofoot[]{}                                % remove pagenumber from foot
+% ---- Table fo content ----------------
+%\pagestyle{scrheadings}
+\unsettoc{toc}{onecolumn}                 % https://tex.stackexchange.com/questions/151320/
+
+% --- Bibliography ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Bibliography with UTF8 support
+% note: - The backend option is not read correctly 
+%         by the parser, if it is in the first
+%         position (right after the square bracket) 
+%         of the usepackage command. 
+\usepackage[
+  backref=true,              % 
+  hyperref=true,             % 
+  refsection=chapter,        %
+  indexing=true,             %
+  url=true,                  % 
+  style=ieee,                % alphabetic, authoryear, ieee
+  backend=biber,             % 
+  doi=false,
+  isbn=true,
+  texencoding=utf8,
+  bibencoding=utf8]{biblatex}
+  \addbibresource{MasterBiblioLib.bib}
+  
+\usepackage{graphicx}  % interface for optional arguments to the \includegraphics command. 
+\usepackage[svgnames,x11names,dvipsnames]{xcolor}
+  % Define my colors
+  \definecolor{Blue}{rgb}{0.3,0.3,0.9}
+  \definecolor{lstgray}{gray}{0.9}
+  \definecolor{help}{RGB}{0,128,0}
+  \definecolor{keyword}{RGB}{0,0,128}
+  \definecolor{lstnumcolor}{RGB}{.5,.5,.5} % gray
+  \definecolor{Gray}{gray}{0.85}
+  \definecolor{LightCyan}{rgb}{0.88,1,1}
+  \definecolor{mygreen}{rgb}{0,0.6,0}
+  \definecolor{mygray}{rgb}{0.5,0.5,0.5}
+  \definecolor{mymauve}{rgb}{0.58,0,0.82}
+% ~~~~~~~~ Hyperref ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% https://tex.stackexchange.com/questions/24445/
+\usepackage{hyperref}
+\hypersetup{%
+    pdfencoding=auto,
+    pdfauthor={Jaroslav Fait},
+    pdftitle={Technický zápisník}
+    }
+\usepackage{wikiWWWrefs}
+
+% ~~~~~~~~~~~~ Tables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{booktabs} 
+\usepackage{tabularx}
+\usepackage{multirow}                      % Columns spanning multiple rows 
+% This LATEX package provides the command \tablefootnote to be used in a table or sidewaystable 
+% environment, where \footnote will not work and when using \footnotemark and \footnotetext and 
+% adjusting the counters (including Hfootnote) manually is either too much work or would not 
+% even work (sidewaystable). 
+\usepackage{tablefootnote}
+\renewcommand{\arraystretch}{1.5}          % factor for stretching the height of the lines -
+                                           % modification is global
+\usepackage{array}                         % Using the array package, the column specification can
+                                           % be altered
+\usepackage{colortbl}                      % Color tables - this package requires color and arrays
+                                           % packages
+\newcolumntype{C}[1]{>{\centering}m{#1}}   % buňka bude centrovaná horizontálně i vertikálně -
+                                           % nutný balík array !  
+                                           % http://tex.stackexchange.com/questions/94799/
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+\newcolumntype{b}{>{\columncolor{white}}c}
+% ~~~~~~~~~~~~ Figures ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{subfig}                        % Multipart figures
+\usepackage{wrapfig}                       % Floats, Figures and aptions
+
+% ~~~~~~~~~~ Animation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \usepackage{animate}
+  \usepackage{media9}
+  \addmediapath{../media}
+  \newcommand{\AddVideo}[3]{
+    \includemedia[
+      activate=pageopen,
+      width=#1pt,height=#2pt,
+      addresource=#3.mp4,
+      flashvars={ src=#3.mp4 &loop=true &scaleMode=stretch}
+    ]{}{StrobeMediaPlayback.swf} %VPlayer.swf StrobeMediaPlayback.swf
+    }
+% ~~~~~~~~~~~ Code Highlighting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Highlighting of all the most common languages 
+\usepackage{listings}        % UTF8 package load aborted because 
+%missnig \pdf@unescapehex
+\renewcommand\lstlistingname{Výpis}        % change the caption name for listings
+\renewcommand\lstlistlistingname{Výpis}    % header name for the list of listings which is printed
+                                           % by the \lstlistoflistings command
+\def\lstlistingautorefname{Alg.}           % Then when you're referring 
+
+% ~~~~~~~~ Table of contents ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% https://tex.stackexchange.com/questions/334007/
+\let\cleardoublepage=\clearpage            % Remove blank page after TOC and title page
+\usepackage[nohints]{minitoc}              % formatting table of contents.
+% ~~~~~~~~ Physics ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage[version=4]{mhchem}
+% ~~~~~~~~ Math ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{amsmath, amssymb, amsthm, bm}
+\usepackage{epigraph}                      % \epigraph style
+\usepackage{bm}                            % bold symbols in maths mode
+\usepackage{mathtools}                     % extension package to amsmath  
+\RequirePackage{bigints}                   % write big integrals  
+\RequirePackage{polynom}                   % implements macros for manipulating
+                                           % polynomials - command \polylongdiv
+\usepackage[warnings-off={mathtools-colon}]{unicode-math} 
+  \newtheorem{example}{Příklad}[section]
+  \newtheorem{definition}{Definice}[section]
+  \newtheorem{lemma}{Věta}[section]
+  \newtheorem{note}{Poznámka}[section]
+  % Set of Numbers:
+  \newcommand{\realset}{\mathbb{R}}
+  \newcommand{\naturalset}{\mathbb{N}}
+  \newcommand{\cmplxset}{\mathbb{C}}
+  \newcommand{\intset}{\mathbb{Z}}
+  \newcommand{\ratioset}{\mathbb{Q}}
+  % Matrix
+  \newcommand{\matr}[1]{\mathbf{#1}}
+  
+  \DeclareMathOperator\erf{erf}
+  \DeclareMathOperator\cotg{cotg}
+  \DeclareMathOperator\arctg{arctg}
+  
+  \newcommand\abs[1]{\ensuremath{\lvert#1\rvert}}   % https://tex.stackexchange.com/questions/97631/
+  \newcommand{\dx}{\hspace{2pt}dx}
+  \newcommand{\dd}[1]{\hspace{2pt}d#1}
+  \newcommand{\limitint}{\mathop{\int}}
+  \newcommand{\limitoint}{\mathop{\oint}}
+
+  \newcommand{\vr}[1]{\ensuremath{\mathbf{#1}}}                % vectors
+  \newcommand{\der}[2]{\dfrac{d #1}{d #2}}                     % derivatives
+  \newcommand{\dder}[2]{\dfrac{d^2 #1}{d #2^2}}                % double derivatives
+  \newcommand{\pder}[2]{\dfrac{\partial #1}{\partial #2}}      % partial derivatives
+  \newcommand{\ppder}[2]{\dfrac{\partial^2 #1}{\partial #2^2}} % double partial derivatives
+  \newcommand{\grad}[1]{\mathrm{grad\;}#1}                     % gradient
+  \newcommand{\diver}[1]{\mathrm{div}\;\vec{#1}}               % divergence
+  \newcommand{\rot}[1]{\mathrm{rot}\;\vec{#1}}                 % rotace
+  \newcommand{\ngrad}[1]{\nabla\;#1}                           % nabla gradient
+  \newcommand{\ndiver}[1]{\nabla\cdot\vec{#1}}                 % nabla divergence
+  \newcommand{\nrot}[1]{\nabla\times\vec{#1}}                  % nabla rotace
+  
+\newcommand{\wikitextrule}{\noindent\rule[0.5ex]{\linewidth}{1pt}}
+ % ~~~~~~~~ České uvozovky ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft}
+ % ~~~~~~~~ Proof environment ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\renewcommand{\qedsymbol}{$\blacksquare$} % \heartsuit
+% examples:
+%     \renewenvironment{proof}[1][Důkaz]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}} 
+%     \renewenvironment{proof}[1][Důkaz]{\noindent\textbf{#1.} }{}
+%     \newenvironment{myproof}[1][\proofname]{%
+%       \proof[\ttfamily \scshape \large #1 (yes, ``#1'')]% 
+%     }{\endproof}
+  \makeatletter 
+    \renewenvironment{proof}[1][Důkaz]{%
+      \par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist
+      \item[\hskip\labelsep\textbf#1\@addpunct{.}]\ignorespaces}%
+     {\popQED\endtrivlist\@endpefalse}
+  \makeatother
+% ~~~~~~~~ Physics ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ \usepackage{cancel}                   % \cancel command
+ \usepackage{siunitx}
+  \sisetup{
+    output-decimal-marker = {,},       % set the comma as decimal point 
+    separate-uncertainty = true,
+    multi-part-units=single,
+    exponent-product = {\cdot},        % exponent-product option example: \times, \ldots
+    math-micro=\text{µ},text-micro=µ   % http://tex.stackexchange.com/questions/33965
+  }
+
+% Astronomy
+\DeclareSIUnit\parsec{pc}
+\DeclareSIUnit\lightyear{ly}
+\DeclareSIUnit\AU{AU}
+
+% ~~~~~~~~ Layout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{enumitem}                 % provides extensions  LaTeX's list environments 
+\usepackage{widetext} 
+\usepackage[
+  font=small,               % 
+  labelfont=bf,             % make all caption labels small and bold or:
+  justification=justified,
+  textfont=it]{caption}     % Captions
+% ~~~~~~~~ Attache file into PDF ~~~~~~~~~~~~~~~~
+% insert pages of external PDF documents without `Overfull \hbox' and `Overfull \vbox' warnings
+% when inserted pages does not match the print space. 
+  \usepackage{pdfpages}               % \includepdf >> Inserts pages of an external PDF 
+  %document.
+  \usepackage{attachfile2}
+  \usepackage[author=jafa]{pdfcomment}% A user-friendly interface to pdf annotations.
+  
+
+%\tikzexternalize % activate!
+\begin{document}
+
+%\loggingall
+
+%\begin{titlepage}
+%  \centering
+%  \hfill\includegraphics[width=2cm]{example-image-1x1}\par
+%  \vspace{4\baselineskip}
+%  {\Huge 
+%  Luaking\\ Školní zápisník\par}
+%  \vspace{4\baselineskip}
+%  by\par
+%  {\Large\textsc{Jaroslav Fait}\par}
+%  \vfill
+%  University of West Bohemia\par
+%  {\em Faculty of Electrical Engineering}
+%\end{titlepage}
+
+
+% ========== TOC =================================
+% this sets the depth to which things are listed  
+% in the table of contents (Chap = 0, Sec = 1, etc)
+% The complete truth is that there is also a level –1, which corresponds to \part
+\setcounter{tocdepth}{-1} % 
+\setcounter{secnumdepth}{4} 
+
+\setcounter{parttocdepth}{0} 
+\doparttoc
+\setcounter{minitocdepth}{1} 
+\dominitoc
+
+\tableofcontents
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+    \input{../src/MAI/MA1}
+    \input{../src/FYZ/FYZ.tex}
+%    \input{../src/TKY/TKY.tex}
+%    \input{../src/TEO/TEO.tex}
+%    \input{../src/AES/AES.tex}
+%    \input{../src/CES/CES.tex}
+%    \input{../src/RAE/RAE.tex}
+%    \input{../src/PVE/PVE.tex}
+%    \input{../src/EPR/EPR.tex}
+%    \input{../src/ZZT/ZZT.tex}
+%    \input{../src/APE/APE.tex}
+%    \input{../src/NJ/NJ.tex}
+
+}
+{
+% DEBUG was off
+%    \input{../src/MAI/MA1}
+    \input{../src/FYZ/FYZ.tex}
+%    \input{../src/TKY/TKY.tex}
+%    \input{../src/TEO/TEO.tex}
+%    \input{../src/AES/AES.tex}
+%    \input{../src/CES/CES.tex}
+%    \input{../src/RAE/RAE.tex}
+%    \input{../src/PVE/PVE.tex}
+%    \input{../src/EPR/EPR.tex}
+%    \input{../src/ZZT/ZZT.tex}
+%    \input{../src/APE/APE.tex}
+%    \input{../src/NJ/NJ.tex}
+}
+
+
+
+\end{document}

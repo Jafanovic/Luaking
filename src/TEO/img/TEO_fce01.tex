@@ -1,0 +1,63 @@
+% \documentclass{book}
+% \usepackage{tikz}
+% \usepackage{pstricks}
+%   \usetikzlibrary{intersections}
+%   \usetikzlibrary{calc}
+
+% \begin{document}
+\begin{figure}[htb]
+  \centering
+  \begin{tikzpicture}[scale=0.8]
+    \def\xmin{-20}
+    \def\xmax{280}
+    \def\ymin{-30}
+    \def\ymax{150}
+    \def\nula{62.68476}
+    \def\phase{20}
+    \def\delta{80}
+	
+        
+        \begin{scope}[draw=black,line join=round,miter limit=4.00,line width=0.5pt, y=1pt,x=1pt]
+          \draw[->] (\xmin,\nula) -- (\xmax,\nula) node[right] {$t$} coordinate(x axis);
+          \draw[->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {$v(t)$} coordinate(y axis);
+          \path[name path=fce,draw=black,line join=round,even odd rule,line cap=butt,miter
+            limit=4.00] (0,62.68476) .. controls
+            (6.288991,93.43519)   and (6.900971,94.37507)   .. (27.182131,102.49149) .. controls
+            (41.727261,108.31238) and (35.032981,125.42937) .. (51.364001,125.36952) .. controls
+            (67.695031,125.30962) and (67.928601,83.44326)  .. (69.419751,64.22647)  .. controls
+            (70.630951,48.61748)  and (74.370481,32.72818)  .. (94.65164,24.61178)   .. controls
+            (109.19677,18.79088)  and (101.39868,1.81368)   .. (117.97023,1.87438)   .. controls
+            (134.06073,1.93338)   and (134.11602,42.07748)  .. (136.03504,63.349)    .. controls
+            (136.94551,73.44118)  and (139.86205,86.13389)  .. (143.15997,91.12848)  .. controls
+            (146.45789,96.12308)  and (151.68117,98.38715)  .. (161.82175,102.44536) .. controls
+            (176.36688,108.26625) and (169.6726,125.38324)  .. (186.00362,125.32339) .. controls
+            (202.33465,125.26349) and (199.36351,96.7115)   .. (204.05937,64.18034)  .. controls
+            (208.75523,31.64918)  and (209.0101,32.68208)   .. (229.29126,24.56568)  .. controls
+            (243.83639,18.74478)  and (236.0383,1.76758)    .. (252.60985,1.82828)   .. controls
+            (268.70035,1.88728)   and (268.96066,39.13088)  .. (270.65931,63.2234);
+            
+          \draw[dashed, <->](51.364001,125.36952) coordinate(p4) -- ++(0,-\nula) coordinate(p6); 
+          \draw[dashed, <->](117.97023,1.87438) coordinate(p3)   -- ++(0,60.81038) coordinate(p7);
+          \path[name path=osax] (\xmin,\nula) -- (\xmax,\nula);
+          \path[name path=osay] (\phase,\ymin) -- (\phase,\ymax);         
+          % Intersections
+          \path[name intersections={of=osay and fce, name=point}];  % prusecik osy y s funkcí - posun
+          \path[name path=line1] (point-1) --+(200,0);
+          \path[name intersections={of=line1 and fce, name=cross}]; % urceni pruseciku od ktero beru periodu
+          \draw[name path=line2,dotted] (cross-2) -- ++(0,-120);              
+          \path[name intersections={of=osax and osay, name=pocatek}]; 
+          \path[name path=line3] (pocatek-1) ++ (0,-\delta) coordinate(p1) -- +(300,0);
+          \path[name intersections={of=line2 and line3, name=p8}];
+          \draw[<->] (p8-1) -- (p1); % kota perioda T
+          % text
+          \node[above] at ($ (p1)!0.5!(p8-1) $) {$T$};
+          \node[left]  at ($ (p7)!0.5!(p3) $) {$V_{min}$}; 
+          \node[left]  at ($ (p6)!0.5!(p4) $) {$V_{max}$}; 
+          \node[below left] at (pocatek-1) {$0$}; 
+          \draw[fill=white] (pocatek-1) circle(2pt);          
+        \end{scope}     
+  \end{tikzpicture}
+  \caption{Příklad \textbf{periodické veličiny} $v=v(t)$ pro kterou platí $v(t+T)=v(t)$}\label{TEO:fig_01}
+\end{figure}
+  
+% \end{document}

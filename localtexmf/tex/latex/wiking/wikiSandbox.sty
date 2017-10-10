@@ -1,0 +1,216 @@
+% ===================================================================================================
+%                                         Sandbox 
+% ===================================================================================================
+\NeedsTeXFormat{LaTeX2e}
+  \RequirePackage{lipsum}
+  \RequirePackage{tikz, tikz-3dplot}     % TikZ and PGF picture 
+    \usetikzlibrary{intersections, calc, positioning, mindmap, trees}
+    \usetikzlibrary{decorations.markings, decorations.pathmorphing} 
+    \usetikzlibrary{shapes, matrix, chains, scopes}
+    \usetikzlibrary{arrows,fit}
+    \usetikzlibrary{topaths,automata}    
+
+    
+    \usepackage{pgfplots}                  % http://www.ctan.org/pkg/pgfplots
+      \pgfplotsset{compat=newest}
+      \usepgfplotslibrary{external} 
+  
+  \usepackage{pstricks}                  % PostScript macros for Generic TeX.  
+  
+% ~~~~~~~~ Libraries ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% sections—namely titles, headers and contents.
+% \usepackage[explicit]{titlesec}
+% \usepackage{sectsty} 
+% \usepackage{physymb}                   % useful for typesetting physics papers. 
+% ~~~~~~~~~~ Paragraph formatting ~~~~~~~~~~~~~~~  
+% \usepackage{indentfirst}               % Indent the first paragraph
+
+% ------------------------ Chapter style -----------------------------------------------------------
+% % http://texblog.net/latex-archive/layout/fancy-chapter-tikz/
+% \newcommand*\chapterlabel{}
+% \titleformat{\chapter}[display]%
+%   {\gdef\chapterlabel{}
+%    \normalfont\sffamily\Huge\bfseries\scshape}
+%   {\gdef\chapterlabel{\thechapter\ }}{0pt}
+%   {\begin{tikzpicture}[remember picture,overlay]
+%     \node[yshift=-3cm] at (current page.north west)
+%       {\begin{tikzpicture}[remember picture, overlay]
+%         \draw[fill=DeepSkyBlue2] (0,0) rectangle
+%           (\paperwidth,3cm);
+%         \node[anchor=east,xshift=.9\paperwidth,rectangle,
+%               rounded corners=20pt,inner sep=11pt,
+%               fill=MidnightBlue]
+%               {\color{white}\chapterlabel#1};
+%        \end{tikzpicture}
+%       };
+%    \end{tikzpicture}
+%   }
+% \titlespacing*{\chapter}{0pt}{50pt}{-60pt}
+% % section style
+% %--------------
+% % using package: \usepackage[x11names]{xcolor};\usepackage[explicit]{titlesec}
+% % source: http://www.latex-community.org/forum/viewtopic.php?f=4&t=6686
+% \titleformat{\section}[block]%
+%   {\normalfont\sffamily}
+%   {\colorbox{MidnightBlue}{\parbox[c][15pt][c]{30pt}{%
+%       \hfil\color{white}\Large\thesection\hfil}}}
+%   {0pt}
+%   {\parbox{32.5em}{%
+%       \hspace*{1em}\color{DeepSkyBlue2}\large\sffamily#1\\[-8pt]\color{MidnightBlue}\titlerule}}
+% \titlespacing*{\section}
+%   {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+% % \parbox[pozice]{délka}{text}
+% % Parbox je oblast, jejíž obsah je jakoby v odstavcovém módu. Příkaz \parbox má dva povinné
+%   argumenty:
+% %   délku - určující délku parboxu a
+% %   text - text, který bude uvnitř parboxu.
+
+% ------------------------------------------- My tools ---------------------------------------------
+% opakuje předdefinvaný text. To se hodí při testu vzhledu dokumentu, ačkoliv není znám relevantní
+% obsah použití: \sometext10 -> namnoží 10krát předdefinovaný text. 
+%\newcount\sometextcount
+%\def\sometext#1 {{\sometextcount0
+%  \loop\ifnum\sometextcount<#1  \advance\sometextcount1
+%  Some text blabla 
+%  \repeat}} 
+      
+% ------------------------------------------- Frames ---------------------------------------------
+%  \usepackage[framemethod=TikZ]{mdframed}% standard methods for framing text: framemethod=TikZ
+% C:\Program Files (x86)\MiKTeX 2.9\doc\latex\mdframed\mdframed.pdf  
+%   \mdfdefinestyle{theoremstyle}{%
+%     linecolor=red,linewidth=2pt,%
+%     frametitlerule=true,%
+%     apptotikzsetting={\tikzset{mdfframetitlebackground/.append style={%
+%     shade,left color=white, right color=blue!20}}},
+%     frametitlerulecolor=green!60,
+%     frametitlerulewidth=1pt,
+%     innertopmargin=\topskip,
+%   }  
+%  \mdtheorem[style=theoremstyle]{definition}{Definice}[section] 
+
+% ~~~~~~~~ Image that also acts as a link ~~~~~~~
+% http://tex.stackexchange.com/questions/54927/how-to-insert-an-image-that-also-acts-as-a-link
+% \newcommand{\googlepdflink}[2]{
+%    \href{#2}{%
+%          \parbox{3cm}{
+%            \centering
+%            \vspace{0.05\textwidth}\textbf{#1}\\
+%            \includegraphics[width=0.05\textwidth]{../src/lib/img/pdf_ico.png}}
+%            }
+%        }
+        
+% Page style
+%------------
+% To get better control over the headers: 
+% \usepackage{fancyhdr}  % Customising with fancyhdr
+%    
+%   % It also helps to have rubber band values for the space between paragraphs:      
+%   \pagestyle{fancy}             % \pagestyle{headings} 
+%   \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%   \renewcommand{\sectionmark}[1]{\markright{#1}{}}
+%   \fancyhf{}                    % want to get different style for even and odd pages
+%   % HEADERS CONFIGURATION 
+%   % \fancyhead[selectors]{output you want}
+%   \fancyhead[LE,RO]{\thepage}   % \thepage = number of the current page    
+%   \fancyhead[RE]{\textit{\nouppercase{\leftmark}}}
+%   \fancyhead[LO]{\textit{\nouppercase{\rightmark}}}
+%   % The selectors are the following:
+%    % E . . . even page
+%    % O . . . odd page
+%    % L . . . left side
+%    % C . . . centered
+%    % R . . . right side   
+%   \fancypagestyle{plain}{ % 
+%       \fancyhf{} % remove everything
+%       \renewcommand{\headrulewidth}{0pt} % remove lines as well
+%       \renewcommand{\footrulewidth}{0pt}}
+
+% Provides support for setting the spacing between lines in a document. Package
+% options include singlespacing, onehalfspacing, and doublespacing.
+% http://www.ctan.org/tex-archive/macros/latex/contrib/setspace/
+%  \usepackage{setspace} 
+% quotation marks 
+%  \usepackage{upquote}
+  
+% ------------------------------------------------------------------------------------------------------------
+% This package provides a flexible and easy interface to page dimensions. You can change the page
+% layout with intuitive parameters.
+    % \pdfpageheight  .. Dimensions of the PDF file.
+    % \pdfpagewidth   .. Dimensions of the PDF file.
+    % \topmargin      .. Length of margin at top of page above all printing. 1 inch is added to
+    %                    this value.
+    % \evensidemargin .. Left margin on even numbered pages. 1 inch is added to this value.
+    % \oddsidemargin  .. Left margin on odd numbered pages. 1 inch is added to this value.
+    % \headheight     .. Height of the page header.
+    % \headsep        .. Distance from bottom of header to the body of text on a page.
+    % \topskip        .. Distance from top of main text box to the baseline of the first line of
+    %                    text in the main text box.
+    % \textheight     .. Height of main text box.
+    % \textwidth      .. Width of main text box.
+    % \footskip       .. Distance from bottom of body to the bottom of the footer.
+    % \parskip        .. Distance between paragraphs.
+    % \parindent      .. Amount of indentation at the first line of a paragraph.
+%  \setlength{\headheight}{16pt} % This line will prevent LaTeX from giving a warning.    
+%  \setlength{\parindent}{1cm}   % This will set paragraph indents to 1cm.
+%  \setlength{\parskip}{3ex plus 2ex minus 2ex}
+%  \setlength{\topmargin}{0.2cm}
+%  \setlength{\oddsidemargin}{1cm}
+%  \setlength{\evensidemargin}{1cm}
+%  \setlength{\textheight}{21cm}
+%  \setlength{\textwidth}{15cm}%
+%  \setlength{\marginparwidth}{2.0in}
+
+% ~~~~~~~~~~~~~~ Table of content style ~~~~~~~~~~ 
+% \renewcommand\contentsname{Obsah}        
+% ~~~~MINITOC~~~~
+% \mtcselectlanguage{czech}                  % change the language title of minitoc
+% \setcounter{minitocdepth}{2}               % default
+% \setlength{\mtcindent}{24pt}               % default
+% \renewcommand{\mtcfont}{\small\rm}        % default
+% \renewcommand{\mtcSfont}{\small\textbf}    % default
+
+%\makeatletter
+%\renewcommand\tableofcontents%
+%{%
+%  %\section*{\contentsname}%
+%  \@mkboth{%
+%  \MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+%  \@starttoc{toc}%
+%}%
+% The \makeatletter command temporarily defines »@« as a normal character to enable changes to
+% internal LaTeX macros outside packages (STY) or classes (CLS). With \makeatother this process is
+% reversed and the »@« is set to its original character category (other). The »@« is used to
+% protect the internal LaTeX macros.
+%  \renewcommand*{\raggedchapterentry}{\setlength{\@tempdima}{3em}}
+%  \renewcommand*\l@section{\bprot@dottedtocline{1}{1.5em}{3em}}
+%  \renewcommand*\l@subsection{\bprot@dottedtocline{2}{3.8em}{3.2em}}
+%  \renewcommand*\l@subsubsection{\bprot@dottedtocline{3}{7.0em}{4.1em}}
+%  \renewcommand*\l@paragraph{\bprot@dottedtocline{4}{10em}{5em}}
+%  \renewcommand*\l@subparagraph{\bprot@dottedtocline{5}{12em}{6em}}
+% The command \contentsline{NAME} expands to \l@NAME.  So, to specify the table of contents, we
+% must define \l@chapter, \l@section,\l@subsection, ... ; to specify the list of figures, we must
+% define \l@figure; and so on.  Most of these can be defined with the \@dottedtocline command,
+% which works as follows.
+%
+% \@dottedtocline{LEVEL}{INDENT}{NUMWIDTH}{TITLE}{PAGE}
+%    LEVEL    : An entry is produced only if LEVEL < or = value of
+%               'tocdepth' counter.  Note, \chapter is level 0, \section
+%               is level 1, etc.
+%    INDENT   : The indentation from the outer left margin of the start
+%               of the contents line.
+%    NUMWIDTH : The width of a box in which the section number is to go,
+%               if TITLE includes a \numberline command.
+%
+% This command uses the following three parameters, which are set
+% with a \def (so em's can be used to make them depend upon the font).
+%   \@pnumwidth : The width of a box in which the page number is put.
+%   \@tocrmarg  : The right margin for multiple line entries.  One
+%                 wants \@tocrmarg > or = \@pnumwidth
+%   \@dotsep    : Separation between dots, in mu units.  Should be
+%                 \def'd to a number like 2 or 1.7 (?)
+%
+%    \def\@pnumwidth{1.75em}  % default 1.55
+%    \def\@tocrmarg {2.55em}  
+%    \def\@dotsep{4.5}
+%\makeatother
+ 

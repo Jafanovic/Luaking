@@ -1,0 +1,158 @@
+% !TeX spellcheck = cs_CZ
+
+\begin{example}\label{mai:exam002}
+  Určete vlastní čísla a odpovídající vlastní vektory následují\-cích matic:
+  \begin{equation*}
+    \mathbf{A}=
+      \begin{pmatrix}
+        1   & 0.5\\
+        3.5 & 4
+      \end{pmatrix}, \quad
+    \mathbf{B}=
+      \begin{pmatrix}
+        3   & -1 \\
+        2.5 &  4 
+      \end{pmatrix}
+  \end{equation*}
+  \textbf{Řešení}: Vlastní čísla určíme z charakteristické rovnice: \(\det(\mathbf{A} - 
+  \lambda\mathbf{I}) = 0\). Vlastní vektory \(\mathbf{x_i}\) odpovídající vlastním číslům 
+  \(\lambda_i\), jsou řešením homogenní soustavy rovnic \((\mathbf{A} - 
+  \lambda_i\mathbf{I})\mathbf{x_i} = 0\).
+  \begin{itemize}
+    \item Vlastní čísla matice \textbf{A}:
+      \begin{equation*}
+           \textbf{A} - \lambda\textbf{I} =
+             \begin{pmatrix}
+                1-\lambda  &  0.5          \\
+               -3.5        &  4-\lambda
+             \end{pmatrix}
+      \end{equation*}
+      \begin{align*}
+         \det(\mathbf{A}-\lambda\mathbf{I}) &= 0 \\
+         (1-\lambda)(4-\lambda)-\frac{7}{4} &= 0 \\
+         \lambda^2-5\lambda+\frac{9}{4}     &= 0
+      \end{align*}
+      \begin{equation*}
+         \lambda_1 = 4.5,\quad \lambda_2 = 0.5
+      \end{equation*}
+  \end{itemize}
+
+    \begin{itemize}
+      \item Vlastní čísla matice \textbf{B}:
+        \begin{equation*}
+             \textbf{B} - \lambda\textbf{I}=
+               \begin{pmatrix}
+                 3-\lambda  & -1             \\
+                 2.5        &  4-\lambda
+               \end{pmatrix}
+        \end{equation*}
+        \begin{align*}
+           \det(\mathbf{B}-\lambda\mathbf{I}) &= 0 \\
+           (3-\lambda)(4-\lambda)+\frac{5}{2} &= 0 \\
+           \lambda^2-7\lambda+\frac{29}{2}    &= 0
+        \end{align*}
+        \begin{equation*}
+           \lambda_1 = \frac{7+3i}{2},\quad \lambda_2 = \frac{7-3i}{2}
+        \end{equation*}
+    \end{itemize}
+  % matice A
+  Vlastní vektor matice \(\mathbf{A}\) pro \(\lambda_1=4.5: (\mathbf{A} - 
+  \lambda_1\mathbf{I})\mathbf{x_1} = 0 \Rightarrow\)
+  \begin{align*}
+    \begin{pmatrix}
+       1  -4.5  &  0.5     \\
+      -3.5      &  4-4.5
+    \end{pmatrix}
+    \sim
+    \begin{pmatrix}
+      -3.5  &  0.5         \\
+      -3.5  & -0.5
+    \end{pmatrix}
+    \Rightarrow\mathbf{x_1} &=
+    \begin{pmatrix}
+      1 \\ 7
+    \end{pmatrix}
+    \, r, r\in\mathbb{R}, r\neq0
+  \end{align*}
+  Vlastní vektor matice \(\mathbf{A}\) pro \(\lambda_2=0.5: (\mathbf{A} - 
+  \lambda_1\mathbf{I})\mathbf{x_2}=0 \Rightarrow\)
+  \begin{align*}
+    \begin{pmatrix}
+       1  -0.5  &  0.5   \\
+      -3.5      &  4-0.5
+    \end{pmatrix}
+    \sim
+    \begin{pmatrix}
+       0.5  &  0.5       \\
+       3.5  &  3.5
+    \end{pmatrix}
+    \Rightarrow\mathbf{x_2} &=
+    \begin{pmatrix}
+      -1 \\ 1
+    \end{pmatrix}
+    \, r, r\in\mathbb{R}, r\neq0
+  \end{align*}
+  % matice B
+  Vlastní vektor matice \(\mathbf{A}\) pro \(\lambda_1=\frac{7+3i}{2}: (\mathbf{B} - 
+  \lambda_1\mathbf{I})\mathbf{x_1}=0 \Rightarrow\)
+  \begin{align}
+    \begin{pmatrix}
+       3 - \frac{7+3i}{2}            & -1                                     \\
+       \frac{5}{2}                   &  4 - \frac{7+3i}{2}
+    \end{pmatrix}
+    &\sim
+    \begin{pmatrix}
+      -\frac{1}{2}-\frac{3}{2}i      &  -1                                     \\
+      \frac{5}{2}                    & \frac{1}{2}-\frac{3}{2}i
+    \end{pmatrix}
+    \sim                                                                          \\
+    \begin{pmatrix}
+      -\frac{10}{4}                  &-\left(\frac{1}{2} -\frac{3}{2}i\right)  \\
+      \frac{5}{2}                    & \frac{1}{2}-\frac{3}{2}i
+    \end{pmatrix}
+    &\sim
+    \begin{pmatrix}
+      -5                           &-\left(1-3i\right)                         \\
+       5                           & \left(1-3i\right)
+    \end{pmatrix}
+    \rightarrow \mathbf{x_1}=
+    \begin{pmatrix}
+      -1+3i \\ 5
+    \end{pmatrix}
+    \, r, r\in\mathbb{C}, r\neq0
+  \end{align}
+  Vlastní vektor matice \(\mathbf{B}\) pro \(\lambda_2=\frac{7-3i}{2}: (\mathbf{B} - 
+  \lambda_1\mathbf{I})\mathbf{x_2}=0 \Rightarrow\)
+  \begin{align*}
+    \begin{pmatrix}
+       3  - \frac{7-3i}{2}       &  -1                                     \\
+      \frac{5}{2}                &  4 - \frac{7-3i}{2}
+    \end{pmatrix}
+    &\sim
+    \begin{pmatrix}
+      -\frac{1}{2}+\frac{3}{2}i  &  -1                                     \\
+      \frac{5}{2}                & \frac{1}{2}+\frac{3}{2}i
+    \end{pmatrix}
+    \sim
+    \begin{pmatrix}
+      -\frac{10}{4}              &-\left(\frac{1}{2} +\frac{3}{2}i\right)  \\
+      \frac{5}{2}                & \quad\frac{1}{2}+\frac{3}{2}i
+    \end{pmatrix}
+    \sim                                                                     \\
+    \begin{pmatrix}
+      -5                         &-\left(1+3i\right)                       \\
+       5                         & \quad\left(1+3i\right)
+    \end{pmatrix}
+    &\rightarrow \mathbf{x_2}=
+    \begin{pmatrix}
+      -1-3i \\ 5
+    \end{pmatrix}
+    \, r, r\in\mathbb{C}, r\neq0
+  \end{align*}
+\end{example}
+%---------------------------------------------------------------
+\lstinputlisting{../src/MAI/matlab/LA001.m}
+\begin{lstlisting}[caption=Výpis programu pro ověření výpočtu vlastních čísel matic programem
+  Matlab.]
+\end{lstlisting}
+%---------------------------------------------------------------

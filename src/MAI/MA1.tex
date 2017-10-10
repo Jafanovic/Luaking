@@ -1,0 +1,103 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = cs_CZ
+% !TeX root = ../../tex/lauking.tex
+
+%     Mathematical analysis
+%---------------------------------------------------------------------------------------------------
+% file MA.tex
+% Notes>
+% notes:
+%~~~~~~~~~
+% \label{mai:eq046}
+% \label{mai:fig035}
+% \label{mai:lemma001}
+% \label{mai:exam034}
+% \label{mai:tab}
+% Mezery v matematickém režimu:
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\! záporná uzká mezera,   \; široká mezera,   \ mezislovní mezera,
+%\, úzká mezera,   \: střední mezera,   \quad čtverčík,   \qquad dva čtverčíky
+%---------------------------------------------------------------------------------------------------
+\lstset{ %
+  language=Matlab,                       % choose the language of the code
+  basicstyle=\footnotesize,              % the size of the fonts that are used for the code
+  backgroundcolor=\color{White},         % choose the background color.
+  commentstyle=\color{help}\textit,
+  keywordstyle=\color{keyword}\textbf,
+  breaklines=true,                       % sets automatic line breaking
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at 
+                                         % whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  frame=none,                            % adds a frame around the code - none, single
+  tabsize=8,                             % sets default tabsize to 8 spaces
+  captionpos=b,                          % sets the caption-position to bottom
+  numbers=left,                          % where to put the line-numbers -none, left, right
+  numberstyle=\footnotesize,             % the size of the fonts that are used for the line-numbers
+  stepnumber=1,                          % the step between two line-numbers. If it's 1 each line
+                                         % will be numbered
+  xleftmargin=3em,                       % adjust left margin
+}
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+  \graphicspath{{../src/MAI/img/}}
+%---------------------------------------------------------------------------------------------------
+\part{MA I}\label{part:MAI}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  \input{../src/MAI/chap/intro_linear_algebra.tex}
+  \input{../src/MAI/chap/Limits_of_Functions.tex}
+%  \input{../src/MAI/chap/ppst.tex}
+%  \input{../src/MAI/chap/chap_Int_rfce_1var.tex}
+%  \input{../src/MAI/chap/Theory_of_Derivatives.tex}
+%  \input{../src/MAI/chap/Differential_Calculus_applications.tex}
+%  \input{../src/MAI/chap/chap_PrimitivFce.tex}
+%  \input{../src/MAI/chap/Series.tex}
+%  \input{../src/MAI/chap/ODR.tex}
+%  \input{../src/MAI/chap/NM.tex}
+%  \input{../src/MAI/chap/history_MA.tex}
+}
+{
+% DEBUG was off
+%-------------------Introduction to mathematical analysis -----------------------------------------
+  \input{../src/MAI/chap/history_MA.tex}
+%---------------------Reálná a komplexní čísla-----------------------------------------------------
+  \input{../src/MAI/chap/intro_linear_algebra.tex}
+%------------------- Differential calculus --------------------------------------------------------
+  \input{../src/MAI/chap/Limits_of_Functions.tex}
+%-------------------- Theory_of_Derivatives -------------------------------------------------------
+  \input{../src/MAI/chap/Theory_of_Derivatives.tex}
+%-------------------- Differential Calculus applications ------------------------------------------
+  \input{../src/MAI/chap/Differential_Calculus_applications.tex}
+%--------------------Primitive Functions ----------------------------------------------------------
+  \input{../src/MAI/chap/chap_PrimitivFce.tex}
+%--------------------an Integrals of functions of one real variable -------------------------------
+  \input{../src/MAI/chap/chap_Int_rfce_1var.tex}
+%---------------------Řady-------------------------------------------------------------------------
+  \input{../src/MAI/chap/Series.tex}
+%---------------------Obyčejné diferenciální rovnice ----------------------------------------------
+  \input{../src/MAI/chap/ODR.tex}
+%---------------------Numerické metody ------------------------------------------------------------
+  \input{../src/MAI/chap/ppst.tex}
+%---------------------Numerické metody ------------------------------------------------------------
+  \input{../src/MAI/chap/NM.tex}
+} % DEBUG was off
+
+\part{MA II}\label{part:MAII}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+  \input{../src/MAI/chap/mai2ch01.tex} 
+ 
+
+}{
+% Debug mode OFF
+%======= Kapitola: Vícerozměrná algebra aneb lineární algebra podruhé =============================
+  \input{../src/MAI/chap/mai2ch01.tex} 
+}

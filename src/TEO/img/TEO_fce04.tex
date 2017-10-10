@@ -1,0 +1,68 @@
+% \documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{decorations.markings}
+% \usetikzlibrary{intersections}
+% \usepackage{subfigure} 
+% \usetikzlibrary{calc}
+
+% \newcommand{\MyXYcross}{%
+%   \draw[name path=axeX,->] (\xmin,\nula) -- (\xmax,\nula)   
+%     node[right] {$\omega t$} coordinate(x axis);
+%   \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) 
+%     node[left]  {$v(t)$} coordinate(y axis);
+%   \path[name intersections={of=axeX and axeY, name=pocatek}];
+%   \node[below left] at (pocatek-1) {$0$};
+%   \draw[fill=white] (pocatek-1) circle(2pt);
+% }
+%\begin{document}
+ 
+  \begin{figure}[ht!]
+    \centering
+        \def\xmin{-15}
+        \def\xmax{180}
+        \def\ymin{-60}
+        \def\ymax{+70}
+        \def\nula{0}
+        \def\phase{15}
+        \def\period{48}
+        \def\myscale{0.8}   
+      \begin{tikzpicture}
+        \begin{scope}[domain=-0.3*pi:2.5*pi,draw=black,line join=round, miter limit=4.00,line
+                      width=0.5pt, y=1pt,x=1pt, scale=\myscale] \pgfmathsetmacro\bx{sin(pi*0.5 r)}        
+          % osový kříž      
+          \draw[name path=axeX,->] (\xmin,\nula) -- (\xmax,\nula)   
+            node[right] {$\omega t$} coordinate(x axis);
+          \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) 
+            node[left]  {$v(t)$} coordinate(y axis);
+          \path[name intersections={of=axeX and axeY, name=pocatek}];
+          \node[below left] at (pocatek-1) {$0$};
+          \draw[fill=white] (pocatek-1) circle(2pt);
+          % funkce
+          \draw[name path=sinx, color=blue, smooth, x=20pt, y=50pt]   
+              plot[mark=triangle*] (\x,{sin(\x r)}); % r .. radian    
+          \path[name intersections={of=axeX and sinx, name=point}]; % prusecik osy x s funkcí sin(x)
+            \draw[dotted, name path=line1] (point-1) --+(0,-70) coordinate(Ta); 
+            \draw[dotted, name path=line3] (point-3) --+(0,-70) coordinate(Tc);
+            \draw[<->] (Ta) -- (Tc); 
+            \draw[fill, color=black] ($ (Ta)!0.5!(Tc) $) node[above, black] {$T$}; 
+            \draw[-]  (Ta) ++(-1,30)  -- +(\phase+1.5,0);
+            \draw[->] (Ta) ++(-5, 30) -- +(+5,0); % left arrow for dimension \varphi
+            \draw[->] (Ta)  +(\phase*0.5,30) 
+              node[above] {$\varphi$} ++(\phase+5,30) -- +(-5,0); % left arrow for dimension \varphi
+          % amplitude Vm
+          \draw[dotted, x=20pt, y=50pt] (pi*0.5,\bx) -- ++(3,0) coordinate(Vm);
+          \draw[dotted, x=20pt, y=50pt] (pi*0.5,\bx) -- ++(3,0) coordinate(Vm);
+          % http://tex.stackexchange.com/questions/85079/tikz using functions for calculaton
+          % x-y parts of the coordinate in the stream 
+          % \draw[fill=white, x=20pt, y=50pt] ({pi*0.5},{sin(pi*0.5 r)}) circle(1pt);
+          \draw[fill=white, x=20pt, y=50pt] (pi*0.5,\bx) circle(1pt);         
+          \draw[<->, x=20pt, y=50pt] (Vm) -- +(0,-0.5*\bx) node[right] {$V_m$} -- ++(0,-\bx);         
+        \end{scope}  
+      \end{tikzpicture}
+      \caption{Haromincká funkce $v = V_m\cos(\omega t + \varphi)$ resp. $v= V_m\cos(\omega t +
+               \varphi')$ kde je $\varphi' = \varphi - \frac{T}{4}$}
+      \label{TEO:fig_04}
+  \end{figure}
+
+  
+%\end{document}

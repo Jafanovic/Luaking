@@ -1,0 +1,24 @@
+% ===================================================================================================
+%                                     Physics environment 
+% ===================================================================================================
+\NeedsTeXFormat{LaTeX2e}
+% ~~~~~~~~~~ Chemical formula ~~~~~~~~~~~~~~~~~~~~ 
+  \usepackage[version=4]{mhchem}
+% ~~~~~~~~~~ SI unit  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+% This article describes the SIunits package that provides support for the SI 
+% http://tex.stackexchange.com/questions/2766/
+ \usepackage{siunitx}
+% Physical quantities have both numbers and units, and each physical quantity should be expressed
+% as the product of a number and a unit.
+  \sisetup{
+    output-decimal-marker = {,},       % set the comma as decimal point 
+    separate-uncertainty = true,
+    multi-part-units=single,
+    exponent-product = {\cdot},        % exponent-product option example: \times, \ldots
+    math-micro=\text{µ},text-micro=µ   % http://tex.stackexchange.com/questions/33965/siunitx-%C2%B5-doesnt-work
+  }
+
+% Astronomy
+\DeclareSIUnit\parsec{pc}
+\DeclareSIUnit\lightyear{ly}
+\DeclareSIUnit\AU{AU}

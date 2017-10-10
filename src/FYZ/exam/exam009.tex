@@ -1,0 +1,46 @@
+% !TeX spellcheck = cs_CZ
+\begin{example}
+  Nalezněte divergenci elektrického pole bodového náboje v celém prostoru (pro 
+  \textbf{bodový náboj} je \(r\rightarrow0\), \(\varrho\rightarrow\infty\)).
+  (zdroj: \librariaALDBR)\newline  
+  \textbf{Řešení:}
+  Elektrické pole v okolí bodového náboje je dáno \hyperlink{fyz:IIchapIVsecII}{Coulombovým 
+  zákonem} \[\vec{E} = \frac{Q}{4\cdot\pi\cdot r^2}\vec{n}_0,\] kde \(r\) je vzdálenost daného 
+  místa od náboje, \(\vec{n}_0\) je jednotkový vektor \(\vec{n}_0 = (\dfrac{x}{r}, \dfrac{y}{r},  
+  \dfrac{z}{r})\) mířící od náboje. Elektrické pole má tedy složky (\(k = \dfrac{Q}{4\cdot\pi\cdot 
+  r^2}\))
+  \begin{equation*}
+    E_x = k\left(\frac{x}{r^3}\right), \qquad
+    E_y = k\left(\frac{y}{r^3}\right), \qquad
+    E_z = k\left(\frac{z}{r^3}\right).
+  \end{equation*}
+  Pro výpočet divergence budeme potřebovat derivaci vzdálenosti podle jednotlivých
+  proměnných:
+  \begin{align*}
+    \pder{r}{x} &= \pder{(x^2 + y^2 + z^2)^\frac{1}{2}}{x} = \frac{x}{r},  \\
+    \pder{r}{y} &= \pder{(x^2 + y^2 + z^2)^\frac{1}{2}}{y} = \frac{y}{r},  \\ 
+    \pder{r}{z} &= \pder{(x^2 + y^2 + z^2)^\frac{1}{2}}{z} = \frac{z}{r}.  \\
+    \shortintertext{Divergence elektrického pole je, jak známo}            \\
+    \diver{E}   &= \pder{E_x}{x} + \pder{E_y}{y} + \pder{E_z}{z}.
+  \end{align*}
+  Derivace jednotlivých složek je v tomto případě optimální řešit jako derivace podílu:
+  \begin{align*}
+    \pder{E_x}{x} &=  \pder{ }{x}\left(k\dfrac{x}{r^3}\right) 
+                   = k\pder{ }{x}\left(\dfrac{x}{r^3}\right)     
+                   = k\dfrac{\pder{x}{x}r^3-x3r^2\pder{x}{r}}{r^6}  \\
+                  &= k\dfrac{r^3-x3r^2\dfrac{x}{r}}{r^6}
+                   = k\dfrac{r^2-3x^2}{r^5}
+  \end{align*}
+  Podobně bude
+  \begin{equation*}
+    \pder{E_y}{y} = k\dfrac{r^2-3y^2}{r^5} \qquad a \qquad
+    \pder{E_z}{z} = k\dfrac{r^2-3z^2}{r^5},
+  \end{equation*}
+  takže pro divergenci máme
+  \begin{align*}
+    \diver{E} &= k\dfrac{r^2 - 3x^2 + r^2 - 3y^2 + r^2 - 3z^2}{r^5} \\
+              &= k\dfrac{3r^2-3(x^2 + y^2 + z^2)}{r^5} = 0; \quad r\neq0
+  \end{align*}
+  Divergence elektrického pole je tedy v celém prostoru nulová (nejsou v něm zřídla toku) kromě 
+  množiny \(r = 0\), ve které se toto zřídlo (zdroj pole – singulární hustota náboje) nachází.
+\end{example}

@@ -1,0 +1,60 @@
+%\documentclass{article}
+%  \usepackage{fontspec,xltxtra,xunicode,unicode-math} 
+%  \usepackage{siunitx}
+%  \usepackage{tikz}
+%    \usetikzlibrary{intersections}
+%    \usetikzlibrary{calc}
+%    \usetikzlibrary{positioning}
+%    \usetikzlibrary{arrows}
+%    \tikzstyle{every node}=[font=\small]
+%    \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+%  \usepackage[american, 
+%              europeanresistor, cuteinductors, smartlabels]{circuitikz}
+%    \ctikzset{bipoles/thickness=1}
+%    \ctikzset{bipoles/length=0.8cm}
+  
+% \begin{document}
+  \begin{figure}[htp]
+    \centering
+\begin{circuitikz}[scale=2, every node/.style={font=\footnotesize}, european voltages]
+  \node (0,0) (B) {};
+  \node [left =2.5cm of B](A) {};
+  \node [right=2.5cm of B](C) {};
+  \node [below=2.5cm of B](D) {};
+  \node [below=2.5cm of A](E) {};
+  \node [below=2.5cm of C](F) {};
+  \node [above=1cm of A](G) {};
+  \node [above=1cm of C](H) {};
+
+  \ctikzset{current/distance = .5}
+  \ctikzset{bipoles/resistor/voltage/distance from node/.initial = .5}
+  \draw[red, line width=2pt] (F)
+    to[short, color =red, i>_= $i_x$](C);
+  \draw (A) 
+    to[R ,l=$\substack{\displaystyle\hfill R_2\\\displaystyle \SI{2}{\kohm}}$,%
+        v_>=$\substack{\phantom{a}\\\displaystyle U_1-U_2}$, i>^= $i_2$, *-*] (B) node[above] {$2$}
+    to[R, l=$\substack{\displaystyle\hfill R_3 \\\displaystyle \SI{2}{\kohm}}$,%
+        v_>=$\substack{\phantom{a}\\\displaystyle U_2}$, i^>= $i_3$, *-*] (C);
+  \draw (B) 
+    to[R, l_=$\substack{\displaystyle\hfill R_4 \\ \displaystyle\SI{2}{\kohm}}$,%
+         i>_=$i_4$,-*] (D); 
+  \draw (A) 
+    to[R, l_=$\substack{\displaystyle\hfill R_1 \\\displaystyle \SI{6}{\kohm}}$,%
+         i>_=$i_1$] (E) 
+    to[short](D) node[below, red] {$0$};
+  \draw (C) 
+    to[short] (H) 
+    to[I, i^=$\SI{1}{\milli\ampere}$] (G) 
+    to[short] (A) node[left] {$1$};
+  \ctikzset{voltage/distance from node=0.5}
+  \draw (D.north) 
+    to [open, v^=$U_1$] (A.north);
+  \draw (F.north) 
+    to [open, v^=$U_2$](B.north);
+  \draw[red, line width=2pt] (D) 
+    to[short, color =red, *-] (D -| C);
+\end{circuitikz}
+    \caption{Řešení obvodu metodu uzlových napětí - MUN \cite[s.~62]{Biolek}}
+    \label{TEO:fig_MMUN03}
+  \end{figure}
+% \end{document}

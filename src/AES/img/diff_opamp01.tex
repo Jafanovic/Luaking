@@ -1,0 +1,59 @@
+% !TeX spellcheck = cs_CZ
+% Diferenciální zesilovač
+% pozn: symbol země (ground) je předefinován v knihovně wiking.sty
+
+% Define box and box title style
+% http://www.texample.net/tikz/examples/boxes-with-text-and-math/
+\tikzstyle{mybox} = [draw=red, fill=blue!20, very thick,
+    rectangle, rounded corners, inner sep=5pt, inner ysep=10pt, inner xsep=10pt ]
+\tikzstyle{fancytitle} =[fill=red, text=white]
+
+\begin{figure*}[ht!]
+  \centering
+  \begin{circuitikz}[scale=1, every node/.style={scale=1}]
+    \ctikzset{resistor=european}
+%    \ctikzset{tripoles/op amp/scale=0.5}
+    \draw (0,0) node[op amp, scale=0.5] (opamp) {};
+    \node [left=0.1cm of opamp.-]       (p1) {};
+    \node [left=0.1cm of opamp.+]       (p2) {};
+    \node [above=0.5cm of p1]           (A)  {};
+    \node [left=1.5cm of A]             (p3) {};
+    \node [right=1.5cm of A, coordinate](C)  {};
+    \node [right=0.5cm of C]            (p6) {};
+    \node [below=0.5cm of p2]           (B)  {};
+    \node [left=1.5cm of B]             (p4) {};
+    \node [right=1.5cm of B]        (ground) {};
+    \node [right=0.1cm of opamp.out, coordinate] (vo) {};
+    %%% Draw connections
+    \draw (p3) node[left] {$u_1$} to[R=$R_1$,o-] (A)  to[R=$R_2$,*-] (C); 
+    \draw (opamp.-)   to[short] (p1) to[short] (A);
+    \draw (opamp.out) to[short] (vo);
+    \draw (vo) to[short,-*] (vo |- C); 
+    \draw (p4) node[left] {$u_2$} to[R=$R_3$,o-] (B)  to[R=$R_4$,*-] (ground) node [sground] {};  
+    \draw (opamp.+) to[short] (p2) to[short] (B); 
+    \draw (C) to[short,-o] (p6) node[right] {$u_{0}$};
+    \node[above] at (A) {A}; % text 
+    \node[below] at (B) {B}; % text 
+    %%% minipage
+    \node [mybox, right=5cm of p2] (box){%
+       \begin{minipage}[l]{3cm}
+          \begin{align*}
+              \frac{R_4}{R_3} &= \frac{R_2}{R_1} \\
+              u_0             &= \frac{R_2}{R_1}(u_2 - u_1) \\
+              R_{|1|}         &= R_1 \\
+              R_{|2|}         &= R_3 + R_4 \\
+              R_{\mathsf{O}|} &= 0
+          \end{align*}
+       \end{minipage}
+    };
+    \node[fancytitle, right=10pt, rounded corners] at (box.north west) {rovnice:};
+   %\node[fancytitle, rounded corners] at (box.east) {$\clubsuit$};
+    %%% text R_{|1|} and R_{|2|}
+    \draw[->] (-4.0,0.2) -- +(0,0.5) node[left] {$R_{|1|}$} -- +(0.5,0.5);
+    \draw[->] (-4.0,-0.2) -- +(0,-0.5) node[left] {$R_{|2|}$} -- +(0.5,-0.5);
+  \end{circuitikz} 
+  \caption{Rozdílový zesilovač. Podmínky potlačení souhlasné složky vstupních napětí $u_1$ a 
+           $u_2$ je poměrové vyvážení zpětnovazebních rezistorů, $R_4/R_3 = R_2/R_1$. S ohledem na 
+           ofset se obvykle volí uplná symetrie, tj. $R_4 = R_2$ a $R_3 = R_1$.}
+  \label{AES:fig_diff_opamp01}         
+\end{figure*}

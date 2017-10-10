@@ -1,0 +1,293 @@
+% !TeX spellcheck = cs_CZ
+{\tikzset{external/prefix={tikz/CES/}}
+ \tikzset{external/figure name/.add={ch01_}{}}
+%---------------------------------------------------------------------------------------------------
+% file cis_sig_sys.tex
+%---------------------------------------------------------------------------------------------------
+\definecolor{Gray}{gray}{0.9}
+%===================== Kapitola: Číslicové systémy a signály========================================
+\chapter{Číslicové systémy a signály}  
+\minitoc
+
+  \section{Co je číslicový systém}
+    V číslicovém systému se pracuje se signály, které mají jen konečný počet diskrétních hodnot. 
+    Tím se liší od systémů analogových, u kterých jsou signály spojité, tj. mohou ve vymezeném 
+    rozsahu nabývat nekonečný počet hodnot. V číslicovém systému může i čas být veličinou 
+    diskrétní, tj. signály se mohou měnit jen v určitých okamžicích. Takovéto číslicové systémy
+    se pak nazývají \textbf{synchronní} - na rozdíl od systémů \textbf{asynchronních}, u kterých ke 
+    změnám signálů může docházet kdykoliv. Synchronní systémy jsou podstatně častější, neboť 
+    existence přesně stanovených okamžiků změn signálů zavádí "pořádek" do časování signálů v 
+    systému a tím usnadňuje jeho konstrukci i výrobu v podobě integrovaných obvodů. Přesné
+    časování je zajištěno hodinovými (taktovacími) impulsy, což je velmi významný signál systému \cite[s.~14]{Pinker2006}.
+  
+    Číslicové systémy se dělí na dvě skupiny
+    \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+      \item \textbf{kombinační systémy},
+      \item \textbf{sekvenční systémy}.
+    \end{itemize}
+    U kombinačních systémů jsou výstupní signály závislé pouze na momentálních vstupních signálech. 
+    U sekvenčních systémů jsou výstupní signály závislé nejen na momentálních vstupních signálech, 
+    ale i na vstupních signálech v minulosti. Systém tedy má \emph{vnitřní paměť}.
+    
+    \subsection{Dvojstavové signály}
+      Jak již bylo řečeno, číslicové signály mají jen konečný počet diskrétních hodnot. V naprosté 
+      většině jrou to právě jen dvě hodnoty. Dvouhodnotové nebo dvoustavové signály snižují nároky 
+      na výrobní tolerance. Bylo tak možné zavést výrobní postupy, které umožňují hromadnou a 
+      levnou výrobu součástek. 
+      
+      Předpokládejme, že číslicové součástky jsou napájeny kladným napětím $+U_{CC}$. Jedna hodnota 
+      bude vyjádřena nižším napětím, druhá vyšším napětím. Dvě možné hodnoty signálu označíme jako 
+      '0' a '1' (v souladu se značením v \hyperref[CES:basic_bool_alg]{Boolově algebře}).
+     
+  \section{Kombinační logické funkce}
+    Základním pojmem při úvahách o kombinačních systémech představuje pojem kombinační logická
+    funkce.  \emph{Kombinační logická funkce} je pravidlo přiřazující každé kombinaci hodnot
+    \texttt{0} a \texttt{1} přiřazených vstupním proměnným z definičního oboru funkce jedinou
+    hodnotu výstupní proměnné. Pro daný počet vstupních proměnných je těchto funkcí konečný počet.
+    Kombinační logické funkce mohou být úplně nebo neúplně určené.  \emph{Úplně určená kombinační
+    logická funkce} je taková funkce, jejíž definiční obor zahrnuje všechny kombinace vstupních
+    proměnných. U \emph{neúplně určené kombinační logické funkce} její definiční obor nezahrnuje
+    některé tyto kombinace. Kombinací se zde rozumí kombinace hodnot  \texttt{0} a \texttt{1}
+    přiřazených jednotlivým vstupním proměnným. Úplně určeným funkcím se někdy říká úplné funkce,
+    funkcím neúplné určeným pak neúplné funkce.
+   
+  \subsection{Realizace kombinačních logických funkcí} 
+    Nejčastěji se v digitální technice setkáme s těmito způsoby realizace kombinační logické funkce:
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item pomocí digitálních integrovaných obvodu typu \texttt{NAND}, \texttt{NOR} (popř.   
+              \texttt{AND}, \texttt{OR}) a dalších obvodů realizujících základní kombinační logické 
+              funkce - např. \texttt{AND-OR-INVERT}, \texttt{EX-OR} atd.,
+        \item pomocí multiplexeru a demultiplexeru,
+        \item pomocí speciálních kombinačních integrovaných obvodu (převodníky kódu, generátory    
+              parity, sčítačky, násobičky a podobně - sem patří i použití multiplexeru a 
+              demultiplexeru),
+        \item pomocí pamětí (např. \texttt{PROM} a \texttt{EEPROM}),
+        \item pomocí programovatelných logických obvodu (\texttt{PLD}). 
+      \end{itemize}
+      
+      \subsubsection{Použití multiplexerů a demultiplexerů k realizaci kombinačních logických funkcí}
+   
+  \subsection{Základní pravidla Booleovy algebry}\label{CES:basic_bool_alg}
+    Nejdůležitější postuláty:
+    \begin{align}
+       \shortintertext{Univerzální vazba:}
+         x + 0 = x \quad x\cdot 0 = 0 &|  x + 1 = 1 \quad x\cdot 1 = 1                         \\
+       \shortintertext{Doplňek}
+         x + \overline{x} = 1         &|  x\cdot\overline{x} = 0                               \\
+       \shortintertext{Idempotence}
+         x +x = x                     &|  x\cdot x = x      
+      \label{CES:postul_Idemp}
+    \end{align}
+  \subsection{Zjednodušování zápisu logické funkce}
+     Logická funkce vyjádřená úplnou součtovou (disjunktivní) nebo součinovou (konjuktivní) formou 
+     z pravdivostní tabulky není jediným možným zápisem logické funkce. Dá se většinou nalézt 
+     jednodušší algebraický zápis, z něhož můžeme předpokládat, že povede na realizaci méně 
+     složitého číslicového obvodu. Který ze zápisů logické funkce povede na minimální složitost 
+     obvodu závisí nejen na použitých logických členech, ale též na dalších kritériích: zpoždění, 
+     spotřeba obvodu, jeho spolehlivost, potlačení hazardních stavů, atd. První metodou je 
+     \emph{algebraická minimalizace}, 
+     
+    \subsubsection{Karnaughova metoda minimalizace pomocí mapy}  
+      Jednou z možností grafického zápisu logické funkce je mapa. Nejpoužívanější je 
+      \textbf{Karnaughova mapa} (čti ''karnau''). Mapa je uspořádána do čtverce či obdélníka a to 
+      tak, že \emph{sousední pole} se liší vždy jen v jedné proměnné.
+      \begin{table}
+        \centering
+        \begin{tabular}{lr}
+          \begin{tabular}[t]{r|cccc|c}
+             \rowcolor{Gray}{\textbf{Index}}& {$x_4$} & {$x_3$} & {$x_2$} & {$x_1$} & {$f$} \\
+             \hline
+             0&0&0&0&0&1\\
+             1&0&0&0&1&1\\
+             2&0&0&1&0&1\\
+             3&0&0&1&1&0\\
+             4&0&1&0&0&0\\
+             5&0&1&0&1&1\\
+             6&0&1&1&0&1\\
+             7&0&1&1&1&0\\
+             8&1&0&0&0&0\\
+             9&1&0&0&1&1\\
+            10&1&0&1&0&1\\
+            11&1&0&1&1&0\\
+            12&1&1&0&0&0\\
+            13&1&1&0&1&1\\
+            14&1&1&1&0&1\\
+            15&1&1&1&1&0\\
+          \end{tabular}
+        \end{tabular}
+        \caption[Pravdivostní tabulka logické funkce]{Pravdivostní tabulka logické funkce čtyř 
+        proměnných, kterou se pokusíme vyjádřit také pomocí Karnaughovy mapy}
+        \label{CES:tab_true1}
+      \end{table} 
+
+      Mapu chápáme jako uspořádaný zápis pravdivostní tabulky vzniklou transformací řádku tabulky 
+      na jedno pole mapy \cite[s.~25]{Podlesak1994}. Tedy, každé pole mapy jednoznačně odpovídá 
+      určité kombinaci všech proměnných. Nalézá-li se pole pod pruhem vyznačeným u proměnné, bude 
+      tato proměnná nenegovaná. Nalézá-li se mimo pruh, bude proměnná negovaná. Tak např.
+      pole označené jako x v mapě pro tři proměnné bude odpovídat kombinaci 
+      $x_1\overline{x_2}\overline{x_3}$. Jak je názorně vidět, z pravdivostní tabulky funkce lze 
+      snadno sestavit její mapu a naopak. Řádkům pravdivostní tabulky, ve kterých je
+      funkční hodnota 1, odpovídají pole mapy s vepsanou jedničkou; obdobně to platí i pro nuly. V 
+      mapě lze znázornit i neurčené stavy prázdným políčkem (nebo pomlčkou) 
+      \cite[s.~219]{Wakerly1999}.
+       
+      \begin{figure}[hb!]
+          \centering
+          \karnaughmap{2}{$f(x_1,x_2):$}{{$x_2$}{$x_1$}}{1010}{}
+          \karnaughmap{3}{$f(x_1,x_2,x_3):$}{{$x_3$}{$x_2$}{$x_1$}}{1x      }{}  
+          \karnaughmap{4}{$f(x_1,x_2,x_3,x_4):$}{{$x_4$}{$x_3$}{$x_2$}{$x_1$}}{1010011001100110}{}        
+        \caption{Příklad Karnaughovy mapy pro dvě, tři a čtyři proměnné}\label{CES:karnaugh_234}
+      \end{figure}     
+      
+      Přiřazení kombinací hodnot vstupních proměnných (součinů) jednotlivým polím mapy se označuje 
+      jako \emph{kódování}. Řádky i sloupce Karnaughovy mapy jsou kódovány \textbf{Grayovým kódem}. 
+      Základní vlastností Grayova kódu je to, že sousední slova konstantí délky se liší pouze v 
+      jedné proměnné. Tuto vlastnost splňuje i první a poslední kódové slovo (kód je uzavřen sám
+      do sebe) viz \ref{CES:BCD_Gray_c}. Právě tato vlastnost je využita při konstrukci Karnaughovy 
+      mapy - souřadnice polí jsou uspořádány tak, že u sousedních polí se liší jen v jedné 
+      proměnné. Tudíž geometricky sousedící pole jsou sousední i v algebraickém smyslu (liší se v 
+      jediné proměnné).  
+      
+     \begin{table}[ht!] 
+       \centering 
+       \begin{tabular}{|c|c|c|}
+         \hline
+         \rowcolor{CornflowerBlue}{\textbf{Číslo}}  & \textbf{Binární kód} & \textbf{Grayův kód} \\
+         \rowcolor{CornflowerBlue}{ }               &     {$x_1,x_2,x_3$}  & {$x_1,x_2,x_3$}     \\
+          \hline\hline  
+             \cellcolor[gray]{0.9}0                 & 000                  & 000               \\
+          \hline       
+             \cellcolor[gray]{0.9}1                 & 001                  & 001               \\
+          \hline  
+             \cellcolor[gray]{0.9}2                 & 010                  & 011               \\
+          \hline  
+             \cellcolor[gray]{0.9}3                 & 011                  & 010               \\
+          \hline  
+             \cellcolor[gray]{0.9}4                 & 100                  & 110               \\
+          \hline         
+             \cellcolor[gray]{0.9}5                 & 101                  & 111               \\
+          \hline  
+             \cellcolor[gray]{0.9}6                 & 110                  & 101               \\
+          \hline  
+             \cellcolor[gray]{0.9}7                 & 111                  & 100               \\
+          \hline
+       \end{tabular}
+       \caption{Binární a Grayův kód pro tři proměnné}
+       \label{CES:BCD_Gray_c}    
+     \end{table}       
+      
+     Každé pole s hodnotou 1 odpovídá \textbf{mintermu} z pravdivostní tabulky. Sousední pole tedy 
+     odpovídají mintermům lišícím se jen jednou proměnnou, a ty lze spojovat do 
+     \textbf{implikantů}. Sousední jsou i pole na okrajích mapy, neboť i ta se liší
+     jen v jedné proměnné (konce řádek, konce sloupců a rohy mapy). Spojováním výrazů sousedních 
+     políček provádíme minimalizaci, která díky jasnému geometrickému postupu vyhýbá 
+     problematickému hledání těchto součtů nebo součinů. 
+     
+     Spojování polí se vyznačí \textbf{smyčkou}. Pole po dvojicích sousední lze spojovat do větších 
+     smyček, ty opět do větších atd. Každá smyčka tedy musí mít stranu dlouhou právě $2^k$ polí, 
+     kde $k$  je celé kladné číslo. Smyčky zahrnují 2 pole, 4 pole, 8 polí, atd. Každá smyčka v 
+     mapě odpovídá implikantu funkce. Princip minimalizace spočívá v pokrytí všech     
+     jedniček\footnote{nul pro součinovou formu} (a libovolných neurčených stavů) soustavou smyček 
+     pro součtovou formu, přičemž:
+     \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+       \item smyčky musí být co možná největší,
+       \item smyček musí být co nejmenší počet.       
+     \end{itemize}     
+     Tento princip je ilustrován na následující mapě funkce čtyř proměnných. Jako příklad vezmeme 
+     funkci definovanou pravdivostní tabulkou \ref{CES:tab_true1}. Odpovídající Karnaughova mapa 
+     pro čtyři proměnné je na obrázku \ref{CES:karnaugh_234}. Základní součtový tvar této funkce je 
+     dán rovnici:     
+     \begin{align}
+        f(x_1, x_2, x_3, x_4) 
+          &= \overline{x_1x_2x_3x_4} + \overline{x_1}x_2\overline{x_3x_4} +           \nonumber \\
+          &+ x_1\overline{x_2}x_3\overline{x_4} + \overline{x_1}x_2x_3\overline{x_4}+ \nonumber \\ 
+          &+ x_1\overline{x_2x_3}x_4 + \overline{x_1}x_2\overline{x_3}x_4 +           \nonumber \\ 
+          &+ x_1\overline{x_2}x_3x_4 + \overline{x_1}x_2x_3x_4.                          
+     \end{align}
+     V mapě můžeme vytvořit celkem čtyři smyčky, kterými spojíme sousední políčka. Všimněme si, že 
+     některé smyčky se částečně překrývají. To však nevadí, protože k logické funkci můžeme na 
+     základě postulátu \ref{CES:postul_Idemp} (\emph{idempotence})
+     přidat tentýž součin několikrát. 
+     
+      \begin{figure}[hb!] 
+          \centering
+          \renewcommand{\kvcontentsize}{\Large}
+          \renewcommand{\kvindexsize}{\normalsize}
+          \kvunitlength=15mm
+          \karnaughmap{4}{$f(x_1,x_2,x_3,x_4):$}{{$x_4$}{$x_3$}{$x_2$}{$x_1$}}{1010011001100110}%
+            {% The Karnaugh map has its pivot point at the lower left point and a unitlength.
+              \thinlines
+              \put(0,2){\oval(1.9,1.9)[r]}   
+              \put(-0.2,1.05){\line(1,0){0.2}} % horizontal line
+              \put(-0.2,2.95){\line(1,0){0.2}}
+              \put(4,2){\oval(1.9,1.9)[l]}    
+              \put(4.0,1.05){\line(1,0){0.2}}  % horizontal line
+              \put(4.0,2.95){\line(1,0){0.2}}              
+              \put(1.5,0.5){\oval(0.9,0.9)[l]}
+              \put(2.5,0.5){\oval(0.9,0.9)[r]}
+              \put(1.5,0.95){\line(1,0){1}}
+              \put(1.5,0.05){\line(1,0){1}}
+              \put(2.5,3.5){\oval(0.9,0.9)[b]}
+              \put(2.05,3.5){\line(0,1){0.7}} 
+              \put(2.95,3.5){\line(0,1){0.7}}               
+              \put(2.5,0.5){\oval(0.9,0.9)[t]}
+              \put(2.05,-0.2){\line(0,1){0.7}}
+              \put(2.95,-0.2){\line(0,1){0.7}}               
+              \put(0.5,2.5){\oval(0.9,0.9)[b]}
+              \put(0.5,3.5){\oval(0.9,0.9)[t]}
+              \put(0.05,2.5){\line(0,1){1}}
+              \put(0.95,2.5){\line(0,1){1}}  
+              \put(0.2,3.5){\line(-1,1){0.5}}\put(-0.5,4){$1$}  
+              \put(3.7,2.6){\line(2,1){0.7}}\put(4.5,2.9){$2$}  
+              \put(1.8,0.8){\line(2,1){2.6}}\put(4.5,2.1){$3$}
+              \put(2.8,3.6){\line(2,1){1.6}}\put(4.5,4.4){$4$}                     
+             }  
+        \caption{Minimalizace pomocí Karnaughovy mapy. Zakreslené smyčky byly vytvořeny tak, aby 
+                 každá zahrnovala co největší počet polí s vepsanou 
+                 jedničkou.}\label{CES:karnaugh_minim1}
+      \end{figure}     
+     Smyčka ze dvou políček označená na mapě \ref{CES:karnaugh_minim1} jako č. 1, může být vyjádřena:  
+     \begin{equation}
+       \overline{x_1x_2x_3x_4} + \overline{x_1}x_2\overline{x_3x_4} = \overline{x_1x_3x_4}(\overline{x_2} + x_2) =
+       \overline{x_1x_3x_4}
+     \end{equation}
+     Smyčka ze čtyř polí na pravé a levé straně (označená č. 2):
+     \begin{align}
+       \overline{x_1}x_2\overline{x_3x_4} + 
+       \overline{x_1}x_2\overline{x_3}x_4 + 
+       \overline{x_1}x_2x_3\overline{x_4} +
+       \overline{x_1}x_2x_3x_4                                &=               \\ \nonumber
+       \overline{x_1}x_2\overline{x_3}(\overline{x_4}+x_4) +  
+       \overline{x_1}x_2x_3(\overline{x_4}+x_4)               &=               \\ \nonumber
+       \overline{x_1}x_2(\overline{x_3}+x_3)                  &= 
+       \overline{x_1}x_2 
+     \end{align}
+     Smyčka ze dvou polí v poslední řádce (označená č. 3):
+     \begin{equation}
+       x_1\overline{x_2x_3}x_4 + x_1\overline{x_2}x_3x_4 = 
+     \end{equation}     
+     \begin{figure}[ht!]
+         \centering
+         \karnaughmap{5}{$f(x_1,x_2,x_3,x_4,x_5):$}{{$x_5$}{$x_4$}{$x_3$}{$x_2$}{$x_1$}}%
+            {01001001111000110101110011000000}{}  
+        \caption{Příklad Karnaughovy mapy pro pět proměnných}\label{CES:karnaugh_5}
+      \end{figure}
+
+     \begin{figure}[hb!]
+         \centering                 
+         \karnaughmap{6}{$f(x_1,x_2,x_3,x_4,x_5,x_6):$}{{$x_6$}{$x_5$}{$x_4$}{$x_3$}{$x_2$}{$x_1$}}%
+          {{0}{1}{1}{0}{0}{1}{0}{0}%
+           {0}{0}{1}{0}{0}{0}{0}{0}%
+           {1}{1}{1}{1}{0}{1}{0}{0}%
+           {0}{1}{0}{0}{1}{0}{0}{1}%
+           {0}{0}{0}{1}{1}{1}{0}{0}%
+           {1}{0}{0}{1}{0}{0}{1}{1}%
+           {1}{1}{1}{0}{0}{0}{1}{1}%
+           {0}{0}{0}{0}{1}{1}{1}{0}}{}%                 
+        \caption{Příklad Karnaughovy mapy pro šest proměnných}\label{CES:karnaugh_6}
+      \end{figure}
+
+} % tikzset
+%---------------------------------------------------------------------------------------------------
+\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}

@@ -1,0 +1,43 @@
+\begin{document}
+\begin{tikzpicture}[scale=1]
+  \filldraw[fill=green!20!white, draw=green!50!sblack, very thick] (-2,2) rectangle (1,0);
+  \node (v1) at (-4,1) {\(x\)};
+  \node (v2) at (-2,1) {};
+  \node (v3) at (1,1) {};
+  \node (v4) at (3,1) {\(y\)};
+  \draw [->] (v1) edge (v2);
+  \draw [->] (v3) edge (v4);
+  \node[] at ($ (v2)!0.5!(v3) $) {\(S\)};
+
+\usetikzlibrary{calc}
+\pgftransformreset
+\node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt] at (current bounding box) {};
+%add border to avoid cropping by pdflibnet
+\foreach \border in {0.1}
+  \useasboundingbox (current bounding box.south west)+(-\border,-\border) rectangle (current bounding box.north east)+(\border,\border);
+\newwrite\metadatafile
+\immediate\openout\metadatafile=\jobname_BB.txt
+\path
+  let
+    \p1=(current bounding box.south west),
+    \p2=(current bounding box.north east)
+  in
+  node[inner sep=0pt,outer sep=0pt,minimum size=0pt,line width=0pt,text width=0pt,text height=0pt,draw=white] at (current bounding box) {
+\immediate\write\metadatafile{\p1,\p2}
+};
+\immediate\closeout\metadatafile
+\end{tikzpicture}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+

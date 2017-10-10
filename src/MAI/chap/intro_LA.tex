@@ -1,0 +1,284 @@
+% !TeX spellcheck = cs_CZ
+%     An overview of high school mathematics
+%---------------------------------------------------------------------------------------------------
+% intro_LA.tex
+%---------------------------------------------------------------------------------------------------
+\chapter{Historie matematické analýzy}\label{mai:IchapXII}
+\minitoc
+  %===============================Kapitola: Determinanty===========================================
+  \section{Determinanty}
+    Abychom mohli nadefinovat determinant, budeme muset vědět, jak vypočítat permutaci entice, 
+    respektive znaménko permutace.
+    \subsection{Permutace}
+      \begin{definition}\label{permutace}
+        Nechť \(\mathbf{M}\) je libovolná konečná množina. Permutací množiny \(M\) nazýváme 
+        zobrazení \(\pi\) množiny \(\mathbf{M}\) na sebe.
+      \end{definition}
+      
+      \begin{example}%(Damlová  Nagy, 1985, str. 34)
+        Permutace \(\pi\) množiny \(\mathbf{M}= \lbrace a,b,c,d\rbrace\) je např. zobrazení 
+        \(\pi\), definované předpisem:
+        \begin{equation}\label{permutace_zadani}
+          \pi\left(a\right) = c, \,
+          \pi\left(b\right) = d, \,
+          \pi\left(c\right) = b, \,
+          \pi\left(d\right) = a,
+        \end{equation}
+        Místo tohoto zápisu se však používá přehlednější zápis ve tvaru matice typu \((2,4)\):
+        \begin{equation}\label{LA:eq_perm_exam}
+            \begin{pmatrix}
+            a & b & c & d \\
+            c & d & b & a
+            \end{pmatrix}
+        \end{equation}
+        kde v prvním řádku jsou vypsány všechny prvky množiny \(\mathbf{M}\) (v libovolném pořadí) 
+        a ve druhém řádku je pod každým prvkem zapsán jeho obraz v permutaci. Tutéž permutaci však 
+        můžeme zapsat ve tvaru matice několika různými způsoby. Například mohou být zapsány takto:
+        \begin{equation}
+          \begin{array}{cc}
+            \begin{pmatrix}
+              b & a & c & d \\
+              d & c & b & a
+            \end{pmatrix},         & 
+            \begin{pmatrix}
+              d & c & b & a \\
+              a & b & d & c
+            \end{pmatrix}          \\
+            \begin{pmatrix}
+              d & c & a & b \\
+              a & b & c & d
+            \end{pmatrix},         &
+            \text{apod.}
+          \end{array}
+        \end{equation}
+      \end{example}
+
+      Zřejmě všechny čtyři uvedené zápisy permutace rov. \ref{LA:eq_perm_exam} ve tvaru matice se 
+      liší navzájem pouze pořadím sloupců. Aby bylo možné zapsat každou permutaci množiny 
+      \(\mathbf{M}\) ve tvaru rov. \ref{LA:eq_perm_exam} jediným způsobem, je nutné zvolit pevné 
+      pořadí prvků množiny \(\mathbf{M}\)  a v zápisu permutace uvádět prvky matice \(\mathbf{M}\)  
+      v prvním řádku v tomto pořadí. Avšak známe-li toto pořadí prvků množiny \(\mathbf{M}\), je 
+      pak  obvykle zbytečné jej v zápisu permutace uvádět, ale stačí uvést pouze pořadí obrazů, tj. 
+      druhý řádek. Zvolíme-li např. v naší množině \(\mathbf{M}\) pevné pořadí prvků \(\lbrace 
+      a,b,c,d\rbrace\), pak permutaci rov. \ref{permutace_zadani} zapíšeme jako uspořádanou 
+      čtveřici \(\lbrace c,d,b,a\rbrace\).
+  
+      \begin{definition}\label{def_permutace_ntice}
+        Když vytváříme uspořádanou \(n\)-tici navzájem různých prvků \(n\)-prv\-ko\-vé množiny 
+        \(\mathbf{M}\), přiřazujeme každému prvku množiny \(\mathbf{M}\) právě jedno přirozené 
+        číslo, index příslušného prvku, z množiny prvních \(n\) přirozených čísel.
+        \begin{equation}\label{permutace_ntice}
+          \pi = \lbrace 1, 2, 3, \ldots, n\rbrace
+        \end{equation}
+      \end{definition}
+  
+      Proto každé permutaci uspořádané \(n\)-tice prvků množiny \(\mathbf{M}\) odpovídá jednoznačně 
+      permutace příslušných indexů tj. permutace množiny \ref{permutace_ntice} z definice 
+      \ref{def_permutace_ntice}. Stačí se tedy omezit při vyšetřování permutací n-prvkové množin 
+      na vyšetřování permutací množiny \ref{permutace_ntice}. Permutace \(\pi\) množiny 
+      \ref{permutace_ntice} budeme zapisovat jako uspořádané \(n\)-tice \(\left(\pi(1), \pi(2) 
+      ,\ldots, \pi(n)\right)\), kde \(\pi(i)\) je číslo z množiny \ref{permutace_ntice}, které 
+      permutace \(\pi\) přiřazuje číslu \(i\).
+
+      \begin{example}\label{ex_celk_pocet_permutaci}
+        \textbf{Spočítejme celkový počet permutací množiny}. V každé uspořádané \(n\)-tici může být 
+        na prvním místě kterákoli z \(n\) cifer, na druhém místě kterákoli ze zbývajících \(n-1\) 
+        cifer (kromě té, která je na prvním místě), na  třetím místě každá ze zbývajících \(n-2\) 
+        cifer atd. Je tedy celkový počet všech permutací \(n\)-prvkové množiny \(n(n-1)(n-2)\cdot 
+        \ldots \cdot2\cdot1\). Toto číslo se zapisuje pomocí symbolu \(n!\) (čti 
+        \textbf{n-faktoriál}).
+      \end{example}
+      
+      \begin{definition}\label{def_inv_perm}\textbf{Inverze v permutaci}:
+        Inverzí v permutaci \(\left(i_1,i_2,…,i_n \right)\) rozumíme každý výskyt takové dvojice 
+        čísel, že větší stojí před menším, tj. vlevo od něj.
+      \end{definition}  
+   
+  %=========================== Kapitola: Vlastní čísla a vlastní vektory ==========================
+  \section{Vlastní čísla a vlastní vektory}
+    \subsection{Motivace} 
+      \textbf{Poznámka}: Je-li \(\mathcal{A} : \mathcal{V} \rightarrow \mathcal{V}\) lineární 
+      zobrazení z prostoru \(\mathcal{V}\) do prostoru \(\mathcal{V}\) (nikdy se takové zobrazení 
+      nazývá lineárním operátorem), pak je přirozeným požadavkem najít takovou bázi prostoru 
+      \(\mathcal{V}\), že je matice zobrazení $\mathbf{A}$ v této bázi co nejjednodušší, např. má 
+      následující strukturu
+      \begin{equation*}
+         \mathbf{A}=
+           \left(\begin{array}{ccccc}
+             \boxed{A_1}       &             &       &       & 0   \\
+                 & \boxed{A_2} &             &       &             \\
+                 &             & \boxed{A_3} &       &             \\
+                 &             &             &\ddots &             \\
+              0  &             &             &       & \boxed{A_k}
+            \end{array}
+           \right),
+     \end{equation*}
+     kde \(A_k\) jsou čtvercové matice malého řádu (nejlépe \(1\) nebo \(2\)) a ostatní prvky 
+     matice jsou nulové. Problém najít bázi, aby v ní matice zobrazení měla diagonální tvar (kde 
+     \(A_k\) jsou skaláry), vede k pojmu vlastní číslo a vlastní vektor matice.
+
+      \begin{definition} 
+        Nechť \(\mathbf{A}\in \mathcal{C}^{n,n}\) (matice je čtvercová řádu \(n\)).
+        \begin{equation}
+          \mathbf{A} = (a_{ij}) =
+            \begin{pmatrix}
+              a_{11} & a_{12} & \ldots & a_{1n} \\
+              a_{21} & a_{22} & \ldots & a_{2n} \\
+              \vdots & \vdots & \ddots & \vdots \\
+              a_{n1} & a_{n2} & \ldots & a_{nn}
+            \end{pmatrix}
+        \end{equation}
+
+        Jestliže platí
+        \begin{equation}\label{eq:vl_number}
+          \mathbf{Au} = \lambda\mathbf{u}
+        \end{equation}
+        pro jisté komplexní číslo \(\lambda\in\mathcal{C}\)  a jistý nenulový vektor 
+        \(x\in\mathcal{C}^n, \mathbf{u}\neq\Theta\), potom číslo \(\lambda\) nazýváme 
+        \textbf{vlastním číslem} matice \(\mathbf{A}\) a vektor \(\mathbf{u}\) \textbf{vlastním 
+        vektorem} příslušným k tomuto vlastnímu číslu. Množinu všech vlastních čísel nazýváme 
+        \textbf{spektrem matice} \(\mathbf{A}\). Pokud rov. \ref{eq:vl_number} rozepíšeme, dostaneme
+        \begin{equation}
+          \begin{pmatrix}
+            a_{11} & a_{12} & \ldots & a_{1n} \\
+            a_{21} & a_{22} & \ldots & a_{2n} \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \ldots & a_{nn}
+          \end{pmatrix}   \cdot
+          \begin{pmatrix}
+            u_{1} \\  u_{2} \\ \vdots \\  u_{n} \\
+          \end{pmatrix}    =\lambda\cdot
+          \begin{pmatrix}
+            u_{1} \\ u_{2} \\ \vdots \\ u_{n} \\
+          \end{pmatrix}
+        \end{equation}
+        můžeme ji rovněž psát ve tvaru
+        \begin{equation*}
+            \begin{pmatrix}
+            \setlength{\arraycolsep}{3pt}
+              a_{11} -\lambda & a_{12}           & \ldots & a_{1n} \\
+              a_{21}          & a_{22} -\lambda  & \ldots & a_{2n} \\
+              \vdots          & \vdots           & \ddots & \vdots \\
+              a_{n1}          & a_{n2}           & \ldots & a_{nn}-\lambda
+            \end{pmatrix} \cdot
+          \begin{pmatrix}
+            u_{1} \\ u_{2} \\ \vdots \\ u_{n} \\
+          \end{pmatrix}  =
+          \begin{pmatrix}
+              0 \\ 0 \\ \vdots \\ 0 \\
+            \end{pmatrix}
+        \end{equation*}
+      \end{definition}
+
+       Tato soustava rov. je \textbf{homogenní} a stručně ji můžeme zapsat
+      \begin{equation}\label{vv_hom_zapis}
+        \left(\mathbf{A} - \lambda\mathbf{I}\right) = \mathbf{0}
+      \end{equation}
+      Homogenní soustava má \emph{netriviální řešení}, právě když je determinant matice soustavy 
+      roven  nule, tj. v případě soustavy rov. rov. \ref{vv_hom_zapis} platí
+      \begin{equation}\label{vv_hom_reseni}
+        |\mathbf{A} - \lambda\mathbf{I}| = \mathbf{0}
+      \end{equation}
+      Determinant \(A(\lambda)=|\mathbf{A} - \lambda \mathbf{I}|\) nazýváme 
+      \textbf{charakteristický polynom} matice \(\mathbf{A}\) - jedná se o polynom stupně \(n\) v 
+      proměnné \(\lambda\), který má v oboru komplexních čísel \(n\) kořenů. Rovnici 
+      \(A(\lambda)=0\) nazýváme \textbf{charakteristická rovnice matice \(\mathbf{A}\)} - jejími 
+      kořeny jsou \textbf{charakteristické hodnoty} (resp. \textbf{vlastní čísla}) 
+      \textbf{matice} \(\mathbf{A}\).
+            
+      \begin{note}
+        U vlastních čísel studium pouze reálných matic ztrácí smysl, protože i 
+        reálná matice může mít komplexní vlastní čísla. Proto se uvažuje obecná komplexní matice.
+      \end{note}
+      
+      \begin{note}
+        Podmínka existence nenulového vektoru \(\mathbf{u} = \Theta\) v definici 
+        vlastního čísla je nezbytná: kdyby bylo připuštěno i \(\mathbf{u} = \emptyset\), potom by 
+        každé komplexní číslo bylo vlastním číslem a definice by ztratila smysl.
+      \end{note}
+      
+      \begin{note}
+        Odpovídá-li matice \(\mathbf{A}\) matici nějakého zobrazení \(\mathcal{A}\), pak každý 
+        nenulový vektor z jádra zobrazení \(\ker\mathcal{A}\) je vlastním vektorem příslušným 
+        vlastnímu číslu \(\lambda\). Je-li \(\ker\mathcal{A} = \{\Theta\}\) 
+        (je-li matice \(\mathbf{A}\) regulární), pak \(\Theta\) není vlastním číslem matice 
+        \(\mathbf{A}\).
+      \end{note}
+
+      %---------------------------------------------------------------
+        \input{../src/MAI/exam/exam012.tex}
+      %---------------------------------------------------------------
+
+      %---------------------------------------------------------------
+        \input{../src/MAI/exam/exam013.tex}
+      %---------------------------------------------------------------
+
+      %---------------------------------------------------------------
+        \input{../src/MAI/exam/exam014.tex}
+      %---------------------------------------------------------------
+
+
+      %---------------------------------------------------------------
+       \input{../src/MAI/exam/exam002.tex}
+      %---------------------------------------------------------------
+
+  %====================== Kapitola: Polynomy ======================================================
+  \section{Polynomy}
+      \begin{definition}\label{def_rov_poly}\textbf{Rovnost dvou polynomů}:
+        Řekneme, že dva polynomy \(f(x)=a_nx^n+a^{(n-1)}x_{(n-1)}+\ldots+a_1+a_0\) a
+        \(g(x)=b_mx^m+b^{(m-1)}x_{(m-1)}+\ldots+b_1+b_0\) stupňů \(n\) a \(m\) se sobě 
+        \textbf{rovnají} právě tehdy, když \(m=n\) a \(a_0=b_0\), \(a_1=b_1\), 
+        \(a_{(n-1)}=b_{(m-1)}\), \(a_n=b_m\). V tomto případě také říkáme, že mnohočleny \(f(x)\) a 
+        \(g(x)\) jsou \textbf{totožné}.
+      \end{definition}
+      \begin{lemma}\label{la:eq_eqv_poly}
+        Jestliže mnohočleny \(f(x)\) a \(g(x)\) jsou dva polynomy stupně \(n\)-tého a jestliže pro 
+        \(n+1\) různých reálných nebo komplexních čísel \(x\) platí \(f(x)=g(x)\), potom jsou 
+        polynomy \textbf{totožné}.
+      \end{lemma}
+      
+    \subsection{Rozklad ryze racionální funkce na parci\-ální zlomky}
+
+      %---------------------------------------------------------------
+       \input{../src/MAI/exam/exam015.tex}
+      %---------------------------------------------------------------
+      
+  %==================== Kapitola: Vektorové prostory ===============================================
+  \section{Vektorové prostory se skalárním součinem}
+    \subsection{Ortogonální doplňky}
+      Nechť \(U\) je podprostor vektorového prostoru \(V\). Ortogonální doplněk $U^\bot$ obsahuje 
+      všechny vektory, které jsou kolmé ke každému vektoru z \(U\), neboli \(\forall\vec{v}\in 
+      U^\bot\quad \forall\vec{u}\in U\quad \vec{u}\bot\vec{v}\) což lze vyjádřit pomocí skalárního 
+      součinu \(\vec{u}\cdot\vec{v} = 0\)
+  
+      Ortogonální doplněk \(U^\bot\) k podprostoru \(U = \langle\vec{u}_1,\ldots,\vec{u}_k\rangle\) 
+      tedy hledáme jako řešení homogenní soustavy rovnic
+      \begin{equation*}
+        \left(
+          \begin{array}{c|c}
+             \vec{u}_1  &   0      \\
+             \cdots     &  \vdots  \\
+             \vec{u}_k  &   0
+          \end{array}
+        \right),
+      \end{equation*}
+      nuly na pravé straně při výpočtu zpravidla vynecháváme. Připomeňme také vztah
+      \begin{equation}\label{LA:eq_dim_doplnek}
+         \dim U + \dim U^\bot = \dim V
+      \end{equation}
+
+      %---------------------------------------------------------------
+        \input{../src/MAI/exam/exam011.tex}
+      %---------------------------------------------------------------
+  
+      Výsledek předchozího příkladu \ref{mai:exam011} lze interpretovat tak, že jsme našli všechny 
+      vektory, které jsou kolmé na rovinu určenou vektory ze zadání. Rovina je útvar       
+      dvojrozměrný a protože prostor všech vektorů je trojrozměrný, musí nutně mít podprostor 
+      ortogonálních vektorů ve shodě se vztahem \ref{LA:eq_dim_doplnek} pouze jednu dimenzi. Vše 
+      je dobře patrné z obr. \ref{LA:fig_ort01}
+
+%} % tikzset
+%---------------------------------------------------------------------------------------------------
+%\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}
+              

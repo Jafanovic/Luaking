@@ -1,0 +1,59 @@
+% !TeX spellcheck = cs_CZ
+\begin{example}\label{TEO:exam016}
+  Vyjádřeme pomocí \(y\)-parametrů následující přenosové parametry dvojbranu: vstupní 
+  impedance při výstupu naprázdno \(Z_{vst_0}\), \(K_{I_{12_K}}\), \(Z_{12_0}\). 
+  
+  Řešení:
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+    \item \(Z_{vst_0}\): \(\mathbb{Y}\)-matici doplníme třetí rovnicí \(I_2=0\) (podmínka 
+    definující výstup naprázdno):
+    \begin{subequations}\label{ES:eq_topol10}
+      \begin{align}
+        I_1 &= y_{11}U_1 - y_{12}U_2  \\
+        I_2 &= y_{21}U_1 - y_{22}U_2  \\
+        I_2 &= 0
+      \end{align}
+    \end{subequations}
+    Záporná znaménka v \(\mathbb{Y}\)-matici (tj. v prvních dvou rovnicích) jsou 
+    správná, protože směr výstupního proudu \(I_2\) na obr. 
+    \ref{es:fig_patocka_topol08} je zvolen v souladu s realitou, tj. v souladu s 
+    napětím \(U_2\). Pokud je totiž dvojbran zatížen \emph{pasivní} zátěží, pracující 
+    ve \emph{spotřebičovém} režimu, proud \(I_2\) musí z výstupní svorky dvojbranu 
+    vytékat, nikoli do ní vtékat\footnote{Směry obou proudů \(I_1\), \(I_2\) lze volit 
+      libovolně. V literatuře se obvykle směry proudů volí tak, že oba vtékají do 
+      dvojbranu. Důvod je pouze formální, pak totiž budou všechny čtyři maticové 
+      koeficienty kladně. Výsledkem je ale nerealistický stav na výstupní bráně, tj. na 
+      pasivní zátěži. Proto nebudeme toto značeni používat a směry všech veličin budeme 
+      systematicky volit podle obr. \ref{es:fig_patocka_topol08}. Z psychologického 
+      hlediska tato volba velmi usnadní budoucí analýzu transformátoru.}. Všimněme si, že 
+    jsme získali soustavu tří rovnic o čtyřech neznámých veličinách \(U_1\), \(U_2\), 
+    \(I_1\), \(I_2\). Ta je pro \emph{jednotlivé} neznámé neřešitelná. Je však 
+    řešitelná pro poměry dvou libovolných proměnných. Ze soustavy lze po algebraických 
+    úpravách získat hledanou vstupní impedanci při výstupu naprázdno:
+    \begin{equation}\label{ES:eq_topol11}
+    Z_{vst_0} = \frac{U_1}{I_1}\Bigg|_{I_2=0} 
+    = \frac{y_{22}}{y_{22}y_{11} - y_{12}y_{21}}.
+    \end{equation}
+    \item \(K_{I_{12_K}}\): \(\mathbb{Y}\)-matici doplníme třetí rovnicí \(U_1 = 0\) 
+    (podmínka definující vstup nakrátko). Jedná se o přenos ve zpětném směru 
+    (\(\leftarrow\)). Při zpětném přenosu tečou oba proudy na obr. 
+    \ref{es:fig_patocka_topol08} obráceným směrem, proto musí mít přiřazena záporná 
+    znaménka:
+    \begin{equation}\label{ES:eq_topol12}
+    K_{I_{12_K}} = \frac{-I_1}{-I_2}\Bigg|_{U_1=0} 
+    = \frac{I_1}{I_2}\Bigg|_{U_1=0}
+    = \frac{y_{12}}{y_{22}}.
+    \end{equation}          
+    \item \(Z_{12_0}\): \(\mathbb{Y}\)-matici doplníme třetí rovnicí \(I_1=0\) (podmínka  
+    definující vstup naprázdno). Při zpětném přenosu (\(\leftarrow\)) tečou oba 
+    proudy na obr. \ref{es:fig_patocka_topol08} obráceným směrem, proto musí 
+    mít přiřazena záporná znaménka:
+    \begin{equation}\label{ES:eq_topol13}
+    Z_{vst_0} = \frac{U_1}{-I_2}\Bigg|_{I_1=0} 
+    = \frac{y_{12}}{y_{21}y_{12} - y_{11}y_{22}}.
+    \end{equation}
+  \end{itemize}
+  Tytéž přenosové parametry \(Z_{vst_0}\), \(K_{I_{12_K}}\), \(Z_{12_0}\) je možno vyjádřit 
+  pomocí \(z\)-parametrů nebo \(h\)-parametrů. Podobným způsobem by bylo možno doplnit 
+  všechna prázdná pole v tab. \ref{ES:tab_topol01}.
+\end{example}

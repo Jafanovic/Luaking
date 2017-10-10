@@ -1,0 +1,51 @@
+%\documentclass{article}
+%\url{http://tex.stackexchange.com/q/82308/86}
+%\usepackage{tikz}
+
+\def\xmin{20}
+\def\xmax{220}
+\def\ymin{-5}
+\def\ymax{+220}
+\def\zero{0}
+\def\phase{25bp}
+\def\xlabel{$u$}
+\def\ylabel{$i$}
+
+\def\curveS{%
+\pgfpathmoveto {\pgfqpoint{25bp}{0bp}} 
+\pgfpathcurveto{\pgfqpoint{25bp}{0bp}}
+               {\pgfqpoint{104bp}{51bp}}
+               {\pgfqpoint{104bp}{69bp}}
+\pgfpathcurveto{\pgfqpoint{104bp}{83bp}}
+               {\pgfqpoint{72bp}{84bp}}
+               {\pgfqpoint{85bp}{101bp}}
+\pgfpathcurveto{\pgfqpoint{97bp}{116bp}}
+               {\pgfqpoint{176bp}{198bp}}
+               {\pgfqpoint{176bp}{198bp}}  
+\pgfusepath{stroke}} 
+
+\def\curveN{%
+\pgfpathmoveto {\pgfqpoint{25bp}{0bp}}  
+\pgfpathcurveto{\pgfqpoint{25bp}{0bp}} 
+               {\pgfqpoint{35bp}{65bp}} 
+               {\pgfqpoint{53bp}{74bp}}
+\pgfpathcurveto{\pgfqpoint{74bp}{83bp}}  
+               {\pgfqpoint{89bp}{44bp}}
+               {\pgfqpoint{121bp}{59bp}}
+\pgfpathcurveto{\pgfqpoint{153bp}{73bp}} 
+               {\pgfqpoint{176bp}{198bp}}
+               {\pgfqpoint{176bp}{198bp}}  
+\pgfusepath{stroke}} 
+
+
+%\begin{document}
+
+\begin{tikzpicture}[scale=0.3]
+  \begin{scope}[draw=black,line join=round, miter limit=4.00,line width=0.5pt,y=1pt,x=1pt] 
+%   \curveS;
+    \curveN;
+    \XYcross;
+  \end{scope}  
+\end{tikzpicture}
+
+%\end{document}

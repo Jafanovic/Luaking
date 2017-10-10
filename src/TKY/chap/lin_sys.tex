@@ -1,0 +1,348 @@
+% !TeX spellcheck = cs_CZ
+{\tikzset{external/prefix={tikz/TKY/}}
+ \tikzset{external/figure name/.add={ch03_}{}}
+%================== Kapitola: LTI systém ===========================================================
+\chapter{LTI systém}
+\minitoc
+  \section{Vlastnosti a popis lineárních systému}
+    \begin{wrapfigure}[8]{r}{5cm}
+      \centering      
+      \input{../src/TKY/img/soustava.tex}
+      \caption[Symbol soustavy s jedním vstupem a jedním výstupem]{Symbol soustavy s jedním 
+               vstupem a jedním výstupem}
+      \label{sas:fig_soustava}   
+    \end{wrapfigure}
+    Na soustavu obvodů můžeme nahlížet jako na seskupení (množinu) navzájem souvisejících součástí, 
+    ke kterému je určen vstupní signál $x$, zvaný buzení a výstupní signál $y$, označovaný jako 
+    odezva. Z hlediska vlastností jde o systém představující "černou skříňku", jejíž vlastnosti 
+    můžeme identifikovat analýzou vstupního a výstupního signálu \cite{Bicak}.
+        
+    \begin{itemize}
+      \item Systémy se spojitým časem (na vstupu i výstupu pracují se spojitými signály) - relace  
+            mezi vstupem a výstupem můžeme symbolicky zapsat:
+            \begin{equation}\label{sas:eq_spojity_system}
+              y(t)=\mathcal{S}\{x(t)\}
+            \end{equation}
+            kde $S$ je obecný popis systémové funkce, přiřazující vstupní veličině $x(t)$ odezvu 
+            $y(t)$. Z rovnice je zřejmé, že u spojité (analogové) soustavy výstupní signál závisí 
+            na všech hodnotách vstupního signálu, nikoli jen na některých jeho hodnotách v určitých 
+            časových okamžicích.
+      \item Systémy pracující s diskrétním časem lze obdobně symbolicky vyjádřit relací  
+            vstup/výstup ve tvaru:
+            \begin{equation}\label{sas:eq_dis_system}
+              y[n]=\mathcal{S}\{x[n]\}
+            \end{equation}
+            kde $\mathcal{S}$ je tentokráte systémový operátor přiřazení posloupnosti 
+            $x[n]\rightarrow y[n]$. U diskrétních systémů se zpracovávají posloupnosti hodnot 
+            signálů, získaných vzorkováním spojitého signálu
+    \end{itemize}
+    
+  \section{Linearita, časová invariance a kauzalita}
+    \textbf{Linearita systémů} ve spojité diskrétní oblasti má velký význam, neboť dovoluje 
+    využívat princip superpozice k zjednodušování úloh jejich analýzy  a syntézy.
+
+    Předpokládejme, že na vstupu lineárního diskrétního systému jsou přivedeny dva signály $x_1[n]$ 
+    a $x_2[n]$. Účinky obou vstupních signálů na výstupní signál lze zkoumat odděleně a podle 
+    principu superpozice je na výstupu sečíst. Označme dílčí odezvy $y_1[n]=\mathcal{S}\{x_1[n]\}$ 
+    a $y_2[n]=\mathcal{S}\{x_2 [n]\}$, potom je
+    \begin{equation}\label{sas:eq_superpozice1}
+      y[n]= y_1[n]+y_2[n]=S\{x_1[n]+x_2[n]\}
+    \end{equation}
+    Analogický vztah platí i pro lineární spojitý systém, tedy
+    \begin{equation}\label{sas:eq_superpozice2}
+      y(t)= y_1(t)+ y_2(t)=S\{x_1(t)+x_2(t)\}
+    \end{equation}
+    Jedná-li se o \emph{systém časově invariantní}, jsou události v čase závislé pouze na časovém
+    intervalu (rozdílu časových událostí), nikoliv na každém časovém okamžiku sa\-mos\-tat\-ně. 
+    Systém je časově invariantní, jestliže časový posun ve vstupní signálu vede ke stejnému posunu 
+    výstupního signálu. Odezva diskrétního systému na posunutý vstupní signál $x[n-m]$ je pak určen 
+    vztahem
+    \begin{equation}\label{sas:eq_odezva1}
+      y[n-m]= \mathcal{S}\{x[n-m]\}
+    \end{equation}
+    a obdobně pro odezvu spojité soustavy na posunutý (zpožděný) vstupní signál $x(t-\tau)$ platí
+    analogicky rovnice
+    \begin{equation}\label{sas:eq_odezva2}
+      y(t-\tau)= \mathcal{S}\{x(t-\tau)\}.
+    \end{equation}
+    \textbf{Kauzální, příčinný systém} je systém, u kterého výstupní signál závisí pouze na 
+    současných a minulých hodnotách vstupního signálu.
+
+    \subsection{Konvoluce v diskrétních a spojitých systémech}
+      \cite{Bicak} Významnou charakteristikou lineárních časově invariantních systémů \emph{LTI} je
+      \textbf{impulzní odezva}. Její znalost umožňuje stanovit odezvu systému na obecný signál, lze 
+      ji využít i při syntéze systému.
+      \begin{equation}\label{sas:eq_odezva3}
+        h[n]= \mathcal{S}\{\delta[n]\}.
+      \end{equation}
+      Mějme diskrétní LTI systém, na jehož vstup je přiveden \emph{jednotkový diskrétní      
+      impulz}\footnote{Nesmíme zaměňovat s Diracovým (také jednotkovým) impulzem.}. Jednotkový 
+      impulz je posloupnost $\delta[n]=0$ pro všechna $n$ s výjimkou $\delta[0]=1$. Odezva systému 
+      na jednotkový impulz $\delta[n]$ se nazývá impulzní odezva a platí
+      \begin{equation}\label{sas:eq_odezva_posun}
+        h[n-m]= \mathcal{S}\{\delta[n-m]\}.
+      \end{equation}
+      Vzhledem časové invariantnosti, posunutému jednotkovému impulzu odpovídá posunutá impulzní
+      odezva, tedy
+      \begin{equation}\label{sas:eq_jednotkovy_skok}
+        1[n]= \sum_{m=0}^n[n-m] =\delta[n]+\delta[n-1]+\delta[n-2]+\cdots.
+      \end{equation}
+      \emph{Jednotkový skok} $\mathrm{1}[n]$ je posloupnost jedniček od počátku časové osy $n=0$,
+      kterou můžeme zapsat součtem
+      \begin{equation}\label{sas:eq_odezva_skok}
+        s[n]= \mathcal{S}\{\mathrm{1}[n]\}=S\{\sum_{m=0}^n[n-m]\}=\sum_{m=0}^nS\{\delta[n-m]\}.
+      \end{equation}
+      \emph{Odezva systému na jednotkový skok} $\mathrm{1}[n]$ se nazývá \textbf{přechodová odezva}
+      $s[n]$ a platí
+      \begin{equation}\label{SAS:eq_odezva_skok2}
+        s[n]=\mathcal{S}\{\sum_{m=0}^n\delta[n-m]\}=\sum_{m=0}^n\mathcal{S}\{\delta[n-m]\}.
+      \end{equation}
+      Odezva kauzálního diskrétního systému na jednotkový impulz $\delta[n]$, resp. na posunutý
+      impulz $\delta[n-m]$, bude  $h[n]$  resp.  $h[n-m]$ - viz obr. \ref{SAS:fig_odezva3}.
+      \begin{figure*}[ht!]
+        \centering
+        \includegraphics[scale=0.8]{impulzni_odezva.pdf}
+         \caption[Impulzní odezva]{Odezva kauzálního diskrétního systému na jednotkový impulz
+                  $\delta[n]$ a posunutý impulz $\delta[n-m]$}
+        \label{SAS:fig_odezva3}
+      \end{figure*}
+  
+      Postupná úprava rovnice (\ref{SAS:eq_odezva_skok2}) je umožněna díky linearitě systému,
+      kterou budeme studovat pro obecný vstupní signál
+      \begin{equation}\label{SAS:eq_odezva_na_diskretni_signal}
+        x[n]=\sum_{m=-\infty}^\infty x[m]\delta[n-m].
+      \end{equation}
+      Poznamenejme, že formou (\ref{SAS:eq_odezva_na_diskretni_signal}) lze zapsat každý diskrétní
+      signál.
+     
+      %---------------------------------------------
+      \input{../src/TKY/img/posloupnost_1n_xn.tex}
+      % \label{SAS:fig_odezva4}
+      %---------------------------------------------
+      
+      Na obr. \ref{SAS:fig_odezva4} znázorněna souvislost mezi posloupností jedniček a diskrétním
+      sig\-ná\-lem. \emph{Posloupnost jedniček tvoří bázi pro diskrétní signály}. Každá komponenta
+      diskrétního signálu je vyjádřena součinem $x[m]\delta[n-m]$. V uvedeném příkladě jde o
+      posloupnost příslušnou jednotkovému skoku
+      \begin{equation}\label{SAS:eq_odezva5}
+        1[n]=\sum_{m=0}^{15}\delta[n-m]
+      \end{equation}
+      a odpovídající posloupnost konečného signálu
+      \begin{equation}\label{SAS:eq_odezva6}
+        x[n]=\sum_{m=0}^{15}x[m]\delta[n-m].
+      \end{equation}
+  
+      Princip superpozice dovoluje získat odezvu systému jako sumu odezev na jednotlivé dílčí
+      součásti vstupního signálu, které v rovnici (\ref{SAS:eq_odezva_na_diskretni_signal}) tvoří
+      vážené jednotlivé impulzy, ze kterých je signál složen
+      \begin{align}
+        y[n]=\mathcal{S}\{x[n]\}
+          &=\mathcal{S}\{\sum_{m=-\infty}^{\infty}x[m]\delta[n-m]\}  \nonumber \\
+          &=\sum_{m=-\infty}^{\infty}x[m]\mathcal{S}\{\delta[n-m]\}. \label{SAS:eq_odezva7}
+      \end{align}
+      Protože platí (\ref{sas:eq_odezva3}) a v důsledku časové invariance vyplývá z rovnice
+      \ref{SAS:eq_odezva7} \textbf{konvoluční suma} 
+      \begin{equation}\label{SAS:eq_konvolucni_suma}
+        y[n]=\sum_{m=-\infty}^{\infty}h[n-m]x[m]=\sum_{k=-\infty}^{\infty}h[k]x[n-k].
+      \end{equation}
+      Uvedli jsme, že u kauzálního systému závisí výstupní signál $y[n]$ pouze na současných a
+      minulých hodnotách vstupního signálu $x[n], x[n-1], x[n-2], \cdots ,$ takže v konvoluční sumě
+      \ref{SAS:eq_konvolucni_suma}
+      \begin{align}
+        y[n]&=\sum_{k=-\infty}^{\infty}h[k]x[n-k]                              \nonumber \\
+            &=\sum_{k=-\infty}^{-1}h[k]x[n-k] + \sum_{k=0}^{\infty}h[k]x[n-k]  \label{tky:eq001}
+      \end{align}
+      musíme položit všechny členy impulzní odezvy $h[k]=0$ pro $k<0$. Konvoluční suma pro
+      lineární, časově invariantní a kauzální systém má pak tvar
+      \begin{equation}\label{SAS:eq_konvolucni_suma3}
+        y[n]=\sum_{k=0}^{\infty}h[k]x[n-k].
+      \end{equation}
+      Jestliže navíc budeme uvažovat vstupní a výstupní signály, které jsou nulové pro $n<0$ a
+      $x[n]\neq0, y[n]\neq0$ pouze pro $n\geq0$, potom platí
+      \begin{equation}\label{SAS:eq_konvolucni_suma4}
+        y[n]=\sum_{k=0}^{n}h[k]x[n-k]=\sum_{k=0}^{n}x[k]h[n-k].
+      \end{equation}
+  
+      \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=0.7\linewidth]{bicak_aprox_spoj_sig_dirac.pdf}
+        \caption[Aproximace spojitého průběhu signálu]{a) Aproximace spojitého průběhu signálu, b)
+                 K odvození jednotkové impulsní funkce}
+        \label{SAS:fig_Bicak_aprox_spoj_fce}
+      \end{figure}
+  
+      Podobně můžeme postupovat i v analogovém případě a odvodit pro lineární časově invariantní 
+      systém \emph{konvoluční integrál}. Vraťme se k výrazu \ref{SAS:eq_odezva_na_diskretni_signal} 
+      kterým jsme vyjádřili libovolný diskrétní signál. Pro případ spojitého signálu vytvořme 
+      analogickou formu zápisu využívající jednotkový impuls. Průběh obecného spojitého lze podle 
+      obr. \ref{SAS:fig_Bicak_aprox_spoj_fce} aproximovat stupňovitým průběhem, který můžeme 
+      vyjádřit jako sumu posunutých (zpožděných) impulsů. Výchozí aproximující impuls lze vyjádřit 
+      vztahem
+      \begin{equation}\label{SAS:eq_dirac}
+          \delta_\epsilon(t)  =
+            \begin{cases}
+               \frac{1}{\epsilon} & \text{pro } |t| < \frac{\epsilon}{2},      \\
+               0                  & \text{pro } |t| < \frac{\epsilon}{2} > 0
+            \end{cases}
+      \end{equation}
+      a je znázorněn na obr. \ref{SAS:fig_Bicak_aprox_spoj_fce}. \emph{Jednotkový (Diracův) impuls} 
+      má jednotkovou plochu. vat výrazem
+      \begin{equation}\label{SAS:eq_dirac2}
+        \delta_\epsilon(t) = \lim_{\epsilon\rightarrow0} \delta_\epsilon(t).
+      \end{equation}
+      Aproximaci spojitého průběhu $x(t)$ impulsy \ref{SAS:eq_dirac} lze vyjádřit rovnicí
+      \begin{equation}\label{SAS:eq_spojit_aprox}
+        x(t) = \sum_{m = -\infty}^\infty x(m\epsilon)\delta_\epsilon(t - m\epsilon)\epsilon .
+      \end{equation}
+      Zmenšování šířky impulsů $\epsilon \rightarrow 0$ se chyba aproximace zmenšuje a výraz přejde v limitu
+      \begin{equation}\label{SAS:eq_spojit_aprox2}
+        x(t) = \lim_{\epsilon\rightarrow0}
+               \sum_{m = -\infty}^\infty x(m\epsilon)\delta_\epsilon(t - m\epsilon)\epsilon .        
+      \end{equation}
+      V limitě kdy $\epsilon\rightarrow0$, můžeme sumu nahradit integrálem, dále součin $m\epsilon$ 
+      integrační proměnnou $\tau$ a $\epsilon$ jejím diferenciálem. Obdržíme
+      \begin{equation}\label{SAS:eq_integral_aprox3}
+        x(t) = \int_{-\infty}^{\infty}x(\tau)\delta(t-\tau)d\tau .
+      \end{equation}
+      Vztahem \ref{SAS:eq_integral_aprox3} jsme spojitý průběh signálu vyjádřili jako sumu 
+      nekonečného počtu posunutých jednotkových impulsů váženou jeho okamžitými hodnotami. 
+      Předpokládejme dále, že na vstup lineárního časově invariantního spojitého systému je 
+      převeden jednotkový (Diracův) impuls a systém vytvoří odezvu $h(t)$. V případě obecného 
+      vstupního spojitého signálu $x(t)$ aproximovaného vztahem \ref{SAS:eq_integral_aprox3}, bude 
+      odezva analogového systému
+      \begin{equation}\label{SAS:eq_integral_aprox4}
+        y(t) = \int_{-\infty}^{\infty}x(\tau)h(t-\tau)d\tau 
+             = \int_{-\infty}^{\infty}h(\tau)x(t-\tau)d\tau
+      \end{equation}
+      Uvedený integrál nazýváme \textbf{konvolucí} a velmi často ho označujeme jako 
+      \begin{equation}\label{SAS:eq_konvoluce}
+        y(t) = h(t)*x(t) .
+      \end{equation}
+      Funkce $h(t)$ představuje \emph{impulsní odezvu}. Jedná se o výstupní signál systému, na 
+      jehož vstupu se uplatní Diracův impuls $x(t)=\delta(t)$. Platí totiž
+      \begin{equation}\label{SAS:eq_h_plati}
+        y(t) = \int_{-\infty}^{\infty}h(\tau)\delta(t-\tau)d\tau = h(t) . 
+      \end{equation}     
+      Z důvodů \emph{kauzality}, která vyjadřuje zachování příčinné posloupnosti událostí při 
+      transformaci signálu ze vstupu na výstup, požadujeme
+      \begin{align}\label{SAS:eq_kauzalita_pozadavky}
+        h(t) &\neq  0 \text{   pro } |t| \geq0, \\
+        h(t) &  =   0 \text{   pro } |t| < 0. 
+      \end{align}    
+      Potom můžeme konvoluční integrál \ref{SAS:eq_integral_aprox4} zapsat ve tvarem
+      \begin{equation}\label{SAS:eq_konvolucni_integral}
+         y(t) = \int_0^{\infty}h(\tau)x(t-\tau)d\tau .
+      \end{equation} 
+  
+  \section{Popis spojitých a diskrétních systémů, pře\-no\-so\-vá funkce}
+    \subsection{Spojité systémy}
+      Lineární časově invariantní (LTI) spojitý systém je obecně popsán soustavou
+      integrodiferenciálních rovnic s konstantními koeficienty, kterou lze postupným derivováním
+      změnit na soustavu diferenciálních rovnic. Předpokládej\-me budící (ne\-zá\-vis\-lou) veličinu
+      $x(t)$ a odezvou (závislou) výstupní veličinu $y(t)$, pak eliminací ostatních proměnných bude 
+      soustava popsána jedinou diferenciální rovnicí s konstantními koeficienty tvaru
+      \begin{equation}\label{SAS:eq_lin_dif_rov}
+          \sum_{i=0}^na_i\frac{d^iy(t)}{dt^i}=\sum_{j=0}^mb_j\frac{d^jx(t)}{dt^j},
+      \end{equation}
+      kde $a_0, a_1, \cdots ,a_n$ a $b_0, b_1, \cdots ,b_m$ jsou konstanty charakterizující lineární
+      systém. Obecné řešení $y(t)$ rovnice \ref{SAS:eq_lin_dif_rov} se sestává ze dvou částí, z 
+      řešení \emph{homogenní rovnice} a \emph{partikulárního řešení}. K řešení je třeba znát 
+      počáteční podmínky pro $y(t)$ a jeho derivace ve výchozím okamžiku.
+  
+      S použitím \emph{Laplaceovy transformace při nulových počátečních podmínkách} má rovnice
+      (\ref{SAS:eq_lin_dif_rov}) tvar
+      \begin{equation}\label{SAS:eq_L_tran_dif_rce}
+        \sum_{i=0}^na_ip^iY(p)=\sum_{j=0}^mb_jp^jX(p),
+      \end{equation}
+      kde $X(p)=\mathcal{L}\{x(t)\}$ a $Y(p)=\mathcal{L}\{y(t)\}$ jsou Laplaceovy obrazy vstupní a
+      výstupní veličiny, $p$ je Laplaceův operátor derivace a také komplexní kmitočet 
+      $p=\sigma+j\omega$. Přenosová funkce $H(p)$ je definována jako podíl Laplaceova obrazu 
+      výstupní veličiny $Y(p)$ ku obrazu vstupní veličiny $x(p)$, při nulových počátečních 
+      podmínkách
+      \begin{equation}\label{SAS:eq_Hp_popis}
+          H(p)=\frac{Y(p)}{X(p)}.
+      \end{equation}
+      Vzhledem k rovnici (\ref{SAS:eq_L_tran_dif_rce}) je $H(p)$ racionálně lomenou funkcí tvaru
+      \begin{align}
+        H(p)&=\frac{b_mp^m+b_{m-1}p^{m-1}+\cdots+b_0}{a_np^n+b_{n-1}p^{n-1}+\cdots+a_0}  \nonumber\\
+            &=\frac{\Pi_{j=1}^m(p-p_{0j})}{\Pi_{i=1}^n(p-p_{\infty i})}            \label{tky:eq002}
+      \end{align}
+      kde $p_{0j}$ jsou kořeny polynomu čitatele a představují \textbf{nulové body} a kořeny
+      jmenovatele $p_{\infty i}$ jsou \textbf{póly} přenosové funkce, $H_0=\frac{b_m}{a_n}$ je
+      násobná konstanta.
+  
+      Kmitočtové charakteristiky získáme z přenosové funkce substitucí
+      \begin{equation}\label{SAS:eq_p_jomega}
+          p = j\omega,
+      \end{equation}
+      ve které $\omega$ je úhlový kmitočet. Platí tedy
+      \begin{align}
+          H(p)\mid_{p = j\omega} 
+            &=\frac{b_m(j\omega)^m+b_{m-1}(j\omega)^{m-1}                     
+             +\cdots+b_0}{a_n(j\omega)^n+b_{n-1}(j\omega)^{n-1}+\cdots+a_0}      \nonumber \\
+            &=M(\omega)e^{j\Phi(\omega)},                                        \label{tky:eq003}
+      \end{align}
+      kde $M(\omega)$ je \textbf{modulová charakteristika} a $\Phi(\omega)=\texttt{arg}H(j\omega)$ 
+      se nazývá \textbf{fázová charakteristika}. Skupinové zpoždění je definováno jako záporně vzatá
+      derivace fázové charakteristiky podle kmitočtu
+      \begin{equation}\label{SAS:eq_skupinove_zpozdeni}
+          \tau(\omega)=-\frac{d\Phi(\omega)}{d\omega}= - \frac{d \texttt{arg} H(j\omega)}{d\omega}.
+      \end{equation}
+      V předchozí kapitole jsme ukázali, že \emph{relace vstup/výstup LTI systému} souvisí
+      pro\-střed\-nic\-tvím \emph{konvoluce}
+      \begin{equation}\label{SAS:eq_popis_konvoluce}
+          y(t)=\int_0^\infty h(\tau)x(t-\tau)d\tau = h(t)*x(t).
+      \end{equation}
+      Přenosová funkce je Laplaceova transformace impulzní odezvy $h(t)$
+      \begin{equation}\label{SAS:eq_ht_Lap_trans_imp}
+          H(p)=\mathcal{L}[h(t)]=\int_0^\infty h(t)e^{-pt}dt,
+      \end{equation}
+      pro kterou je splněn vztah
+      \begin{equation}\label{SAS:eq_Yp}
+          Y(p)=H(p)X(p).
+      \end{equation}
+      Přechodová odezva $s(t)$ je definována jako integrál impulzní odezvy
+      \begin{equation}\label{SAS:eq_Prechod_odezva}
+          s(t)=\int_0^th(\tau)d\tau,
+      \end{equation}
+      takže platí
+      \begin{equation}\label{SAS:eq_st}
+          s(t)=\mathcal{L}^{-1}\{\frac{H(p)}{p}\}.
+      \end{equation}
+      Algoritmus výpočtu impulzní odezvy z přenosové funkce je založen na výpočtu  reziduí a 
+      rozkladu racionálně lomené funkce $H(p)=\frac{Q(p)}{N(p)}$ na částečné zlomky. Pokud má tato 
+      funkce jednoduché póly, rozklad má tvar\footnote{Násobnost kořenů $N(p)$ neuvažujeme, protože 
+      se v LTI obvodech neuplatňuje}.
+      \begin{align}   %\label{tky:eq004}
+         H(p)&=\frac{Q(p)}{N(p)} 
+              =\sum_{\mu=1}^{n}\frac{k_\mu}{p-p_{\infty_\mu}}                  \nonumber \\
+             &=\frac{k_1}{p-p_{\infty_1}}+\frac{k_2}{p-p_{\infty_2}}
+               +\cdots+\frac{k_n}{p-p_{\infty_n}}                              \label{tky:eq004}
+      \end{align}
+      kde $k_\mu$ se nazývají rezidua v pólech $p_{\infty_\mu})$ a platí
+      \begin{align}
+        k_\mu &= \lim_{p\to p_{\infty_\mu}}(p-p_{\infty_\mu})\frac{Q(p)}{N(p)}  \nonumber \\
+        \,    &= Q(p_{\infty_\mu})\lim_{p\to
+                 p_{\infty_\mu}}\frac{1}{\frac{N(p)}{p-p_{\infty_\mu}}}=
+                 Q(p_{\infty_\mu})\frac{1}{N'(p_{\infty_\mu})}                  \label{tky:eq006}
+      \end{align}
+      Impulzní odezva je pak dána vztahem
+      \begin{equation}\label{sas:eq_impulzni_odezva}
+        h(t)=\mathcal{L}^{-1}[H(p)]=\sum_{\mu=1}^nk_\mu e^{p_{\infty_\mu}t}
+      \end{equation}
+      Póly jsou obecně komplexní $p_{\infty_{\mu}}=\alpha_\mu+j\beta_\mu$, nebo reálné
+      $p_{\infty_{\mu}}=\alpha_\mu$. Jsou to kořeny rovnice $N(p)=0$. Rovnice
+      \ref{sas:eq_impulzni_odezva} je důležitá i proto, že z ní poznáme, zda analogová soustava je
+      stabilní. Je patrné, že soustava bude stabilní, jestliže bude
+      $\mathcal{R}\{p_{\infty_{\mu}}\}=\alpha_\mu<0$, tj. leží-li kořeny $p_{\infty_{\mu}}$ v
+      otevřené levé polorovině komplexní roviny $p_{\infty_{\mu}}=\sigma+j\omega$. Imaginární osa
+      $j\omega$ je mezí stability, pravá polorovina je oblastí nestability. Polynom, který má kořeny
+      v levé otevřené polorovině se označuje \textbf{Hurwitzův polynom}.
+      %---------------------------------------------------------------
+      \input{../src/TKY/exam/exam002.tex}
+      %---------------------------------------------------------------
+
+} %tikzset
+%---------------------------------------------------------------------------------------------------
+\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}

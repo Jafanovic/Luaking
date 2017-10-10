@@ -1,0 +1,48 @@
+% !TeX spellcheck = cs_CZ
+\begin{example}\label{TEO:exam007}
+  Pro harmonickou veličinu, určete efektivní hodnotu, střední hodnotu, činitele tvaru, činitele
+  výkyvu a činitele plnění \newline
+  \textbf{Řešení:} Efektivní hodnota je:
+  \begin{align}
+    V &= \sqrt{\frac{1}{T}\int_0^TV_m^2\cos^2{(\omega t + \varphi)}\,dt}    \nonumber  \\
+      &= \sqrt{\frac{1}{T}\int_0^TV_m^2\sin^2{(\omega t + \varphi)}\,dt} = 
+         \frac{1}{\sqrt{2}}V_m \doteq 0.707 V_m   
+  \end{align}
+  Podrobný výpočet tohoto integrálu pomocí substituce $\omega t + \varphi=\dfrac{\alpha}{2}$ je
+  poněkud zdlouhavější:
+  \begin{align*}
+      \omega t + \varphi=\dfrac{\alpha}{2}   
+    & \rightarrow  2(\omega t + \varphi) = \alpha      \\ 
+      \omega dt = \frac{1}{2}d\alpha         
+    & \rightarrow dt = \frac{1}{2\omega}d\alpha
+  \end{align*}
+  Nesmíme zapomenout přepočítat meze $\alpha_d|_{t=0}=2\varphi$ a $\alpha_h|_{t=T} = 
+  4\pi+2\varphi$ nového integrálu.
+  \begin{align*}
+    V^2  &= \frac{V_m}{2T\omega}\int_{\alpha_d}^{\alpha_h}\cos^2\frac{\alpha}{2}\,d\alpha    \\
+         &= \frac{V_m}{4\pi}\int_{\alpha_d}^{\alpha_h}\frac{1+\cos\alpha}{2}\,d\alpha  
+          = \frac{V_m}{4\pi}\left(\frac{\alpha}{2}|_{\alpha_d}^{\alpha_h}
+          + \frac{1}{2}\sin\alpha|_{\alpha_d}^{\alpha_h}\right)                              \\
+         &= \frac{V_m}{4\pi}\left(2\pi+\varphi-\varphi 
+          + \frac{1}{2}\sin(4\pi+2\varphi)
+          - \frac{1}{2}\sin(2\varphi)\right) = \frac{V_m}{2}.  
+  \end{align*}  
+  Při zjednodušování integrálu je užito známého goniometrického vzorce \(\cos^2\dfrac{\alpha}{2} = 
+  \dfrac{1+\cos\alpha}{2}\) a faktu \(\sin(x+2k\pi)=\sin x\)
+  
+  Střední hodnota kladné půlvlny je 
+  \begin{align*}
+    V_s &= \frac{2}{T}\int\limits_{-S\frac{T}{4}-
+           \frac{\varphi}{\omega}}^{\frac{T}{4}-
+           \frac{\varphi}{\omega}}{V_m\cos(\omega t +\varphi)}\,dt                            \\
+        &= \frac{2}{T}\int\limits_{-\frac{\varphi}{\omega}}^{-\frac{T}{2}-
+           \frac{\varphi}{\omega}}{V_m\sin(\omega t +\varphi)}\,dt                            \\
+        &= \frac{2}{\pi}V_m \doteq 0,637V_m
+  \end{align*}
+  činitele tvaru, výkyvu a plnění jsou 
+  \begin{align*}
+    \beta  &=\frac{V}{V_s}   =\frac{\pi}{2\sqrt{2}}=1,111, \\ 
+    \gamma &=\frac{V_m}{V}   =\sqrt{2}\doteq1.414,         \\
+    \alpha &=\frac{V_s}{V_m} =\frac{2}{\pi}\doteq0,637 
+  \end{align*}
+\end{example}

@@ -1,0 +1,65 @@
+% !TeX spellcheck = cs_CZ
+
+% note:
+% ~~~~~~
+% This figure uses expl3 package for coordinate calculating !!!
+%\usepackage{expl3}                     % fpeval
+%\ExplSyntaxOn
+%\cs_set_eq:NN \fpeval \fp_eval:n
+%\ExplSyntaxOff
+%-------------------------------------------------------------------------------------------------
+\def\xmin{0}
+\def\xmax{8.5}
+\def\ymin{-0.75}
+\def\ymax{+2}
+\def\zero{0}
+\def\R{0.5}
+\def\r{0.5}
+\def\omega{4/3.14}
+\def\angle{360}
+
+{\centering
+ \captionsetup{type=figure}
+\begin{animateinline}
+ [autoplay,
+  palindrome,
+  begin={
+    \begin{tikzpicture}
+      \useasboundingbox (\xmin,\ymin) rectangle (\xmax,\ymax);
+
+      \draw [step=1cm, black!40!white, very thin] (\xmin cm,\ymin cm) grid (\xmax cm,\ymax cm);
+      \draw [red, thick,  domain=0:6*pi, samples=100] 
+        plot ({\omega*\R*\x + \r*sin(deg(\omega*\x))}, {\R+\r*cos(deg(\omega*\x))} );
+        
+      \draw [Mahogany, thick,  domain=0:6*pi, samples=100] 
+        plot ({\omega*\R*\x + 1.5*\r*sin(deg(\omega*\x))}, {\R+1.5*\r*cos(deg(\omega*\x))} );
+        
+      \draw [orange, thick,  domain=0:6*pi, samples=100] 
+        plot ({\omega*\R*\x + 0.4*\r*sin(deg(\omega*\x))}, {\R+0.4*\r*cos(deg(\omega*\x))} );
+        
+      \draw[black, thick] (\xmin cm,\ymin cm) rectangle (\xmax cm,\ymax cm);
+    
+      \draw [Sepia,line width=0.5mm] (\xmin,0) -- (\xmax,0);
+        \foreach \x/\xtext in {1/1,2/2,3/3,4/4,5/5,6/6,7/7,8/8}
+          \draw (\x cm,-3pt) -- (\x cm,2pt) node[below, yshift=-1mm, fill=white] {\xtext};
+        },
+  end={\end{tikzpicture}}
+]{5}
+  \multiframe{40}{nstep=0.1+20}{% 
+    % wheel
+    \filldraw[fill=black!40!white, draw=black, opacity=0.2] 
+      (\nstep/57.295/3.14*2, \R cm) circle (\R cm);
+    %point 1
+    \filldraw[fill=red!40!white, draw=black] (\fpeval{\omega*\R*\nstep/57.295 + 
+       1.0*\r*sin(deg(\omega*\nstep))},\fpeval{\R+1.0*\r*cos(deg(\omega*\nstep))}) circle (0.5 mm);
+    %point 2
+    \filldraw[fill=red!40!white, draw=black] (\fpeval{\omega*\R*\nstep/57.295 + 
+       1.5*\r*sin(deg(\omega*\nstep))},\fpeval{\R+1.5*\r*cos(deg(\omega*\nstep))}) circle (0.5 mm);
+    %point 3
+    \filldraw[fill=red!40!white, draw=black] (\fpeval{\omega*\R*\nstep/57.295 + 
+       0.4*\r*sin(deg(\omega*\nstep))},\fpeval{\R+0.4*\r*cos(deg(\omega*\nstep))}) circle (0.5 mm);
+}
+\end{animateinline}
+\captionof{figure}{Animace parametrických rovnic pohybu libovolně zvoleného bodu na kole}
+\label{fyz:fig144}
+\par}

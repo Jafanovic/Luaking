@@ -1,0 +1,36 @@
+%===================================================================================================
+% Radiotechnika
+% RA.tex
+%===================================================================================================
+% notes:
+%~~~~~~~~~
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+  \graphicspath{{../src/RAE/img/}}
+%---------------------------------------------------------------------------------------------------
+
+\part{VFT}\label{part:VFT}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+%=====================================Kapitola: Hlavní etapy vývoje fyziky==========================
+  \input{../src/RAE/chap/RF_theory.tex}
+%================================= Kapitola: Přehled jazyka C++=====================================
+  \input{../src/RAE/chap/Smith_chart.tex}
+%================================= Kapitola: Přehled jazyka C++=====================================
+  \input{../src/RAE/chap/Antenna_Theory.tex}
+%================================= Kapitola: Přehled jazyka C++=====================================
+  \input{../src/RAE/chap/Modulation.tex} 
+}
+{
+% DEBUG was off
+%=====================================Kapitola: Hlavní etapy vývoje fyziky==========================
+%  \input{../src/RAE/chap/RF_theory.tex}  % ** TODO
+%================================= Kapitola: Přehled jazyka C++=====================================
+%  \input{../src/RAE/chap/Smith_chart.tex} % ** TODO
+%================================= Kapitola: Přehled jazyka C++=====================================
+  \input{../src/RAE/chap/Antenna_Theory.tex}
+%================================= Kapitola: Přehled jazyka C++=====================================
+  \input{../src/RAE/chap/Modulation.tex} 
+} % DEBUG was off

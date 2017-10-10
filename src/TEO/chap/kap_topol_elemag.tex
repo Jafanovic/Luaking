@@ -1,0 +1,1457 @@
+% !TeX spellcheck = cs_CZ
+%file: kap_topol_elemag.tex
+{\tikzset{external/prefix={tikz/TEO/}}
+ \tikzset{external/figure name/.add={ch03_}{}}
+%===========Kapitola: Topologické vlastnosti elektromagnetického pole===============================
+\chapter{Topologické vlastnosti elektromagnetického pole}\label{teo:IchapII}
+\minitoc
+ 
+  V předchozích kapitolách byly na mnohých místech zdůrazňovány některé topologické souvislosti.
+  Kapitola o topologii je úmyslně zařazena až následně, jednak aby shrnula získané poznatky a
+  vtiskla jim určitý řád, jednak aby čtenář již měl předchozí konkrétní představy o některých
+  abstraktních pojmech \cite[s.~40]{Patocka4}. 
+  
+  Topologie je matematická disciplína, patřící do vyšších pater v hierarchii matematiky. Topologie
+  se zabývá prostorovými útvary, podobně jako geometrie. Na rozdíl od geometrie ji však nezajímají 
+  \emph{kvantitativní} ukazatele zkoumaných geometrických útvarů, nýbrž určité vyšší obecnější
+  \emph{kvalitativní} ukazatele. S nadsázkou lze říci, že je to ''geometrie, která nic neměří''.
+  Topologie se dělí na dvě zdánlivě odlišné disciplíny: 
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+    \item \emph{Topologie diskrétních útvarů} neboli \emph{teorie grafů} - zabývá se diskrétními
+          prostorovými útvary, tj. \emph{grafy}. Graf sestává z \emph{uzlů} propojených
+          \emph{hranami}. Hrany mohou být \emph{orientované} nebo \emph{neorientované}. Všechny
+          diskrétní elektrické obvody jsou \emph{neorientovanými} grafy. Proto i všechny známe
+          metody řešení diskrétních elektrických obvodů (metoda Kirchhoffových zákonů, metoda
+          smyčkových proudů, metoda uzlových napětí) podléhají zákonitostem diskrétní topologie. 
+    \item \emph{Topologie spojitých útvarů} - zabývá se spojitými prostorovými útvary, tj.
+          \emph{plochami a křivkami} v prostorech libovolné dimenze. Patří sem všechny elektrické
+          obvody s \emph{parametry spojitě rozprostřenými} v 3D prostoru. Takovým útvarem je např.
+          krabice naplněná elektricky vodivým grafitovým práškem, do níž umístíme v libovolných
+          místech dvě nebo více elektrod. Intuitivně tušíme, že v prostoru krabice budeme pracovat s
+          ekvipotenciálami v podobě \emph{ploch} nebo se siločárami v podobě \emph{křivek} atd. 
+  \end{itemize}
+  
+  Elektrické obvody se chovají poněkud jinak než obvody magnetické: 
+  \begin{itemize}
+    \item V \emph{elektrických} obvodech je poměr mezi měrnou elektrickou vodivostí \emph{vodičů} a
+          \emph{izolantů} minimálně $10^{12}$, obvykle i větší. Proto lze snadno pomocí vodiče
+          obaleného izolantem docílit toho, že elektrický proud teče pouze prostorově vymezenými
+          \emph{diskrétními} cestami. Pak je pochopitelné, že vhodným a \emph{absolutně přesným}
+          nástrojem k analýze elektrického obvou je \emph{topologie diskrétních útvarů}.
+    \item V \emph{magnetických} obvodech je poměr mezi měrnou magnetickou vodivostí (permeabilitou)
+          \emph{vodičů} a \emph{izolantů} typicky $10^{3}$, což je dáno relativní permeabilitou
+          feromagnetik vůči vakuu. Vakuum je tedy \emph{velmi špatný} magnetický izolant a lepší v
+          přírodě bohužel neexistuje. V této situaci je obtížné realizovat ryze diskrétní magnetický
+          obvod, protože železo neumíme ''obalit'' kvalitním magnetickým izolantem. U cívky se
+          železným jádrem podle obr. \ref{es:fig_patocka_mag_tok_exp7} v kapitole \ref{ES:sec03} 
+          jsme ukázali, že rozptylový tok vzdušných cest činí řádově 1 \% až 5 \% z toku celkového. 
+          Takový obvod je sice již řešitelný metodami \emph{diskrétní} topologie, ale pouze 
+          přibližně. Je to běžný inženýrský postup, který se v praxi velmi úspěšně používá. Pokud 
+          však rozptylový tok nechceme nebo nemůžeme zanedbat, je nezbytné pracovat metodami 
+          \emph{topologie spojitých útvarů\footnote{Všimněme si ale, že ke zjednodušeným výrazům 
+          pro výpočet spřaženého toku v \emph{diskrétním} obvodu jsme dospěli pomocí integrálních 
+          metod, které používá topologie \emph{spojitých} útvarů}. Berme to jako ukázku, že mezi 
+          oběma topologiemi je hluboký vztah, i když není na první pohled patrný.}
+  \end{itemize} 
+  %----------------------------------
+  % image: resistor_grid.tex label: \label{ES:fig_res_grid}
+%      \input{../src/TEO/img/resistor_grid.tex}  
+  %----------------------------------
+   {\centering
+    \captionsetup{type=figure}
+    \input{../src/TEO/img/resistor_grid.tex}
+    \captionof{figure}{Pasivní dvojbran v podobě husté vodivostní sítě}
+    \label{ES:fig_res_grid}
+    \par}       
+    \vspace{1em}
+
+  Na první pohled se zdá, že obě topologie využívají natolik odlišných matematických postupů, že
+  spolu tyto disciplíny nijak nesouvisí. Opak je pravdu. Mezi oběma panuje hluboký vztah, obě
+  vycházejí ze stejných základů. Vysvětlení lze hledat na obr. \ref{ES:fig_res_grid}. Je zde
+  nakreslen \emph{přenosový dvojbran} se zcela obecnou vnitřní strukturou, která může mít např.
+  podobu husté vodivostní\footnote{V magnetických obvodech je psychologicky výhodnější pracovat s
+  magnetickými vodivostmi než s magnetickými odpory (reluktancemi). Permeabilita má totiž význam
+  \emph{měrné magnetické vodivosti}} sítě, ve které mají jednotlivé vodivosti nahodile různé
+  hodnoty. S ohledem na dobře známé analogie je lhostejné, zda se jedná o \emph{elektrický} nebo
+  \emph{magnetický} obvod. Nakreslený obvod je zcela určitě \emph{diskrétní}, bude tedy řešen
+  některou klasickou diskrétní metodu, např. metodou smyčkových proudů nebo metodou uzlových
+  napětí. Výpočtem zjistíme, že z pohledu vstupní a výstupní brány má dvojbran konkrétní přenosové
+  parametry (napěťový přenos naprázdno, proudový přenos nakrátko, vstupní impedanci naprázdno,
+  nakrátko, atd.) Učiňme následující myšlenkový pokus: vodivostní síť budem neustále zjemňovat.
+  Tj., ve směru vodorovném i svislém budeme zvyšovat počty prvků, ale tak, aby celková vodivost na
+  jednotku délky zůstávala v dané oblasti \emph{konstantní}. Výsledkem zjemňování bude v limitním
+  případě vznik \emph{spojité} vodivé desky (např. izolační podložka nastříkaná elektricky vodivým
+  odporovým lakem). Mezi původním diskrétním obvodem a deskou zřejmě platí následující souvislosti:
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+    \item Původní diskrétní vodivosti byly nahodile různé \(\longrightarrow\) deska bude
+          \emph{nehomogenní, anizotropní}.
+    \item Původní diskrétní vodivosti byly stejně velké ve směru \emph{x} a stejně velké (ale s
+          jinou hodnotou ve směru \emph{y}) \(\longrightarrow\) deska bude \emph{homogenní
+          anizotropní}.
+    \item Všechny diskrétní vodivosti měly stejnou hodnotu \(\longrightarrow\) deska bude
+          \emph{homogenní, izotropní}.
+  \end{itemize}
+  
+  Intuitivně tušíme, že vytvořená \emph{spojitá} deska\footnote{Uvedený příklad se týká
+  dvojrozměrné desky. Příklad lze jistě zobecnit na trojrozměrné objekty (lze si představit
+  krabici naplněnou vodivým grafitovým práškem, do které zavedeme čtyři bodové elektrody).} bude mít
+  všechny přenosové parametry číselně shodné s původním \emph{diskrétním} obvodem. Přitom ale u
+  desky nelze tyto parametry určit klasickými diskrétními metodami (nelze určit matici obvodu). Je
+  nutný přechod od diskrétních operací k operacím integrálním, tedy od topologie \emph{diskrétních
+  útvarů} k topologii \emph{spojitých útvarů}. Z uvedeného myšlenkového pokusu plyne, že v
+  \emph{limitním případě} velmi jemné sítě musí dát diskrétní i spojité operace stejný kvantitativní
+  výsledek. Na tomto poznatku je založeno přibližné řešení spojitých prostorových polí
+  \emph{metodami konečných prvků}.
+  
+  Především jsme ovšem chtěli ukázat, že mezi diskrétními a spojitými topologickými metodami není
+  zásadního rozdílu, obě vycházejí ze stejných základů a v limitním případě spolu splývají. 
+  
+  \section{Topologie diskrétních útvarů}\label{teo:IchapIIsecI}
+    Cílem této kapitoly je především vysvětlit \emph{pricnip reciprocity} v pasivních elektrických
+    obvodech a pomocí něho odvodit \emph{počet stupňů volnosti} elektrických obvodů. Zvláštním
+    případem obvodu je \emph{pasivní přenosový dvojbran}, u kterého bude dokázáno, že má vždy
+    \emph{tři stupně volnosti}. Tento poznatek má totiž mimořádný význam v teorii
+    \emph{transformátorů}, který je právě typickým představitelem přenosového dvojbranu. V
+    kapitolách zabývajících se transformátorem - především jeho náhradním zapojením - se budeme
+    odvolávat na výsledky získané v této kapitole. 
+    
+    \subsection{Základní pojmy teorie grafů}\label{teo:IchapIIsecIsubI}
+      Názvosloví a základní pojmy teorie grafů lze shrnout do následujících bodů:
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item Základním pojmem je \emph{graf} (graf orientovaný, neorientovaný). Graf je vlastně
+              „schéma“ příslušného obvodu s vynechanými obvodovými prvky.
+        \item Graf sestává z \emph{uzlů} a \emph{hran}.
+        \item Uzel je spojení alespoň tří hran\footnote{Spojení dvou hran je elektrický bod, 
+              nikoli uzel.}.
+        \item Hrana může být \emph{orientovaná} (je jí přiřazen směr), \emph{neorientovaná} (nemá
+              přiřazen směr). V elektrotechnice se používají výhradně neorientované hrany - tedy i
+              grafy (vlastnosti obvodových prvků R, L, C jsou nezávislé na směru proudu).
+        \item \emph{Úplný strom}: nepřerušená celistvá soustava nejmenšího počtu hran, která spojuje
+              všechny uzly grafu.
+        \item \emph{Nezávislá hrana}: hrana nepatřící do úplného stromu.
+        \item \emph{Nezávislá smyčka}: uzavřená smyčka, která musí obsahovat nezávislou hranu, tj.
+              hranu nepatřící do úplného stromu.
+        \item Nezávislých smyček je tolik, kolik je nezávislých hran.
+      \end{itemize}
+     
+      Označme v grafu:
+       \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+         \item Počet uzlů:  \(q +1\)
+      \item Počet hran úplného stromu:  \(q\)
+      \item Počet hran (počet neznámých proudů):  \(p\)
+      \item Počet nezávislých hran (nezávislých smyček):  \(n=p-q\)
+      \end{itemize}
+      
+      U složitých obvodů je hledání \(n\) nezávislých smyček obtížné. Proto se k tomuto účelu 
+      používá úplný strom, jehož nalezení je snadné. Nezávislé hrany jsou ty, které \emph{nepatří} 
+      do úplného stromu. Každou nezávislou hranou pak musí procházet alespoň jedna nezávislá 
+      smyčka. Všechny pojmy budou ukázány na konkrétním příkladu.
+      
+      Řešením obvodu se rozumí: Nalezení všech \(p\) neznámých proudů ve všech \(p\) hranách.
+      Principiálně se vždy jedná o řešení soustavy \(p\) rovnic o \(p\) neznámých proudech.
+      
+      K řešení lze použít tři metody:
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+       \item \textbf{Metoda založená na přímém použití I. a II. Kirchhoffova 
+             zákona}\footnote{Gustav Robert Kirchhoff (1824-1887), německý fyzik, působil na 
+             univerzitách v Heidelbergu a v Berlíně. I. a II. KZ objevil r. 1845 ještě jako 
+             student. Dále se zabýval spektroskopií, tepelnou radiací černého tělesa, 
+             spoluobjevitel Cesia a Rubidia. Žák F. E. Neumanna.}.
+             Je nejméně efektivní, vede na nejrozsáhlejší soustavu \(p\) rovnic o \(p\) neznámých.
+       \item \textbf{Metoda smyčkových proudů} (\emph{Mesh Currents Matrix Method}), Maxwellova 
+             metoda. Vede na soustavu pouze \(n\) rovnic o \(n\) neznámých smyčkových 
+             proudech\footnote{Ze smyčkových proudů lze skutečné proudy snadno vyřešit pomocí 
+             doplňkových rovnic sestavených pomocí I. KZ.}. Vezmeme-li v úvahu nejsložitější obvod, 
+             ve kterém je každá dvojice uzlů spojena hranou, pak bude:
+             \begin{equation}\label{ES:eq_topol00}
+               n=p-q=\frac{q(q-1)}{2},
+             \end{equation}
+             což je  podstatně méně rovnic než \(p\).
+       \item \textbf{Metoda uzlových napětí} (\emph{Node Voltages Matrix Method}). Je to metoda 
+             nejefektivnější, protože vede na nejmenší soustavu pouze \(q\) rovnic. Metoda je 
+             založena na přepočtu všech napětí zdrojů na ekvivalentní zdroje proudové. Z takto 
+             určených proudů a ze známých obvodových impedancí je pak možno určit napěťové úbytky 
+             na každé impedanci, tedy i napětí všech \(q\) proti zvolenému uzlu referenčnímu.
+      \end{itemize}
+      
+      % --------example: Metoda smyčkových proudů ------------
+      % \label{TEO:exam015}
+      \input{../src/TEO/exam/exam015.tex}  
+      %-------------------------------------------------------
+      
+    \subsection{Princip reciprocity v pasivních lineárních 
+    obvodech}\label{teo:IchapIIsecIsubII}
+      Zdůrazněme, že princip reciprocity platí pouze v \emph{pasivních} obvodech, tj. v obvodech, 
+      které neobsahují vnitřní (skryté) zdroje napětí nebo proudu. Příklad uvedený v předchozí 
+      kapitole slouží jako názorná ukázka principu reciprocity \emph{lineárního} elektrického 
+      obvodu. Matice (\ref{ES:eq_topol03}) řešeného obvodu je totiž \emph{symetrická} podle 
+      \emph{hlavní diagonály}. Nejedná se o náhodu, podobnou diagonální symetrii bude vykazovat 
+      každá \(\mathbb{Z}\)-matice nebo \(\mathbb{Y}\)-matice libovolného pasivního obvodu. Bude-li 
+      obvod řešen např. metodou I. KZ a II. KZ, pak bude matice nejrozsáhlejší, bude mít rozměr 
+      \(p\times p\), kde \(p\) je počet hran (počet neznámých proudů):
+      \begin{equation}\label{ES:eq_topol04}
+        \left(
+          \begin{array}{ccccc}
+             z_{1,1}    &  z_{1,2}   & \ldots & z_{1,p-1}   & z_{1,p}   \\
+             z_{2,1}    &  z_{2,2}   & \ldots & z_{2,p-1}   & z_{2,p}   \\
+             \vdots     &  \vdots    & \ddots & \vdots      &\vdots     \\
+             z_{p-1,1}  &  z_{p-1,2} & \ldots & z_{p-1,p-1} & z_{p-1,p} \\
+             z_{p,1}    &  z_{p,2}   & \ldots & z_{p,p-1}   & z_{p,p}   \\
+          \end{array}
+        \right)
+     \end{equation}
+      
+      Tato matice bude určitě opět symetrická podle hlavní diagonály. Diagonální symetrie 
+      \(\mathbb{Z}\)-matic i \(\mathbb{Y}\)-matic je nejvýznamnější a nejobecnější vlastností všech 
+      pasivních obvodů. Matematicky lze tuto symetrii zapsat ve tvaru
+      \begin{equation}\label{ES:eq_topol05}
+        z_{ij} = z_{ji} \qquad\text{případně}\qquad y_{ij} = y_{ji}
+      \end{equation}
+      Obě rovnice (\ref{ES:eq_topol05}) vyjadřují princip reciprocity, který můžeme slovně 
+      formulovat takto: a) Přenosová impedance naprázdno měřená podle obr. 
+      \ref{es:fig_patocka_topol03a} mezi \(r\)-tou a \(y\)-tou hranou obvodu je stejná pro oba 
+      směry přenosu:
+      \begin{figure}[ht!]
+        \centering  
+        \begin{tabular}{c}
+          \subfloat[ ]{\label{es:fig_patocka_topol03a}
+            \includegraphics[width=0.9\linewidth]{patocka_topol03a.png}}   \\
+          \subfloat[ ]{\label{es:fig_patocka_topol03b}
+            \includegraphics[width=0.9\linewidth]{patocka_topol03b.png}}
+        \end{tabular}
+        \caption{Měření přenosových parametrů: a) \textbf{impedancí naprázdno} \(Z_{ij,0}\) a 
+                 \(Z_{ji,0}\) v obou směrech mezi \(i\)-tou a \(j\)-tou hranou obvodu. Obvod je 
+                 napájen zdrojem proudu a měříme napětí. Obě měření musí dát stejný výsledek. b)  
+                 \textbf{admitancí nakrátko} \(Y_{ij,K}\) a \(Y_{ji,K}\) v obou směrech mezi 
+                 \(i\)-tou a \(j\)-tou hranou obvodu. Obvod je napájen zdrojem napětí a měříme 
+                 proud. Obě měření musí dát stejný výsledek. \cite[s.~45]{Patocka4}} 
+        \label{es:fig_patocka_topol03}
+      \end{figure}
+      
+      Princip reciprocity neplyne z žádných vyšších fyzikálních zákonů (např. ze zákona zachování 
+      energie, náboje atd.). Sám je totiž samostatným základním zákonem vyjadřujícím určitou 
+      topologickou kvalitu („geometrickou kvalitu“) každého elektrického obvodu.
+      
+      Na závěr zdůrazněme, že u \emph{lineárních} obvodů jsou všechny maticové prvky \(z_{ij}\) 
+      \emph{konstantami} nezávislými na proudech \(I_1\), až \(I_p\), a podobně všechny maticové 
+      prvky \(y_{ij}\). jsou \emph{konstantami} nezávislými na napětích \(U_1\), až \(U_p\). Na 
+      rozdíl od nelineárních obvodů v následující kapitole.
+      
+    \subsection{Princip reciprocity v pasivních nelineárních 
+    obvodech}\label{teo:IchapIIsecIsubIII}
+      V této kapitole ukážeme, že princip reciprocity platí i v případě \emph{nelineárních} obvodů. 
+      Musí se však jednat opět o pasivní obvody, tj. obvody, které neobsahují vnitřní zdroje.
+      
+      Každá \(\mathbb{Z}\)-matice nebo \(\mathbb{Y}\)-matice libovolného \emph{nelineárního} obvodu 
+      je opět \emph{symetrická podle hlavní diagonály}. Ale - na rozdíl od lineárních obvodů - 
+      maticové prvky \(z_{ij}\), \(y_{ij}\) nebudou konstantami, nýbrž budou \emph{mnohorozměrnými 
+      funkcemi} vnějších budicích veličin. Konkrétně maticové prvky \(z_{ij}(I_1\ldots I_p)\) budou 
+      funkcemi proudů \(I_1\), až \(I_p\) a maticové prvky \(y_{ij}(U_1\ldots U_p)\) budou 
+      mnohorozměrnými funkcemi napětí \(U_1\), až \(U_p\). Např. \(\mathbb{Z}\)-matice bude mít 
+      tvar:
+      \begin{widetext}
+        \begin{equation*}
+          \left(
+            \begin{array}{ccccc}
+              z_{1,1}(I_1\ldots I_p)     &  z_{1,2}(I_1\ldots I_p)   & \ldots & 
+              z_{1,p-1}(I_1\ldots I_p)   &  z_{1,p}(I_1\ldots I_p)                   \\
+              z_{2,1}(I_1\ldots I_p)     &  z_{2,2}(I_1\ldots I_p)   & \ldots & 
+              z_{2,p-1}(I_1\ldots I_p)   &  z_{2,p}(I_1\ldots I_p)                   \\
+              \vdots      &  \vdots      &  \ddots     & \vdots      & \vdots        \\
+              z_{p-1,1}(I_1\ldots I_p)   &  z_{p-1,2}(I_1\ldots I_p) & \ldots & 
+              z_{p-1,p-1}(I_1\ldots I_p) &  z_{p-1,p}(I_1\ldots I_p)                 \\
+              z_{p,1}(I_1\ldots I_p)     &  z_{p,2}(I_1\ldots I_p)   & \ldots & 
+              z_{p,p-1}(I_1\ldots I_p)   &  z_{p,p}(I_1\ldots I_p)                   \\
+            \end{array}
+          \right)
+        \end{equation*}
+      \end{widetext}
+      
+      Symetrii \(\mathbb{Z}\)-matic a \(\mathbb{Y}\)-matic podle hlavní diagonály lze matematicky 
+      zapsat ve tvaru
+      \begin{subequations}
+        \begin{align}\label{ES:eq_topol06}
+          z_{ij}(I_1\ldots I_p) &= z_{ji}(I_1\ldots I_p) \\
+          \shortintertext{případně}
+          y_{ij}(U_1\ldots U_p) &= y_{ji}(U_1\ldots U_p)
+        \end{align}
+      \end{subequations}
+      
+      Zdůrazněme, že klasická teorie elektrických obvodů připouští platnost principu reciprocity 
+      pouze u \emph{lineárních} obvodů, např. Někdy bývá dokonce explicitně vysloveno mylné 
+      tvrzení, že v \emph{nelineárních} obvodech princip neplatí. Proto nyní dokážeme, že princip 
+      reciprocity je možno rozšířit i na obvody nelineární. Důkaz lze konstruovat následovně:
+     
+      
+      \begin{enumerate} \addtolength{\itemsep}{-0.5\baselineskip}
+        \item Předpokládejme nelineární obvod, ale buzený signály o \emph{velmi malé} amplitudě.
+        \item Bude-li se amplituda všech signálů limitně blížit nule, lze obvod 
+              \emph{linearizovat} v určitém stejnosměrném pracovním bodu, tj. všechny nelineární 
+              převodní funkce \(z_{ij}(I_1\ldots I_p)\) lze nahradit převodními konstantami 
+              \(z_{ij}\) jejichž velikost je dána parciálními derivacemi původní funkce v onom 
+              pracovním bodu (jedná se o běžný linearizační postup).
+        \item Když jsme takto obvod \emph{linearizovali}, musí se pro limitně malé signály chovat 
+              jako obvod \emph{lineární} - a to se všemi důsledky z toho plynoucími, tedy včetně 
+              existence principu reciprocity.
+        \item Nutnou a postačující podmínkou platnosti tvrzení 3) je splnění rovnice 
+              (\ref{ES:eq_topol06}).
+      \end{enumerate}
+      Konec důkazu.
+      
+      Poznatek, že princip reciprocity platí i v \emph{nelineárních} elektrických soustavách, má 
+      velký význam při vytváření matematických modelů nelineárních soustav: jednak bude model 
+      jednodušší (menší počet převodních funkcí), jednak máme částečnou kontrolu jeho správnosti. 
+      Princip reciprocity splňují nejen \emph{lineární} a \emph{nelineární} soustavy elektrické, 
+      nýbrž všechny fyzikální soustavy. Jedná se o jeden z nejobecnějších fyzikálních zákonů 
+      topologického charakteru\footnote{Například Einstein předpokládal platnost principu 
+      reciprocity i ve své teorii gravitace. Po určitých úvahách totiž postuloval diagonální 
+      symetrii Riemannova tenzoru křivosti čtyřrozměrného časoprostoru. Tento tenzor druhého řádu 
+      má tvar matice o rozměru \(4\times4\). Obsahuje tedy 16 členů, 16 čtyřrozměrných 
+      metrických funkcí \(g_{ij}(x, y, z, ct)\). Z postulované symetrie plyne, že pouze 10 z nich 
+      je různých (\(10 = 4+3+2+1\)). Řešení gravitačního pole tedy spočívá ve vyřešení soustavy 10 
+      nelineárních parciálních diferenciálních rovnic o 10 neznámých funkcích \(g_{ij}(x, y, z, 
+      ct)\). Proto se jedná o velmi obtížnou úlohu.}.
+      
+    \subsection{Počet stupňů volnosti pasivního mnohopólu}\label{teo:IchapIIsecIsubIV}
+      Obecný mnohopól je nakreslen na obr. \ref{es:fig_patocka_topol04}. Nechť má tento obvod \(r\) 
+      vnějších svorek. Pak zřejmě celkový počet všech možných dvojic svorek, tj. všech možných 
+      napětí v obvodu je roven
+      \begin{equation}\label{ES:eq_topol07}
+        s=(r-1) + (r-2) + (r-2) + \ldots + 3 + 2 + 1 = \frac{r(r-1)}{2}.
+      \end{equation}
+      \begin{figure}[ht!]   %\ref{es:fig_patocka_topol04}
+        \centering
+        \includegraphics[width=0.6\linewidth]{patocka_topol04.png}
+        \caption{Obecný \(r\)-pól \cite[s.~46]{Patocka4}.}
+        \label{es:fig_patocka_topol04}
+      \end{figure}
+      Zřejmě však stačí připojit \((r-1)\) vnějších nezávislých napájecích napětí (napěťových 
+      zdrojů) a všechna zbývající napětí mezi libovolnými dvojicemi svorek jsou pak plně 
+      definována, neboť mezi napětími platí II. KZ. Podobně stačí měřit \((r-1)\) vnějších proudů, 
+      zbývající \(r\)-tý proud je na nich lineárně závislý (\(r\)-pól se chová jako uzel, mezi 
+      jehož proudy platí 1. KZ). Vnější chování \(r\)-pólu je tedy plně popsáno vektorem \((r-1)\) 
+      napětí a vektorem \((r-1)\) proudů. Odtud plyne, že vnější vlastnosti \(r\)-pólu jsou plně 
+      definovány čtvercovou \(\mathbb{Z}\)-maticí nebo \(\mathbb{Y}\)-maticí o rozměru 
+      \((r—l)\times(r-1)\). Uvedeme např. \(\mathbb{Z}\)-matici:  
+      \begin{equation}\label{ES:eq_topol08}
+        \left(
+          \begin{array}{ccccc}
+            z_{1,1}    &  z_{1,2}   & \ldots & z_{1,r-2}   & z_{1,r-1}    \\
+            z_{2,1}    &  z_{2,2}   & \ldots & z_{2,r-2}   & z_{2,r-1}    \\
+            \vdots     &  \vdots    & \ddots & \vdots      &\vdots        \\
+            z_{r-2,1}  &  z_{r-2,2} & \ldots & z_{r-2,r-2} & z_{r-2,r-1}  \\
+            z_{r-1,1}  &  z_{r-1,2} & \ldots & z_{r-1,r-2} & z_{r-1,r-1}  \\
+          \end{array}
+        \right)
+      \end{equation}
+      
+      Mnohopól je \emph{zvláštním případem} obecného elektrického obvodu. V každém elektrickém 
+      obvodu platí princip reciprocity, proto musí platit i v případě \(r\)-pólu. Odtud plyne, že 
+      jeho matice (\ref{ES:eq_topol08}) musí být symetrická podle hlavní diagonály. To znamená, že 
+      z celkového počtu \((r-1)^2\) maticových prvků je různých pouze \((r-1) + (r-2) + (r-3) +... 
+      + 3 + 2 + 1\). Jinak řečeno, počet stupňů volnosti s libovolného pasivního \(r\)-pólu je dán 
+      rovnicí (\ref{ES:eq_topol07}). Význam počtu stupňů volnosti \(s\) je mimořádný. Lze totiž 
+      dokázat následující větu.
+      
+      \begin{lemma}\label{ES:lem_topol01}
+        Z hlediska vnějšího chování lze každý libovolně složitý \(r\)-pól nahradit \(r\)-pólem
+        ekvivalentním sestaveným pouze z tolika impedancí, kolik stupňů volnosti má původní obvod, 
+        tedy sestaveným z \(s = \frac{r(—1)}{2}\) impedancí. Přičemž těchto \(s\) impedancí musí 
+        být zapojeno ve shodě s obr. \ref{es:fig_patocka_topol05}, tj. každá dvojice svorek musí 
+        být propojena jednou impedancí.
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cccc}
+            \subfloat[ ]{\label{es:fig_patocka_topol05a}
+              \includegraphics[width=0.11\linewidth]{patocka_topol05a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol05b}
+              \includegraphics[width=0.18\linewidth]{patocka_topol05b.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol05c}
+              \includegraphics[width=0.25\linewidth]{patocka_topol05c.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol05d}
+              \includegraphics[width=0.25\linewidth]{patocka_topol05d.png}}
+          \end{tabular}
+          \caption{Příklady náhrady obecného r-pólu ekvivalentním r-pólem: a) dvojpól, b) trojpól,
+                   c) čtyřpól, d) pětipól. Číslo \(s\) souhlasí s rovnicí (\ref{ES:eq_topol07}).
+                   \cite[s.~47]{Patocka4}} 
+          \label{es:fig_patocka_topol05}
+        \end{figure}
+      \end{lemma}
+      Důkaz věty bude naznačen v následující kapitole.
+      
+    \subsection{Počet stupňů volnosti pasivního čtyřpólu}\label{teo:IchapIIsecIsubV}
+      Důkaz věty \ref{ES:lem_topol01} ukážeme na případu čtyřpólu. Systematická konstrukce důkazu 
+      je znázorněna na obr. \ref{es:fig_patocka_topol06}. Původní složitý čtyřpól začneme 
+      dovolenými ekvivalentními úpravami měnit tak, abychom postupně snižovali celkový počet 
+      odporů. Začneme-li např. v levém horním rohu, postup bude následující:
+      \begin{figure}[ht!]   %\ref{es:fig_patocka_topol06}
+        \centering
+        \includegraphics[width=0.95\linewidth]{patocka_topol06.png}
+        \caption{Postupná náhrada složitého čtyřpólu čtyřpólem ekvivalentním, sestaveným ze šesti
+                 impedancí. \cite[s.~48]{Patocka4}.}
+        \label{es:fig_patocka_topol06}
+      \end{figure}
+      \begin{enumerate}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item Dva černě vyznačené odpory sečteme - počet prvků klesl o jedničku.
+        \item V rohu vznikl trojúhelník ze tří černě vyznačených odporů.        
+        \item Vzniklý černý trojúhelník přeměníme pomocí dobře známé transfigurace na hvězdu.
+        \item Po vzniku hvězdy se objeví dva odpory zapojené do série (černý a bílý). Odpory 
+              sečteme - počet prvků klesl o další jedničku.
+        \item Po sečtení odporů se objeví dvě černě vyznačené hvězdy ležící vedle sebe.
+        \item Obě hvězdy přeměníme pomocí transfigurace na dva trojúhelníky (tato operace již není 
+              nakreslena).
+        \item Po vzniku trojúhelníků se objeví na sousedících stranách trojúhelníků dva odpory 
+              zapojené paralelně. Odpory sečteme, čímž počet prvků klesne o další jedničku.
+        \item Postupným střídáním transfigurací z hvězd na trojúhelníky a opačně, z trojúhelníků na 
+              hvězdy, neustále snižujeme počet prvků o jedničku.
+        \item Algoritmus lze neustále opakovat až do okamžiku, kdy nám zbude šest odporů zapojených 
+              do můstku podle obrázku. Toto zápojem již nelze žádným postupem více minimalizovat.
+      \end{enumerate}
+      Konec důkazu.
+      
+      Ve zvláštním případě, jsou-li svorky \(b, d\) původního čtyřpólu vodivě spojeny (jedná se pak 
+      o trojpól), výsledkem algoritmu bude \(T\)-článek sestavený pouze ze tří odporů a ten lze 
+      případně přepočítat pomocí transfigurace hvězda-trojúhelník na rovnocenný 
+      \(\Pi\)-článek\footnote{Lze dokázat, že transfigurace \emph{hvězda-trojúhelník} je 
+      uskutečnitelná právě pouze pro \emph{trojpól}. Pro všechny ostatní r-póly, u nichž \(r > 3\), 
+      realizovatelná \emph{není}. Jev není náhodný, úzce souvisí se \emph{třemi stupni volnosti}.}.
+      
+      V obecném případě je ale výsledkem zjednodušovacího algoritmu vždy obvod sestavený ze šesti 
+      odporů podle obr. \ref{es:fig_patocka_topol07}. Obvod lze nakreslit ve tvaru křížového článku 
+      nebo ve tvaru můstku zatíženého na vstupu i výstupu impedancemi. Křížový článek a zatížený 
+      můstek jsou obvody topologicky totožné.
+      \begin{figure}[ht!]
+        \centering  
+        \includegraphics[width=0.95\linewidth]{patocka_topol07.png}
+        \caption{Náhrada libovolné složitého čtyřpólu čtyřpólem ekvivalentním.
+                \cite[s.~48]{Patocka4}} 
+        \label{es:fig_patocka_topol07}
+      \end{figure}
+      
+    \subsection{Počet stupňů volnosti pasivního dvojbranu}\label{teo:IchapIIsecIsubVI}
+      Tuto a následující kapitoly je nutno chápat jako důležitou teoretickou připravu, bez níž není 
+      možno plně pochopit teorii transformátoru uvedenou v kapitole 17.
+      
+      Přenosový dvojbran je zvláštním případem čtyřpólu. Čtyř\-pól podle obr. 
+      \ref{es:fig_patocka_topol07} může být považován za přenosový dvojbran, pokud nás nebudou 
+      zajímat podélná napětí mezi svorkami \(a-c\), \(a-d\), \(b-c\), \(b-d\). Pak se z něj stává 
+      dvojbran podle obr. \ref{es:fig_patocka_topol08}, který má pouze dvě brány, z nichž jednu 
+      považujeme za vstupní a druhou za výstupní.
+      
+      Vnější chování dvojbranu je tedy popsáno vektorem \emph{dvou napětí} a vektorem \emph{dvou 
+      proudů}. Vnější vlastnosti dvojbranu jsou proto plně definovány čtvercovou 
+      \(\mathbb{Z}\)-maticí nebo  \(\mathbb{Y}\)-maticí o rozměru \(2\times2\). Uvedeme např. 
+      \(\mathbb{Z}\)-matici:
+      \begin{equation}\label{ES:eq_topol09}
+        \left(
+          \begin{array}{c}
+            U_1 \\ U_2   
+           \end{array}
+        \right)
+        =
+        \left(
+        \begin{array}{cc}
+          z_{11}    &  z_{12}   \\
+          z_{21}    &  z_{22}   
+        \end{array}
+        \right)
+        \cdot
+        \left(
+          \begin{array}{c}
+            I_1 \\ I_2 
+          \end{array}
+        \right).         
+      \end{equation}
+      
+      \begin{figure}[ht!]
+        \centering  
+        \includegraphics[width=0.5\linewidth]{patocka_topol08.png}
+        \caption{Označení veličin vstupní a výstupní brány dvojbranu. \cite[s.~49]{Patocka4}} 
+        \label{es:fig_patocka_topol08}
+      \end{figure}
+      
+      Pasivní dvojbran musí splňovat princip reciprocity. Jeho matice tedy musí být symetrická 
+      podle hlavní diagonály, proto musí platit \(z_{12} = z_{21}\). To znamená, že z celkového 
+      počtu čtyř maticových prvků jsou pouze \emph{tři prvky různé}. Toto zjištění je přímým 
+      důkazem následující věty:
+      \begin{lemma}\label{ES:lem_topol02}
+         Každý pasivní přenosový dvojbran má pouze \emph{tři stupně volnosti}. Proto může být vždy 
+         nahrazen ekvivalentním \emph{trojpólem} ve tvaru \(T\)-článku (nebo \(\Pi\)-článku) 
+         sestaveným ze tří impedancí. Proto jsou všechny přenosové vlastnosti dvojbranu plně 
+         definovány:
+         \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+            \item buď \emph{trojicí} parametrů obvodových (u transformátoru např. \(L_1, L_2, M\)),
+            \item nebo \emph{trojicí} parametrů přenosových (např. \(Z_{vst_0}\), \(Z_{vst_K}\),    
+                  \(K_{U_{21,0}}\)),
+            \item nebo \emph{trojicí} maticových koeficientů (např. \(z_{11}, z_{21}, z_{22}\)).
+          \end{itemize}
+      \end{lemma}
+      
+    \subsection{Popis dvojbranu pomocí matic typu Z, Y, H}\label{teo:IchapIIsecIsubVII}
+      Vnější chování každého dvojbranu lze popsat maticí o dimenzi \(2\times2\). Jedná se tedy o 
+      soustavu dvou rovnic o \emph{čtyřech} vnějších veličinách \(U_1, U_2, I_1, I_2\). Má-li být 
+      soustava řešitelná, je nutno některé \emph{dvě veličiny zvolit za neznámé} a zbylé dvě 
+      považovat při výpočtu za \emph{známé}. Existuje šest různých dvojic vybraných ze čtveřice, 
+      tomu odpovídá šest typů matic. Kromě známé \(\mathbb{Z}\)-matice a \(\mathbb{Y}\)-matice 
+      existují další čtyři hybridní \(\mathbb{H}\)- matice:
+      \begin{align*}
+        \shortintertext{\texttt{matice }\(\mathbb{Z}\):}
+          \left(
+            \begin{array}{c}
+              U_1 \\ U_2   
+            \end{array}
+          \right)
+          &=
+          \left(
+            \begin{array}{cc}
+              z_{11}    &  z_{12}   \\
+              z_{21}    &  z_{22}   
+            \end{array}
+          \right)
+          \cdot
+          \left(
+            \begin{array}{c}
+              I_1 \\ I_2 
+            \end{array}
+          \right)                                                 \\
+        \shortintertext{\texttt{matice }\(\mathbb{H}_K\):}
+          \left(
+            \begin{array}{c}
+              U_1 \\ I_1   
+            \end{array}
+            \right)
+            &=
+            \left(
+              \begin{array}{cc}
+                h_{K_{11}}    &  h_{K12}   \\
+                h_{K_{21}}    &  h_{K22}   
+              \end{array}
+            \right)
+            \cdot
+            \left(
+              \begin{array}{c}
+                U_2 \\ I_2 
+              \end{array}
+          \right)                                               \\
+        \shortintertext{\texttt{matice }\(\mathbb{H}_I\): }
+          \left(
+            \begin{array}{c}
+              U_1 \\ I_2   
+            \end{array}
+          \right)
+          &=
+          \left(
+            \begin{array}{cc}
+              h_{I_{11}}    &  h_{I_{12}}   \\
+              h_{I_{21}}    &  h_{I_{22}}   
+            \end{array}
+          \right)
+          \cdot
+          \left(
+            \begin{array}{c}
+              I_1 \\ U_2 
+            \end{array}
+          \right)                                              \\
+        \shortintertext{\texttt{matice }\(\mathbb{H}_U\):}
+          \left(
+            \begin{array}{c}
+              I_1 \\ U_2   
+            \end{array}
+            \right)
+            &=
+            \left(
+              \begin{array}{cc}
+                h_{U_{11}}    &  h_{U_{12}}   \\
+                h_{U_{21}}    &  h_{U_{22}}   
+              \end{array}
+            \right)
+            \cdot
+            \left(
+              \begin{array}{c}
+                U_1 \\ I_2 
+              \end{array}
+          \right)                                              \\
+        \shortintertext{\texttt{matice }\(\mathbb{H}_N\):}
+          \left(
+            \begin{array}{c}
+              U_2 \\ I_2   
+            \end{array}
+          \right)
+          &=
+          \left(
+            \begin{array}{cc}
+              h_{N_{11}}    &  h_{N_{12}}   \\
+              h_{N_{21}}    &  h_{N_{22}}   
+            \end{array}
+          \right)
+          \cdot
+          \left(
+            \begin{array}{c}
+              U_1 \\ I_1 
+            \end{array}
+          \right)                                               \\
+        \shortintertext{\texttt{matice }\(\mathbb{Y}\):}
+          \left(
+            \begin{array}{c}
+              I_1 \\ I_2   
+            \end{array}
+            \right)
+            &=
+            \left(
+              \begin{array}{cc}
+                y_{11}    &  y_{12}   \\
+                y_{21}    &  y_{22}
+              \end{array}
+            \right)
+            \cdot
+            \left(
+              \begin{array}{c}
+                U_1 \\ U_2 
+              \end{array}
+          \right) 
+      \end{align*}
+      Jednotlivým maticím odpovídají různé matematické modely dvojbranu. Mimořádný význam má 
+      hybridní \(\mathbb{H}_U\)-matice vho\-dná pro modely všech dvojbranu napájených zdrojem 
+      \emph{napětí} (tedy vhodná pro model transformátoru napětí) a hybridní 
+      \(\mathbb{H}_I\)-matice vhodná pro modely všech dvojbranu napájených zdrojem \emph{proudu} 
+      (tedy vhodná pro model transformátoru proudu). Kaskádní dopředná matice typu \(\mathbb{H}_K\) 
+      a kaskádní zpětná matice typu \(\mathbb{H}_N\) se pro popis transformátoru příliš nehodí.
+
+      
+    \subsection{Přenosové parametry dvojbranu}\label{teo:IchapIIsecIsubVIII}
+      Všechny možné přenosové parametry jsou uvedeny v tab. \ref{ES:tab_topol01}. Je jich celkem 
+      \num{16}, což není náhoda (\(2^4 = 16\)). Tabulka ukazuje u každého přenosového parametru 
+      jeho \emph{elementární} vztah k některému maticovému parametru. Prázdná místa v tabulce by 
+      bylo možno zaplnit \emph{složitými} algebraickými vztahy (do tabulky se bohužel nevejdou), 
+      každý přenosový parametr se dá totiž vždy vyjádřit pomocí čtveřice parametrů \(z\) nebo \(y\) 
+      nebo \(h\) (viz následující příklad). Vztahy lze snadno odvodit s využitím třetí doplňující 
+      rovnice \(U_j = 0\) (\emph{brána nakrátko}) nebo \(I_j = 0\) (\emph{brána naprázdno}), kde 
+      \(j = 1\) (vstupní brána) nebo \num{2} (výstupní brána). Konkrétní postup plyne z 
+      následujícího příkladu.
+      \begin{table*}[!t]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|l|l|l|}
+          \hline
+           &  & \multicolumn{6}{l|}{{\textbf{Vztah k maticovým parametrům} \(z, h, y\)}} \\ 
+          \cline{3-8} 
+          \multirow{-2}{*}{\textbf{Přenosový parametr}} & \multirow{-2}{*}{\textbf{Značka}} 
+          & \(z\) & \(h_K\) & \(h_I\) & \(h_U\) & \(h_N\) & \(y\) \\ 
+          \hline\hline
+          vstupní impedance při výstupu naprázdno  
+           & \(Z_{vst_0}\) 
+                 & \(z_{11}\) & & & & &                      \\
+          vstupní impedance při výstupu nakrátko  
+           & \(Z_{vst_K}\) 
+                 & & & \(h_{I_{11}}\) & & &                  \\
+          výstupní impedance při vstupu naprázdno  
+           & \(Z_{\text{výst}_0}\) 
+                 & \(z_{22}\) & & & \(h_{U_{22}}\) & &       \\
+          výstupní impedance při vstupu nakrátko   
+           & \(Z_{\text{výst}_K}\) 
+                 & & & & & &                                 \\
+          přenosová impedance naprázdno (\(\rightarrow\))
+           & \(Z_{21_0}\) 
+                 & \(z_{21}\) & \(1/h_{K_{21}}\) & & & &     \\
+          přenosová impedance naprázdno (\(\leftarrow\))
+           & \(Z_{12_0}\) 
+                 & \(z_{12}\) & & & & \(1/h_{N_{21}}\) &     \\
+          vstupní admitance při výstupu naprázdno 
+           & \(Y_{vst_0}\) 
+                 & & & & \(h_{U_{11}}\)& &                   \\
+          vstupní admitance při výstupu nakrátko  
+           & \(Y_{vst_K}\) 
+                 & & & & & & \(y_{11}\)                      \\
+          výstupní admitance při vstupu naprázdno  
+           & \(Y_{\text{výst}_0}\) 
+                 & & & \(h_{I_{22}}\) & & &                  \\
+          výstupní admitance při vstupu nakrátko  
+           & \(Y_{\text{výst}_K}\) 
+                 & & & & & & \(y_{22}\)                      \\
+          přenosová admitance nakrátko (\(\rightarrow\))
+           & \(Y_{21_K}\) 
+                 & & \(1/h_{K_{11}}\) & & & & \(y_{21}\)     \\
+          přenosová admitance nakrátko (\(\leftarrow\))
+           & \(Y_{12_K}\) 
+                 & & & & & \(1/h_{N_{12}}\) & \(y_{12}\)     \\
+          napěťový přenos naprázdno (\(\rightarrow\))
+           & \(K_{U_{21_0}}\) 
+                 & & \(1/h_{K_{11}}\) & & \(h_{U_{21}}\) & & \\
+          napěťový přenos naprázdno (\(\leftarrow\))
+           & \(K_{U_{12_0}}\) 
+                 & & & \(h_{I_{12}}\) & & \(1/h_{N_{11}}\) & \\
+          proudový přenos nakrátko (\(\rightarrow\))
+           & \(K_{I_{21_K}}\) 
+                 & & \(1/h_{K_{22}}\) & \(h_{I_{21}}\) & & & \\
+          proudový přenos nakrátko (\(\leftarrow\))
+           & \(K_{I_{12_K}}\) 
+                 & & & & \(h_{U_{12}}\) & \(1/h_{N_{22}}\) & \\
+          \hline
+        \end{tabular}
+        \caption{Přehled všech možných přenosových parametrů dvojbranu.}
+        \label{ES:tab_topol01}
+      \end{table*}
+
+      % --------example: Metoda smyčkových proudů ------------
+      % \label{TEO:exam016}
+      \input{../src/TEO/exam/exam016.tex}  
+      %-------------------------------------------------------
+
+      Ze tří stupňů volnosti dvojbranu plyne, že jen některé speciálně vybrané trojice ze
+      šestnácti přenosových parametrů jsou na sobě nezávislé, např. \(Z_{vst_0}\),  \(Z_{vst_K}\), 
+      \(K_{U_{21_0}}\). Většina parametrů musí být navzájem lineárně závislá. Jako typické příklady 
+      lineárních závislostí uveďme:
+      \begin{equation*}          %\label{ES:eq_topol14}
+        Z_{vst_0} = \frac{1}{Y_{vst_0}}, \quad 
+        \frac{Z_{vst_0}}{Z_{vst_K}}=\frac{Z_{\text{výst}_0}}{Z_{\text{výst}_K}}, \quad
+        \frac{Z_{vst_0}}{Z_{\text{výst}_0}}=\frac{Z_{\text{vst}_K}}{Z_{\text{výst}_K}}
+      \end{equation*}
+      Existují i mnohé další, komplikovanější. Z hlediska transformátoru jsou však velmi důležité 
+      jiné dvě lineární závislosti:
+      \begin{equation}\label{ES:eq_topol15}
+        K_{U_{21_0}} = K_{I_{12_K}}, \qquad 
+        K_{I_{21_K}} = K_{U_{12_0}}
+      \end{equation}
+      U transformátoru jsou tyto rovnice všeobecně známy ve smyslu tj. napěťový převod \emph{tam} 
+      je stejný jako proudový převod \emph{zpět}. Ze systémového pohledu je však dobré uvědomit si, 
+      že:
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item tuto vlastnost mají \emph{všechny} pasivní dvojbrany, např. i obyčejný odporový dělič,
+        \item transformátor není žádnou výjimkou,
+        \item tzv. převod transformátoru je fyzikálně totožný s pojmem \emph{napěťový přenos 
+              naprázdno} nebo \emph{proudový přenos nakrátko}.
+      \end{itemize}
+      
+    \subsection{Princip reciprocity v elektromechanických 
+    soustavách}\label{teo:IchapIIsecIsubIX}
+      Z hlediska teoretického je velmi zajímavé, že princip reciprocity platí i u všech 
+      \emph{elektromechanických měničů} energie. Pohlížíme-li např. na stejnosměrný motor s 
+      konstantním buzením jako na „přenosový dvojbran“ s elektrickými veličinami \(u(t)\), \(i(t)\) 
+      na elektrické bráně a s mechanickými veličinami \(M(t)\), \(\omega(t)\) na mechanické bráně, 
+      pak lze tento systém popsat např. hybridní \(\mathbb{H}\)-maticí ve tvaru
+      \begin{subequations}\label{ES:eq_topol16}
+        \begin{align}
+          u(t) &= Ri(t) + L\der{i(t)}{t} + NBlr\omega(t)  \\
+          M(t) &= NBlri(t) - J_i\der{\omega(t)}{t}        \\
+          \shortintertext{neboli}
+             u &= (R+pL)i + NBlr\omega  \\
+             M &= NBlri - pJ_i\omega
+        \end{align}
+      \end{subequations}
+      Je vidět, že \(\mathbb{H}\)-matice je opravdu symetrická podle hlavní diagonály a reciprocita 
+      elektromechanického systému je kupodivu (!) zajištěna \emph{dualitou konstant} v rovnicích 
+      indukčního zákona a zákona Lorentzovy síly:
+      \begin{subequations}\label{ES:eq_topol17}
+        \begin{align}
+          u_i(t) &= NBlr\omega(t) = c\Phi\omega(t), \\
+          \shortintertext{neboli}
+          M_i(t) &= NBlr i(t) = c\Phi i(t),
+        \end{align}
+      \end{subequations}
+      kde dolním indexem \(i\) jsou značeny \emph{vnitřní} veličiny stroje. \(c\Phi\) je tzv. 
+      \emph{konstanta stroje}. Na otázku „Proč jsou převodní konstanty NBlr ve dvou různých 
+      fyzikálních zákonech stejné?“ lze odpovědět jedině takto: „Protože všechny fyzikální 
+      přenosové soustavy musí splňovat princip reciprocity.“ Zdůrazněme, že podobnou symetrii lze 
+      nalézt bez výjimky u všech ostatních typů elektromechanických měničů, počínaje 
+      elektromagnetem a konče asynchronním strojem.
+  
+  \section{Topologie spojitých útvarů}\label{teo:IchapIIsecII}
+    Při studiu magnetických jevů se setkáváme s diskrétním magnetickým obvodem spíše výjimečně, 
+    obvykle pouze u cívek a transformátorů s feromagnetickým jádrem a navíc při vědomém zanedbání 
+    vzdušných rozptylových cest. Pokud rozptylové toky nechceme nebo nemůžeme zanedbat, musíme 
+    pracovat s magnetickým polem spojitě rozprostřeným v prostoru. V tom případě je vhodné 
+    analyzovat problém z pohledu topologie spojitých prostorových útvarů
+      
+    \subsection{Základní pojmy a definice}\label{teo:IchapIIsecIIsubI}
+      Základními topologickými útvary spojitě rozprostřenými v trojrozměrném\footnote{Obecněji lze 
+      pracovat s topologickými útvary v libovolném \(N\)-rozměmém prostoru.} prostoru, jsou      
+      plochy \(S\) a křivky \(l\). Plochy můžeme dělit na \emph{orientované} a \emph{neorientované}:
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item \textbf{Orientovaná plocha} - má dvě různé strany, které lze pokrýt dvěma různými 
+               barvami (červená \textbf{č}, zelená \textbf{z}), aniž se barvy pomíchají nebo 
+               překrývají.
+        \item \textbf{Neorientovaná plocha} - má pouze jedinou stranu, lze ji pokrýt pouze jedinou 
+              barvou.
+      \end{itemize}
+      
+      Každá z obou ploch může být navíc \emph{ohraničená} nebo \emph{neohraničená}:
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item \textbf{Ohraničená plocha} \(S\) - má hranici v podobě uzavřené nepřerušené hraniční 
+             křivky \(l\). Plocha nerozděluje 3D prostor na dvě oddělené části. Příkladem je kruh 
+             umístěný v 3D prostoru.
+        \item \textbf{Neohraničená plocha} \(S\) - nemá hranici, hraniční křivka \(l\) neexistuje. 
+              Plocha rozděluje 3D prostor na dvě oddělené části. Příkladem je povrch koule 
+              rozdělující prostor na vnitřní a vnější.
+      \end{itemize}
+      
+      Lze vytvořit čtyři vzájemné kombinace obou uvedených vlastností, kterým odpovídají čtyři      
+      základní typy ploch:
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item \textbf{Orientovaná ohraničená plocha} \(S_P\) „\emph{pytel}“ - příkladem jsou kruh, 
+              pytel, kapsa, viz obr. \ref{es:fig_patocka_topol09}.
+        \item \textbf{Orientovaná neohraničená plocha} \(S_S\) „\emph{sféra}“ - příkladem jsou 
+              povrch koule, povrch krychle, nekonečná rovina, viz obr. 
+              \ref{es:fig_patocka_topol10}. Tyto plochy mají dvě strany, vnější a vnitřní, nemají 
+              ale žádnou hraniční křivku. Sféra vznikne vzájemným sešitím dvou pytlů po celém 
+              obvodu jejich hraničních křivek. Tím hraniční křivka zmizí.      
+        \item \textbf{Neorientovaná ohraničená plocha} \(S_M\) „Möbiův\footnote{August Ferdinand 
+              Möbius (1790-1868). německý matematik. Působil na univerzitě v Lipsku. Zabýval se 
+              projektivní geometrií a teorií čísel.} list“ - jediným zástupcem je Möbiův list, viz 
+              obr. \ref{es:fig_patocka_topol11}. Jedná se o proužek papíru, jehož jeden konec 
+              zkroutíme o \SI{180}{\degree} (nebo o liché násobky \SI{180}{\degree}) 
+              a oba konce slepíme. Útvar má pouze jedinou stranu, ale má uzavřenou hraniční křivku.
+        \item \textbf{Neorientovaná neohraničená plocha} \(S_K\) „Kleinova\footnote{Felix Klein 
+              (1849-1925), německý matematik. Působil na univerzitách v Erlangenu. v Lipsku, v 
+              Göttingenu. Zabýval se vztahy mezi geometrií a teorii grup.} láhev“ — jediným 
+              zástupcem je Kleinova láhev, viz obr. \ref{es:fig_patocka_topol12}. Útvar vznikne 
+              vzájemným sešitím levotočivého Möbiova listu s pravotočivým Möbiovým listem po celém 
+              obvodu jejich hraničních křivek\footnote{Kleinova láhev může vzniknout i vzájemným 
+              sešitím stejnolehle točivých Möbiových listů. Výsledný útvar však nelze 
+              nakreslit tak jednoduše jako láhev na obr. \ref{es:fig_patocka_topol12}.}. Tím 
+              hraniční křivka zmizí. Plocha láhve má pouze jedinou stranu.
+    \end{itemize}
+    \begin{figure}[ht!]
+      \centering  
+      \begin{tabular}{cccc}
+        \subfloat[ ]{\label{es:fig_patocka_topol09a}
+          \includegraphics[width=0.15\linewidth]{patocka_topol09a.png}}   &
+        \subfloat[ ]{\label{es:fig_patocka_topol09b}
+          \includegraphics[width=0.22\linewidth]{patocka_topol09b.png}}   &
+        \subfloat[ ]{\label{es:fig_patocka_topol09c}
+          \includegraphics[width=0.22\linewidth]{patocka_topol09c.png}}   &
+        \subfloat[ ]{\label{es:fig_patocka_topol09d}
+          \includegraphics[width=0.23\linewidth]{patocka_topol09d.png}}
+      \end{tabular}
+      \caption{Orientovaná ohraničená plocha, a) Kruh. b) Pytel, c) Pytel do sebe namotaný, d) Pytel
+               sám sebe protínající. \cite[s.~53]{Patocka4}} 
+      \label{es:fig_patocka_topol09}
+    \end{figure}
+      
+    \begin{figure}[ht!]
+      \centering  
+      \begin{tabular}{cc}
+        \subfloat[ ]{\label{es:fig_patocka_topol10a}
+          \includegraphics[width=0.25\linewidth]{patocka_topol10a.png}}   &
+        \subfloat[ ]{\label{es:fig_patocka_topol10b}
+          \includegraphics[width=0.25\linewidth]{patocka_topol10b.png}}   
+      \end{tabular}
+      \caption{Orientovaná neohraničená plocha, a) Koule. b) Nekonečná rovina \(x-y\) 
+               \cite[s.~54]{Patocka4}} 
+      \label{es:fig_patocka_topol10}
+    \end{figure}
+
+    \begin{figure}[ht!]
+      \centering  
+      \begin{tabular}{ccc}
+        \subfloat[ ]{\label{es:fig_patocka_topol11a}
+          \includegraphics[width=0.27\linewidth]{patocka_topol11a.png}}   &
+        \subfloat[ ]{\label{es:fig_patocka_topol11b}
+          \includegraphics[width=0.27\linewidth]{patocka_topol11b.png}}   &
+        \subfloat[ ]{\label{es:fig_patocka_topol11c}
+          \includegraphics[width=0.27\linewidth]{patocka_topol11c.png}}
+      \end{tabular}
+      \caption{Neorientovaná ohraničená plocha, a) Pravotočivý Möbiův list. b) Deformovaný
+               pravotočivý Möbiův list. c) Zrcadlově symetrický levotočivý Möbiův list.
+               \cite[s.~54]{Patocka4}} 
+      \label{es:fig_patocka_topol11}
+    \end{figure}
+      
+    \begin{figure}[ht!]
+      \centering  
+      \includegraphics[width=0.85\linewidth]{patocka_topol12.png}
+      \caption{Neorientovaná neohraničená plocha - Kleinova láhev. Vznikne sešitím pravotočivého
+               Möbiova listu s levotočivým listem po celém obvodu jejich hraničních křivek.
+               \cite[s.~54]{Patocka4}} 
+      \label{es:fig_patocka_topol12}
+    \end{figure}
+    
+    \subsection{Topologické operace}\label{teo:IchapIIsecIIsubII}
+      Povolené topologické operace jsou všechny myslitelné deformace, při kterých zůstává zachována 
+      kvalita plochy (typ plochy). Z toho vyplývají následující pravidla:
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item Plocha může v důsledku deformací protínat sama sebe libovolným způsobem (může 
+              pronikat sama sebou), viz obr. \ref{es:fig_patocka_topol09}, obr. 
+              \ref{es:fig_patocka_topol12}.
+        \item Plocha může být v důsledku deformací libovolně navinuta na svoji vlastní hraniční  
+              křivku.
+        \item Uzavřená hraniční křivka nesmí být v důsledku deformací přerušena.
+        \item Plocha může být ohraničena více hraničními křivkami současně, viz obr 
+              \ref{es:fig_patocka_topol13}. V důsledku deformací se ale nesmí změnit počet 
+              hraničních křivek, tj. nesmí se změnit počet otvorů.
+     \end{itemize}
+      
+      Pro ilustraci je na obr \ref{es:fig_patocka_topol13} uveden sled povolených topologických 
+      operací. Intuitivně se zdá, že není možný přechod z počátečního stavu do koncového, aniž 
+      přitom porušíme celistvost kroužku nebo poutka. Obrázek ukazuje, že to možné je. Operace jsou 
+      povolené, protože během nich nedošlo ke změnám kvality obou objektů. Poutko má stále dva 
+      otvory, kroužek stále jeden otvor. Jedná se o pouhou tvarovou deformaci poutka.
+    
+      \begin{figure}[ht!]
+        \centering  
+        \includegraphics[width=0.85\linewidth]{patocka_topol13.png}
+        \caption{Příklad povolených topologických operací.\cite[s.~54]{Patocka4}} 
+        \label{es:fig_patocka_topol13}
+      \end{figure}
+    
+    \subsection{Některé topologické věty}\label{teo:IchapIIsecIIsubIII}
+      Na základě pravidel uvedených v předchozí kapitole lze vyslovit následující věty:
+      \begin{lemma}\label{ES:lem_topol03}
+        Sešitím dvou \emph{ohraničených orientovaných} ploch \(S_P\) po celém obvodu jejich 
+        hraničních křivek \(l\) vznikne \emph{neohraničená orientovaná} plocha \(S_S\). Tedy 
+        \(S_P\cap S_P \Rightarrow S_S\). Plocha \(S_S\) rozděluje prostor na dvě oddělené části.
+      \end{lemma}  
+    
+      \begin{lemma}\label{ES:lem_topol04}
+        Sešitím dvou \emph{ohraničených neorientovaných} ploch \(S_M\) po celém obvodu jejich 
+        hraničních křivek \(l\) vznikne \emph{neohraničená neorientovaná} plocha \(S_K\).
+        Tedy \(S_M\cap S_M \Rightarrow S_K\). Plocha \(S_K\) rozděluje prostor na dvě oddělené 
+        části (pokud na obr. \ref{es:fig_patocka_topol12} v místě průniku hrdla stěnou zakážeme 
+        vznik otvoru ve stěně).
+      \end{lemma} 
+      
+      \begin{lemma}\label{ES:lem_topol05}
+        Sešitím \emph{ohraničené orientované} plochy \(S_P\) s \emph{ohraničenou neorientovanou}
+        plochou \(S_M\) po celém obvodu jejich hraničních křivek \(l\) vznikne neohraničená 
+        neorientovaná plocha \(S_K\) . Tedy \(S_P\cap S_M \Rightarrow S_K\). Plocha \(S_K\) 
+        rozděluje prostor na dvě oddělené části (pokud zakážeme vznik nových otvorů v 
+        místech průniků).
+      \end{lemma} 
+      
+      Ve Větách \ref{ES:lem_topol03} až \ref{ES:lem_topol05} vznikne po sešití obou původních ploch 
+      \(S_P\cap S_P\), \(S_M\cap S_M\) nebo \(S_P\cap S_M\) vždy plocha \emph{neohraničená}, tedy 
+      zmizí šev, tj. zmizí hraniční křivka \(l\). Představme si však situaci, že hraniční křivku 
+      \(l\) necháme i po sešití úmyslně vyznačenu v podobě čáry na výsledné sešité 
+      \emph{neohraničené} ploše \(S_S\) nebo \(S_K\). Odtud plyne přímý důkaz tří následujících 
+      „zrcadlových" vět k větám \ref{ES:lem_topol03} až \ref{ES:lem_topol05}:
+    
+      \begin{lemma}\label{ES:lem_topol06}
+        Každá hraniční křivka \(l\) může současně tvořit hranici dvou ohraničených orientovaných 
+        ploch \(S_P\). Viz obr. \ref{es:fig_patocka_topol14}.
+        \begin{figure}[ht!]
+          \centering  
+          \includegraphics[width=0.85\linewidth]{patocka_topol14.png}
+          \caption{Hraniční křivka \(l\) tvoří současně hranici dvou \emph{ohraničených 
+                   orientovaných} ploch \(S_{P1}\), \(S_{P2}\) (dvou sešitých 
+                   pytlů).\cite[s.~55]{Patocka4}} 
+          \label{es:fig_patocka_topol14}
+        \end{figure}
+      \end{lemma}
+      
+      \begin{lemma}\label{ES:lem_topol07}
+        Každá hraniční křivka \(l\) může současně tvořit hranici dvou \emph{ohraničených 
+        neorientovaných} ploch \(S_M\). Viz obr. \ref{es:fig_patocka_topol15}
+        \begin{figure}[ht!]
+          \centering  
+          \includegraphics[width=0.85\linewidth]{patocka_topol15.png}
+          \caption{Hraniční křivka \(l\) tvoří současně hranici dvou \emph{ohraničených 
+                   neorientovaných} ploch \(S_{M1}\), \(S_{M2}\) (dvou sešitých Möbiových 
+                   listů).\cite[s.~55]{Patocka4}} 
+          \label{es:fig_patocka_topol15}
+        \end{figure}
+      \end{lemma}
+
+      \begin{lemma}\label{ES:lem_topol08}
+        Každá hraniční křivka \(l\) může současně tvořit hranici jedné \emph{ohraničené 
+          orientované} plochy \(S_P\) a jedné \emph{ohraničené neorientované} plochy \(S_M\). Viz 
+        obr. \ref{es:fig_patocka_topol16}
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol16a}
+              \includegraphics[width=0.45\linewidth]{patocka_topol16a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol16b}
+              \includegraphics[width=0.45\linewidth]{patocka_topol16b.png}}
+          \end{tabular}
+          \caption{Hraniční křivka \(l\) tvoří současně hranici jedné \emph{ohraničené orientované} 
+            plochy \(S_P\) a jedné \emph{ohraničené neorientované} plochy \(S_M\). a) U 
+            jednovrstvé cívky lze snadno vyznačit pouze \emph{orientovanou} plochu \(S_P\). 
+            Plocha \(S_M\) Möbiova listu zde existuje, ale nelze ji nakreslit, b) 
+            U dvojvrstvé cívky lze naopak snadno vyznačit \emph{neorientovanou} plochu 
+            \(S_M\) Möbiova listu. Plocha \(S_P\) zde existuje, ale nelze ji 
+            nakreslit.\cite[s.~56]{Patocka4}} 
+          \label{es:fig_patocka_topol16}
+        \end{figure}
+      \end{lemma}
+    
+    \subsection{Aplikace topologických vět na Maxwellovy rovnice}\label{teo:IchapIIsecIIsubIV}
+      Nyní na základě topologických vět můžeme upřesnit základní větu \ref{es:fig_patocka_lemma01} 
+      o velikosti plošného integrálu \(\Psi = \int_S\vec{B}\cdot d\vec{S}\) z kapitoly 
+      \ref{ES:sec02}:
+      \begin{lemma}\label{ES:lem_topol09}
+        Velikost plošného integrálu \(\Psi = \int_{S_P}\vec{B}\cdot d\vec{S}_P\) přes 
+        \textbf{ohraničenou orientovanou} plochu \(S_P\), je \textbf{nezávislá} na změně tvaru 
+        plochy \(S_P\) při zachování konstantního tvaru hraniční křivky \(l\).        
+      \end{lemma}
+      Současně lze vyslovit další důležitou větu:
+      \begin{lemma}\label{ES:lem_topol10}
+        Plošný integrál \(\Psi = \int_{S_M}\vec{B}\cdot d\vec{S}_M\) přes \textbf{ohraničenou 
+        neorientovanou} plochu \(S_M\), je vždy \textbf{roven nule} při libovolném tvaru plochy 
+        \(S_M\) i hraniční křivky \(l\).        
+      \end{lemma}
+      
+      Z matematického pohledu lze říci, že pojem \emph{„plošný integrál přes neorientovanou 
+      plochu“} nemá smysl. Z fyzikálního pohledu se s tím ale spokojit nelze. S ohledem na platnost 
+      věty \ref{ES:lem_topol08} totiž každý libovolně tvarovaný vodič reprezentuje hraniční křivku 
+      \(l\), která je současně hranicí \emph{orientované} plochy \(S_P\) a \emph{neorientované} 
+      plochy \(S_M\) viz obr. \ref{es:fig_patocka_topol16}. Pak je velmi důležitá otázka, jaká je 
+      interakce \emph{neorientované} plochy s magnetickým polem \(B\), tj. jakou měrou přispívá 
+      neorientovaná plocha k výslednému spřaženému toku \(\Psi\). Odpověď je podle věty 
+      \ref{ES:lem_topol10} taková, že interakce neorientované plochy s magnetickým polem je 
+      principiálně nulová. Proto ze tří vět \ref{ES:lem_topol05} až \ref{ES:lem_topol08} vlastně až 
+      nyní přesně vyplývá význam původně uvedené rovnice (\ref{ES:eq_zakl_elm12}). Tuto rovnici 
+      napíšeme znovu, ale v modifikované podobě:
+      \begin{align}\label{ES:eq_topol18}
+        \Psi &= \int_{S_P}\vec{B}\cdot d\vec{S}_P + \int_{S_M}\vec{B}\cdot d\vec{S}_M \nonumber \\
+             &= \int_{S_P}\vec{B}\cdot d\vec{S}_P + 0 
+              = \int_{S}\vec{B}\cdot d\vec{S}
+      \end{align}
+      Je zřejmé, že přeznačením orientované ohraničené plochy Sp na S získáme původní rovnici 
+      (\ref{ES:eq_zakl_elm12}). Všimněme si, že v kapitole \ref{ES:sec02} jsme původně vůbec 
+      netušili existenci jiné plochy než orientované.
+    
+    \subsection{Vzduchová cívka z topologického hlediska}\label{teo:IchapIIsecIIsubV}
+      \subsubsection{Vzduchová cívka šroubovicového tvaru}        
+        Stejná cívka jako v kapitole \ref{ES:sec02} je navinuta z drátu tvořícího hraniční křivku 
+        \(l\) orientované plochy \(S_P\). Řekli jsme, že tvar plochy odpovídá šneku v mlýnku na 
+        maso nebo točitému schodišti. Tuto představu je nutno upřesnit. Především vyjdeme z věty 
+        \ref{ES:lem_topol09} o nezávislosti plošného integrálu na tvaru plochy — a to při zachování 
+        tvaru hraniční křivky. Výsledkem věty je možnost tvarovat plochu \emph{nekonečně mnoha} 
+        způsoby. Několik z nich ukážeme.
+
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol17a}
+              \includegraphics[width=0.4\linewidth]{patocka_topol17a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol17b}
+              \includegraphics[width=0.4\linewidth]{patocka_topol17b.png}}
+          \end{tabular}
+          \caption{Dva příklady možných tvarů orientované ohraničené plochy \(S_P\) u šroubovicové 
+                   cívky.\cite[s.~57]{Patocka4}} 
+          \label{es:fig_patocka_topol17}
+        \end{figure}
+
+        Na obr. \ref{es:fig_patocka_topol17a} se celková plocha \(S_P\) skládá z plochy \(S_{PS}\) 
+        točitého schodiště (tři závity) a z plochy \(S_{PR}\) obdélníkového rámu, která je napnuta 
+        mezi centrální sloup schodiště a přívodní vodiče vedoucí ke svorkám. Obdélníkovou plochu 
+        tvořenou přívodními vodiči totiž nelze zanedbat. Skutečnost, že se plocha schodiště a 
+        plocha rámu navzájem protínají, není proti topologickým pravidlům. 
+        
+        Na obr. \ref{es:fig_patocka_topol17b} je celková plocha \(S_P\) tvořena „vodorovnými 
+        vlákny“ napnutými levým koncem na svislý přívodní vodič a pravým koncem na obvod 
+        šroubovice. Z půdorysného pohledu bude mít plocha podobu vlnícího se vějíře. Integrál 
+        \(\Psi = \int_{S_P}\vec{B}\cdot d\vec{S}_P\) bude mít v obou případech a), b) vždy neomylně 
+        stejnou velikost. 
+
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol18a}
+              \includegraphics[width=0.35\linewidth]{patocka_topol18a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol18b}
+              \includegraphics[width=0.55\linewidth]{patocka_topol18b.png}}
+          \end{tabular}
+          \caption{Třetí příklad možného tvaru orientované ohraničené plochy \(S_P\) u šroubovicové 
+                   cívky. \cite[s.~58]{Patocka4}} 
+          \label{es:fig_patocka_topol18}
+        \end{figure}
+
+        Na obr. \ref{es:fig_patocka_topol18} je uvedena další možná realizace plochy cívky. Má-li 
+        cívka \(N\) závitů, podle obrázku \ref{es:fig_patocka_topol18a} vystřihneme z papíru \(N\) 
+        kruhů. Nechť má každý kruh horní stranu červenou a dolní zelenou. Všechny kruhy nastřihneme 
+        od obvodu až do středu. Oba vzniklé střihové okraje označíme 1 a 2. Kruhy klademe postupně 
+        stejnolehle na sebe a slepíme vždy střihový okraj 1 dolního kruhu s okrajem 2 horního 
+        kruhu. Stejně postupujeme u všech výše položených kruhů. Výsledkem bude „šroubovicová“ 
+        plocha podle obrázku \ref{es:fig_patocka_topol18b}, jejíž jednotlivé vrstvy mají „kuželový“ 
+        tvar, přičemž plocha protíná sama sebe \(N\)-násobně v jediném bodě - ve vrcholu „kuželů“. 
+        Mezi počáteční a koncovou střihovou hranu je „nalepena“ trojúhelníkovitá svislá plocha 
+        navazující na přívodní vodiče. Celková plocha je orientovaná, horní strany všech vrstev 
+        budou červené, dolní zelené.
+      
+      \subsubsection{Vzduchová cívka ve tvaru toroidu}
+        Toroidní cívka je znázorněna na obr. \ref{es:fig_patocka_topol19a}. Z topologického 
+        hlediska se jedná o stejnou situaci, jakou ukazuje obr. \ref{es:fig_patocka_topol17a}. 
+        Rozdíl je pouze v tom, že šroubovicová plocha \(S_{PS}\) točitého schodiště je rozprostřena 
+        po celém obvodu plochy \(S_{PR}\), tj. po obvodu původně obdélníkového rámu, přičemž 
+        obdélník je deformován do tvaru kružnice.
+
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol19a}
+              \includegraphics[width=0.37\linewidth]{patocka_topol19a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol19b}
+              \includegraphics[width=0.37\linewidth]{patocka_topol19b.png}}
+          \end{tabular}
+          \caption{Vzduchová toroidní cívka jednovrstvá. \cite[s.~58]{Patocka4}} 
+          \label{es:fig_patocka_topol19}
+        \end{figure}
+        
+        Obr. \ref{es:fig_patocka_topol20b} vznikl z obr. \ref{es:fig_patocka_topol20a} tak, že byly 
+        odstraněny šroubovicové závity vlastního toroidu (např. napnutím vodiče). Důsledkem je 
+        \emph{odstranění} plochy \(S_{PS}\), ale zachováni plochy \(S_{PR}\). Je zřejmé, že v obou 
+        případech a) i b) vzniká uvnitř ploch \(S_{PR}\) stejně velké magnetické pole \(B\) 
+        (vybuzené jedním závitem), jehož směr je určen pravidlem PPR. Přičemž obr. 
+        \ref{es:fig_patocka_topol20b} lze zobecnit pro libovolný počet \(n_v\) vrstev (ale vinutých 
+        stále stejným směrem), ekvivalentní kruhová cívka b) má pak nv závitů. Obvyklé tvrzení 
+        říkající, že \emph{vně toroidu neexistuje magnetické pole}, je tedy na první pohled mylné.
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol20a}
+              \includegraphics[width=0.30\linewidth]{patocka_topol20a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol20b}
+              \includegraphics[width=0.30\linewidth]{patocka_topol20b.png}}
+          \end{tabular}
+          \caption{ Vzduchová cívka toroidní jednovrstvá s provlečeným vodičem. 
+                    \cite[s.~58]{Patocka4}} 
+          \label{es:fig_patocka_topol20}
+        \end{figure}
+        Aby bylo tvrzení pravdivé, je nutno učinit některou z topologických operací znázorněných na 
+        obr. \ref{es:fig_patocka_topol20} nebo obr. \ref{es:fig_patocka_topol21}. V obou případech 
+        došlo nikoli k odstranění plochy \(S_{PR}\), nýbrž ke \emph{zmenšení obsahu} této plochy na 
+        nulu. Přičemž obr. \ref{es:fig_patocka_topol20} lze zobecnit pro lichý počet vrstev (každá 
+        následující vrstva musí být vinuta v opačném směru\footnote{V opačném směru, nikoli v 
+        opačném smyslu. Shodný pravotočivý (popř. levotočivý) smysl závitů ve všech vrstvách musí 
+        být samozřejmě zachován.} než předchozí), Obr. \ref{es:fig_patocka_topol21} lze zobecnit 
+        pro sudý počet vrstev. Kvalita uvedených topologických jevů je naprosto \emph{nezávislá} 
+        na přítomnosti či nepřítomnosti feromagnetického jádra uvnitř toroidu.
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol21a}
+              \includegraphics[width=0.4\linewidth]{patocka_topol21a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol21b}
+              \includegraphics[width=0.4\linewidth]{patocka_topol21b.png}}
+          \end{tabular}
+          \caption{ Vzduchová toroidní cívka dvojvrstvá. \cite[s.~59]{Patocka4}} 
+          \label{es:fig_patocka_topol21}
+        \end{figure}
+
+      \subsubsection{Dva zkroucené přívodní vodiče}
+        Zvláštním případem vzduchové cívky jsou dva zkroucené přívodní vodiče podle obr. 
+        \ref{es:fig_patocka_topol22}. Používají se v případech, kdy jsou vodiče obklopeny rušivým 
+        magnetickým polem. Oba zkroucené vodiče tvoří hraniční křivku \(l\) orientované plochy 
+        \(S\). Nechť má plocha červenou a zelenou stranu. Pak celkový spřažený tok cívky  \(\Psi = 
+        \int_S\vec{B}\cdot d\vec{S}\) bude nulový za předpokladu, že délka \(l\) stoupání zkrutu je 
+        podstatně menší než \emph{prostorové nehomogenity} pole. Integrální příspěvky od pole \(B\) 
+        vstupujícího do červených stran plochy nechť jsou brány jako kladné. Příspěvky od zelených 
+        stran jsou pak přibližně stejně velké, ale záporné. Pak platí \(\Psi = 0\), tedy 
+        \(\der{\Psi}{t}\) a do přívodních vodičů se neindukuje žádné rušivé napětí\footnote{Tato 
+        eliminace rušení pracuje na zcela jiném principu než stínicí plášť koaxiálního kabelu podle 
+        obr. \ref{es:fig_MJ_patocka_koxkbl}.}.
+        \begin{figure}[ht!]
+          \centering  
+          \includegraphics[width=0.8\linewidth]{patocka_topol22.png}
+          \caption{Dva zkroucené vodiče v magnetickém poli \(B\). \cite[s.~59]{Patocka4}} 
+          \label{es:fig_patocka_topol22}
+        \end{figure}
+        
+      \subsubsection{Realizace maximální indukčnosti vzduchové cívky}
+        Uspořádání podle obr \ref{es:fig_patocka_topol23} není optimální. Magnetické pole 
+        vyšrafovaných čtverců je nulové, protože proudy podél jejich obvodu nemají stejný smysl 
+        oběhu.
+        \begin{figure}[ht!]
+          \centering  
+          \includegraphics[width=0.4\linewidth]{patocka_topol23.png}
+          \caption{Vzduchová cívka ve tvaru rohožky - neoptimální uspořádání.    
+                   \cite[s.~59]{Patocka4}} 
+          \label{es:fig_patocka_topol23}
+        \end{figure}
+        Uspořádání podle obr \ref{es:fig_patocka_topol24} je výhodnější, protože všechny čtverce 
+        přispívají ke tvorbě magnetického toku stejným dílem (neuvažujeme anomálie na okrajích 
+        rohožky). Má-li strana každého čtverce délku \(a\), pak magnetický tok \(\Phi\) nemůže 
+        sahat do  větší vzdálenosti než \emph{přibližně} \(\pm a\) na obě strany od rohožky. Tok je 
+        totiž sousedními čtverci vtahován zpět. Proto ve vzdálenosti přibližně \(\pm \frac{a}{2}\) 
+        od roviny rohožky leží magnetické ekvipotenciální plochy 1 a 2 vzdálené navzájem asi \(a\), 
+        mezi nimiž je nulové magnetické napětí \(U_{m_{12}} = 0\).
+        \begin{figure}[ht!]
+          \centering  
+          \includegraphics[width=0.9\linewidth]{patocka_topol24.png}
+          \caption{Vzduchová cívka ve tvaru rohožky - optimální uspořádání.
+                   \cite[s.~60]{Patocka4}} 
+          \label{es:fig_patocka_topol24}
+        \end{figure}
+        
+        Každý čtverec tedy produkuje tok \(\Phi\) na ploše \(a\cdot a\), při délce siločáry asi 
+        \(a\). Vzhledem k tomu, že se vzestupné a sestupné toky \(\Phi\) v oblasti 
+        ekvipotenciálních ploch 1 a 2 navzájem \emph{odečítají a ruší}, každý čtverec vnímá tuto 
+        situaci, jako by byl \emph{magneticky izolován} od čtverců sousedních. Proto každý čtverec 
+        přispívá k celkové indukčnosti \(L\) rohožky hodnotou \(L_1\), o velikosti
+        \begin{equation}\label{ES:eq_topol19}
+          L_1 = N_1^2\mu_0\frac{S}{l} \cong 1^2\mu_0\frac{a^2}{a} = \mu_0a.
+        \end{equation} 
+        Předpokládáme, že rohožka je tvořena jedním vodičem, proto je v rovnici vzato \(N_1 = 1\). 
+        Obsahuje-li rohožka celkem \(N\) čtverců, pak díky chybějící magnetické vazbě mezi 
+        sousedními čtverci se dílčí indukčnosti \(L_1\), prostě sečtou a výsledná indukčnost \(L\) 
+        rohožky bude \(N\)-krát větší, tedy
+        \begin{equation}\label{ES:eq_topol20}
+          L_1 \cong N\mu_0a.
+        \end{equation} 
+
+        Výsledná indukčnost je úměrná pouze první mocnině \(N\). To je velmi nevýhodné. Kdyby totiž 
+        ležely všechny čtvercové závity na sobě, pak by měly vzájemnou vazbu a výsledná indukčnost 
+        by byla úměrná \(N^2\). Proto se v praxi vzduchová cívka ve tvaru rohožky nikdy nepoužívá. 
+        Jedinou její nepatrnou výhodou je velmi dobré chlazení vodičů okolním vzduchem.
+        
+        Realizace maximální indukčnosti vzduchové cívky představuje typickou optimalizační úlohu, 
+        kterou lze definovat např. následujícím způsobem: Vezměme vodič \emph{konstantní} délky 
+        \(l_{Cu}\), zanedbatelné tloušťky (průřez vodiče se limitně blíží nule) a dejme mu takový 
+        tvar, aby měl \emph{největší možnou} indukčnost. Je zřejmé, že závit musí mít tvar 
+        kružnice\footnote{Kruh má ze všech útvarů největší plochu při daném obvodu.}. 
+        Vzniká ale otázka, kolik závitů bude cívka mít?
+    
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol25a}
+              \includegraphics[width=0.40\linewidth]{patocka_topol25a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol25b}
+              \includegraphics[width=0.35\linewidth]{patocka_topol25b.png}}
+          \end{tabular}
+          \caption{ Vzduchová cívka ve tvaru kružnice. Cívka má a) jeden závit, b) dva závity. 
+                    Celková délka vodiče je v obou případech stejná. \cite[s.~61]{Patocka4}} 
+          \label{es:fig_patocka_topol25}
+        \end{figure}
+        
+        Vyjděme ze situace, že cívka má \emph{jeden} závit podle obr. 
+        \ref{es:fig_patocka_topol25a}. Indukčnost \(L_1\), takové cívky musí vyhovovat rovnici
+        \begin{equation}\label{ES:eq_topol21}
+          L_1 = N_1^2\mu_0\frac{S}{l_{\text{stř}}} = 1^2\mu_0\frac{S}{l_{stř}} 
+              = \mu_0\frac{S}{l_{\text{stř}}}.
+        \end{equation} 
+        kde \(S\) je plocha kruhového závitu (majícího obvod o délce \(l_Cu\)) a \(l_{\text{stř}}\) 
+        je střední délka magnetické siločáry. Délku \(l_{\text{stř}}\) bychom snadno nalezli 
+        experimentálně, změřením indukčnosti \(L_1\) a následným výpočtem z rovnice 
+        (\ref{ES:eq_topol21}). Bude-li mít cívka \(N\) závitů (při konstantní délce vodiče 
+        \(l_{Cu}\) ), pak relativní proporce cívky zůstanou zachovány, ale všechny lineární        
+        rozměry se zmenší \(N\)-krát a plochy \(N^2\)-krát. Rovnice (\ref{ES:eq_topol21}) přejde do 
+        tvaru
+        \begin{equation}\label{ES:eq_topol22}
+          L_N = N^2\mu_0\frac{S/N^2}{l_{\text{stř}}/N} = N\mu_0\frac{S}{l_{stř}} 
+              = N\cdot L_1.
+        \end{equation} 
+        
+        Je tedy výhodné aby počet závitů cívky rostl do nekonečna. Indukčnost cívky by se lineárně 
+        zvyšovala s počtem závitů \(N\), rozměry cívky by se limitně blížily nule. V praxi však 
+        nemůže být tloušťka vodiče nulová. Proto od okamžiku, kdy rozměry cívky začnou být řádově 
+        srovnatelné s tloušťkou vodiče, přestává rovnice (\ref{ES:eq_topol22}) platit a 
+        optimalizační strategie začíná být mnohem složitější. Jedná se pak o problém tzv. 
+        \emph{nejlevnější cívky}, který je přesně vyřešen až v kapitole 16.
+      
+      \subsubsection{Cívka s feromagnetickým jádrem z topologického hlediska}
+        Ve smyslu celkového objemu, aniž se zajímáme o konkrétní počet závitů, lze pohlížet na 
+        cívku s jádrem jako na topologický útvar odpovídající dvěma článkům řetězu podle obr. 
+        \ref{es:fig_patocka_topol26}. Bez ohledu na geometrické detaily útvar je kvantitativně 
+        jednoznačně popsán dvěma čísly: průřezem jádra \(S_j\) a plochou okna \(S_o\), jak bude 
+        ukázáno v kap. 11.
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol26a}
+              \includegraphics[width=0.25\linewidth]{patocka_topol26a.png}}   &
+             \subfloat[ ]{\label{es:fig_patocka_topol26b}
+               \includegraphics[width=0.25\linewidth]{patocka_topol26b.png}}
+           \end{tabular}
+           \caption{Z topologického pohledu odpovídá cívka s feromagnetickým jádrem dvěma článkům 
+           řetězu a) volně do sebe zapojeným, b) těsně do sebe zapojeným. \cite[s.~61]{Patocka4}} 
+           \label{es:fig_patocka_topol26}
+        \end{figure} 
+        Obrázek a) představuje neoptimální řešení. Na obrázku b) je naznačena \emph{částečná} 
+        optimalizace celkového objemu železa a mědi. Další optimalizační krok může spočívat v tom, 
+        že závity mědi rovnoměrně rozprostřeme po celém obvodu toroidního jádra. Okno jádra zůstane 
+        zaplněno stejným způsobem, ale střední délka závitů bude \emph{kratší}. U cívek je nutno 
+        zajímat se rovněž o konkrétní počty závitů. Pak oba útvary na obr. 
+        \ref{es:fig_patocka_topol27} jsou topologicky naprosto \emph{rovnocenné}. V obou případech 
+        se jedná o cívku se dvěma závity. 
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol27a}
+              \includegraphics[width=0.30\linewidth]{patocka_topol27a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol27b}
+              \includegraphics[width=0.25\linewidth]{patocka_topol27b.png}}
+          \end{tabular}
+          \caption{Cívka s feromagnetickým jádrem, a) Měď se ovíjí kolem železa, b) Železo se ovíjí
+            kolem mědi. \cite[s.~61]{Patocka4}} 
+          \label{es:fig_patocka_topol27}
+        \end{figure} 
+        
+        Přesněji řečeno, v obou případech protíná železo (tedy tok \(\Phi\)) orientovanou plochu 
+        \(S_P\) dvakrát, proto má spřažený tok v obou případech stejnou velikost \(\Psi = 
+        \int_{S_P}\vec{B}\cdot d\vec{S}_P \backsimeq 2\Phi \backsimeq 2BS_{Fe}\) Z topologického 
+        hlediska je tedy lhostejné, je-li jeden závit \emph{železa} ovinut dvěma závity 
+        \emph{mědi}, nebo jeden závit \emph{mědi} dvěma závity \emph{železa}. Případ b) na obr 
+        \ref{es:fig_patocka_topol27} se samozřejmě v praxi nepoužívá. Jak již bylo řečeno v 
+        kapitole \ref{ES:sec03}, jediným důvodem je malý dosažitelný poměr mezi měrnou magnetickou 
+        vodivostí (permeabilitou) feromagnetik a vakua (řádově \num{1e3}) — a naopak, veliký poměr 
+        mezi měrnou elektrickou vodivostí vodičů a izolantů (minimálně \num{1e15}). Stejným 
+        způsobem je nutno umět se dívat i na topologii transformátoru. Oba útvary na 
+        obr. \ref{es:fig_patocka_topol28} jsou opět topologicky rovnocenné.
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{cc}
+            \subfloat[ ]{\label{es:fig_patocka_topol28a}
+              \includegraphics[width=0.30\linewidth]{patocka_topol28a.png}}   &
+            \subfloat[ ]{\label{es:fig_patocka_topol28b}
+              \includegraphics[width=0.25\linewidth]{patocka_topol28b.png}}
+          \end{tabular}
+          \caption{Transformátor s převodem \(\frac{N_2}{N_1} = \frac{2}{3}\). a) Měď se ovíjí 
+                   kolem železa, b) Železo se  ovíjí kolem mědi. Směr primárního proudu odpovídá 
+                   pravidlu PPR, směr sekundárního proudu pravidlu PLR.
+                   \cite[s.~61]{Patocka4}} 
+          \label{es:fig_patocka_topol28}
+        \end{figure} 
+        
+      \subsubsection{Neumannův vzorec pro výpočet vzájemné indukčnosti}
+        V kapitole \ref{teo:IchapIIsecI} jsme pomocí metod \emph{diskrétní} topologie ukázali 
+        platnost \emph{principu reciprocity} v diskrétních obvodech, zvláště pak v přenosových 
+        dvojbranech.
+        
+        Vzduchový transformátor v obecné podobě dvou \emph{libovolně tvarovaných vodičů}, podle 
+        obr. \ref{es:fig_patocka_topol29}, však není možno považovat za diskrétní systém. Především 
+        nelze v žádném případě prohlásit za diskrétní jeho magnetický obvod\footnote{Vlastnosti 
+        diskrétního magnetického obvodu jsou definovány v kapitole 5.2.1.}.
+        \begin{figure}[ht!]
+          \centering  
+          \includegraphics[width=0.65\linewidth]{patocka_topol29.png}
+          \caption{Transformátor v podobě dvou libovolně tvarovaných vodičů.           
+            \cite[s.~63]{Patocka4}} 
+          \label{es:fig_patocka_topol29}
+        \end{figure}        
+        Přesto však i u transformátoru na obr.\ref{es:fig_patocka_topol29} princip reciprocity 
+        neomylné platí, což se projevuje tím, že vzájemná indukčnost \(M\) činitel vazby k 
+        transformátoru jsou pro oba směry přenosu stejné:
+        \begin{equation}\label{ES:eq_topol23}
+          M_{12} = M_{21} = M, \qquad k_{12} = k_{21} = k,
+        \end{equation} 
+        přičemž parametry \(L_1\), \(L_2\), \(M\), \(k\) transformátoru jsou svázány známým vztahem
+        \begin{equation}\label{ES:eq_topol24}
+          M = k\sqrt{L_1L_2}
+        \end{equation} 
+        Rovnice (\ref{ES:eq_topol23}) musí být platná vždy, protože \(\mathbb{Z}\)-matice 
+        transformátoru (psaná např. v operátorovém tvaru) musí být vždy symetrická podle hlavní 
+        diagonály:
+        \begin{align}\label{ES:eq_topol25}
+          U_1 &= (R_1+pL_1)I_1 + pM_{12}I_2  \nonumber \\
+          U_2 &= pM_{21}I_1 + (R_2+pL_2)I_2  
+        \end{align} 
+        V	literatuře bývá jako důkaz platnosti principu reciprocity u transformátoru, tj. jako 
+        důkaz platnosti rovnice (\ref{ES:eq_topol23}), někdy uváděn \textbf{Neumannův vzorec}. Je 
+        to dvojný křivkový integrál pro výpočet vzájemné indukčnosti mezi dvěma smyčkami (křivkami) 
+        \(l_1\), \(l_2\):
+        \begin{equation}\label{ES:eq_topol26}
+          M = \mu\oint\limits_{l_1}\oint\limits_{l_2}\frac{\vec{dl_1}\cdot\vec{dl_2}}{r}.
+        \end{equation}
+        V	čitateli zlomku se jedná o skalární součin. Geometrický význam plyne z obr. 
+        \ref{es:fig_patocka_topol30}. Důkaz principu reciprocity je pak velmi jednoduchý, přímo 
+        plyne z faktu, že výsledek integrace nezávisí na pořadí výpočtu křivkových integrálů. Ovšem 
+        pozor, vzorec je použitelný pouze ve \emph{zvláštním} případě, jsou-li obě cívky umístěny v 
+        magneticky \emph{homogenním a izotropním} prostoru s konstantní permeabilitou \(\mu\). 
+        Vzorec nelze použít, vyskytují-li se v okolí cívek dva materiály s rozdílnou permeabilitou, 
+        např. vzduch a feromagnetikum. Neumannův vzorec je tedy potvrzením principu reciprocity 
+        pouze ve \emph{zvláštním} případě, bohužel není obecným důkazem platnosti principu. Přesto 
+        jsou úvodní rovnice (\ref{ES:eq_topol23}) bez výjimky platné i v magneticky nehomogenním a 
+        \emph{neizotropním} prostředí (permeabilita \(\mu\) není v prostoru konstantní, je funkcí 
+        prostorových souřadnic i směru). Pak je ovšem nutno hledat důkaz platnosti principu 
+        reciprocity zcela jinak. Řešení je uvedeno v následující kapitole.
+        \begin{figure}[ht!]
+          \centering  
+          \includegraphics[width=0.65\linewidth]{patocka_topol30.png}
+          \caption{K výpočtu vzájemné indukčnosti podle Neumannova vzorce. \cite[s.~64]{Patocka4}} 
+           \label{es:fig_patocka_topol30}
+         \end{figure} 
+     
+      \subsubsection{Princip reciprocity ve spojitě rozprostřených obvodech}
+        Důkaz platnosti principu reciprocity pro \emph{prostorově spojitě rozprostřené obvody}, 
+        nepopsatelné diskrétní maticí, není v literatuře znám. I když se ví, že i zde princip 
+        reciprocity neomylně platí. Máme na mysli např. elektrický proud tekoucí ve vodivém 
+        \emph{spojitém nehomogenním} 2D nebo 3D prostoru, přenosovou soustavu tvořenou vysílací a 
+        přijímací anténou, ale především magnetické obvody s tokem \emph{spojitě} rozloženým v 3D 
+        prostoru.
+        
+        Důkaz platnosti principu reciprocity pro tyto případy je možno konstruovat podle obr. 
+        \ref{es:fig_patocka_topol31}. Pro jednoduchost je důkaz řešen ve 2D prostoru, ale závěry 
+        jsou velmi snadno rozšiřitelné na 3D prostor. Obrázek představuje rovinnou desku 
+        nastříkanou elektricky vodivým odporovým lakem. Nechť je deska nastříkána 
+        \emph{nerovnoměrně}, vodivosti na jednotku délky budou v různých oblastech různé, 2D 
+        prostor je tedy elektricky \emph{nehomogenní}.
+        
+        Postup důkazu:
+        \begin{enumerate}
+          \item Na desce zvolme v lib 	ovolných místech čtyři body \(A\), \(B\), \(C\), \(D\).    
+                Vznikne tak přenosový dvojbran s branami \(A-B\), \(C-D\).
+          
+          \item Podle obrázku \ref{es:fig_patocka_topol31a} napájejme bránu \(A-B\) zdrojem 
+                konstantního stejnosměrného proudu \(I_1\). Kolem bodů \(A\), \(B\) vzniknou 
+                ekvipotenciální křivky.
+          
+          \item Z nekonečného množství všech ekvipotenciál lze určitě nalézt takové dvě křivky 
+               \(a\), \(b\), které přesně procházejí protilehlými body \(C\), \(D\).
+          
+          \item Voltmetr připojený k \emph{libovolným} dvěma bodům, z nichž jeden leží na 
+                ekvipotenciále \(a\) a druhý na ekvipotenciále \(b\), musí naměřit stále stejné 
+                výstupní napětí naprázdno \(U_{2,0}\). Přenosová impedance naprázdno ve směru zleva 
+                doprava má tedy reálnou hodnotu \(R_{21,0} = \frac{U_{2,0}}{I_1}\)
+          
+          \item Nyní celé měření obraťme: Podle obrázku \ref{es:fig_patocka_topol31b} napájejme 
+                bránu \(C-D\) zdrojem konstantního stejnosměrného proudu \(I_2\) Kolem bodů \(C\), 
+                \(D\) vzniknou ekvipotenciální křivky.
+          
+          \item Z nekonečného množství všech ekvipotenciál lze určitě nalézt takové dvě křivky 
+                \(c\), \(d\), které přesně procházejí protilehlými body \(A\), \(B\).
+          
+          \item Voltmetr připojený k \emph{libovolným} dvěma bodům, z nichž jeden leží na 
+                ekvipotenciále \(c\) a druhý na ekvipotenciále \(d\), musí naměřit stále stejné 
+                výstupní napětí naprázdno \(U_{1,0}\). Přenosová impedance naprázdno ve směru 
+                zprava doleva má tedy reálnou hodnotu \(R_{12,0} = \frac{U_{1,0}}{I_2}\)
+          
+          \item Z topologických zákonitostí plyne, že ekvipotenciály \(a\), \(c\) se musí protnout 
+                nejméně ve dvou bodech (maximálně ve čtyřech). Na obrázku 
+                \ref{es:fig_patocka_topol31c} je vyznačen jeden z nich jako \(E\).
+          
+          \item Podobně ekvipotenciály \(b\), \(d\) se musí protnout nejméně ve dvou bodech 
+                (maximálně ve čtyřech). Na obrázku \ref{es:fig_patocka_topol31c} je vyznačen jeden 
+                z nich jako \(F\).
+          
+          \item Z topologie ekvipotenciál plyne, že průsečíky \(E\), \(F\) musí existovat.
+          
+          \item V bodech \(E\), \(F\) pak musí platit \(R_{21,0} = R_{12,0}\) Přenosové impedance 
+                naprázdno jsou tedy v obou směrech opravdu stejně velké.
+        \end{enumerate}
+        Konec důkazu.
+        \begin{figure}[ht!]
+          \centering  
+          \begin{tabular}{c}
+            \subfloat[ ]{\label{es:fig_patocka_topol31a}
+              \includegraphics[width=0.80\linewidth]{patocka_topol31a.png}}   \\
+            \subfloat[ ]{\label{es:fig_patocka_topol31b}
+              \includegraphics[width=0.80\linewidth]{patocka_topol31b.png}}   \\
+            \subfloat[ ]{\label{es:fig_patocka_topol31c}
+              \includegraphics[width=0.80\linewidth]{patocka_topol31b.png}}
+          \end{tabular}
+          \caption{Princip reciprocity u dvojbranu s branami \(A-B\), \(C-D\) ve spojitém vodivém 
+                   prostředí. \cite[s.~65]{Patocka4}} 
+          \label{es:fig_patocka_topol31}
+        \end{figure} 
+        
+        Důkaz má ryze topologický charakter založený na jednoduchých principech:
+        \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+          \item Kolem každého elektrického bodu musí vzniknout neomezené množství uzavřených 
+              ekvipotenciálních křivek (libovolného neznámého tvaru).
+        
+          \item Alespoň jedna z nich musí procházet jiným zvoleným bodem.
+        
+          \item Ekvipotenciální křivky od dvou různých bodů se musí protínat alespoň ve dvou bodech 
+                (počet průsečíků musí být sudé číslo). Křivky se protínají obvykle ve dvou nebo 
+                čtyřech bodech.
+      \end{itemize}
+      
+        Ve 3D prostoru by byl důkaz naprosto stejný, pouze by se pracovalo s ekvipotenciálními 
+        plochami vejčitého tvaru místo ekvipotenciálních křivek. Důkaz byl z důvodu větší 
+        názornosti konstruován pro elektrické veličiny, pro magnetické veličiny by byl zcela 
+        analogický.
+
+} % tikzset
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}

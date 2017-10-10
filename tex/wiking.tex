@@ -1,0 +1,213 @@
+% !TeX spellcheck = <none>
+%% !TeX TS-program = xelatex
+% !TeX encoding = UTF-8
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%           Jaroslav Fait                    %%%
+%%%           ^^^^^^^^^^^^^                    %%%
+%%%           *W*I*K*I*N*G*                    %%%
+%%%             10.12.2011                     %%%
+%%%  <<<XETEX — Unicode-based TeX engine>>>    %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\listfiles
+\documentclass[
+  fontsize=10pt,
+  open=any,
+  chapterprefix=true]{scrbook}
+%\documentclass[paper=12in:9in,BCOR=9.5mm,DIV=14,10pt,twoside,
+%               pagesize=pdftex,openright,headings=twolinechapter,
+%               chapterprefix=true,american,twocolumn]{scrbook}
+
+% ~~~~~~~~~~ DEBUG tools ~~~~~~~~~~~~~~~~~~~~~~~~~
+%\usepackage[protrusion=true]{microtype}
+\usepackage{etoolbox}
+\usepackage{ifxetex}
+\usepackage{ifthen}
+\providecommand\DebugMode{false}
+% --- Debug Switch -------------------------------
+\newtoggle{DEBUG}
+% \toggletrue{DEBUG}
+ \togglefalse{DEBUG}
+% ~~~~~~~~~~ Wiki Library ~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{wikiLayout}
+%\usepackage{lmodern}
+\usepackage{wikiWWWrefs}
+%\usepackage{wikiHyph}
+%\usepackage{lastpage}
+% ~~~~~~~~~~~ Custom library ~~~~~~~~~~~~~~~~~~~~~
+\usepackage{wikiDrawing}
+% formatting table of contents.
+\usepackage{tocloft}
+\usepackage[nohints]{minitoc}      % NOHINTS - troubleshooting W0028, WW0030
+  \mtcsetrules{minitoc}{off}       % cara pred a po.
+% http://tex.stackexchange.com/questions/268205/minitoc-suppress-title-and-rules
+  \mtcsettitle{minitoc}{}          % sets an empty title (i.e. no title)
+  \mtcsetoffset{minitoc}{-1.0em}   % shift the minitoc to the left
+  \setlength{\mtcindent}{0pt} 
+  \mtcsetdepth{parttoc}{1}
+%%\usepackage[toc]{multitoc}
+%\setlength{\cftsecnumwidth}{4em}
+%
+\newcommand{\dochaptertoc}{%
+  \vspace{1.85\baselineskip} % workaround for removed rule
+  \smash{\makebox[\linewidth]{\hrulefill}} % workaround for removed rule
+  \vspace{-1.85\baselineskip} % workaround for removed rule
+  \minitoc
+  \vspace{-1.15\baselineskip} % workaround for removed rule
+  \smash{\makebox[\linewidth]{\hrulefill}} % workaround for removed rule
+  \vspace{1.15\baselineskip} % workaround for removed rule
+}
+
+\newcommand{\setchaptertoc}{%
+  \setchapterpreamble{% KOMA-Script command
+    \dochaptertoc%
+  }}
+% ~~~~~~~~~~~~ Text style ~~~~~~~~~~~~~~~~~~~~~~~~~
+% text \overline outside of math mode
+%\newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}
+\makeatletter
+\newcommand*{\textoverline}[1]{$\overline{\hbox{#1}}\m@th$}
+\makeatother
+
+\usepackage{animate}
+%\usepackage{lipsum} % Inserts dummy text
+\usepackage{media9}
+  \addmediapath{../media}
+    \newcommand{\AddVideo}[3]{
+      \includemedia[
+        activate=pageopen,
+        width=#1pt,height=#2pt,
+        addresource=#3.mp4,
+        flashvars={ src=#3.mp4 &loop=true &scaleMode=stretch}
+      ]{}{StrobeMediaPlayback.swf} %VPlayer.swf StrobeMediaPlayback.swf
+      }
+      
+\usepackage{wikiMath}
+\usepackage{wikiPhysics}
+
+%\allowdisplaybreaks
+%\usepackage[theorems]{tcolorbox}
+\usepackage{listings}
+%\usepackage{framed}
+
+\usepackage{enumitem}
+
+\usepackage{widetext}
+\usepackage{wrapfig}
+\usepackage{tabularx}
+% centrovani bunky horizontálně i vertikálně
+\newcolumntype{C}[1]{>{\centering}m{#1}}
+
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\usepackage{booktabs}
+
+\usepackage{subfig}
+\usepackage{multirow}                  % Columns spanning multiple rows
+\usepackage{epigraph}
+
+
+%% ~~~~~~~~ Attache file into PDF ~~~~~~~~~~~~~~~~~
+%% insert pages of external PDF documents without `Overfull \hbox' and 
+%%`Overfull \vbox' warnings
+%% when inserted pages does not match the print space. 
+%  \usepackage{pdfpages}                   % \includepdf >> Inserts pages of 
+%  %an external PDF 
+%  %document.
+  \usepackage{attachfile2}
+%  \usepackage[author=jafa]{pdfcomment}    % A user-friendly interface to pdf 
+%  %annotations.
+
+
+
+% ~~~~~~~~~~~ Hyperlinks ~~~~~~~~~~~~~~~~~~~~~~~~ 
+\usepackage{hyperref}
+\usepackage{bookmark}
+\hypersetup{
+  pdfstartview=FitH,
+  pdfauthor={Jaroslav Fait},
+  pdftitle={Wiking},
+  pdfsubject={My study notes},
+  pdfkeywords={linear algebra, math, physics, electronics},
+  pdfpagelayout={TwoPageLeft}, %  Displays two pages, odd-numbered pages to the left 
+  pdfcreator={Xelatex}
+  bookmarks={true},            %  A set of Acrobat bookmarks are written
+  colorlinks={true},           %  Colors the text of links and anchors. 
+  linkcolor={NavyBlue},        %  Color for normal internal links.
+  anchorcolor={black},         %  Color for anchor text.
+  filecolor={cyan},            %  Color for URLs which open local files.
+  menucolor={red},             %  Color for Acrobat menu items.
+  runcolor={blue},             %  Color for run links (launch annotations).
+  urlcolor={NavyBlue},         %  Color for linked URLs. 
+  citecolor={CornflowerBlue},
+  hypertexnames={false}
+}
+
+\tikzexternalize
+\doparttoc
+
+\usepackage[makeroom]{cancel}
+\DeclareMathOperator{\arctg}{arctg}
+\begin{document}
+
+\begin{titlepage}
+  \frontmatter % turns off
+  \vspace*{3cm} 
+  \centering
+  \texttt{\large Jaroslav Fait, 
+          \href{mailto:jaroslav.fait@hotmail.com}{jaroslav.fait@hotmail.com}  }\\[1cm]
+  \noindent\rule{\textwidth}{0.4mm} \\[0.4cm] 
+  \textbf{\Huge Wiking}\\[0.1cm]
+  \noindent\rule{\textwidth}{0.4mm} \\[1.4cm]
+  \today
+  \vfill
+  \vspace*{1cm}
+\end{titlepage}
+%% ========== TOC =================================
+%% this sets the depth to which things are listed  
+%% in the table of contents (Chap = 0, Sec = 1, etc)
+\setcounter{tocdepth}{0} % 
+\setcounter{secnumdepth}{4} 
+\dominitoc
+\tableofcontents
+% ========== Document Body =======================
+% turns on chapter numbering, resets page numbering
+% and uses arabic numerals for page numbers;
+\mainmatter 
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+%    \input{../src/MAI/MA1}
+    \input{../src/FYZ/FYZ.tex}
+%    \input{../src/TKY/TKY.tex}
+%    \input{../src/TEO/TEO.tex}
+%    \input{../src/AES/AES.tex}
+%    \input{../src/CES/CES.tex}
+%    \input{../src/RAE/RAE.tex}
+%    \input{../src/PVE/PVE.tex}
+%    \input{../src/EPR/EPR.tex}
+%    \input{../src/ZZT/ZZT.tex}
+%    \input{../src/APE/APE.tex}
+%    \input{../src/NJ/NJ.tex}
+
+}
+{
+% DEBUG was off
+    \input{../src/MAI/MA1}
+    \input{../src/FYZ/FYZ.tex}
+    \input{../src/TKY/TKY.tex}
+    \input{../src/TEO/TEO.tex}
+    \input{../src/AES/AES.tex}
+    \input{../src/CES/CES.tex}
+    \input{../src/RAE/RAE.tex}
+    \input{../src/PVE/PVE.tex}
+    \input{../src/EPR/EPR.tex}
+    \input{../src/ZZT/ZZT.tex}
+    \input{../src/APE/APE.tex}
+    \input{../src/NJ/NJ.tex}
+}
+% ============== Appendix ========================
+\backmatter 
+% ============== Bibliography ====================
+  \printbibliography[title={Bibliografie}]
+  \addcontentsline{toc}{chapter}{Seznam literatury}
+\end{document}

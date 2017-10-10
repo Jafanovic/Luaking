@@ -1,0 +1,41 @@
+% !TeX spellcheck = cs_CZ
+\begin{example}\label{mai:exam010}
+  \textbf{Obsazování kvantových stavů}:\newline
+  Úloha o kuličkách a přihrádkách má přímou aplikaci v \textbf{kvantové fyzice}. Představme si, že 
+  fyzikální soustava je tvořena \(K\) částicemi. Každá částice se nachází v určitém stavu, v němž 
+  jí můžeme přisoudit fyzikální charakteristiky, které jsou s tímto stavem spojeny (třeba energii, 
+  moment hybnosti, apod.). Jednotlivé stavy jsou pak rozlišitelné právě pomocí těchto 
+  charakteristik. Dejme tomu, že přípustných stavů je \(n \geqq 1\). Problémem kvantové fyziky je 
+  to, že kvantové částice jsou nerozlišitelné. Nepoznáme jednu od druhé. Je to stejné, jako bychom 
+  měli \(k\) naprosto stejně vypadajících kuliček, které nemáme nijak očíslovány. Záměna dvou 
+  částic (nerozlišitelných kuliček) se nepozná, nevede tedy ke změně stavu fyzikální soustavy. Pro 
+  hodnoty fyzikálních charakteristik soustavy jako celku je tedy důležité jen to, kolik částic je v 
+  každém z přípustných stavů. Musíme se tedy zajímat o to, kolika způsoby lze našich \(k\) 
+  \textbf{nerozlišitelných částic} (kuliček) umístit do \(n\) \textbf{stavů} (přihrádek). Kvantové 
+  částice jsou však dvojího druhu, \textbf{fermiony} (například elektrony, neutrony, protony, jádra 
+  s lichým počtem nukleonů) a \textbf{bosony} (například fotony, mezony, jádra se sudým počtem 
+  nukleonů). Rozdíl mezi nimi je ten, že bosony se „dobře snášejí“, a proto jich může být v jednom 
+  stavu i více. 
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+    \item Počet možností, jak rozmístit \(k\) \textbf{bosonů} po \(n\) stavech je tedy
+          \begin{equation*}
+            N_{\text{boson}} = 
+              \begin{pmatrix}
+                n + k - 1 \\
+                    k
+               \end{pmatrix}
+          \end{equation*}
+    \item S \textbf{fermiony} je tomu jinak. \textbf{Pauliho vylučovací princip} jim zakazuje, 
+          aby v daném stavu byl více než jeden fermion. Stav může být buď prázdný, nebo obsazen 
+          jedním fermionem. V takovém případě musí být \(n \geqq k\) a v každé přihrádce může být 
+          nejvýše jedna kulička. Situace tak odpovídá \textbf{kombinacím bez opakování \(k\)-té 
+          třídy z \(n\) prvků}, tj.
+          \begin{equation*}
+            N_{\text{fermion}} = 
+              \begin{pmatrix}
+                n  \\
+                k
+              \end{pmatrix}
+          \end{equation*}
+  \end{itemize}  
+\end{example}

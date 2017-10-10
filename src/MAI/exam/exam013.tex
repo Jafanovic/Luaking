@@ -1,0 +1,51 @@
+% !TeX spellcheck = cs_CZ
+
+
+\begin{example}\label{mai:exam013}
+  Určete spektrum matice a její spektrální poloměr následující matice
+    \begin{equation*}\label{pr:spektrum_matice}
+      \mathbf{A} =
+        \begin{pmatrix}
+          2  &  2    & 0 \\
+         -3  & -3    & 5 \\
+          0  & -0.25 & 2
+        \end{pmatrix}
+    \end{equation*}
+  \textbf{Řešení}: Spektrum matice je množina všech jejích vlastních čísel. Spektrální poloměr 
+  je maximum z absolutních hodnot vlastních čísel. Vlastní čísla určíme z charakteristické
+  rovnice \(\det(\mathbf{A}-\lambda \mathbf{I})=0\).
+    \begin{equation*}
+      \textbf{A} - \lambda\textbf{I}=
+        \begin{pmatrix}
+          2-\lambda  &  2          & 0 \\
+         -3          & -3-\lambda  & 5 \\
+          0          & -0.25       & 2-\lambda
+       \end{pmatrix}
+    \end{equation*}
+    \begin{align}
+      \det(\mathbf{A}-\lambda \mathbf{I})                    &= 0           \nonumber\\
+      (2-\lambda)
+        \begin{pmatrix}
+          -3-\lambda  &  5\\
+             -0.25    &  2 - \lambda
+        \end{pmatrix} -2\cdot
+        \begin{pmatrix}
+          -3       &  5\\
+           0       &  2 - \lambda
+        \end{pmatrix}                                        &= 0           \nonumber\\
+      (2-\lambda)^2(-3-\lambda)+1.25(2-\lambda)+6(2-\lambda) &= 0           \nonumber\\
+      (2-\lambda)[(2-\lambda)(-3-\lambda)+1.25+6]            &= 0           \nonumber\\
+      (2-\lambda)(\lambda^2+\lambda+1.25)                    &= 0           \nonumber
+    \end{align}
+    \begin{equation*}
+      \lambda_1 = 2, \quad\lambda_2 = -0.5+i, \quad\lambda_3=-0.5-i
+    \end{equation*}
+    \begin{itemize}
+      \item Spektrum matice \(\mathbf{A}\) je \(\sigma(\mathbf{A})=\{2,-0.5+i,-0.5-i\}\).
+      \item Spektrální poloměr \(\rho(\mathbf{A})=\max_i|\lambda_i|=2\).
+    \end{itemize}
+
+%    \attachfile[icon=Paperclip, description=Matlab Determine the spectrum of a matrix 
+%      and its spectral radius]{../SRC/MAI/matlab/LA001.m}
+
+\end{example}

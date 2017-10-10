@@ -1,0 +1,67 @@
+\def\xmin{-50}
+\def\xmax{70}
+\def\ymin{-5}
+\def\ymax{+120}
+\def\zero{0}
+\def\phase{-50}
+\def\xlabel{$\omega$}
+\def\ylabel{$A_u$}
+
+% Macro for drawing one frame of the F-distribution.
+%\newcommand{\distpic}{
+%    % Draw the normal distribution curve
+%    \draw[blue!50!black,smooth,thick] plot[id=f1,domain=-1:1,samples=50]
+%    function {exp(-x*x*3)};
+%}
+
+\begin{tikzpicture} 
+  \begin{scope}[domain=0:3.1415, line join=round, miter limit=4.00,line width=0.5pt, 
+                x=25pt,y=25pt, xshift=0, yshift=0]    
+    \node at(1.8,4.4) [left, fill=white] {$Q=\frac{1}{\omega_0\cdot L_p\cdot G_p}$}; %  
+    \node at(2.6,3) [left, fill=white] {$Q_1=\frac{\omega_0}{B_1}$}; %
+    \node at(2.6,2) [left, fill=white] {$Q_2=\frac{\omega_0}{B_2}$}; %
+    \draw[name path=func1, blue!50!black,smooth,thick,] plot[id=f1,domain=-2:2,samples=50]
+      function {4*exp(-x*x*5)}; 
+    \draw[name path=func2, blue!50!black,smooth,thick] plot[id=f2,domain=-2:2,samples=50]
+      function {4*exp(-x*x*2)};  
+    \draw[very thin, dashed] (0,4)   -- +(-2.1,0) node[left] {1};
+    \draw[very thin, dashed] (0,4.1) -- +(0,-4.2) node[below] {$\omega_0$};
+    
+    \path [name path=line1](-2,{4/sqrt(2)}) -- (2,{4/sqrt(2)});
+    \path [name intersections={of=line1 and func2, name=cross}];
+    \coordinate (A) at (cross-1);
+    \coordinate (B) at (cross-2);
+    
+    \ExtractCoordinate{A};
+    \draw[very thin, dashed] (B) -- (A) -- +(0,{-(\YCoord+50)}) -- +(0,{-(\YCoord+50)}) coordinate(p1);
+    \draw[very thin, dashed] (B) -- +(0,{-(\YCoord+50)}) coordinate(p2);
+    \draw[very thin, dashed] (A) -- +({(\phase - 3 - \XCoord)},0) node[left] {$\frac{1}{\sqrt{2}}$};
+    \draw[<->] (p1) -- (p2);
+    \node at ($ (p1)!0.5!(p2) $) [above] {$B_2$};
+    
+    \path [name intersections={of=line1 and func1, name=cross}];
+    \coordinate (A) at (cross-1);
+    \coordinate (B) at (cross-2);
+    \draw[very thin, dashed] (B) -- (A) -- +(0,{-(\YCoord+30)}) -- +(0,{-(\YCoord+30)}) coordinate(p1);
+    \draw[very thin, dashed] (B) -- +(0,{-(\YCoord+30)}) coordinate(p2);
+    \draw[<->] (p1) -- (p2);
+    \node at ($ (p1)!0.5!(p2) $) [above] {$B_1$};
+    
+    \path [name path=line1](-2,0.2) -- (2,0.2);
+    \path [name intersections={of=line1 and func2, name=cross}];
+    \coordinate (A) at (cross-2);
+    \draw[very thin, <-] (A) -- +(0.5,0.5) node[above] {$Q_2<Q_1$};
+
+    \path [name path=line1](-2,0.2) -- (2,0.2);
+    \path [name intersections={of=line1 and func1, name=cross}];
+    \coordinate (A) at (cross-1);
+    \draw[very thin, <-] (A) -- (-1.5,0.7) node[above] {$Q_1$};
+    
+  \end{scope}  
+
+  \begin{scope}[draw=black,line join=round, miter limit=4.00,line width=0.5pt,y=1pt,x=1pt] 
+    \XYcross;
+  \end{scope}
+\end{tikzpicture}
+
+

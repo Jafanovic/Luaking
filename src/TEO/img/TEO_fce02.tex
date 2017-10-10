@@ -1,0 +1,133 @@
+%\documentclass{article}
+%\usepackage{tikz}
+%\usetikzlibrary{decorations.markings}
+%\usetikzlibrary{intersections}
+%\usetikzlibrary{calc}
+
+
+
+% \begin{document}
+  \begin{figure}[htb]  
+        \newcommand{\MyPath}{%
+            (18.309015,50.53919507)  .. controls
+            (18.309015,50.53919507)  and (21.791754,59.15092207)  ..
+            (28.507151,63.26291307)  .. controls
+            (31.391329,65.02896007)  and (35.896102,67.50958007)  ..
+            (39.847327,68.71973407)  .. controls
+            (43.336244,69.78829507)  and (45.883,69.20748807)     ..
+            (48.387485,71.78723507)  .. controls
+            (51.186791,74.67066107)  and (53.141632,78.26714507)  ..
+            (55.148632,82.06152507)  .. controls
+            (58.500874,88.39917807)  and (60.888255,94.05049107)  ..
+            (66.110428,100.96156507) .. controls
+            (71.332601,107.87263907) and (75.976982,111.80666507) ..
+            (83.867952,112.10204307) .. controls
+            (91.758922,112.39742207) and (100.54114,97.81547307)  ..
+            (107.15399,84.24536207)  .. controls
+            (109.7867,78.84282207)   and (116.0911,65.30681007)   ..
+            (123.19123,50.92337507)  .. controls
+            (136.46247,24.03854207)  and (147.18658,6.42393707)   ..
+            (159.27196,2.81113707)   .. controls
+            (184.95662,-4.86702293)  and (208.53361,32.31924407)  ..
+            (217.37186,52.05019707);
+        }%
+        \newcommand{\MyWaveB}{%
+            (200.02545,22.85649707)  .. controls
+            (200.02545,22.85649707)  and (209.79787,34.53519707)  ..
+            (217.54727,52.29679707)  .. controls
+            (221.57621,61.53106707)  and (231.76264,67.80275707)  ..
+            (242.62012,69.40393707)  .. controls
+            (253.4776,71.00511707)   and (260.28174,112.23421707) ..
+            (282.13712,111.96387707) .. controls
+            (303.99249,111.69353707) and (329.46714,1.83349707)   ..
+            (362.13712,1.60669707)   .. controls
+            (394.8071,1.37989707)    and (415.22326,51.87129707)  ..
+            (415.22326,51.87129707);
+        }%
+        \newcommand{\MyWaveA}{%
+            (2.2036044,23.21319707)  .. controls
+            (2.2036044,23.21319707)  and (7.1896734,29.00179707)  ..
+            (11.896862,37.80959707)  .. controls
+            (14.463984,42.61309707)  and (16.430404,45.91309707)  ..
+            (19.958399,53.79003707)  .. controls
+            (23.178819,60.98023707)  and (34.001913,68.16115707)  ..
+            (44.701755,69.73908707)  .. controls
+            (55.401595,71.31701707)  and (62.430335,112.41311707) ..
+            (84.285711,112.14277707) .. controls
+            (106.14109,111.87243707) and (131.61574,2.01239707)   ..
+            (164.28572,1.78559707)   .. controls
+            (196.9557,1.55879707)    and (217.37186,52.05019707)  ..
+            (217.37186,52.05019707);
+        }%
+  
+    \centering
+    \begin{tikzpicture}[ 
+        scale=0.7,
+        tangent/.style={
+          decoration={
+            markings,% switch on markings
+            mark= at position #1 with
+              {
+                \coordinate (tangent point-\pgfkeysvalueof{/pgf/decoration/mark 
+                             info/sequence number}) at (0pt,0pt);
+                \coordinate (tangent unit vector-\pgfkeysvalueof{/pgf/decoration/mark 
+                             info/sequence number}) at (1,0pt);
+                \coordinate (tangent orthogonal unit vector-\pgfkeysvalueof{/pgf/decoration/mark  
+                             info/sequence number}) at (0pt,1);
+              }
+          },
+          postaction=decorate
+        },
+        use tangent/.style={
+            shift=(tangent point-#1),
+            x=(tangent unit vector-#1),
+            y=(tangent orthogonal unit vector-#1)
+        },
+        use tangent/.default=1
+    ]
+
+        \def\xmin{-30}
+        \def\xmax{450}
+        \def\ymin{-80}
+        \def\ymax{150}
+        \def\nula{52.05019707}
+        \def\phase{2.2}
+        \def\myscale{0.7}
+
+        \begin{scope}[draw=black,line join=round, miter limit=4.00,
+                      line width=0.5pt, y=1pt,x=1pt, scale=\myscale]   
+          \fill [fill=yellow!80] (18.309015,\nula) -- \MyPath -- (216.7025,\nula);
+          \path[name path=fce1,draw=black,line join=round,even odd rule,line cap=butt,miter   
+            limit=4.00, tangent=0.36695, tangent=0.7770] \MyWaveA;  
+          \path[name path=fce2,draw=black,line join=round,even odd rule,line cap=butt,miter   
+            limit=4.00] \MyWaveB;           
+          \draw[name path=axeX,->] (\xmin,\nula) -- (\xmax,\nula)   
+               node[right] {$t$} coordinate(x axis);
+          \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) 
+               node[left]  {$v(t)$} coordinate(y axis);     
+          \draw[densely dashed, thin, use tangent=1] 
+               (0,0) coordinate(vrch) -- (0,-60*\myscale) % firt part
+               (0,0) -- (-70*\myscale,0)    node[left] {$V_m$};     % delka krivky: 0.3667 - 0.3668
+          \draw[densely dashed, thin, use tangent=2] 
+               (0,0) coordinate(dul) --  (0,50*\myscale)  % first part 
+               (0,0) -- (-120*\myscale,0) node[left] {$V_{min}$}; %               0.7770 - 0.7775
+          \path[name intersections={of=fce1 and axeX, name=point}]; % prusecik osy y s funkcí - posun
+          \draw[dotted, name path=line1] (point-1) --+(0,-100) coordinate(Ta);  
+          \draw[dotted, name path=line2] (point-2) --+(0,-100) coordinate(Tb);
+          \draw[dotted, name path=line3] (point-3) --+(0,-100) coordinate(Tc);
+          \draw[fill, color=black] ($ (Ta)!0.5!(Tb) $) node[above, black] {$\frac{T}{2}$};  
+          \draw[fill, color=black] ($ (Tb)!0.5!(Tc) $) node[above, black] {$\frac{T}{2}$};            
+          \draw[<->] (Ta) -- (Tb);  
+          \draw[<->] (Tb) -- (Tc);  
+          \path[name intersections={of=axeX and axeY, name=pocatek}]; 
+          \node[below left] at (pocatek-1) {$0$}; 
+          \draw[fill=white] (pocatek-1) circle(2pt);          
+          \draw[fill=white] (vrch) circle(1pt); 
+          \draw[fill=white] (dul)  circle(1pt);                  
+        \end{scope} 
+    \end{tikzpicture}
+  \caption{Časový průběh \textbf{střídavé veličiny} $v=v(t)$, pro kterou platí, že obsahy ploch
+           v jednom cyklu nad osou $t$ a pod osou $t$ jsou totožné}\label{TEO:fig_02}
+\end{figure}
+  
+% \end{document}

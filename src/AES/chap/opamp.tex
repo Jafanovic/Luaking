@@ -1,0 +1,201 @@
+% !TeX spellcheck = cs_CZ
+{\tikzset{external/prefix={tikz/AES/}}
+ \tikzset{external/figure name/.add={ch04_}{}}
+%---------------------------------------------------------------------------------------------------
+% file opamp.tex
+%---------------------------------------------------------------------------------------------------
+%================================ Kapitola: Zesilovače==============================================
+\chapter{Operační zesilovače}
+\minitoc
+  \section{Úvod}
+    \emph{Operační zesilovače} (\texttt{OZ}, aj: \texttt{opamp}) původně vznikly jako složité 
+    elektronické obvody pro náročné použití při zpracování analogových (spojitě se měnících) 
+    stejnosměrných a nízkofrekvenčních střídavých signálů v analogových počítačích. Moderní 
+    polovodičová technologie umožnila vytvoření \texttt{OZ} v podobě levných integrovaných obvodů s 
+    malým počtem vývodů, které mají nepatrnou spotřebu, jsou odolné proti přetížení a umožňují 
+    jednoduše realizovat nejrůznější elektronická zařízení.
+  
+    Svůj název získaly z dob \emph{analogových počítačů}, ve kterých se používaly k realizaci 
+    matematických operací. Tyto integrované obvody se svými vlastnostmi blíží \emph{ideálním 
+    zesilovačům napětí}. Jejich zesílení bez vnější zpětné vazby se blíží nekonečnu ($10^7$). 
+    Vstupní odpor je velmi velký ($10^4 \Omega$) a výstupní odpor je malý ($10 \Omega$). Kmitočtový 
+    rozsah sahá od stejnosměrného signálu do desítek megahertzů. Vlastní šum a zkreslení zesilovače 
+    jsou rovněž malé. V dnešním pojetí je možné vymezit operační zesilovač jako 
+    \textbf{stejnosměrný zesilovač} s velkým zesílením a malým vlastním rušením, schopný stabilní 
+    činnosti v uzavřené zpětnovazební smyčce \cite[s.~5]{Dostal}.
+
+    Směr signálového toku operačním zesilovačem (dále je OZ) od vstupu k výstupu je vyznačen 
+    trojúhelníkovým tvarem jeho symbolické značky na obr. \ref{AES:OP_znacka}.
+    \begin{figure}[ht!]
+      \centering
+      \includegraphics[width=\linewidth]{Dosta_OP_znacka.pdf}
+      \caption[Symbolická značka OP]{Symbolická značka OP s vyznačenými signálovými svorkami (a) 
+               a skutečná realizace zemní svorky (b, c)}
+      \label{AES:OP_znacka}
+    \end{figure}
+  
+    \textbf{Shrnutí}
+    \begin{enumerate}\addtolength{\itemsep}{-0.5\baselineskip}
+      \item Operační zesilovač má čtyři signálové svorky, i když se často kreslí jen tři - oba 
+            vstupy a výstup. Čtvrtou signálovou svorkou je zem.
+      \item Souhlasné napětí $u_{CM}$ je totožné s napětím jeho neinvertujícího vstupu $u^+$.
+      \item Ideální operační zesilovač má za všech okolností nulové diferenční vstupní napětí a  
+            nulové vstupní proudy.
+    \end{enumerate}
+  
+  \section{Parametry operačního zesilovače}
+    Ideální operační zesilovač je nedosažitelná abstrakce. K posouzení kvality sku\-teč\-ného 
+    operačního zesilovače slouží řada funkčních parametrů jako soubor dat, která lze zjistit 
+    měřením na svorkách.
+   
+    Operační zesilovač, jako každý aktivní elektronický obvod, je obvod nelineární. Funkční 
+    charakteristiky OZ však připouštějí linearizaci bez přílišného odklonu od skutečnosti. 
+    Odpovídající kvazilineární parametry jsou podkladem lineárního modelu OZ. Ostatní parametry 
+    jsou podstatné nelinearity, které tvoří meze jeho lineární oblasti.
+    
+    \subsection{Lineární parametry a lineární model}
+      Obr. \ref{AES:fig_lin_model_opamp} ukazuje úplný \emph{lineární} model operačního zesilovače. 
+      Se zřetelem k pozdější analýze chyb operačního obvodu je vhodné rozdělit znázorněné lineární 
+      parametry na \textbf{aditivní} a \textbf{multiplikativní}.
+      \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+        \item Aditivní parametry zahrnují náhradní rušivé zdroje náhodných fluktuací: $E_R$, 
+              $I_R^-$, $I_R^+$, které způsobují aditivní chyby operačního obvodu nezávislé na jeho 
+               signálovém vybuzení.
+        \item Multiplikativní parametry představované čtyřmi odpory $R_D, R^-_{CM}, R^+_{CM}$,  
+              $R_0$ a dvěma řídicími konstantami $-A, 1/X$ závislých generátorů, vystihují pasivní 
+              a přenosové vlastnosti OZ způsobují multiplikativní chyby operačních obvodu úměrné 
+              jeho signálovému vybuzení.
+      \end{itemize}
+      Vnitřní, na svorkách neměřitelný napěťový úbytek $e_D$ na odporu $R_D$ zastává v tomto modelu 
+      vazbu mezi vstupem a výstupem.
+     
+      Při práci s proměnnými signály v časové nebo frekvenční oblasti se  význam použitých symbolů 
+      vhodně rozšíří na impedance, operátorové přenosy apod.
+      \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=\linewidth]{Dostal_Opamp_model.pdf}
+        \caption[Lineární model operačního zesilovače]{Lineární model operačního zesilovače}
+        \label{AES:fig_lin_model_opamp}
+      \end{figure}
+  
+    \subsection{Nelineární parametry}
+      Chyby, které provázejí aproximaci skutečného operačního zesilovače lineár\-ním modelem, se 
+      zvětšují se vstupním a výstupním vybuzením. To se týká zejména linearizace převodní 
+      charakteristiky naprázdno $u_0(u_D)$ výrazem $-A(u_D-E_R-e_{CM})$, výstupní charakteristiky 
+      $u_0(i_0)$ výrazem $e_0-R_0i_0$ a vstupní charakteristiky $e_{CM}(u_{CM})$ výrazem 
+      $u_{CM}/X$.  Skutečný průběh každé z těchto charakteristik se vyznačuje velmi ostrým kolenem, 
+      při jehož překročení ztrácejí lineární parametry smysl.  Signálové vybuzení, které přísluší 
+      tomuto kolenu, tak vymezuje dosti přesně oblast lineárního chování \cite[s.~29]{Dostal}.
+  
+      Třem svorkovým proměnným $u_{CM}, u_O, i_0$ přísluší tři \emph{statické nelinearity} (omezení 
+      rozkmitu) a tři dynamické nelinearity (omezení rychlosti)
+  
+  \section{Ideální operační obvod}
+    \subsection{Paralelní operační obvod}
+      \fbox{Napěťový invertor} ukazuje, že vstupní signálový proud může být generován také 
+      synteticky, kombinací napěťového signálového zdroje a sériového rezistoru. Takovým způsobem 
+      vytvořený \emph{napěťový invertor} na obr. * je jedním z nejčastějších operačních obvodů. 
+      
+      Vstupní napětí $u_s$ je celé vloženo na rezistor $R_1$ (jeho pravý konec je virtuálně 
+      uzemněn) a vyvolává ekvivalentní vstupní proud $\frac{u_s}{R_1}$. Tento přitékající proud je 
+      kompenzován proudem $-\frac{u_0}{R_2}$ odsávaným přes zpětnovazební rezistor $R_2$ do výstupu 
+      operačního zesilovače $$\frac{u_s}{R_1}=-\frac{u_0}{R_2}.$$ Ideální operační rovnice
+      \begin{equation}\label{AES:eq_opamp_inv02}
+        u_0 = - \frac{R_2}{R_1}u_s.
+      \end{equation}
+      Vyjadřuje úměrnost signálových napětí $-u_0$ a $u_s$ velikostem přilehlých rezistorů $R_2$ a 
+      $R_1$. Pro snadnější zapamatování se nabízí představa dvouramenné páky s délkami ramen $R_1$ 
+      a $R_2$, otočné v bodě odpovídajícímu virtuální zemi, která přenáší výchylku $u_s$ levého 
+      konce na výchylku $u_0$ pravého konce v opačné polaritě.
+
+      \begin{figure}[ht!]
+        \centering
+        \begin{tabular}{c}
+          \subfloat[$u_0 = -\dfrac{R_2}{R_1}u_s, \qquad R_{||} = R_1, \qquad R_{\mathsf{O}|} = 
+          0$]{\label{{ES:fig_004a}}
+            \includegraphics[width=0.5\linewidth]{opamp_inv01a.pdf}}             \\
+          \subfloat[ $u_0 = -\dfrac{R_2}{R_2+R_s}u_s$ ]{\label{AES:fig_004b}
+            \includegraphics[width=0.51\linewidth]{opamp_inv01b.pdf}}             
+        \end{tabular}
+        \caption{Napěťový invertor. Jeho mechanickou analogií je dvouramenná páka (a). Přítomnost 
+                 vnitřního odporu signálového zdroje $R_s$ v operační rovnici je důsledkem 
+                 konečného vstupního odporu $R_{||} = R_1$ (b). }
+        \label{AES:fig_opamp_inv01} 
+      \end{figure}
+      Zesílení napěťového invertoru 
+      \begin{equation}\label{AES:eq_opamp_inv01}
+        G_i = -\frac{R_2}{R_1},
+      \end{equation} 
+      je záporné a nastavitelné v širokých mezích od $0$ do $\infty$ výběrem rezistorů $R_1$ a 
+      $R_2$. Zvláštním případem je jednotkový invertor se stejnými rezistory $R_1 = R_2$, který 
+      prostě invertuje polaritu vstupního napětí: $$u_0 = - u_s, \qquad G_i = -1.$$
+      
+      Výstupní odpor napěťového invertoru je ideálně nulový. Jeho vstupní odpor však ztrácí onen 
+      vyhranění charakter typický pro kanonické operační obvody a nabývá indiferentní velikosti 
+      \begin{equation}\label{AES:eq_opamp_inv03}
+        R_{||} = R_1,
+      \end{equation} 
+      rovné velikosti virtuálně uzemněného rezistoru $R_1$.
+      
+      Napěťový invertor zatěžuje signálový zdroj (obr. *). To se projevuje poklesem svorkového 
+      napětí signálového zdroje o úbytek na vnitřním odporu $R_s$, nebo jinak řečeno, přítomností 
+      nedefinovaného a nestálého vnitřního odporu $R_s$ v operační rovnici invertoru:  
+      \begin{equation}\label{AES:eq_opamp_inv04}
+       u_0 = -\frac{R_2}{R_1 + R_s}u_s.
+      \end{equation}      
+      Taková vlastnost se obvykle považuje za nedostatek. 
+            
+    \subsection{Sériový operační obvod}
+    
+    \subsection{Složený operační obvod}
+      Operační obvody, které není možné zahrnout do předcházejích dvou velkých tříd, se vyznačují:
+        \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
+          \item signálovým buzením obou vstupů operačního zesilovače,
+          \item násobnou zpětnou vazbou,
+          \item kombinací záporné a kladné zpětné vazby,
+          \item použitím několika operačních zesilovačů,
+          \item nestandardním zapojením operačního zesilovače.
+        \end{itemize}
+      \subsubsection{Signálové buzení obou vstupů}
+        \fbox{Rozdílový zesilovač} na obr. \ref{AES:fig_diff_opamp01} je lineární operační obvod se dvěma vstupy. Jeho výstupní napětí se najde superpozicí \cite[s.~126]{Dostal}. 
+        
+        Nechť působí napětí $u_1$ a napětí $u_2$ je nulové. Neinvertující vstup operačního 
+        zesilovače je uzemněn přes paralelní kombinaci rezistorů $R_3$ a $R_4$. Operační obvod 
+        představuje napěťový invertor a první složka výstupního napětí má velikost 
+        $$-\frac{R_2}{R_1}u_1.$$
+        
+        Nechť působí napětí $u_2$ a napětí $u_1$ je nulové. Operační obvod představuje neinvertujcí 
+        zesilovač s předřazeným děličem $R_3$ a $R_4$ a druhá složka výstupního napětí má velikost 
+        $$u_2\frac{R_4}{R_3+R_4}\left(\frac{R_2}{R_1}+1\right)= 
+        u_2\frac{R_2/R_1+1}{R_4/R_3+1}\cdot\frac{R_4}{R_3}.$$
+        
+        %----------------------------------
+        % image: rozdílový zesilovač
+        \input{../src/AES/img/diff_opamp01.tex} 
+        %---------------------------------- 
+               
+        Současné působení obou vstupních napětí ve vyváženém operačním obvodě $$\frac{R_4}{R_3}=\frac{R_2}{R_1},$$ přísluší výstupní napětí 
+        \begin{equation}\label{AES:eq_diff_opamp}
+          u_2 = \frac{R_2}{R_1}(u_2-u_1),   
+        \end{equation}
+        úměrné rozdílu vstupních napětí bez ohledu na jejich absolutní velikost. Odtud název 
+        operačního obvodu. Důvod zařazení napěťového děliče ($R_3$,$R_4$) je zřejmý - dělič 
+        sjednocuje zesílení invertujícího a neinvertujícího vstupu, která se liší absolutně o 
+        jednotku. 
+        
+        Dvěma vstupům přísluší dva vstupní odpory. První vstupní odpor $$R_{|1|} = R_1$$ je roven 
+        velikosti rezistoru $R_1$, protože vnitřní odpor bodu $A$\footnote{obdoba virtuální země} 
+        je nulový. Druhý vstupní odpor $$R_{|2|} = R_3 + R_4$$ je roven součtu rezistorů $R_3$ a 
+        $R_4$, protože vnitřní odpor zbytku operačního obvodu v bodě $B$ je nekonečný. Tyto dva 
+        vstupní odpory jsou různé, i když jsou obě větve ($R_1$, $R_2$) a ($R_3$, $R_4$) stejné. 
+        
+        Vstupní odpory $R_{|1|}$ a $R_{|2|}$ přísluší dvěma samostatným uzemněným zdrojům 
+        signálových napětí $u_1$ a $u_2$ podle \ref{AES:fig_diff_opamp01}. Volnému (izolovanému) 
+        signálovému napěťovému zdroji připojenému diferenčně mezi vstupy rozdílového zesilovače, by 
+        příslušel diferenční vstupní odpor $$R_{|D|} = R_1 + R_3,$$ rovný součtové velikosti 
+        rezistorů $R_{|1|}$ a $R_{|3|}$, protože body $A$ a $B$ jsou virtuálně zkratovány.
+
+} % tikzset
+%---------------------------------------------------------------------------------------------------
+\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}

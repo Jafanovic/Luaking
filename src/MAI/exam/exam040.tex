@@ -1,0 +1,60 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam040}
+  \textbf{Obecná rovnice roviny}\newline\small
+  Parametrické rovnice roviny z příkladu \ref{mai:exam004} můžeme chápat jako soustavu tří rovnic o 
+  dvou neznámých:
+  \begin{align*}
+      ru_1 + sv_1 &= x - x_A, \\
+      ru_2 + sv_2 &= y - y_A, \\
+      ru_3 + sv_3 &= z - z_A, 
+  \end{align*}
+  kde neznámými jsou parametry \(r\) a \(s\). Z geometrického významu této soustavy je zřejmé, že 
+  pro každý bod \(X = (x, y, z)\), který leží v rovině \(\varrho\), bude soustava mít jako řešení 
+  právě jednu dvojici parametrů \((r, s)\) (pro body, které v rovině neleží, soustava řešení nemá). 
+  Vypočteme parametry \(r\) a \(s\) například z prvních dvou rovnic. Předpokládejme, že \(u_1 \neq 
+  0\), a upravujme matici soustavy:
+  
+  \begin{equation*}
+    \left(
+      \begin{array}{rr|r}
+         u_1 &  v_1  &  x-x_A         \\
+         u_2 &  v_2  &  y-y_A
+      \end{array}
+    \right) \sim
+    \left(
+      \begin{array}{cc|c}
+              u_1 &  v_1               & x - x_A     \\
+              0   &  u_1v_2 - u_2v_1   & (y-y_A)u_1 - (x-x_A)u_2
+      \end{array}
+    \right).
+  \end{equation*}
+  odkud pro \((u_1v_2 — u_2v_1) \neq 0\) dostaneme
+  \begin{equation*}
+    r = - \dfrac{(y-y_A)v_1 - (x-x_A)v_2}{u_1v_2 - u_2v_1}, \qquad 
+    s =   \dfrac{(y-y_A)u_1 - (x-x_A)u_2}{u_1v_2 - u_2v_1}
+  \end{equation*}
+  Dosadíme-li získané hodnoty do třetí rovnice (dá to trochu práce), dostáváme obecnou  rovnici roviny 
+  \(\varrho\)
+  \begin{subequations}\label{mai:eq041}
+    \begin{equation}
+      ax + by + cz + d= 0,
+    \end{equation}
+    \begin{equation}
+      a = u_2v_3 - u_3v_2, \qquad b = U_3v_1 - u_1v_3, \qquad c = u_1v_2 - u_2v_1,
+    \end{equation}
+    \begin{equation}
+      d = (u_2v_3 - u_3v_2)x_A - (u_3v_1 - u_1v_3)y_A - (u_1v_2 - u_2v_1)z_A.
+    \end{equation}
+  \end{subequations}
+  Při tomto výpočtu vyvstaly některé problémy. Pokusme se je vyřešit:
+  \begin{itemize}
+    \item Aby získaná rovnice opravdu představovala nějakou rovinu, musí v ní zůstat alespoň jedna 
+          ze souřadnic \(x, y, z\). Alespoň jedno z čísel \(a, b, c\) by tedy mělo být nenulové. 
+          Dokažte, že tomu tak opravdu je, a využijte při tom skutečnosti, že vektory \(\vec{u}\) a 
+          \(\vec{v}\) nesmí být rovnoběžné. Co znamená předpoklad \((u_1v_2 - u_2v_1) \neq 0\)?
+    \item Předpokládali jsme, že \(u_1 \neq 0\). Jak budeme postupovat, nebude-li tento předpoklad  
+          splněn? Lze v tomto případě použít obecné výrazy získané pro \(r\) a \(s\)?
+  \end{itemize}
+  \normalsize
+\end{example}

@@ -1,0 +1,52 @@
+%\documentclass{article}
+%  \usepackage{fontspec,xltxtra,xunicode,unicode-math} 
+%  \usepackage{siunitx}
+%  \usepackage{tikz}
+%    \usetikzlibrary{intersections}
+%    \usetikzlibrary{calc}
+%    \usetikzlibrary{positioning}
+%    \usetikzlibrary{arrows}
+%    \tikzstyle{every node}=[font=\small]
+%    \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+%  \usepackage[american, 
+%              europeanresistor, cuteinductors, smartlabels]{circuitikz}
+%    \ctikzset{bipoles/thickness=1}
+%    \ctikzset{bipoles/length=0.8cm}
+  
+% \begin{document}
+  \begin{figure}[htp]
+    \centering
+    \begin{circuitikz}[scale=2, every node/.style={font=\footnotesize}, european voltages]
+      \node (0,0)               (B) {};
+      \node [left =1.5cm of B]  (A) {};
+      \node [right=1.5cm of B]  (C) {};
+      \node [below=1.5cm of B]  (D) {};
+      \node [below=1.5cm of A]  (E) {};
+      \node [below=1.5cm of C]  (F) {};
+      \node [above=1cm of A]    (G) {};
+      \node [above=1cm of C]    (H) {};
+      
+      \ctikzset{current/distance = .5}
+      \ctikzset{bipoles/resistor/voltage/distance from node/.initial = .5}
+  \draw (F) to[battery, 
+          l=$\substack{\displaystyle\hfill U_{bat}\\\displaystyle \SI{3}{\volt}}$,% 
+        i^>=$i_x$]  (C);
+  \draw (F) to[short] (D);  
+  \draw (A) 
+    to[R ,l=$\substack{\displaystyle\hfill R_2  \\ \displaystyle \SI{2}{\kohm}}$,%
+        i>^=$i_2$, *-*] (B) node[above] {$2$}
+    to[R, l=$\substack{\displaystyle\hfill R_3  \\ \displaystyle \SI{2}{\kohm}}$,%
+      , i^>=$i_3$, *-*] (C);
+  \draw (B) 
+    to[R, l_=$\substack{\displaystyle\hfill R_4 \\ \displaystyle\SI{2}{\kohm}}$,%
+         i>_=$i_4$,-*] (D); 
+  \draw (A) 
+    to[R, l_=$\substack{\displaystyle\hfill R_1 \\ \displaystyle \SI{6}{\kohm}}$,%
+         i>_=$i_1$] (E) 
+    to[short](D) node[below, red] {$0$};
+  \draw (C) to[short] (H) to[I, i^=$\SI{1}{\milli\ampere}$] (G) to[short]     (A) node[left] {$1$};
+    \end{circuitikz}
+    \caption{Analyzovaný obvod}
+    \label{TEO:fig_MMUN02}
+  \end{figure}
+% \end{document}

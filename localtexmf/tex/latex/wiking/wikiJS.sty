@@ -1,0 +1,71 @@
+% =============================Javascript - AcroTex================================================ 
+% The LATEX package fancytooltips allows to insert tooltips into PDF documents - a popup windows 
+% appears if the mouse hovers or clicks particular area. You can use plain text as well as
+% mathematics, pictures and animations in your tooltips. The PDF viewer must interpret Javascripts
+% to make the tooltips work.
+% C:\Program Files\MiKTeX 2.9\doc\latex\fancytooltips\fancytooltips.pdf
+\usepackage[createtips]{fancytooltips}
+% pdf, Adobe's Portable Document Format, is a common way to distribute documents that look the same
+% on all platforms and output devices. These are arbitrary auxiliary files that get embedded
+% directly into the pdf document, just like attachments in an e-mail message.
+\usepackage[dvipdfm]{eforms}
+% c:\Program Files\MiKTex 2.9\doc\latex\acrotex\eformman.pdf
+\begin{insDLJS}{hello}{Hello, World}
+var done=0;
+
+function hello() 
+{
+  if (!done) {
+    // check if we are done
+    done=1;
+    app.alert("Joy in looking and comprehending is nature's most beautiful gift. (Albert Einstein)",3);
+  }
+}
+\end{insDLJS}
+% \OpenAction{/S /JavaScript /JS (hello();)}  
+
+\begin{insDLJS}[vecsum]{vecsum}{My Private vector sum}
+function vecsum()
+{
+    var output1 = this.getField("Output.First");
+    var output2 = this.getField("Output.Second"); 
+    var output3 = this.getField("Output.Third");
+    output1.value = v1x.value + v2x.value ; 
+    output2.value = v1y.value + v2y.value ;
+    output3.value = v1z.value + v2z.value ;
+} 
+
+\end{insDLJS}
+
+\begin{insDLJS}[innerpro]{innerpro}{My Private vector inner product}
+function innerpro()
+{   
+    var absv1 = 0 ; 
+    var absv2 = 0 ; 
+    var costheta = 0 ; 
+    
+    var output4 = this.getField("Output.Fourth");
+    var output5 = this.getField("Output.Fifth"); 
+    
+    output4.value = v1x.value*v2x.value + v1y.value*v2y.value + v1z.value*v2z.value ; 
+    
+    absv1 = Math.sqrt( v1x.value*v1x.value + v1y.value*v1y.value + v1z.value*v1z.value );
+    absv2 = Math.sqrt( v2x.value*v2x.value + v2y.value*v2y.value + v2z.value*v2z.value );
+    costheta = output4.value/( absv1*absv2 ) ; 
+    
+    output5.value = Math.acos( costheta )*180/Math.PI ; 
+} 
+\end{insDLJS}
+
+\begin{insDLJS}[outerpro]{outerpro}{My Private vector outer product}
+function outerpro()
+{
+  var output6 = this.getField("Output.Sixth");
+  var output7 = this.getField("Output.Seventh");
+  var output8 = this.getField("Output.Eighth");
+  output6.value = v1y.value*v2z.value - v1z.value*v2y.value; 
+  output7.value = v1z.value*v2x.value - v1x.value*v2z.value;
+  output8.value = v1x.value*v2y.value - v1y.value*v2x.value;  
+} 
+\end{insDLJS}
+               

@@ -1,0 +1,160 @@
+% !TeX spellcheck = cs_CZ
+  
+Nyní si demonstrujeme užití pohybových rovnic při popisu trajektorie, libovolného bodu na 
+železničním kole, které se odvaluje po kolejnici \textbf{bez} smyku. Na obrázku \ref{fyz:fig142} 
+vidíme, že železniční kola jsou opatřena \emph{okolky}, která slouží jako bezpečnostní prvek proti 
+vykolejení a pro hladký průjezd kolejových spojek, výhybek apod. Úlohu můžeme formulovat pro různé 
+body, které mají vzdálenost od středu kola menší, větší, nebo rovnou poloměru nákolku. Otázka zní, 
+jak bude jejich trajektorie rozvinutá v čase vypadat.
+
+\begin{figure}[ht!]  %\ref{fyz:fig142}
+  \centering
+  \includegraphics[width=0.5\linewidth]{fyz_fig142.jpg}
+  \caption{Nákres železničního kola s částí kolejnice: \(1\ldots\text{okolek}\), \(2\ldots 
+          \text{nákolek}\), \(3\ldots\text{plocha odvalování}\), kredit: \wikiOkolek. K příkladu 
+          \ref{fyz:exam003}.}
+  \label{fyz:fig142}
+\end{figure}
+
+\wikitextrule
+\begin{example}\label{fyz:exam003}
+  Kolo vagónu se valí po vodorovné kolejnici. Uvažujme bod, který je v počátečním okamžiku pod 
+  středem kola ve vzdálenosti, která může být menší, rovna nebo větší než vzdálenost středu kola od 
+  kolejnice.
+
+   {\centering
+    \captionsetup{type=figure}
+    \includegraphics[width=0.6\linewidth]{fyz_fig141.pdf}
+    \captionof{figure}{Kolo vagónu a tři možné polohy bodu}
+    \label{fyz:fig141}
+  \par}
+  \vspace{0.5em}
+  Určeme parametrické rovnice dráhy zvoleného bodu, složky rychlosti a její velikost, složky 
+  zrychlení a jeho velikost, tečné a normálové zrychlení a poloměr křivosti dráhy. 
+  \cite[p.~11]{Slavik}
+  \vspace{1em}
+  \newline
+  \textbf{Řešení}: Obvodová rychlost v místě dotyku s kolejnicí je \(v=\omega R\), což vzhledem k 
+  předpokladu o valení představuje posuvnou rychlost kola. Parametrické rovnice pro střed kola jsou pak
+  \begin{subequations}\label{mech:eq_wheel_center}
+    \begin{align}
+      x_s &= \omega R t \\
+      y_s &= R
+    \end{align}
+  \end{subequations}
+
+   {\centering
+    \captionsetup{type=figure}
+    \includegraphics[width=0.9\linewidth]{fyz_fig143.pdf}
+    \captionof{figure}{Náčrt pro odvození parametrických rovnic pohybu libovolně zvoleného bodu na 
+               kole vagónu}
+    \label{fyz:fig143}
+  \par}
+  \vspace{0.5em}
+  Uvažovaný bod \(B_3\) na obr. \ref{fyz:fig143} je ve své nové pozici v čase \(t_1\) posunut vůči 
+  středu o vzdálenost \(r\cdot\sin\omega t\) ve směru osy \(x\) a o vzdálenost \(r\cdot\cos\omega 
+  t\) ve směru osy \(y\). Z obrázku \ref{fyz:fig143} lze odvodit následující rovnice pro souřadnice 
+  libovolného bodu \(B\) na kole vagónu.
+  
+           
+    \begin{itemize}
+      \item ve směru osy \(x\):
+      \begin{align*}
+        x &= x_s + x'                        \\
+        x &= x_s + r\cos(\psi-\frac{\pi}{2}) \\
+        x &= x_s + r\sin\psi                 \\
+        x &= \omega R t + r\sin\omega t
+      \end{align*}
+      \end{itemize}  
+
+
+   \begin{itemize}
+      \item ve směru osy \(y\): 
+      \begin{align*}
+        y &= y_s - y'                        \\
+        y &= y_s - r\sin(\psi-\frac{\pi}{2}) \\
+        y &= y_s + r\cos\psi                 \\
+        y &= R + r\cos\omega t
+      \end{align*}
+    \end{itemize}
+
+  takže, parametrické rovnice dráhy mají tvar \textbf{cykloidy}:
+  \begin{equation*}
+    x = \omega R t + r\sin\omega t  \qquad y = R + r\cos\omega t
+  \end{equation*}
+  \begin{itemize}
+    \item Složky rychlosti:
+      \begin{align*} 
+       v_x &= \frac{dx}{dt} = \omega R + r\omega\cos\omega t                       \\
+       v_y &= \frac{dy}{dt} = -r\omega\sin\omega t                                 \\
+       v   &= \sqrt{v_x^2 + v_y^2}= \omega\sqrt{R^2 + 2Rr\cos\omega t + r^2}
+      \end{align*}
+    \item Složky zrychlení:
+      \begin{align*}
+        a_x &= \frac{dv_x}{dt} = -r\omega^2\sin\omega t                           \\
+        a_y &= \frac{dv_y}{dt} = -r\omega^2\cos\omega t                           \\
+        a   &= \sqrt{a_x^2 + a_y^2}= r\omega^2\sqrt{\sin^2\omega t + 
+               \cos^2\omega t} = r\omega^2
+      \end{align*}
+      Tento výsledek je superpozicí rovnoměrného kruhového a rovnoměrného přímočarého pohybu.
+    \item \textbf{Tečné zrychlení} \(a_t\) dostaneme derivací velikosti rychlosti
+      \begin{equation*}
+        a_t = \frac{dv}{dt} = -\cdot\frac{2Rr\omega^2\sin\omega t }{2\sqrt{R^2 + 
+                2Rr\cos\omega t + r^2}}
+      \end{equation*}
+    \item \textbf{Normálové zrychlení} \(a_n\) získáme užitím Pythagorovy věty
+      \begin{align*}
+        a_n &= \sqrt{a^2 - a_t^2}                                                 \\
+        a_n &= \sqrt{(r\omega^2)^2-\left(
+               \frac{Rr\omega^2\sin\omega t}
+                    {\sqrt{R^2 + 2Rr\cos\omega t + r^2}}\right)^2}
+      \end{align*}
+    \item \textbf{Poloměr křivosti} $R_0$ dostaneme ze vztahu $a_n=\frac{v^2}{R_0}$:
+      \begin{equation*}
+          R_0 =  \dfrac{\omega^2\cdot(R^2 + 2Rr\cos\omega t + r^2)}{\sqrt{r^2\omega^4 - 
+                   \dfrac{R^2r^2\omega^4\sin^2\omega t}{R^2 + 2Rr\cos\omega t + r^2}}}
+      \end{equation*}
+      Poloměr křivosti není roven vzdálenosti od středu kola r: drahou bodu není kružnice, nýbrž 
+      cykloida (viz obr. \ref{fyz:fig140}). Pokud bod pevně spojený s kružnicí leží na 
+      jejím obvodu, pak při valení této kružnice po přímce opisuje tento bod \textbf{prostou} 
+      (obecnou) cykloidu. 
+  \end{itemize}
+  
+  \begin{align*}
+    (x - \omega R t)^2            &= r^2\sin^2\omega t                          \\
+    (y-R)^2                       &= r^2\cos\omega t                            \\
+    (x - \omega R t)^2 + (y-R)^2  &= r^2\sin^2\omega t + r^2\cos\omega t        \\
+    (x - \omega R t)^2 + (y-R)^2  &= r^2 \quad                                  \\
+    \shortintertext{kde \(t = \frac{1}{\omega}\arccos\frac{y-R}{r}\)}
+    \Aboxed{\left(x - R\arccos\frac{y-R}{r}\right)^2 + (y-R)^2  &= r^2}
+  \end{align*}
+
+   {\centering
+    \captionsetup{type=figure}
+ %   \includegraphics[width=0.8\linewidth]{fyz_fig140.pdf}
+    \input{../src/FYZ/img/fyz_fig140.tex}
+    \captionof{figure}{Cykloida: pro $B_2\ldots r=R$ je cykloida prostá; $B_3\ldots r>R$
+              cykloida prodloužená; $B_1\ldots r<R$ cykloida zkrácená; \texttt{[cykloida.m]} }
+    \label{fyz:fig140}
+    \par}       
+    \vspace{1em}
+   
+   Z obrázku \ref{fyz:fig140} je také patrné, že pokud bod pevně spojený s kutálející se kružnicí 
+   neleží na obvodu této kružnice, ale jeho vzdálenost od středu kružnice o poloměru \(R\)  je 
+   \(r\) , pak pro \(r<R\) získáme \textbf{cykloidu zkrácenou} a pro \(r>R\)  \textbf{cykloidu 
+   prodlouženou}.
+      
+%---------------------------------------------------------------
+\lstinputlisting[language=Matlab]{../src/FYZ/matlab/cicloid.m}
+\begin{lstlisting}[caption= Výpočet křivky cykloidy pro pro tři různé body.]
+\end{lstlisting}
+%---------------------------------------------------------------
+
+%    %---------------------------------------------------------------
+%      \tikzexternaldisable
+%      \input{../src/FYZ/img/fyz_fig144.tex}
+%      \tikzexternalenable
+%    %---------------------------------------------------------------
+    
+\end{example}
+\wikitextrule

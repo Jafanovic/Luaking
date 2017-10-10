@@ -1,0 +1,30 @@
+% !TeX spellcheck = cs_CZ
+{\tikzset{external/prefix={tikz/AES/}}
+ \tikzset{external/figure name/.add={ch02_}{}}
+%---------------------------------------------------------------------------------------------------
+% file amplifier.tex
+%---------------------------------------------------------------------------------------------------
+%============================ Kapitola: Zesilovače==================================================
+\chapter{Zesilovače}
+\minitoc
+
+  V této kapitole se budeme zabývat rozbory vlastností základních obvodů a jejich účelným
+  spojováním do funkčních bloků určených pro zesilování signálů. \cite[p.~101]{Neumann}
+  
+  \section{Zjednodušení výpočet tranzistorového ze\-si\-lo\-va\-če}
+    Přesný výpočet tranzistorového zesilovače vychází z určení dvojbranových pa\-ra\-me\-trů
+    tranzistoru a pokračuje sestavením matice obvodu a řešením této matice. Při použití vybraných
+    rovnic matematických modelů pro programy SPICE lze dojít ke zjednodušenému řešení, ve kterém se
+    některé parametry zanedbají a sestavené náhradní schema pak řešit libovolnou metodou. Přesto
+    dostaneme výsledky s přesností, která pro obvyklé technické řešení postačuje.
+
+    \subsection{Obecná převodní charakteristika bipolární tranzistoru}
+      Převodní charakteristika udává závislost výstupního proudu na vstupním napětí. Pro zapojení
+      \texttt{SE} představuje převodní charakteristiku exponenciální závislost kolektorového proudu
+      na napětí mezi bází a emitorem. Strmost je dána derivací funkce (tečnou) v daném pracovním
+      bodě a odpovídá parametru $\mathrm{y_{21}}$.
+
+} % tikzset
+%---------------------------------------------------------------------------------------------------
+\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\addcontentsline{toc}{section}{Seznam literatury}

@@ -1,0 +1,52 @@
+\documentclass[11pt]{standalone}
+  \usepackage{helvet}                        % font
+  \usepackage{xltxtra}                       % fontspec package
+  \usepackage{tikz}  
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{intersections}
+  \usetikzlibrary{calc}
+
+%\newpath
+%\moveto(0.37880683,-0.12631738)
+%\curveto(0.37880683,-0.12631738)(16.746964,-0.16331738)(27.401489,14.35218262)
+%\curveto(38.204079,29.06968262)(51.661079,58.47632262)(63.387069,58.58885262)
+%\curveto(75.113069,58.70138262)(81.146179,32.79738262)(97.499259,19.26928262)
+%\curveto(116.61771,3.45338262)(143.05509,-0.35661738)(143.05509,-0.35661738)
+
+\newcommand{\XYcross}{% 
+   \draw[name path=axeX,->] (\xmin,\zero) -- (\xmax,\zero)   node[right] {\xlabel} coordinate(x axis);
+   \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {\ylabel} coordinate(y axis);
+   \path[name intersections={of=axeX and axeY, name=pocatek}];
+   \node[below left] at (pocatek-1) {$0$};
+   \draw[fill=white] (pocatek-1) circle(2pt);
+}
+
+\begin{document}
+  \begin{tikzpicture}
+  \def\xmin{0}
+  \def\xmax{160}
+  \def\ymin{-3}
+  \def\ymax{80}
+  \def\nula{0}
+  \def\phase{0}
+    
+    \begin{scope}[draw=black,line join=round,miter limit=4.00,line width=0.5pt, y=1pt,x=1pt]
+      \draw[->] (\xmin,\nula) -- (\xmax,\nula) node[right] {$t$} coordinate(x axis);
+      \draw[->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {$i(t)$} coordinate(y axis);
+      \path[name path=fce,draw=black,line join=round,even odd rule,line cap=butt,miter
+      limit=4.00] (0,0)             .. controls
+           (0,0)   and (17,0)  .. (27,14) .. controls
+           (38,29) and (52,58) .. (63,58) .. controls
+           (75,58) and (81,33) .. (97,19) .. controls
+           (117,3) and (143,0) .. (143,0);      
+      
+      \path[name path=osax] (\xmin,\nula) -- (\xmax,\nula);
+      
+        % Intersections
+          \path[name intersections={of=osax and fce, name=point}];   % prusecik osy x s funkc�
+          \draw[name path=line1] (point-1) ++ (0,-2) node[below] {$0$};
+      \draw[name path=line1] (point-2) ++ (0,-2) node[below] {$t_i$}  --+(0,4);
+      \node[left]  at (70,25) {$Q$};             
+    \end{scope}   
+  \end{tikzpicture} 
+\end{document}
