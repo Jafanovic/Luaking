@@ -1,0 +1,298 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam053}
+  \textbf{Losování karet}\newline\small
+    Máme karetní hru mariáš, která obsahuje celkem \num{32} karet osmi hodnot \num{7}, \num{8}, 
+    \num{9}, \num{10}, J (kluk), Q (dáma), K (král), A (eso), každá hodnota je ve čtyřech barvách, 
+    červené barvy jsou \(\heartsuit\) (srdce) a \(\lozenge\) (kára), černé barvy jsou \(\spadesuit\)
+    (piky) a \(\clubsuit\) (kříže). Jaká je pravděpodobnost, že při náhodném vylosování deseti 
+    karet budou 
+    mezi nimi:
+    \begin{enumerate}[label=\Alph*]
+      \item právě dvě esa,
+      \item alespoň dvě esa,
+      \item nejvýše dvě esa,
+      \item alespoň šest karet stejné barvy,
+      \item právě dvě dámy a alespoň jeden kluk,
+      \item právě dvě dámy nebo alespoň jeden kluk?
+    \end{enumerate}
+
+    Písmena (A) až (F) představují různé části úlohy a také zároveň definují jevy, jejichž 
+    pravděpodobnost počítáme. Jedná se opět o kombinace. Nezáleží totiž na pořadí, v jakém karty 
+    vytahujeme. Důležité je jen to, zda jsou vyjmenované karty ve výběru obsaženy. Počet možných 
+    výsledků náhodného vylosování deseti karet z dvaatřiceti, tj. počet případů možných, je pro 
+    všechny části úlohy stejný,
+    \begin{equation*}
+      N = \begin{pmatrix} 32 \\ 10\end{pmatrix} 
+        = \dfrac{32\cdot31\cdots24\cdot23}{10\cdot9\cdots2\cdot1} = \num{64512240}.
+    \end{equation*}
+    
+    Počítejme nyní případy příznivé pro jednotlivé jevy \(A\) až \(F\) a pravděpodobnosti těchto 
+    jevů:
+    \begin{equation*}
+      M(A) = \begin{pmatrix} 4 \\ 2\end{pmatrix}\begin{pmatrix} 32 - 4 \\ 10 - 2\end{pmatrix}
+           = \begin{pmatrix} 4 \\ 2\end{pmatrix}\begin{pmatrix} 28 \\ 8\end{pmatrix}
+           = 6\cdot\dfrac{28\cdot27\cdots1}{8\cdot7\cdots2\cdot1} = \num{18648630}.
+    \end{equation*}
+    Jak jsme k tomuto výsledku došli? Příznivý pro daný jev je každý výběr, v němž jsou obsažena 
+    právě dvě esa (libovolných barev) a žádná další esa (význam slova „právě“). Počet výběrů dvou 
+    es z celkového počtu čtyř es je \(C_2(4)\), počet výběrů dalších libovolných osmi karet ze 
+    zbývající části hry, která vznikne po odstranění es (nechceme, aby v příznivém výběru byla 
+    další esa), je \(C_{(10-2)}(32 - 4) = C_8(28)\). Každý výběr dvojice es lze kombinovat s každým 
+    výběrem zbývajících osmi karet ze zbytku hry, tj. \(M(A) = C_2(4)\cdot C_8(28)\). A to je právě
+    náš předchozí výsledek. Potom:
+    \begin{equation*}
+      p(A) = \dfrac{M(A)}{N} 
+           = \dfrac{\begin{pmatrix} 4 \\ 2\end{pmatrix}\begin{pmatrix} 28 \\ 8\end{pmatrix}}
+                   {\begin{pmatrix} 32 \\ 10\end{pmatrix}}
+           = \dfrac{\num{18648630}}{\num{64512240}} \simeq \num{0.29}
+    \end{equation*}
+    
+    Aby nastal jev \(B\), požadujeme, aby v náhodném výběru deseti karet z dvaatřiceti byla alespoň 
+    dvě esa. To znamená, že výběr považujeme za příznivý, obsahuje-li dvě esa libovolné barvy a osm 
+    libovolných karet jiné hodnoty, nebo obsahuje tři esa libovolné barvy a sedm libovolných karet 
+    jiné hodnoty, nebo obsahuje všechna čtyři esa a šest libovolných karet jiné hodnoty, \(k\) es 
+    (pro \(k = 2, 3, 4\)) můžeme ze čtyř es vybrat \(\begin{pmatrix} 4 \\ k\end{pmatrix}\) způsoby.
+    \(10 - k\) karet jiné hodnoty pak musíme vybírat pouze z \num{28} karet (esa je nutno 
+    odstranit, aby bylo zaručeno, že „doplňkové“ karty budou mít jinou hodnotu než eso). Výběr 
+    zbývajících karet lze učinit \(\begin{pmatrix} 28 \\ 10 - k\end{pmatrix}\) způsoby. Nakonec 
+    tedy dostáváme
+    \begin{align*}
+      M(B) &=  \begin{pmatrix} 4 \\ 2\end{pmatrix}\begin{pmatrix} 28 \\ 8\end{pmatrix}
+              +\begin{pmatrix} 4 \\ 3\end{pmatrix}\begin{pmatrix} 28 \\ 7\end{pmatrix}
+              +\begin{pmatrix} 4 \\ 4\end{pmatrix}\begin{pmatrix} 28 \\ 6\end{pmatrix}         \\
+           &=  6\cdot\dfrac{28\cdot27\cdots22\cdot21}{8\cdot7\cdots2\cdot1}
+              +4\cdot\dfrac{28\cdot27\cdots23\cdot22}{7\cdot6\cdots2\cdot1}
+              +4\cdot\dfrac{28\cdot27\cdots24\cdot23}{6\cdot5\cdots2\cdot1} = \num{23761530},  \\
+      P(B) &= \dfrac{M(B)}{N} = \dfrac{\num{23761530}}{\num{64512240}} \simeq\num{0.37}.
+    \end{align*}
+    Pozn.: Někomu se předchozí výpočet může zdát příliš složitý. Nelze jej nějak zjednodušit? Co 
+    kdybychom uvažovali třeba takto: Výběr dvou es již zajistí splnění požadavku. Doplňkové karty 
+    tedy již pak můžeme vybírat ze třiceti karet - nebudeme tedy odstraňovat esa, protože budou-li 
+    vybrána mezi doplňkovými kartami, požadavek „alespoň dvou es ve výběru“ to nenaruší. Při takové 
+    interpretaci bychom dostali
+    \begin{equation*}
+      M(B) = \begin{pmatrix} 4 \\ 2\end{pmatrix}\begin{pmatrix} 30 \\ 8\end{pmatrix}   
+           = 6\cdot\dfrac{30\cdot29\cdots24\cdot23}{8\cdot7\cdots2\cdot1}
+           = \num{35117550}.
+    \end{equation*}
+    Vidíme, že vyšlo číslo vyšší než při předchozí úvaze. Co je tedy správně? Správně je první 
+    úvaha vedoucí k nižšímu počtu příznivých případů. Při druhé úvaze jsme některé případy 
+    započetli vícekrát. Zkuste přijít na to, jak se to stalo. V každém případě vidíme, že 
+    kombinatorické úvahy, ať již vypadají jakkoli jednoduše, mohou být zrádné a je třeba dát si na 
+    ně pozor. 
+    
+    Jev \(C\) podle zadání nastane, obsahuje-li náhodný výběr deseti karet nejvýše dvě esa. Znamená 
+    to, že výběr je příznivý, neobsahuje-li žádné eso a obsahuje deset karet jiné hodnoty, nebo 
+    obsahuje-li jedno eso a devět karet jiné hodnoty, nebo obsahuje-li dvě esa a osm karet jiné 
+    hodnoty. Počet \(M(C)\) určíme analogicky jako \(M(B)\), ale pro \(k= 0, 1, 2\):
+    \begin{align*}
+      M(C) &=  \begin{pmatrix} 4 \\ 0\end{pmatrix}\begin{pmatrix} 28 \\ 10\end{pmatrix}
+              +\begin{pmatrix} 4 \\ 1\end{pmatrix}\begin{pmatrix} 28 \\ 9\end{pmatrix}
+              +\begin{pmatrix} 4 \\ 2\end{pmatrix}\begin{pmatrix} 28 \\ 8\end{pmatrix}         \\
+           &=   \cdot\dfrac{28\cdot27\cdots20\cdot19}{10\cdot9\cdots2\cdot1}
+              +4\cdot\dfrac{28\cdot27\cdots21\cdot20}{ 9\cdot8\cdots2\cdot1}
+              +6\cdot\dfrac{28\cdot27\cdots22\cdot21}{ 8\cdot7\cdots2\cdot1} = \num{59399340}, \\
+      P(C) &= \dfrac{M(C)}{N} = \dfrac{\num{59399340}}{\num{64512240}} \simeq\num{0.92}.
+    \end{align*}
+    
+    Jev \(D\) znamená alespoň šest karet stejné barvy (připomeňme, že barvou rozumíme jednu z 
+    možností \(\heartsuit\), \(\lozenge\), \(\spadesuit\), \(\clubsuit\)). Hra obsahuje osm karet 
+    od každé barvy. Současně je tedy zřejmé, že karet stejné barvy může být ve výběru nejvýše osm. 
+    Výběr je příznivý pro \(k = 6, 7, 8\). Obdobnou úvahou jako v předchozích případech dostáváme
+    \begin{equation*}
+      M = 4\cdot\sum^{8}_{k=6}
+          \begin{pmatrix} 8 \\ k \end{pmatrix}\begin{pmatrix} 32 - 8 \\ 10 - k\end{pmatrix}
+        = \num{1255984}.
+    \end{equation*}
+    
+    Faktor \num{4} před celou sumou se objevuje proto, že nebylo specifikováno, která ze čtyř barev 
+    má být zastoupena alespoň šesti kartami. Všechny čtyři možnosti volby barvy jsou tedy příznivé. 
+    Pravděpodobnost jevu \(D\) je
+    \begin{equation*}
+      p(D)  = \dfrac{M(D)}{N}
+            = \dfrac{4\cdot\sum^{8}_{k=6}\dfrac{8!}{k!(8-k)!}\dfrac{24!}{(10-k)!(14-k)!}}
+                    {\begin{pmatrix} 32 \\ 10 \end{pmatrix}}                               
+            = \dfrac{\num{1255984}}{\num{64512240}} \simeq \num{0.019}.
+    \end{equation*}
+    
+    Případy (\(E\)) a (\(F\)) v zadání se liší pouze slůvkem „a“ a „nebo“. Uvidíme, že nejde o 
+    slovíčka, ale o podstatný rozdíl. 
+    
+    Aby nastal jev \(E\), požadujeme, aby náhodný výběr deseti karet obsahoval právě dvě dámy a 
+    alespoň jednoho kluka. Znamená to, že výběr je příznivý, obsahuje-li dvě dámy libovolné barvy a 
+    současně alespoň jednoho kluka libovolné barvy. Příznivé možnosti tedy jsou:
+    \begin{enumerate}
+    \item  dvě dámy libovolné barvy, jeden kluk libovolné barvy, \num{7} libovolných karet, které 
+           nemají hodnotu dámy ani kluka, celkem 
+           \(\begin{pmatrix} 4 \\ 2 \end{pmatrix}
+             \begin{pmatrix} 4 \\ 1\end{pmatrix}
+             \begin{pmatrix} 32-2\cdot4 \\ 7 \end{pmatrix} = \num{8306496}\) možností,
+    \item dvě dámy libovolné barvy, dva kluci libovolné barvy, \num{6} libovolných karet, které 
+          nemají hodnotu dámy ani kluka, celkem 
+          \(\begin{pmatrix} 4 \\ 2 \end{pmatrix}
+            \begin{pmatrix} 4 \\ 2\end{pmatrix}
+            \begin{pmatrix} 32-2\cdot4 \\ 6 \end{pmatrix} = \num{4845456}\) možností,
+    \item dvě dámy libovolné barvy, tři kluci libovolné barvy, \num{5} libovolných karet, které 
+          nemají hodnotu dámy ani kluka, celkem 
+          \(\begin{pmatrix} 4 \\ 2 \end{pmatrix}
+            \begin{pmatrix} 4 \\ 3\end{pmatrix}
+            \begin{pmatrix} 32-2\cdot4 \\ 5 \end{pmatrix} = \num{1020096}\) možností,
+    \item dvě dámy libovolné barvy, všichni čtyři kluci, \num{4} libovolné karty, které nemají 
+          hodnotu dámy ani kluka, celkem 
+          \(\begin{pmatrix} 4 \\ 2 \end{pmatrix}
+            \begin{pmatrix} 4 \\ 4\end{pmatrix}
+            \begin{pmatrix} 32-2\cdot4 \\ 4 \end{pmatrix} = \num{63756}\) možností.
+    \end{enumerate}
+    \begin{align*}
+      M(E) &= \begin{pmatrix} 4 \\ 2 \end{pmatrix}\cdot\sum^{4}_{k=1}
+              \begin{pmatrix} 4 \\ k \end{pmatrix}\begin{pmatrix} 24 \\ 8 - k \end{pmatrix}
+            = 6\left[ 
+                  4\begin{pmatrix} 24 \\ 7 \end{pmatrix} +
+                  6\begin{pmatrix} 24 \\ 6 \end{pmatrix} +
+                  4\begin{pmatrix} 24 \\ 5 \end{pmatrix} +
+                   \begin{pmatrix} 24 \\ 4 \end{pmatrix}
+                \right] = \num{14235804},                                                \\
+      p(E) &= \dfrac{M(E)}{N} = \dfrac{\num{14235804}}{\num{64512240}} \simeq \num{0.22}.
+    \end{align*}
+    
+    Aby nastal jev \(F\), požadujeme, aby náhodný výběr deseti karet obsahoval právě dvě dámy nebo 
+    alespoň jednoho kluka. Znamená to, že výběr je příznivý, obsahuje-li dvě dámy libovolné barvy a 
+    jakékoli další karty, nebo obsahuje alespoň jednoho kluka a jakékoli další karty. Nyní je nutno 
+    o všech možnostech pečlivě rozvažovat, abychom některé nezapočítali vícekrát. Pozor, slůvko 
+    \uv{nebo} zde nemá vylučovací význam, připouští se, že mohou být splněny obě podmínky jevu 
+    \(F\), tj. jak právě dvě dámy, tak alespoň jeden kluk. Příznivé možnosti jsou
+    \begin{enumerate}
+      \item dvě dámy libovolné barvy, žádný kluk, \num{8} libovolných karet, které nemají 
+            hodnotu dámy ani kluka, celkem
+            \begin{equation*}
+              \begin{pmatrix} 4  \\ 2 \end{pmatrix}
+              \begin{pmatrix} 4  \\ 0 \end{pmatrix}
+              \begin{pmatrix} 32 - 2\cdot4 \\ 8 \end{pmatrix} = 6
+              \begin{pmatrix} 24 \\ 8 \end{pmatrix},
+            \end{equation*}
+      \item žádná dáma, \(k\) kluků libovolné barvy pro \(k = 1, 2, 3, 4\) (alespoň jeden kluk), 
+            \(10 - k\) karet, které nemají hodnotu dám y ani kluka, celkem
+            \begin{equation*}
+              \begin{pmatrix} 4  \\ 0 \end{pmatrix}
+              \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 32 - 2\cdot4 \\ 10 - k \end{pmatrix} =
+              \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 24 \\ 10 - k \end{pmatrix},
+            \end{equation*}
+      \item jedna dáma libovolné barvy, \(k\) kluků libovolné barvy pro \(k = 1,2, 3, 4\) (alespoň 
+            jeden kluk), \(10 - k - 1\) karet, které nemají hodnotu dámy ani kluka, celkem
+            \begin{equation*}
+              \begin{pmatrix} 4  \\ 1 \end{pmatrix}
+              \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 32 - 2\cdot4 \\ 10 - k - 1 \end{pmatrix} =
+              4\sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 24 \\ 9 - k \end{pmatrix},
+            \end{equation*}
+      \item dvě dámy libovolné barvy, \(k\) kluků libovolné barvy pro \(k = 1, 2, 3, 4\) (alespoň 
+            jeden kluk), \(10 - 2 - k = 8 - k\) karet, které nemají hodnotu dámy ani kluka, celkem
+            \begin{equation*}
+              \begin{pmatrix} 4  \\ 2 \end{pmatrix}
+              \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 32 - 2\cdot4 \\ 10 - k - 2 \end{pmatrix} =
+              6\sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 24 \\ 8 - k \end{pmatrix},
+            \end{equation*}
+      \item tři dámy libovolné barvy, k kluků libovolné barvy pro \(k = 1, 2, 3, 4\) (alespoň jeden 
+            kluk), \(10 - k - 3\) karet, které nemají hodnotu dámy ani kluka, celkem
+            \begin{equation*}
+              \begin{pmatrix} 4  \\ 3 \end{pmatrix}
+              \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 32 - 2\cdot4 \\ 10 - k - 3 \end{pmatrix} =
+              4\sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 24 \\ 7 - k \end{pmatrix},
+            \end{equation*}
+      \item všechny čtyři dámy, k kluků libovolné barvy pro \(k = 1, 2, 3, 4\) (alespoň jeden 
+            kluk), \(10 - k - 4\) karet, které nemají hodnotu dámy ani kluka, celkem
+            \begin{equation*}
+              \begin{pmatrix} 4  \\ 4 \end{pmatrix}
+              \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 32 - 2\cdot4 \\ 10 - k - 4 \end{pmatrix} =
+              \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                            \begin{pmatrix} 24 \\ 6 - k \end{pmatrix},
+            \end{equation*}
+    \end{enumerate}
+    
+    Počet příznivých případů \(M(F)\) je dán součtem všech těchto možností, tedy
+    \begin{equation*}
+      M(F) = \begin{pmatrix}  4 \\ 2 \end{pmatrix}\begin{pmatrix} 4  \\ 0 \end{pmatrix}
+             \begin{pmatrix} 24 \\ 8 \end{pmatrix} + 
+              \sum^{4}_{s=0}\begin{pmatrix} 4  \\ s \end{pmatrix}
+              \left[\sum^{4}_{k=1}\begin{pmatrix}  4 \\ k \end{pmatrix}
+                    \begin{pmatrix} 24 \\ 10 - k - s \end{pmatrix}
+              \right].
+    \end{equation*}
+    Všimněme si nyní výsledku. Výraz s dvojitou sumou můžeme přepsat jak
+    \begin{equation*}
+      \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+        \left[\sum^{4}_{s=0}\begin{pmatrix}  4 \\ s \end{pmatrix}
+              \begin{pmatrix} 24 \\ 10 - k - s \end{pmatrix}
+        \right].
+    \end{equation*}
+    V učebnicích můžeme najít různé vzorce pro kombinační čísla, mezi nimi i vzorec
+    \begin{equation*}
+      \sum^{p}_{s=0}\begin{pmatrix} p \\ s \end{pmatrix}\begin{pmatrix} r \\ q - s \end{pmatrix}
+        = \begin{pmatrix} r + p \\ q \end{pmatrix} \qquad\text{pro}\qquad r\geq q,\,q \geq p.
+    \end{equation*}
+    (Nebo si jej můžeme sami odvodit — pokuste se o to!) Pro \(p = 4\), \(r = 24\), \(q = 10 - k\), 
+    \(1 \leq k \leq 4\) máme právě náš případ, takže
+    \begin{equation*}
+      \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+        \left[\sum^{4}_{s=0}\begin{pmatrix}  4 \\ s \end{pmatrix}
+              \begin{pmatrix} 24 \\ 10 - k - s \end{pmatrix}
+        \right] = 
+        \sum^{4}_{k=1}\begin{pmatrix}  4 \\ k \end{pmatrix}
+                      \begin{pmatrix} 24 \\ 10 - k \end{pmatrix}.
+    \end{equation*}
+    Jak můžeme tento výsledek interpretovat? Jedná se o počet případů, kdy náhodný výběr deseti 
+    karet z mariášové hry dvaatřiceti karet obsahuje alespoň jednu kartu pevně zvolené hodnoty (v 
+    našem případě kluka), bez ohledu na to, kolik obsahuje karet ostatních hodnot. Přidáme-li počet 
+    případů, kdy výběr neobsahuje žádného kluka a právě dvě dámy, dostaneme právě počet případů 
+    příznivých pro jev \(F\). Pň úpravě použijeme ještě jednou vzorce
+    \begin{equation*}
+      \sum^{4}_{k=1}\begin{pmatrix} 4 \\ k \end{pmatrix}\begin{pmatrix} 28 \\ 10 - k\end{pmatrix}
+        = \sum^{4}_{k=0}\begin{pmatrix}  4 \\ k     \end{pmatrix}
+                        \begin{pmatrix} 28 \\ 10 - k\end{pmatrix} -
+                        \begin{pmatrix}  4 \\ 0     \end{pmatrix}
+                        \begin{pmatrix} 28 \\ 10    \end{pmatrix} =
+                        \begin{pmatrix} 32 \\ 10    \end{pmatrix} -
+                        \begin{pmatrix} 28 \\ 10    \end{pmatrix},
+    \end{equation*}
+    \begin{align*}
+      M(F) &= \begin{pmatrix}  4 \\ 2 \end{pmatrix}\begin{pmatrix}  4 \\ 0 \end{pmatrix} 
+              \begin{pmatrix} 24 \\ 8 \end{pmatrix} + 
+              \sum^{4}_{k=1}\begin{pmatrix} 4  \\ k \end{pmatrix}
+                      \left[\sum^{4}_{s=0}\begin{pmatrix}  4 \\ s \end{pmatrix}
+                            \begin{pmatrix} 24 \\ 10 - k - s \end{pmatrix}
+                      \right]                                                                   \\
+           &= \begin{pmatrix}  4 \\ 2 \end{pmatrix}\begin{pmatrix} 24 \\ 8 \end{pmatrix} +
+              \sum^{4}_{k=1}\begin{pmatrix}  4 \\ k \end{pmatrix}
+                            \begin{pmatrix} 28 \\ 10 - k \end{pmatrix}                          \\
+           &= \begin{pmatrix}  4 \\ 2 \end{pmatrix}\begin{pmatrix} 24 \\ 8 \end{pmatrix} + 
+              \left[\begin{pmatrix}  32 \\ 10 \end{pmatrix} - 
+                    \begin{pmatrix}  28 \\ 10 \end{pmatrix}
+              \right]
+            = \begin{pmatrix} 32 \\ 10 \end{pmatrix} - 
+              \left[\begin{pmatrix} 28 \\ 10 \end{pmatrix} - 
+                    \begin{pmatrix}  4 \\  2 \end{pmatrix}
+                    \begin{pmatrix} 24 \\  8 \end{pmatrix}
+              \right],                                                                          \\
+      p(F) &= 1 - \dfrac{\begin{pmatrix} 28 \\ 10 \end{pmatrix} -
+                         \begin{pmatrix}  4 \\  2 \end{pmatrix}
+                         \begin{pmatrix} 24 \\  8 \end{pmatrix}
+                        }
+                        {\begin{pmatrix} 32 \\ 10 \end{pmatrix}}
+            = 1 - \dfrac{\num{8710284}}{\num{64512240}} \simeq \num{0.86}.
+    \end{align*}
+    Zamysleme se ještě nad interpretací posledního výrazu pro \(M(F)\). Od počtu všech možných 
+    případů se odečítá hodnota \(\begin{pmatrix} 28 \\ 10 \end{pmatrix}\) představující počet 
+    situací, kdy ve výběru nebude žádný kluk, zmenšená o hodnotu \(\begin{pmatrix} 4 \\ 2 
+    \end{pmatrix}\begin{pmatrix} 24 \\ 8 \end{pmatrix}\), která představuje počet situací, kdy ve 
+    výběru budou právě dvě dámy a žádný kluk.
+  \normalsize
+\end{example}
