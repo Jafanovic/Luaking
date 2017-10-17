@@ -224,7 +224,63 @@
       Vzniká přirozená otázka, zda můžeme na základě znalosti pravděpodobností \(p(A)\) a \(p(B)\) 
       určit pravděpodobnosti \(p(C)\) a \(p(D)\). Ukazuje se, že za jistých předpokladů ano. Jako 
       obvykle nám napoví příklady.
+
+      %---------------------------------------------------------------
+      \input{../src/MAI/exam/exam055.tex}
+      %---------------------------------------------------------------
       
+      Z příkladu intuitivně chápeme, co jsou to nezávislé jevy, a usuzujeme, že obecně platí
+      \begin{lemma}\label{mai:lemma003}
+        \textbf{(Násobení pravděpodobností)}: Pravděpodobnost současného výskytu dvou nezávislých 
+        jevů \(A\) a \(B\) (jev \(C\)) je rovna součinu jejich pravděpodobností, tj.
+        \begin{equation}\label{mai:eq052}
+           p(A \text{ a } B)= p(A)p(B)\qquad \text{pro } A \text{ a } B \text{ nezávislé}
+        \end{equation}
+      \end{lemma}
+      
+      Pokusme se o přesnější definici nezávislých jevů a o odvození vztahu (\ref{mai:eq052}). 
+      Označme jako \(N_A\) množinu všech možných výsledků pokusu, při němž může nastat jev \(A\), a 
+      obdobně \(N_B\) množinu všech možných výsledků pokusu, při němž může nastat jev \(B\). V 
+      předchozím příkladu je \(N_A = \{1, 2, 3, 4, 5, 6\}\) a \(N_B = \{\mathcal{A}, 
+      \mathcal{B}\}\). Jako \(N_C\) označme množinu všech možných výsledků pokusu, při němž může 
+      nastat současně jev \(A\) i jev \(B\). Jevy \(A\) a \(B\) nazveme nezávislé, jestliže
+      platí \(N_C = N_A \times N_B\) (kartézský součin množin). Označíme-li obdobně \(M_A \subseteq 
+      N_A\) a, \(M_B \subseteq N_B\) a \(M_C \subseteq N_C\) podmnožiny příznivých výsledků pro 
+      jednotlivé jevy, je zřejmé, že také \(M_C = M_A \times M_B\). Počty prvků jednotlivých množin 
+      označíme \(N(A)\), \(N(B)\), \(N(C)\) (počty možných případů) a \(M(A)\), \(M(B)\), \(M(C)\) 
+      (počty příznivých případů). O konečných množinách víme, že mohutnost (počet prvků) 
+      kartézského součinu množin je rovna součinu mohutností jednotlivých
+      činitelů v tomto kartézském součinu. Proto
+      \begin{align*}
+        N(C) &= N(A)N(B),\qquad M(C) = M(A)M(B). \\
+        \shortintertext{Odtud}
+        p(C) &= \dfrac{M(C)}{N(C)} = \dfrac{M(A)M(B)}{N(A)N(B)} = p(A)p(B).
+      \end{align*}
+      Platnost tohoto vzorce lze zobecnit na nezávislé jevy \(A_1\), \(A_2\) až \(A_k\) s 
+      pravděpodobnostmi \(p(A_1)\), \(p(A_2)\) až \(p(A_k)\). Pravděpodobnost jevu \(C = (A_1\text{ 
+      a }A_2\text{ a }...\text{ a }A_K)\) pak je
+      \begin{equation*}
+        p(C) = p(A_1)p(A_2)\cdots p(A_k).
+      \end{equation*}
+ 
+      %---------------------------------------------------------------
+      \input{../src/MAI/exam/exam056.tex}
+      %---------------------------------------------------------------
+      
+      Je vidět, že opět směřujeme k obecnému tvrzení:
+      
+      
+  \section{Náhodné veličiny}
+    Hodnota některých veličin je určena jednoznačně a „jednou provždy“. Kdykoli budeme její hodnotu 
+    zjišťovat, tehdy dostaneme totéž — takže ji ani opakovaně zjišťovat nemusíme. Příkladem může 
+    být skoro prázdná peněženka, ve které jsou třeba tři koruny. Dokud nebudeme pracovat a do 
+    peněženky něco nepřidáme, bude hodnota veličiny \(X\) (počet korun v peněžence) stále rovna 
+    \num{3}. Nemá smysl se do peněženky vůbec dívat. Pokud budeme do peněženky přidávat každý den 
+    dvě koruny, také budeme vědět, jak se veličina \(X\) mění, aniž bychom se do peněženky dívali. 
+    Po \(n\) dnech bude hodnota \(X = 3 + 2n\). Většina veličin, se kterými se setkáváme, se však 
+    takto nechová. Jejich hodnoty se totiž často řídí náhodnými vlivy, takže při každém
+    měření veličiny \(X\) , tj. zjišťování její hodnoty, můžeme získat odlišný výsledek než při 
+    měřeních předchozích. Uveďme některé příklady náhodných veličin.
 %} %tikzset
 ---------------------------------------------------------------------------------------------------
 \printbibliography[heading=subbibliography]
