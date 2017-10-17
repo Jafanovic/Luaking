@@ -20,33 +20,49 @@
           přemístění zůstává v klidu,
     \item \textbf{identita} - přemístění do téže polohy, v klidu jsou všechny body krychle
   \end{itemize}
-  Jednotlivé typy prvků symetrie jsou znázorněny na obrázcích 4.1 až 4.15. Na prvním z obrázků 4.1 
-  jsou vyznačeny tři symetrie krychle, \(\sigma_1\), \(\sigma_2\) a \(\sigma_3\). Zkuste najít a 
-  nakreslit další. Druhý z obrázku 4.1. znázorňuje situaci při zrcadlení vzhledem k rovině 
-  \(\sigma_2\). Pro klasickou herní kostku pak operaci zrcadlení ilustruje obrázek 4.2.
+  Jednotlivé typy prvků symetrie jsou znázorněny na obrázcích \ref{mai:fig037} až 4.15. Na obrázku 
+  \ref{mai:fig037a} jsou vyznačeny tři symetrie krychle, \(\sigma_1\), \(\sigma_2\) a \(\sigma_3\). 
+  Zkuste najít a nakreslit další. Druhý z obrázku 4.1. znázorňuje situaci při zrcadlení vzhledem k 
+  rovině \(\sigma_2\). Pro klasickou herní kostku pak operaci zrcadlení ilustruje obrázek 4.2.
   
   {\centering
     \captionsetup{type=figure}
-    \includegraphics[width=0.4\linewidth]{mai_fig037.png}
-    \captionof{figure}{Prvky symetrie krychle - zrcadlení \cite[s.~6]{Musilova2012MA2}
-    \label{mai:fig000}}
-    \par}
-    
+    \begin{tabular}{ccc}
+     \subfloat[roviny symetrie]{\label{mai:fig037a}
+       \includegraphics[width=0.25\linewidth]{mai_fig037a.png}}              &
+%     \hspace{1pt}
+     \subfloat[vzor]{\label{mai:fig037b}
+       \includegraphics[width=0.25\linewidth]{mai_fig037b.png}}              &
+%     \hspace{1pt}
+     \subfloat[obraz]{\label{mai:fig037c}
+       \includegraphics[width=0.25\linewidth]{mai_fig037c.png}}
+    \end{tabular}
+    \captionof{figure}{Prvky symetrie krychle - zrcadlení \cite[s.~6]{Musilova2012MA2}}
+    \label{mai:fig037}
+  \par}
+
     Kolik existuje os symetrie krychle? Zkuste procvičit svou prostorovou představivost a zamyslet 
     se nad touto  otázkou sami ještě dříve, než se podíváte na obrázky. Vezměte si k tomu třeba 
     libovolnou hrací kostku. (Pozor, rozmístění teček na vaší kostce může být jiné, než na té naší, 
     podle které jsou nakresleny obrázky.) Na obrázku 4.3 jsou vyznačeny tři osy symetrie \(o_1^4\), 
     \(o_2^4\), \(o_3^4\).Prvkem symetrie je otočení kolem kterékoli z nich o jedenkrát, dvakrát 
-    nebo třikrát \SI{90}{\deg} při čtvrtém otočeni o \SI{90}{\deg} přejde krychle do původní 
+    nebo třikrát \ang{90} při čtvrtém otočeni o \ang{90} přejde krychle do původní 
     polohy. Osy se proto nazývají čtyřčetné (vyznačeno horním indexem). Obrázek 4.4 znázorňuje 
-    konkrétní situaci při otočení o úhel \SI{270}{\deg} kolem osy o, zatímco obrázek 4.5 ukazuje 
+    konkrétní situaci při otočení o úhel \ang{270} kolem osy o, zatímco obrázek 4.5 ukazuje 
     toto otočení pro klasickou herní kostku.
-    
+
+  {\centering
+    \captionsetup{type=figure}
+    \includegraphics[width=0.4\linewidth]{mai_fig038.png}
+    \captionof{figure}{Prvky symetrie hrací kostky - zrcadlení. \cite[s.~7]{Musilova2012MA2}
+    \label{mai:fig038}}
+    \par}  
+  
     Další čtyři osy symetrie odpovídají tělesovým úhlopříčkám krychle a jsou znázorněny na obrázku 
     4.6. Jsou označeny symboly \(o_1^3\), \(o_2^3\), \(o_3^3\) a \(o_4^3\) a nazývají se trojčetné 
     (víte proč?).
     
-    Obrázky 4.7 a 4.8 odpovídají konkrétnímu otočení kolem osy \(o_3^3\) o úhel \SI{270}{\deg}.
+    Obrázky 4.7 a 4.8 odpovídají konkrétnímu otočení kolem osy \(o_3^3\) o úhel \ang{270}.
     
     Dalších šest os symetrie najdeme v obrázku 4.9. Každá z nich vždy prochází bodem S (průsečíkem 
     tělesových úhlopříček) a spojuje středy protilehlých hran. Tyto dvojčetné osy jsou označeny 
@@ -59,6 +75,33 @@
     \(\mathcal{P}_A\) množinu všech přemístění krychle mezi kteroukoli dvojici poloh ekvivalentních 
     poloze \(A\). Operaci skládání přemístění definujeme takto: Nechť \(\varrho\ni\mathcal{P}_A\) 
     je přemístění krychle z polohy \(B\) do polohy \(C\) a \(\psi\ni\mathcal{P}_A\) její přemístění 
-    z polohy \(C\) do polohy \(D\). Označme jako \(\psi\circ\varrho\) přemístění,
+    z polohy \(C\) do polohy \(D\). Označme jako \(\psi\circ\varrho\) přemístění,které vznikne 
+    postupným provedením nejprve \(\varphi\) a potom \(\psi\). Vzniká tak zobrazení
+    \begin{equation*}
+      \mathcal{P}_A\times\mathcal{P}_A\ni [\varphi,\psi] 
+        \longrightarrow\psi\circ\varphi\in\mathcal{P}_A,
+    \end{equation*}
+    která je typu (\ref{mai:eq047}). Asociativní zákon (\ref{mai:eq048}) je splněn, identita 
+    (přesunutí do téže polohy) je neutrálním prvkem, zpětné přemístění z polohy \(C\) do \(B\) je 
+    inverzním prvkem k přemístění \(\varphi\). Množina \(\mathcal{P}_A\) s operací skládání 
+    přemístění je grupou. Není však grupou komutativní, jak ukazují obrázky (4.16, 4.17 a 4.18). 
+    Tato grupa má velmi zajímavé vlastnosti. Na rozdíl od všech předchozích příkladů grup je počet 
+    jejich prvků konečný. Navíc každá z prvků symetrie krychle definuje jistou podgrupu grupy 
+    \(\mathcal{P}_A\). Vezměme například trojčetnou osu symetrie \(o_3^3\) zadanou tělesovou 
+    úhlopříčkou \(BD'\) na obrázcích 4.6 a 4.7. Přemístění, která s touto osou souvisejí, jsou 
+    všechny rotace kolem ní o úhel, který je celistvým násobkem úhlu \ang{120}. Patří sem i 
+    identita, \(\mathcal{P}_A\). Všimněme si, že každý prvek této podgrupy můžeme dostat pomocí 
+    skládání jediného prvku sama se sebou. Tímto jediným prvkem je rotace kolem osy \(o_3^3\) o 
+    úhel \ang{120}. Grupa s takovou vlastností se nazývá \textbf{cyklická}. Zkuste zjistit, 
+    které další cyklické podgrupy obsahuje grupa operací symetrie krychle. 
+    
+    Pozn.: Obecně se grupa \(G\) nazývá cyklická, jestliže je tvaru
+    \begin{equation*}
+      G = \{a, a^2 \ldots a^{n-1}, a^n = e_G\}.
+    \end{equation*}
+    Číslo \(n\) je rovno řádu grupy. Cyklické grupy se významně uplatní například v krystalografii.
+    
+    A uvědomme si ještě, o co zajímavější ale složitější, by naše úvahy byly, kdybychom se zajímali 
+    o grupu operací symetrie\textbf{ Rubikovy kostky}! 
   \normalsize
 \end{example}
