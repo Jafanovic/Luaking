@@ -234,7 +234,7 @@
         \textbf{(Násobení pravděpodobností)}: Pravděpodobnost současného výskytu dvou nezávislých 
         jevů \(A\) a \(B\) (jev \(C\)) je rovna součinu jejich pravděpodobností, tj.
         \begin{equation}\label{mai:eq052}
-           p(A \text{ a } B)= p(A)p(B)\qquad \text{pro } A \text{ a } B \text{ nezávislé}
+           p(A \text{ a } B)= p(A)p(B)\qquad \text{pro } A \text{ a } B \text{ neslučitelné}
         \end{equation}
       \end{lemma}
       
@@ -268,6 +268,80 @@
       %---------------------------------------------------------------
       
       Je vidět, že opět směřujeme k obecnému tvrzení:
+      \begin{lemma}\label{mai:lemma004}
+        \textbf{(Sčítání pravděpodobností)}: Pravděpodobnost jevů \(A\) nebo \(B\) (jev \(C\)) 
+        pro neslučitelné (vylučující se) jevy \(A\) a \(B\) rovna součtu pravděpodobností jevů 
+        \(A\) nebo \(B\).
+        \begin{equation}\label{mai:eq053}
+           p(A \text{ nebo } B)= p(A) + p(B)\qquad \text{pro } A \text{ a } B \text{ nezávislé}
+        \end{equation}
+      \end{lemma}
+      
+      Opět se pokusme o přesnější definici neslučitelných jevů a o odvození vztahu 
+      (\ref{mai:eq053}). Označme, obdobně jako v předchozí úvaze o nezávislých jevech, množiny 
+      \(N_A\), \(N_B\), \(N_D\) možných výsledků, při nichž mohou nastat jevy \(A\), \(B\), \(D\). 
+      Předpokládejme, že \(N_A = N_B\). Pak \(N_A = N_B = N_D\), a tedy \(N(A) = N(B) = N(D) = N\). 
+      Jako \(M_A\), resp. \(M_B\), resp. \(M_D\) označme podmnožiny výsledků, při nichž nastane jev 
+      \(A\), resp. \(B\), resp. \(D\). Zřejmě \(M_D = M_A \cup M_B\). Pro počet prvků množiny 
+      \(M_D\) platí 
+      \begin{align*}
+        M(D) &= M(A) + M(B) - M(A a B).                                    \\
+        \shortintertext{Pravděpodobnost jevu \(D\) je pak}
+        p(D) &= \dfrac{M(D)}{N(D)} = \dfrac{M(A) + M(B) - M(A a B)}{N} 
+              = p(A) + p(B) - p(A\text{ a }B).
+      \end{align*}
+      
+      Jevy \(A\) a \(B\) se nazývají \textbf{neslučitelné}, neboli \emph{vylučující se}, je-li 
+      \(M_A \cap M_B = 0\). V takovém případě je ovšem \(M(A\text{ a }B) = 0\), a tedy
+      \begin{equation*}
+        p(A\text{ nebo }B) = p(A) + p(B).
+      \end{equation*}
+      Zobecněním na \(k\) jevů \(A_1\) až \(A_k\) po dvou neslučitelných dostáváme
+      \begin{equation*}
+        p(A_1\text{ nebo }\cdots\text{ nebo }A_k) = p(A_2) + p(A_2) + \cdots + p(A_k).
+      \end{equation*}
+      Mají-li po dvou neslučitelné jevy \(A_1\) až \(A_k\) tu vlastnost, že při daném pokusu musí 
+      nastat právě jeden z nich, říkáme, že tvoří \textbf{úplný systém jevů}. Součet jejich 
+      pravděpodobností je roven jedné.
+      
+      Jev \(\overline{Á}\) se nazývá \textbf{opačný} k jevu \(A\), jestliže nastává právě tehdy, 
+      když jev \(A\) nenastává. Z této definice je vidět, že jevy \(\overline{Á}\) a \(A\) jsou 
+      \emph{neslučitelné}. Na druhé straně je zřejmé, že jev (\(A\) nebo \(\overline{Á}\)) je jevem 
+      \textbf{jistým}, nastává vždy. Jeho pravděpodobnost je tedy \num{1}. Odtud
+      \begin{equation}\label{mai:eq054}
+        p(\overline{A}) = 1 - p(A).
+      \end{equation}
+      Jev \(A\) a jev \(\overline{A}\) k němu opačný tvoří úplný systém.
+      
+      Na závěr odstavce ještě jeden prakticky důležitý příklad.
+      
+      %---------------------------------------------------------------
+      \input{../src/MAI/exam/exam057.tex}
+      %---------------------------------------------------------------
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       
       
   \section{Náhodné veličiny}
