@@ -10,18 +10,35 @@
   případ padnutí hlavy na minci je \(p = 1/2\).) Pravděpodobnost nezdaru je pak \((l - p)\).
   (V případě hodů mincí je \((1 — p) = 1/2\).) Zajímáme se o to, jaká je pravděpodobnost \(P(x)\), 
   že při \(n\) opakováních pokusu docílíme \(x\)-krát zdaru, \(x\) přitom můžeme předem volit 
-  libovolně v rozmezí \(0 < x < n\). V 
-  případě hodů
-  mincí jistě dokážeme předem odhadnout, že pravděpodobnosti P (0) a P{n), tj. pravděpodobnosti 
-  toho, že nepadne hlava vůbec nebo že padne hlava vždy, budou při větším počtu opakování pokusu 
-  malé a budou se blížit
-  nule tím více, čím větší bude n. Naopak bychom se mohli domnívat, že pravděpodobnost P (n /2), 
-  tj. že padne
-  hlava v polovině opakování pokusu, by měla být při velkém počtu n blízká 100%. Správnost tohoto 
-  %našeho
-  předběžného odhadu však posoudíme teprve poté, co si odvodíme obecný vzorec pro P(x). Budeme možná
-  překvapeni. Zvolme nejprve pevně, při kterých konkrétních opakováních pokusu m á dojít ke zdaru 
-  (například
-  při prvních x). Při ostatních pak požadujeme nezdar. Protože jevy
+  libovolně v rozmezí \(0 \leq x \leq n\). V případě hodů mincí jistě dokážeme předem odhadnout, 
+  že pravděpodobnosti \(P(0)\) a \(P(n)\), tj. pravděpodobnosti toho, že nepadne hlava vůbec nebo 
+  že padne hlava vždy, budou při větším počtu opakování pokusu malé a budou se blížit nule tím 
+  více, čím větší bude \(n\). Naopak bychom se mohli domnívat, že pravděpodobnost \(P(n/2)\), 
+  tj. že padne hlava v polovině opakování pokusu, by měla být při velkém počtu \(n\) blízká 
+  \SI{100}{\percent}. Správnost tohoto našeho předběžného odhadu však posoudíme teprve poté, co si 
+  odvodíme obecný vzorec pro \(P(x)\). Budeme možná překvapeni. Zvolme nejprve pevně, při kterých 
+  konkrétních opakováních pokusu má dojít ke zdaru  (například při prvních \(x\)). Při ostatních 
+  pak požadujeme nezdar. Protože jevy
+  \begin{align*}
+    A_1                &: \text{Při prvním opakování dojde ke zdaru.}                  \\
+    A_2                &: \text{Při druhém opakování dojde ke zdaru.}                  \\
+    \ldots             &: \ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots \\
+    A_x                &: \text{Při \(x\)-tém opakování dojde ke zdaru.}               \\
+    \overline{A}_{x+1} &: \text{Při \((x + 1)\)-tém opakování dojde k nezdaru.}        \\
+    \ldots             &: \ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots \\
+    \overline{A}_n     &: \text{Při posledním \(n\)-tém opakování dojde k nezdaru,}
   \normalsize
+  \end{align*}
+  jsou nezávislé, je pravděpodobnost jevu
+  \begin{itemize}
+    \item \(B_1\): Při každém z prvních \(x\) opakování dojde ke zdaru a současně při každém z 
+          dalších \((n — x)\) opakování dojde k nezdaru, rovna součinu pravděpodobností
+          \begin{equation*}
+            p(B_1) = p(A_1)p(A_2)\cdots p(A_x)p(\overline{A}_{x+1})\cdots p(\overline{A}_n) 
+                   = p^x (1 - p)^{n-x}.
+          \end{equation*}
+          Nám však jde o pravděpodobnost následujícího jevu
+    \item \(B\): Právě při \(x\) opakováních pokusu (bez ohledu na to, kterých) dojde ke zdaru a 
+          současně při každém ze zbývajících opakování pokusu dojde k nezdaru.
+  \end{itemize}
 \end{example}
