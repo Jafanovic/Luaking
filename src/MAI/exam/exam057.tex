@@ -1,6 +1,6 @@
 % !TeX spellcheck = cs_CZ
 \wikitextrule
-\begin{example}\label{mai:exam052}
+\begin{example}\label{mai:exam057}
   \textbf{Bernoulliův pokus}\newline\small
   Bernoulliův pokus spočívá v tom, že \(n\)-krát nezávisle provedeme určitý pokus, například hod 
   mincí. (V terminologii teorie pravděpodobnosti nazýváme každé takové provedení opakováním 
@@ -41,4 +41,94 @@
     \item \(B\): Právě při \(x\) opakováních pokusu (bez ohledu na to, kterých) dojde ke zdaru a 
           současně při každém ze zbývajících opakování pokusu dojde k nezdaru.
   \end{itemize}
+  
+  Možností výběru \(x\) opakování, při kterých dojde ke zdaru, je \(N(x) = \begin{pmatrix} n \\ 
+  x\end{pmatrix}\). Pokud bychom očíslovali jednotlivé výběry \(j = 1, 2, \cdots, N(x)\), dostaneme 
+  odpovídající jevy \(B_1, \cdots, B_{N(x)}\) Pravděpodobnost každého z nich je stejná a rovna 
+  pravděpodobnosti jevu \(B_1\), který jsme popsali před chvílí. Tyto jevy jsou po dvou 
+  neslučitelné a jev \(B\) znamená, že nastane právě jeden (kterýkoli) z nich. Pro jeho 
+  pravděpodobnost tedy platí, podle pravidla pro součet pravděpodobností po dvou neslučitelných 
+  jevů,
+  \adjustbox{}{%
+    \begin{equation}\label{mai:eq055}
+      p(B) = P(x) = \begin{pmatrix} n \\ x\end{pmatrix}p^x (1 - p)^{n-x}.
+    \end{equation}
+    }
+   
+  Zkusme nyní prověřit správnost našeho odhadu týkajícího se hodů mincí:
+  \begin{equation*}
+    P(0) = \begin{pmatrix} n \\ 0\end{pmatrix} 
+           \left(\dfrac{1}{2}\right)^0\left(\dfrac{1}{2}\right)^{n-0} 
+         = \dfrac{1}{2^n}            \qquad
+    P(n) = \begin{pmatrix} n \\ n\end{pmatrix} 
+           \left(\dfrac{1}{2}\right)^n\left(\dfrac{1}{2}\right)^{n-n} 
+         = \dfrac{1}{2^n}     
+  \end{equation*}
+  Vidíme, že náš odhad byl správný. Obě pravděpodobnosti klesají s rostoucím počtem opakování 
+  pokusu k nule.  Pro jediné opakování pokusu, tj. \(n = 1\), jsou obě rovny jedné polovině, a to 
+  bychom jistě také měli očekávat. 
+  
+  Pro \(n\) sudé nyní počítejme \(P(n/2)\). Položme \(n = 2m\):
+  \begin{equation*}
+    P(m) = \begin{pmatrix} 2m \\ m\end{pmatrix} 
+           \left(\dfrac{1}{2}\right)^m\left(\dfrac{1}{2}\right)^{2m-m} 
+         = \dfrac{(2m)!}{m!m!}\left(\dfrac{1}{2}\right)^{2m}     
+  \end{equation*}
+
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{c|rrrrr}
+      \(m\)    & 1 & 2 & 3 & 5 & 10  \\ \hline
+      \(P(m)\) & \num{0.500} & \num{0.375} & \num{0.313} & \num{0.246} & \num{0.176}
+    \end{tabular}
+    % \caption{ }
+  \end{table}
+  
+  Tady se zdá, že nás naše intuice při odhadu pravděpodobnosti \(P(n/2)\) zklamala. Tendence hodnot 
+  \(P(n/2)\) je pro rostoucí \(n\) klesající. Pravděpodobnost je největší pro \(n = 2\), a to právě 
+  padesátiprocentní! Zkusme ještě odhad pro velká \(n\) pomocí \textbf{Stirlingova vzorce}. Podle 
+  něj pro velká \(n\) platí
+  
+  \begin{equation}\label{mai:eq056}
+    n! = \left(\dfrac{n}{e}\right)^n\sqrt{2\pi n}
+  \end{equation}
+  Použijeme-li jej pro výpočet P(m), dostáváme
+  \begin{equation*}
+    P(m)\simeq \dfrac{\left(\dfrac{2m}{e}\right)^{2m}\sqrt{4\pi m}}
+     {\left(\dfrac{m}{e}\right)^m\left(\dfrac{m}{e}\right)^m\left(\sqrt{2\pi m}\right)^2}
+     \left(\dfrac{1}{2}\right)^{2m} = \dfrac{1}{\sqrt{\pi m}} \longrightarrow 0
+  \end{equation*}
+  pro velká \(m\). Kde jsme se tedy zmýlili? Ze zkušenosti víme, že budeme-li házet mincí 
+  mnohokrát, je prakticky jisté, že hlava skutečně padne zhruba v polovině případů! Problém spočívá 
+  ve slovíčku zhruba. Pravděpodobnost \(P(m)\) pro \(n = 2m\) se však týká jevu, kdy hlava padne 
+  přesně v polovině případů. A ta samozřejmě bude tím menší, čím větší je počet posuzovaných hodů 
+  mincí. Při zvyšujícím se počtu \(n\) opakování pokusu totiž roste i počet jednotlivých možností 
+  volby \(x\) a \(n\) a každou z nich tak „připadne“ menší pravděpodobnost. (Součet  
+  pravděpodobností přes všechna přípustná \(x\) musí být roven jedné.) Později, v odstavci 
+  \ref{mai:IchapIIIsecII}, uvidíme, že jsme nevědomky místo pravděpodobnosti odhadovali střední 
+  hodnotu náhodné veličiny.
+  
+  Položme si ještě poslední otázku v souvislosti s Bernoulliovým pokusem: Jaká je pravděpodobnost, 
+  že alespoň při jednom z \(n\) opakování pokusu nastane zdar? Pokud si po předchozím neúspěchu s 
+  intuitivními odhady ještě trochu věříme, můžeme předpovídat, že tato pravděpodobnost poroste s 
+  počtem opakování pokusu \(n\) a pro velmi velká \(n\) se bude blížit jedné. Musíme ji ale 
+  spočítat. Někdo, kdo nečetl předchozí text příliš pečlivě, by mohl navrhnout jednoduchou úvahu: 
+  Pravděpodobnost zdaru při každém opakování pokusu je \(p\), pravděpodobnost, že nastane zdar při 
+  alespoň jednom z nich tedy musí být, podle pravidla pro sčítání pravděpodobností, \(np\).
+  Úvaha je sice jednoduchá, ale zcela chybná. Vidíme to již ze skutečnosti, že při pevné hodnotě 
+  \(p\) a dostatečně velkém \(n\) může hodnota \(np\) překročit jedničku, a to nemůže žádná 
+  pravděpodobnost udělat. Kde se málo pozorný čtenář dopustil chyby, když chtěl sčítat 
+  pravděpodobnosti zdaru při jednotlivých opakováních? Neuvědomil si, že pravidlo součtu 
+  pravděpodobností jednotlivých jevů \(A_1\) až \(A_k\) při výpočtu pravděpodobnosti jevu 
+  (\(A_1\) nebo \(A_2\) nebo \(\cdots\) nebo \(A_k\)) může použít jedině pro jevy po dvou 
+  neslučitelné. Zdar při některém z opakování pokusu však nevylučuje možnost zdaru při jiném 
+  pokusu. Pravidlo tedy bylo použito nesprávně. Pravděpodobnost zdaru při alespoň jednom opakování 
+  pokusu snadno vypočteme pomocí jevu opačného. Opačný jev znamená, že nenastane zdar ani při 
+  jednom opakování pokusu. Jednotlivá opakování jsou nezávislá, proto je pravděpodobnost nezdarů
+  při všech opakováních rovna součinu pravděpodobností při jednotlivých z nich, tj. \((1 - p)^n\) . 
+  Pravděpodobnost zdaru při alespoň jednom opakováni je pak doplňkem do jedničky, tedy \(1 - (1 - 
+  p)^n\). Je vidět, že je tím větší, čím je větší \(n\), a její limita pro \(n\rightarrow \infty\) 
+  je rovna jedné. A to je výsledek, který jsme předpověděli. 
+
+\normalsize
 \end{example}
