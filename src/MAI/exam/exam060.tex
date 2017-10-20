@@ -1,0 +1,57 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam060}
+  \textbf{Ještě jednou bomba v letadle}\newline\small
+  V úvodu odstavce jsme uvažovali o pravděpodobnosti dvou bomb v letadle jako o pravděpodobnosti současného 
+  nastoupení dvou nezávislých jevů s komentářem, že tato úvaha není tak docela v pořádku. Někdo je možná 
+  zvědavý, proč, a tak se tomuto problému budeme ještě chvíli věnovat. (Kdo zvědavý není, může příklad 
+  přeskočit.)
+  
+  Nebudeme nyní posuzovat situaci, kdy jsme do letadla přinesli bombu my sami. Zabývejme se přesnější odpovědí 
+  na otázku, jaká je pravděpodobnost, že v letadle budou bomby dvě, aniž bychom tomu sami napomáhali. Taková 
+  situace odpovídá Bernoulliovu pokusu. Samozřejmě, je třeba udělat jisté předpoklady, které nemusejí být 
+  zcela realistické, ale v průměru budou fungovat. Předpokládejme, že v letadle je n pasažérů, kteří se nijak 
+  neliší pokud jde o sklon „vzít bombu do letadla“. Pravděpodobnost, že daný pasažér vezme s sebou bombu, je 
+  tedy u všech stejná a označme ji \(p\). (To je právě ten předpoklad, který u jednotlivce není příliš 
+  realistický, neboť venkovská tetička jistě nemá takové nutkání vzít si spolu s husou do košíku bombu, jako 
+  fanatický terorista.) Hodnota \(p\) zde tedy představuje jistou „zprůměrovanou zkušenost“. Co přesně znamená 
+  otázka, jaká je pravděpodobnost, že v letadle je bomba? Je tím myšlena pravděpodobnost jevu „V letadle je 
+  alespoň jedna bomba.“ Pravděpodobnost \(P\) tohoto jevu jsme zadali jako jednu tisícinu (dejme tomu, že je 
+  to zase údaj odpovídající „zprůměrované zkušenosti“ u letadel s velkým počtem cestujících). Také jsme již 
+  \(P\) počítali v závěru příkladu \ref{mai:exam056}. Platí pro ni
+  \begin{equation*}
+    P = 1 - (1 - p)^n,
+  \end{equation*}
+  kde \(n\) je počet opakování pokusu. V našem případě nastoupení jednotlivého pasažéra do letadla představuje 
+  jedno opakování pokusu, takže je tento počet roven počtu pasažérů v letadle. Můžeme tedy určit 
+  pravděpodobnost \(p\) týkající se jednotlivého pasažéra,
+  \begin{equation*}
+    p = 1 - \sqrt[n]{1 - P}
+  \end{equation*}
+  Nyní potřebujeme znát pravděpodobnost, že v letadle jsou dvě bomby, myšleno alespoň dvě bomby. Označme tento 
+  jev jako \(B\). Znamená, že alespoň při dvou opakováních Bernoulliova pokusu nastane zdar. Jev 
+  \(\overline{B}\) k němu opačný znamená, že nastanou buď samé nezdary (pravděpodobnost je \((1 — p)^n\) a 
+  odpovídá hodnotě \(x = 0\) ve vzorci (\ref{mai:eq055})), nebo nastane právě \((n — 1)\) nezdarů a jeden zdar 
+  (pravděpodobnost je \(np(l — p)^{n-1}\) a odpovídá hodnotě \(x = 1\) ve vzorci (\ref{mai:eq055})). Výsledky 
+  Bernoulliova pokusu pro různá \(x\) se ovšem navzájem vylučují, takže pravděpodobnost jevu \(\overline{B}\) 
+  je
+  \begin{equation*}
+    p(\overline{B}) = (1 - p)^n + np(l - p)^{n-1}.
+  \end{equation*}
+  Pravděpodobnost alespoň dvou bomb v letadle (posuzovaný jev \(B\)) je pak
+  \begin{equation*}
+    p(B) = 1 - (1 - p)^n - np(l - p)^{n-1}.
+  \end{equation*}
+  Zbývá dosadit za \(p\) pomocí známé hodnoty \(P\). Je-li \(P\) velmi malé, lze získat přibližný výsledek 
+  pomocí odhadů. Vzpomeneme-li si na odhady pomocí diferenciálu v odstavci 2.2.3, zjistíme, že pro hodnoty 
+  \(P\) mnohonásobně menší než \(1\) (a to je i náš případ) dostaneme
+  \begin{equation*}
+    p \simeq 1 - \left(1 - \dfrac{1}{n}P\right) = \dfrac{P}{n}.
+  \end{equation*}
+  Obdobně provedeme odhad pro \(p(B)\),
+  \begin{equation*}
+    p(B) = 1 - (1 - np) - np\left[1 - (n - 1)p\right] = n(n - 1)p^2 \simeq \dfrac{n-1}{n}P^2 
+         \simeq P^2 = \num{e-6}.
+  \end{equation*}
+\normalsize
+\end{example}

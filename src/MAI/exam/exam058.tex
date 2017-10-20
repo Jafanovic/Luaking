@@ -74,6 +74,35 @@
     pravděpodobnost současného nastoupení jevů \(A\) a \(B\). Dejme tomu, že v celkovém počtu \(n\) 
     opakování pokusu nastal jev \(B\) \(s\)-krát. Nechť v \(t\) případech z těch, kdy nastal jev 
     \(A\), nastal také jev \(B\). Pro pravděpodobnosti pak platí
+    \begin{align*}
+      p(B) &= \dfrac{s}{n}, \qquad p_B(A) = \dfrac{l}{s}, \qquad p(A\text{ a }B) = \dfrac{l}{n}  \\
+      p(A\text{ a }B) &= \dfrac{sp_B(A)}{n} = \dfrac{np(B)p_B(A)}{n} = p(B)p_B(A).
+    \end{align*}
+    Získali jsme tak obecně první část formule (\ref{mai:eq057}). Záměnou jevů \(A\) a \(B\) 
+    dostaneme její druhou část. Poznamenejme, že v případě nezávislých jevů \(A\) a \(B\) je 
+    samozřejmě \(p_B(A) = p(A)\) a \(p_A(B) = p(B)\). Vzorec (\ref{mai:eq057}) tak přejde v 
+    pravidlo pro součin pravděpodobností nezávislých jevů.
     
+    Zbývá vyřešit soutěžní úkol c). Koupili jsme raketu a odpálili ji. Fungovala. Jaká je 
+    pravděpodobnost, že když se nyní podíváme na obal, zjistíme, že šlo o výrobek Svistu? Můžeme 
+    již využít vztahu (\ref{mai:eq057}). Máme totiž počítat pravděpodobnost jevu \(B\) za podmínky, 
+    že nastal jev \(A\). (Poznamenejme, že je-li jev \(B\) definován jako „Náhodně koupená raketa 
+    pochází z Hvizdu.“, je jev „Náhodně koupená raketa pochází ze Svistu.“ jevem opačným k \(B\).) 
+    Platí
+    \begin{equation*}
+      p_A(\overline{B}) = \dfrac{p(A\text{ a }\overline{B})}{p(A)}
+                        = \dfrac{p_{\overline{B}}(A)p(\overline{B})}{p(B)}
+                        = \dfrac{(1 - p_2)(1 - q)}{(1 - p_2) + q(p_2 - p_1)}
+                        = \dfrac{\num{0.37}\cdot\num{0.3}}{\num{0.37} + \num{0.7}\cdot(\num{-0.2})}
+                        \simeq\num{0.483}
+    \end{equation*}
+    Kdo chce, může snadno dospět k výsledku přímou úvahou: Na trhu je \(n\) raket, z nich funkčních 
+    je \(\num{0.17}\cdot\num{0.7}n + \num{0.37} - \num{0.3}n = \num{0.23}n\). Tato hodnota je při 
+    výpočtu \(p(A\text{ a }B)\)  počtem případů možných. Počet funkčních raket vyrobených Svistem 
+    je \(\num{0.37}\cdot\num{0.3}n = \num{0.111}n\). To je počet případů příznivých. Hledaná 
+    pravděpodobnost je tedy podílem
+    \begin{equation*}
+      p(A\text{ a }\overline{B}) = \dfrac{\num{0.111}n}{\num{0.23}n}\simeq\num{0.483}.
+    \end{equation*}
 \normalsize
 \end{example}
