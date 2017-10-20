@@ -30,6 +30,7 @@ DEL /F /S *.md5
 DEL /F /S *.out
 DEL /F /S *.bcf
 DEL /F /S *.synctex(busy)
+DEL /F /S *.xdv
 
 for /r %%F in (*) do if %%~zF==0 del "%%F"
 PAUSE
