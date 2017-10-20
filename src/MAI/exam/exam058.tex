@@ -1,0 +1,79 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam058}
+  \textbf{Jak nekoupit zmetek}\newline\small
+    Do finále soutěže o „šmejd roku“ se dostaly dva podniky, „Hvizd, s.r.o.“ a „Svist, a.s.“, které 
+    zásobují trh zábavnou pyrotechnikou. První z nich kryje požadavky trhu ze \SI{70}{\percent}, 
+    druhý ze zbývajících \SI{30}{\percent}. “Zjistilo se, že \SI{83}{\percent} ze všech výrobků 
+    Hvizdu je vadných (nebouchají, když je to třeba, zejména však bouchají, když se to
+    nejméně očekává). V případě Svistu je zmetků pouze \SI{63}{\percent}. Porota soutěže rozhodla, 
+    že cenu dostane ten z obou podniků, jehož ředitel zodpoví správně následující otázky:
+    \begin{enumerate}
+     \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle bude fungovat tak, jak má?
+     \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle, o níž se na obalu píše, že byla 
+     vyrobena podnikem Hvizd, není zmetek?
+     \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle, kterou se podařilo úspěšně 
+     odpálit, byla vyrobena podnikem Svist?
+    \end{enumerate} 
+    Postupně jednotlivé úkoly vyřešíme.
+    V případě a) posuzujeme pravděpodobnost jevu \(A\): „Náhodně zakoupený výrobek je funkční.“ bez 
+    dalších podmínek. Jedná se o nepodmíněnou pravděpodobnost. Dejme tomu, že na trhu je v dané 
+    chvíli ke koupi \(n\) rachejtlí. Z nich \SI{70}{\percent}, tj. \(\num{0.7}n\), bylo vyrobeno v 
+    Hvizdu a zbytek, \(\num{0.3}n\), ve Svistu. Víme, že \SI{17}{\percent} výrobků Hvizdu je 
+    funkčních, v případě Svistu je to \SI{37}{\percent}. Na trhu je tedy v tuto chvíli
+    \begin{equation*}
+      m = \num{0.17} - \num{0.7}n + \num{0.37}\cdot\num{0.3}n = \num{0.23}n
+    \end{equation*}
+    funkčních raket. Pravděpodobnost zakoupení funkční rakety je tedy
+    \begin{equation*}
+      p(A) = \dfrac{m}{n} = \num{0.23}.
+    \end{equation*}
+    Výsledek lze snadno zobecnit. Označíme-li \(p_1\) pravděpodobnost zmetku ve firmě Hvizd a 
+    \(p_2\) pravděpodobnost zmetku ve firmě Svist, je pravděpodobnost funkčního výrobku ve Hvizdu 
+    \((1 - p_1)\) a ve Svistu \((1 - p_2)\). Označme \(q\) podíl Hvizdu na celkové produkci. Podíl 
+    Svistu je pak \((1 - q)\). Pravděpodobnost koupě funkčního výrobku je
+    \begin{equation*}
+      p(A) = (1 - p_1)q + (1 - p_2)(l - q) = (1 - p_2) + q(p_2 - p_1).
+    \end{equation*}
+    
+    V úloze b) se již jedná o \textbf{podmíněnou pravděpodobnost}. Koupíme v obchodě raketu, 
+    podíváme se na obal a zjistíme, že byla vyrobena ve Hvizdu. S touto dodatečnou informací chceme 
+    zjistit pravděpodobnost, že až raketu rozbalíme a odpálíme, bude skutečně fungovat. Označme 
+    jako jev \(B\) „Raketa byla vyrobena ve Hvizdu.“ Naším úkolem je tedy zjistit pravděpodobnost 
+    jevu \(A\) (raketa bude funkční) za podmínky, že nastal jev \(B\) (byla vyrobena ve Hvizdu). 
+    Tuto pravděpodobnost značíme \(p_B(A)\). Víme, že na trhu je \(qn = \num{0.7}n\) raket 
+    vyrobených ve Hvizdu. To představuje pro náš další výpočet počet případů možných. Pouze \((1 - 
+    p_1) = \num{0.17}\) z nich je však funkčních, počet případů příznivých je tedy \((1 - p_1)qn = 
+    \num{0.17}\cdot\num{0.7}n = \num{0.119}n\). Hledaná pravděpodobnost je
+    \begin{equation*}
+      p_B(A) = \dfrac{(1 - p_1)qn}{qn} = 1 - p_1 = \num{0.17}
+    \end{equation*}
+    Všimněme si výpočtu podrobněji. \((1 - p_1)q\) představuje pravděpodobnost jevu \((A\text{ a 
+    }B)\), že náhodně zakoupená raketa bude funkční a zároveň bude vyrobena ve Hvizdu. Skutečně, na 
+    trhu je v dané chvíli \(n\) raket, z nich \(qn\) bylo vyrobeno ve Hvizdu a z těchto \(qn\) 
+    výrobků Hvizdu je \((1 - p_1)qn\) funkčních. Proto 
+    \begin{equation*}
+      p(A\text{ a }B) = \dfrac{(1 - p_1)qn}{n} = (1 - p_1)q = \num{0.119}
+    \end{equation*}
+    (Divíte se, že tato pravděpodobnost není součinem \(p(A)p(B)\)? Nedivte se, jevy \(A\) a \(B\) 
+    nejsou totiž nezávislé!). Vidíme, že platí
+    \begin{equation*}
+      p(A\text{ a }B) = p(B)p_B(A),
+    \end{equation*}
+    neboť \(q = p(B)\). Získáváme tedy vztah pro výpočet podmíněné pravděpodobnosti:
+    \adjustbox{minipage=[c][32pt][c]{406pt}}{%
+      \begin{equation}\label{mai:eq057}
+        p_B(A) = \dfrac{p(A\text{ a }B)}{p(B)} \qquad\text{a obdobně}\qquad
+        p_A(B) = \dfrac{p(A\text{ a }B)}{p(A)}.
+      \end{equation}
+      }
+    Vzorec (\ref{mai:eq057}) jsme získali pro konkrétní příklad. Abychom byli korektní, odvoďme jej 
+    obecně. Označme \(p(A)\) a \(p(B)\) pravděpodobnost jevu \(A\) a pravděpodobnost jevu \(B\), 
+    \(p_B(A)\) podmíněnou pravděpodobnost jevu \(A\) za podmínky, že nastal jev \(B\), a \(p_A(B)\) 
+    podmíněnou pravděpodobnost jevu \(B\) za podmínky, že nastal jev \(A\). \(p(A\text{ a }B)\) je 
+    pravděpodobnost současného nastoupení jevů \(A\) a \(B\). Dejme tomu, že v celkovém počtu \(n\) 
+    opakování pokusu nastal jev \(B\) \(s\)-krát. Nechť v \(t\) případech z těch, kdy nastal jev 
+    \(A\), nastal také jev \(B\). Pro pravděpodobnosti pak platí
+    
+\normalsize
+\end{example}
