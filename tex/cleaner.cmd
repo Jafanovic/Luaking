@@ -12,6 +12,7 @@ DEL /F /S main*.xml
 DEL /F /S *.tips
 rem DEL /F /S *.log
 DEL /F /S *.upa
+DEL /F /S *.upb
 DEL /F /S *.maf
 DEL /F /S *.bcf
 DEL /F /S *.blg
@@ -32,6 +33,7 @@ DEL /F /S *.bcf
 DEL /F /S *.synctex(busy)
 DEL /F /S *.xdv
 DEL /F /S *.fdb
+DEL /F /S *.fls
 DEL /F /S *.fdb_latexmk
 
 for /r %%F in (*) do if %%~zF==0 del "%%F"
