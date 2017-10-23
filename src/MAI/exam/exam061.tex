@@ -1,0 +1,76 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam061}
+  \textbf{Potřebují lékaři pravděpodobnost?}\newline\small
+  U pacienta je podezření, že trpí právě jednou ze tří chorob \(A_1\), \(A_2\) a \(A_3\). 
+  Pravděpodobnosti, že pacient má danou chorobu, jsou
+  \begin{equation*}
+    p(A_1) = \frac{1}{2},\qquad p(A_2) = \frac{1}{6},\qquad p(A_3) = \frac{1}{3}, \qquad
+    \text{tj.}\qquad p(A_1) + p(A_2) + p(A_3) = 1.
+  \end{equation*}
+  
+  Proto je předepsán ještě doplňující test, jehož výsledek bude pozitivní s pravděpodobností 
+  \num{0.1} v případě diagnózy \(A_1\), s pravděpodobností \num{0.2} v případě diagnózy \(A_2\) a 
+  \num{0.9} v případě diagnózy \(A_3\). Doplňující test byl pozitivní. Jaké jsou pravděpodobnosti 
+  jednotlivých nemocí \(A_1\), \(A_2\) a \(A_3\) po provedení testu?
+
+  Označme jako jev \(B\) to, že výsledek testu je pozitivní. V zadání úlohy jsou uvedeny tyto 
+  podmíněné pravděpodobnosti:
+  \begin{equation*}
+    p_1 = P_{A_1}(B) = \num{0.1}, \qquad p_2 = P_{A_2}(B) = \num{0.2}, \qquad 
+    p_3 = p_{A_3}(B) = \num{0.9}.
+  \end{equation*}
+  Označili jsme si je zvláštními symboly \(p_1\), \(p_2\) a \(p_3\), neboť se na ně budeme v 
+  dalších částech úlohy odvolávat. Podmíněné pravděpodobnosti \(p_B(Aj)\), jejichž zjištění je 
+  naším úkolem, jsou dány \textbf{Bayesovou formulí} (\ref{mai:eq058}). Pro \(j´= 1, 2, 3\) platí
+  \begin{equation*}
+    p_B(A_j) = \dfrac{p(A_j)\cdot p_{A_j}(B)}{\sum_{i=1}^{k}p(A_i)\cdot p_{A_i}(B)}  
+             = \dfrac{p(A_j)\cdot p_{A_j}(B)}{\frac{1}{2}\cdot\num{0.1} + 
+                                              \frac{1}{6}\cdot\num{0.2} + 
+                                              \frac{1}{3}\cdot\num{0.9}}
+             = p(A_j)\cdot p_{A_j}(B)\cdot\frac{60}{23},
+  \end{equation*}
+  \begin{align*}
+    p_B(A_1) &= \frac{60}{23} \cdot\frac{1}{2}\cdot\num{0.1} =\frac{3}{23}\simeq\num{0.130},     \\
+    p_B(A_2) &= \frac{60}{23} \cdot\frac{1}{6}\cdot\num{0.2} =\frac{2}{23}\simeq\num{0.087},     \\
+    p_B(A_3) &= \frac{60}{23} \cdot\frac{1}{3}\cdot\num{0.9} =\frac{18}{23}\simeq\num{0.783}.
+  \end{align*}
+  Všimněte si, že součet získaných podmíněných pravděpodobností je roven jedné. Překvapuje vás to? 
+  Nemělo by, podíváte-li se, jak by dopadl součet výrazů daných Bayesovou formulí (\ref{mai:eq058}) 
+  přes všechna \(j\).
+  
+  Je vidět, že výsledek testu velmi napomohl k určení diagnózy. Pokud lékař potřebuje ještě 
+  spolehlivější informace, může doplňkový test provést opakovaně. Dejme tomu, že test byl proveden 
+  pětkrát, ve čtyřech případech byl pozitivní a v jednom negativní. Jaké jsou nyní pravděpodobnosti 
+  jednotlivých diagnóz \(A_1\), \(A_2\), \(A_3\)? Tento výsledek můžeme interpretovat jako jev 
+  \(C\): Při pětkrát opakovaném dodatečném testu bude výsledek ve čtyřech případech pozitivní (zdar)
+  a v jednom případě negativní (nezdar).
+  
+  Vida, opět Bernoulliův pokus. Podmíněné pravděpodobnosti \(p_{A_1}(C)\), \(p_{A_2}(C)\) a 
+  \(p_{A_3}(C)\) jsou dány vztahem (\ref{mai:eq055}) pro pravděpodobnost výsledku Bernoulliova 
+  pokusu:
+  \begin{align*}
+    p_{A_1}(C) &= \begin{pmatrix} 5 \\ 4 \end{pmatrix}\cdot p_1^4\cdot(1-p_1)^1 
+                = 5(\num{0.1})^4(1 - \num{0.1}) = \num{4.5e-4},                   \\
+    p_{A_2}(C) &= \begin{pmatrix} 5 \\ 4 \end{pmatrix}\cdot p_2^4\cdot(1-p_2)^1
+                = 5(\num{0.2})^4(1 - \num{0.2}) = \num{6.40e-3},                  \\
+    p_{A_3}(C) &= \begin{pmatrix} 5 \\ 4 \end{pmatrix}\cdot p_3^4\cdot(1-p_3)^1
+                = 5(\num{0.9})^4(1 - \num{0.9}) = \num{3.2805e-1}. 
+  \end{align*}
+  Bayesovu formuli nyní aplikujeme na případ jevu \(C\). Pro \(j = 1, 2, 3\) je
+  \begin{equation*}
+    p_C(A_j) = \dfrac{p(A_j)\cdot p_{A_j}(C)}{\sum_{i=1}^{k}p(A_i)\cdot p_{A_i}(C)}  
+             = \dfrac{p(A_j)\cdot p_{A_j}(C)}{\frac{1}{2}\cdot\num{4.5e-4} + 
+                                              \frac{1}{6}\cdot\num{6.40e-3} + 
+                                              \frac{1}{3}\cdot\num{0.32805}}
+             = \dfrac{p(A_j)\cdot p_{A_j}(C)}{\num{0.11064}},
+  \end{equation*}
+  \begin{align*}
+    p_C(A_1) &= \frac{1}{2} \cdot\frac{\num{0.00045}}{\num{0.11064}}\simeq\num{0.002},     \\
+    p_C(A_2) &= \frac{1}{6} \cdot\frac{\num{0.00640}}{\num{0.11064}}\simeq\num{0.010},     \\
+    p_C(A_3) &= \frac{1}{3} \cdot\frac{\num{0.32805}}{\num{0.11064}}\simeq\num{0.988}.
+  \end{align*}
+  Nyní je o diagnóze \(A_3\) rozhodnuto v podstatě s jistotou, přestože na začátku úlohy byla její 
+  pravděpodobnost pouze třetinová.
+\normalsize
+\end{example}

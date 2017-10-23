@@ -300,7 +300,7 @@
       
       Na závěr odstavce ještě jeden prakticky důležitý příklad.
       
-      %---------------------------------------------------------------
+      %--Bernoulliův pokus--------------------------------------------
       \input{../src/MAI/exam/exam057.tex}
       %---------------------------------------------------------------
 
@@ -317,7 +317,7 @@
       v zavazadle. Tato úvaha nerespektuje totiž \textbf{pojem podmíněné pravděpodobnosti}, který 
       si nyní na příkladu vyložíme.
       
-      %---------------------------------------------------------------
+      %--Jak nekoupit zmetek------------------------------------------
       \input{../src/MAI/exam/exam058.tex}
       %---------------------------------------------------------------
       
@@ -328,28 +328,63 @@
       \num{e-3}\). Pocit bezpečí bychom si tedy vlastní bombou nezvýšili. Ještě abychom se báli, že 
       bouchne, zejména pokud by byla vyrobená ve Hvizdu.
       
-      %---------------------------------------------------------------
+      %--Kolika let se dožijeme?--------------------------------------
       \input{../src/MAI/exam/exam059.tex}
       %---------------------------------------------------------------
       
+      %--Ještě jednou bomba v letadle---------------------------------
+      \input{../src/MAI/exam/exam060.tex}
       %---------------------------------------------------------------
-%      \input{../src/MAI/exam/exam060.tex}
+      
+      Nakonec ještě odvodíme obecný případ takzvané Bayesovy formule. Předpokládejme, že při
+      každém opakování jistého pokusu může nastat právě jeden z \(k\) různých výsledků. Jevy \(A_1,
+      A_2,\cdots, A_k\), z nichž \(j\)-tý znamená, že při pokusu byl zaznamenán \(j\)-tý výsledek, 
+      jsou po dvou neslučitelné a tvoří úplný systém. Platí tedy
+      \begin{equation*}
+        p(A_1) + p(A_2) + \ldots  + p(A_k) = 1.
+      \end{equation*}
+      Označme jako \(B\) libovolný jev, který popisuje celkový výsledek pokusu. Vzhledem k 
+      neslučitelnosti jevů \(A_1\) až \(A_k\) jsou neslučitelné i jevy (\(A_1\) a \(B\)) až 
+      (\(A_k\) a \(B\)). Zároveň je zřejmé, že jev \(B\) lze zapsat jako
+     \begin{equation*}
+       B = (A_1\text{ a }B) \quad\text{nebo}\quad (A_2\text{ a }B) \qquad\ldots
+       \quad\text{nebo}\quad (A_k\text{ a }B),
+     \end{equation*} 
+      a tedy
+      \begin{equation*}
+        p(B) = \sum_{j=1}^{k}p(A_j\text{ a }B) = \sum_{j=1}^{k}p(A_j)\cdotp_{A_j}(B),
+      \end{equation*}
+      s využitím vztahu (\ref{mai:eq057}). Současně, podle téhož vztahu, platí 
+      \begin{equation*}
+        p(A_j a B) = p(B)\cdot  p_B(A_j).
+      \end{equation*}
+      Pomocí dvou předchozích vztahů dostáváme:
+      
+      \adjustbox{minipage=[c][60pt][c]{406pt}}{%
+        \begin{lemma}\label{mai:lemma004}
+          \textbf{(Bayesova formule):}
+          \begin{equation}\label{mai:eq058}
+            p_B(A_j) = \dfrac{p(A_j\text{ a }B)}{\sum_{i=1}^{k}p(A_i)\cdot p_{A_i}(B)} 
+                     = \dfrac{p(A_j)\cdot p_{A_j}(B)}{\sum_{i=1}^{k}p(A_i)\cdot p_{A_i}(B)} .
+          \end{equation}
+        \end{lemma}
+      }
+      
+      Bayesova formule pro výpočet podmíněné pravděpodobnosti má řadu užitečných aplikací
+      
+      %--Potřebují lékaři pravděpodobnost?----------------------------
+      \input{../src/MAI/exam/exam061.tex}
       %---------------------------------------------------------------
       
+      A na závěr ještě hádanky:
+
+      %--Pohádka o Honzovi--------------------------------------------
+      \input{../src/MAI/exam/exam062.tex}
+      %---------------------------------------------------------------
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+      %--Může se člověk živit sázením?--------------------------------
+      \input{../src/MAI/exam/exam063.tex}
+      %---------------------------------------------------------------
       
   \section{Náhodné veličiny}\label{mai:IchapIIIsecII}
     Hodnota některých veličin je určena jednoznačně a „jednou provždy“. Kdykoli budeme její hodnotu 
@@ -362,15 +397,56 @@
     takto nechová. Jejich hodnoty se totiž často řídí náhodnými vlivy, takže při každém
     měření veličiny \(X\) , tj. zjišťování její hodnoty, můžeme získat odlišný výsledek než při 
     měřeních předchozích. Uveďme některé příklady náhodných veličin.
+    
+    \begin{itemize}
+      \item \textbf{Příklad s novorozenci}: Nechť jé veličinou \(X\) počet chlapců ve stovce 
+            novorozených dětí. Zkušenost říká, že tento počet je v průměru o něco větší než 
+            \num{50}, avšak pro různé skupiny po stovce novorozených dětí bude počet chlapců 
+            kolísat. V jedné skupině bude \num{52}, v jiné \num{54}, někde třeba \num{60}, nebo 
+            také \num{45}.
+      \item \textbf{Příklad s meteoroidy a meteority}: Pro astronomy může být důležitou veličinou 
+            \(X\) počet meteoroidů, které za rok dopadnou do zemské atmosféry. Jinou veličinou, 
+            třeba \(K\), může být roční počet meteoritů, tj. těch meteoroidů, které v atmosféře 
+            neshořely zcela, ale jejich část dopadla na povrch Země. Také tyto hodnoty budou pro 
+            každý roční interval poněkud odlišné, neboť i počet dopadnuvších meteoroidů a 
+            meteoritů podléhá vlivům, které se nedají přesně předvídat.
+      \item \textbf{ Příklad s tlakoměrem}: Bude-li lékař měřit pacientovi tlak několikrát po 
+            sobě, určitě také naměří několik různých hodnot. Krevní tlak je citlivý na náhodné 
+            vlivy, třeba i na vnitřní rozrušení pacienta vyplývající ze strachu z bílého pláště.
+      \item \textbf{Opakovaná měření fyzikální veličiny}: Chceme-li změřit třeba odpor elektrického
+            vodiče (drátu), jedná se o měření nepřímé. Nemůžeme odpor změřit přímo, třeba jako      
+            to můžeme udělat pro délku. Většinou měříme napětí \(U\) na vodiči a proud \(I\), který 
+            jím protéká. Odpor pak zjišťujeme jako podíl \(R = U/I\). Změříme-li napětí i proud 
+            jednou, dostaneme konkrétní hodnotu \(R\). Budeme-li měření napětí a proudu provádět 
+            opakovaně, budeme dostávat poněkud odlišné hodnoty \(U\) a \(I\), a tedy i odlišné 
+            hodnoty \(R\). Sledované veličiny se chovají jako náhodné. Je to způsobeno řadou 
+            náhodných vlivů jak na veličiny samotné, tak na jejich měření (nepřesnost odečítání 
+            údajů na stupnicích, apod.).
+    \end{itemize}
   
+    Při každém fyzikálním (a vlastně i nefyzikálním) experimentu máme co do činění s náhodnými 
+    veličinami. Při chemických analýzách je náhodnou veličinou třeba koncentrace dané látky
+    v roztoku, při experimentech biologických třeba počet uhynuvších rostlin ve stovce sazenic, 
+    počet pozorovaných prvoků v zorném poli mikroskopu, výskyt vzácných ptáků ve sledované 
+    lokalitě, apod. V následujících odstavcích definujeme náhodné veličiny přesněji a naučíme se s 
+    nimi zacházet. Uvidíme, že zjištění určité hodnoty náhodné veličiny je otázkou jisté 
+    pravděpodobnosti. Také lépe objasníme, co znamená vyjádření „v průměru“, které jsme občas v 
+    předchozím textu použili a intuitivně mu jistě rozuměli.
   
+    \subsection{Jak dobrý je to střelec — diskrétní rozdělení}
+      Mimořádně vhodnou ukázkou náhodné veličiny je příklad se sportovním střelcem, kterým jsme
+      uvedli celou kapitolu o pravděpodobnostech.
   
+      %--Ještě jednou střelba, tentokrát přesněji---------------------
+      \input{../src/MAI/exam/exam064.tex}
+      %---------------------------------------------------------------
   
-  
-  
-  
-  
-  
+    \subsection{Kolik rychlostí má molekula plynu — spojité rozdělení}
+      Již nadpis napovídá, že veličina se spojitým rozdělením může zřejmě nabývat „spojitě 
+      rozložených“ hodnot, tj. přípustným i hodnotami budou například právě všechna čísla \(x\) z 
+      jistého intervalu, \(x\in[a, b]\). Jaká však bude pravděpodobnost \(p(x)\), že veličina \(X\) 
+      nabývá právě hodnoty \(x\in[a, b]\)? Jestliže víme, že „součet“ všech \(p(x)\) musí být roven 
+      jedné, vzniká problém.
   
   
   

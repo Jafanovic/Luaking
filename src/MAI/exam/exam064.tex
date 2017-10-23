@@ -1,0 +1,56 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam064}
+  \textbf{Ještě jednou střelba, tentokrát přesněji}\newline\small
+  Názvem pochopitelně nemyslíme přesnější střelbu, ale přesnější komentář, který již bude založen 
+  na našich znalostech o pravděpodobnosti. Dejme tomu, že podmínky střelby jsou pevně dány a nemění 
+  se. Patří k nim zcela jistě typ zbraně, typ terče, vzdálenost stanoviště střelce od terče, 
+  základní povětrnostní podmínky. Výsledky jsou pak závislé na zručnosti střelce, avšak jsou 
+  ovlivněny náhodným i vlivy (foukne nenadálý vítr, střelec se lekne, zatřese se mu ruka, náhodně 
+  se mírně pozmění vzdálenost ústí hlavně od terče nebo její sklon, apod.). Počty dosažených bodů 
+  daného střelce při jednom výstřelu, nebo při sérii deseti výstřelů, atd., jsou tedy náhodnými
+  veličinami. Pokusme se posoudit zručnost střelce přesněji. Označme jako náhodnou veličinu \(X\) 
+  počet bodů dosažených při jednom výstřelu. Nejprve určeme, jakých hodnot může nabývat. Všichni 
+  víme, jak vypadá běžný střelecký terč. Aby však naše počty nebyly příliš komplikované a 
+  zdlouhavé, uvažujme o terči mnohem jednodušším. Bude tvořen vnitřním černým kruhem s hodnotou 
+  \(3\) body, dále středním šedivým mezikružím s hodnotou \(2\) body a vnějším bílým mezikružím s 
+  hodnotou \(1\) bod. Střelba do terče mimo vnější kružnici nebo zcela mimo terč představuje 
+  bodovou hodnotu \(0\). Při jednom výstřelu tedy může střelec docílit v principu jakékoli z 
+  možných hodnot
+  \begin{equation*}
+    X\in\{x_1, x_2, x_3,x_4\} = \{0,1,2,3\}.
+  \end{equation*}
+  Informace, jakých hodnot může náhodná veličina nabývat, je jistě nejen cenná, ale je pro jakékoli 
+  další úvahy nezbytná. Sama o sobě je však nepostačující. O střelcově zručnosti se na základě 
+  konstrukce terče nic nedovídáme. Kvalitativně jinou informaci získáme, víme-li, že možných hodnot 
+  zásahu dociluje střelec s následujícími pravděpodobnostmi:
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{c|rrrr}
+      \(x_i\)    &      0     &      1     &      2     &      3       \\ \hline
+      \(p_i\)    & \num{0.03} & \num{0.28} & \num{0.52} & \num{0.17} 
+    \end{tabular}
+    % \caption{ }
+  \end{table}
+  Můžeme tak třeba zjistit, kolika bodů střelec zhruba docílí s vysokou pravděpodobností při pěti 
+  výstřelech. Tento počet je
+  \begin{equation*}
+    5\cdot(\num{0.03}\cdot0 + \num{0.28}\cdot1 + \num{0.52}\cdot2 + \num{0.17}\cdot3) = 
+    5\cdot\num{1.83} = \num{9.15} \simeq 9.
+  \end{equation*}
+  Pro každou pětici výstřelů může být počet dosažených bodů samozřejmě poněkud odlišný. Veličina 
+  \(Y\) představující počet dosažených bodů na pět výstřelů je rovněž veličinou náhodnou. Je nám 
+  však jasné, že hodnota dosažených bodů v každé pětici výstřelů je s vysokou pravděpodobností 
+  blízká číslu 9. Co to znamená „s vysokou pravděpodobností“? Dokážeme ji spočítat? Pokusme se o 
+  to. Především bychom museli určit, o kolik bodů se smí dosažený počet lišit od hodnoty 9, abychom 
+  jej ještě považovali za „blízký číslu 9“ . Tato volba závisí čistě na naší vůli a bude jí 
+  odpovídat i vypočtená pravděpodobnost. Dejme tomu, že zvolíme tento interval od 7 do 11 bodů 
+  včetně. Jev, jehož pravděpodobnost hledáme, je tedy
+  \begin{itemize}
+    \item \(A\) : P ři pěti výstřelech získá střelec 7 nebo 8 nebo 9 nebo 10 nebo 11 bodů.
+  Jevy
+  A j : Střelec získá při pěti výstřelech j bodů.
+    jsou po dvou neslučitelné, pravděpodobnost jevu A tedy bude rovna součtu pravděpodobností
+  \end{itemize}
+\normalsize
+\end{example}
