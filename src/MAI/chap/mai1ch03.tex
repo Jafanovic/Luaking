@@ -187,11 +187,11 @@
               kterých jev \(A\) nastal.
       \end{itemize}
 
-      %--Výhra ve sportce-----	----------------------------------------
+      %--Výhra ve sportce---	----------------------------------------
       \input{../src/MAI/exam/exam052.tex}
       %---------------------------------------------------------------
 
-      %---------------------------------------------------------------
+      %--Losování karet-----------------------------------------------
       \input{../src/MAI/exam/exam053.tex}
       %---------------------------------------------------------------
 
@@ -440,7 +440,45 @@
       %--Ještě jednou střelba, tentokrát přesněji---------------------
       \input{../src/MAI/exam/exam064.tex}
       %---------------------------------------------------------------
-  
+    
+    Položme si ještě otázku, jak můžeme zjistit pravděpodobnosti, se kterými střelec dosáhne při
+    jednom výstřelu daného počtu bodů. Prakticky to lze provést jedině tak, že střelec mnohokrát
+    vystřelí na terč a jeho zásahy budou při tom zaznamenávány. Dejme tomu, že vystřelil \(n\)-krát 
+    a že počet výstřelů, při nichž byl bodový zisk \(j\) bodů ( \(j = 0, 1, 2, 3\)), byl \(n_j\). 
+    Pak pro pravděpodobnost bodového zisku \(j\) bodů při jednom výstřelu je \(p_j = n_j/n\). 
+    Kdybychom provedli skutečný experiment se střelcem a počítali pravděpodobnosti \(p_j\) znovu a 
+    znovu po každém dalším výstřelu, viděli bychom, že pro malé hodnoty \(n\) nejprve kolísají a 
+    pro rostoucí \(n\) se začínají ustalovat a již kolísají velmi málo. Tímto postupem bychom je 
+    mohli určit tak, aby byly pro náš účel rozumně přesné — třeba s přesností na dvě platná místa. 
+    Rozumnou přesností je zde myšlena skutečnost, že nemá smysl chtít zjišťovat pravděpodobnost 
+    třeba na šest platných míst. Vzhledem k principiální přítomnosti náhodných vlivů se kolísání 
+    pravděpodobností nikdy nezbavíme, takže platná místa na pozicích, kde se kolísání trvale 
+    projevuje již bez ohledu na zvyšující se \(n\), nemají smysl.
+    
+    V příkladu \ref{mai:exam064} jsme se již velmi těsně přiblížili důležitým charakteristikám, 
+    které určují náhodnou veličinu a jsou přitom matematicky korektně definovány. Viděli jsme, že 
+    známe-li jen hodnoty, kterých může náhodná veličina nabývat, nemůžeme o ní říci již nic 
+    dalšího. Známe-li však ještě pravděpodobnosti, se kterými jednotlivých hodnot nabývá, můžeme o 
+    ní získat již velmi mnoho informací.
+
+    \adjustbox{minipage=[c][38pt][c]{406pt}}{%
+      \textbf{Náhodnou veličinou s diskrétním rozdělením} nazýváme takovou veličinu \(X\), která
+      může nabývat konečně mnoha různých hodnot \((x_1, x_2, \ldots, x_k)\) s pravděpodobnostní
+      \((p_1, p_2, \ldots, p_k)\) popřípadě spočetně mnoha hodnot \((x_1, x_2, \ldots)\) s 
+      pravděpodobnostmi \((p_1, p_2, \ldots)\).
+      }
+
+    Jevy \(A_j\) \uv{Veličina \(X\) nabývá hodnoty \(x_j\)}, jsou po dvou neslučitelné. Platí
+    \begin{equation*}
+      \sum_{j=1}^{k}p_j = 1, \qquad\text{resp.}\qquad \sum_{j=1}^{k\infty}p_j = 1
+    \end{equation*}
+    Pokud jde o druhý z obou případů, nebudeme se jím prozatím zabývat. Soubor všech dvojic
+    \begin{equation*}
+      \left\lbrace(x_j, p_j)\right\rbrace,\qquad j = 1, 2, \ldots, k,
+    \end{equation*}
+    se nazývá \textbf{rozdělení} náhodné veličiny \(X\). Můžeme je znázornit i graficky.
+
+
     \subsection{Kolik rychlostí má molekula plynu — spojité rozdělení}
       Již nadpis napovídá, že veličina se spojitým rozdělením může zřejmě nabývat „spojitě 
       rozložených“ hodnot, tj. přípustným i hodnotami budou například právě všechna čísla \(x\) z 
