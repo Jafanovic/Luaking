@@ -361,7 +361,7 @@
       Pomocí dvou předchozích vztahů dostáváme:
       
       \adjustbox{minipage=[c][60pt][c]{406pt}}{%
-        \begin{lemma}\label{mai:lemma004}
+        \begin{lemma}\label{mai:lemma005}
           \textbf{(Bayesova formule):}
           \begin{equation}\label{mai:eq058}
             p_B(A_j) = \dfrac{p(A_j\text{ a }B)}{\sum_{i=1}^{k}p(A_i)\cdot p_{A_i}(B)} 
@@ -696,25 +696,82 @@
       Zvolíme-li pro jistou hodnotu \(x\) interval \([a, x + \Delta x]\), má smysl otázka, jaké je 
       pravděpodobnost \(\Delta p(x)\), že veličina nabývá hodnoty (kterékoli) právě z tohoto 
       intervalu.
+
+      \adjustbox{minipage=[c][60pt][c]{406pt}}{%
+        Limitu
+        \begin{equation}\label{mai:eq066}
+          w(x) = \lim\limits_{\Delta\longrightarrow0}\dfrac{\Delta p(x)}{\Delta x}
+        \end{equation}
+        nazýváme \textbf{hustotou pravděpodobnosti} veličiny \(X\) v bodě \(x\) (pro \(x = a\), 
+        resp. \(x = b\) se jedná o limitu zprava, resp. zleva).
+      }
+      
+      Přímo tato funkce pak představuje ono spojité rozdělení náhodné veličiny \(X\). Určuje totiž
+      hustotu pravděpodobnosti \(w\) pro hodnotu \(x\) náhodné veličiny \(X\), obdobně jako \(p_j\) 
+      v případě diskrétního rozdělení určuje pravděpodobnost hodnoty \(x_j\). Předpokládejme, že je 
+      funkce \(w(x)\) na intervalu \([a, b]\) spojitá.
   
+      \adjustbox{minipage=[c][68pt][c]{406pt}}{%
+        Pro \(x \in [a, b]\) definuje integrál jako funkce horní meze
+        \begin{equation}\label{mai:eq067}
+          F(x) = \int_a^xw(u)\dd{u}
+        \end{equation}
+        \textbf{distribuční funkci}.
+      }
+      Jeho hodnota pro dané \(x\) udává pravděpodobnost, že hodnota veličiny \(X\) padne do 
+      intervalu \([a, x]\), opět v plné analogii s případem diskrétního rozdělení. Na \((a, b)\) je 
+      tedy hustota pravděpodobnosti \(w(x)\) derivací distribuční funkce. Je zřejmé, že \(F(b) = 
+      1\). Integrál z hustoty pravděpodobnosti v mezích \([a, b]\) udává totiž pravděpodobnost, že 
+      hodnota veličiny \(X\) padne do intervalu přípustných hodnot, tedy pravděpodobnost jistého 
+      jevu. V případě diskrétního rozdělení jsme však distribuční funkci definovali nejen pro 
+      přípustné hodnoty náhodné veličiny, ale pro všechna x \in (-\infty, +\infty). Tento postup 
+      budeme respektovat i nyní a definujeme
+      \begin{equation*}
+        F(x) = 0\text{ pro }x \in (-\infty,a)\text{ a }F(x) = 1\text{ pro }x \in (b , +\infty).
+      \end{equation*}
+      \adjustbox{minipage=[c][48pt][c]{406pt}}{%
+        \begin{equation}\label{mai:eq068}
+          \langle x \rangle = \int_a^bxw(x)\dd{x}, \qquad 
+                       D(X) = \int_{a}^{b}(x - \langle x \rangle)^2w(x)\dd{x}.
+        \end{equation}
+      }
+      \textbf{Relativní směrodatná odchylka} je opět podílem \(\sqrt{D(X)}/\langle x \rangle\), 
+      nejpravděpodobnější hodnota neboli \textbf{modus} \(x_m\) je taková hodnota veličiny \(X\) , 
+      pro kterou je hustota pravděpodobnosti maximální
+      
+      Daleko lépe než u veličin s diskrétním rozdělením vypadá možnost definovat \(P\)-kvantil 
+      \(\tilde{x}_p\) a \textbf{medián} \(\tilde{x}\). Jsou jednoduše řešením rovnic
+      \begin{equation*}
+        F(\tilde{x}_P) = P, \qquad F(\tilde{x}) = \dfrac{1}{2}
+      \end{equation*}
+      (Mohli bychom mediánu třeba i říkat „půlkvantil“. To ale není zvykem.) \(P\)-kvantil je 
+      definován pro jakoukoli hodnotu \(P\) zadanou v intervalu \((0, 1)\). Skutečně, hustota 
+      pravděpodobnosti je nezápornou funkcí na intervalu \([a, b]\) (podle předpokladu i spojitou), 
+      takže distribuční funkce je na \([a, b]\) \emph{spojitá} a \emph{rostoucí} a nabývá hodnot 
+      \(0 = F(a) \leq F(x) \leq F(b) = 1\). Podle jedné z vět o spojitých funkcích (odstavec 
+      2.1.7*) nabývá funkce spojitá na uzavřeném intervalu všech hodnot mezi svým minimem a 
+      maximem. V intervalu \([a, b]\) tedy existuje alespoň jedna hodnota \(\tilde{x}_P\) , pro 
+      kterou je \(F(\tilde{x}_P) = P\). Ze skutečnosti, že je \(F(x)\) navíc rostoucí, vyplývá, že 
+      i \(\tilde{x}_P\) existuje jednoznačně.
   
+      Tyto závěry zůstanou v platnosti, i kdyby veličina \(X\) nabývala svých hodnot v intervalu
+      typu \(\left[0, \infty\right), \left(—\infty, b\right]\) nebo \((—\infty, \infty)\). Vzhledem 
+      k požadavku
+      \begin{equation*}
+        \int_{a}^{b}w(x)\dd{x} = 1,
+      \end{equation*}
+      kde kterákoli z mezí \(a\), resp. \(b\) může být i nevlastní, je zřejmé, že funkce \(w(x)\) 
+      musí být na svém definičním oboru \(D_f\) omezená. Navíc je na něm spojitá. Vybereme-li tedy 
+      jakýkoli uzavřený podinterval oboru \(D_f\), můžeme předchozí argumentaci týkající se 
+      \(P\)-kvantilu bez problémů použít.
+
+      %--Normální rozdělení-------------------------------------------
+      \input{../src/MAI/exam/exam069.tex}
+      %---------------------------------------------------------------
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+      %--Kolik rychlostí má molekula plynu----------------------------
+      \input{../src/MAI/exam/exam070.tex}
+      %---------------------------------------------------------------
   
   \section{Náhoda a zpracování měření}
     \subsection{Součet a součin náhodných veličin}
@@ -727,10 +784,34 @@
       například \(U\) a \(V\), tedy \(Y = U + V\), \(Z = U \cdot V\). Předpokládejme nejprve, že 
       veličiny \(U\) a \(V\) jsou zcela nezávislé, tj. hodnoty veličiny \(U\) nejsou nijak 
       ovlivněny hodnotami veličiny \(V\) a naopak. Dejme tomu, že \(U\) a \(V\) mají rozdělení
-      
-      
-      
-      
+      \begin{equation*}
+        \left\lbrace (u_1, p_1), \ldots, (u_k, p_k) \right\rbrace, \qquad
+        \left\lbrace (v_1, q_1), \ldots, (v_\ell, v_\ell) \right\rbrace
+      \end{equation*}
+      Veličiny \(Y = U + V\), resp. \(Z = U \cdot V\) tedy mohou nabývat hodnot \(\lbrace u_i + 
+      v_\alpha\rbrace\), resp. \(\lbrace u_i v_\alpha\rbrace\) s pravděpodobnostmi \(p_iq_\alpha\). 
+      Jevy \uv{Veličina \(U\) nabude hodnoty \(u_i\)} a \uv{veličina \(V\) nabude hodnoty 
+      \(v_\alpha\)} jsou totiž nezávislé. Rozdělení veličin \(Y\) a \(Z\) je
+      \begin{equation*}
+        \lbrace (u_i +v_\alpha, p_iq_\alpha)\rbrace,\, \text{resp.}\,
+        \lbrace(u_iv_\alpha, p_iq_\alpha)\rbrace,\qquad 1\leq i\leq k,\quad 1\leq\alpha\leq\ell,
+      \end{equation*}
+      Pro jejich střední hodnoty dostáváme
+      \begin{align*}
+        \langle y \rangle 
+          &= \sum_{i=1}^{k}\sum_{\alpha=1}^{\ell}(u_i + v_\alpha)p_iq_\alpha
+           = \sum_{i=1}^{k}u_ip_i\left(\sum_{\alpha=1}^{\ell}q_\alpha\right) + 
+             \sum_{\alpha=1}^{\ell}v_\alpha q_\alpha\left(\sum_{i=1}^{k}p_i\right)  \\
+          &= \sum_{i=1}^{k}u_ip_i + \sum_{\alpha=1}^{\ell}v_\alpha q_\alpha         \\
+        \langle y \rangle 
+          &= \sum_{i=1}^{k}\sum_{\alpha=1}^{\ell}(u_i \cdot v_\alpha)p_iq_\alpha
+           = \left(\sum_{i=1}^{k}u_ip_i\right)
+             \left(\sum_{\alpha=1}^{\ell}v_\alpha q_\alpha\right) 
+           = \langle u \rangle \langle v \rangle.
+      \end{align*}
+      Střední hodnota součtu, resp. součinu náhodných veličin je tedy součtem, resp. součinem jejich
+      středních hodnot. Pro součet náhodných veličin platí tento výsledek i v případě, když nebudou
+      nezávislé. V tak jednoduchý závěr jsme snad ani nedoufali! Hned uvidíme, jak jej lze využít.
       
       
       
