@@ -803,7 +803,7 @@
            = \sum_{i=1}^{k}u_ip_i\left(\sum_{\alpha=1}^{\ell}q_\alpha\right) + 
              \sum_{\alpha=1}^{\ell}v_\alpha q_\alpha\left(\sum_{i=1}^{k}p_i\right)  \\
           &= \sum_{i=1}^{k}u_ip_i + \sum_{\alpha=1}^{\ell}v_\alpha q_\alpha         \\
-        \langle y \rangle 
+        \langle z \rangle 
           &= \sum_{i=1}^{k}\sum_{\alpha=1}^{\ell}(u_i \cdot v_\alpha)p_iq_\alpha
            = \left(\sum_{i=1}^{k}u_ip_i\right)
              \left(\sum_{\alpha=1}^{\ell}v_\alpha q_\alpha\right) 
@@ -813,24 +813,71 @@
       středních hodnot. Pro součet náhodných veličin platí tento výsledek i v případě, když nebudou
       nezávislé. V tak jednoduchý závěr jsme snad ani nedoufali! Hned uvidíme, jak jej lze využít.
       
+      %--Jak číst výsledky studentské ankety aneb není průměr jako průměr----------
+      \input{../src/MAI/exam/exam071.tex}
+      %----------------------------------------------------------------------------
       
+      Pro střední hodnotu součtu a součinu nezávislých náhodných veličin jsme získali velmi
+      jednoduché výsledky:
       
+      \adjustbox{minipage=[c][24pt][c]{406pt}}{%
+        \begin{equation}\label{mai:eq070}
+          \langle u + v \rangle = \langle u \rangle + \langle v \rangle\qquad
+          \langle uv \rangle    = \langle u \rangle \langle v \rangle.
+        \end{equation}
+      }
       
+      Dokážeme také určit rozptyl veličin \(Y = U + V\) a \(Z = U\cdot V\)? Pro rozptyl každé 
+      náhodné veličiny platí obecný vztah (\ref{mai:eq061}). Použijeme jej pro naše konkrétní 
+      případy:
+      \begin{align*}
+        D(U + V) &= \langle (u + v)^2 \rangle - \langle u + v \rangle^2 
+                  = \langle u^2 + 2uv + v^2 \rangle - \left(\langle u \rangle^2 +
+                    \langle 2uv \rangle + \langle v^2 \rangle\right)                        \\
+                 &= \left(\langle u^2\rangle - \langle u \rangle^2\right)
+                  + \left(\langle v^2\rangle - \langle v \rangle^2\right) = D(U) + D(V).
+      \end{align*}
+      Pro rozptyl náhodné veličiny \(Z = U \cdot V\) dostaneme
+      \begin{align*}
+        D(Z)  &= \langle z^2\rangle - \langle z \rangle^2 
+               = \langle u^2\rangle\langle v^2\rangle - \langle u \rangle^2 \langle v \rangle^2  \\
+              &= \left[D(U) + \langle u^2\rangle\right]\left[D(V) + \langle v^2\rangle\right]
+               - \langle u \rangle^2 \langle v \rangle^2 
+               = D(U)D(V) + \langle u \rangle^2D(V) + \langle v \rangle^2D(U).
+      \end{align*}
+      Pak
+      \adjustbox{minipage=[c][34pt][c]{406pt}}{%
+        \begin{equation*}
+          \dfrac{D(z)}{ \langle z \rangle^2} = \dfrac{D(U)}{ \langle u \rangle^2} \cdot
+            \dfrac{D(V)}{ \langle v \rangle^2} + \dfrac{D(U)}{ \langle u \rangle^2} +
+            \dfrac{D(v)}{ \langle v \rangle^2}.
+        \end{equation*}
+      }
+      Při výpočtu jsme využili vztahu (\ref{mai:eq061}) a vztahů (\ref{mai:eq070}) pro střední 
+      hodnotu součtu a součinu náhodných veličin. Pokud mají veličiny \(U\) a \(V\) shodný rozptyl 
+      \(D(U) = D(V) = D\), pak je \(D(U + V) = 2D\). V případě součtu s veličin \(Y = X_1 + \cdots 
+      + X_s\) se shodným rozptylem \(D\) resp. směrodatnou odchylkou \(\sigma\) dostáváme
+      \begin{equation*}
+        D(Y) = sD  \Rightarrow \sigma(y) = \sqrt{s}\sigma.
+      \end{equation*}
+      Znovu připomeňme, že všechny vztahy týkající se součtu a součinu náhodných veličin, které
+      jsme zatím získali, platí za předpokladu, že výchozí veličiny, které sčítáme nebo násobíme, 
+      jsou nezávislé.
       
+      Aniž bychom se podrobněji zabývali vlastnostmi rozdělení závislých veličin, definujeme pro
+      ně charakteristiky, které tuto závislost popisují. Nechť \(U\) a \(V\) jsou dvě libovolně 
+      náhodné veličiny, ne nutně nezávislé. Míru jejich závislosti určují veličiny
+      \begin{equation}\label{mai:eq071}
+        \sigma_{uv} = \langle (u - \langle u \rangle) (v - \langle v \rangle) \rangle, \qquad
+        \varrho_ {uv}=\dfrac{\sigma(u)}{\sqrt{D(U)D(V)}} = \dfrac{\sigma(u)}{\sigma{D(u)\sigma(v)}}
+      \end{equation}
+      zvané \textbf{kovariance} a \textbf{korelační koeficient} veličin \(U\) a \(V\). Platí 
+      \(\varrho(uv) \leq 1\). Pro nezávislé veličiny vychází \(\sigma(uv) = 0\) a \(\varrho(uv) = 
+      0\).
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+      %-- Rozptyl při Bernoulliově pokusu-----------------------------
+      \input{../src/MAI/exam/exam072.tex}
+      %---------------------------------------------------------------
       
       
       

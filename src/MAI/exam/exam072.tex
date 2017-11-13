@@ -1,0 +1,45 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam072}
+  \textbf{Rozptyl při Bernoulliově pokusu}\newline\small
+  V příkladu \ref{mai:exam066} jsme se zajímali o střední hodnotu veličiny \(X\) definované jako 
+  počet zdarů při \(n\) opakováních Bernoulliova pokusu. Řekli jsme si, že střední hodnota této 
+  veličiny je \(np\) s tím, že důkaz lze provést přímo na základě definičního vztahu pro střední 
+  hodnotu matematickou indukcí. Výpočet rozptylu z definičního vztahu bychom jistě snadno dokázali 
+  zahájit, horší by však bylo dovést jej do konce. Stačí se podívat na začátek výpočtu
+  \begin{equation*}
+    D(X) = \sum_{j=0}^n \left(x_j - \langle x \rangle\right)^2p_j 
+         = \sum_{j=0}^n \left(j - np\right)^2\begin{pmatrix}n\\ j \end{pmatrix}p^j(1 - p)^j,
+  \end{equation*}
+  a nepochybujeme o tom, že tuto sumu nedokážeme spočítat snadno. Protože již však umíme zacházet 
+  se součtem náhodných veličin, můžeme využít účinného triku. Veličinu \(X\) si představíme jako 
+  součet
+  \begin{equation*}
+    X = U_1 + U_2 + \cdots + U_n,
+  \end{equation*}
+  kde každá z veličin \(U_j\) může nabývat dvou hodnot. Jedničky v případě, že při \(j\)-tém 
+  opakování pokusu nastal zdar, a nuly v případě, že nastal nezdar. Součet všech veličin \(U_j\) 
+  pro \(j = 1\) až \(j = n\) pak skutečně znamená celkový počet zdarů při \(n\) opakováních pokusu. 
+  Jestliže si uvědomíme, že pravděpodobnost zdaru při kterémkoli z opakování je \(p\) a 
+  pravděpodobnost nezdaru \((1 - p)\), ihned vidíme, že rozdělení každé z veličin \(U_j\) má tvar
+  \(\lbrace(1, p), (0, 1 - p)\rbrace\). Platí tedy
+  \begin{equation*}
+    \langle u_j\rangle = 1\cdot p + 0 \cdot (1 - p) = p,
+  \end{equation*}
+  \begin{equation*}
+    D = D(U_j) = \left( 1 - \langle u_j\rangle\right)^2p 
+               + \left( 0 - \langle u_j\rangle\right)^2(1 - p)
+               = p(1 - p)^2 + p^2(1 - p) = p(1 - p).
+  \end{equation*}
+  Každé dvě veličiny \(U_i\), \(U_j\) jsou nezávislé, neboť jednotlivá opakování pokusu jsou 
+  nezávislá. Střední hodnota jejich součtu je: tedy \(np\) (a to souhlasí s informací v příkladu 
+  \ref{mai:exam066}) a pro rozptyl jejich součtu platí
+  \begin{equation*}
+    D(X) = nD = np(1 - p).
+  \end{equation*}
+  Celkově tedy dostáváme
+  \begin{equation*}
+    \langle x \rangle = np, \qquad \sigma(x) = \sqrt{np(1 - p)}.
+  \end{equation*}
+\normalsize
+\end{example}
