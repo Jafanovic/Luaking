@@ -5,4 +5,4 @@ echo WIKING XELATEX compile
 :: -pdﬂua: Generate pdf version of document using lualatex.
 :: -pdfxe: Generate pdf version of document using xelatex.
 :: -time:  ShowCPU time used
-latexmk -pvc -pdfxe -e "$pdflatex='xelatex -interaction=nonstopmode -halt-on-error'" luaking.tex 
+latexmk -pvc -pdflua -e "$pdflatex='lualatex -interaction=nonstopmode -halt-on-error'" luaking.tex 
