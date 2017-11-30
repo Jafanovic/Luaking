@@ -112,7 +112,7 @@
     \begin{equation*}
       p(D)  = \dfrac{M(D)}{N}
             = \dfrac{4\cdot\sum^{8}_{k=6}\dfrac{8!}{k!(8-k)!}\dfrac{24!}{(10-k)!(14+k)!}}
-                    {\begin{pmatrix} 32 \\ 10 \end{pmatrix}}                               
+                    {\begin{pmatrix} 32 \\ 10 \end{pmatrix}}
             = \dfrac{\num{1255984}}{\num{64512240}} \simeq \num{0.019}.
     \end{equation*}
     
@@ -152,8 +152,8 @@
                   6\begin{pmatrix} 24 \\ 6 \end{pmatrix} +
                   4\begin{pmatrix} 24 \\ 5 \end{pmatrix} +
                    \begin{pmatrix} 24 \\ 4 \end{pmatrix}
-                \right]                                                      \\ 
-      M(E) &= \num{14235804},                                                \\
+                \right]                                                       \\ 
+      M(E) &= \num{14235804},                                                 \\
       p(E) &= \dfrac{M(E)}{N} = \dfrac{\num{14235804}}{\num{64512240}} \simeq \num{0.22}.
     \end{align*}
     
@@ -236,10 +236,10 @@
         \right].
     \end{equation*}
     V učebnicích můžeme najít různé vzorce pro kombinační čísla, mezi nimi i vzorec
-    \begin{equation*}
+    \begin{equation}\label{mai:eq076}
       \sum^{p}_{s=0}\begin{pmatrix} p \\ s \end{pmatrix}\begin{pmatrix} r \\ q - s \end{pmatrix}
         = \begin{pmatrix} r + p \\ q \end{pmatrix} \qquad\text{pro}\qquad r\geq q,\,q \geq p.
-    \end{equation*}
+    \end{equation}
     (Nebo si jej můžeme sami odvodit — pokuste se o to!) Pro \(p = 4\), \(r = 24\), \(q = 10 - k\), 
     \(1 \leq k \leq 4\) máme právě náš případ, takže
     \begin{equation*}
@@ -264,6 +264,7 @@
                         \begin{pmatrix} 32 \\ 10    \end{pmatrix} -
                         \begin{pmatrix} 28 \\ 10    \end{pmatrix},
     \end{equation*}
+    kde podle vzorce \ref{mai:eq076} je \(p=4\), \(q=10\), \(s=k\) a \(r=28\).  
     \begin{align*}
       M(F) &= \begin{pmatrix}  4 \\ 2 \end{pmatrix}\begin{pmatrix}  4 \\ 0 \end{pmatrix} 
               \begin{pmatrix} 24 \\ 8 \end{pmatrix} + 
@@ -283,7 +284,8 @@
                     \begin{pmatrix}  4 \\  2 \end{pmatrix}
                     \begin{pmatrix} 24 \\  8 \end{pmatrix}
               \right],                                                                          \\
-      p(F) &= 1 - \dfrac{\begin{pmatrix} 28 \\ 10 \end{pmatrix} -
+      p(F) &= \dfrac{M(F)}{N}
+            = 1 - \dfrac{\begin{pmatrix} 28 \\ 10 \end{pmatrix} -
                          \begin{pmatrix}  4 \\  2 \end{pmatrix}
                          \begin{pmatrix} 24 \\  8 \end{pmatrix}
                         }
