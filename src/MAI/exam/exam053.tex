@@ -63,7 +63,7 @@
               +\begin{pmatrix} 4 \\ 4\end{pmatrix}\begin{pmatrix} 28 \\ 6\end{pmatrix}         \\
            &=  6\cdot\dfrac{28\cdot27\cdots22\cdot21}{8\cdot7\cdots2\cdot1}
               +4\cdot\dfrac{28\cdot27\cdots23\cdot22}{7\cdot6\cdots2\cdot1}
-              +4\cdot\dfrac{28\cdot27\cdots24\cdot23}{6\cdot5\cdots2\cdot1} = \num{23761530},  \\
+              +1\cdot\dfrac{28\cdot27\cdots24\cdot23}{6\cdot5\cdots2\cdot1} = \num{23761530},  \\
       P(B) &= \dfrac{M(B)}{N} = \dfrac{\num{23761530}}{\num{64512240}} \simeq\num{0.37}.
     \end{align*}
     Pozn.: Někomu se předchozí výpočet může zdát příliš složitý. Nelze jej nějak zjednodušit? Co 
@@ -111,8 +111,8 @@
     Pravděpodobnost jevu \(D\) je
     \begin{equation*}
       p(D)  = \dfrac{M(D)}{N}
-            = \dfrac{4\cdot\sum^{8}_{k=6}\dfrac{8!}{k!(8-k)!}\dfrac{24!}{(10-k)!(14-k)!}}
-                    {\begin{pmatrix} 32 \\ 10 \end{pmatrix}}                               
+            = \dfrac{4\cdot\sum^{8}_{k=6}\dfrac{8!}{k!(8-k)!}\dfrac{24!}{(10-k)!(14+k)!}}
+                    {\begin{pmatrix} 32 \\ 10 \end{pmatrix}}
             = \dfrac{\num{1255984}}{\num{64512240}} \simeq \num{0.019}.
     \end{equation*}
     
@@ -152,7 +152,8 @@
                   6\begin{pmatrix} 24 \\ 6 \end{pmatrix} +
                   4\begin{pmatrix} 24 \\ 5 \end{pmatrix} +
                    \begin{pmatrix} 24 \\ 4 \end{pmatrix}
-                \right] = \num{14235804},                                                \\
+                \right]                                                       \\ 
+      M(E) &= \num{14235804},                                                 \\
       p(E) &= \dfrac{M(E)}{N} = \dfrac{\num{14235804}}{\num{64512240}} \simeq \num{0.22}.
     \end{align*}
     
@@ -235,10 +236,10 @@
         \right].
     \end{equation*}
     V učebnicích můžeme najít různé vzorce pro kombinační čísla, mezi nimi i vzorec
-    \begin{equation*}
+    \begin{equation}\label{mai:eq076}
       \sum^{p}_{s=0}\begin{pmatrix} p \\ s \end{pmatrix}\begin{pmatrix} r \\ q - s \end{pmatrix}
         = \begin{pmatrix} r + p \\ q \end{pmatrix} \qquad\text{pro}\qquad r\geq q,\,q \geq p.
-    \end{equation*}
+    \end{equation}
     (Nebo si jej můžeme sami odvodit — pokuste se o to!) Pro \(p = 4\), \(r = 24\), \(q = 10 - k\), 
     \(1 \leq k \leq 4\) máme právě náš případ, takže
     \begin{equation*}
@@ -247,7 +248,7 @@
               \begin{pmatrix} 24 \\ 10 - k - s \end{pmatrix}
         \right] = 
         \sum^{4}_{k=1}\begin{pmatrix}  4 \\ k \end{pmatrix}
-                      \begin{pmatrix} 24 \\ 10 - k \end{pmatrix}.
+                      \begin{pmatrix} 28 \\ 10 - k \end{pmatrix}.
     \end{equation*}
     Jak můžeme tento výsledek interpretovat? Jedná se o počet případů, kdy náhodný výběr deseti 
     karet z mariášové hry dvaatřiceti karet obsahuje alespoň jednu kartu pevně zvolené hodnoty (v 
@@ -263,6 +264,7 @@
                         \begin{pmatrix} 32 \\ 10    \end{pmatrix} -
                         \begin{pmatrix} 28 \\ 10    \end{pmatrix},
     \end{equation*}
+    kde podle vzorce \ref{mai:eq076} je \(p=4\), \(q=10\), \(s=k\) a \(r=28\).  
     \begin{align*}
       M(F) &= \begin{pmatrix}  4 \\ 2 \end{pmatrix}\begin{pmatrix}  4 \\ 0 \end{pmatrix} 
               \begin{pmatrix} 24 \\ 8 \end{pmatrix} + 
@@ -282,7 +284,8 @@
                     \begin{pmatrix}  4 \\  2 \end{pmatrix}
                     \begin{pmatrix} 24 \\  8 \end{pmatrix}
               \right],                                                                          \\
-      p(F) &= 1 - \dfrac{\begin{pmatrix} 28 \\ 10 \end{pmatrix} -
+      p(F) &= \dfrac{M(F)}{N}
+            = 1 - \dfrac{\begin{pmatrix} 28 \\ 10 \end{pmatrix} -
                          \begin{pmatrix}  4 \\  2 \end{pmatrix}
                          \begin{pmatrix} 24 \\  8 \end{pmatrix}
                         }

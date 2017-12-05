@@ -27,7 +27,6 @@
     \overline{A}_{x+1} &: \text{Při \((x + 1)\)-tém opakování dojde k nezdaru.}        \\
     \ldots             &: \ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots\ldots \\
     \overline{A}_n     &: \text{Při posledním \(n\)-tém opakování dojde k nezdaru,}
-  \normalsize
   \end{align*}
   jsou nezávislé, je pravděpodobnost jevu
   \begin{itemize}
@@ -37,7 +36,9 @@
             p(B_1) = p(A_1)p(A_2)\cdots p(A_x)p(\overline{A}_{x+1})\cdots p(\overline{A}_n) 
                    = p^x (1 - p)^{n-x}.
           \end{equation*}
-          Nám však jde o pravděpodobnost následujícího jevu
+  \end{itemize}
+  Nám však jde o pravděpodobnost následujícího jevu
+  \begin{itemize}
     \item \(B\): Právě při \(x\) opakováních pokusu (bez ohledu na to, kterých) dojde ke zdaru a 
           současně při každém ze zbývajících opakování pokusu dojde k nezdaru.
   \end{itemize}
@@ -49,7 +50,7 @@
   neslučitelné a jev \(B\) znamená, že nastane právě jeden (kterýkoli) z nich. Pro jeho 
   pravděpodobnost tedy platí, podle pravidla pro součet pravděpodobností po dvou neslučitelných 
   jevů,
-  \adjustbox{minipage=[c][32pt][c]{406pt}}{%
+  \adjustbox{minipage=[c]{\textwidth}}{%
     \begin{equation}\label{mai:eq055}
       p(B) = P(x) = \begin{pmatrix} n \\ x\end{pmatrix}p^x (1 - p)^{n-x}.
     \end{equation}
@@ -75,7 +76,7 @@
          = \dfrac{(2m)!}{m!m!}\left(\dfrac{1}{2}\right)^{2m}     
   \end{equation*}
 
-  \begin{table}[h]
+  \begin{table}[ht!]
     \centering
     \begin{tabular}{c|rrrrr}
       \(m\)    & 1 & 2 & 3 & 5 & 10  \\ \hline
@@ -90,11 +91,11 @@
   něj pro velká \(n\) platí
   
   \begin{equation}\label{mai:eq056}
-    n! = \left(\dfrac{n}{e}\right)^n\sqrt{2\pi n}
+    n! \doteq \left(\dfrac{n}{e}\right)^n\sqrt{2\pi n}
   \end{equation}
   Použijeme-li jej pro výpočet P(m), dostáváme
   \begin{equation*}
-    P(m)\simeq \dfrac{\left(\dfrac{2m}{e}\right)^{2m}\sqrt{4\pi m}}
+    P(m)\doteq \dfrac{\left(\dfrac{2m}{e}\right)^{2m}\sqrt{4\pi m}}
      {\left(\dfrac{m}{e}\right)^m\left(\dfrac{m}{e}\right)^m\left(\sqrt{2\pi m}\right)^2}
      \left(\dfrac{1}{2}\right)^{2m} = \dfrac{1}{\sqrt{\pi m}} \longrightarrow 0
   \end{equation*}
@@ -128,7 +129,6 @@
   při všech opakováních rovna součinu pravděpodobností při jednotlivých z nich, tj. \((1 - p)^n\) . 
   Pravděpodobnost zdaru při alespoň jednom opakováni je pak doplňkem do jedničky, tedy \(1 - (1 - 
   p)^n\). Je vidět, že je tím větší, čím je větší \(n\), a její limita pro \(n\rightarrow \infty\) 
-  je rovna jedné. A to je výsledek, který jsme předpověděli. 
-
-\normalsize
+  je rovna jedné. A to je výsledek, který jsme předpověděli.
+  \normalsize
 \end{example}

@@ -1,0 +1,86 @@
+% !TeX spellcheck = cs_CZ
+\wikitextrule
+\begin{example}\label{mai:exam067}
+  \textbf{Ještě střelba}\newline\small
+  Problém s definici \(P\)-kvantilu u veličiny s diskrétním rozdělením snadno vidíme na příkladu 
+  střelby (příklad \ref{mai:exam064}). Pro \(s\) postupně 1, 2, 3, 4 nabývá součet na levé straně 
+  rovnice (\ref{mai:eq064}) hodnot
+  
+  \begin{equation*}
+    p_1 = \num{0.003}, p_1 + p_2 = \num{0.31},\qquad p_1 + p_2 + p_3 = \num{0.83},\qquad 
+    p_1 + p_2 + p_3 + p_4 = 1.
+  \end{equation*}
+  Pojem \(P\)-kvantil je tedy definován jen pro \(P = 0\), \(P = \num{0.03}\), \(P = \num{0.31}\), 
+  \(P = \num{0.83}\) a \(P = 1\). (Pro \(P = 0\) a \(P = 1\) nemá žádný praktický význam.) 
+  Nenabývá-li \(P\) žádné z přípustných hodnot, tj. některé hodnoty z množiny \(\{\num{0.03}, 
+  \num{0.31}, \num{0.83}, 1\}\), nemá rovnice pro s řešení a \(P\)-kvantil není vůbec definován. 
+  Je-li hodnotou \(P\) některý prvek této množiny, dostaneme z rovnice (\ref{mai:eq064}) sice 
+  jediné řešení \(s\), avšak která hodnota bude \(P\)-kvantilem? Z grafu je vidět, že pro každou 
+  přípustnou hodnotu \(P\) vyhovuje podmínce celý interval proměnné \(x\). Konkrétní výsledky 
+  shrnuje následující tabulka:
+  
+  \begin{table}[ht!]
+    \centering
+    \resizebox{0.5\textwidth}{!}{%
+    \begin{tabular}{c|crrrr}
+      pravděpodobnost \(P\)  & \num{0} & \num{0.03} &  \num{0.31} &  \num{0.83} & \num{1}  \\ \hline
+      interval řešení rovnice \(F(x) = P\) & \((-\infty,\num{0})\) & \(\left[0, 1\right)\) & 
+      \(\left[1, 2\right)\) & \(\left[2, 3\right)\) & \(\left[3, \infty\right)\)
+    \end{tabular}}
+    % \caption{ }
+  \end{table}
+  
+  Význam pojmu \(P\)-kvantil je tedy pro náhodnou veličinu s diskrétním rozdělením poněkud sporný. 
+  Uplatní se však velmi dobře u veličin s rozdělením spojitým, jak uvidíme později. Než však 
+  opustíme příklad se střelbou definitivně, spočtěme si ještě střední hodnotu a rozptyl veličiny 
+  \(X\), kterou jsme definovali jako počet dosažených bodů při jednom výstřelu:
+  \begin{equation*}
+    \langle x \rangle = \sum_{j=1}^{4}x_jp_j = 0\cdot\num{0.03} + 1\cdot\num{0.28} 
+     + 2\cdot\num{0.52} + 3\cdot\num{0.17} = \num{1.83}, 
+  \end{equation*}
+  \begin{align*}
+    D(X)  = \sum_{j=1}^{4}\left(x_j - \langle x \rangle \right)^2p_j 
+         &= (0 - \num{1.83})^2\cdot\num{0.03} + (1 - \num{1.83})^2\cdot\num{0.28}           \\
+         &+ (2 - \num{1.83})^2\cdot\num{0.52} + (3 - \num{1.83})^2\cdot\num{0.17} \simeq\num{0.541},
+  \end{align*}
+  \begin{equation*}
+    \sigma(x) \simeq \num{0.736}.
+  \end{equation*}
+  V příkladu \ref{mai:exam064} jsme odhadovali, kolika bodů dosáhne střelec při pěti výstřelech. 
+  Tato hodnota nám vyšla \(\num{5}\cdot\num{1.83} = \num{9.15} = 9\). Nyní vidíme je jí souvislost 
+  se střední hodnotou náhodné veličiny \(X\). Pokud totiž definujeme veličinu \(Y\) jako počet bodů 
+  dosažených při pěti výstřelech, je \(Y = 5X\) a \(\langle y \rangle = 5\langle x \rangle\). 
+  Uvažujme nyní o významu směrodatné odchylky. Zřejmě \(\sigma(y) = 5\sigma(x) = \num{3.68}\). 
+  Směrodatná odchylka \(\sigma(y)\) určuje interval \((\langle y \rangle - \sigma(y), \langle y 
+  \rangle + \sigma(y)) = (\num{5.32}, \num{12.68})\). Možnosti bodového zisku ležící v tomto 
+  intervalu jsou \num{6} až \num{12} bodů včetně. Pokud bychom doplnili tabulku z příkladu 
+  \ref{mai:exam064} ještě o rozklady a jejich pravděpodobnosti pro bodový součet při pěti
+  výstřelech \(j = \num{6}\) a \(j = \num{12}\), dostaneme \(p(A_6) = \num{0.0400}\), \(p(A_{12}) = 
+  \num{0.0550}\). Pravděpodobnost, že výsledek střelce leží při pěti výstřelech v intervalu 
+  \((\langle y \rangle - \sigma(y), \langle y \rangle + \sigma(y)) = (\num{5.32}, \num{12.68})\), 
+  je tedy
+  \begin{equation*}
+    \sum_{j=6}^{12} = p(A_j) = p(A_6) + \sum_{j=7}^{11}p(A_j) + p(A_{12}) 
+                    = \num{0.0400} + \num{0.873} + \num{0.0550} \simeq \num{0.97}.
+  \end{equation*}
+  Při výpočtu jsme využili výsledku z příkladu \ref{mai:exam064}, kde jsme počítali 
+  pravděpodobnost, že střelec dosáhne bodového výsledku v rozmezí \num{7} až \num{11} bodů. 
+  Směrodatná odchylka \(\sigma(y)\) veličiny \(Y\) určuje tedy v tomto případě interval okolo 
+  střední hodnoty \(\langle y \rangle\), v němž leží střelcův bodový zisk s velmi vysokou 
+  pravděpodobností \SI{97}{\percent}. Tento výsledek lze velmi názorně interpretovat také takto: 
+  Vystřelí-li střelec pětkrát na terč, bude téměř s jistotou jeho bodový zisk ležet v intervalu 
+  určeném směrodatnou odchylkou, tj. bude ležet mezi šesti a dvanácti body. Není vyloučeno, že 
+  bodový zisk bude třeba pět bodů, nebo i nula, nebo naopak dokonce maximálních možných patnáct 
+  bodů. Všechny ty to možnosti dohromady jsou však vysoce nepravděpodobné, připadá na ně
+  pravděpodobnost pouhé \SI{3}{\percent}!. Anebo ještě trochu jinak: Kdyby střelec při tréninku 
+  uskutečnil třeba sto sérií po pěti výstřelech, pak by skoro jistě bylo sedmadevadesát z nich v 
+  rozmezí bodového zisku \num{6} až \num{12} bodů a tři mimo. Toto konstatování ovšem opět 
+  nevylučuje možnost, že v rozmezí \num{6} až \num{12} bodů bude ležet jiný počet sérií
+  než \num{97}. Může dokonce v principu dojít k tomu, že do této kategorie padnou série všechny 
+  nebo žádná. Takový výsledek je však opět vysoce nepravděpodobný.
+  
+  Není vyloučeno, že i po prostudování tohoto příkladu bude někdo stále nespokojen s tím, že je 
+  naše vyjadřování „málo přesné“. Vzhledem k pravděpodobnostnímu charakteru posuzovaných jevů však, 
+  bohužel, přesnější být nemůže.
+\normalsize
+\end{example}

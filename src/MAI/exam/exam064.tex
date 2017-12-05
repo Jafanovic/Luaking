@@ -24,7 +24,7 @@
   další úvahy nezbytná. Sama o sobě je však nepostačující. O střelcově zručnosti se na základě 
   konstrukce terče nic nedovídáme. Kvalitativně jinou informaci získáme, víme-li, že možných hodnot 
   zásahu dociluje střelec s následujícími pravděpodobnostmi:
-  \begin{table}[h]
+  \begin{table}[ht!]
     \centering
     \begin{tabular}{c|rrrr}
       \(x_i\)    &      0     &      1     &      2     &      3       \\ \hline
@@ -47,10 +47,93 @@
   odpovídat i vypočtená pravděpodobnost. Dejme tomu, že zvolíme tento interval od 7 do 11 bodů 
   včetně. Jev, jehož pravděpodobnost hledáme, je tedy
   \begin{itemize}
-    \item \(A\) : P ři pěti výstřelech získá střelec 7 nebo 8 nebo 9 nebo 10 nebo 11 bodů.
-  Jevy
-  A j : Střelec získá při pěti výstřelech j bodů.
-    jsou po dvou neslučitelné, pravděpodobnost jevu A tedy bude rovna součtu pravděpodobností
+    \item \(A\) : Při pěti výstřelech získá střelec \num{7} nebo \num{8} nebo \num{9} nebo \num{10} 
+          nebo \num{11} bodů.
+    \item[] Jevy
+    \item \(A_j\) : Střelec získá při pěti výstřelech \(j\) bodů.
   \end{itemize}
+  jsou po dvou neslučitelné, pravděpodobnost jevu \(A\) tedy bude rovna součtu pravděpodobností
+  \begin{equation*}
+    p(A) = \sum_{j=7}^{11} p(A_j).
+  \end{equation*}
+  Pozor! Pravděpodobnosti \(p(Aj)\) jsou odlišné od pravděpodobností zadaných v tabulce. Týkají se 
+  totiž pěti výstřelů, zatímco tabulka je pro jeden výstřel. Musíme tedy určit pravděpodobnosti 
+  \(p(A_j)\). K tomu je třeba zjistit všechny možnosti, jak docílit součtu bodů \(j\) pomocí pěti 
+  sčítanců nabývajících hodnot \num{0} až \num{3}. Soupis je v následující tabulce. Tabulka uvádí 
+  různé rozklady součtu na sčítance, počet případů, jak se tento rozklad realizuje (různé pořadí 
+  dosažených bodů při jednotlivých výstřelech) a pravděpodobnosti jednotlivých rozkladů
+  zaokrouhlené na tři platná místa.
+  
+  \begin{table}[ht!]
+    \centering
+    \resizebox{0.5\textwidth}{!}{%
+    \begin{tabular}{c|rrrr}
+      součet \(j\) & sčítance   &    počet   & ppst rozkladu & \(p_(A_j)\)    \\ \hline
+            7      & 3+3+1+0+0  & \num{30}   & \num{2.18e-4} & \num{0.102}    \\
+                   & 3+2+2+0+0  & \num{30}   & \num{1.24e-3} &                \\
+                   & 3+2+1+1+0  & \num{60}   & \num{1.25e-2} &                \\
+                   & 3+1+1+1+1  & \num{5}    & \num{5.22e-3} &                \\
+                   & 2+2+2+1+0  & \num{20}   & \num{2.36e-2} &                \\
+                   & 2+2+1+1+1  & \num{10}   & \num{5.94e-2} &                \\ \hline
+            8      & 3+3+2+0+0  & \num{30}   & \num{4.06e-4} & \num{0.185}    \\
+                   & 3+3+1+1+0  & \num{30}   & \num{2.04e-3} &                \\
+                   & 3+2+2+1+0  & \num{60}   & \num{2.32e-2} &                \\
+                   & 3+2+1+1+1  & \num{20}   & \num{3.88e-2} &                \\
+                   & 2+2+2+2+0  & \num{5}    & \num{1.10e-2} &                \\
+                   & 2+2+2+1+1  & \num{10}   & \num{1.10e-1} &                \\ \hline
+            9      & 3+3+3+0+0  & \num{10}   & \num{4.42e-5} & \num{0.238}    \\
+                   & 3+3+2+1+0  & \num{60}   & \num{7.57e-3} &                \\
+                   & 3+3+1+1+1  & \num{10}   & \num{6.34e-3} &                \\
+                   & 3+2+2+2+0  & \num{20}   & \num{1.43e-2} &                \\
+                   & 3+2+2+1+1  & \num{30}   & \num{1.08e-1} &                \\
+                   & 2+2+2+2+1  & \num{5}    & \num{1.02e-1} &                \\ \hline
+           10      & 3+3+3+1+0  & \num{20}   & \num{8.25e-4} & \num{0.215}    \\
+                   & 3+3+2+2+0  & \num{30}   & \num{7.03e-3} &                \\
+                   & 3+3+2+1+1  & \num{30}   & \num{3.53e-2} &                \\
+                   & 3+2+2+2+1  & \num{20}   & \num{1.34e-1} &                \\
+                   & 2+2+2+2+2  & \num{1}    & \num{3.80e-2} &                \\ \hline
+           11      & 3+3+3+2+0  & \num{20}   & \num{1.53e-3} & \num{0.133}    \\
+                   & 3+3+3+1+1  & \num{10}   & \num{3.85e-3} &                \\
+                   & 3+3+2+2+1  & \num{30}   & \num{6.56e-2} &                \\
+                   & 3+2+2+2+2  & \num{5}    & \num{6.21e-2} &                \\ \hline
+    \end{tabular}}
+    % \caption{ }
+  \end{table}
+  
+  Jak jsme spočítali pravděpodobnosti jednotlivých rozkladů? Dejme tomu, že počet bodů dosažených 
+  při pěti výstřelech je \(j\). Nechť \(j = j_1 + j_2 + j_3 + j_4 + j_5\) je rozklad hodnoty \(j\) 
+  na součet pěti sčítanců. Čísla \(j_1\) až \(j_5\) se pohybují od \num{0} do \num{3}, mohou být i 
+  shodná. Například jeden z možných rozkladů bodového součtu \(j = 9\) je \(9 = 3 + 2 + 2 + l + 
+  l\). Pravděpodobnost, že při pěti nezávislých výstřelech budou jednotlivé zásahy činit \(j_1\), 
+  \(j_2\), \(j_3\) , \(j_4\)a \(j_5\) bodů, je
+  \begin{equation*}
+    p_{j1}p_{j2}p_{j3}p_{j4}p_{j5}.
+  \end{equation*}
+  Pro případ zvoleného konkrétního rozkladu čísla \num{9} je to \(p_3p_2^2p_1^2\) - Zásahy s 
+  bodovým ziskem \(j_1\) až \(j_5\) mohou být realizovány v různých pořadích (například \(\num{3} + 
+  \num{2} + \num{2} + \num{1} + \num{1} = \num{2} + \num{3} + \num{2} + \num{1} + \num{1} 
+  =\ldots\), atd.). Označme počet všech takových pořadí \(n_{j_1\ldots j_5}\). (Pro \(j = \num{3} + 
+  \num{2} + \num{2} + \num{1} + \num{1}\) je \(n_{32211} = \begin{pmatrix} 5 \\ 2 
+  \end{pmatrix}\begin{pmatrix} 3 \\ 2 \end{pmatrix} = 30\): Dvě z pěti pozic pro umístění dvou
+  dvojek lze vybrat \(\begin{pmatrix} 5 \\ 2 \end{pmatrix}\)  způsoby, ze zbývajících tří pozic lze 
+  dvě pro umístění jedniček vybrat \(\begin{pmatrix} 3 \\ 2 \end{pmatrix}\) způsoby a na
+  trojku zbude poslední pozice.) Pravděpodobnost \(p_{j_1\ldots j_5}\) daného rozkladu čísla \(s\) 
+  pak je
+  \begin{equation*}
+    p_{j_1\ldots j_5} = n_{j_1\ldots j_5}p_{j_1}p_{j_2}p_{j_3}p_{j_4}p_{j_5}
+  \end{equation*}
+  Pro rozklad \(\num{9} = \num{3} + \num{2} + \num{2} + \num{1} + \num{1}\) je (výsledek viz také v 
+  tabulce)
+  \begin{equation*}
+    p_{32211} =30\cdot p_3p_2^2p_1^2 = \num{30}\cdot\num{0.17}\cdot\num{0.52}^2\cdot\num{0,282} 
+              \simeq \num{0.108}.
+  \end{equation*}
+  Pravděpodobnost \(p(A_j)\) je součtem pravděpodobností jednotlivých rozkladů čísla \(j\). Konečně 
+  pravděpodobnost, že střelec dosáhne bodového výsledku \(y \in [7, 11]\), je rovna součtu 
+  pravděpodobností \(p(A_j)\) pro \(j = 7, 8, 9, 10, 11\). Tato hodnota je \num{0.873}, tedy 
+  opravdu poměrně vysoká, jak jsme očekávali. Také bychom mohli říci, že střelec dosahuje při každé 
+  pětici výstřelů „v průměru“ \num{9} bodů, a tedy při jednom výstřelu „v průměru“ \num{1.8} bodů. 
+  Pokud bychom „průměrnou hodnotu“ jednoho výstřelu počítali i pro jiný počet výstřelů než pro pět, 
+  budeme dostávat čísla, která budou hodnotě \num{1.8} velmi blízká.
 \normalsize
 \end{example}
