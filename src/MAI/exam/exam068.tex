@@ -6,19 +6,19 @@
   \rightarrow \infty\), a pro \(j \ll n\) je \textbf{rozdělení Poissonovo}. Odvodíme je. Pro velká 
   \(n\) a \(j \ll n\) platí přibližný vzorec
   \begin{equation*}
-    n! \simeq n^j(n-j)!,
+    n! \approx n^j(n-j)!,
   \end{equation*}
   a tedy
   \begin{equation*}
-    P_j \simeq \lim\limits_{n\rightarrow\infty}\dfrac{n^j}{j!}p^j(1-p)^{n - j}
-        \simeq \lim\limits_{n\rightarrow\infty}\dfrac{(np)^j}{j!}\left(1-\dfrac{np}{n}\right)^{n}.
+    p_j \approx \lim\limits_{n\rightarrow\infty}\dfrac{n^j}{j!}p^j(1-p)^{n - j}
+        \approx \lim\limits_{n\rightarrow\infty}\dfrac{(np)^j}{j!}\left(1-\dfrac{np}{n}\right)^{n}.
   \end{equation*}
   Při vzpomínce na kapitolu o počítání i limitami a na \textbf{l’Hospitalovo pravidlo} snadno 
-  provedeme následující výpočet. O testujte své předchozí znalosti a jednotlivé kroky výpočtu 
+  provedeme následující výpočet. Otestujte své předchozí znalosti a jednotlivé kroky výpočtu 
   proveďte:
   \begin{equation*}
     \lim\limits_{n\rightarrow\infty}\left(1 - \dfrac{A}{n}\right)^n = 
-    \lim\limits_{x\rightarrow0}\left(1 - Ax\right)^\dfrac{1}{x} =
+    \lim\limits_{x\rightarrow0}\left(1 - Ax\right)^\frac{1}{x} =
     \exp\left(\lim\limits_{x\rightarrow0}\dfrac{\ln(1 - Ax)}{x}\right) = e^{-A}.
   \end{equation*}
   V našem případě je \(A = np = \langle x \rangle\) (střední hodnota veličiny \(X\) při 
@@ -27,7 +27,7 @@
     p_j = \langle x \rangle^j\dfrac{e^{-\langle x \rangle}}{j!}.
   \end{equation}
   Možnost použití Bernoulliova rozdělení si již představit dokážeme. Přinejmenším jsou hody mincemi 
-  a kostkami pěkné hříčky. K čemu však je dobré rozdělení Poissonovo? Ja k může vypadat praktická 
+  a kostkami pěkné hříčky. K čemu však je dobré rozdělení Poissonovo? Jak může vypadat praktická 
   situace, kdy provádíme obrovské množství opakování pokusu a zajímá nás pravděpodobnost pouze 
   malého počtu zdarů? Typickým příkladem takové situace je registrace částic vznikajících při 
   radioaktivním rozpadu. Taková měření jsou potřebná nejen ve fyzikálním výzkumu, ale i v 
@@ -59,16 +59,16 @@
 
   Ze všech částic, které při reakci vznikají, se v Geigerově-Můllerově detektoru registrují 
   elektrony a částice gama, nelze je však od sebe odlišit. Uvažujme o cesiovém zdroji s běžnou 
-  hodnotou aktivity, například \SI{10}{\pico\coulomb} (mikrocurie). Jednotka aktivity 
+  hodnotou aktivity, například \SI{10}{\micro\coulomb} (mikrocurie). Jednotka aktivity 
   radioaktivních preparátů \num{1} curie představuje situaci, kdy se za jednu sekundu rozpadá 
   \num{3.7e10} jader. Počet rozpadů, které v průměru nastanou třeba za deset sekund v našem vzorku, 
-  je \(n = \num{3700000}\). V Bernoulliově pokusu to odpovídá počtu jeho opakování \(n\). Ja k jsme 
+  je \(n = \num{3700000}\). V Bernoulliově pokusu to odpovídá počtu jeho opakování \(n\). Jak jsme 
   již řekli, je to obrovský počet. Nastavíme-li experiment tak, abychom registrovali každou sekundu 
   zhruba jednu částici (uslyšíme jeden „prásk“ ), bude počet zdarů \(j\) v Bernoulliově pokusu 
   velmi malý ve srovnání s \(n\). Jsou tedy splněny podmínky pro použití Poissonova rozdělení. 
   Zvolíme například desetisekundový interval měření a počítáme pulzy. Počet registrovaných pulzů 
   \(j\) v tomto intervalu je roven počtu zdarů. Takové měření provedeme třeba dvěstěkrát.
-  Označme počet intervalů, v nichž jsme naměřili právě \(j\) pulzů, jako \(\nu(j)\). Celkem je v 
+  Označme počet intervalů, v nichž jsme naměřili právě \(j\) pulzů, jako \(\nu(j)\). Celkem je 
   \(\nu(1) + \cdots + \nu(j_{max}) = \num{200}\). Získáme tak tabulku nebo graf, z nichž pak lze 
   usuzovat na parametry Poissonova rozdělení:
   \begin{table}[ht!]
@@ -85,12 +85,12 @@
   pravděpodobný, můžeme četnosti \(\nu(j)\) považovat za úměrné pravděpodobnostem \(p_j\) 
   Poissonova rozdělení. Všimněme si formule pro Poissonovo rozdělení podrobněji. Je vidět, že platí
   \begin{equation*}
-    \dfrac{\nu(j + 1)}{\nu(j)} = \dfrac{p_{j+1}}{p{j}} = \dfrac{\langle x \rangle}{j + 1},
+    \dfrac{\nu(j + 1)}{\nu(j)} = \dfrac{p_{j+1}}{p_{j}} = \dfrac{\langle x \rangle}{j + 1},
     \qquad p_0 = e^{-\langle x \rangle}.
   \end{equation*}
   Pro hodnotu \(j\), pro kterou jsou si četnosti \(\nu(j)\) a \(\nu(j + 1)\) „nejblíže“, je 
-  \(\langle x \rangle \simeq j + 1\). Z tabulky vidíme, že v případě našeho experimentu je 
-  \(\langle x \rangle = 6\). Hodnota \(p_0 = e^{-6} \simeq \num{0.002}\) je tedy tak malá, že se 
+  \(\langle x \rangle \approx j + 1\). Z tabulky vidíme, že v případě našeho experimentu je 
+  \(\langle x \rangle = 6\). Hodnota \(p_0 = e^{-6} \approx \num{0.002}\) je tedy tak malá, že se 
   ani nedivíme, že jsme mezi dvěma stovkami měření nezaznamenali ani jeden případ, kdy v 
   desetisekundovém intervalu nebyla zaregistrována žádná částice.
   
