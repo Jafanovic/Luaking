@@ -352,11 +352,11 @@
      \end{equation*} 
       a tedy
       \begin{equation*}
-        p(B) = \sum_{j=1}^{k}p(A_j\text{ a }B) = \sum_{j=1}^{k}p(A_j)\cdotp_{A_j}(B),
+        p(B) = \sum_{j=1}^{k}p(A_j\text{ a }B) = \sum_{j=1}^{k}p(A_j)\cdot p_{A_j}(B),
       \end{equation*}
       s využitím vztahu (\ref{mai:eq057}). Současně, podle téhož vztahu, platí 
       \begin{equation*}
-        p(A_j a B) = p(B)\cdot  p_B(A_j).
+        p(A_j\text{ a }B) = p(B)\cdot  p_B(A_j).
       \end{equation*}
       Pomocí dvou předchozích vztahů dostáváme:
       
@@ -395,7 +395,7 @@
     dvě koruny, také budeme vědět, jak se veličina \(X\) mění, aniž bychom se do peněženky dívali. 
     Po \(n\) dnech bude hodnota \(X = 3 + 2n\). Většina veličin, se kterými se setkáváme, se však 
     takto nechová. Jejich hodnoty se totiž často řídí náhodnými vlivy, takže při každém
-    měření veličiny \(X\) , tj. zjišťování její hodnoty, můžeme získat odlišný výsledek než při 
+    měření veličiny \(X\), tj. zjišťování její hodnoty, můžeme získat odlišný výsledek než při 
     měřeních předchozích. Uveďme některé příklady náhodných veličin.
     
     \begin{itemize}
@@ -470,7 +470,7 @@
 
     Jevy \(A_j\) \uv{Veličina \(X\) nabývá hodnoty \(x_j\)}, jsou po dvou neslučitelné. Platí
     \begin{equation*}
-      \sum_{j=1}^{k}p_j = 1, \qquad\text{resp.}\qquad \sum_{j=1}^{k\infty}p_j = 1
+      \sum_{j=1}^{k}p_j = 1, \qquad\text{resp.}\qquad \sum_{j=1}^{k=\infty}p_j = 1
     \end{equation*}
     Pokud jde o druhý z obou případů, nebudeme se jím prozatím zabývat. Soubor všech dvojic
     \begin{equation*}
@@ -564,13 +564,13 @@
     \end{equation*}
     Čekali jste to? Nepochybně ano. Veličina \(X - \langle x\rangle \) nedává tedy žádný obraz o 
     tom, jak jsou hodnoty \(x_j\) „rozptýleny“ okolo střední hodnoty \(\langle x\rangle\). Kladné 
-    odchylky jsou to tiž kompenzovány těm i zápornými. Aby k takové kompenzaci nedošlo, stačí vzít 
+    odchylky jsou to tiž kompenzovány těmi zápornými. Aby k takové kompenzaci nedošlo, stačí vzít 
     v úvahu absolutní hodnotu veličiny \(\Sigma\), popřípadě její kvadrát. Vezměme v úvahu druhý z 
     obou námětů a vypočtěme \(\langle \sigma^2\rangle\), takzvaný \textbf{rozptyl veličiny} \(X\):
     \begin{align}\label{mai:eq061}
       D(X) &= \langle \sigma\rangle = \sum_{j=1}^{k}(x_j - \langle x\rangle)^2p_j
             = \sum_{j=1}^{k}x_j^2p_j - 2\langle x\rangle\sum_{j=1}^{k}x_jp_j 
-            + \langle x\rangle^2\sum_{j=1}^{k}p_j                                     \\
+            + \langle x\rangle^2\sum_{j=1}^{k}p_j                                     \nonumber \\
            &= \langle x^2\rangle - 2\langle x\rangle^2 + \langle x\rangle^2 
             = \langle x^2\rangle - \langle x\rangle^2.
     \end{align}
@@ -581,7 +581,7 @@
       \end{equation}
     }
     se nazývá \textbf{směrodatná odchylka} (v některých terminologiích též \emph{střední 
-    kvadratická odchylka}) veličiny \(X\). Podíl\(\sigma(x)/ \langle x\rangle\) se nazývá 
+    kvadratická odchylka}) veličiny \(X\). Podíl \(\sigma(x)/ \langle x\rangle\) se nazývá 
     \textbf{relativní směrodatná odchylka} (v některé terminologii též \emph{variační koeficient}).
 
     \adjustbox{minipage=[c]{\textwidth}}{%
