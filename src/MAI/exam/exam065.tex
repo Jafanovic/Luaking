@@ -22,9 +22,19 @@
       \begin{pmatrix} n \\ j \end{pmatrix}p^j(1 - p)^{n-j}.
   \end{equation*}
   Graf Bernoulliova rozdělení, které je často nazýváno také binomickým, je na obrázku 
+  \ref{mai:fig044} pro \(n = 15\) a \(p = 1/2\) (červený asterisk).
   
   Z grafu je názorně vidět, co to znamená, že některé hodnoty veličiny \(X\) jsou více a jiné méně 
   pravděpodobné. Hodnota \(x_i\), veličiny \(X\), které odpovídá největší pravděpodobnost \(p_i\), 
   se nazývá nejpravděpodobnější hodnota. V případě Bernoulliova rozdělení na obrázku 
   \ref{mai:fig044} jsou takové hodnoty dvě, konkrétně \(x_7 = 7\) a \(x_8 = 8\).
 \normalsize
+\end{example}
+
+\adjustbox{minipage=[c]{\textwidth}}{%
+\lstset{basicstyle=\ttfamily\footnotesize, breaklines=true, 
+        numbers=none, xleftmargin=0.5cm, backgroundcolor=\color{yellow}}
+\begin{lstlisting}
+p_j = factorial(n)./(factorial(n-j).*factorial(j)).*p.^j.*(1-p).^(n-j)
+\end{lstlisting}
+} % adjustbox
