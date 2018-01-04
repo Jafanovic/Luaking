@@ -1,6 +1,6 @@
 % !TeX spellcheck = cs_CZ
-{\tikzset{external/prefix={tikz/CES/}}
- \tikzset{external/figure name/.add={ch03_}{}}
+%{\tikzset{external/prefix={tikz/CES/}}
+% \tikzset{external/figure name/.add={ch03_}{}}
 %---------------------------------------------------------------------------------------------------
 % file Basic_MCU_Arch.tex
 %---------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@
     {ě}{{\v{e}}}1
 }
 %====================Kapitola: Základy mikroprocesorové techniky====================================
-\chapter{Základy mikroprocesorové techniky}\label{ces:IchapIV}
+\chapter{Mikroprocesorová technika}\label{ces:IchapIV}
 \minitoc
 
   Cílem této kapitoly není výklad, zaměřený pouze na jeden typ obvodu, nýbrž zobecnění základních 
@@ -4588,14 +4588,15 @@
         Sériová periferie \texttt{SPI} (angl. \emph{Serial Peripheral Interface}) je velmi 
         jednoduchá a obsahuje ji převážná většina mikrokontrolérů. Využívá se pro spojení s 
         blízkými obvody na jednom plošném spoji. Typicky se jedná o sériové paměti \texttt{EEPROM}, 
-        převodníky, různé senzory, hodiny reálného času, apod. Jednoduchost obvodů vyplývá z 
+        převodníky, různé senzory, hodiny reálného času, apod. U některých mikrokontrolérů je SPI 
+        využíváno i pro programování jejich vnitřní paměti Flash. Jednoduchost obvodů vyplývá z 
         jednoduché synchronizace, kdy hodinové impulzy jsou generovány hlavním uzlem a jsou 
         rozváděny ke všem podřízeným uzlům. Takové uspořádání ukazuje obr. \ref{MIT:fig_sbernice75}.
 
         \begin{figure}[ht!] %\ref{MIT:fig_sbernice75}
           \centering
           \includegraphics[width=0.95\linewidth]{pinker_sbernice75.png}
-          \caption{Uspořádání obvodů \texttt{SPI}}
+          \caption{Uspořádání obvodů \texttt{SPI}: M - master, S - slave}
           \label{MIT:fig_sbernice75}
         \end{figure}
         
@@ -4621,7 +4622,7 @@
 
         \begin{figure}[ht!] %\ref{MIT:fig_sbernice76}
           \centering
-          \includegraphics[width=0.7\linewidth]{pinker_sbernice76.png}
+          \includegraphics[width=0.5\linewidth]{pinker_sbernice76.png}
           \caption{Varianty synchronizačních impulzů \texttt{SPI}}
           \label{MIT:fig_sbernice76}
         \end{figure}
@@ -4898,12 +4899,12 @@
         pro synchronizační impulzy, zvláštní vazební členy se nepoužívají. Celá sběrnice je určena 
         pro propojení obvodů na malé vzdálenosti, prakticky na jedné desce plošného spoje. Přístup 
         na sběrnici přes otevřené kolektory umožňuje jednoduchou \textbf{arbitráž} bez 
-        destruktivních konfliktů. Použitý způsob arbitráže umožňuje provoz sítě typu „multimaster", 
-        používá se však zřídka. Běžné uspořádání je mikrokontrolér jako \texttt{M} a skupina obvodů 
-        typu \texttt{S}. Arbitráž mezi uzly \texttt{M}, které   současně vstoupily na sběrnici, se 
-        děje během vysílání adresy obdobně jako u \texttt{CAN} během vysílání \texttt{ID}. 
-        \emph{Adresa s nižší číselnou hodnotou} tedy má \emph{vyšší} prioritu. Existuje 
-        formát se 7bitovou adresou a formát s 10bitovou adresou.
+        destruktivních konfliktů. Použitý způsob arbitráže umožňuje provoz sítě typu 
+        „\textbf{multimaster}", používá se však zřídka. Běžné uspořádání je mikrokontrolér jako 
+        \texttt{M} a skupina obvodů typu \texttt{S}. Arbitráž mezi uzly \texttt{M}, které   
+        současně vstoupily na sběrnici, se  děje během vysílání adresy obdobně jako u \texttt{CAN} 
+        během vysílání \texttt{ID}. \emph{Adresa s nižší číselnou hodnotou} tedy má \emph{vyšší} 
+        prioritu. Existuje formát se 7bitovou adresou a formát s 10bitovou adresou.
         
         Přenášená zpráva je členěna na 8bitové slabiky, jejichž počet je libovolný. Přenáší se 
         napřed \texttt{MSB}. Začátek rámce je signalizován značkou \emph{„start"}. V prvé slabice 
@@ -5116,7 +5117,7 @@
         (analogové i číslicové), ty jsou číslicově zpracovány, a na základě výsledků zpracování 
         jsou ovládány akční členy, zpravidla dvoustavové. Analogové obvody v samostatných 
         jednotkách však mohou obsahovat i výstupní část s velmi rozmanitou funkcí.
-} % tikzset
+%} % tikzset
 %---------------------------------------------------------------------------------------------------
 \printbibliography[title={Seznam literatury}, heading=subbibliography]
 \addcontentsline{toc}{section}{Seznam literatury}
