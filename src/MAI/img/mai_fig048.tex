@@ -1,0 +1,56 @@
+% !TeX spellcheck = cs_CZ
+% K příkladu \ref{mai:exam070}
+
+\documentclass[11pt]{standalone}
+\usepackage{xltxtra}
+\usepackage{siunitx}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+\usepackage{amsmath}
+
+\def\cdf(#1)(#2)(#3){0.5*(1+(erf((#1-#2)/(#3*sqrt(2)))))}%
+\def\k{0.138}
+\def\m{10}
+\def\fm(#1)(#2){1000*4*pi*(\m/(2*pi*\k*#2))**(3/2)*#1**2*exp((\m*#1*#1)/(2*pi*\k*#2))}
+
+\begin{document}
+  \begin{tikzpicture}[thick,scale=0.7, every node/.style={transform shape}]
+    \begin{axis}[
+      xmin = 0, xmax = 1500, ymin = 0, ymax = 4,
+%      unit vector ratio=1 1 1,  % axis equal
+      grid = both,   % both, major
+      grid style={line width=.1pt, draw=gray!20},
+      major grid style={dashed, line width=.2pt, draw=gray!60},
+      minor tick num=3,
+      clip = true,
+      clip mode=individual,
+      axis x line = middle,
+      axis y line = middle,
+      x label style={at={(axis description cs:1.06,0.14)},anchor=east},
+      y label style={at={(axis description cs:0.5,1.17)},anchor=north},
+      xlabel={\(x\)},
+      ylabel={\(w_{\mu,\,\sigma^2}(x)\)},
+%      xticklabels={, , 1, 2, 3},
+      enlarge y limits={rel=0.2},
+%      enlarge x limits={rel=0.07}
+    ]
+    
+      \addplot[color=Gold3, samples=1000, smooth, ultra thick, opacity=0.2,
+               unbounded coords=jump, no markers, domain = 0:2000] 
+        gnuplot{\fm(x)(300)}; 
+%        
+%      \addplot[color=red, samples=1000, smooth, ultra thick, fill=red, opacity=0.2,
+%               unbounded coords=jump, no markers, domain = -4:4] 
+%        gnuplot{Gauss(x,mu,sigma) = 1./(sigma*sqrt(2*pi)) * exp( -(x-mu)**2 / (2*sigma**2) ) 
+%                Gauss(x, 0, 1)}; 
+
+      
+%      \draw[Gold3, ultra thick] (2.5,0.8) -- (2.0,0.8);
+%      \draw[red,   ultra thick] (2.5,0.6) -- (2.0,0.6);
+%      \node at (2.5,0.8) [right, fill=white] {\small\(\mu =  1,\, \sigma^2 = \num{0.4}\)};
+%      \node at (2.5,0.6) [right, fill=white] {\small\(\mu =  0,\, \sigma^2 = \num{1.0}\)};
+    \end{axis}
+  \end{tikzpicture}
+\end{document}

@@ -2,65 +2,66 @@
 \wikitextrule
 \begin{example}\label{mai:exam069}
   \textbf{Normální rozdělení}\newline\small
-  Veličinou s normálním rozdělením rozumíme takovou náhodnou veličinu X, jejíž hustota 
+  Veličinou s normálním rozdělením rozumíme takovou náhodnou veličinu \(X\), jejíž hustota 
   pravděpodobnosti má tvar
-  \adjustbox{minipage=[c][33pt][c]{406pt}}{%
+  \adjustbox{minipage=[c]{\textwidth}}{%
     \begin{equation}\label{mai:eq069}
-      w(x) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left(-\dfrac{(x-x_0)^2}{2\sigma^2}\right),
+      w(x) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right],
              \qquad x\in(-\infty, \infty).
     \end{equation}
   }
   Grafem této funkce je \textbf{Gaussova křivka}. Distribuční funkce má tvar
-  \adjustbox{minipage=[c][35pt][c]{406pt}}{%
+  \adjustbox{minipage=[c]{\textwidth}}{%
     \begin{equation}\label{mai:eq70}
       F(x) = \int_{-\infty}^{x}\dfrac{1}{\sigma\sqrt{2\pi}}
-               \exp\left[-\dfrac{(x-x_0)^2}{2\sigma^2}\right]\dd{x}.
+               \exp\left[-\dfrac{(t-\mu)^2}{2\sigma^2}\right]\dd{t}.
     \end{equation}
   }
-  Přitom \(F(\infty) = 1\) (pravděpodobnost jistého jevu). Skutečně, platí
+  udává pravděpodobnost, že hodnota náhodné proměnné je menší než zadaná hodnota (nerovnost může 
+  být i neostrá). Přitom \(F(\infty) = 1\) (pravděpodobnost jistého jevu). Skutečně, platí
   \begin{equation*}
     \int_{-\infty}^{\infty}\dfrac{1}{\sigma\sqrt{2\pi}}
-           \exp\left[-\dfrac{(x-x_0)^2}{2\sigma^2}\right]\dd{x}
+           \exp\left[-\dfrac{(t-\mu)^2}{2\sigma^2}\right]\dd{t}
     = \dfrac{\sigma\sqrt{2}}{\sigma\sqrt{2\pi}}
-      \int_{-\infty}^{\infty}\exp\left(-t^2\right)\dd{t}
+      \int_{-\infty}^{\infty}\exp\left(-u^2\right)\dd{u}
     =1.
   \end{equation*}
-  Takzvaný Laplaceův integrál \(\int_{-\infty}^{\infty}\exp(-t^2)\dd{t} = \sqrt{\pi}\) 
+  Takzvaný Laplaceův integrál \(\int_{-\infty}^{\infty}\exp(-u^2)\dd{u} = \sqrt{\pi}\) 
   sice můžeme najít v tabulkách a v dalším dílu jej i odvodíme, v tu to chvíli se však budeme řídit 
   výrokem lorda Kelvina: „Matematik je ten, komu je toto zřejmé jako je zřejmé vám, že dvakrát dvě 
-  jsou čtyři.“ Příklady normálního rozdělení pro různé hodnoty \(\sigma\) a odpovídající 
+  jsou čtyři.“ Příklady normálního rozdělení pro různé hodnoty \(\sigma,\,\mu\) a odpovídající 
   distribuční funkce vidíme na obrázku \ref{mai:fig046} a \ref{mai:fig047}.
 
   {\centering
     \captionsetup{type=figure}
     \begin{tabular}{cc}
      \subfloat[ ]{\label{mai:fig046a}
-       \includegraphics[width=0.35\linewidth]{mai_fig046a.png}}              &
+       \includegraphics[width=0.45\linewidth]{mai_fig046a.pdf}}              &
 %     \hspace{1pt}
      \subfloat[ ]{\label{mai:fig046b}
-       \includegraphics[width=0.35\linewidth]{mai_fig046b.png}}
+       \includegraphics[width=0.45\linewidth]{mai_fig046b.pdf}}
 %     \hspace{1pt}
     \end{tabular}
-    \captionof{figure}{Normální rozdělení a jeho distribuční funkce pro \(\sigma(x) = 1\) a \(X_0 = 
-               0\) \cite[s.~240]{Musilova2009MA1}}
+    \captionof{figure}{Hustota pravděpodobnosti normálních rozdělení a jejich distribuční funkce 
+               s různými charakteristikami \(\sigma\) a \(\mu\). Červenou čárou je vyznačeno 
+               normované normální rozdělení. \cite[s.~240]{Musilova2009MA1}}
     \label{mai:fig046}
   \par}
-  
-  Určíme střední hodnotu a rozptyl veličin s tímto rozdělením:
+  \vspace*{10px} Určíme střední hodnotu a rozptyl veličin s tímto rozdělením:
   \begin{align*}
     \langle x \rangle 
       &= \int_{-\infty}^{x}\dfrac{1}{\sigma\sqrt{2\pi}}x\cdot
-         \exp\left[-\dfrac{(x-x_0)^2}{2\sigma^2}\right]\dd{x}.  
+         \exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]\dd{x}.  
        = \dfrac{\sigma\sqrt{2}}{\sigma\sqrt{2\pi}}
-         \int_{-\infty}^{\infty}\left(x_0+t\sigma\sqrt{2}\right)\cdot\exp\left(-t^2\right)\dd{t}  \\
-      &= \dfrac{x_0}{\sqrt{\pi}}\int_{-\infty}^{\infty}\exp\left(-t^2\right)\dd{t}
+         \int_{-\infty}^{\infty}\left(\mu+t\sigma\sqrt{2}\right)\cdot\exp\left(-t^2\right)\dd{t}  \\
+      &= \dfrac{\mu}{\sqrt{\pi}}\int_{-\infty}^{\infty}\exp\left(-t^2\right)\dd{t}
        + \dfrac{1}{\sqrt{\pi}}\int_{-\infty}^{\infty}t\sigma\sqrt{2}\cdot\exp\left(-t^2\right)\dd{t}
-       =x_0.
+       =\mu.
   \end{align*}
   Druhý z integrálů je totiž roven nule, neboť integrand je lichá funkce.
   \begin{equation*}
-    D(X) = \dfrac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{\infty}\left(x - x_0\right)^2 
-           \exp\left[-\dfrac{(x-x_0)^2}{2\sigma^2}\right]\dd{x}
+    D(X) = \dfrac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{\infty}\left(x - \mu\right)^2 
+           \exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]\dd{x}
          = \dfrac{2\sqrt{2}\sigma^3}{\sigma\sqrt{2\pi}}
            \int_{-\infty}^{\infty}t^2\exp\left(-t^2\right)\dd{t}
          = \sigma^2.
@@ -73,29 +74,30 @@
       + \dfrac{1}{2}\int_{-\infty}^{\infty}\exp\left(-t^2\right)\dd{t}.
   \end{equation*}
 
-  {\centering
-    \captionsetup{type=figure}
-    \begin{tabular}{cc}
-     \subfloat[ ]{\label{mai:fig047a}
-       \includegraphics[width=0.35\linewidth]{mai_fig047a.png}}              &
-%     \hspace{1pt}
-     \subfloat[ ]{\label{mai:fig047b}
-       \includegraphics[width=0.35\linewidth]{mai_fig047b.png}}
-%     \hspace{1pt}
-    \end{tabular}
-    \captionof{figure}{Normální rozdělení a jeho distribuční funkce pro \(\sigma(x) = 2\) a \(X_0 = 
-               0\) \cite[s.~241]{Musilova2009MA1}}
-    \label{mai:fig047}
-  \par}
+%  {\centering
+%    \captionsetup{type=figure}
+%    \begin{tabular}{cc}
+%     \subfloat[ ]{\label{mai:fig047a}
+%       \includegraphics[width=0.35\linewidth]{mai_fig047a.png}}              &
+%%     \hspace{1pt}
+%     \subfloat[ ]{\label{mai:fig047b}
+%       \includegraphics[width=0.35\linewidth]{mai_fig047b.png}}
+%%     \hspace{1pt}
+%    \end{tabular}
+%    \captionof{figure}{Normální rozdělení a jeho distribuční funkce pro \(\sigma(x) = 2\) a \(X_0 
+%= 
+%               0\) \cite[s.~241]{Musilova2009MA1}}
+%    \label{mai:fig047}
+%  \par}
   
   Distribuční funkce normálního rozdělení, zvaná \(errorfunkce\), je běžnou součástí různých 
   počítačových programů, takže poměrně snadno zjistíme pravděpodobnostní obsah intervalu určeného 
   směrodatnou odchylkou \(\sigma(x) = \sqrt{d(X)} = \sigma\). Pravděpodobnost, že hodnota náhodné 
-  veličiny \(X\) s normálním rozdělením leží v intervalu \((x_0 - \sigma, x_0 + \sigma)\), je 
+  veličiny \(X\) s normálním rozdělením leží v intervalu \((\mu - \sigma, \mu + \sigma)\), je 
   zhruba \SI{68.3}{\percent}. V souvislosti s normálním rozdělením se často užívají další 
-  dva druhy odchylek. \textbf{Pravděpodobná chyba} \(\theta\) určuje interval \((x_0 - \theta, x_0 
+  dva druhy odchylek. \textbf{Pravděpodobná chyba} \(\theta\) určuje interval \((\mu - \theta, \mu 
   + \theta)\), v  němž leží hodnota veličiny \(X\) s pravděpodobností \SI{50}{\percent}. 
-  \textbf{Krajní chyba} \(\kappa\) určuje interval \((x_0 - \kappa, x_0 + \kappa)\), v němž leží 
+  \textbf{Krajní chyba} \(\kappa\) určuje interval \((\mu - \kappa, \mu + \kappa)\), v němž leží 
   hodnota veličiny \(X\) s pravděpodobností \SI{99.7}{\percent}. Z tabelovaných hodnot 
   \(errorfunkce\) zjistíme, že platí
   \begin{equation}\label{mai:eq71}
