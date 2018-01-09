@@ -3,13 +3,14 @@
 \documentclass[
   fontsize=11pt,
   open=any,
+  titlepage=false,
   chapterprefix=true]{scrbook}
-  
 
+\setuptoc{toc}{leveldown}
 \usepackage{scrlayer-scrpage}
 \usepackage{polyglossia}
   \setdefaultlanguage{czech}
-\usepackage{csquotes} 
+\usepackage{csquotes}
 
 % ~~~~~~~~ Page Layout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   \usepackage[verbose=true,                  % displays the parameter results on the terminal
@@ -28,8 +29,8 @@
 \usepackage{microtype}
 \usepackage{lipsum}
 \usepackage{ifluatex}
-\providecommand\DebugMode{true}
-%\providecommand\DebugMode{false}
+%\providecommand\DebugMode{true}
+\providecommand\DebugMode{false}
 \usepackage{syntonly}
 % --- Koma script ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -61,9 +62,10 @@
 }
 \setkomafont{pagenumber}{\normalfont\bfseries}
 \ihead{\pagemark}
-\chead{luaking}
+% \chead{luaking}
 \ofoot[]{}                                % remove pagenumber from foot
 % ---- Table fo content ----------------
+\KOMAoptions{toc=chapterentrydotfill}
 %\pagestyle{scrheadings}
 \unsettoc{toc}{onecolumn}                 % https://tex.stackexchange.com/questions/151320/
 
@@ -117,7 +119,7 @@
 % This LATEX package provides the command \tablefootnote to be used in a table or sidewaystable 
 % environment, where \footnote will not work and when using \footnotemark and \footnotetext and 
 % adjusting the counters (including Hfootnote) manually is either too much work or would not 
-% even work (sidewaystable). 
+% even work (sidewaystable).
 \usepackage{tablefootnote}
 \renewcommand{\arraystretch}{1.5}          % factor for stretching the height of the lines -
                                            % modification is global
@@ -136,7 +138,6 @@
 % ~~~~~~~~~~~~ Figures ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \usepackage{subfig}                        % Multipart figures
 \usepackage{wrapfig}                       % Floats, Figures and aptions
-
 % ~~~~~~~~~~ Animation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   \usepackage{animate}
   \usepackage{media9}
@@ -185,12 +186,12 @@
   \newcommand{\ratioset}{\mathbb{Q}}
   % Matrix
   \newcommand{\matr}[1]{\mathbf{#1}}
-  
+
   \DeclareMathOperator\erf{erf}
   \DeclareMathOperator\cotg{cotg}
   \DeclareMathOperator\arctg{arctg}
   
-  \newcommand\abs[1]{\ensuremath{\lvert#1\rvert}}   % https://tex.stackexchange.com/questions/97631/
+  \newcommand\abs[1]{\ensuremath{\lvert#1\rvert}}  % https://tex.stackexchange.com/questions/97631/
   \newcommand{\dx}{\hspace{2pt}dx}
   \newcommand{\dd}[1]{\hspace{2pt}d#1}
   \newcommand{\limitint}{\mathop{\int}}
@@ -207,7 +208,7 @@
   \newcommand{\ngrad}[1]{\nabla\;#1}                           % nabla gradient
   \newcommand{\ndiver}[1]{\nabla\cdot\vec{#1}}                 % nabla divergence
   \newcommand{\nrot}[1]{\nabla\times\vec{#1}}                  % nabla rotace
-  
+
 \newcommand{\wikitextrule}{\noindent\rule[0.5ex]{\linewidth}{1pt}}
  % ~~~~~~~~ České uvozovky ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   \newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft}
@@ -242,6 +243,7 @@
 \DeclareSIUnit\AU{AU}
 
 % ~~~~~~~~ Layout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage[ddmmyyyy]{datetime}
 \usepackage{enumitem}                 % provides extensions  LaTeX's list environments 
 \usepackage{adjustbox}
   \adjustboxset{bgcolor=yellow}
@@ -254,11 +256,20 @@
   labelfont=bf,             % make all caption labels small and bold or:
   justification=justified,
   textfont=it]{caption}     % Captions
+
+  \captionsetup
+    {labelfont={color=Sepia,bf},
+     textfont={color=OliveGreen},
+     singlelinecheck=false,
+     format={plain},            % plain >> Typesets the captions as a normal 
+                                % paragraph. {options: plain, hang}
+     indention={.5cm}           % setup an extra indention starting at the second 
+                                % line of the caption.
+    }
 % ~~~~~~~~ Attache file into PDF ~~~~~~~~~~~~~~~~
 % insert pages of external PDF documents without `Overfull \hbox' and `Overfull \vbox' warnings
 % when inserted pages does not match the print space. 
-  \usepackage{pdfpages}               % \includepdf >> Inserts pages of an external PDF 
-  %document.
+  \usepackage{pdfpages}     % \includepdf >> Inserts pages of an external PDF document.
   \usepackage{attachfile2}
   \usepackage[author=jafa]{pdfcomment}% A user-friendly interface to pdf annotations.
   
@@ -268,23 +279,29 @@
 
 %\loggingall
 
-\begin{titlepage}
-  \centering
-  \hfill\includegraphics[width=2cm]{example-image-1x1}\par
+%\begin{titlepage}
+
+\begin{center}
+  \hfill\includegraphics[width=\linewidth]{einstein_aotw.jpg}\par
   \vspace{4\baselineskip}
   {\Huge 
-  Luaking\\ Školní zápisník\par}
+  \textbf{LUAKING}\\ Školní zápisník\par}
   \vspace{4\baselineskip}
   by\par
   {\Large\textsc{Jaroslav Fait}\par}
-  \vfill
+  {\Large\today\par}
+%  \vfill
   University of West Bohemia\par
   {\em Faculty of Electrical Engineering}
-\end{titlepage}
+  \vspace{1cm}
+  \hrule
+\end{center}
+
+%\end{titlepage}
 
 
 % ========== TOC =================================
-% this sets the depth to which things are listed  
+% this sets the depth to which things are listed
 % in the table of contents (Chap = 0, Sec = 1, etc)
 % The complete truth is that there is also a level –1, which corresponds to \part
 \setcounter{tocdepth}{-1} % 
@@ -300,11 +317,11 @@
 \ifthenelse{ \equal{\DebugMode}{true} }{
 % Debug mode ON
     \input{../src/MAI/MAT}
-    \input{../src/FYZ/FYZ.tex}
-    \input{../src/TKY/TKY.tex}
+%    \input{../src/FYZ/FYZ.tex}
+%    \input{../src/TKY/TKY.tex}
 %    \input{../src/TEO/TEO.tex}
 %    \input{../src/AES/AES.tex}
-    \input{../src/CES/CES.tex}
+%    \input{../src/CES/CES.tex}
 %    \input{../src/RAE/RAE.tex}
 %    \input{../src/PVE/PVE.tex}
 %    \input{../src/EPR/EPR.tex}
@@ -316,11 +333,11 @@
 {
 % DEBUG was off
     \input{../src/MAI/MAT}
-%    \input{../src/FYZ/FYZ.tex}
+    \input{../src/FYZ/FYZ.tex}
     \input{../src/TKY/TKY.tex}
-%    \input{../src/TEO/TEO.tex}
-%    \input{../src/AES/AES.tex}
-%    \input{../src/CES/CES.tex}
+    \input{../src/TEO/TEO.tex}
+    \input{../src/AES/AES.tex}
+    \input{../src/CES/CES.tex}
 %    \input{../src/RAE/RAE.tex}
 %    \input{../src/PVE/PVE.tex}
 %    \input{../src/EPR/EPR.tex}
@@ -328,7 +345,4 @@
 %    \input{../src/APE/APE.tex}
 %    \input{../src/NJ/NJ.tex}
 }
-
-
-
 \end{document}

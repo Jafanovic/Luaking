@@ -1,0 +1,24 @@
+% !TeX spellcheck = cs_CZ
+\documentclass[11pt]{standalone}
+\usepackage{xltxtra}
+\usepackage{siunitx}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{intersections, calc, positioning}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+\usepackage{amsmath}
+
+\begin{document}
+  \begin{tikzpicture}[scale=1,>=latex']
+     \filldraw[fill=green!20!white, draw=green!50!black, very thick] (-1,1) rectangle (1,0);
+     \coordinate (v1) at (-2,0.5);
+     \coordinate (v2) at (-1,0.5);
+     \coordinate (v3) at (1,0.5);
+     \coordinate (v4) at (2,0.5);
+     \draw[->] (v1) node[left] {\(x\)} -- (v2);
+     \draw[->] (v3) --  (v4) node[right] {\(y\)} ; 
+     \node[] at ($ (v2)!0.5!(v3) $) {\(S\)};
+  \end{tikzpicture}
+\end{document}

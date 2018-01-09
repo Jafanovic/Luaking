@@ -4,39 +4,65 @@
 %---------------------------------------------------------------------------------------------------
 % file mai1ch03.tex
 %---------------------------------------------------------------------------------------------------
-\chapter{Počet Pravděpodobnosti}\label{mai:IchapIII}
+\chapter{Kombinatorika, pravděpdobnost, statistika}\label{mai:IchapIII}
 \minitoc
-  Slovo pravděpodobnost používáme velmi často. Jaký však je jeho přesný význam? Jsme přesvědčeni, 
-  že pravděpodobnost výhry ve sportce je velmi malá. Ani pravděpodobnost, že se vyplní předpověď 
-  počasí, nepovažujeme mnohdy za výraznou. Přesto je mezi oběma příklady obrovský kvantitativní 
-  rozdíl. Zkusme význam pojmu pravděpodobnost ukázat pomocí konkrétních číselných příkladů.
-  
-  \begin{itemize}
-    \item \textbf{Příklad se střelcem}: Sportovní střelec střílí na terč série \num{100} ran. 
-          Předpokládejme, že podmínky při střelbě jsou stále stejné. Stejná je zbraň, terč, 
-          vzdálenost, povětrnostní podmínky i momentální zdravotní stav střelce. Při hodnocení 
-          střelcova „mistrovství“ někdo řekne, že střelec zasáhne terč s pravděpodobností 
-          \num{92}\%. Jak tomu rozumět? Znamená to, že v souboru sérií výstřelů jsou velmi časté 
-          ty, v nichž zasáhl střelec terč \num{92}-krát. Samozřejmě, není řídké, že se objeví i 
-          série s \num{93} nebo \num{94} zásahy, ale také s \num{91} nebo \num{90}. Vyloučen není 
-          ani případ s úspěšností \num{96} či \num{88}, a dokonce i stovku bychom mohli zaznamenat. 
-          Situace výrazně odlišné od \num{92} zásahů však budou řídké, a to tím více, čím více se 
-          úspěšnost série liší od \num{92} oběma směry.
-    \item \textbf{Příklad se zmetky}: Koupíte si výrobek u firmy, o které je známo, že vyrábí 
-          zmetky s pravděpodobností 0,16\%? Situaci lze posuzovat obdobně jako úspěšnost střelce. 
-          Budeme-li například zkoumat série obsahující 1000 výrobků, bude každá z nich obsahovat „v 
-          průměru“ 16\% zmetků. Z příkladu se střelcem již zhruba víme, jak posuzovat slovo v 
-          průměru.
-  \end{itemize}
-  
-  V této kapitole se budeme pravděpodobnostmi zabývat podrobněji. Zjistíme, že i když se týkají 
-  náhodných jevů, platí i pro ně jisté zákonitosti.
+  \section{Kombinatorika}\label{mai:IchapIIIsecI}
+    \textbf{Kombinatorika} se od všech matematických disciplín, v několika směrech liší. Zatímco v 
+    geometrii má každá přímka nekonečnou délku a každý trojúhelník nekonečně mnoho bodů, zatímco v 
+    algebře některé rovnice i nerovnice mají nekonečně mnoho řešení a zatímco matematická analýza 
+    zkoumá limity posloupností a funkcí, roste-li příslušná proměnná do nekonečna, v kombinatorice 
+    se s nekonečnem nesetkáme. Kombinatorika je součástí \textbf{finitní matematiky}, která studuje 
+    konečné soubory (množiny a uspořádané \(k\)-tice, \(k\in \mathcal{N}\)). 
     
-  \section{Pravděpodobnost}\label{mai:IchapIIIsecI}
-    V úvodních příkladech jsme si vyložili, jak intuitivně chápat pojem pravděpodobnost. Jednalo se 
-    v nich o posouzení průměrné úspěšnosti ve velkém souboru operací či úkonů prováděných za 
-    stejných podmínek, šlo tedy o jakousi „průměrnou“ pravděpodobnost. Nyní definujeme 
-    pravděpodobnost matematicky.
+    Další odlišností je to, že často nemáme možnost ověřit si správnost výsledku, ke kterému jsme 
+    při řešení kombinatorické úlohy dospěli, a jsme odkázáni jen na svůj vlastní úsudek. Proto v 
+    kombinatorice v míře větší než jinde platí, že „cvičení dělá mistra“. 
+    
+    V této kapitole je probrána část kombinatoriky, která se zabývá vytvářením skupin z daných 
+    prvků a určováním jejich počtu. Jde o klasickou problematiku, která byla řešena již v 17. a 18. 
+    století a která je spojena se jmény \emph{B. Pascala}, \emph{P. Fermata}, \emph{J Bernoulliho}, 
+    \emph{G. W. Leibnize}  a \emph{L. Eulera}. Dnes představuje kombinatorika rozsáhlou 
+    matematickou disciplínu, některé její problémy byly již vyřešeny (problém čtyř barev) mnohé 
+    další na své vyřešení čekají. 
+    
+    A závěrem ještě důležitá poznámka terminologická: přirozeným čísly se v této kapitole rozumějí 
+    čísla celá kladná tj. čísla 1, 2, 3, 4, \(\ldots\), nula se tedy mezi přirozená čísla 
+    nezahrunuje. \cite[s.~7]{calda2008matematika} 
+    
+    \subsection{Základní kombinatorická pravidla}
+    
+    
+    \cite[s.~7]{polak1991matematika}
+    
+  \section{Pravděpodobnost}\label{mai:IchapIIIsecII}
+    Slovo pravděpodobnost používáme velmi často. Jaký však je jeho přesný význam? Jsme přesvědčeni, 
+    že pravděpodobnost výhry ve sportce je velmi malá. Ani pravděpodobnost, že se vyplní předpověď 
+    počasí, nepovažujeme mnohdy za výraznou. Přesto je mezi oběma příklady obrovský kvantitativní 
+    rozdíl. Zkusme význam pojmu pravděpodobnost ukázat pomocí konkrétních číselných příkladů.
+  
+    \begin{itemize}
+      \item \textbf{Příklad se střelcem}: Sportovní střelec střílí na terč série \num{100} ran. 
+            Předpokládejme, že podmínky při střelbě jsou stále stejné. Stejná je zbraň, terč, 
+            vzdálenost, povětrnostní podmínky i momentální zdravotní stav střelce. Při hodnocení 
+            střelcova „mistrovství“ někdo řekne, že střelec zasáhne terč s pravděpodobností 
+            \num{92}\%. Jak tomu rozumět? Znamená to, že v souboru sérií výstřelů jsou velmi časté 
+            ty, v nichž zasáhl střelec terč \num{92}-krát. Samozřejmě, není řídké, že se objeví i 
+            série s \num{93} nebo \num{94} zásahy, ale také s \num{91} nebo \num{90}. Vyloučen není 
+            ani případ s úspěšností \num{96} či \num{88}, a dokonce i stovku bychom mohli 
+            zaznamenat. Situace výrazně odlišné od \num{92} zásahů však budou řídké, a to tím více, 
+            čím více se úspěšnost série liší od \num{92} oběma směry.
+      \item \textbf{Příklad se zmetky}: Koupíte si výrobek u firmy, o které je známo, že vyrábí 
+            zmetky s pravděpodobností 0,16\%? Situaci lze posuzovat obdobně jako úspěšnost střelce. 
+            Budeme-li například zkoumat série obsahující 1000 výrobků, bude každá z nich obsahovat 
+            „v průměru“ 16\% zmetků. Z příkladu se střelcem již zhruba víme, jak posuzovat slovo v 
+            průměru.
+    \end{itemize}
+    
+    V této kapitole se budeme pravděpodobnostmi zabývat podrobněji. Zjistíme, že i když se týkají 
+    náhodných jevů, platí i pro ně jisté zákonitosti. V úvodních příkladech jsme si vyložili, jak 
+    intuitivně chápat pojem pravděpodobnost. Jednalo se v nich o posouzení průměrné úspěšnosti ve 
+    velkém souboru operací či úkonů prováděných za stejných podmínek, šlo tedy o jakousi 
+    „průměrnou“ pravděpodobnost. Nyní definujeme pravděpodobnost matematicky.
     
     \subsection{Co se pravdě podobá - definice pravděpodobnosti}
       Pro definici pravděpodobnosti použijeme pojmu \emph{náhodný pokus}, jehož význam si ukážeme 
@@ -386,7 +412,7 @@
       \input{../src/MAI/exam/exam063.tex}
       %---------------------------------------------------------------
       
-  \section{Náhodné veličiny}\label{mai:IchapIIIsecII}
+  \section{Náhodné veličiny}\label{mai:IchapIIIsecIII}
     Hodnota některých veličin je určena jednoznačně a „jednou provždy“. Kdykoli budeme její hodnotu 
     zjišťovat, tehdy dostaneme totéž - takže ji ani opakovaně zjišťovat nemusíme. Příkladem může 
     být skoro prázdná peněženka, ve které jsou třeba tři koruny. Dokud nebudeme pracovat a do 
@@ -773,7 +799,7 @@
       \input{../src/MAI/exam/exam070.tex}
       %---------------------------------------------------------------
   
-  \section{Náhoda a zpracování měření}
+  \section{Náhoda a zpracování měření}\label{mai:IchapIIIsecIV}
     \subsection{Součet a součin náhodných veličin}
       Nyní vyřešíme ještě jeden důležitý problém. Víme již, že veličinu \(Y = f(X)\) lze popsat 
       stejnými pravděpodobnostmi jako veličinu \(X\). V řadě případů je však náhodná veličina \(Y\) 
@@ -1318,6 +1344,7 @@
       V dalších kapitolách věnovaných lineární algebře se k tomuto problému znovu vrátíme a 
       ukážeme, že jej lze elegantně řešit také jako úlohu algebraickou, konkrétně úlohu o 
       ortogonální projekci vektorů na podprostory.
+      
 %} %tikzset
 %---------------------------------------------------------------------------------------------------
 \printbibliography[heading=subbibliography]

@@ -1,6 +1,6 @@
 % !TeX spellcheck = cs_CZ
-{\tikzset{external/prefix={tikz/TKY/}}
- \tikzset{external/figure name/.add={ch02_}{}}
+%{\tikzset{external/prefix={tikz/TKY/}}
+% \tikzset{external/figure name/.add={ch02_}{}}
 %============ Kapitola: Číslicové signály - posloupnosti ===========================================
 \chapter{Číslicové signály - posloupnosti}
 \minitoc
@@ -65,13 +65,12 @@
     %---------------------------------------------------------------
 
   \section{Základní operace s posloupnosti}
-    V dalším textu budeme používat tři základní lineární operace \cite{Sovka} zobrazené na
-    \ref{sas:fig_zakladni_operace}:
+    V dalším textu budeme používat tři základní lineární operace zobrazené na \ref{tky:fig_007}:
     \begin{itemize}
-      \item \texttt{součin} signálu $x[n]$ a reálné konstanty $b$:      
+      \item \texttt{součin} signálu $x[n]$ a reálné konstanty $b$:
             $$w[n]=bx[n], n = 0,1,2, \ldots$$ Tato operace je v praxi realizována násobičkou a je
             zdrojem numerických chyb, tedy kvantizačního šumu, který produkují číslicová zařízení.
-      \item \texttt{součet} signálu $x[n]$ a signálu $y[n]$:           
+      \item \texttt{součet} signálu $x[n]$ a signálu $y[n]$:
             $$v[n]=x[n]+y[n], n = 0,1,2, \ldots$$ Tuto operaci provádí sčítačka. Při neošetření může
             tato operace generovat hrubé chyby.
       \item \texttt{zpoždění} signálu $x[n]$ o $k$ vzorkovacích kroků:  
@@ -84,18 +83,18 @@
       \centering
       \begin{tabular}{c}
         \hspace{0.1cm}
-        \subfloat[ ]   {
-          \input{../src/TKY/img/posl_operace1.tex}}  \\
-        \subfloat[ ]   {
-          \input{../src/TKY/img/posl_operace2.tex}}  \\
-        \subfloat[ ]   {
-          \input{../src/TKY/img/posl_operace3.tex}}    
+        \subfloat[ ]   {\label{tky:fig_007a}
+          \includegraphics[width=0.4\linewidth]{tky_fig007a.pdf}}  \\
+        \subfloat[ ]   {\label{tky:fig_007b}
+          \includegraphics[width=0.4\linewidth]{tky_fig007b.pdf}}  \\
+        \subfloat[ ]   {\label{tky:fig_007c}
+          \includegraphics[width=0.4\linewidth]{tky_fig007c.pdf}}
       \end{tabular}
-      \caption[Základní operace]{Symboly základních operací} 
-      \label{sas:fig_zakladni_operace} 
-    \end{figure}    
+      \caption[Základní operace]{Symboly základních operací \cite[s.~7]{Sovka2002}} 
+      \label{tky:fig_007}
+    \end{figure}
 
-} %tikzset
+%} %tikzset
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \printbibliography[title={Seznam literatury}, heading=subbibliography]
 \addcontentsline{toc}{section}{Seznam literatury}

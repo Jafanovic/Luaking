@@ -1,0 +1,24 @@
+% !TeX spellcheck = cs_CZ
+\documentclass[11pt]{standalone}
+\usepackage{xltxtra}
+\usepackage{siunitx}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{intersections, calc, positioning}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+\usepackage{amsmath}
+
+\begin{document}
+  \begin{tikzpicture}[scale=1,>=latex']
+    \coordinate (A) at (0,0) {};
+    \coordinate (B) at (1,-1) {};   
+    \coordinate (C) at ($ (A)!0.5!(B) $) {};   
+    \coordinate (D) at (A |- C) {}; 
+      \fill[fill=blue!20!white, draw=blue!50!black, very thick] (A) rectangle (B);
+      \node[] at (C) {\(z^{-k}\)};
+      \draw[->] (D) + (-1,0) node[left] {\(x[n]\)} -- (D);
+      \draw[->] (D) ++(1,0) --+ (1,0) node[right] {\(x[n-k]\)}; 
+  \end{tikzpicture}
+\end{document}

@@ -33,26 +33,34 @@
                                          % will be numbered
   xleftmargin=3em,                       % adjust left margin
 }
+\setpartpreamble[u]{
+\begin{center}
+  \vspace{1cm}
+  \Huge \uppercase{\textbf{Technická kybernetika}} \\
+  \vspace{2cm}
+  \includegraphics[width=0.8\linewidth]{Norbert_Wiener.jpg}
+\end{center}
+}
 
 \part{TKY}\label{part:TKY}
 \parttoc
-  
+
 \ifthenelse{ \equal{\DebugMode}{true} }{
 % Debug mode ON
 
 %========================= Kapitola: Měření teploty ================================================
-  \input{../src/TKY/chap/feedback_theory.tex} 
+  \input{../src/TKY/chap/feedback_theory.tex}
 }
 {
 % DEBUG was off
 %======================= Kapitola: Základy technické kybernetiky ===================================
-  \input{../src/TKY/chap/zaklady_tech_kybernetiky.tex} 
+  \input{../src/TKY/chap/tky1ch01.tex}
 %======================= Kapitola: Číslicové signály - posloupnosti ================================
-  \input{../src/TKY/chap/cis_sig.tex}  
+  \input{../src/TKY/chap/cis_sig.tex}
 %======================= Kapitola: Popis spojitých a diskrétních systémů ===========================
   \input{../src/TKY/chap/lin_sys.tex}
 %========================= Kapitola: Měření teploty ================================================
-  \input{../src/TKY/chap/feedback_theory.tex} 
+  \input{../src/TKY/chap/feedback_theory.tex}
 %========================= Kapitola: Měření teploty ================================================
-  \input{../src/TKY/chap/Sensor_Temp.tex}  
+  \input{../src/TKY/chap/Sensor_Temp.tex}
 }

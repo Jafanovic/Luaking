@@ -13,7 +13,7 @@ lualatex.exe \providecommand{\DebugMode}{true}\input{%root_file%.tex} -synctex=1
 
 timer /s /nologo
 
-COPY "d:\Github\Luaking\tex\%root_file%.pdf" "c:\Users\jaros\Google Drive\%root_file%.pdf"
+COPY "d:\Github\Luaking\tex\%root_file%.pdf" "c:\Users\jarda\Google Drive\%root_file%.pdf"
 
 ENDLOCAL
 @echo off

@@ -1,22 +1,22 @@
 % !TeX spellcheck = cs_CZ
-{\tikzset{external/prefix={tikz/TKY/}}
- \tikzset{external/figure name/.add={ch03_}{}}
+%{\tikzset{external/prefix={tikz/TKY/}}
+% \tikzset{external/figure name/.add={ch03_}{}}
 %================== Kapitola: LTI systém ===========================================================
 \chapter{LTI systém}
 \minitoc
   \section{Vlastnosti a popis lineárních systému}
-    \begin{wrapfigure}[8]{r}{5cm}
-      \centering      
-      \input{../src/TKY/img/soustava.tex}
+  
+    \begin{wrapfigure}[7]{r}{5cm}
+      \centering
+      \includegraphics[width=0.9\linewidth]{tky_fig005.pdf}
       \caption[Symbol soustavy s jedním vstupem a jedním výstupem]{Symbol soustavy s jedním 
                vstupem a jedním výstupem}
-      \label{sas:fig_soustava}   
+      \label{tky:fig005}
     \end{wrapfigure}
     Na soustavu obvodů můžeme nahlížet jako na seskupení (množinu) navzájem souvisejících součástí, 
     ke kterému je určen vstupní signál $x$, zvaný buzení a výstupní signál $y$, označovaný jako 
     odezva. Z hlediska vlastností jde o systém představující "černou skříňku", jejíž vlastnosti 
-    můžeme identifikovat analýzou vstupního a výstupního signálu \cite{Bicak}.
-        
+    můžeme identifikovat analýzou vstupního a výstupního signálu \cite{Bicak}.        
     \begin{itemize}
       \item Systémy se spojitým časem (na vstupu i výstupu pracují se spojitými signály) - relace  
             mezi vstupem a výstupem můžeme symbolicky zapsat:
@@ -114,13 +114,24 @@
       \end{equation}
       Poznamenejme, že formou (\ref{SAS:eq_odezva_na_diskretni_signal}) lze zapsat každý diskrétní
       signál.
-     
+
+      \begin{figure}[ht!]
+        \centering  
+        \begin{tabular}{cc}
+          \subfloat[ ]{\label{tky:fig_006a}
+            \includegraphics[width=0.4\linewidth]{tky_fig006a.pdf}}              &
+          \subfloat[ ]{\label{tky:fig_006b}
+            \includegraphics[width=0.4\linewidth]{tky_fig006b.pdf}}              \\
+        \end{tabular}
+        \caption{Posloupnost jednotkového skoku \(1[n]\) a signálu \(x[n]\)}
+        \label{tky:fig_006}
+      \end{figure}
       %---------------------------------------------
-      \input{../src/TKY/img/posloupnost_1n_xn.tex}
+%      \input{../src/TKY/img/posloupnost_1n_xn.tex}
       % \label{SAS:fig_odezva4}
       %---------------------------------------------
       
-      Na obr. \ref{SAS:fig_odezva4} znázorněna souvislost mezi posloupností jedniček a diskrétním
+      Na obr. \ref{tky:fig_006} znázorněna souvislost mezi posloupností jedniček a diskrétním
       sig\-ná\-lem. \emph{Posloupnost jedniček tvoří bázi pro diskrétní signály}. Každá komponenta
       diskrétního signálu je vyjádřena součinem $x[m]\delta[n-m]$. V uvedeném příkladě jde o
       posloupnost příslušnou jednotkovému skoku
@@ -342,7 +353,7 @@
       \input{../src/TKY/exam/exam002.tex}
       %---------------------------------------------------------------
 
-} %tikzset
+%} %tikzset
 %---------------------------------------------------------------------------------------------------
 \printbibliography[title={Seznam literatury}, heading=subbibliography]
 \addcontentsline{toc}{section}{Seznam literatury}
