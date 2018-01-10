@@ -1,4 +1,3 @@
-
 // Program that includes a function that swaps
 // any two integers passed to it
 #include <iostream>
@@ -17,7 +16,7 @@ void swap(int &num1, int &num2)
 {
    // Variable that holds in-between
    // swapped value.
-   // The calling function’s variables
+   // The calling functionâ€™s variables
    // (and not copies of them) are
    // changed in this function.
    int temp;           

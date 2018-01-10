@@ -6,11 +6,11 @@
   titlepage=false,
   chapterprefix=true]{scrbook}
 
-\setuptoc{toc}{leveldown}
+
 \usepackage{scrlayer-scrpage}
 \usepackage{polyglossia}
   \setdefaultlanguage{czech}
-\usepackage{csquotes}
+\usepackage[style=british]{csquotes}
 
 % ~~~~~~~~ Page Layout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   \usepackage[verbose=true,                  % displays the parameter results on the terminal
@@ -29,8 +29,8 @@
 \usepackage{microtype}
 \usepackage{lipsum}
 \usepackage{ifluatex}
-%\providecommand\DebugMode{true}
-\providecommand\DebugMode{false}
+\providecommand\DebugMode{true}
+%\providecommand\DebugMode{false}
 \usepackage{syntonly}
 
 % --- Loading Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,6 +68,7 @@
 % \chead{luaking}
 \ofoot[]{}                                % remove pagenumber from foot
 % ---- Table fo content ----------------
+\setuptoc{toc}{leveldown}
 \KOMAoptions{toc=chapterentrydotfill}
 %\pagestyle{scrheadings}
 \unsettoc{toc}{onecolumn}                 % https://tex.stackexchange.com/questions/151320/
@@ -88,6 +89,7 @@
   backend=biber,             % 
   doi=false,
   isbn=true,
+  sortlocale=en-GB,
   texencoding=utf8,
   bibencoding=utf8]{biblatex}
   \addbibresource{MasterBiblioLib.bib}
@@ -319,12 +321,12 @@
 
 \ifthenelse{ \equal{\DebugMode}{true} }{
 % Debug mode ON
-    \input{../src/MAI/MAT}
+%    \input{../src/MAI/MAT}
 %    \input{../src/FYZ/FYZ.tex}
 %    \input{../src/TKY/TKY.tex}
 %    \input{../src/TEO/TEO.tex}
 %    \input{../src/AES/AES.tex}
-%    \input{../src/CES/CES.tex}
+    \input{../src/CES/CES.tex}
 %    \input{../src/RAE/RAE.tex}
 %    \input{../src/PVE/PVE.tex}
 %    \input{../src/EPR/EPR.tex}
