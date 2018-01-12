@@ -29,8 +29,8 @@
 \usepackage{microtype}
 \usepackage{lipsum}
 \usepackage{ifluatex}
-%\providecommand\DebugMode{true}
-\providecommand\DebugMode{false}
+\providecommand\DebugMode{true}
+%\providecommand\DebugMode{false}
 \usepackage{syntonly}
 
 % --- Loading Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -68,10 +68,17 @@
 % \chead{luaking}
 \ofoot[]{}                                % remove pagenumber from foot
 % ---- Table fo content ----------------
+% http://mirror.hmc.edu/ctan/macros/latex/contrib/koma-script/doc/scrguien.pdf
 \setuptoc{toc}{leveldown}
+\DeclareTOCStyleEntry[numwidth=3em, indent=1em]{tocline}{part} % scrguien page 357
+\DeclareTOCStyleEntry[numwidth=3em]{tocline}{section}
 \KOMAoptions{toc=chapterentrydotfill}
 %\pagestyle{scrheadings}
 \unsettoc{toc}{onecolumn}                 % https://tex.stackexchange.com/questions/151320/
+
+\makeatletter
+\renewcommand{\@pnumwidth}{2.5em}% default is 1.55em
+\makeatother
 
 % --- Bibliography ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Bibliography with UTF8 support

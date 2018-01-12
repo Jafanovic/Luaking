@@ -1,0 +1,48 @@
+% !TeX spellcheck = cs_CZ
+% http://gnuplot.sourceforge.net/demo_svg/transparent.html
+% k příkladu {mai:exam069}
+
+\documentclass[12pt]{standalone}
+\usepackage{xltxtra}
+\usepackage{kvmacros}
+
+\makeatletter
+\newif\if@check@engine  \@check@enginetrue 
+\makeatother
+\usepackage{pstricks}
+
+\begin{document}
+\begin{pspicture*}(1,0)(1,9)
+  \renewcommand{\kvcontentsize}{\Large}
+  \renewcommand{\kvindexsize}{\normalsize}
+  \kvunitlength=15mm
+  \karnaughmap{4}{$f(x_1,x_2,x_3,x_4):$}{{$x_4$}{$x_3$}{$x_2$}{$x_1$}}{1010011001100110}%
+    {% The Karnaugh map has its pivot point at the lower left point and a unitlength.
+      \thinlines
+      \put(0,2){\oval(1.9,1.9)[r]}
+      \put(-0.2,1.05){\line(1,0){0.2}} % horizontal line
+      \put(-0.2,2.95){\line(1,0){0.2}}
+      \put(4,2){\oval(1.9,1.9)[l]}
+      \put(4.0,1.05){\line(1,0){0.2}}  % horizontal line
+      \put(4.0,2.95){\line(1,0){0.2}}
+      \put(1.5,0.5){\oval(0.9,0.9)[l]}
+      \put(2.5,0.5){\oval(0.9,0.9)[r]}
+      \put(1.5,0.95){\line(1,0){1}}
+      \put(1.5,0.05){\line(1,0){1}}
+      \put(2.5,3.5){\oval(0.9,0.9)[b]}
+      \put(2.05,3.5){\line(0,1){0.7}} 
+      \put(2.95,3.5){\line(0,1){0.7}}
+      \put(2.5,0.5){\oval(0.9,0.9)[t]}
+      \put(2.05,-0.2){\line(0,1){0.7}}
+      \put(2.95,-0.2){\line(0,1){0.7}}
+      \put(0.5,2.5){\oval(0.9,0.9)[b]}
+      \put(0.5,3.5){\oval(0.9,0.9)[t]}
+      \put(0.05,2.5){\line(0,1){1}}
+      \put(0.95,2.5){\line(0,1){1}}  
+      \put(0.2,3.5){\line(-1,1){0.5}}\put(-0.5,4){$1$}
+      \put(3.7,2.6){\line(2,1){0.7}}\put(4.5,2.9){$2$}
+      \put(1.8,0.8){\line(2,1){2.6}}\put(4.5,2.1){$3$}
+      \put(2.8,3.6){\line(2,1){1.6}}\put(4.5,4.4){$4$}
+     }
+\end{pspicture*}
+\end{document}
