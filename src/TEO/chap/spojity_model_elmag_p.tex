@@ -137,15 +137,14 @@
       oblasti. Soustavu vlastních MR představují první čtyři páry rovnic; často se k nim připojuje
       jako další základní rovnice elektromagnetického pole rovnice kontinuity pro vodivý proud.
       Její integrální a diferenciální tvar reprezentují poslední dvě rovnice.
-exa
       \begin{align}
-        \oint_\mathcal{C}\vr{H} d\vr{l} &= I+\der{\Psi}{t}
-                                           \quad \rot{H}=\vr{J}+\pder{\vr{D}}{t}             \\
-        \oint_\mathcal{C}\vr{E} d\vr{l} &= -\der{\Phi}{t}
+        \oint_{\mathcal{C}}\vr{H} d\vr{l} &= I+\der{\Psi}{t}
+                                           \quad \rot{H}=\vr{J}+\pder{\vr{D}}{t}               \\
+        \oint_{\mathcal{C}}\vr{E} d\vr{l} &= -\der{\Phi}{t}
                                \qquad \rot{E}=-\pder{\vr{B}}{t}\\
-         \int_\mathcal{S}\vr{D} d\vr{S} &= Q \qquad\quad\;   \diver{D}=\rho_V                \\
-         \int_\mathcal{S}\vr{B} d\vr{S} &= 0 \qquad\quad\;\; \diver{B}=0                     \\
-         \int_\mathcal{S}\vr{J} d\vr{S} &= -\der{Q}{t} \quad\;\;\;\diver{J}=-\der{\rho_V}{t}
+         \int_{\mathcal{S}}\vr{D} d\vr{S} &= Q \qquad\quad\;   \diver{D}=\rho_V                \\
+         \int_{\mathcal{S}}\vr{B} d\vr{S} &= 0 \qquad\quad\;\; \diver{B}=0                     \\
+         \int_{\mathcal{S}}\vr{J} d\vr{S} &= -\der{Q}{t} \quad\;\;\;\diver{J}=-\der{\rho_V}{t}
       \end{align}
 
       Předpokládá se, že \emph{všechny křivky a plochy v integrálním tvaru MR jsou po částech
@@ -536,7 +535,7 @@ exa
     Metodou přímé aplikace I. Maxwellovy rovnice v integrálním tvaru pro stacionární magnetické
     pole proudové
       \begin{equation}\label{TEMP:eq_1MR_rozbor}
-        \oint_\mathcal{C}\vr{H}d\vr{l} = \oint_\mathcal{C}H\cos\alpha dl = I_c
+        \oint_{\mathcal{C}}\vr{H}d\vr{l} = \oint_{\mathcal{C}}H\cos\alpha dl = I_c
       \end{equation}    
     lze jednoduše použít tehdy, je-li ze zadané úlohy zřejmá taková symetrie pole, že lze z 
     nekonečně mnoha uzavřených křivek, splňující rov. \ref{TEMP:eq_1MR_rozbor}, nalézt takovou 
@@ -555,9 +554,9 @@ exa
     \ref{TEMP:eq_alpha_0} a řešení rovnice \ref{TEMP:eq_1MR_rozbor} při integraci po takovéto 
     siločáře je jednoduché
       \begin{equation}\label{TEMP:eq_1MR_alpha0}
-        \oint_\mathcal{C}\vr{H}d\vr{l} = H\underbrace{\oint_\mathcal{C} dl}_{l_c} = 
+        \oint_{\mathcal{C}}\vr{H}d\vr{l} = H\underbrace{\oint_{\mathcal{C}} dl}_{l_c} = 
                                          I_c \rightarrow H = \frac{I_c}{l_c}
-      \end{equation}            
+      \end{equation}
     kde $l_c$ je délka integrační dráhy $c$ splňující podmínku \ref{TEMP:eq_alpha_0}.
       
     Klasickým případem takovéto úlohy je magnetické pole \emph{dlouhého přímého válcového vodiče} o
@@ -579,7 +578,7 @@ exa
     \qquad B = B(r).$$ Na kruhových siločárách je tedy splněna podmínka \ref{TEMP:eq_alpha_0} a z 
     I. Maxwellovy rovnice \ref{TEMP:eq_1MR_rozbor} 
       \begin{equation}\label{TEMP:eq_1MR_rozbor2}
-        \oint_{\mathcal{C}}\vr{H}d\vr{l} = H\cos0\oint_\mathcal{C}dl = I(r),
+        \oint_{\mathcal{C}}\vr{H}d\vr{l} = H\cos0\oint_{\mathcal{C}}dl = I(r),
       \end{equation}     
     kde $c$ je kružnice o poloměru $r$ a proud $I(r)$ je dán rovnicí
       \begin{equation}\label{TEMP:eq_1MR_Ir}
@@ -647,7 +646,7 @@ exa
       integrál změní v pouhý součin intenzity pole a délky silové čáry
        
        \begin{equation}\label{TEMP:eq_1MR_v_hom_p}
-         \oint_\mathcal{C}\vr{H}d\vr{l} = H_s\oint_\mathcal{C}\vr{l} = H_s\cdot l_s
+         \oint_{\mathcal{C}}\vr{H}d\vr{l} = H_s\oint_{\mathcal{C}}\vr{l} = H_s\cdot l_s
        \end{equation}      
        
       takže lze vypočítat intenzitu pole $$H_s = \frac{I}{l_s}$$ pro body silové čary. 
@@ -670,20 +669,20 @@ exa
     \subsection{Magnetické pole elektrického proudu v diferenciálním tvaru}
       Nechť je opět magnetické pole vyvoláno konstantním el. proudem $I = \text{konst}$. Jak
       vyplývá z předchozí kapitoly, základním vztahem pro toto pole je \emph{Ampérův zákon}
-      $$\oint_\mathcal{c}\vr{H_c}d\vr{l} = I$$  Zvolme za integrační dráhu $c$ obvod malé plošky
+      $$\oint_{\mathcal{c}}\vr{H_c}d\vr{l} = I$$  Zvolme za integrační dráhu $c$ obvod malé plošky
       $\Delta S$, jíž prochází proud $\Delta I = J_n \Delta S$, kde $J_n$ je průmět vektoru hustoty
       proudu do směru normály plošky $\Delta S$ (předpokládáme, že ploška $\Delta S$ je dostatečně
       malá, aby se dalo počítat s konstantní hustotou proudu v celém jejím rozsahu)
       \cite[s.~13]{Trnka1972}. Pro zvolený případ platí
       
       \begin{equation}\label{TEMP:eq_amp_z1}
-        \oint_\mathcal{c}\vr{H_c}d\vr{l}  =
-           J_n \Delta S \rightarrow \frac{1}{\Delta S}\oint_\mathcal{c}\vr{H_c}d\vr{l} = J_n
+        \oint_{\mathcal{c}}\vr{H_c}d\vr{l}  =
+           J_n \Delta S \rightarrow \frac{1}{\Delta S}\oint_{\mathcal{c}}\vr{H_c}d\vr{l} = J_n
       \end{equation} 
       
       Pro $\Delta S \rightarrow 0$ zavedeme označení 
       \begin{equation}\label{TEMP:eq_amp_z2}
-        \rot{H}  = \frac{1}{\Delta S}\oint_\mathcal{c}\vr{H_c}d\vr{l}  = J_n
+        \rot{H}  = \frac{1}{\Delta S}\oint_{\mathcal{c}}\vr{H_c}d\vr{l}  = J_n
       \end{equation}
       
       Rovnice \ref{TEMP:eq_amp_z2} říká, že \emph{rotace vektoru} $\vr{H}$, ($\rot{H}$), jehož
@@ -704,7 +703,7 @@ exa
       a platí
       \begin{align}\label{TEMP:eq_amp_z4}
         \textsf{rot}_x\mathbf{H} 
-          &= \frac{1}{dydz}\oint_\mathcal{c}\vr{H_c}d\vr{l}                   \nonumber \\
+          &= \frac{1}{dydz}\oint_{\mathcal{c}}\vr{H_c}d\vr{l}                 \nonumber \\
           &= \frac{1}{dydz}\left[H_ydy + 
                            \left(H_z + \pder{Hz}{y}dy\right)dz\right] -       \nonumber \\
           &- \frac{1}{dydz}\left[\left(H_y - 

@@ -1,7 +1,7 @@
 % !TeX spellcheck = cs_CZ
 % file: prechod_deje.tex
-{\tikzset{external/prefix={tikz/TEO/}}
- \tikzset{external/figure name/.add={ch10_}{}}
+%{\tikzset{external/prefix={tikz/TEO/}}
+% \tikzset{external/figure name/.add={ch10_}{}}
 %========= Kapitola: Dynamické pochody v lineárních obvodechů ======================================
 \chapter[Přechodné děje]{Dynamické pochody v lineárních obvodech}
 \minitoc
@@ -74,25 +74,12 @@
     nebo kapacita jsou zanedbatelné vzhledem k ostatním prvkům. Rozbor přechodného stavu kmitavého
     obvodu (dále stručně obvodu \emph{RLC}) umožňuje stanovit směrnice pro možnost tohoto
     zjednodušení a jeho důsledky.
-
-    \begin{wrapfigure}{r}{5cm}
+    \begin{wrapfigure}{r}{7cm}
       \centering
-       % \includegraphics[width=0.45\textwidth]{cir_RLC_hlavka.pdf}
-      \begin{circuitikz}[ scale =1.6]
-        \draw
-          (0,0)
-          to[V<, l=$U$] ++(0,1)
-          to [R, l=$R_1$] ++ (1,0) 
-          to[L, l^=$L_1$] ++(0.5,0) 
-          to[C, l=$C_1$] ++(1,0) 
-          to[short] ++ (0,-1)
-          --(0,0);
-          \draw[->] (1.5,0.2) -- +(-0.5,0) node[left] {$i$};
-        \end{circuitikz}         
-        \caption[Schéma sériového kmitavého obvodu]{Schéma sériového kmitavého obvodu}
-        \label{TEO:fig_RLC_00}
+      \includegraphics[width=0.45\textwidth]{teo_fig027.pdf}
+      \caption[Schéma sériového kmitavého obvodu]{Schéma sériového kmitavého obvodu}
+      \label{teo:fig027}
     \end{wrapfigure}
-   
     Zopakujme, že přechodný stav, je vždy dán superpozicí nového ustáleného stavu a vlastní 
     přechodné složky, jejíž průběh závisí jen na vlastnostech obvodu a počátečních podmínkách (a 
     nikoliv na průběhu vstupního signálu), proto nejdříve budeme řešit tzv. \emph{volný stav 
@@ -121,7 +108,7 @@
       I(p) = \frac{pCLI_0 - CU_{C_0}}{p^2LC + pRC + 1}.
     \end{equation}
 
-} % tikzset
+%} % tikzset
 %---------------------------------------------------------------------------------------------------
-%\printbibliography[title={Seznam literatury}, heading=subbibliography]
+\printbibliography[title={Seznam literatury}, heading=subbibliography]
 \addcontentsline{toc}{section}{Seznam literatury}

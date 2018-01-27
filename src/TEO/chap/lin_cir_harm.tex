@@ -1,6 +1,6 @@
 % !TeX spellcheck = cs_CZ
-{\tikzset{external/prefix={tikz/TEO/}}
- \tikzset{external/figure name/.add={ch11_}{}}
+%{\tikzset{external/prefix={tikz/TEO/}}
+% \tikzset{external/figure name/.add={ch11_}{}}
 %==========================Kapitola: Dynamické pochody v lineárních obvodech========================
 \chapter[Harmonické obvody]{Lineární obvody v harmonickém ustáleném stavu}
 \minitoc
@@ -24,33 +24,43 @@
     nazývá \emph{cyklem}. Počet cyklů za jednotku času (za sekundu) udává \textbf{kmitočet}, nebo
     též \emph{frekvenci} periodické veličiny
     \begin{equation}\label{TEO:eq_harm02}
-      f = \frac{1}{T},    
-    \end{equation}       
+      f = \frac{1}{T},
+    \end{equation}
     V elektrotechnice rozdělujeme periodické veličiny do dvou skupin:
-      %----------------------------------
-      % image: TEO_fce01.tex label: \label{TEO:fig_01}
-        \input{../src/TEO/img/TEO_fce01.tex}  
-      %---------------------------------- 
-      %----------------------------------
-      % image: TEO_fce02.tex label: \label{TEO:fig_02}
-        \input{../src/TEO/img/TEO_fce02.tex}  
-      %----------------------------------    
+    \begin{figure}[ht!] % \ref{teo:fig029}
+       \centering
+       \includegraphics[width=0.8\linewidth]{teo_fig029.pdf}
+       \caption{Příklad periodické veličiny $v=v(t)$ pro kterou platí $v(t+T)=v(t)$}
+       \label{teo:fig029}
+    \end{figure}
+
+    \begin{figure}[ht!] % \ref{teo:fig030}
+       \centering
+       \includegraphics[width=0.8\linewidth]{teo_fig030.pdf}
+       \caption{Časový průběh \textbf{střídavé veličiny} $v=v(t)$, pro kterou platí, že obsahy ploch
+                v jednom cyklu nad osou $t$ a pod osou $t$ jsou totožné}
+       \label{teo:fig030}
+    \end{figure}
+
     \begin{itemize}
-      \item Veličiny $v$, jež během svého cyklu \emph{změní znaménko} (obr.\ref{TEO:fig_01})
+      \item Veličiny $v$, jež během svého cyklu \emph{změní znaménko} (obr.\ref{teo:fig029})
             nazýváme \textbf{kmitavé}. \emph{Speciálním případem} kmitavých veličin jsou
             \textbf{střídavé veličiny}, jež mají tu vlastnost, že po dobu $T/2$ jsou trvale kladné,
             po dobu $T/2$ naopak záporné a obsahy ploch omezených grafem funkce $v=v(t)$ v jednom
-            cyklu nad osou $t$ a pod osou $t$ jsou \emph{totožné} (obr. \ref{TEO:fig_02}).
+            cyklu nad osou $t$ a pod osou $t$ jsou \emph{totožné} (obr. \ref{teo:fig030}).
       \item Veličiny $v$, jež \emph{nemění své znaménko}, tj. jsou trvale kladné nebo trvale
-            záporné (obr.\ref{TEO:fig_03}) nazýváme \textbf{pulzující}. \emph{Speciálním případem}
+            záporné (obr.\ref{teo:fig031}) nazýváme \textbf{pulzující}. \emph{Speciálním případem}
             jsou \textbf{stejnosměrné veličiny}, které nemění svou hodnotu, tj. $v=konst$
-            (obr.\ref{TEO:fig_03} (b)).
+            (obr.\ref{teo:fig031} (b)).
     \end{itemize} 
 
-      %----------------------------------
-      % image: TEO_fce03.tex label: \label{TEO:fig_03}
-        \input{../src/TEO/img/TEO_fce03.tex}  
-      %----------------------------------        
+    \begin{figure}[ht!] % \ref{teo:fig031}
+       \centering
+       \includegraphics[width=0.8\linewidth]{teo_fig031.pdf}
+       \caption{Časový průběh pulsující periodické veličiny a konstantní veličiny}
+       \label{teo:fig031}
+    \end{figure}
+
     Praktický význam mají zejména tyto hodnoty periodických veličin:
     \begin{itemize}
       \item \emph{Maximální hodnota} $V_m$ periodické veličiny $v$, tj. největší hodnota, které
@@ -60,7 +70,7 @@
     \end{itemize}
       
     Maximální a minimální hodnoty střídavé veličiny se nazývají též \emph{vrcholovými hodnotami}
-    (kladnými nebo zápornými), obr. \ref{TEO:fig_01} a \ref{TEO:fig_02}. 
+    (kladnými nebo zápornými), obr. \ref{teo:fig029} a \ref{teo:fig030}. 
     
     \fbox{Střední hodnota} veličiny $v$ v intervalu $\langle t_i, t_j\rangle$ je 
     \begin{equation}\label{TEO:eq_harm03}
@@ -94,12 +104,15 @@
     Efektivní hodnotu napětí (proudu) lze změřit např. feromagnetickým, elektrodynamickým nebo
     tepelným voltmetrem (ampérmetrem). Střední hodnotu napětí (proudu) magnetoelektrickým
     voltmetrem (ampérmetrem) a střední hodnotu výkonu elektrodynamickým wattmetrem.
- 
-      %----------------------------------
-      % image: TEO_fce03.tex label: \label{TEO:fig_04}
-        \input{../src/TEO/img/TEO_fce04.tex}  
-      %---------------------------------- 
-         
+
+    \begin{figure}[ht!] % \ref{teo:fig032}
+       \centering
+       \includegraphics[width=0.8\linewidth]{teo_fig032.pdf}
+       \caption{Haromincká funkce $v = V_m\cos(\omega t + \varphi)$ resp. 
+                $v= V_m\cos(\omega t + \varphi')$ kde je $\varphi' = \varphi - \frac{T}{4}$}
+       \label{teo:fig032}
+    \end{figure}
+
     Střídavou veličinu $v$ lze též do jisté míry charakterizovat \emph{činitelem tvaru} $\beta$,
     \emph{činitelem výkyvu} $\gamma$ a \emph{činitelem plnění} $\alpha$ definovanými vztahy
     \begin{equation}\label{TEO:eq_harm07}
@@ -116,7 +129,7 @@
     \begin{equation}\label{TEO:eq_harm09}
       v = V_m\cos(\omega t + \varphi),
     \end{equation}  
-    kde $V_m$, $\omega$, $\varphi$ jsou konstanty (obr. \ref{TEO:fig_04})
+    kde $V_m$, $\omega$, $\varphi$ jsou konstanty (obr. \ref{teo:fig032})
     
     Jelikož, tato napětí, resp. proudy představují \emph{harmonické kmity}, nazýváme je
     \emph{harmonicky proměnné}, nebo krátce \emph{harmonická napětí} resp. \emph{harmonická
@@ -138,7 +151,7 @@
     zdroje (napětí nebo proud). Nazveme je \emph{obvody s nastavitelnými parametry}.
  %--------------------------------------------------------------------------------------------------
 
-} % tikzset
+%} % tikzset
 %---------------------------------------------------------------------------------------------------
 \printbibliography[title={Seznam literatury}, heading=subbibliography]
 \addcontentsline{toc}{section}{Seznam literatury}

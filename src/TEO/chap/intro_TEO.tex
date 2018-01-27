@@ -1,7 +1,7 @@
 % !TeX spellcheck = cs_CZ
 %file:intro_TEO.tex
-{\tikzset{external/prefix={tikz/TEO/}}
- \tikzset{external/figure name/.add={ch09_}{}}
+%{\tikzset{external/prefix={tikz/TEO/}}
+% \tikzset{external/figure name/.add={ch09_}{}}
 %================================= Kapitola: Základy elektrických obvodů ===========================
 \chapter{Základy elektrických obvodů}
 \minitoc
@@ -51,13 +51,16 @@
       lze ji snadno určit z napětí a proudů těchto vodičů. Naproti tomu z Maxwellovy teorie plyne, 
       že se veškerá energie přenáší dielektrikem v okolí vodičů; vodiče pouze určují směr toku této 
       energie. Tyto rozpory však nejsou překážkou pro používání teorie obvodů v praxi.
-      
-      %----------------------------------
-      % image: \ref{TEO:fig_dvojpol}
-      \input{../src/TEO/img/TEO_dvojpol.tex}  
-      %----------------------------------
+
+      \begin{figure}[ht!]  %\ref{teo:fig023}
+        \centering
+        \includegraphics[width=0.7\linewidth]{teo_fig023.pdf}
+        \caption{Dvojpól}
+        \label{teo:fig023}
+      \end{figure}
+
       Libovolnou část obvodu, která je vyvedena k jedné dvojici svorek, nazýváme 
-      \textbf{dvojpólem}; jeho schematické označení je na obr. \ref{TEO:fig_dvojpol}. Veličinu, jež 
+      \textbf{dvojpólem}; jeho schematické označení je na obr. \ref{teo:fig023}. Veličinu, jež 
       fyzikálně charakterizuje dvojpól, nazýváme jeho parametrem. Dvojpóly, které lze 
       charakterizovat jediným reálným parametrem, nazýváme \textbf{ideálními prvky obvodu} anebo 
       krátce \emph{prvky obvodu}.
@@ -109,21 +112,21 @@
         orientací větve. Z této definice plyne, že okamžitá hodnota větvového proudu je kladná v 
         čase \(t\), kdy je směr proudu ve větvi souhlasný s orientací větve a záporná pro ta \(t\), 
         kdy je směr proudu opačný. Okamžitý směr proudu budeme ve schématech vyznačovat šipkou 
-        \begin{tikzpicture}\draw[-open triangle 45] (0,0) -- (1,0);\end{tikzpicture} podle obr. 
-        \ref{TEO:fig_dvojpol_iu}.
-        
-        \begin{figure}
+%        \begin{tikzpicture}\draw[-open triangle 45] (0,0) -- (1,0);\end{tikzpicture} podle obr. 
+        \ref{teo:fig024}.
+
+        \begin{figure}[ht!]  %\ref{teo:fig024}
           \centering
-          \input{../src/TEO/img/TEO_dvojpol_iu.tex}
+          \includegraphics[width=0.7\linewidth]{teo_fig024.pdf}
           \caption{Větvový proud \(i\), větvové napětí \(u\) a orientace větve}
-          \label{TEO:fig_dvojpol_iu}
+          \label{teo:fig024}
         \end{figure}
 
         \emph{Okamžitou hodnotou větvového napětí} u budeme nazývat okamžitou hodnotu napětí mezi 
         počátečním a koncovým uzlem orientované větve v daném čase \(t\). Orientaci větvového 
         napětí budeme ve schématech vyznačovat šipkou 
-        \begin{tikzpicture}\draw[-triangle 45] (0,0) to (1,0);\end{tikzpicture} podle obr. 
-        \ref{TEO:fig_dvojpol_iu}, přičemž šipka směřuje od počátečního ke koncovému uzlu 
+%        \begin{tikzpicture}\draw[-triangle 45] (0,0) to (1,0);\end{tikzpicture} podle obr. 
+        \ref{teo:fig024}, přičemž šipka směřuje od počátečního ke koncovému uzlu 
         orientované dráhy, po níž se napětí měří.
         
       \subsubsection{Ideální prvky obvodu a jejich chování}
@@ -506,23 +509,25 @@
              požadovaný výsledek analýzy.
       \end{itemize}
       
-      Metodu uzlových napětí lze objasnit na příkladu zapojení na obr. \ref{TEO:fig_MMUN03}. Je
+      Metodu uzlových napětí lze objasnit na příkladu zapojení na obr. \ref{teo:fig025}. Je
       třeba určit proud $I_{x2}$ 
-      %----------------------------------
-      % \ref{TEO:fig_MMUN03}; Biolek_MUN_priklad.pdf
-        \input{../src/TEO/img/TEO_circ03.tex}  
-      %----------------------------------       
+      \begin{figure}[ht!]  %\ref{teo:fig025}
+        \centering
+        \includegraphics[width=0.7\linewidth]{teo_fig025.pdf}
+        \caption{Řešení obvodu metodu uzlových napětí - MUN \cite[s.~62]{Biolek}}
+        \label{teo:fig025}
+      \end{figure}
       Nejprve očíslujeme uzly. Zvolíme referenční uzel a přiřadíme mu číslo 0. Zde je třeba  
       zdůraznit, že referenční uzel je možno volit zcela libovolně. Většinou se volí tak, aby 
       případné hledané napětí bylo rovno jednomu z napětí uzlových. Dále si všimneme, že uzel, v 
       němž je se spojuje rezistor $R_3$ a proudový zdroj, je vlastně součástí referenčního uzlu a 
-      jako takový se přídavně nečísluje - má již označení 0.
+      jako takový se přídavně nečísluje - má již označení \num{0}.
       
       Vyznačená uzlová napětí $U_1$ a $U_2$ tvoří soustavu dvou neznámých, k níž musíme sestavit 
       dvě rovnice. Budou to rovnice 1. KZ pro uzly 1 a 2. Protože počítáme proud $I_{x2}$, postačí 
       určit uzlové napětí $U_2$. Z něj totiž snadno určíme proud rezistorem $R_3$ a z něj $I_{x2}$.
       
-      Podle obr. \ref{TEO:fig_MMUN03} napíšeme 1. KZ pro rovnováhu proudů v uzlech 1 a 2:
+      Podle obr. \ref{teo:fig025} napíšeme 1. KZ pro rovnováhu proudů v uzlech 1 a 2:
       \begin{align*}
         \text{uzel 1:} \qquad I &=  I_{R1} + I_{R2}            \\
         \text{uzel 2:} \qquad 0 &= -I_{R1} + I_{R2} + I_{R4}  
@@ -532,7 +537,7 @@
       orientaci zmýlíme, vyjde u daného proudu opačné znaménko.
       
       Větvové proudy na pravé straně rovnic vyjádříme pomocí větvových vodivostí a větvových 
-      napětí, která závisí na uzlových napětí (viz obr. \ref{TEO:fig_MMUN03}):
+      napětí, která závisí na uzlových napětí (viz obr. \ref{teo:fig025}):
       \begin{align}
        \text{uzel 1:} \qquad I &=  G_1U_1 + G_2(U_1-U_2)             \nonumber              \\ 
        \text{uzel 2:} \qquad 0 &= -G_2(U_1-U_2) + G_3U_2 + G_4U_2    \nonumber              \\
@@ -545,7 +550,7 @@
        \shortintertext{Tyto rovnice dávají řešení}
                    [U_1, U_2]  &= \left[2, \frac{2}{3}\right] \text{V}  \label{TEO:eq_MUN_vysl}
       \end{align}
-      Pohledem na schéma \ref{TEO:fig_MMUN03} zjistíme, že při $U_2 = \frac{2}{3}V$ bude proud 
+      Pohledem na schéma \ref{teo:fig025} zjistíme, že při $U_2 = \frac{2}{3}V$ bude proud 
       $I_{R3} = \frac{1}{3} mA$ a hledaný proud $I_{x2}$ vychází z 1. KZ
       \begin{equation}\label{TEO:eq_MUN_Ix2}
         I_{x2} = I - I_{R3} = \left(1 - \frac{1}{3}\right) = \frac{2}{3} mA.
@@ -569,7 +574,7 @@
           \end{tabular}
           \caption*{ }
         \end{table}
-        Porovnáme-li maticovou rovnici s původním schématem obvodu \ref{TEO:fig_MMUN03} 
+        Porovnáme-li maticovou rovnici s původním schématem obvodu \ref{teo:fig025} 
         dospějeme k následujícím pravidlům:
         \begin{itemize}
          \item Pravidlo o sestavení vektoru budicích proudů na levé straně maticové rovnice:
@@ -663,12 +668,15 @@
         blíže konkretizovat na několika příkladech. 
   
         \subsubsection{Pasivní obvody obsahující zdroje napětí a proudu}
-          Pomocí MMUN vyřešme zadání z obr. \ref{TEO:fig_MMUN02}. Je hledán proud \(I_x\) vytékající 
-          ze zdroje napětí 
-          %----------------------------------
-          % image: TEO_fce01.tex label: \label{TEO:fig_MMUN02}
-            \input{../src/TEO/img/TEO_circ02.tex}  
-          %---------------------------------- 
+          Pomocí MMUN vyřešme zadání z obr. \ref{teo:fig026}. Je hledán proud \(I_x\) 
+          vytékající ze zdroje napětí 
+          \begin{figure}[ht!]  %\ref{teo:fig026}
+            \centering
+            \includegraphics[width=0.7\linewidth]{teo_fig026.pdf}
+            \caption{Analyzovaný obvod}
+            \label{teo:fig026}
+          \end{figure}
+          
         \subsubsection{Obvody s ideálním operačním zesilovačem ty\-pu VFA}
           Ideální OPAMP, na obr. \ref{TEO:fig_MMUN_ideal_VFA} po vložení do obvodu způsobí 
           ztotožnění uzlových napětí $U_a$ a $U_b$, a modifikaci proudových poměrů v uzlu \emph{c}.
@@ -724,7 +732,7 @@
           % \label{TEO:ex_CitDiveder01}
             \input{../src/TEO/exam/exam004.tex}  
           %-------------------------------------------------------
-} % \tikzset
+%} % \tikzset
 
 %---------------------------------------------------------------------------------------------------
 \printbibliography[title={Seznam literatury}, heading=subbibliography]

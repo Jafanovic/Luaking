@@ -29,8 +29,8 @@
 \usepackage{microtype}
 \usepackage{lipsum}
 \usepackage{ifluatex}
-\providecommand\DebugMode{true}
-%\providecommand\DebugMode{false}
+%\providecommand\DebugMode{true}
+\providecommand\DebugMode{false}
 \usepackage{syntonly}
 
 % --- Loading Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,6 +221,8 @@
   \newcommand{\ndiver}[1]{\nabla\cdot\vec{#1}}                 % nabla divergence
   \newcommand{\nrot}[1]{\nabla\times\vec{#1}}                  % nabla rotace
 
+  \DeclareRobustCommand{\ammaG}{\text{\reflectbox{\(\Gamma\)}}}
+
 \newcommand{\wikitextrule}{\noindent\rule[0.5ex]{\linewidth}{1pt}}
  % ~~~~~~~~ České uvozovky ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   \newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft}
@@ -294,7 +296,7 @@
 %\begin{titlepage}
 
 \begin{center}
-  \hfill\includegraphics[width=\linewidth]{einstein_aotw.jpg}\par
+  \hfill\includegraphics[width=\linewidth]{luaking_title.jpg}\par
   \vspace{4\baselineskip}
   {\Huge 
   \textbf{LUAKING}\\ Školní zápisník\par}
@@ -328,19 +330,18 @@
 
 \ifthenelse{ \equal{\DebugMode}{true} }{
 % Debug mode ON
-%    \input{../src/MAI/MAT}
+    \input{../src/MAI/MAT}
 %    \input{../src/FYZ/FYZ.tex}
 %    \input{../src/TKY/TKY.tex}
 %    \input{../src/TEO/TEO.tex}
 %    \input{../src/AES/AES.tex}
-    \input{../src/CES/CES.tex}
+%    \input{../src/CES/CES.tex}
 %    \input{../src/RAE/RAE.tex}
 %    \input{../src/PVE/PVE.tex}
 %    \input{../src/EPR/EPR.tex}
 %    \input{../src/ZZT/ZZT.tex}
 %    \input{../src/APE/APE.tex}
 %    \input{../src/NJ/NJ.tex}
-
 }
 {
 % DEBUG was off
