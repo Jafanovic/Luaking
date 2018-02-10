@@ -46,11 +46,11 @@
     
     Všimněme si nyní příkladů linearity z oblasti přírodovědy.
     
-    %--Fyzika — Ohmův zákon-----------------------------------------
+    %--Fyzika - Ohmův zákon-----------------------------------------
     \input{../src/MAI/exam/exam035.tex}
     %---------------------------------------------------------------
 
-    %--Fyzika — speciální typy pohybů-------------------------------
+    %--Fyzika - speciální typy pohybů-------------------------------
     \input{../src/MAI/exam/exam036.tex}
     %---------------------------------------------------------------
     
@@ -370,10 +370,10 @@
       
       Množina reálných čísel obsahuje tyto důležité podmnožiny:
       \begin{itemize}
-        \item Množinu přirozených čísel \(\mathbb{N} = \{1, 2, \ldots, n, \ldots\}\). Platí princip 
-              \textbf{úplné indukce}: Je-li \(\mathbb{M} \subseteq \mathbb{N}\) nějaká množina 
-              přirozených čísel, která obsahuje číslo \num{1} a která současně s každým číslem 
-              \(n\) obsahuje i \(n + 1\), pak \(\mathbb{M} = \mathbb{N}\).
+        \item Množinu přirozených čísel \(\naturalset = \{1, 2, \ldots, n, \ldots\}\). Platí 
+              princip \textbf{úplné indukce}: Je-li \(\mathbb{M} \subseteq \naturalset\) nějaká 
+              množina přirozených čísel, která obsahuje číslo \num{1} a která současně s každým 
+              číslem \(n\) obsahuje i \(n + 1\), pak \(\mathbb{M} = \naturalset\).
         \item Množinu celých čísel \(\mathbb{Z} = \{\ldots, -n, \ldots, -2, -1, 0, 1, 2, \ldots, m, 
               \ldots\}\).
         \item Množinu racionálních čísel \(\mathbb{Q}\) (zlomky). Racionální čísla lze vyjádřit 
@@ -390,36 +390,33 @@
       \end{itemize}
       
       Pro počítání s reálnými čísly jsou zavedeny základní operace, s nimiž umíme pracovat na
-      základě zkušenosti, sčítání \(a + b\), odčítání \(a - b\), násobení \(a \cdot b\), resp. 
-      \(ab\) a dělení \(a : b\). Ve skutečnosti jsou potřeba jen dvě, neboť odčítání je odvozeno 
-      pomocí sčítání a dělení pomocí násobení. Uvědomili jste si někdy základní vlastnosti těchto 
-      operací? Možná ne, ale pracujeme s nimi zcela samozřejmě:
-%      \begin{table}[ht!]
-%        \centering
-%%        \begin{tabular}{l>{\centering}m{5cm}} %{@{}ll@{}}
-%%\begin{tabular}{| c | >{\centering}m{5cm} |}
-%%        \toprule
-%%          \(a + b = b + a\)            & komutativní zákon pro součet  \\ %\midrule
-%%          \((a + b) + c = a + (b +c)\) & asociativní zákon pro součet  \\
-%%          \(a + 0 = 0 + a = a\)        & existence univerzálního neutrálního prvku \num{0}  \\
-%%          \(a + (—a) = (—a) + a = 0\)  & existence právě jednoho opačného prvku k číslu \(a\)   \\ 
-%%          \(ab = ba\)                  & komutativní zákon pro součin \\
-%%          \(a(bc) — (ab)c\)            & asociativní zákon pro součin \\
-%%          \(a(b + c) = ab + ac\)       & 1. distributivní zákon  \\
-%%          \((b+ c)a — ba + ca\)        & 2. distributivní zákon \\
-%%          \(a \cdot 1 = 1 \cdot a\)    & existence univerzálního jednotkového prvku 1 \\
-%%          \(aa^{-1} = a^{-1}a\)        & existence právě jednoho inverzního prvku k číslu \(a\), pokud 
-%%                                         \(a\neq 0\)\\
-%%          \(ab = 0 \Leftrightarrow a = 0\) nebo \(b = 0\)) & neexistence dělitelů nuly \\
-%%         \bottomrule
-%%        \end{tabular}
-%%\begin{tabular}{| c | >{\centering}m{5cm} |}
-%% Bcd & A long cell with text that wraps around and is centered
-%%\end{tabular}
-%      \end{table}
+      základě zkušenosti, \textbf{sčítání} \(a + b\), \textbf{odčítání} \(a - b\), 
+      \textbf{násobení} \(a \cdot b\), resp. \(ab\) a \textbf{dělení} \(a : b\). Ve skutečnosti 
+      jsou potřeba jen dvě, neboť odčítání je odvozeno pomocí sčítání a dělení pomocí násobení. 
+      Uvědomili jste si někdy základní vlastnosti těchto operací? Možná ne, ale pracujeme s nimi 
+      zcela samozřejmě:
+      \begin{table}[ht!]
+        \centering
+        \begin{tabular}{c | L{6cm}}
+        \toprule
+          \(a + b = b + a\)            & komutativní zákon pro součet  \\ %\midrule
+          \((a + b) + c = a + (b +c)\) & asociativní zákon pro součet  \\
+          \(a + 0 = 0 + a = a\)        & existence univerzálního neutrálního prvku \num{0}  \\
+          \(a + (-a) = (-a) + a = 0\)  & existence právě jednoho opačného prvku k číslu \(a\)   \\ 
+          \(ab = ba\)                  & komutativní zákon pro součin \\
+          \(a(bc) - (ab)c\)            & asociativní zákon pro součin \\
+          \(a(b + c) = ab + ac\)       & 1. distributivní zákon  \\
+          \((b+ c)a - ba + ca\)        & 2. distributivní zákon \\
+          \(a \cdot 1 = 1 \cdot a\)    & existence univerzálního jednotkového prvku 1 \\
+          \(aa^{-1} = a^{-1}a\)        & existence právě jednoho inverzního prvku k číslu \(a\),  
+                                         pokud \(a\neq 0\)\\
+          \(ab = 0 \Leftrightarrow a = 0\) nebo \(b = 0\) & neexistence dělitelů nuly \\
+         \bottomrule
+        \end{tabular}
+      \end{table}
       Odčítání a dělení:
       \begin{equation*}
-        a — b = a + (—b), a:b = ab^{-1}, \qquad\text{pokud } b\neq0.
+        a - b = a + (-b),\qquad a:b = ab^{-1}, \qquad\text{pokud } b\neq0.
       \end{equation*}
       
     \subsection{Komplexní čísla}
@@ -428,6 +425,138 @@
       je umístěno na první pozici dvojice a představuje reálnou část čísla \(z\), \(x = 
       \operatorname{Re}(z)\), druhé (v našem zápisu \(y\)) je na druhé pozici a je imaginární částí 
       čísla \(z\), \(y = \operatorname{Im}(z)\). Je tedy obecně  \( [x, y] ≠ [y, x]\). Množinu
+      komplexních čísel značíme \(\cmplxset\). Počítání s komplexními čísly je definováno pomocí 
+      počítání s čísly reálnými takto: Označme \(z = [x, y]\), \(z_1 = [x_1, y_1]\), \(z_2 = 
+      [x_2, y_2]\). Definujeme
+      \begin{align}\label{mai:eq72}
+        \text{\textbf{součet}}\quad & z_1 + z_2 = [x_1 + x_2, y_1 + y_2],    \nonumber \\
+        \text{\textbf{součin}}\quad & z_1 \cdot z_2 \text{ nebo } z_1z_2 = [x_1x2-y_1y_2, 
+        x_1y_2+x_2y_1]. 
+      \end{align}
+      Zvláštní postavení zaujímají čísla \(0 = [0, 0]\), \(1 = [1, 0]\) a \(i = [0, 1]\). 
+      Přesvědčte se z definice násobení, že \(z \cdot 1 = 1 \cdot z = z\), \(z + 0 = 0 + z = z\), 
+      \(i \cdot i = [-1, 0]\). Snadno se také můžeme přesvědčit, že pro počítání s komplexními 
+      čísly, definované součtem a součinem, platí stejná pravidla jako pro čísla reálná. Neutrálním 
+      prvkem při sčítání je přitom \emph{nula} \(0 = [0, 0]\), neutrálním prvkem při násobení 
+      \emph{jednička} \(1 = [1, 0]\). Prvkem opačným k číslu \(z = [x, y]\) je číslo \(-z = [-x, 
+      -y] - [-1, 0] \cdot z\), prvkem inverzním k číslu \(z\neq [0, 0]\) je číslo
+      
+      \adjustbox{minipage=[c]{\textwidth}}{%
+        \begin{equation}\label{mai:eq73}
+          z^{-1} = \left[\dfrac{x}{x^2 + y^2}, -\dfrac{y}{x^2 + y^2} \right]
+        \end{equation}
+      }
+      Sami ověřme, že opravdu platí
+      \begin{equation*}
+        [x,y]\cdot\left[\dfrac{x}{x^2 + y^2}, -\dfrac{y}{x^2 + y^2} \right] = [1,0].
+      \end{equation*}
+      
+      Číslem \textbf{komplexně sdruženým} k číslu \(z = [x, y]\) rozumíme číslo \(z^* = [x, —y]\). 
+      Platí \(zz^* = z^*z = [x^2 + y^2, 0]\). Všimněme si, že platí
+      \begin{equation*}
+        z^{-1} = \dfrac{1}{z} = \dfrac{z^*}{zz^*} = [x, -y]\cdot\left[\dfrac{1}{x^2+y^2}, 0\right]
+               = \left[\dfrac{x}{x^2 + y^2}, -\dfrac{y}{x^2 + y^2} \right]
+      \end{equation*}
+      Pohodlněji než s uspořádanými dvojicemi se s komplexními čísly počítá v takzvaném 
+      \textbf{algebraickém tvaru}
+      \begin{equation*}
+        z= [x ,y] = x + iy,\quad\text{ přesněji }\quad z = [x, 0] + [0, 1] \cdot [y, 0].
+      \end{equation*}
+      Přepíšeme-li pravidla pro součet a součin při takovém způsobu zápisu a využijeme-li vztahu 
+      \(i \cdot i=i^2 = - 1\), dostaneme je ve tvaru, na který jsme zvyklí ze střední školy:
+      \begin{align*}
+        z_1 + z_2 &= (x_1 + iy_1) + (x_2 + iy_2) = (x_1 + x_2) + i(y_1 + y_2),     \\
+        z_1z_2    &= (x_1 + iy_1)(x_2 + iy_2) = x_1x_2 + ix_1y_2 + ix_2y_1 + i^2y_1y_2  \\ 
+                  &= (x_1x_2 - y_1y_2) + i(x_1y_2 + x_2y_1).
+      \end{align*}
+      Tento způsob počítání budeme preferovat před prací s uspořádanými dvojicemi. 
+      
+      %--Počítání s komplexními čísly v algebraickém tvaru -----------
+      \input{../src/MAI/exam/exam078.tex}
+      %---------------------------------------------------------------
+      
+      Pro řešení některých typů úloh není algebraický tvar komplexního čísla příliš vhodný. 
+      Představme si například, že bychom chtěli najít všechna komplexní čísla, která vyhovují rovni 
+      \(z^4 + 1 = 0\), tj. \(z^4 = -1\), a nesměli bychom \(z\) zapsat jinak než v algebraickém 
+      tvaru. Museli bychom vyjádřit \(z^4\), oddělit reálnou a imaginární část a řešit soustavu 
+      rovnic \(\operatorname{Re}z^4 =-1\). \(\operatorname{Im}z^4 = 0\). Zkusme, jak reálná a 
+      imaginární část čísla \(z^4 = (x + iy)^4\) vypadá. Naštěstí je možné zapsat komplexní číslo 
+      \(i\) jinak. Situaci přibližuje obrázek 1.5, který znázorňuje číslo \(z\) v \textbf{komplexní 
+      (Gaussově) rovině}: Reálné číslo \(\abs{z}\) se nazývá \textbf{modul komplexního čísla} \(z\) 
+      a reálné číslo \(\operatorname{z} = \varphi\in [0, 2\pi)\) je \textbf{hlavní hodnota 
+      argumentu komplexního čísla} \(z\). 
+      
+    \begin{figure}[ht!]  %\ref{mai:fig053}
+      \centering
+      \includegraphics[width=0.6\linewidth]{mai_fig053.png}
+      \caption{Algebraický a goniometrický tvar komplexního čísla. (\cite[s.~20]{Musilova2009MA1}}
+      \label{mai:fig053}
+    \end{figure}
+
+    \adjustbox{minipage=[c]{\textwidth}}{%
+      \begin{equation*}
+        \abs{z} = \sqrt{x^2 + y^2}, \qquad \tan\varphi = \dfrac{x}{y},
+      \end{equation*}
+      \begin{equation*}
+        x = \abs{z}\cos\varphi, \qquad y = \abs{z}\sin\varphi,  \qquad
+        z = \abs{z}(\cos\varphi + i\sin\varphi).
+      \end{equation*}
+    }
+    Do vztahů pro \(x\) a \(y\) bychom mohli místo \(\varphi\) dosadit také kteroukoli z hodnot 
+    \begin{equation*}
+      \varphi_k = \varphi + 2k\pi,\qquad \text{kde }k\text{ je celé číslo}, 
+    \end{equation*}
+    aniž by se hodnoty \(x\) a \(y\) změnily. Množinu všech hodnot
+    \begin{equation*}
+      \arg{z} = \{\varphi_k|\varphi_k = \varphi + 2k\pi, k\text{ celé}\}
+    \end{equation*}
+    nazýváme \textbf{argumentem} komplexního čísla \(z\), \(\varphi_k\) pak představují jeho 
+    jednotlivé větve. Platí \(\varphi_0 = \varphi\) (nultá větev představuje hlavní hodnotu 
+    argumentu). Argument čísla \([0, 0]\) není definován. 
+      
+    %--Počítání s komplexními čísly v goniometrickém tvaru----------
+    \input{../src/MAI/exam/exam079.tex}
+    %---------------------------------------------------------------
+    
+    \adjustbox{minipage=[c]{\textwidth}}{%
+      Vidíme, že
+      \begin{equation}\label{mai:eq74}
+        \abs{z_1z_2} = \abs{z_1}\cdot\abs{z_2}, \qquad \arg{(z_1z_2)} = \arg{z_1} + \arg{z_2} 
+      \end{equation}
+    }
+    (popřípadě \(\arg{(z_1z_2)} = \arg{z_1} + \arg{z_2} — 2\pi\), vyjde-li \(\varphi_1+\varphi_2 > 
+    2\pi\). Při násobení komplexních čísel tedy \emph{sčítáme} jejich argumenty. Je-li například 
+    \(z_1=\sqrt{3} - i\), tj. \(\abs{z_1} = 2\), \(\arg{z_1} = 11\pi/6\), \(z_2 = -\sqrt{3} - 3i\), 
+    tj. \(\abs{z_2} = 2\sqrt{3}\), \(\arg{z_2} = 4\pi/3\), je \(\abs{z_1z_2} = 4\sqrt{3}\), 
+    \(\arg{z_1} + \arg{z_2} = 11\pi/6 + + 4\pi/3 = 19\pi/6\), \(\arg{(z_1z_2)} = 7\pi/ 6\), 
+    \(z_1z_2 = 4\sqrt{3}(\cos7\pi/6 + i\sin7\pi/6)= -6 -2i\sqrt{3}\). 
+    
+    Pro číslo \(z = \abs{z}(\cos\varphi+ i\sin\varphi)\) také platí
+    \begin{align*}
+      z^{-1} &= \dfrac{1}{\abs{z}(\cos\varphi+ i\sin\varphi)} 
+              = \dfrac{1}{\abs{z}}
+                \left(\dfrac{\cos\varphi}{\cos^2\varphi + \sin^2\varphi}
+                    -i\dfrac{\sin\varphi}{\cos^2\varphi + \sin^2\varphi}\right) \\
+             &= \dfrac{1}{\abs{z}}(\cos(-\varphi)+ i\sin(-\varphi))
+    \end{align*}
+    
+    Číslo s jednotkovým modulem má tvar \(E(\varphi) = \cos\varphi+i\sin\varphi\) a nazývá se 
+    \textbf{komplexní jednotka}. Pro počítání s komplexními jednotkami vyplývá z řešení příkladu 
+    \ref{mai:exam079}:
+    \begin{equation}\label{mai:eq75}
+      E(\varphi_1)E(\varphi_2) = E(\varphi_1 + \varphi_2), \qquad  
+      E^{-1}(\varphi_1) = E(-\varphi_1), \qquad E(0) = 1.
+    \end{equation}
+    Veličiny \(E(\varphi)\) se tedy při násobení a dělení chovají jako mocniny o stejném základu: 
+    Při násobení mocnin se exponenty sčítají, při dělení odčítají, jakýkoli základ umocněný na 
+    nultou dává hodnotu \num{1}. 
+    \adjustbox{minipage=[c]{\textwidth}}{%
+      Na základě této analogie budeme zapisovat komplexní jednotku \(E(\varphi)\) v 
+      \textbf{exponenciálním tvaru}, pomocí \emph{Eulerova vzorce}:
+      \begin{equation}\label{mai:eq76}
+        E(\varphi) = \cos\varphi+ i\sin\varphi = e^{i\varphi},
+      \end{equation}
+    }
     \subsection{Cvičení}
 %--------------------------------------------------------------------------------------------------
   \section{Počítání s maticemi}\label{mai:IchapIIsecIII}
@@ -483,7 +612,7 @@
     \begin{table}[!ht]
         \centering
         \renewcommand{\arraystretch}{1.8}   % for the vertical padding
-          \begin{tabular}{|l||c@{}|}              
+          \begin{tabular}{|l||c@{}|}
             \hline 
             \textbf{Matice}                    & \textbf{Zápis} \\ \hline\hline
             \ttfamily řádková   \(\matr{A}\) &  \(a_1,a_2,\ldots,a_n \)\\
