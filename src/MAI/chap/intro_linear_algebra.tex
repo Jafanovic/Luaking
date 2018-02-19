@@ -371,9 +371,9 @@
       Množina reálných čísel obsahuje tyto důležité podmnožiny:
       \begin{itemize}
         \item Množinu přirozených čísel \(\naturalset = \{1, 2, \ldots, n, \ldots\}\). Platí 
-              princip \textbf{úplné indukce}: Je-li \(\mathbb{M} \subseteq \naturalset\) nějaká 
+              princip \textbf{úplné indukce}: Je-li \(\mathcal{M} \subseteq \naturalset\) nějaká 
               množina přirozených čísel, která obsahuje číslo \num{1} a která současně s každým 
-              číslem \(n\) obsahuje i \(n + 1\), pak \(\mathbb{M} = \naturalset\).
+              číslem \(n\) obsahuje i \(n + 1\), pak \(\mathcal{M} = \naturalset\).
         \item Množinu celých čísel \(\mathbb{Z} = \{\ldots, -n, \ldots, -2, -1, 0, 1, 2, \ldots, m, 
               \ldots\}\).
         \item Množinu racionálních čísel \(\mathbb{Q}\) (zlomky). Racionální čísla lze vyjádřit 
@@ -557,143 +557,264 @@
         E(\varphi) = \cos\varphi+ i\sin\varphi = e^{i\varphi},
       \end{equation}
     }
-    \subsection{Cvičení}
+    kde transcendentní číslo \(e = \num{2.718 281828}\ldots\) je základ \emph{přirozených 
+    logaritmů}. Poznamenejme, že takový zápis, využívající pouhé analogie, není ještě korektní 
+    definicí. Eulerův vzorec však lze dokázat i korektními matematickými postupy. Také libovolné 
+    komplexní číslo lze zapsat v exponenciálním tvaru 
+    \begin{equation}\label{mai:eq77}
+      z = \abs{z}e^{i\varphi}.
+    \end{equation}
+      
+    %--Počítání s komplexními čísly v exponenciálním tvaru----------
+    \input{../src/MAI/exam/exam080.tex}
+    %---------------------------------------------------------------
+
+    %--Cvičení------------------------------------------------------
+    \input{../src/MAI/exam/exam081.tex}
+    %---------------------------------------------------------------
 %--------------------------------------------------------------------------------------------------
   \section{Počítání s maticemi}\label{mai:IchapIIsecIII}
-    \subsection{Základní operace s maticemi a hodnost matic}\label{mai:IchapIIsecIIIsubI}
-    \subsection{Hodnost matic}\label{mai:IchapIIsecIIIsubII}
-    \subsection{Násobení  matic}\label{mai:IchapIIsecIIIsubIII}
-    \subsection{Čtvercová matice}\label{mai:IchapIIsecIIIsubIV}
     Algebra matic, tedy počítání s nimi, je v praxi zase jen počítání s čísly, samozřejmě podle
     specifických pravidel. S maticemi jsme se již setkali v odstavci \ref{mai:IchapIIsecI}, kde 
     jsme jich využili jako vhodné „pomůcky“ při řešení soustav rovnic. Nyní posuneme naše 
     znalosti o nich na poněkud vyšší úroveň. Zavedeme na množině matic \emph{algebraickou 
     strukturu}, která nám umožní s nimi počítat nezávisle na jejich vztahu k nějakým praktickým 
-    aplikacím. Víme již, že maticí typu \(m/n\) (též obdélníková matice) rozumíme soubor reálných, 
-    popřípadě i komplexních čísel uspořádaných do \(m\) řádků a \(n\) sloupců:
+    aplikacím.
+    \subsection{Základní operace s maticemi a hodnost matic}\label{mai:IchapIIsecIIIsubI}
+      Víme již, že maticí typu \(m/n\) (též obdélníková matice) rozumíme soubor reálných,       
+      popřípadě i komplexních čísel uspořádaných do \(m\) řádků a \(n\) sloupců:
+      \adjustbox{minipage=[c]{\textwidth}}{%
+        \begin{definition}\label{def_matice}
+          Nechť \(m, n\) jsou přirozená čísla. Jestliže každé uspořádané dvojici \((m,n)\in 
+          \{1,2,\ldots,m\}\times \{1,2,\ldots,m\}\) přiřadíme prvek \(a_{i,j}\in\mathbb{R}\) 
+          obdržíme reálnou \href{http://cs.wikipedia.org/wiki/Matice}{matici} typu \(m,n\) nad 
+          \(\mathbb{R}\). 
+          
+          Matici zapisujeme jako
+          \begin{equation}\label{matice_zapis}
+            \matr{A} = \left(a_{ij}\right) =\left(
+                                          \begin{array}{ccc}
+                                            a_{11} & \ldots & a_{1n} \\
+                                            \vdots & \ddots & \vdots \\
+                                            a_{m1} & \ldots & a_{nn}
+                                          \end{array}
+                                     \right)
+          \end{equation}
+          která má právě \(mn\) prvků \((a_{ij})\) uspořádaných do \(m\) řádků a \(n\) sloupců. 
+          Stručně píšeme \(\matr{A} = (a_{ij})\)
+        \end{definition}
+      }
+
+      Prvky matice jsou označeny indexy udávajícími \textbf{řádek} a \textbf{sloupec}, v nichž se 
+      prvek nalézá. Prvek v \(i\)-tém řádku a \(j\)-tém sloupci matice \(\matr{A}\) se obvykle 
+      značí \(a_{ij}\). Potom \(i\)-tý řádek matice  obsahuje vodorovnou \(n\)-tici prvků \(a_{i1}, 
+      a_{i2}, \ldots,a_{in} \), kde \(i=  1,2,\ldots,m\) a \(j\)-tý sloupec matice obsahuje svislou 
+      matici čísel \(a_{1j},a_{2j},\ldots,a_{mj}\), kde \(j = 1,2,\ldots,n\). Pro \(m = n\) se 
+      matice nazývá \textbf{čtvercová} n-tého řádu. 
+      
+      %---------------------------------------------------------------
+      \input{../src/MAI/exam/exam033.tex}
+      %---------------------------------------------------------------
+
+      V tabulce \ref{LA:tab_basic_matrix} jsou uvedeny nejčastější typy matic, které se v algebře 
+      často vyskytují. Jsou to například matice řádkové, sloupcové, diagonální\footnote{Prvky 
+      \(a_{ii}\) kde \(i=1,2,\ldots,\min(m,n)\) tvoří hlavní diagonálu. Matice \(\matr{D}\) je 
+      typu \(m,m\), obecně může mít diagonální matice buď ještě další sloupce, v nichž budou samé 
+      nuly, anebo další řádky, v nichž budou opět samé nuly.}, jednotkové\footnote{Jestliže \(m = 
+      n\), pak mluvíme o čtvercové matici řádu \(m\).}, nulové, transponované, symetrické a 
+      dolní (horní) trojúhleníkové - její nenulové prvky tvoří trojúhelníkové uspořádání 
+      zahrnující diagonálu a oblast pod diagonálou (obdobně vznikne horní trojúhelníková matice).
+
+      \begin{table}[!ht]
+          \centering
+          \renewcommand{\arraystretch}{1.8}   % for the vertical padding
+            \begin{tabular}{|l||c@{}|}
+              \hline 
+              \textbf{Matice}                    & \textbf{Zápis} \\ \hline\hline
+              \ttfamily řádková   \(\matr{A}\) &  \(a_1,a_2,\ldots,a_n \)\\
+              \ttfamily sloupcová \(\matr{B}\) & 
+                \(\begin{pmatrix}
+                  a_1     \\
+                  a_2     \\
+                  \vdots  \\
+                  a_n
+                \end{pmatrix}\)                       \\
+              \ttfamily diagonální \(\matr{C}\) & 
+                \(\begin{pmatrix}
+                   a_{11} &    0   & \ldots &   0     \\
+                      0   & a_{22} & \ldots &   0     \\
+                   \vdots & \vdots & \ddots & \vdots  \\
+                      0   &   0    & \ldots & a_{mm}
+                \end{pmatrix}\)                       \\
+              \ttfamily jednotková \(\matr{I}\) &
+                \(\begin{pmatrix}
+                     1    &    0   & \ldots &   0    \\
+                     0    &    1   & \ldots &   0    \\
+                   \vdots & \vdots & \ddots & \vdots \\
+                      0   &   0    & \ldots & 1
+                \end{pmatrix}\)                      \\
+              \ttfamily nulová \(\matr{0}\) & \((a_{ij}),\quad a_{ij} = 0\,\forall\,i, j\) \\
+              \ttfamily transponovaná \(\matr{D^T}\) &
+                \(\begin{pmatrix}
+                  a_{11} & a_{21} & \ldots &  a_{m1}\\
+                  a_{12} & a_{22} & \ldots &  a_{m2}\\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  a_{1n} & a_{2n} & \ldots & a_{mn}
+                \end{pmatrix}\)    \\
+              \ttfamily symetrická \(\matr{S}\)  & 
+                \((a_{ij}),\quad a_{ij}= a_{ji}\,\forall\,i,j\) \\ 
+              \ttfamily trojúhleníková \(\matr{T}\) &
+                \(\begin{pmatrix}
+                  a_{11} & a_{12} & \ldots &  a_{1n}\\
+                      0  & a_{22} & \ldots &  a_{2n}\\
+                  \vdots & \vdots & \ddots & \vdots \\
+                      0  &   0    & \ldots & a_{nn}
+                \end{pmatrix}\)    \\   \hline
+            \end{tabular}
+          \caption{Speciální typy matic}\label{LA:tab_basic_matrix}
+      \end{table}
     
-    \begin{definition}\label{def_matice}
-      Nechť \(m, n\) jsou přirozená čísla. Jestliže každé uspořádané dvojici \((m,n)\in 
-      \{1,2,\ldots,m\}\times \{1,2,\ldots,m\}\) přiřadíme prvek \(a_{i,j}\in\mathbb{R}\) obdržíme 
-      reálnou \href{http://cs.wikipedia.org/wiki/Matice}{matici} typu \(m,n\) nad \(\mathbb{R}\). 
+      Matice téhož typu \((m,n)\) nad \(\mathbb{R}\) budeme značit \(\mathbb{R}_{m,n}\). Nebude-li 
+      nutné specifikovat, zda-li hovoříme o matici nad reálnými nebo komplexními čísly, pak budeme 
+      pracovat prostě s množinou \(\mathcal{M}(m/n)\) všech matic typu \(m/n\). 
       
-      Matici zapisujeme jako
-      \begin{equation}\label{matice_zapis}
-        \matr{A} = \left(a_{ij}\right) =\left(
-                                      \begin{array}{ccc}
-                                        a_{11} & \ldots & a_{1n} \\
-                                        \vdots & \ddots & \vdots \\
-                                        a_{m1} & \ldots & a_{nn}
-                                      \end{array}
-                                 \right)
+      První operací, která nás napadne je \textbf{sčítání matic}, což je operace kterou vznikne nvá 
+      matice pouhým sečtením odpovídajících prvků sčítaných matic. 
+      \adjustbox{minipage=[c]{\textwidth}}{%
+        \begin{definition} 
+          \textbf{Součtem matice} \(\matr{A} \in \mathbb{R}_{mn}\) a matice \(\matr{B} \in 
+          \mathbb{R}_{mn}\), je matice \(\matr{C} \in \mathbb{R}_{mp}\) pro kterou platí:
+          \begin{align*}
+            \matr{C} &= \matr{A} + \matr{B} = (c_{ij}) = (a_{ij} + b_{ij}) \\
+                     &= \begin{pmatrix}
+                           a_{11} + b_{11}  & a_{12} + a_{12} & \ldots &  a_{1n} + b_{1n}\\
+                           a_{21} + b_{21}  & a_{22} + b_{22} & \ldots &  a_{2n} + b_{2n}\\
+                               \vdots       &     \vdots      & \ddots &      \vdots     \\
+                           a_{m1} + b_{m1}  & a_{m2} + b_{m2} & \ldots &  a_{mn} + b_{mn}
+                        \end{pmatrix}.
+          \end{align*} 
+        \end{definition}
+      }
+      Je-li \(k\) reálné (popřípadě i komplexní) číslo, rozumíme \(k\)-násobkem matice \(\matr{A}\) 
+      matici \( \matr{F} = k\matr{A}\in \mathcal{M}(m/n)\)
+      \begin{equation}\label{mai:eq78}
+        \matr{F} = k\matr{A} = (f_{ij}) = (k\cdot a_{ij}) = 
+                    \begin{pmatrix}
+                       ka_{11} & ka_{12} & \ldots & ka_{1n} \\
+                       ka_{21} & ka_{22} & \ldots & ka_{2n} \\
+                       \vdots  & \vdots  & \ddots & \vdots  \\
+                       ka_{m1} & ka_{m2} & \ldots & ka_{mn}
+                    \end{pmatrix}.
       \end{equation}
-      která má právě \(mn\) prvků \((a_{ij})\) uspořádaných do \(m\) řádků a \(n\) sloupců. Stručně 
-      píšeme \(\matr{A} = (a_{ij})\)
-    \end{definition}
-
-    Prvky matice jsou označeny indexy udávajícími \textbf{řádek} a \textbf{sloupec}, v nichž se 
-    prvek nalézá. Prvek v \(i\)-tém řádku a \(j\)-tém sloupci matice \(\matr{A}\) se obvykle značí 
-    \(a_{ij}\). Potom \(i\)-tý řádek matice  obsahuje vodorovnou \(n\)-tici prvků \(a_{i1}, 
-    a_{i2}, \ldots,a_{in} \), kde \(i=  1,2,\ldots,m\) a \(j\)-tý sloupec matice obsahuje svislou 
-    matici čísel \(a_{1j},a_{2j},\ldots,a_{mj}\), kde \(j = 1,2,\ldots,n\). Pro \(m = n\) se matice 
-    nazývá čtvercová n-tého řádu. 
+      Zdůrazněme, že sčítat můžeme pouze matice téhož typu. Z toho, že se operace sčítání matic a 
+      násobení matice číslem provádějí „prvek po prvku“, pracuje se tedy stále s čísly, je ihned 
+      zřejmé, že tyto operace mají následující vlastnosti:
       
-    %---------------------------------------------------------------
-    \input{../src/MAI/exam/exam033.tex}
-    %---------------------------------------------------------------
-
-    V tabulce \ref{LA:tab_basic_matrix} jsou uvedeny nejčastější typy matic, které se v algebře 
-    často vyskytují. Jsou to například matice řádkové, sloupcové, diagonální\footnote{Prvky 
-    \(a_{ii}\) kde \(i=1,2,\ldots,\min(m,n)\) tvoří hlavní diagonálu. Matice \(\matr{D}\) je 
-    typu \(m,m\), obecně může mít diagonální matice buď ještě další sloupce, v nichž budou samé 
-    nuly, anebo další řádky, v nichž budou opět samé nuly.}, jednotkové\footnote{Jestliže \(m = 
-    n\), pak mluvíme o čtvercové matici řádu \(m\).}, nulové, transponované a symetrické.
-
-    \begin{table}[!ht]
+      \begin{table}[ht!]
         \centering
-        \renewcommand{\arraystretch}{1.8}   % for the vertical padding
-          \begin{tabular}{|l||c@{}|}
-            \hline 
-            \textbf{Matice}                    & \textbf{Zápis} \\ \hline\hline
-            \ttfamily řádková   \(\matr{A}\) &  \(a_1,a_2,\ldots,a_n \)\\
-            \ttfamily sloupcová \(\matr{B}\) & 
-              \(\begin{pmatrix}
-                a_1     \\
-                a_2     \\
-                \vdots  \\
-                a_n
-              \end{pmatrix}\)                       \\
-            \ttfamily diagonální \(\matr{C}\) & 
-              \(\begin{pmatrix}
-                 a_{11} &    0   & \ldots &   0     \\
-                    0   & a_{22} & \ldots &   0     \\
-                 \vdots & \vdots & \ddots & \vdots  \\
-                    0   &   0    & \ldots & a_{mm}
-              \end{pmatrix}\)                       \\
-            \ttfamily jednotková \(\matr{I}\) &
-              \(\begin{pmatrix}
-                   1    &    0   & \ldots &   0    \\
-                   0    &    1   & \ldots &   0    \\
-                 \vdots & \vdots & \ddots & \vdots \\
-                    0   &   0    & \ldots & 1
-              \end{pmatrix}\)                      \\
-            \ttfamily nulová \(\matr{0}\) & \((a_{ij}),\quad a_{ij} = 0\,\forall\,i, j\) \\
-            \ttfamily transponovaná \(\matr{D^T}\) &
-              \(\begin{pmatrix}
-                a_{11} & a_{21} & \ldots &  a_{m1}\\
-                a_{12} & a_{22} & \ldots &  a_{m2}\\
-                \vdots & \vdots & \ddots & \vdots \\
-                a_{1n} & a_{2n} & \ldots & a_{mn}
-              \end{pmatrix}\)    \\
-            \ttfamily symetrická \(\matr{S}\) 
-            & \((a_{ij}),\quad a_{ij}= a_{ji}\,\forall\,i,j\) \\ \hline
-          \end{tabular}
-        \caption{Speciální typy matic}\label{LA:tab_basic_matrix}
-    \end{table}
-  
-  
-    Matice téhož typu \((m,n)\) nad \(\mathbb{R}\) budeme značit \(\mathbb{R}_{m,n}\).
+        \begin{tabular}{c | L{8cm}}
+        \toprule
+          \(\matr{A} + \matr{B} = \matr{B} + \matr{A}\)
+                                       & komutativní zákon pro součet matic  \\ %\midrule
+          \((\matr{A} + \matr{B}) + \matr{C} =\matr{A} + (\matr{B} + \matr{C})\)
+                                       & asociativní zákon pro součet matic  \\
+          \(\matr{A} + \matr{O} = \matr{O} + \matr{A} = \matr{A}\)
+                                       & existence univerzálního neutrálního prvku \(\matr{O}\)  \\
+          \(\matr{A} + (-\matr{A}) = (-\matr{A}) + \matr{A} = \matr{O}\)
+                                       & existence právě jednoho opačného prvku k matici 
+                                       \(\matr{A}\)\\ 
+          \((k_1k_2)\matr{A} = k_1(k_2\matr{A})\) 
+                                       & asociativní zákon pro násobení číslem \\
+          \(k(\matr{A} + \matr{B}) = k\matr{A} + k\matr{B}\)
+                                       & 1. distributivní zákon  \\
+          \((k_1 + k_2)\matr{A} = k_1\matr{A} + k_2\matr{A}\)
+                                       & 2. distributivní zákon \\
+          \((-1)\matr{A}= -\matr{A}\)
+                                       & násobení číslem (\num{-1}) dává opačný prvek  \\
+         \bottomrule
+        \end{tabular}
+      \end{table}
+      Říkáme, že množina \(\mathcal{M}(m/n)\) matic typu \(m/n\) vybavená operacemi sčítání matic a 
+      násobení matice číslem s vlastnostmi uvedenými v předchozí tabulce má \textbf{strukturu 
+      vektorového prostoru nad polem reálných, popřípadě komplexních, čísel}. Množina 
+      \(\mathcal{M}(m/n)\) se samotnou operací sčítání má \textbf{strukturu komutativní grupy} (viz 
+      \ref{part:MAII}. díl). Každá matice typu \(m/n\) obsahuje \(mn\) nezávislých prvků (můžeme je 
+      volit libovolně). Říkáme pak, že vektorový prostor \(\mathcal{M}(m/n)\) má rozměr, neboli 
+      \textbf{dimenzi}, \(d = mn\).
       
-    \subsection{Základní operace s maticemi a hodnost matic}
+      Pozn.: V tuto chvíli jsme ještě pojem dimenze nedefinovali zcela korektně. Později se k němu 
+      vrátíme.
       
-      
-    \begin{definition} 
-      Součinem matice \(A \in \mathbb{R}_{mn}\) a matice \(B \in \mathbb{R}_{np}\), v uvedeném
-      pořadí, je matice \(C \in \mathbb{R}_{mp}\) pro kterou platí:
-      \begin{align*}
-             C &= AB; \quad C = (cij); \\
-             \shortintertext{kde}
-        c_{ij} &= \sum_n^{k=1}{a_{ik}b_{kj}};\quad
-                   i = 1,\ldots,m; \, j = 1,\ldots,p.
-      \end{align*} 
-    \end{definition}
-    Součin matic \(A\) a \(B\) je definován právě tehdy, když počet sloupců matice \(A\) je roven 
-    počtu řádků matice \(B\). Obrázek \ref{LA:fig_LA001a} demonstruje jakým způsobem se 
-    dostane prvek, který je ve výsledné matici třeba ve druhém řádku a druhém sloupci, násobením 
-    druhého řádku levé matice s druhým sloupcem pravé ze zadaných matic. Stejným způsobem získáme 
-    hodnotu prvku \(c_{ij}\) (viz \ref{LA:fig_LA001b}).
-    %----------------------------------
-    \begin{figure}[ht!]
-      \centering  
-      \begin{tabular}{cc}
-        \subfloat[1. krok]{\label{LA:fig_LA001a}
-          \includegraphics[width=0.45\linewidth]{mai_fig023a}}               &
-        \subfloat[2. krok]{\label{LA:fig_LA001b}
-          \includegraphics[width=0.45\linewidth]{mai_fig023b}} 
-      \end{tabular}
-      \caption{Postup při maticovém násobení}
-    \end{figure}
-  
+    \subsection{Hodnost matic}\label{mai:IchapIIsecIIIsubII}
+      Vyberme nyní z matice \(\matr{A}\) jistý počet řádků, například řádky s indexy \(i_1, \ldots, 
+      i_p, p < m\). Nechť \(\ell \neq i_1, \ldots, i_p\).
 
+      \adjustbox{minipage=[c]{\textwidth}}{%
+        Řekneme, že \(i\)-tý řádek je lineární kombinací těchto vybraných řádků, existují-li čísla 
+        \(k_1, \ldots, k_p\) tak, že platí
+        \begin{align*}
+          a_{\ell1}  &= k_1 a_{i_11} + k_2 a_{i_21} + \cdots k_p a_{i_p1},       \\
+          a_{\ell2}  &= k_1 a_{i_12} + k_2 a_{i_22} + \cdots k_p a_{i_p2},       \\
+          \cdots     &= \cdots \qquad \cdots \qquad \cdots \qquad \cdots,        \\
+          a_{\ell n} &= k_1 a_{i_1n} + k_2 a_{i_2n} + \cdots k_p a_{i_pn}.
+        \end{align*}
+        Čísla \(k_1\) až \(k_p\) se nazývají \textbf{koeficienty} lineární kombinace. Řádky matice 
+        \(\matr{A}\) se nazývají \textbf{lineárně závislé}, jestliže je některý z nich lineární 
+        kombinací ostatních. V opačné případě říkáme, že řádky matice jsou \textbf{lineárně 
+        nezávislé}.
+      }
       
-      \begin{definition}\label{rovnost_matic}
-       (Rovnost matic):  Matice \(\matr{A} = \left(a_{ij}\right)\) je rovna matici \(\matr{B}=
-       \left(b_{kl}\right)\), jsou-li matice stejného typu a stejnolehlé prvky se sobě
-       \textbf{rovnají}, tj. \(\matr{A} \in \mathbb{R}_{m,n}, \matr{B}\in\mathbb{R}_{m,n}, 
-       a_{ij} = b_{ij}, \forall i\in\lbrace1,2,\ldots,m\rbrace, \forall j\in\lbrace1,2, \ldots 
-       ,n\rbrace\).
-      \end{definition}
+      Ale co když má matice jediný řádek? Na takový případ se naše definice nevztahuje a musíme ji 
+      doplnit: bude-li tento řádek tvořen samými nulami, prohlásíme jej za lineárně závislý, jinak 
+      za lineárně nezávislý. Můžeme namítnout, proč jsme to neudělali naopak. Nulový řádek je 
+      zvláštní tím, že jej vždy můžeme napsat jako lineární kombinaci jiných řádků, a to s nulovými 
+      koeficienty. Řádky matice, která obsahuje nulový řádek, jsou tedy vždy lineárně závislé. A s 
+      tím je náš způsob doplnění definice v souladu. 
       
+      Je zřejmé, že počet lineárně nezávislých řádků matice typu \(m/n\) nemůže překročit hodnotu 
+      \(m\). Ukažme, že při \(n < m\) jsou řádky matice vždy závislé a počet lineárně nezávislých z 
+      nich nemůže překročit hodnotu \(n\).
+      
+    \subsection{Násobení  matic}\label{mai:IchapIIsecIIIsubIII}
+      \adjustbox{minipage=[c]{\textwidth}}{%
+        \begin{definition} 
+          \textbf{Součinem matice} \(A \in \mathbb{R}_{mn}\) a matice \(B \in \mathbb{R}_{np}\), v 
+          uvedeném pořadí, je matice \(C \in \mathbb{R}_{mp}\) pro kterou platí:
+          \begin{align*}
+                 C &= AB; \quad C = (cij); \\
+                 \shortintertext{kde}
+            c_{ij} &= \sum_n^{k=1}{a_{ik}b_{kj}};\quad
+                       i = 1,\ldots,m; \, j = 1,\ldots,p.
+          \end{align*} 
+        \end{definition}
+      }
+      Součin matic \(A\) a \(B\) je definován právě tehdy, když počet sloupců matice \(A\) je roven 
+      počtu řádků matice \(B\). Obrázek \ref{LA:fig_LA001a} demonstruje jakým způsobem se 
+      dostane prvek, který je ve výsledné matici třeba ve druhém řádku a druhém sloupci, násobením 
+      druhého řádku levé matice s druhým sloupcem pravé ze zadaných matic. Stejným způsobem získáme 
+      hodnotu prvku \(c_{ij}\) (viz \ref{LA:fig_LA001b}).
+      %----------------------------------
+      \begin{figure}[ht!]
+        \centering  
+        \begin{tabular}{cc}
+          \subfloat[1. krok]{\label{LA:fig_LA001a}
+            \includegraphics[width=0.45\linewidth]{mai_fig023a}}               &
+          \subfloat[2. krok]{\label{LA:fig_LA001b}
+            \includegraphics[width=0.45\linewidth]{mai_fig023b}} 
+        \end{tabular}
+        \caption{Postup při maticovém násobení}
+      \end{figure}
+    
+        \begin{definition}\label{rovnost_matic}
+         (Rovnost matic):  Matice \(\matr{A} = \left(a_{ij}\right)\) je rovna matici \(\matr{B}=
+         \left(b_{kl}\right)\), jsou-li matice stejného typu a stejnolehlé prvky se sobě
+         \textbf{rovnají}, tj. \(\matr{A} \in \mathbb{R}_{m,n}, \matr{B}\in\mathbb{R}_{m,n}, 
+         a_{ij} = b_{ij}, \forall i\in\lbrace1,2,\ldots,m\rbrace, \forall j\in\lbrace1,2, \ldots 
+         ,n\rbrace\).
+        \end{definition}
+
+
+    \subsection{Čtvercová matice}\label{mai:IchapIIsecIIIsubIV}
 %--------------------------------------------------------------------------------------------------
   \section{Počítání s vektory}\label{mai:IchapIIsecIV}
     \textbf{Vektory} budeme nazývat matice typu \(1/n\) a značit je
