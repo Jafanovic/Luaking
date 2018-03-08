@@ -215,7 +215,9 @@
     na provedených úpravách tak na výsledném schodovitém tvaru. Je to hodnost matice, definovaná 
     takto:
     
-    \textbf{Hodnost} matice je počet nenulových řádků jejího schodovitého tvaru.
+    \adjustbox{minipage=[c]{\textwidth}}{%
+      \textbf{Hodnost} matice je počet nenulových řádků jejího schodovitého tvaru.
+    }
     
     V našem příkladu je hodnost matice \(A\) soustavy \(S\) rovna dvěma, hodnost matice rozšířené 
     \(\matr{B}\) je rovna třem. Píšeme
@@ -683,7 +685,7 @@
       \adjustbox{minipage=[c]{\textwidth}}{%
         \begin{definition} 
           \textbf{Součtem matice} \(\matr{A} \in \mathbb{R}_{mn}\) a matice \(\matr{B} \in 
-          \mathbb{R}_{mn}\), je matice \(\matr{C} \in \mathbb{R}_{mp}\) pro kterou platí:
+          \mathbb{R}_{mn}\), je matice \(\matr{C} \in \mathbb{R}_{mn}\) pro kterou platí:
           \begin{align*}
             \matr{C} &= \matr{A} + \matr{B} = (c_{ij}) = (a_{ij} + b_{ij}) \\
                      &= \begin{pmatrix}
@@ -775,7 +777,53 @@
       \(m\). Ukažme, že při \(n < m\) jsou řádky matice vždy závislé a počet lineárně nezávislých z 
       nich nemůže překročit hodnotu \(n\).
       
-    \subsection{Násobení  matic}\label{mai:IchapIIsecIIIsubIII}
+      %--Matice s lineárně závislými řádky ---------------------------
+      \input{../src/MAI/exam/exam082.tex}
+      %---------------------------------------------------------------
+      
+      Počet lineárně nezávislých řádků matice určuje její hodnost. A není tato definice hodnosti 
+      náhodou jiná, než jsme zavedli v odstavci \ref{mai:IchapIIsecI}?  Naštěstí jsou obě definice 
+      ekvivalentní, můžeme použít kteroukoli z nich a druhá nám pak vyjde jako důsledek. Uvažujme: 
+      S maticemi lze provádět elementární úpravy, které jsme definovali v odstavci 
+      \ref{mai:IchapIIsecI}. Z toho, co jsme si nyní řekli o lineárně závislých řádcích matice, 
+      vidíme, že pomocí elementárních úprav dokážeme postupně anulovat řádky, které jsou lineárně 
+      závislé na ostatních. Počet lineárně nezávislých řádků matice a počet nenulových řádků jejího 
+      schodovitého tvaru jsou shodné. Z definice hodnosti matice jakožto počtu jejích lineárně 
+      nezávislých řádků je také ihned zřejmé, že hodnost matic lišících se pouze elementárními 
+      úpravami je shodná.
+      
+      Označme nyní pro každou dvojici konkrétních hodnot řádkového indexu \(i\) a sloupcového 
+      indexu \(j\) jako \(\matr{E}_{ij}\) matici typu \(m/n\), pro kterou je \(e_{ij} = 1\) a 
+      ostatní prvky jsou nulové. Libovolnou matici \(\matr{A} = (a_{ij})\) typu \(m/n\) můžeme 
+      dostat jako \emph{lineární kombinaci matic} \(\matr{E}_{ij}\) takto:
+      
+      \begin{alignat*}{7}
+        \matr{A} 
+          &= &&  &&a_{11}\matr{E}_{11} &&+ a_{12}\matr{E}_{12} &&+\cdots+ a_{1n}\matr{E}_{1n} &&+\\
+          &  &&+ &&a_{21}\matr{E}_{21} &&+ a_{22}\matr{E}_{22} &&+\cdots+ a_{2n}\matr{E}_{2n} &&+\\
+          &  &&+ &&\cdots              &&+\cdots               &&+\cdots+ \cdots              &&+\\
+          &  &&+ &&a_{m1}\matr{E}_{m1} &&+ a_{m2}\matr{E}_{m2} &&+\cdots+ a_{mn}\matr{E}_{mn} &&
+      \end{alignat*}
+      
+      Matici \(\matr{A}\) jsme tedy získali pomocí jakýchsi „základních“ matic, jejichž počet je 
+      \(mn\) (všimněte si souvislosti s pojmem dimenze). Soubor matic (\(\matr{E}_{ij}\)) tvoří 
+      bázi vektorového prostoru matic typu \(m/n\). Pokud bychom zvolili \(mn\) jiných navzájem 
+      nezávislých matic typu \(m/n\), opět bychom mohli vyjádřit každou matici \(\matr{A}\) téhož 
+      typu jako jejich lineární kombinaci. Koeficienty této lineární kombinace by však již obecně 
+      nebyly přímo prvky matice \(\matr{A}\). V prostoru matic dimenze \(mn\) lze volit různé báze. 
+      Počet prvků každé z nich je však vždy \(mn\).
+      
+      %--Určení hodnosti matice úpravou na schodovitý tvar------------
+      \input{../src/MAI/exam/exam083.tex}
+      %---------------------------------------------------------------
+
+    \subsection{Násobení matic}\label{mai:IchapIIsecIIIsubIII}
+      Další důležitou operací s maticemi je jejich \textbf{násobení}. Aby bylo možné mezi sebou 
+      vynásobit dvě matice, musí být vhodných typů. Pro definici součinu matic \(\matr{A}\) a 
+      \(\matr{B}\), v uvedeném pořadí, musí mít matice \(\matr{A}\) stejný počet sloupců, jako má 
+      matice \(\matr{B}\) řádků. Nechť je tedy \(\matr{A}\) matice typu \(m/n\) a \(\matr{B}\) 
+      matice typu \(n/p\).
+      
       \adjustbox{minipage=[c]{\textwidth}}{%
         \begin{definition} 
           \textbf{Součinem matice} \(A \in \mathbb{R}_{mn}\) a matice \(B \in \mathbb{R}_{np}\), v 
@@ -788,11 +836,10 @@
           \end{align*} 
         \end{definition}
       }
-      Součin matic \(A\) a \(B\) je definován právě tehdy, když počet sloupců matice \(A\) je roven 
-      počtu řádků matice \(B\). Obrázek \ref{LA:fig_LA001a} demonstruje jakým způsobem se 
-      dostane prvek, který je ve výsledné matici třeba ve druhém řádku a druhém sloupci, násobením 
-      druhého řádku levé matice s druhým sloupcem pravé ze zadaných matic. Stejným způsobem získáme 
-      hodnotu prvku \(c_{ij}\) (viz \ref{LA:fig_LA001b}).
+      Obrázek \ref{LA:fig_LA001a} demonstruje jakým způsobem se dostane prvek, který je ve výsledné 
+      matici třeba ve druhém řádku a druhém sloupci, násobením druhého řádku levé matice s druhým 
+      sloupcem pravé ze zadaných matic. Stejným způsobem získáme hodnotu prvku \(c_{ij}\) (viz 
+      \ref{LA:fig_LA001b}).
       %----------------------------------
       \begin{figure}[ht!]
         \centering  
