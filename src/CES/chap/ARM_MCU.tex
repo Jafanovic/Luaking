@@ -4,9 +4,9 @@
 %---------------------------------------------------------------------------------------------------
 % file STM32.tex
 %---------------------------------------------------------------------------------------------------
-%==============================Kapitola: Průvodce procesory rodiny STM32F4==========================
+%==============================Kapitola: Vestavěné systémy s ARM procesory==========================
 %\setchaptertoc
-\chapter{Průvodce procesory rodiny STM32F4}
+\chapter{Vestavěné systémy s ARM procesory}\label{chap:ces_cas}
 \minitoc
 Embedded systém (\texttt{zabudovaný systém}, \textbf{vestavěný system}), lze podle wikipedie 
 charakterizovat jako jednoúčelový systém, ve kterém je řídicí počítač zcela zabudován do zařízení, 
@@ -81,9 +81,7 @@ počítači.
   Architektura ARM se nejvýrazněji uplatňuje ve vestavěných systémech. Nízká spotřeba energie při 
   vysokém výpočetním výkonu má zásadní význam hlavně v zařízeních napájených bateriemi, avšak je 
   velkou výhodou také u zařízení pracujících v náročných tepelných podmínkách.
-  
 
-  
 \section{Architektura ARMv7}
   Tato architektura je rozdělená do tří úrovní - profilů.
   \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
@@ -110,40 +108,6 @@ počítači.
     \end{tabular}
     \caption{Příklady architektur rodiny Cortex ARM}
   \end{figure}
-
- 
-\section{Architektura mikroprocesoru STM32F100xx}
-  Jádro Cortex-M3 je založeno na Harvardské architektuře (kap. \ref{ces:IchapIVsecIssecIII}), která 
-  má oddělenou sběrnici pro data a pro instrukce. To umožňuje rychlejší vykonávání programového 
-  kódu, kdy je možné paralelně načítat novou instrukci a zároveň ukládat data výsledku do paměti. 
-  Toho se využívá při pipeliningu (zřetězování instrukcí nebo průtokové zpracování instrukcí[5]), 
-  který má 3 fáze - načtení instrukce, dekódování instrukce a vykonání instrukce. Zároveň se také 
-  odhaduje, zda může aktuálně vykonávaná instrukce větvení ovlivnit aktuálně načítanou a 
-  dekódovanou instrukci. Mechanismus pipeliningu tím umožňuje mnohonásobné zvětšení výkonu vzhledem 
-  k hodinovému kmitočtu jádra mikrokontroléru.  
-  \begin{figure}[ht!] %\ref{MIT:fig_stm32f100arch}
-    \centering
-    \includegraphics[width=1\linewidth]{STM32F100_arch.png}
-    \caption{Architektura systému nízké a střední hustoty řady Value Line}
-    \label{MIT:fig_stm32f100arch}
-  \end{figure}
-  
-  \subsection{Reset and clock control (RCC)}
-  \subsection{GPIO}
-  
-  \begin{figure}[ht!] %\ref{CES:fig002}
-    \centering
-    \includegraphics[width=1\linewidth]{ces_fig002.pdf}
-    \caption{xxx}
-    \label{CES:fig002}
-  \end{figure}
-   
-
-
-  \begin{itemize}
-    \item \href{http://librarian/stable.php?id=141}{CMSIS Tutorial}
-  \end{itemize}
-  
 
 \section{Přístupy k programování ARM}
 \begin{description}
