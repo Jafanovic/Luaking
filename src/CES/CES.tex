@@ -24,51 +24,68 @@
 \end{center}
 }
 
-\part{CES I}\label{part:CES}
+\part{CES I}\label{part:CESI}
 \parttoc
   
 \ifthenelse{ \equal{\DebugMode}{true} }{
 % Debug mode ON
 %  \input{../src/CES/chap/cis_sig_sys.tex}
-%  \input{../src/CES/chap/mit1ch02.tex}
 %  \input{../src/CES/chap/technology.tex}
 %  \input{../src/CES/chap/Basic_MCU_Arch.tex}
-  \input{../src/CES/chap/ANSI_C_MCU.tex}
-  \input{../src/CES/chap/CPP.tex}
-  \input{../src/CES/chap/AVR_MCU.tex}
-  \input{../src/CES/chap/ARM_MCU.tex}
-  \input{../src/CES/chap/STM32.tex}
-  \input{../src/CES/chap/STM32F100VL_Kit.tex}
-%  \input{../src/CES/chap/architecture_PLD.tex}
-%  \input{../src/CES/chap/VHDL.tex}
+%  \input{../src/CES/chap/mit1ch02.tex}
 }
 {
 % DEBUG was off
 %======================= Kapitola01: Číslicové systémy a signály ===================================
   \input{../src/CES/chap/cis_sig_sys.tex} 
-%======================= Kapitola02: Historie mikroprocesorové techniky ============================
-  \input{../src/CES/chap/mit1ch02.tex} 
-%======================= Kapitola03: Číslicové součástky a technologie =============================
+%======================= Kapitola02: Číslicové součástky a technologie =============================
   \input{../src/CES/chap/technology.tex} 
-%======================= Kapitola04: Základy mikroprocesorové techniky =============================
+%======================= Kapitola03: Základy mikroprocesorové techniky =============================
   \input{../src/CES/chap/Basic_MCU_Arch.tex} 
-%======================= Kapitola05: ANSI C pro  mikrokontroléry ===================================
-  \input{../src/CES/chap/ANSI_C_MCU.tex}  
-%======================= Kapitola06: Přehled jazyka C++ ============================================
-  \input{../src/CES/chap/CPP.tex} 
-%======================= Kapitola07: AVR mikroprocesory ============================================
-  \input{../src/CES/chap/AVR_MCU.tex}
-%====================== Kapitola08: Vestavěné systémy s ARM procesory===============================
-  \input{../src/CES/chap/ARM_MCU.tex} 
-%====================== Kapitola09: STM32 procesory=================================================
-  \input{../src/CES/chap/STM32.tex} 
-%====================== Kapitola09: STM32 VL Discovery Kit==========================================
-  \input{../src/CES/chap/STM32F100VL_Kit.tex} 
-%====================== Kapitola10: FPGA & CPLD ====================================================
-  \input{../src/CES/chap/architecture_PLD.tex}
-%====================== Kapitola11: VHDL ===========================================================
-  \input{../src/CES/chap/VHDL.tex} 
+%======================= Kapitola04: Historie mikroprocesorové techniky ============================
+  \input{../src/CES/chap/mit1ch02.tex} 
 }  % DEBUG was off
 
-\part{CES}\label{part:CES}
+\setpartpreamble[u]{
+\begin{center}
+  \vspace{1cm}
+  \Huge \uppercase{\textbf{Zabudované (embedded)}} \\
+  \Huge \uppercase{\textbf{systémy}} \\
+  \vspace{2cm}
+  \includegraphics[width=0.8\linewidth]{CES.png}
+\end{center}
+}
+
+\part{CES II}\label{part:CESII}
 \parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+  \input{../src/CES/chap/ANSI_C_MCU.tex}
+%  \input{../src/CES/chap/CPP.tex}
+%  \input{../src/CES/chap/AVR_MCU.tex}
+%  \input{../src/CES/chap/ARM_MCU.tex}
+%  \input{../src/CES/chap/STM32.tex}
+%  \input{../src/CES/chap/STM32F4_discovery.tex}
+%  \input{../src/CES/chap/architecture_PLD.tex}
+%  \input{../src/CES/chap/VHDL.tex}
+}
+{
+% DEBUG was off
+%======================= Kapitola01: ANSI C pro  mikrokontroléry ===================================
+  \input{../src/CES/chap/ANSI_C_MCU.tex}
+%====================== Kapitola02: Přehled jazyka C++ =============================================
+  \input{../src/CES/chap/CPP.tex}
+%====================== Kapitola03: AVR mikroprocesory =============================================
+  \input{../src/CES/chap/AVR_MCU.tex}
+%====================== Kapitola04: Vestavěné systémy s ARM procesory===============================
+  \input{../src/CES/chap/ARM_MCU.tex}
+%====================== Kapitola05: STM32 procesory=================================================
+  \input{../src/CES/chap/STM32.tex}
+%====================== Kapitola06: STM32 VL Discovery Kit==========================================
+  \input{../src/CES/chap/STM32F4_discovery.tex}
+%====================== Kapitola07: FPGA & CPLD ====================================================
+  \input{../src/CES/chap/architecture_PLD.tex}
+%====================== Kapitola08: VHDL ===========================================================
+  \input{../src/CES/chap/VHDL.tex} 
+}  % DEBUG was off
