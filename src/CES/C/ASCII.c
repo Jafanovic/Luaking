@@ -35,7 +35,3 @@ main()
  while (!kbhit());
  return 0;
 }
-
-
-
-
