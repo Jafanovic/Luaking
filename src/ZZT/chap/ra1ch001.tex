@@ -6,11 +6,15 @@
 %---------------------------------------------------------------------------------------------------
 %======================== Kapitola: Železniční zabezpečovací technika ============================
 %\begin{Czech}
-\chapter{Úvodní slovo}\label{bzt:chapI}
+\chapter{Obsah zabezpečovací techniky}\label{bzt:chapI}
 \minitoc
-
+  Důležitým odvětvím v železniční dopravě je odvětví zabezpečovací techniky. Potřeba zabezpečení 
+  železničního provozu vznikala již v prvních začátcích železniční dopravy, ale postupný rozvoj 
+  železniční dopravy si vynutil stále větší požadavky na konstrukci nových druhů zařízení a na 
+  odbornost pracovníků pro jejich obsluhu.
+  
   Tyto příručka je určena jako studijní materiál nezbytný pro implementaci moderních 
-  metod návrhu zabezpečovacích systémů v železniční dopravě.
+  metod návrhu zabezpečovacích systémů v železniční dopravě. 
    
 \section{Náplň zabezpečovací techniky}
   Klasická železniční zabezpečovací zařízení jsou definována jako zařízení, která prvořadě 
@@ -69,18 +73,18 @@
   návěst \(Z\) se tedy rozsvítí až po splnění všech předem stanovených podmínek pro bezpečný vjezd 
   vlaku. Není-li kterákoliv podmínka splněna, na návěstidle \(N\) zůstává svítit červené světlo Č. 
   
-  Přesto takové zařízení nelze považovat za zabezpečovací zařízení. Prvním důvodem je, že nebyly
-  zřízeny vzájemné závislosti. Jízdní návěst na návěstidle \(N\) se sice rozsvítí až když jsou 
-  splněny všechny podmínky, ale výměny a návěstidla zůstala volná. Nic nebrání, aby se např. poloha 
-  výměn změnila dříve, než vlak \(V\) ukončí svou jízdu. Zhasnutí jízdního znaku \(Z\) na 
-  návěstidle \(N\) v důsledku ztráty kontroly při přestavení výměny už nemusí být nic platné, 
+  Přesto takové zařízení \textbf{nelze} považovat za zabezpečovací zařízení. Prvním důvodem je, že 
+  nebyly zřízeny \emph{vzájemné závislosti}. Jízdní návěst na návěstidle \(N\) se sice rozsvítí až 
+  když jsou splněny všechny podmínky, ale výměny a návěstidla zůstala volná. Nic nebrání, aby se 
+  např. poloha výměn změnila dříve, než vlak \(V\) ukončí svou jízdu. Zhasnutí jízdního znaku \(Z\) 
+  na návěstidle \(N\) v důsledku ztráty kontroly při přestavení výměny už nemusí být nic platné, 
   protože vlak již mohl návěstidlo minout nebo již není schopen včas zastavit. Nepostačí ale ani 
   zřízení vzájemné závislosti tím, že by rozsvícená jízdní návěst \(Z\) uzavírala výměny a 
   návěstidla v žádoucí poloze (např. prostřednictvím sériově řazeného relé). Vzhledem k nebezpečí
   přerušení sekvence postupných kroků je důležité, aby uzavření výměn a návěstidel bylo provedeno 
   dříve, než se rozsvítí jízdní návěst. Postup stavění jízdní cesty, vyhovující požadavkům 
   zabezpečovací techniky, bude tedy v naznačeném příkladě následující:
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item nejprve se přestaví výměny do žádané polohy,
     \item v druhém úkonu (nazývaném závěr jízdní cesty) se při uzavírání výměn a návěstidel 
           přezkouší jejich správná poloha a tedy, že první úkon byl řádně proveden. Pokud první 
@@ -89,17 +93,17 @@
           tehdy, byl-li druhý úkon (a tedy i první úkon) řádně proveden. 
   \end{itemize}
   
-  Tím jsme dosáhli požadované vzájemné závislosti, jejíž popsaná úroveň je prvním charakteristickým 
-  rysem zabezpečovacího zařízení. Zařízení z obr. \ref{zzt:fig002} bude podmínce vyhovovat 
-  například v případě, že návěstní přepínač \(N\) bude konstrukčně upraven tak, že ho nebude možné 
-  přeložit bez provedení \textbf{závěru jízdní cesty}. Důsledkem zavedení závěru jízdní cesty bude 
-  potřeba po vlaku jízdní cestu vybavit, tj. závěr zrušit, aby bylo možné s jednotlivými prvky opět 
-  volně manipulovat. 
+  Tím jsme dosáhli požadované \emph{vzájemné závislosti}, jejíž popsaná úroveň je \textbf{prvním
+  charakteristickým rysem} zabezpečovacího zařízení. Zařízení z obr. \ref{zzt:fig002} bude podmínce 
+  vyhovovat například v případě, že návěstní přepínač \(N\) bude konstrukčně upraven tak, že ho 
+  nebude možné přeložit bez provedení \textbf{závěru jízdní cesty}. Důsledkem zavedení závěru 
+  jízdní cesty bude potřeba po vlaku jízdní cestu vybavit, tj. závěr zrušit, aby bylo možné s 
+  jednotlivými prvky opět volně manipulovat. 
 
   Ani nyní však ještě nelze v uvedeném příkladě hovořit o zabezpečovacím zařízení. Zařízení musí
-  být konstruováno tak, aby bezpečnost byla zachována i při jakékoliv možné poruše vlastního 
-  zařízení. Tento  požadavek platí jak pro jednotlivé části, tak pro celek a je druhým 
-  charakteristickým rysem železniční zabezpečovací techniky. V uvedeném případě to znamená, že 
+  být konstruováno tak, aby \emph{bezpečnost byla zachována i při jakékoliv možné poruše vlastního 
+  zařízení}. Tento  požadavek platí jak pro jednotlivé části, tak pro celek a je \textbf{druhým 
+  charakteristickým rysem} železniční zabezpečovací techniky. V uvedeném případě to znamená, že 
   zařízení pro kontrolu volnosti koleje nesmí ani při poruše hlásit obsazenou kolej jako volnou, 
   zařízení pro kontrolu polohy výměny nesmí ani při poruše hlásit nesprávně postavenou výměnu jako 
   výměnu správně postavenou, ke zrušení závěru jízdní cesty nesmí ani poruchou dojít dříve než vlak 
@@ -128,7 +132,6 @@
   vlakového zabezpečovacího zařízení) prodlužuje až na vozidlo, aby se zajistilo, že vlak také 
   skutečně bude návěsti respektovat. 
 
-  
   Aplikují-li se všechny výše uvedené zvláštnosti správně při vývoji zabezpečovacího systému, je
   třeba se postarat také o to, aby nedošlo k jejich znehodnocení při projekci, výrobě, montáži a 
   údržbě konkrétních zařízení. Při těchto činnostech je také třeba počítat s lidskými vlastnostmi. 
@@ -154,7 +157,7 @@
   Souhrnně lze konstatovat, že prvořadým účelem zabezpečovacích zařízení na železnici je
   předcházet kolizím a vykolejení vlaků z důvodu chybného řízení dopravy. K tomu účelu je u 
   zařízení třeba sledovat následující oblasti:
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item funkční bezpečnost (korektnost systému), tj. řádné plnění všech požadovaných funkcí v 
           bezporuchovém stavu a při očekávaných vlivech pracovního prostředí,
     \item technickou bezpečnost (bezpečnou konstrukci), tj. splnění požadavku, aby nedošlo k 
@@ -191,11 +194,12 @@
   
   Nejpřirozenějším a klasickým tříděním zabezpečovacích zařízení je třídění podle účelu zařízení.
   Podle tohoto hlediska lze zabezpečovací zařízení dělit na zařízení: 
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item staniční,
     \item traťové,
     \item vlakové,
-    \item přejezdové. 
+    \item přejezdové, 
+    \item spádovištní. 
   \end{itemize}
   Účel je patrný již z názvu. Staniční zabezpečovací zařízení zajišťuje bezpečný pohyb vlaků ve 
   stanici, traťové zařízení zabezpečuje jízdu vlaku na trati mezi stanicemi, vlakové zařízení 
@@ -206,7 +210,7 @@
   ovládání většího úseku tratě z jednoho místa. 
   
   Podle místa ovládání zařízení mluvíme o zařízení s obsluhou :
-    \begin{itemize}
+    \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item místní,
     \item ústřední (centralizovanou v oblasti jedné stanice),
     \item dálkovou (mimo vlastní stanici).
@@ -214,7 +218,7 @@
 
   Další třídění je odvozeno od způsobu ovládání periferií (výměn, návěstidel atd.) a tak vlastně
   zahrnuje celou historii železniční zabezpečovací techniky. Rozeznáváme zařízení:
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item mechanická (využívající výhradně lidské síly),
     \item elektrická,
     \item pneumatická,
@@ -223,7 +227,7 @@
 
   Obdobně, v následujícím třídění je rozhodující způsob, jímž se v zařízení potřebné závislosti
   realizují. Zde rozeznáváme zařízení se závislostmi:
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item mechanickými,
     \item mechanickými i elektrickými (tzv. elektromechanická a elektrodynamická zařízení),
     \item elektrickými, která lze dále dělit podle rozhodujících stavebních prvků, jimiž jsou 
@@ -238,19 +242,19 @@
 
   U traťových zabezpečovacích zařízení je kladen důraz na rozsah spolupůsobení vlaku. Zařízení se
   pak dělí na:
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item poloautomatická (poloautobloky),
     \item automatická (autobloky).
   \end{itemize}
   Podle rozmístění traťových zařízení podél trati lze automatická zařízení dále dělit na:
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item decentralizovaná (funkční bloky jsou umístěny v každém návěstním bodě),
     \item částečně centralizovaná (funkční bloky jsou umístěny pouze ve vybraných bodech na trati),
     \item centralizovaná (zařízení je koncentrováno do stanic).
   \end{itemize}
   Vlaková zabezpečovací zařízení se dělí podle způsobu přenosu informací mezi tratí a hnacím
   vozidlem na zařízení:
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item bodová,
     \item semiliniová,
     \item liniová. 
@@ -258,13 +262,13 @@
 
   Podle způsobu kontroly souladu jízdy vlaku s přenášenými informacemi se vlaková zařízení dále 
   dělí na zařízení s kontrolou:
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item bdělosti strojvedoucího,
     \item rychlosti vlaku.
   \end{itemize}
   
   Zařízení přejezdová se dělí podle způsobu výstrahy na přejezdová zařízení:
-  \begin{itemize}
+  \begin{itemize}\addtolength{\itemsep}{-0.5\baselineskip}
     \item mechanická,
     \item světelná bez závor,
     \item světelná se závorami.
