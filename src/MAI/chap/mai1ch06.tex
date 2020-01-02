@@ -1,0 +1,83 @@
+% !TeX spellcheck = cs_CZ
+%{\tikzset{external/prefix={tikz/MAI/}}
+% \tikzset{external/figure name/.add={ch05_}{}}
+%---------------------------------------------------------------------------------------------------
+% file: Differential_Calculus_applications.tex
+%---------------------------------------------------------------------------------------------------
+\setchaptertoc
+\chapter{Aplikace diferenciálního počtu}\label{mai:IchapVI}
+
+%================Kapitola: Analýza průběhu funkce ==================================================
+\section{Analýza průběhu funkce}\label{mai:IchapVIsecI}
+  Diferenciální počet má rozsáhlou oblast užití. V této kapitole ukážeme použití výsledků
+  předchozích kapitol k vyšetřování průběhu funkce a vlastnosti rovinných křivek. Pomocí derivace
+  můžeme studovat vlastnosti funkce, které usnadní vyšetřování jejího průběhu. 
+
+  Jednou z důležitých vlastností funkce je její \uv{monotonie}, kterou jsme definovali již v odst.
+  \ref{mai:IchapIIIsecIssecIII} kap. \ref{mai:IchapIII}. Proto je při vyšetřování průběhu
+  funkce důležité určit množiny (často jsou to intervaly), na nichž je funkce monotónní, jinak
+  řečeno, najít \uv{intervaly monotonie funkce} (viz
+  \cite[s.~208]{Brabec1989}). 
+    \begin{enumerate}[noitemsep]
+      \item Zjistíme \textbf{definiční obor funkce}, vyjádříme jej v intervalech a z nich poznáme,
+        kde je funkce \textbf{spojitá}. Funkce je spojitá v $(a,b)$ pro každý bod tohoto intervalu,
+        když $\abs{f(x)-f(c)}<\varepsilon$, kde $\varepsilon>0$ je libovolně zvolené číslo, a pro
+        všechna $x$ z okolí bodu $c$ je $\abs{x-c}<\delta$, kde $\delta>0$ je na $\varepsilon$
+        nezávislé.
+      \item Určíme, je-li funkce \textbf{lichá} $f(-x)=-f(x)$ nebo \textbf{sudá} $f(-x)=f(x)$. Je-li
+        funkce lichá, je souměrná podle středu souměrnosti (obyčejně to bývá počátek souřadnic
+        $xy$), je-li sudá, je souměrná podle osy $y$.
+      \item Určíme \emph{průsečíky křivky s osami pravoúhlých souřadnic}. Body, ve kte\-rých křivka
+        protíná osu $x$ spolu s body, ve kte\-rých není křivka spojitá, rozlišují intervaly, v nichž
+        je graf křivky nad osou $x$ od intervalů, ve kterých je graf křivky pod osou $x$.
+      \item V krajních bodech definičních intervalů, ve kterých je funkce spojitá, stano\-víme
+      \emph{limity funkce} a dále $$\lim_{x \to \pm \infty}f(x).$$
+      \item Vypočítáme $f'(x)$ a $f''(x)$, abychom zjistily, kde je funkce \emph{rostoucí}     
+        $f'(x)>0$, \emph{klesající} $f'(x)<0$ a kde jsou \emph{lokální extrémy}. Dostaneme-li
+        dosazením kořenů rovnice $f'(x)=0$ do $f''(x)$ hodnotu $f''(x)>0$, má funkce lokální
+        minimum, při $f''(x)<0$ má funkce lokální maximum. V intervalech, kde $f''(x)>0$, je křivka
+        \textbf{konvexní (vypuklá)}, kde $f''(x)<0$, je křivka \textbf{konkávní (vydutá)}. Body, v
+        nichž $f''(x)$ mění znaménko, jsou \textbf{inflexní body}. Najdeme je tak, že stanovíme
+        hodnoty $x$, pro které je $f''(x)=0$ nebo neexistuje. Číslo $c$ je inflexní bod, když
+        existuje takové okolí bodu $c$, že pro $x>c$ je oblouk křivky konvexní a pro $x<c$ konkávní.
+        Je nutné si uvědomit, že když má $f'(x)$ konečnou derivaci, je inflexní bod $c$ taky nulovým
+        bodem druhé derivace čili kořenem rovnice $f''(x)=0$. Obrácená věta neplatí, tj. z
+        $f''(x)=0$ nevyplývá, že v bodě $c$ má $f'(x)$ extrém a že bod $c$ je inflexním bodem.
+      \item \textbf{Asymptota} je tečna křivky $f(x)$, jejíž bod dotyku je v nekonečnu. Platí-li  
+        $$\lim_{x \to a}f(x) =  \pm\infty,$$ je přímka $x=a$ její asymptotou. Jinak asymptoty mají
+        rovnici $y=kx+q$, kde $x$ a $y$ jsou souřadnice bodů na asymptotách. Existují-li konečné
+        limity $$\lim_{x \to \pm\infty}\frac{f(x)}{x}=k$$  a $$\lim_{x \to \pm\infty}[f(x)-kx] =q$$
+        pak je asymptotou přímka $y=kx+q$. Můžeme-li rovnici křivky rozložit (tj. rozložit její
+        pravou stranu, oby\-čejně dělením čitatele jmenovatelem, má-li tvar zlomku) na dvě části, z
+        nichž jedna má tvar $kx+q$ a druhá zbytek $\varphi(x)$, tj. $f(x)=kx+q+\varphi(x)$ a
+        $\varphi(x)_{x\rightarrow \pm\infty}\rightarrow 0$, je přímka $y=kx+q$ asymptotou.
+      \item Zpřesnění grafu křivky provedeme sestavením tabulky souřadnic dalších bodů křivky, tj.
+        ke zvoleným hodnotám $x$ (z definičního oboru funkce) vypočítáme hodnoty $y$. Do dalších
+        řádků tabulky zapíšeme hodnoty  $f'(x)$ a $f''(x)$, ve kterých intervalech je funkce
+        \emph{rostoucí}, ve kterých \emph{klesá}, kde je \emph{vypuklá}, kde je \emph{dutá}, kde
+        jsou \emph{lokální extrémy}, \emph{inflexní body} apod., případně sestavíme dílčí tabulky
+        pro jednotlivé \emph{charakteristické vlastnosti} vyšetřované funkce.
+    \end{enumerate}
+    %-------------------- EXAM001 --------------------------------------
+    \input{../src/MAI/exam/exam003.tex}
+    %-------------------------------------------------------------------
+
+%================Kapitola: Aplikace diferenciálního počtu =========================================
+\section{Fyzikální a jiné aplikace derivace}\label{mai:IchapVIsecII}
+    V předcházející kapitole \ref{mai:IchapVIsecI} jsou uvedeny jednoduché příklady na užití první a
+    druhé derivace. V této kapitole jsou soustředěny slovní úlohy na maxima a minima z různých
+    oborů.
+    %--------------------------------------------------------------
+    \input{../src/MAI/exam/exam092.tex}
+    %--------------------------------------------------------------
+
+    %--------------------------------------------------------------
+    \input{../src/MAI/exam/exam091.tex}
+    %--------------------------------------------------------------
+
+    %--------------------------------------------------------------
+    \input{../src/MAI/exam/exam093.tex}
+    %--------------------------------------------------------------
+
+%} %tikzset
+%---------------------------------------------------------------------------------------------------

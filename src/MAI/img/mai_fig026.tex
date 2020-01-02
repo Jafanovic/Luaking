@@ -1,0 +1,168 @@
+% J. Musilová a P. Musilová, Matematika I: pro porozumnění i praxi: netradiční
+% výklad tradičních témat vysokoškolské matematiky. VUTIUM, 2009, s. 339, isbn:
+% 978-80-214-3631-2. WWW: http://localhost/stable.php?id=527
+% https://1drv.ms/b/s!Ajq2sO-eH2xU9XEhAGXpHPItEUvR
+% https://tex.stackexchange.com/questions/117140
+% TIKZ examples:
+% https://tex.stackexchange.com/questions/129429/how-do-i-shade-an-area-in-pgfplots
+% https://tex.stackexchange.com/questions/158585/draw-3d-intersecting-surfaces
+% https://tex.stackexchange.com/questions/294371/drawing-planes-in-3d-with-tikz
+% https://tex.stackexchange.com/questions/45239/making-overlay-figures-in-tikz
+% https://tex.stackexchange.com/questions/355052/pgfplots-mark-opacity
+
+\documentclass[11pt, 
+    border={-1.7cm -0.5cm -0.6cm 0cm}    % left bottom right top   
+]{standalone}
+  \usepackage{pgf,tikz,pgfplots}
+    \pgfplotsset{compat=1.16}
+    \usetikzlibrary{arrows}
+    \usetikzlibrary{calc}
+    \usetikzlibrary{intersections}
+    \usetikzlibrary{backgrounds}
+  \usepackage{amsmath, amssymb, amsthm, bm}
+  \usepackage{xcolor}
+    \definecolor{blue}{rgb}{0,0,1}
+    \definecolor{red}{rgb}{0.8,0,0}
+
+\begin{document}
+% declare extra background layer, (main = default)
+\pgfdeclarelayer{background layer}
+\pgfsetlayers{background layer,main}
+
+    \begin{tikzpicture}[
+        line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,
+        extended line/.style={shorten >=-#1,shorten <=-#1},
+        extended line/.default=1cm
+        ]
+        % GEOGEBRA used for coordinate estimation
+        \def\Ax{4}        \def\Ay{-1}       \def\Az{4}       % coordinate point A
+        \def\Bx{3}        \def\By{-2}       \def\Bz{2}       % coordinate point B
+        \def\Cx{3}        \def\Cy{-3}       \def\Cz{5}       % coordinate point C
+        % plane 5x - 3y -z = 19
+        \def\Xx{0}        \def\Xy{-7}       \def\Xz{2}       % coordinate point X
+        \pgfmathsetmacro\ux{\Bx-\Ax}  
+        \pgfmathsetmacro\uy{\By-\Ay}  
+        \pgfmathsetmacro\uz{\Bz-\Az} % vector u
+        
+        \pgfmathsetmacro\vx{\Cx-\Ax}  
+        \pgfmathsetmacro\vy{\Cy-\Ay}  
+        \pgfmathsetmacro\vz{\Cz-\Az} % vector v
+
+        \pgfmathsetmacro\wx{\Xx-\Ax}  
+        \pgfmathsetmacro\wy{\Xy-\Ay}  
+        \pgfmathsetmacro\wz{\Xz-\Az} % vector w
+        % r,s parameters
+        \pgfmathsetmacro\uv{\ux*\vy - \uy*\vx}
+        \pgfmathsetmacro\r{-(\wy*\vx - \wx*\vy)/\uv}
+        \pgfmathsetmacro\s{+(\wy*\ux - \wx*\uy)/\uv}        
+
+        % pomocné koncové body r*\vec{u} a s*\vec{v}
+        \pgfmathsetmacro\Gx{\r*\ux + \Ax}   
+        \pgfmathsetmacro\Gy{\r*\uy + \Ay}  
+        \pgfmathsetmacro\Gz{\r*\uz + \Az}  
+
+        \pgfmathsetmacro\Hx{\s*\vx + \Ax}   
+        \pgfmathsetmacro\Hy{\s*\vy + \Ay}  
+        \pgfmathsetmacro\Hz{\s*\vz + \Az}  
+
+    
+        \def\sc{1}        % red plane scale
+        % Průsečnice rovin: \rho: 5x - 3y -z = 19 
+        %                   \pi:           z = 0  {gray plane} 
+        %   Pokud jsou dvě roviny různoběžné, tak mají společných
+        %   nekonečně mnoho bodů. Tyto body tvoří přímku a ta se nazývá
+        %   průsečnice. 
+        % rovnice průsečnice y= \frac{5}{3}x - \frac{19}{3} 
+
+        \pgfmathsetmacro\Kx{-1}
+        \pgfmathsetmacro\Ky{(5/3)*\Kx - (19/3)}
+        \pgfmathsetmacro\Kz{0}
+    
+        \pgfmathsetmacro\Lx{2}
+        \pgfmathsetmacro\Ly{(5/3)*\Lx - (19/3)}
+        \pgfmathsetmacro\Lz{0}
+        
+        \pgfmathsetmacro\Mx{\Ax}
+        \pgfmathsetmacro\My{\Ay}
+        \pgfmathsetmacro\Mz{\Az}
+    
+        \pgfmathsetmacro\Nx{\Hx}
+        \pgfmathsetmacro\Ny{\Hy}
+        \pgfmathsetmacro\Nz{\Hz}
+
+
+
+        \begin{axis}[
+            view={40}{35},
+            axis lines=center,
+            width=15cm,height=15cm,
+            xtick={-4,-3,...,4,5},
+            ytick={-7,-6,...,7,8},
+            ztick={0,1,2,3,4,5},
+            ticklabel style={font=\footnotesize},
+            % minor tick={-12,-11,...,12},
+            minor tick num=4,
+            xmin=-4.1, xmax=5.5,
+            ymin=-7.5, ymax=8.5,
+            zmin=0, zmax=5.1,
+            xlabel={\(x\)},
+            ylabel={\(y\)},
+            zlabel={\(z\)},
+            enlargelimits={abs=0.2}, 
+            % axis background/.style={fill=gray!10},
+            axis line style={-latex}, 
+          ] 
+
+
+            %filling the background layer (all previous commands belong to main layer)
+            \begin{pgfonlayer}{background layer} 
+                \addplot3 [black, fill=gray!50, fill opacity=0.5, draw opacity=0.5] 
+                    coordinates {(-4,-7,0) (-4,5,0) (4,5,0) (4,-7,0)};  
+            \end{pgfonlayer}  
+            % % % horni pulka cervene roviny             
+            \addplot3 [fill=gray!80, fill opacity=0.5, draw opacity=0.5] 
+                coordinates {(\Kx,\Ky,\Kz) (\Lx,\Ly,\Lz) (\Mx,\My,\Mz) (\Nx,\Ny,\Nz) (\Kx,\Ky,\Kz)};
+            
+            % plot dashed lines to axes
+            \addplot3 [no marks,densely dashed] coordinates {(0,\Ay,0) (\Ax,\Ay,0) (\Ax,0,0)};
+            \addplot3 [no marks,densely dashed] coordinates {(\Ax,\Ay,0) (\Ax,\Ay,\Az)};
+            
+            \addplot3 [no marks,densely dashed] coordinates {(0,\By,0) (\Bx,\By,0) (\Bx,0,0)};
+            \addplot3 [no marks,densely dashed] coordinates {(\Bx,\By,0) (\Bx,\By,\Bz)};
+
+            \addplot3 [no marks,densely dashed] coordinates {(0,\Cy,0) (\Cx,\Cy,0) (\Cx,0,0)};
+            \addplot3 [no marks,densely dashed] coordinates {(\Cx,\Cy,0) (\Cx,\Cy,\Cz)};
+            
+            \addplot3 [no marks,densely dashed] coordinates {(0,\Xy,0) (\Xx,\Xy,0) (\Xx,0,0)};
+            \addplot3 [no marks,densely dashed] coordinates {(\Xx,\Xy,0) (\Xx,\Xy,\Xz)};
+            
+            % hlavni vektory:
+            \addplot3 [-latex, color=red, line width=2pt]  coordinates {(\Ax,\Ay,\Az) (\Bx,\By,\Bz)};
+            \addplot3 [-latex, color=red, line width=2pt]  coordinates {(\Ax,\Ay,\Az) (\Cx,\Cy,\Cz)};
+            \addplot3 [-latex, color=blue, line width=2pt] coordinates {(\Ax,\Ay,\Az) (\Xx,\Xy,\Xz)};
+            
+            \draw [dashed, line width=1pt] (\Xx,\Xy,\Xz) -- (\Hx,\Hy,\Hz) 
+                node [black] at (axis cs:\Hx+0.3,\Hy-0.3,\Hz-0.2) {$s\vec{v}$}; 
+            \draw [line width=1pt, fill=black] (\Hx,\Hy,\Hz) circle [radius=1pt];
+            \draw [dashed, line width=1pt] (\Xx,\Xy,\Xz) -- (\Gx,\Gy,\Gz) 
+                node [black] at (axis cs:\Gx,\Gy-0.3,\Gz-0.1) {$r\vec{u}$};
+            \draw [line width=1pt, fill=black] (\Gx,\Gy,\Gz) circle [radius=1pt];
+            \draw [line width=1pt, fill=black] (\Ax,\Ay,\Az) circle [radius=2pt];
+
+            \draw [latex-, line width=1pt] (\Hx,\Hy,\Hz) -- (\Cx,\Cy,\Cz) node [above] {$\vec{v}$};
+            \draw [latex-, line width=1pt] (\Gx,\Gy,\Gz) -- (\Bx,\By,\Bz) 
+                node [black] at (axis cs:\Bx-0.1,\By-0.3,\Bz+0.1) {$\vec{u}$};
+            
+           
+            % label points
+            \node [] at (axis cs:\Xx-0.3,\Xy,\Xz) {\(X\)};
+            \node [red!90] at (axis cs:\Xx,\Xy+5,\Xz+1) {\(\rho\)};
+
+            % TESTING PURPOSES
+            % \addplot3 [only marks] coordinates {(\Ax,\Ay,\Az) (\Xx,\Xy,\Xz)};
+            % \node [above left, fill = white] at (axis cs:0,0,-7) {r s: \uv, \r, \s};           
+
+
+        \end{axis}
+    \end{tikzpicture}
+\end{document}

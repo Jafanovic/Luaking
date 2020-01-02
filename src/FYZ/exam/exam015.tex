@@ -1,0 +1,83 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{fyz:fey_exam015}
+    Představme si, že pozorujeme dva čluny na řece. Obrázek 1.1 znázorňuje řeku šířky \(L\), která
+    teče rychlostí \(v\). Dva čluny startují od téhož břehu řeky stejně velkou rychlostí \(V\). Člun
+    \(A\) přepluje řeku do místa na druhém břehu přímo naproti výchozímu bodu, a poté se vrátí,
+    zatímco člun \(B\) pluje po proudu na vzdálenost \(L\) a rovněž se vrátí. Vypočítejme dobu,
+    potřebnou na obě cesty tam a zpět. \newline
+
+    {\centering\captionsetup{type=figure}\luafigure[1]{fyz_fig897.png}\par}
+
+    \vspace{1em}
+    Začneme člunem \(A\). Směřuje-li člun \(A\) kolmo napříč řeky, unáší ho proud od cíle na
+    protějším břehu (obr. \ref{fyz:fig898}). Musí proto mířit poněkud proti proudu, aby se vliv
+    proudu kompenzoval. K vyrovnání odchylky musí být tato složka rychlosti proti proudu rovna
+    přesně \(-v\), aby kompenzovala říční proud o rychlosti \(v\); zbývající složka \(V'\) je pak
+    čistou rychlostí člunu napříč řeky. Podle obr. \ref{fyz:fig898} tyto rychlosti spolu souvisejí
+    vzorcem
+    \begin{equation*}
+      V^2 = V'^2 + v^2,
+    \end{equation*}
+    takže skutečná rychlost plavby přes řeku je zde
+    \begin{equation*}
+      V'^2 = \sqrt{V^2 - v^2} = V\sqrt{1 - \frac{v^2}{V^2}}.
+    \end{equation*}
+
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[1]{fyz_fig898.png}
+    \captionof{figure}{Má-li člun \(A\) přeplout kolmo řeku, musí mířit šikmo proti jejímu proudu,
+              aby vyrovnal jeho vliv.  
+    \cite[s.~18]{Beiser1975}
+    \label{fyz:fig898}}
+    \par}
+    \vspace{1em}
+    Čas potřebný k prvnímu přeplutí řeky, je tedy roven vzdálenosti \(L\) dělené rychlostí \(V'\).
+    Jelikož cesta zpátky trvá přesně stejně dlouho, je celková doba \(t_A\) pro cestu tam a zpět
+    dvojnásobkem \(L/V'\), neboli 
+    \begin{equation*}
+      t_A = \frac{2L/V}{\sqrt{1 - \frac{v^2}{V^2}}}.
+    \end{equation*}
+
+    Situace člunu \(B\) je poněkud jiná. Pluje-li po proudu, rovná se jeho rychlost vůči břehu
+    součtu vlastní rychlosti člunu \(V\) a rychlosti \(v\) říčního proudu (obr. \ref{fyz:fig899}),
+    takže urazí vzdálenost \(L\) po proudu během doby
+    \begin{equation*}
+      \frac{L}{V+v}.
+    \end{equation*}
+    Na zpáteční cestě se však člun \(B\) pohybuje vzhledem ke břehu rychlostí, která se rovná
+    rozdílu jeho vlastní rychlosti \(V\) a rychlosti \(v\) říčního proudu. Potřebuje tudíž dobu
+    \begin{equation*}
+      \frac{L}{V-v},
+    \end{equation*}
+    aby urazil proti proudu vzdálenost \(L\) a vrátil se do výchozího bodu. Celková doba to cesty je
+    součtem obou těchto časů
+    \begin{equation*}
+      t_B = \frac{L}{V+v} + \frac{L}{V-v},
+    \end{equation*}
+    Převedení na společného jmenovatele (V + v) (V - v) dává 
+    \begin{equation*}
+      t_B = \frac{L(V-v)+L(V+v)}{(V+v)(V-v)} = \frac{2LV}{V^2 -v^2} 
+          = \frac{2L/V}{1 - \frac{v^2}{V^2}},
+    \end{equation*}
+    tj. více, než činí odpovídající doba ta prvního člunu.
+
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[1]{fyz_fig899.png}
+    \captionof{figure}{Rychlost člunu \(B\) vůči břehu je při plavbě po proudu větší o rychlost 
+              říčního proudu, kdežto při plavbě proti proudu je o stejnou hodnotu menší.
+    \cite[s.~19]{Beiser1975}
+    \label{fyz:fig899}}
+    \par}
+
+    Poměr obou časů \(t_A\) a \(t_B\) je
+    \begin{equation*}
+      \frac{t_A}{t_B} = \frac{2L/V}{\sqrt{1 - \frac{v^2}{V^2}}}.
+    \end{equation*}
+
+    Známe-li rychlost \(V\), společnou pro oba čluny, a měříme-li poměr \(t_A/t_B\), můžeme určit
+    rychlost \(v\) říčního proudu.
+  \end{example}
+\end{mdframed}

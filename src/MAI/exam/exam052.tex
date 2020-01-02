@@ -1,0 +1,83 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam052}
+    \textbf{Výhra ve sportce}\newline
+    Jaká je pravděpodobnost hlavní výhry ve sportce? Všichni víme, že malá, ale máme představu, jak
+    malé toto číslo je? Při sportce se losuje \(k = 6\) čísel a jedno dodatkové z celkového počtu
+    \(n = 49\) čísel. (Dříve byla čísla spojena s názvy sportů, odtud název „sportka“ .) Na pořadí
+    čísel ve výběru nezáleží, vytažené číslo se do hry nevrací. Jde tedy o \textbf{kombinace bez
+    opakování}. Hlavní výhra požaduje uhodnout všech \num{6} tažených čísel. Jev \(A\) je tedy
+    definován takto:
+    
+    \begin{itemize}[leftmargin=10pt,noitemsep]
+      \item Jev \(A\): Bude taženo právě oněch \num{6} čísel, která jsem vsadil. Počet možností,
+            které při tahu sportky mohou nastat (počet případů možných), je \(N = \binom{n}{k} =
+            \binom{49}{6}\). Hlavní výhru představuje jediná kombinace, počet příznivých případů je
+            proto \(M = 1\). Pravděpodobnost hlavní výhry ve sportce, tj. pravděpodobnost jevu
+            \(A\), je
+            \begin{gather*}
+              \begin{align*}
+              p(A) &= \dfrac{M}{N} = \dfrac{1}{\binom{49}{6}} = \dfrac{43!6!}{49!}   \\
+                   &= \dfrac{720}{49\cdot48\cdot47\cdot46\cdot45\cdot44} 
+                    \simeq \SI{7e-6}{\percent}
+              \end{align*}    
+            \end{gather*}
+            Pravděpodobnost hlavní výhry je velmi malá, sedm milióntin procenta.
+            
+      \item A o kolik lepší to bude s pravděpodobností některé z vedlejších výher? Tak třeba pátá
+            cena znamená, že je nutné ze šesti tažených čísel uhodnout libovolné tři. Jev \(A\) je
+            tedy: Ze šesti čísel, která jsme vsadili, budou v tažené kombinaci obsažena právě tři
+            libovolná z nich. Počet \(N\) zůstává stejný jako v předchozí části úlohy. Je třeba jen
+            určit \(M\). Každý příznivý případ vzniká tak, že trojice správných čísel (výběry tří ze
+            šesti) je doplněna trojicí chybných čísel (výběry tří ze čtyřiceti tří). Tedy \(M = 
+            \binom{6}{3}\binom{49 - 6}{3} = \binom{6}{3}\binom{43}{3}\),
+            \begin{gather*}
+              \begin{align*}
+              p(A) &= \dfrac{M}{N} 
+                    = \dfrac{\binom{6}{3}\binom{43}{3}}{\binom{49}{6}}                           \\              
+                   &= \left(\dfrac{6!}{3!\cdot3!}\right)\left(\dfrac{43!}{40!\cdot3!}\right)
+                      \left(\dfrac{43!6!}{49!}\right)                                            \\
+                   &= \dfrac{120}{6}\cdot\dfrac{\cdot43\cdot42\cdot41}{6}\cdot
+				      \dfrac{720}{49\cdot48\cdot47\cdot46\cdot45\cdot44}                                 \\
+              p(A) &\simeq\SI{1.8}{\percent}.
+              \end{align*}    
+            \end{gather*}
+            Tato pravděpodobnost již zanedbatelná není, na rozdíl od finanční částky, jíž bývá
+            ohodnocena pátá cena. Sázení sportky může domácímu rozpočtu spíše ublížit.
+      \item Třetí, resp. čtvrtá cena jsou, podobně jako první a pátá, definovány velmi jednoduše. Je
+            třeba uhodnout pět, resp. čtyři ze šesti tažených čísel. V případě druhé ceny hraje roli
+            dodatkové číslo. Druhou cenu získává ten, kdo uhodl pět ze šesti čísel vylosovaných v
+            prvním tahu a ještě navíc číslo dodatkové, které se losuje ze zbylých \num{43} čísel,
+            jež zůstala po prvním tahu v osudí. Jev \(A\) je tedy definován takto:
+            
+            Ze šesti čísel, která jsem vsadil, bude při prvním tahu vylosováno libovolných pět a v
+            druhém tahu bude vylosováno právě to dodatkové číslo, které jsem vsadil. Počet případů
+            příznivých je pouze \(M = \binom{6}{5}\), neboť šestým číslem nemůže být libovolné ze
+            \num{43} čísel, která nebyla v prvním tahu vylosována, ale musí to být právě číslo
+            dodatkové. Pravděpodobnost jevu \(A\) je
+            \begin{equation*}
+              p(A) = \dfrac{M}{N} = \dfrac{\binom{6}{5}}{\binom{49}{6}} \simeq\num{4.2e-17}.
+            \end{equation*}
+            
+            Pokud bychom jako jev \(A\) označili výhru jakékoliv ceny, dostaneme
+            \begin{gather*}
+              \begin{align*}
+              M  &= \sum_{k=3}^{6}\binom{6}{k}\binom{43}{6-k} + \binom{6}{5}                      \\
+                 &= \binom{6}{3}\binom{43}{3} + \binom{6}{4}\binom{43}{2} + 
+                    \binom{6}{5}\binom{43}{1} + \binom{6}{6}\binom{43}{0} + \binom{6}{5},   
+              \end{align*}    
+            \end{gather*}  
+            Pravděpodobnost jevu \(A\) je    
+            \begin{gather*}
+              \begin{align*}
+                p(A) &= \dfrac{\binom{6}{3}\binom{43}{3}+\binom{6}{4}\binom{43}{2}+
+                               \binom{6}{5}\binom{1}{43}+\binom{6}{6}\binom{43}{0}+\binom{6}{5}}
+                              {\binom{49}{6}}                                                    \\
+                p(A) &\simeq\SI{1.9}{\percent}.
+              \end{align*}    
+            \end{gather*}
+            Všimněte si, že tento výsledek je roven součtu pravděpodobností výhry páté, čtvrté,
+            třetí, druhé a hlavní ceny. Později si tento závěr ještě připomeneme.
+    \end{itemize}  
+  \end{example}
+\end{mdframed}

@@ -1,0 +1,59 @@
+% !TeX spellcheck = cs_CZ
+% \wikitextrule
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam043}
+    \textbf{Vzájemná poloha tří rovin}\newline
+    Zapojme geometrickou představivost a uvažujme, jakou vzájemnou polohu mohou mít tři roviny
+    \begin{align*}
+      \varrho: a_1x + b_1y + c_1z + d_1 &= 0, \\
+      \sigma : a_2x + b_2y + c_2z + d_2 &= 0, \\
+      \tau   : a_3x + b_3y + c_3z + d_3 &= 0,
+    \end{align*}
+    Současně si uvědomme, že předchozí soustava je soustavou lineárních rovnic o neznámých \(x\),
+    \(y\) a \(z\), představujících souřadnice společných bodů rovin \(\varrho\), \(\sigma\) a
+    \(\tau\). Soustava je charakterizována maticí
+    \begin{equation}\label{mai:eq043}
+      \matr{B} = (\matr{A}\lvert\overline{\matr{B}}) =
+      \left(
+        \begin{array}{rrr|r}
+          a_1 & b_1 & c_1 & -d_1    \\
+          a_2 & b_2 & c_2 & -d_2    \\
+          a_3 & b_3 & c_3 & -d_3
+        \end{array}
+      \right).
+    \end{equation}
+    Jsou tyto možnosti:
+    \begin{itemize}
+      \item Roviny mají společný právě jeden bod. V tomto případě musí mít soustava
+            (\ref{mai:eq043}) právě jedno řešení, a tedy \(h(\matr{A}) = h(\matr{B}) = 3\). (Útvar,
+            který by vytvořily všechny roviny procházející tímto bodem, se nazývá \textbf{trs rovin
+            prvního druhu}, společný bod je vrchol trsu.)
+      \item Roviny mají společnou přímku. Řešení soustavy (\ref{mai:eq043}) bude v takovém případě
+            závislé na jedné volné neznámé (parametr bodů na společné přímce), takže \(h(\matr{A}) =
+            h(\matr{B}) = 2\). (Útvar, který by vytvořily všechny roviny procházející touto přímkou,
+            jsme před chvílí nazvali \textbf{svazkem rovin prvního druhu}, společná přímka je
+            \textbf{osou} svazku.)
+      \item Roviny jsou totožné. Řešení soustavy (\ref{mai:eq043}) je popsáno dvěma volnými
+            neznámými (parametry bodů ve společné rovině), je tedy \(h(\matr{A}) = h(\matr{B}) =
+            1\).
+      \item Roviny nemají společný žádný bod, mají však společný právě jeden směr (představme si
+            například nekonečně dlouhý stan „áčko“, v němž jedna z rovin tvoří podlážku a zbylé dvě
+            jsou stěnami). Společný směr \(\vec{u}\) je řešením homogenní soustavy rovnic (příklad
+            \ref{mai:exam043})
+            \begin{subequations}\label{mai:eq044}
+              \begin{align}
+                a_1u_1 + b_1u_2+ c_1u_3 &= 0, \label{mai:eq044a} \\
+                a_2u_1 + b_2u_2+ c_2u_3 &= 0, \label{mai:eq044b} \\
+                a_3u_1 + b_3u_2+ c_3u_3 &= 0. \label{mai:eq044c}
+              \end{align}
+            \end{subequations}
+            jejíž řešení musí být popsáno jednou volnou neznámou, tj. \(h(\matr{A}) = 2\). Původní
+            nehomogenní soustava (\ref{mai:eq043}) pro společné body rovin však řešení nemá, je tedy
+            \(h(\matr{B}) = 3\). (Útvar, který by vytvořily všechny roviny obsahující společný směr,
+            se nazývá \textbf{trs rovin druhého druhu}.)
+      \item Roviny jsou rovnoběžné, nemají však žádný společný bod. Znamená to, že mají společné dva
+            nezávislé směry, řešení homogenní soustavy (\ref{mai:eq044}) obsahuje dvě volné neznámé
+            a platí \(h(\matr{A}) = 1\), \(h(\matr{B}) = 2\).
+    \end{itemize}
+  \end{example}
+\end{mdframed}

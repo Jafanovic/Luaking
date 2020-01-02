@@ -1,0 +1,103 @@
+% !TeX spellcheck = cs_CZ
+%{\tikzset{external/prefix={tikz/MAI/}}
+% \tikzset{external/figure name/.add={ch10_}{}}
+%---------------------------------------------------------------------------------------------------
+% file mai1ch01.tex
+%---------------------------------------------------------------------------------------------------
+\setchaptertoc
+\chapter{Logika a teorie množin}\label{mai:IchapI}
+  \MakeUppercase{Matematika} pochází z řeckého slova \emph{Mathema}, což znamená vědění a poznání.
+  Matematika nejsou počty - ty jsou jen jedním z nástrojů, které navíc může za nás vykonat počítač.
+  Je prostředkem k popisu a formalizaci jevů v okolním světě, umožňuje odhadnout důsledky těchto
+  jevů a najít souvislosti mezi nimi.
+
+
+  \section{Matematická logika}\label{mai:IchapIsecI}
+    Vyjadřovacími prostředky matematiky, s nimiž se setkáváme v učebnicích i dalších matematických 
+    textech, jsou především běžný spisovný jazyk, speciální jazyk (terminologie a symbolika) logiky 
+    a matematiky, grafy, diagramy, schémata a tabulky \cite[s.~13]{polak1991matematika}.
+    
+    \subsection{Symboly, konstanty a proměnné}
+      Velmi významné je pro matematiku užití symbolů (znaků), jež umožňuje stručné vyjadřování 
+      matematických poznatků ve formě symbolických zápisů, vzorců apod. Tak např. uvažovaným 
+      objektům (prvkům množin) se přiřazuje kromě názvu (jména) objektu také symbol objektu, který 
+      ho zastupuje ve stručném vyjádření (v symbolických zápisech). Symbol objektu může být dvojího 
+      druhu:
+      \begin{enumerate}[label=\alph*), noitemsep]
+        \item \textbf{Konstanta} je symbol, který označuje určitý (jediný) objekt. Z dané množiny 
+              objektů. Např. 4 (označuje číslo čtyři), \(\pi\) (označuje \emph{Ludolfovo číslo}). 
+        \item \textbf{Proměnná} je symbol, který označuje kterýkoli objekt z dané množiny 
+              objektů. Zpravidla je to písmeno \(x\), \(y\) apod.
+      \end{enumerate}
+      
+      Množina konstant, které zastupuje proměnná, se nazývá \textbf{obor proměnné}. Prvky oboru 
+      proměnné se nazývají \emph{hodnoty proměnné}. Nahrazení proměnné konstantou z oboru 
+      proměnné v nějakém výraze nazýváme \emph{dosazení konstanty za proměnnou} do daného výrazu.
+    
+    \subsection{Výroky a jejich pravdivostní hodnoty}
+      Ze složitějších jazykových výrazů mají základní význam v logice a v matematice výroky, což 
+      jsou takové jazykové výrazy (sdělení), o nichž má po obsahové stránce smysl tvrdit, že jsou 
+      buď pravdivé, anebo nepravdivé (nastává právě jedna z těchto možností). Je-li \textbf{výrok 
+      pravdivý}, říkáme též, že výrok platí. Je-li \textbf{výrok nepravdivý}, říká se také, že 
+      výrok neplatí.
+      
+      Výroky, o nichž jsme (v daném okamžiku) dosud neurčili jednoznačně zda jsou pravdivé, anebo 
+      nepravdivé, avšak principiálně jedna z těchto možností musí nastat, se nazývají 
+      \textbf{hypotézy (domněnky)}. Gramaticky má výrok vždy formu oznamovací věty vyjádřené slovně 
+      anebo symbolicky (pomocí matematických, logických, event. dalších symbolů.
+      
+      K označení výroků se obvykle používají malá písmena \(p\), \(q\) aj. (V literatuře se lze 
+      setkat též s označením velkými písmeny.) 
+      
+      Výrokům se přiřazují \textbf{pravdivostní hodnoty} takto: pravdivostní hodnota \num{1} 
+      (pravda), je-li výrok  pravdivý, pravdivostní hodnota \num{0} (nepravda), je-li výrok 
+      nepravdivy.
+      
+      Příklady výroků:
+      \begin{enumerate}[label=\alph*), noitemsep]
+        \item \emph{Pravdivé výroky:} Bedřich Smetana je autorem hudby k opeře Prodaná 
+              nevěsta. Číslo \num{10} je sudé. 
+        \item \emph{Nepravdivé výroky:} Král Karel IV. nebyl korunován císařem. Každé prvočíslo 
+              je liché. 
+        \item \emph{Hypotézy:} Nekteré druhy rakoviny jsou vírového puvodu. Každé sudé číslo větší
+              než dvě lze rozložit na součet dvou prvočísel.
+      \end{enumerate}
+
+      Mezi výroky se zařazují i taková sdělení, o jejichž pravdivosti, resp. nepravdivosti nemůžeme
+      v současnosti rozhodnout, ale principiálně právě jedna z těchto možností musí nastat. Jde
+      zejména o výroky, jejichž pravdivost, resp. nepravdivost je časově nebo místně podmíněná, a
+      výroky vztahující se k budoucnosti:
+      \begin{enumerate}[label=\alph*), noitemsep]
+        \item \emph{Výroky s časove nebo místne podmínenou pravdivostí:} Prší. Jsme ve škole.
+              Vyšetrujeme vlastnosti daných posloupností. 
+        \item \emph{Výroky vztahující se k budoucnosti:} Zítra bude pršet. Půjdeme do kina. Daným
+              bodem \(Q\) sestrojíme přímku \(q\) kolmou k dané přímce \(p\).
+      \end{enumerate}
+
+      Příklady jazykových výrazů, jež nejsou výroky:
+      \begin{enumerate}[label=\alph*), noitemsep]
+        \item \emph{Názvy:} stredoškolská matematika. Praha.
+        \item \emph{Výrazy typu:} 2+3. 
+        \item \emph{Rozkazovací a tázací věty}. 
+        \item \emph{Výrazy obsahující proměnné:} Číslo \(x\) je sudé
+      \end{enumerate}
+
+      \begin{mdframed}[style=mdnote]
+        \begin{note}
+          Výrokům se přiřazují pravdivostní hodnoty výroku takto: Je-li výrok pravdivý, přiřazuje se
+          mu pravdivostní hodnota pravda označovaná symbolem (číslicí) \num{1}\protect\footnotemark[2].
+          Je-li výrok nepravdivý, přiřazuje se mu pravdivostní hodnota nepravda označovaná symbolem
+          (číslicí) \num{0}. O daném výroku se pak stručně říká, že má pravdivostní hodnotu
+          \num{1}\protect\footnotemark[1], resp. \num{0}. 
+        \end{note}
+        \footnotetext[1]{v literatuře se lze setkat též s jejím označením \(P\)}
+        \footnotetext[2]{v literatuře se lze setkat též s jejím označením \(N\)}
+      \end{mdframed}
+    
+    \subsection{Složené výroky}  
+      
+      
+  \section{Množiny}\label{mai:IchapIsecII}
+
+%} %tikzset
+%---------------------------------------------------------------------------------------------------

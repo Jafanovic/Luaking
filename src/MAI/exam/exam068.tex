@@ -1,0 +1,142 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam068}
+    \textbf{Poissonovo rozdělení}\newline
+    Limitním případem Bernoulliova (binomického) rozdělení pro velké hodnoty \(n\), tj. \(n
+    \rightarrow \infty\), a pro \(j \ll n\) je \textbf{rozdělení Poissonovo}. Odvodíme je. Pro velká
+    \(n\) a \(j \ll n\) platí přibližný vzorec
+    \begin{equation*}
+      n! \approx n^j(n-j)!,
+    \end{equation*}
+    a tedy   Možnost použití Bernoulliova rozdělení si již představit dokážeme. Přinejmenším jsou
+    hody mincemi a kostkami pěkné hříčky. K čemu však je dobré rozdělení Poissonovo? Jak může
+    vypadat praktická situace, kdy provádíme obrovské množství opakování pokusu a zajímá nás
+    pravděpodobnost pouze malého počtu zdarů? Typickým příkladem takové situace je registrace částic
+    vznikajících při radioaktivním rozpadu. Taková měření jsou potřebná nejen ve fyzikálním výzkumu,
+    ale i v aplikovaných oborech, například v lékařství. Počet \(n\) radioaktivních rozpadů za
+    jednotku času, například za sekundu, je u běžných zdrojů obrovský, zatímco počet těch z nich,
+    které jsou zachycovány detektorem, může být při určitých experimentech malý. Částice se
+    registrují pomocí Geigerova-Mullerova počítače, kterým je ionizační komora pracující ve vhodném
+    režimu. Pokud je počet částic \(j\) dopadajících za jednu sekundu do detektoru velmi malý,
+    vyvolá každá z nich měřitelný a dokonce slyšitelný pulz (v obvodu to „praská“). Po registraci
+    částice potřebuje detektor jistou \textbf{mrtvou dobu}, aby se vrátil do výchozího stavu, v němž
+    je schopen registrovat další částici. Tato doba se pohybuje kolem \SI{e-4}{s}. Aby byly
+    jednotlivé pulzy dobře odlišeny, je však třeba, aby do detektoru dopadlo za jednu sekundu mnohem
+    a mnohem méně částic, než jak by odpovídalo převrácené hodnotě mrtvé doby. Zejména pokud bychom
+    chtěli pulzy počítat sluchem, nemělo by jich být více než zhruba jeden až dva každou sekundu.
+    Uvažujme o radioaktivním rozpadu jader cesia \ce{Cs^137}. Jedná se o takzvaný
+    \textbf{beta-rozpad}, který probíhá následovně:
+    \begin{itemize}
+      \item \ce{Cs^137} \(\longrightarrow\) \ce{Ba^137} + elektron + neutrino, asi \SI{8}{\percent} 
+            všech rozpadů
+      \item \ce{Cs^137} \(\longrightarrow\) \ce{Ba^137}* + elektron + neutrino, asi \SI{92}{\percent} 
+            všech rozpadů
+    \end{itemize}
+    \begin{equation*}
+      p_j \approx \lim\limits_{n\rightarrow\infty}\dfrac{n^j}{j!}p^j(1-p)^{n - j}
+          \approx \lim\limits_{n\rightarrow\infty}\dfrac{(np)^j}{j!}\left(1-\dfrac{np}{n}\right)^{n}.
+    \end{equation*}
+    Při vzpomínce na kapitolu o počítání i limitami a na \textbf{l’Hospitalovo pravidlo} snadno
+    provedeme následující výpočet. Otestujte své předchozí znalosti a jednotlivé kroky výpočtu
+    proveďte:
+    \begin{align*}
+      \lim\limits_{n\rightarrow\infty}\left(1 - \dfrac{A}{n}\right)^n 
+        &= \lim\limits_{x\rightarrow0}\left(1 - Ax\right)^\frac{1}{x}   \\
+        &= \exp\left(\lim\limits_{x\rightarrow0}\dfrac{\ln(1 - Ax)}{x}\right) = e^{-A}.
+    \end{align*}
+    V našem případě je \(A = np = \langle x \rangle\) (střední hodnota veličiny \(X\) při
+    Bernoulliově rozdělení), takže
+    \begin{equation}\label{mai:eq065}
+      p_j = \langle x \rangle^j\dfrac{e^{-\langle x \rangle}}{j!}.
+    \end{equation}
+ 
+    Excitované baryum \ce{Ba^137}* (jádro má vyšší energii než atom \ce{Ba^137} v základním stavu
+    asi o \SI{0.66}{\mega\electronvolt}  - odpovídá energii \SI{1.1e-13}{\joule}) se pak dále
+    rozpadá podle vzorce
+    \begin{itemize}
+      \item \ce{Ba137}* \(\longrightarrow\) \ce{Ba137} + částice gama.
+    \end{itemize}
+
+    Ze všech částic, které při reakci vznikají, se v Geigerově-Můllerově detektoru registrují
+    elektrony a částice gama, nelze je však od sebe odlišit. Uvažujme o cesiovém zdroji s běžnou
+    hodnotou aktivity, například \SI{10}{\micro\coulomb} (mikrocurie). Jednotka aktivity
+    radioaktivních preparátů \num{1} curie představuje situaci, kdy se za jednu sekundu rozpadá
+    \num{3.7e10} jader. Počet rozpadů, které v průměru nastanou třeba za deset sekund v našem
+    vzorku, je \(n = \num{3700000}\). V Bernoulliově pokusu to odpovídá počtu jeho opakování \(n\).
+    Jak jsme již řekli, je to obrovský počet. Nastavíme-li experiment tak, abychom registrovali
+    každou sekundu zhruba jednu částici (uslyšíme jeden „prásk“ ), bude počet zdarů \(j\) v
+    Bernoulliově pokusu velmi malý ve srovnání s \(n\). Jsou tedy splněny podmínky pro použití
+    Poissonova rozdělení. Zvolíme například desetisekundový interval měření a počítáme pulzy. Počet
+    registrovaných pulzů \(j\) v tomto intervalu je roven počtu zdarů. Takové měření provedeme třeba
+    dvěstěkrát. Označme počet intervalů, v nichž jsme naměřili právě \(j\) pulzů, jako \(\nu(j)\).
+    Celkem je \(\nu(1) + \cdots + \nu(j_{max}) = \num{200}\). Získáme tak tabulku nebo graf, z nichž
+    pak lze usuzovat na parametry Poissonova rozdělení:
+
+    {\centering \resizebox{\textwidth}{!}{%
+      \begin{tabular}{c|crrrrrrrrrrrrrrrrr}
+        \(j\)      & 0 & 1 & 2  & 3  & 4  & 5 &  6  & 7 &  8  & 9  \\
+        \hline
+        \(\nu(j)\) & 0 & 4 & 10 & 19 & 28 & 33 & 34 & 26 & 19 & 10 
+      \end{tabular}
+    }
+    \par}
+    {\centering \resizebox{0.9\textwidth}{!}{%
+    \begin{tabular}{c|crrrrrrrrrrrrrrrrr}
+      \(j\)      & 10 & 11& 12& 13 & 14 & 15 & 16 & 17 \\
+      \hline
+      \(\nu(j)\) & 6  & 3 & 2 & 2  & 2  & 0  & 1  & 1
+    \end{tabular}
+    }
+    \par}
+    \vspace{\baselineskip}
+    Budeme-li předpokládat, že větší počet pulzů v desetisekundovém intervalu je již velmi málo
+    pravděpodobný, můžeme četnosti \(\nu(j)\) považovat za úměrné pravděpodobnostem \(p_j\)
+    Poissonova rozdělení. Všimněme si formule pro Poissonovo rozdělení podrobněji. Je vidět, že
+    platí
+    \begin{equation*}
+      \dfrac{\nu(j + 1)}{\nu(j)} = \dfrac{p_{j+1}}{p_{j}} = \dfrac{\langle x \rangle}{j + 1},
+      \qquad p_0 = e^{-\langle x \rangle}.
+    \end{equation*}
+    Pro hodnotu \(j\), pro kterou jsou si četnosti \(\nu(j)\) a \(\nu(j + 1)\) „nejblíže“, je
+    \(\langle x \rangle \approx j + 1\). Z tabulky vidíme, že v případě našeho experimentu je
+    \(\langle x \rangle = 6\). Hodnota \(p_0 = e^{-6} \approx \num{0.002}\) je tedy tak malá, že se
+    ani nedivíme, že jsme mezi dvěma stovkami měření nezaznamenali ani jeden případ, kdy v
+    desetisekundovém intervalu nebyla zaregistrována žádná částice.
+    
+    Můžeme ještě určit podíly sousedních hodnot \(\nu(j + 1)\) a \(\nu(j)\) a zjistit, zda výsledky
+    našeho experimentu odpovídají vlastnostem Poissonova rozdělení:
+
+    {\centering \resizebox{\textwidth}{!}{%
+      \begin{tabular}{c|crrrrrrrr}
+        \(j\)               & 0 & 1 & 2  & 3  & 4  & 5  & 6  & 7 & 8    \\
+        \hline
+        \(\nu(j+1)/\nu(j)\) & - & \num{2.50} & \num{1.90} & \num{1.47} & \num{1.18} & \num{1.03} &
+                            \num{0.76} & \num{0.73} & \num{0.53}   \\
+        \(\langle x \rangle / j + 1\) & \num{6.00} & \num{3.00} & \num{2.00} & \num{1.50} &
+                            \num{1.20} & \num{1.00} & \num{0.86} &
+                            \num{0.75} & \num{0.67}
+      \end{tabular}
+    }
+    \par}
+
+    {\centering \resizebox{\textwidth}{!}{%
+      \begin{tabular}{c|crrrrrrrr}
+        \(j\)               & 9 & 10 & 11  & 12  & 13  & 14  & 15  & 16 & 17 \\
+        \hline
+        \(\nu(j+1)/\nu(j)\) & \num{0.60} & \num{0.50} & \num{0.67} & - & - & - & - & - & -   \\
+        \(\langle x \rangle / j + 1\) & \num{0.60} & \num{0.55} & \num{0.50} & \num{0.46} &
+                           \num{0.43} & \num{0.40} & \num{0.38} &
+                           \num{0.35} & \num{0.33}
+      \end{tabular}
+    }
+    \par}
+ 
+    Vidíme, že hodnoty podílů sousedních četností celkem dobře odpovídají vlastnostem Poissonova
+    rozdělení pro \(0 \leq j \leq 12\). Pro \(j > 12\) jsou již četnosti \(\nu(j)\) tak malé, že
+    vytvářet jejich podíly nemá smysl. Tato skutečnost je v tabulce vyznačena pomlčkou.
+    
+    Poissonovým rozdělením se řídí také například četnost červených krvinek, které se v daném
+    časovém intervalu objeví ve vymezené části zorného pole mikroskopu, četnost zmetků v dodávce
+    zboží, četnost překlepů písařky, apod.
+  \end{example}
+\end{mdframed}

@@ -1,0 +1,26 @@
+\documentclass[11pt]{standalone}
+  \usepackage{helvet}                        % font
+  \usepackage{xltxtra}                       % fontspec package
+  \usepackage{tikz}  
+  \usetikzlibrary{arrows}
+  \usepackage[american, europeanresistor, cuteinductors,smartlabels]{circuitikz}
+    \ctikzset{bipoles/thickness=1}
+    \ctikzset{bipoles/length=0.8cm}
+    \ctikzset{bipoles/vsourceam/height/.initial=.7}
+    \ctikzset{bipoles/vsourceam/width/.initial=.7}
+    \tikzstyle{every node}=[font=\small]
+    \tikzstyle{every path}=[line width=0.4pt,line cap=round,line join=round]
+
+
+\begin{document}
+  \begin{circuitikz}[scale=1, every node/.style={scale=1}]
+    \draw (0,0) node[ocirc] {} --+ (1,0) coordinate(A); 
+    \coordinate (B) at ([yshift=-2.5cm]A);
+    \draw (A) to[L] (B) --+ (-1,0) coordinate(D) node[ocirc] {}; 
+  
+    \begin{scope}[shorten >= 10pt,shorten <= 10pt]
+      \draw[-open triangle 45] ([xshift=.2cm,yshift=0cm]A) -- node[right] {$i(t)$} ([xshift=.2cm,yshift=1.3cm]B); 
+      \draw[-latex]  (0,0) -- node[left] {$u(t)$} (D);
+    \end{scope}     
+  \end{circuitikz} 
+\end{document}

@@ -1,0 +1,60 @@
+% !TeX spellcheck = cs_CZ
+% 
+% \wikitextrule
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{MAI:exam089}
+    \begingroup
+    \renewcommand\arraystretch{1.0}
+    \renewcommand\arraycolsep{3pt}
+    Předpokládejme, že přechod od báze \((\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_3)\) v
+    trojrozměrném prostoru k bázi \((\vec{e}'_1,\vec{e}'_2, \cdots, \vec{e}'_3)\) je popsán
+    rovnicemi vyjadřujícími vektory čárkované báze jako lineární kombinace vektorů báze
+    nečárkované takto:
+    \begin{alignat*}{5}
+      \vec{e}'_1&=-&& \vec{e}_1 && +\vec{e}_2 &&       \\
+      \vec{e}'_2&= && \vec{e}_1 &&      && +\vec{e}_3, \\
+      \vec{e}'_3&= && \vec{e}_1 && +\vec{e}_2 && +\vec{e}_3.    
+    \end{alignat*}  
+    Matici \(\matr{T}\) z těchto rovnic snadno „přečteme“. Vidíme, že se jedná o matici z
+    příkladu \ref{MAI:exam090}, k níž máme inverzál matici již spočtenu. Platí tedy
+    \begin{equation*}
+      T = 
+        \begin{pmatrix*}[r]
+         -1 & 1 & 0 \\
+          1 & 0 & 1 \\
+          1 & 1 & 1 
+        \end{pmatrix*} 
+      \qquad
+      S = 
+      \begin{pmatrix*}[r]
+        -1 & -1 &  1 \\
+         0 & -1 &  1 \\
+         1 &  2 & -1
+      \end{pmatrix*}     
+    \end{equation*}
+    Vektor \(\vec{u}\) má, dejme tomu, složky \(u = (2, -1, -1)\) v nečárkované bázi. Platí
+    (rovnice (\ref{mai:eq84}))
+    \begin{gather*}    
+      \begin{aligned}
+        (\vec{u}'_1\; \vec{u}'_2\;  \vec{u}'_3) &= (2\; -1\; -1)
+        \begin{pmatrix*}[r]
+          -1 & -1 &  1 \\
+           0 & -1 &  1 \\
+           1 &  2 & -1
+        \end{pmatrix*} 
+        (-3\; -3\;\; 2).                            \\
+        \shortintertext{Pro kontrolu převedeme získané složky vektoru \(\vec{u}\) v čárkované bázi 
+                        zpět do báze původní:}   \\
+        (\vec{u}_1\; \vec{u}_2\;  \vec{u}_3) &= (-3\; -3\;\; 2)
+        \begin{pmatrix*}[r]
+          -1 & -1 &  0 \\
+           1 &  0 &  1 \\
+           1 &  1 &  1
+        \end{pmatrix*} 
+        (-2\; -1\; -1).   
+      \end{aligned}  
+    \end{gather*}  
+    Vyšly původně zadané složky - počítali jsme zřejmě správně.
+    \endgroup
+  \end{example}
+\end{mdframed}

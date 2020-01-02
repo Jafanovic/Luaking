@@ -1,0 +1,109 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{fyz:fey_exam016}
+    Při skutečném uspořádání pokusu podle náčrtu na obrázku \ref{fyz:fig903}, nejsou zrcadla přesně
+    kolmá, takže se na stínítku se objevuje řada světlých a tmavých interferenčních proužků v
+    důsledku rozdílnosti drah sousedních světelných vln (obr. \ref{fyz:fig904}). Mění-li se délka
+    některé optické dráhy v přístroji, pohybují se proužky po stínítku v závislosti na tom, jak v
+    každém bodě za sebou následuje zesílení a zeslabení světelných vin. Stacionární přístroj nám tak
+    nemůže poskytnout žádnou informaci o časovém rozdílu mezi dvěma optickými drahami. Otočí-li se
+    však celý přístroj o \ang{90}, vymění si obě dráhy své orientace vzhledem k hypotetickému proudu
+    etheru, takže paprsek, který dříve potřeboval k průchodu celé dráhy dobu \(t_A\), potřebuje nyní
+    čas \(t_B\) a naopak. Jsou-li tyto časy různé, pohybuji se proužky během otáčení přístroje po
+    stínítku. \newline
+
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[0.9]{fyz_fig902.png}
+    \captionof{figure}{Interferometr Michelsona a Morleyho, namontovaný na kamenné
+                desce, která se vznáší v kruhovém žlabu naplněný rtutí. Kredit: Wikipedia heslo:
+                \wikiMichelMorlexp
+    \label{fyz:fig902}}
+    \par}
+    \vspace{1em}
+
+    Světlo bylo opakovaně odráženo dozadu a dopředu podél ramen interferometru a zvětšovalo délku
+    dráhy na \SI{11}{\metre} (viz obr. \ref{fyz:fig903}).Přístroj byl sestaven v uzavřené místnosti
+    v suterénu kamenné univerzitní koleje, což eliminovalo většinu tepelných a vibračních efektů.
+    Vibrace byly dále redukovány budováním aparatury na vrcholu velkého kamenného bloku, asi 1 metr
+    tlustého, který se vznášel na rtuťovém polštáři. Odhaduje se, že by bylo možné detekovat posun
+    přibližně o velikosti \num{0.01} interferenčního proužku. Zkusme vypočítat posunutí
+    interferenčních proužků, plynoucí z etherové teorie, které mělo být tímto přístrojem snadno
+    detekováno. 
+
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[1]{fyz_fig903a.png}
+    \captionof{figure}{Jediný paprsek světla \((a)\) je rozdělen do kolmých cest polopropustným
+                zrcátkem \((b)\)a poslán čtyřikrát tam a zpět mezi zrcátky \((d)\) a nastavitelným
+                zrcátkem \((e)\) na protějších rozích kamenné desky. Průhledná skleněná destička
+                má zajišťovat, aby oba paprsky procházely stejně silnou vrstvou vzduchu a skla.
+                Poté se oba paprsky znovu spojí dříve, než vstoupí do dalekohledu \((f)\).  
+    \cite[s.~18]{Beiser1975}
+    \label{fyz:fig903}}
+    \par}
+    \vspace{1em}
+
+    Podle rovnic (\ref{fyz:eq186}) a (\ref{fyz:eq187}) je rozdíl časů u obou drah následkem
+    etherového proudu
+    \begin{equation*}
+      \Delta t = t_B - t_A = \frac{2L/c}{1-\frac{u^2}{c^2}} - \frac{2L/c}{\sqrt{1−\frac{u^2}{c^2}}}
+    \end{equation*}
+    Zde \(v\) je rychlost etheru, kterou bereme jako orbitální rychlost zeměkoule
+    \SI{3e4}{\metre\per\second}, a \(V\) rychlost světla \(c\), kde \(c =
+    \SI{3e8}{\metre\per\second}\). Tudíž
+    \begin{equation*}
+      \dfrac{v^2}{V^2} = \dfrac{v^2}{c^2} = \num{e-8},
+    \end{equation*}
+    což je mnohem menší než \(1\). Podle binomické věty pro \(x^2 < 1\) platí
+    \begin{gather*}
+      (1\pm x)^n = 1 \pm nx + \dfrac{n(n-1)x^2}{2!} \pm \dfrac{n(n-1)(n-2)x^3}{3!} + \cdots
+    \end{gather*}
+    Je-li \(x\) mnohem menší než \(1\), stačí psát
+    \begin{equation*}
+      (1\pm x)^n = 1 \pm nx. 
+    \end{equation*}
+    S dobrou aproximací můžeme tedy vyjádřit \(\Delta t\) jako
+    \begin{equation*}
+      \Delta t = \dfrac{2L}{c}\left[\left(1 + \dfrac{v^2}{c^2}\right) - 
+                                    \left(1 + \dfrac{1}{2}\dfrac{v^2}{c^2}\right)\right]
+               = \dfrac{L}{c}\cdot\dfrac{v^2}{c^2}.
+    \end{equation*}
+
+    V tomto výrazu je \(L\) vzdálenost od polopropustného zrcadla ke každému ze zrcadel. Dráhový
+    rozdíl \(d\) odpovídající časovému rozdílu \(\Delta t\) je
+    \begin{equation*}
+      d = c \Delta t.
+    \end{equation*}
+    Přísluší-li \(d\) posunutí o \(n\) proužků, je
+    \begin{equation*}
+      d = n\lambda,
+    \end{equation*}
+    kde \(\lambda\) je vlnová délka použitého světla. Srovnáním obou posledních výrazů pro \(d\)
+    dostaneme, že
+    \begin{equation*}
+      n = \dfrac{c\Delta t}{\lambda} = \dfrac{Lv^2}{\lambda c^2}.
+    \end{equation*}    
+    Ve skutečném uspořádání pokusu dosáhli Michelson a Morley s využitím několika­násobných odrazů
+    (viz obr. \ref{fyz:fig903}) efektivní délky \(L\) kolem \SI{10}{\meter}, vlnová délka použitého
+    světla byla asi \SI{500}{\nano\meter}. Očekávané posunutí interferenčního obrazu na každé dráze
+    při otočení přístroje o \ang{90} je tudíž 
+    \begin{align*}
+      n  = \dfrac{Lv^2}{\lambda c^2} 
+        &= \dfrac{\SI{10}{\meter}\cdot(\SI{3e4}{\meter\per\second})^2}
+                {\SI{5e-7}{\meter}\cdot(\SI{3e8}{\meter\per\second})^2}     \\
+        &= 0.2\,\text{proužku}
+    \end{align*}
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[0.7]{fyz_fig904.jpg}
+    \captionof{figure}{(Interferenční proužky pozorované v Michelsonově-Morleyově experimentu)
+    \cite[s.~21]{Beiser1975}
+    \label{fyz:fig904}}
+    \par}
+    \vspace{1em}
+    Protože se posunutí projevuje u obou drah, je velikost celkového posunutí rovna \(2n\) neboli
+    \num{0.4} pruhu. Takové posunutí je již snadno pozorovatelné, a tak se Michelson a Morley těšili
+    na přímé potvrzení existence etheru.
+  \end{example}
+\end{mdframed}

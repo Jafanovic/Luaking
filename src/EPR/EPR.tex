@@ -1,0 +1,28 @@
+%     Electrical apparatus
+%---------------------------------------------------------------------------------------------------
+% file EPR.tex
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+\graphicspath{{../src/EPR/img/}}
+
+%---------------------------------------------------------------------------------------------------
+%                               EPR
+%---------------------------------------------------------------------------------------------------
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{EPR}{Elektrické přístroje}{EPR}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+  % \input{../src/EPR/el_oblouk.tex}
+  % \input{../src/EPR/vypinace_VN_VVN.tex}
+}
+{
+% DEBUG was off
+%========= Kapitola TTeorie elektrického oblouků ===================================================
+  \input{../src/EPR/el_oblouk.tex}
+%========= Kapitola: Konstrukce vypínačů pro VN a VVN ==============================================
+  \input{../src/EPR/vypinace_VN_VVN.tex}
+} % DEBUG was off
+
+\printbibliography[title={Seznam literatury}, heading=bibliography]

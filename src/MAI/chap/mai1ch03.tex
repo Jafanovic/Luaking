@@ -1,0 +1,780 @@
+% !TeX spellcheck = cs_CZ
+% Differential calculus
+%{\tikzset{external/prefix={tikz/MAI/}}
+% \tikzset{external/figure name/.add={ch03_}{}}
+%---------------------------------------------------------------------------------------------------
+% Limits_of_Functions.tex
+%---------------------------------------------------------------------------------------------------
+\setchaptertoc
+\chapter{Funkce jedné proměnné}\label{mai:IchapIII}
+  \small
+  S funkcemi se setkáváme na každém kroku nejen ve fyzice a v ostatních přírodních vědách, ale i v
+  každodenním životě. Každá situace, kdy jsou nějaký jev či veličina jednoznačně a nevyhnutelně
+  určeny jinými jevy či veličinami, se dá popsat pomocí funkce\footnote{V matematice abstrahujeme
+  při zkoumání funkcionálních závislostí od konkrétní fyzikální povahy proměnných veličin a chápeme
+  je jako \uv{bezrozměrné veličiny}, tedy jako číselné proměnné. Někdy je jednoduché takovou} funkci
+  sestavit. Snadno například můžeme zjistit, jakou dráhu urazí automobil jedoucí známou rychlostí v
+  závislosti na tom, jak dlouho jede. Nebo dokážeme určit přírůstek našich úspor ve spořitelně v
+  závislosti na době spoření, pokud známe úrokovou míru a její změny. Jindy je naopak skoro nemožné
+  přijít na to, jak taková funkce vypadá, neboť nemáme dostatek informací o parametrech, které do
+  jejího zápisu vstupují. Třeba takovou závislost teploty ovzduší v daném okamžiku na zeměpisné
+  poloze a nadmořské výšce, kterou bychom si mohli představit jako jednu ze samozřejmých součástí
+  předpovědi počasí, bychom asi nesestavili. Popis jevů pomocí funkcí je v každém případě velmi
+  užitečný. Má však svá pravidla, s nimiž se v této kapitole seznámíme. Závisí-li zkoumaný jev nebo
+  veličina na jediné veličině, jejíž hodnoty jsou reálné a buď se mění známým způsobem, nebo si je
+  můžeme dokonce volit, hovoříme o \textbf{funkci jedné reálné proměnné}. A lze-li zkoumaný jev nebo
+  veličinu kvantifikovat rovněž pomocí reálných hodnot, jedná se o \textbf{reálnou funkci jedné
+  reálné proměnné}. Právě o takových funkcích bude v této kapitole řeč. V aplikacích se budeme
+  věnovat především funkcím, které mají význam ve fyzice a v přírodních vědách. Velmi často půjde o
+  funkce, kde reálnou proměnnou je čas. Jevy v přírodě podléhají totiž principu příčinnosti, a tak
+  lze velké množství veličin popisujících přírodní jevy vyjádřit na základě znalosti přírodních
+  zákonů jako funkce času. 
+  \cite[s.~53]{Musilova2009MA1}
+  \normalsize
+  \section{Funkce a její graf}\label{mai:IchapIIIsecI}
+    V tomto odstavci se naučíme funkce zadávat, počítat s nimi a vyjádřit je velmi přehledným 
+    způsobem - jejich \emph{grafem}. Zopakujme, že každou \textbf{reálnou funkci}, jejíž 
+    definiční obor je podmnožina množiny \(\realset\), nazýváme \textbf{reálnou funkcí jedné 
+    reálné proměnné}\footnote{Místo názvu \uv{reálná funkce jedné reálné proměnné} budeme pro 
+    stručnost používat pouze název \uv{funkce}, pokud nebude řečeno něco jiného}.
+    
+    Protože \emph{funkce je speciální případ zobrazení}, můžeme všech\-ny pojmy a obecné 
+    vlastnosti zobrazení přenést i na funkce. Některé z nich však vzhledem k důležitosti 
+    zopakujme, případně doplníme. Na druhé straně budeme studovat také ty vlastnosti, které jsou 
+    specifické pro tento speciální druh zobrazení.
+    
+    \begin{note}
+      Je-li \(\mathcal{D}_f = \naturalset\), jedná se o \textbf{posloupnost}. (Speciálním 
+      případem reálných funkcí jedné reálné proměnné jsou \emph{posloupnosti reálných čísel)}.
+    \end{note}
+      
+    \subsection{Způsoby zadání funkce}\label{mai:IchapIIIsecIssecI}
+      Nejprve funkci definujeme. Předpokládejme, že reálná proměnná, na níž bude záviset náš jev, 
+      má dovoleno nabývat hodnot z určité předem stanovené podmnožiny \(D\subseteq\realset\) 
+      reálných čísel. Předpokládejme dále, že podle určitého pravidla, předpisu, dokážeme pro 
+      \emph{každou hodnotu} \(x\) množiny \(\mathcal{D}_f\), tj. \(x \in \mathcal{D}_f\), určit 
+      \emph{právě jednu} reálnou hodnotu \(y\). Každé hodnotě \(x \in D\) tedy nějaké \(y\) 
+      příslušet \emph{musí},  avšak žádné hodnotě \(x\) \emph{nesmíme} přiřadit více hodnot 
+      \(y\). Tak vzniká funkce \(f\). Hodnoty \(x\) se nazývají hodnotami \emph{nezávisle 
+      proměnné} (neboli \emph{argumentu}), hodnoty \(y\) hodnotami \emph{závisle proměnné} a 
+      \(f\) symbolizuje \emph{funkční předpis}. Píšeme
+      \begin{equation}\label{mai:eq000}
+          f: x \in \mathcal{D}_f \rightarrow y=f(x)\in\realset
+      \end{equation}
+      Hodnoty proměnné \(x\) nazýváme též \emph{vzory}, odpovídající hodnoty \(y = f(x)\) 
+      \emph{obrazy}. Množina  \(\mathcal{D}_f\) je \emph{definičním oborem} funkce \(f\). Zadání 
+      definičního oboru je důležitou součástí zadání funkce. Množina \(H\) všech takových reálných 
+      hodnot \(y\), které jsou obrazem nějakého vzoru, 
+      \begin{equation}\label{mai:eq001}
+          \mathcal{H}_f = 
+              \left\lbrace 
+                y\in\realset\text{ existuje } x\in \mathcal{D}_f, \text{ tak že } y = f(x)  
+              \right\rbrace, 
+      \end{equation}
+      se nazývá \emph{obor hodnot} funkce \(f\). Hodnotu \(f(x)\) nazýváme také \emph{funkční 
+      hodnotou} funkce \(f\) v bodě \(x\). 
+
+      \begin{figure}[ht!] %\ref{mai:fig001}
+        \centering
+%        \input{../src/MAI/img/mai_fig001.tex}
+        \includegraphics[width=0.45\linewidth]{mai_fig001.pdf}
+        \caption{Funkce jako „černá skříňka“. \cite[s.~54]{Musilova2009MA1}}
+        \label{mai:fig001}
+      \end{figure}
+      
+      Funkci si podle obrázku \ref{mai:fig001} můžeme představit jako „černou skříňku“, do které 
+      vstoupí hodnota (vzor) a vystoupí z ní hodnota \(y = f(x)\) (obraz). Množinu uspořádaných 
+      dvojic čísel \([x, f(x)]\) nazveme \textbf{grafem funkce}.
+      
+      Jak zadat předpis \(f\)? Lze to udělat kterýmkoli z následujících způsobů, podle vhodnosti
+      nebo snadnosti. Ukážeme jednotlivé možnosti na jednoduchém příkladu, kdy chceme hodnotám 
+      proměnné \(x\) z množiny \(\mathcal{D}_f\) přiřadit jejich druhé mocniny. Zvolme pro náš 
+      příklad definiční obor výčtem:
+      \begin{equation*}
+         \mathcal{D}_f = \lbrace-3,2,-1,0,1,2,3,4\rbrace,
+      \end{equation*}
+      a zadáme předpis
+      \begin{itemize}[noitemsep]
+        \item \textbf{slovním popisem}: předpis \(f\) přiřazuje každé z hodnot \(x\in 
+              \mathcal{D}_f\) její druhou mocninu,
+        \item \textbf{vzorcem}: \(y = x^2\) pro \(x\in \mathcal{D}_f\) zadává zobrazení
+              \begin{equation*}
+                f: x\in \mathcal{D}_f \rightarrow f(x)= x^2\in\realset,
+              \end{equation*}
+        \item \textbf{tabulkou}: Hodnoty obrazů pro všechny vzory z \(\mathcal{D}_f\) vypíšeme do 
+              tabulky:
+              \begin{table}[ht!]
+                \centering
+                \begin{tabular}{c|rrrrrrrr}
+                  \textbf{x} & -3 & -2 & -1 & 0 & 1 & 2 & 3 & 4  \\ \hline
+                  \textbf{y} & 9  & 4  & 1  & 0 & 1 & 4 & 9 & 16
+                \end{tabular}
+                % \caption{ }
+              \end{table}
+              Proměnná $x$ se v tomto případě mění \uv{diskrétně}. Je zřejmé, že tímto způsobem 
+              můžeme funkci definovat úplně jen tehdy, je-li definiční obor konečná množina. 
+              Tabulku však používáme i v jiných případech, zejména chceme-li vyznačit pomocí ní, 
+              některé hodnoty, které nás z nějakého důvodu přednostně zajímají. 
+        \item Zadání \textbf{grafem}: 
+          \begin{equation*}
+            G_f = \left\lbrace\left[x,f(x)\right] \lvert x\in D\right\rbrace
+                = \left\lbrace\left[x,x^2 \right] \lvert x\in D\right\rbrace
+          \end{equation*}
+          tak, že dvojice \([x, f(x)]\) znázorníme jako body v rovině (obr. \ref{MAI:fig_011}).
+          \begin{figure}[ht!]
+            \centering  
+            \subcaptionbox{\label{MAI:fig_011}}{\luafigure[0.45]{mai_fig002.pdf}}
+            \subcaptionbox{\label{MAI:fig_010}}{\luafigure[0.45]{mai_fig003.pdf}}
+            \caption{Zadání funkce grafem}
+          \end{figure}
+          Z grafu můžeme ovšem funkční hodnoty určit pouze přibližně. Pro další matematické 
+          zpracování je grafické zadání nejméně vhodné, i když jeho praktický význam například v 
+          technických aplikacích nelze popřít.
+        \item Zadání pomocí \textbf{rovnice}, jíž je funkce řešením: některé funkce nelze jednoduše 
+              zapsat pomocí některého z předchozích způsobů, nebo to alespoň nejde přesně. Lze však 
+              zapsat (diferenciální) rovnici, kterou tato funkce splňuje. Jedná se většinou o 
+              speciální funkce, jimž se v tomto textu nebudeme věnovat. (Někdy může být taková 
+              rovnice  představující zadání funkce i velmi jednoduchá. Například dosti známá funkce 
+              \(\erf(x)\), \emph{error funkce}, velmi úzce souvisí s funkcí \(f(x) = 
+              \frac{2}{\sqrt{x}}e^{-x^2}\). Nelze ji však zapsat vzorcem. Některé její hodnoty v 
+              nejčastěji používaném rozsahu proměnné \(x\) můžeme najít v rozsáhlých tabulkách, 
+              které byly sestaveny pomocí numerických metod.)
+      \end{itemize}
+      
+      Již bylo zmíněno, že zadání definičního oboru je neopominutelnou součástí zadání funkce. 
+      Kdybychom například zadali funkci opět předpisem \(y=x^2\), avšak za definiční obor stanovili 
+      uzavřený interval \(D = \lbrace -3,4\rbrace\), dostali bychom graf na obrázku 
+      \ref{MAI:fig_010}. Jde skutečně o jinou funkci než na obrázku \ref{MAI:fig_011}. Její úplnou 
+      tabulku bychom nedokázali napsat vůbec.
+      
+%      Nejčastější způsob zadání funkce představuje \emph{vzorec}. Tabulku alespoň pro některé 
+%      hodnoty z \(\mathcal{D}_f\) si pak dokážeme sestavit a schematický graf nakreslit. Někdy se 
+%      objeví zadání funkce jen v podobě vzorce, například: „Je dána funkce \(y = f(x)\).“ Znamená 
+%      to, že autor zapomněl zadat definiční obor? Nemusí tomu tak být. Tento způsob zadání chápeme 
+%      tak, že si sami musíme stanovit „co největší“ definiční obor této funkce, tj. určit množinu 
+%      všech takových \(x\), pro která lze do vzorce dosadit a hodnotu \(y\) určit.
+
+      Zobrazovací předpis, kterým je funkce zadána, může být rozmanitý. Nejčastěji a pro účely 
+      matematické analýzy nejvhodnější je \emph{analytické zadání vzorcem}, tj. rovnicí tvaru 
+      $y=f(x)$ nebo několika takovými rovnicemi platnými pro různé části definičního oboru. Přitom 
+      v rovnici $y=f(x)$ je na pravé straně nějaký správně definovaný výraz obsahující nejvýše 
+      proměnnou $x$ a nabývající jednoznačné hodnoty pro danou hodnotu proměnné $x$.
+      
+%      Někdy však používáme (poněkud nedůsledně) termíny \uv{funkce \(f(x)\)} nebo \uv{funkce 
+%      \(y=f(x)\)}. V tomto smyslu nepojímáme již \(x\) jako pevný prvek z definičního oboru, ale 
+%      jako \uv{nezávisle proměnnou} neboli \emph{argument}, tj. symbol zastupující libovolný prvek 
+%      z definičního oboru. V tomto případě pak písmeno \(y\) v rovnici \(y=f(x)\) nazýváme 
+%      \emph{závisle proměnnou} a říkáme, že \uv{\(y\) závisí na \(x\)}. Tato frazeologie má své 
+%      historické kořeny; tento způsob vyjádření funkce budeme využívat zřídka, zejména tam, kde 
+%      nechceme pro označení příslušné funkce zavádět zvláštní symbol. Tak např. budeme mluvit o 
+%      funkci \(e^x\) (ačkoliv se zavádí pro exponenciální funkci symbol exp) nebo o funkci \(\sin 
+%      x\) (ačkoliv by bylo důslednější mluvit o funkci \(\sin\)) apod. \cite[s.~82]{Brabec1989} 
+
+    %-------------------------------------
+      \input{../src/MAI/exam/exam017.tex}
+    %-----------------------------------------------------------------------------------------------
+    \subsection{Graf funkce}\label{mai:IchapIIIsecIssecII}\hypertarget{mai:IchapIIIsecIssecII}
+      Jinými slovy, v předchozím odstavci, bylo řečeno, že každé funkci můžeme přiřadit její graf, 
+      a že \textbf{grafem funkce} $f:A\rightarrow\realset,\ A\subset\realset$, rozumíme množinu 
+      všech bodů euklidovské roviny, jejíž souřadnice $x$, $y$ v dané kartézské soustavě souřadnic 
+      vyhovuje rovnice 
+      \begin{equation}\label{mai:eq026}
+        y=f(x). 
+      \end{equation}  
+      
+      Graf funkce může v jednodušších případech posloužit jako prostředek k získání názorné 
+      \uv{představy}. Grafy některých funkcí jsou \uv{křivky}, (intuitivním smyslu tohoto slova). 
+      Avšak u některých funkcí názorná představa grafu selhává. Vezmeme-li např. Dirichletovu 
+      funkci, snadno zjistíme, že její graf nemůžeme sestrojit (obr. \ref{mai:fig005} tedy 
+      není grafem funkce, ale pouze pokusem o názorné přiblížení Dirichletovi funkce)
+      
+      \luagraphic[0.8]{mai_fig005.pdf}{Pokus o zobrazení Dirichletovy funkce: \uv{dvě rovnoběžné
+      přímky $y=0$ a $y=1$ s nekonečným množstvím mezer}}{mai:fig005}
+  
+      Z předchozí kapitoly také víme, že zadat funkci znamená udat její definiční obor a 
+      \uv{zobrazovací předpis}, tj pravidlo (formulované slovně či v používaném matematickém 
+      jazyku), podle něhož můžeme jednoznačným způsobem rozhodnout, jaká funkční hodnota odpovídá 
+      libovolně zvolenému číslu z definičního oboru. Definičním oborem bývá často interval nebo 
+      sjednocení intervalů. Není-li definiční obor udán, rozumíme jím množinu všech reálných čísel, 
+      pro něž je příslušný předpis definován. Tuto množinu nazýváme \textbf{přirozeným} (též 
+      maximálním) definičním oborem funkce. Je to tzv. \emph{existenční obor} výrazu, jímž je 
+      funkce definována \cite[s.~84]{Brabec1989}.
+      
+      Například funkce $f: \realset\rightarrow\realset,\ f(x)=x^2$, můžeme vyjádřit bez udání 
+      definičního oboru $\realset$ vztahem 
+      \begin{equation*}
+        f: y=x^2,
+      \end{equation*}
+      neboť předpis $y=x^2$ má smysl pro každé reálné číslo $x$. Avšak u funkce $g:\langle0, 
+      1\rangle\rightarrow\realset,\ g(x)=x^2,$ je nutné v zápisu funkce definiční obor $\langle0, 
+      1\rangle$ 
+      uvést, píšeme tedy   
+      \begin{equation*}
+        g: y=x^2, \quad x\in\langle0,1\rangle.
+      \end{equation*}
+       
+      %-------------------------------------
+        \input{../src/MAI/exam/exam018.tex}
+      %-------------------------------------
+      
+      %-------------------------------------
+        \input{../src/MAI/exam/exam019.tex}
+      %-------------------------------------
+      
+      Funkce může být analyticky zadána i jinak než vzorcem $y=f(x)$. Časté je \textbf{parametrické 
+      vyjadřování}, tj. vyjádření dvojicí rovnic 
+      \begin{equation}\label{mai:eq027}
+        x=\varphi(t),\ y=\psi(t),\ t\in J,
+      \end{equation}
+      kde $\varphi, \psi$ jsou funkce definované na množině $J$ ($\ J$ bývá obvykle interval). 
+      Proměnná $t$ se nazývá \emph{parametr}: má zde pomocný význam. Zajímá nás totiž vztah mezi 
+      $x$ a $y$. Rovnice \ref{mai:eq027} definuje relaci 
+      $f\subset\realset\times\realset=\realset^2$:
+      \begin{equation*}
+        f = \{(x,y)\in\realset^2; \exists t\in J \text{ tak, že } x=\varphi(t),\ y=\psi(t)\}.
+      \end{equation*}      
+      Tato relace může být za \emph{určitých podmínek jednoznačná} tj. je funkcí z $\realset$ do 
+      $\realset$. V tomto případě říkáme, že funkce $f$ je \emph{definována parametricky rovnicemi 
+      \ref{mai:eq027}}
+      
+      %-------------------------------------
+        \input{../src/MAI/exam/exam020.tex}
+      %-------------------------------------
+      
+      Blíže se parametrickým zadáním funkce budeme zabývat v kapitole \ref{mai:IchapVI}
+      (Aplikace diferenciálního počtu).
+      
+      Funkce může být někdy zadána též rovnicí tvaru 
+      \begin{equation}\label{mai:eq028}
+        F(x,y) = 0.
+      \end{equation}
+      Přitom $F$ je funkce dvou proměnných, tj. zobrazení z $\realset^2\rightarrow\realset$. Kromě 
+      rovnice \ref{mai:eq028} může být dána ještě podmínka, aby bod $(x,y)$ patřil k některé 
+      množině $M\subset\realset^2$. Rovnicí \ref{mai:eq028} je definována opět jakási relace 
+      $f\subset\realset\times\realset$,
+      \begin{equation}
+        f = \{(x,y)\in\realset^2,\quad F(x,y)=0 \}
+      \end{equation}
+      (případně $f = \{(x,y)\in\realset^2,\ F(x,y)=0,\ (x,y)\in M \}$), zajímá nás, kdy tato relace 
+      je funkcí z $\realset$ do $\realset$. Říkáme pak, že funkce $f$ je dána \textbf{implicitně} 
+      uvedenou rovnicí \ref{mai:eq028} (příp. rovnicí \ref{mai:eq028} a podmínkou $(x,y)\in 
+      M$). Naproti tomu zadání funkce ve tvaru $y=f(x)$ nazýváme \textbf{explicitním}.
+
+      %-------------------------------------
+        \input{../src/MAI/exam/exam022.tex}
+      %-------------------------------------
+      
+      Vyšetřování podmínek, při nichž rovnice $F(x,y)=0$ je definována funkce $f$, se obvykle 
+      provádí metodami matematické analýzy funkce více proměnných. 
+          
+    %---------------------------------------------------------------------------------------------- 
+    \subsection{Vlastnosti funkcí}\label{mai:IchapIIIsecIssecIII}
+      \subsubsection{Omezená funkce}
+        \begin{definition}\label{MA1:def_lim01}
+          Funkci $f$ nazýváme shora (zdola) omezenou na množině $A\subset D(f)$, je-li shora 
+          (zdola) omezená množina funkčních hodnot $f(A)$. Je-li funkce $f$ omezená shora i zdola 
+          na množině $A$, pak ji nazýváme omezenou na množině $A$. Je-li $A=D(f)$, nazýváme funkci 
+          omezenou. Viz kniha \cite[s.~87]{Brabec1989}       
+        \end{definition}
+        Funkce \(f\) je omezená na množině \(A\), právě když existuje číslo \(K>0\) tak, že platí
+        \begin{align*}
+         \lvert f(x)\rvert  &\leq K \qquad \text{pro každé } x\in A   \\ 
+         \shortintertext{neboli}
+         -K\leq f(x) &\leq K \qquad \text{pro každé } x\in A. 
+        \end{align*}
+
+        %-------------------------------------
+          \input{../src/MAI/exam/exam023.tex}
+        %-------------------------------------
+
+        \begin{itemize}[noitemsep]
+          \item Je-li funkce $f$ shora omezená na množině $A$, existuje konečné \emph{supremum}     
+                $\sup f(A)$. Toto číslo nazýváme \emph{supremem funkce $f$ na množině $A$} a 
+                označujeme je též $\sup_{x\in A}f(A)$ nebo $\sup\{f(x), x\in A\}$.
+          \item Je-li funkce $f$ zdola omezená na množině $A$, existuje konečné \emph{infimum} 
+                $\inf(A)$, které nazýváme \emph{infimum funkce $f$ na množině $A$} a označujeme je 
+                též $\inf_{x\in A}f(A)$ nebo $\inf\{f(x), x\in A\}$. 
+          \item Není-li funkce $f$ shora (zdola) omezená na množině $A$, pak je ovšem $\sup_{x\in A}
+                f(x)=+\infty$ ($\sup_{x\in A} f(x)=-\infty$).
+          \item Má-li množina $f(A)$ největší (nejmenší) prvek, pak toto číslo nazýváme největší 
+                (nejmenší hodnotou funkce $f$  na množině $A$ (je-li $A = f(f)$, též absolutním 
+                maximem, resp. absolutním minimem funkce $f$) a značíme je $\max_{x\in A} f(x)$ 
+                ($\min_{x\in A} f(x)$). V tomto případě existuje takové číslo $x_0\in A$, že 
+                $f(x_0)=\max_{x\in A}f(x)$ ($f(x_0)=\min_{x\in A}f(x)$). Pro všechna $x\in A$ tedy 
+                platí $f(x)\leq f(x_0)$ ($f(x)\geq f(x_0)$). Je zřejmé, že největší (nejmenší) 
+                hodnota funkce $f$ na množině $A$, pokud existuje je současně supremem (infimem) 
+                funkce $f$ na $A$.
+        \end{itemize}
+
+      %-------------------------------------
+        \input{../src/MAI/exam/exam021.tex}
+      %-------------------------------------
+       
+      \subsubsection{Monotonní funkce}
+        \begin{definition}\label{MA1:def_lim02}
+          Funkci $f$ nazýváme \textbf{rostoucí (klesající)} na množině $A\subset D(f)$, jestliže 
+          pro každé dva body $x_1, x_2\in A,\ x_1<x_2$, platí $f(x_1)<f(x_2)$ ($f(x_1)>f(x_2)$). 
+          Funkci $f$ nazýváme \textbf{neklesající (nerostoucí)} na množině $A\subset D(f)$, 
+          jestliže pro každé dvě body $x_1, x_2\in A,x_1<x_2$, platí $f(x_1)\leq f(x_2)$ 
+          ($f(x_1)\geq f(x_2)$). Rostoucí a klesající funkce (na množině $A$) se nazývají 
+          \textbf{ryze monotónní} (na množině $A$), neklesající a nerostoucí funkce (na množině 
+          $A$) se nazývají monotónní (na množině $A$).    
+        \end{definition}
+            
+        Z definice je zřejmé, že každá rostoucí funkce je zároveň neklesající a každá klesající 
+        funkce je zároveň nerostoucí. Ryze monotónní funkce tvoří tedy podmnožinu množiny 
+        monotónních funkcí. 
+           
+        \begin{example}
+          Funkce $y=2x+1$ je \textbf{rostoucí} na intervalu $(-\infty, \infty)$. Platí totiž:
+          $x_1<x_2\Rightarrow 2x_1<2x_2\Rightarrow2x_1+1<2x_2+1$.
+        \end{example}
+        \begin{example}
+          Funkce y=[x] je \textbf{neklesající} na intervalu $(-\infty, \infty)$ (viz příklad **). 
+        \end{example}
+        \begin{example}
+          Heavisideova funkce (viz příklad **) je \textbf{neklesající} na intervalu $(-\infty,
+          \infty)$ (viz příklad **). 
+        \end{example}       
+        \begin{example}
+          Funkce $y=\abs{x}$ je \textbf{klesající} na intervalu $(-\infty, 0\rangle$ a rostoucí na
+          intervalu $\langle0, \infty)$. 
+        \end{example}  
+            
+        \begin{definition}\label{MA1:def_lim03}
+          Funkci $f$ nazýváme \textbf{konstantní} na množině $A$, jestliže pro každé dva body $x_1, 
+          x_2\in A$, platí $f(x_1)=f(x_2)$. V tom případě existuje reálné číslo $k$ takové, že pro 
+          každé $x\in A$ je $f(x)=k$. Je-li $k=0$, mluvíme o nulové funkci na množině $A$. 
+        \end{definition} 
+          
+        Výrok \uv{funkce $f$ je konstantní na množině $A$} zapisujeme též $f(x)=\text{konst na }A$. 
+        Funkci konstantní na $\realset$ budeme stručně nazývat \textbf{konstantní funkcí} nebo 
+        krátce \textbf{konstantou}. Z textu bude obvykle patrno, interpretujeme-li symbol $k$ jako 
+        reálné číslo nebo jako konstantní funkci. Je zřejmé, že konstantní funkce na množině $A$ je 
+        zároveň neklesající i nerostoucí na množině $A$. Toto tvrzení se dá obrátit. Lze snadno 
+        dokázat i tuto větu:        
+        \begin{lemma}\label{MA1:lem_lim01}
+          Funkce $f$ je \textbf{rostoucí} na množině $A$, právě když je neklesající na množině $A$ a na žádné dvoubodové podmnožině $B\subset A$ není konstantní. 
+        \end{lemma}
+        Obdobná tvrzení platí i pro klesající funkce. 
+               
+      \subsubsection{Sudé a liché funkce}
+        \begin{definition}\label{MA1:def_lim04}
+          Funkce $f$ se nazývá \textbf{sudá} jestliže pro každé $x\in D(f)$ je též $-x\in D(f)$  a 
+          platí $f(x)=f(-x)$.
+          Funkce $f$ se nazývá \textbf{lichá} jestliže pro každé $x\in D(f)$ je též $-x\in D(f)$  a 
+          platí $f(-x)=-f(x)$. 
+        \end{definition}
+        Graf sudé funkce je souměrný podle osy $y$ (osy funkčních hodnot), graf liché funkce je  
+        souměrný podle počátku. 
+ 
+       %-------------------------------------
+         \input{../src/MAI/exam/exam024.tex}
+       %-------------------------------------
+
+        Daná funkce nemusí být ovšem ani sudá, ani lichá. Snadno se dokáže tvrzení:
+        \begin{itemize}[noitemsep]
+          \item Je-li sudá funkce $f$ na množině $D(f)\cap\langle0,\infty)$ rostoucí (klesající),
+                je na množině $D(f)\cap(-\infty,0\rangle$ klesající (rostoucí).
+          \item Je-li lichá funkce na množině $D(f)\cap\langle0,\infty)$ rostoucí (klesající),
+                je též na množině $D(f)\cap(-\infty,0\rangle$ klesající (rostoucí).                 
+        \end{itemize}
+      \subsubsection{Periodická funkce}
+
+    \subsection{Operace s funkcemi. Uspořádání}\label{mai:IchapIIIsecIssecIV}
+      Jak s funkcemi počítat? Definujeme základní operace s nimi - \emph{součet funkcí, součin 
+      funkcí a násobení funkce reálným číslem}. Předpokládejme, že na definičním oboru 
+      \(\mathcal{D}\) jsou zadány funkce \(f\) a \(g\) a reálné číslo \(\alpha\). Pak na tomtéž 
+      definičním oboru lze zadat nové funkce
+      \begin{align*}
+        \mathcal{F} &: \mathcal{D}\ni x\,\rightarrow\,\mathcal{F}(x) = f(x)+g(x)  \in\realset   \\
+        \mathcal{G} &: \mathcal{D}\ni x\,\rightarrow\,\mathcal{G}(x) = \alpha g(x)\in\realset   \\
+        \mathcal{H} &: \mathcal{D}\ni x\,\rightarrow\,\mathcal{H}(x) = f(x) g(x)  \in\realset 
+      \end{align*}
+      Funkce \(\mathcal{F}\), \(\mathcal{G}\) a \(\mathcal{H}\) nazýváme postupně součtem funkcí 
+      \(f\) a \(g\), \(\alpha\)-násobkem funkce \(f\) a součinem funkcí \(f\) a \(g\). Značíme
+      \begin{equation*}
+       \mathcal{F} = f + g, \qquad \mathcal{G} = \alpha f, \qquad \mathcal{H} = fg. 
+      \end{equation*}
+      
+      Všimněme si nyní pravidel pro počítání s funkcemi zadanými na \(\mathcal{D}\) a zjistíme, 
+      že se velmi podobají pravidlům pro počítání s reálnými čísly. Není divu, vždyť operace s 
+      funkcemi jsou definovány prostřednictvím funkčních hodnot, a těmi jsou reálná čísla. Některé 
+      důležité odlišnosti však přece jen najdeme. Napřed ale pravidla:
+      
+      \begin{itemize}[noitemsep]
+        \item komutativní zákon pro součet funkcí
+          \begin{equation}\label{mai:eq012}
+            f(x) + g(x) = g(x) + f(x)
+          \end{equation}
+        \item asociativní zákon pro součet funkcí  
+          \begin{equation}\label{mai:eq013}
+            (f(x) + g(x)) + h(x) = f(x) + (g(x) + h(x)
+          \end{equation}
+        \item existence univerzálního neutrálního  prvku \(O\) (nulová funkce \(O:\mathcal{D}\ni x 
+          \rightarrow O(x)=0\))
+          \begin{equation}\label{mai:eq014}
+            f(x) + O = O + f(x) = f(x)
+          \end{equation}
+        \item existence právě jednoho opačného prvku k funkci \(f\), přičemž \((-f)(x) = -f(x)\)
+          \begin{equation}\label{mai:eq015}
+            f(x)+(-f(x))=(-f(x))+f(x)=O
+          \end{equation}
+        \item asociativní zákon pro násobení číslem 
+         \begin{equation}\label{mai:eq016}
+            (\alpha_1\alpha_2)f(x) = \alpha_1(\alpha_2f(x))
+         \end{equation}
+        \item  1. distributivní zákon pro násobení číslem
+          \begin{equation}\label{mai:eq017}
+            \alpha(f(x)+g(x) =\alpha f(x) + \alpha g(x)
+          \end{equation}\label{mai:eq018}
+        \item 2. distributivní zákon pro násobení číslem 
+          \begin{equation}\label{mai:eq019}
+            (\alpha_1+\alpha_2)f(x) =\alpha_1f(x)+\alpha_2f(x)
+          \end{equation}
+        \item násobení číslem \((-1)\) dává opačný prvek
+          \begin{equation}\label{mai:eq020}
+            (-1)f(x)=(-f(x))
+          \end{equation}
+        \item komutativní zákon pro součin funkcí
+          \begin{equation}\label{mai:eq021}
+            f(x)g(x)=g(x)f(x)
+          \end{equation}
+        \item asociativní zákon pro součin funkcí 
+          \begin{equation}\label{mai:eq022}
+            f(x)(g(x)h(x))=(f(x)g(x))h(x)
+          \end{equation}
+        \item distributivní zákon zprava pro součin funkcí
+          \begin{equation}\label{mai:eq023}
+            (f_1(x) + f_2(x))g(x) =f_1(x)g(x) + f_2(x)g(x)
+          \end{equation}
+        \item distributivní zákon zleva pro součin funkcí
+          \begin{equation}\label{mai:eq024}
+            f(x)(g_1(x) + g_2(x))=f(x)g_1(x)+f(x)g_2(x)
+          \end{equation}
+        \item násobení jednotkovou funkcí \(I: \mathcal{D}\ni x \rightarrow I(x) = 1\)  
+          \begin{equation}\label{mai:eq025}
+           f(x)I=If(x)
+          \end{equation}
+        \item existence právě jedné \emph{převrácené} funkce k funkci \(f\) pro \(f(x)\neq0\quad 
+              (f)^{-1}: \bar{D}\ni x\rightarrow (f)^{-1}(x)=[f(x)]^{-1}\) kde \(\bar{\mathcal{D}} 
+              = \mathcal{D} - \left\{x\in \mathcal{D}\,\lvert\,f(x)=0\right\}\)
+          \begin{equation}
+            f(x)(f(x))^{-1}=(f(x))^{-1}f(x) = I
+          \end{equation}
+      \end{itemize}
+      Všimněme si, že funkce \((f)^{-1}\) existuje obecně na užším definičním oboru 
+      \(\bar{\mathcal{D}}\), než na kterém je definována funkce \(f\). Je totiž třeba vyloučit 
+      všechny hodnoty \(x\), pro které \(f(x) = 0\) (zákaz dělení nulou). K funkci \(O\) tedy 
+      převrácená funkce neexistuje vůbec!
+      
+      Existence opačné a převrácené funkce k \(f\) umožňuje definovat \emph{rozdíl} a \emph{podíl} 
+      funkcí \(f-g=f+(-g)\) a \(\dfrac{f}{g}=f(g)^{-1}\), tj.
+      \begin{alignat*}{2}
+        f-g         &: \mathcal{D}\ni x\,\rightarrow\, (f-g)(x)&&=f(x)+(-g)(x) \\
+                    &                                          &&=f(x)-g(x),  \\
+        \frac{f}{g} &: \bar{D}\ni x\,\rightarrow\, 
+                                   \left(\frac{f}{g}\right)(x) &&= f(g)^{-1}(x) = \frac{f(x)}{g(x)}, 
+      \end{alignat*}
+      kde \(\bar{D}=D-\left\{x\in D\,\lvert\,g(x)=0 \right\}\) 
+      
+      \begin{mdframed}[style=mdnote]
+        \begin{note}
+          Pamatujme si označení převrácené funkce jako \((f)^{-1}\), v němž je zápis symbolu \(f\)
+          do závorky podstatný. Jde o něco jiného než znamená symbol \(f^{-1}\) bez závorky, který
+          rezervujeme pro inverzní funkci v dalším výkladu.
+        \end{note}
+      \end{mdframed}  
+
+      \begin{mdframed}[style=mdnote]
+        \begin{note}
+          Porovnáme-li nyní vlastnosti operací s funkcemi a pravidla pro počítání s reálným čísly, 
+          komplexními čísly, maticemi a vektory, můžeme konstatovat, že množina funkcí s operací 
+          sčítání funkcí a násobení funkce číslem je \textbf{vektorovým prostorem}. To je vlastnost, 
+          která je s případem čísel, matic a vektorů společná. Vektorový prostor funkcí se však od 
+          zmiňovaných vektorových prostorů výrazně liší svou dimenzí (rozměrem). Intuitivně dobře 
+          chápeme, co znamená jednorozměrný, dvojrozměrný a trojrozměrný prostor (například 
+          \(\realset^1\), \(\realset^2\), \(\realset^3\)). V odstav 1.4 jsme dokonce pracovali v 
+          n-rozměrném vektorovém prostoru. Dimenze vektorového prostoru může být i nekonečná - třeba 
+          zrovna u funkcí. Obecně jde o pojem poměrně obtížný a budeme se jím důkladně zabývat až v 
+          kapitolách věnovaných algebře \cite[s.~58]{Musilova2009MA1}.
+        \end{note}
+      \end{mdframed}  
+      
+      Operace s funkcemi jsme definovali a prodiskutovali pro případ, kdy definiční obory funkcí, 
+      vstupujících do operace byly stejné. Co když tomu tak nebude? Znamená to, že pak nemůžeme 
+      funkce sčítat, násobit, apod.? Předpokládejme, že definičním oborem funkce \(f\) je množina 
+      \(\mathcal{D}_f\) definičním oborem funkce \(g\) množina \(D_g\). Pokud jsou tyto obory 
+      disjunktní, tj. \(\mathcal{D}_f \cap \mathcal{D}_g = 0\), můžeme utvořit pouze 
+      \(\alpha\)-násobek funkce \(f\) či \(g\). Sčítat ani násobit funkce \(f\) a \(g\) nemůžeme 
+      neboť hodnota \(f(x) + g(x)\) ani \(f(x)g(x)\) neexistuje pro žádné \(x\). Pokud je průnik 
+      \(D=d_f\cap D_g\) oborů \(\mathcal{D}_f\) a \(\mathcal{D}_g\) neprázdný, stává se definičním 
+      oborem funkcí \(f+g\) a \(fg\). Platí stejná pravidla jako v předchozí tabulce, pouze s 
+      omezením na obor \(\mathcal{D}_f\).
+    
+    \subsection{Skládání a inverze funkcí}\label{mai:IchapIIIsecIssecV}
+      \emph{Skládání} neboli kompozici funkcí si lze snadno představit opět pomocí „černých skříněk
+      “ (obr. \ref{mai:fig012}): Do první skřínky představující předpis \(g\), \emph{vnitřní složku}
+      složené funkce, vstupuje hodnota \(x\) z definičního oboru \(\mathcal{D}_g\) funkce \(g\).
+
+      \luagraphic[0.9]{mai_fig012.pdf}{Skládání funkcí \cite[s.~59]{Musilova2009MA1}}{mai:fig012}
+
+      Výstupem je číslo \(u = g(x)\), funkční hodnota vnitřní složky v bodě \(x\). Toto číslo smí
+      vstoupit do skříňky představující předpis \(f\), \emph{vnější složku} složené funkce, právě
+      tehdy, je-li prvkem jejího definičního oboru \(\mathcal{D}_f\). V takovém případě najdeme na
+      výstupu ze skříňky \(f\) hodnotu \(y = f(u) = f[g(x)]\). (Jestliže
+      \(g(x)\notin\mathcal{D}_f\), není výstup ze skříňky \(f\) definován.) Vzniká nový předpis
+      \(F\), kterým se některým bodům definičního oboru \(\mathcal{D}_g\), ne všem, ale pouze těm,
+      pro něž \(g(x)\in\mathcal{D}_f\), přiřazují hodnoty \(f[g(x)]\). Definujme nyní složenou
+      funkci přesněji: Předpokládejme, že jsou zadány funkce
+      \begin{align*}
+        g  &: \mathcal{D}_g\ni x\,\rightarrow\, g(x) = u\in\realset, \\
+        f  &: \mathcal{D}_f\ni u\,\rightarrow\, f(u) = y\in\realset. \\
+        \shortintertext{označme}
+        \mathcal{D} &= \{x\lvert x\in\mathcal{D}_g \text{ a současně } g(x)\in\mathcal{D}_f\}.
+      \end{align*}
+      Pokud \(\mathcal{D} = \emptyset\), lze definovat funkci
+      \begin{equation*}
+        F: \mathcal{D}\ni x\rightarrow y = F(x) = f[g(x)]\in\realset, 
+           \text{ značíme } F = f \circ g.
+      \end{equation*}
+      \(F\) se nazývá \emph{složením} neboli \emph{kompozicí} funkcí \(g\) a \(f\). Zápis \(f\circ 
+      g\) čteme často také jako \emph{„f po g“}. Skládat lze i větší počet funkcí.
+
+       %-------------------------------------
+         \input{../src/MAI/exam/exam025.tex}
+       %-------------------------------------
+      
+      Může vzniknout otázka, jak rozpoznáme vnitřní a vnější složku složené funkce. Rozlišit 
+      vnitřní a vnější složku třeba u funkcí \(\cos(x^2)\) a \((cos x)^2\) není problém. Hned také 
+      vidíme, že obecně \(f\circ g\neq g\circ f\), i když by definiční obory funkcí na pravé i levé 
+      straně měly neprázdný průnik. Jsou však i případy na první pohled méně zřetelné, jak ukazuje 
+      následující příklad.
+      
+      %-------------------------------------
+        \input{../src/MAI/exam/exam026.tex}
+      %-------------------------------------
+       
+      Funkce \(F\) a \(G\) mají různé definiční obory, ale na jejich průniku dávají stejné funkční 
+      hodnoty. Ani zde však obecně nelze pořadí skládání funkcí zaměňovat.
+      
+      Nyní se pusťme do vybudování pojmu inverzní funkce k funkci \(f\). Představme si, že funkční
+      hodnota \(y = f(x)\) zadané funkce
+      \begin{equation*}
+        f: \mathcal{D}_f\ni x \rightarrow f(x)\in\mathcal{H}_f
+      \end{equation*}
+      představuje „zakódovanou“ informaci o hodnotě \(x\). Položme si otázku, zda a za jakých 
+      podmínek dokážeme sestavit „černou skříňku“, na jejímž výstupu by se při vstupu obrazu \(y = 
+      f(x)\) objevila hodnota \(x\). Omezení takové možnosti je názorně vidět na obrázku 
+      \ref{mai:fig014}. V případě funkce \(f(x)\) lze ke všem obrazům \(y \in \mathcal{H}_f\) najít 
+      vzory, v případě funkce \(g(x)\) to možné není, neboť jeden a týž obraz lze získat z několika 
+      vzorů. Pro který bychom se tedy měli rozhodnout?
+      
+      \luagraphic[0.9]{mai_fig014.pdf}{Skládání funkcí \cite[s.~61]{Musilova2009MA1}}{mai:fig014}
+
+       Aby bylo možné vzor zpětně identifikovat na základě znalosti obrazu, je třeba, aby funkce 
+       \(f\) byla \emph{prostá}, tj. aby předpis \(f\) přiřazoval každým dvěma různým vzorům \(X_1 
+       \neq x_2\) dva různé obrazy \(f(x_1) \neq f(x_2)\). Často lze tohoto požadavku docílit tím, 
+       že se místo funkce \(f\) s definičním oborem \(\mathcal{D}_f\) spokojíme s funkcí, která 
+       vznikne omezením \emph{(restrikcí)} té původní na „menší“ definiční obor, zato však již bude 
+       prostá. U funkce \(g\) na obrázku \ref{mai:fig016} by tak stačilo omezit definiční obor 
+       například na množinu \(\mathcal{D}_g\). Než inverzní funkci definujeme, ukažme si způsob 
+       jejího nalezení na známém příkladu.
+
+       \begin{figure}[ht!]
+          \centering  
+          \subcaptionbox{\label{mai:fig016a}}{\luafigure[0.45]{mai_fig016a.pdf}}
+          \subcaptionbox{\label{mai:fig016b}}{\luafigure[0.45]{mai_fig016b.pdf}}
+          \caption{K pojmu inverzní funkce}
+          \label{mai:fig016}
+       \end{figure}
+      
+      %-------------------------------------
+        \input{../src/MAI/exam/exam027.tex}
+      %-------------------------------------
+      
+      Ze způsobu konstrukce funkce \(f^{-1}\) v předchozím příkladu je vidět, že 
+      \(\mathcal{D}_{f^{-1}} = \mathcal{H}_f\), \(\mathcal{H}_{f^{-1}} = \mathcal{D}_f\) a graf 
+      inverzní funkce je obrazem grafu prosté funkce \(f\) při osové symetrii v rovině 
+      souřadnicových os vzhledem k ose prvního a třetího kvadrantu. Nyní již definujeme inverzní 
+      funkci obecně. Předpokládejme, že funkce \(f : \mathcal{D}_f\ni x \rightarrow y = f(x)\ni 
+      \mathcal{H}_f\) je prostá na svém definičním oboru. Pak existuje funkce \(f^{-1}\) definovaná 
+      jako
+      \begin{equation}\label{mai:eq029}
+        f^{-1} :\mathcal{H}_f\ni x\rightarrow y = f^{-1}(x)\in\mathcal{D}_f\Leftrightarrow x = f(y).
+      \end{equation}
+      Funkci \(f^{-1}\) nazýváme \textbf{inverzní funkcí k funkci} \(f\). Ještě shrneme pravidla 
+      pro skládání funkcí a pro inverzní funkce:
+
+      \begin{itemize}[noitemsep]
+        \item asociativní zákon pro skládání funkcí
+          \begin{equation}\label{mai:eq030}
+            f(x)\circ(h(x)\circ g(x)) = f(x)\circ h(x) \circ g(x)
+          \end{equation}
+        \item distributivní zákon zleva 
+          \begin{equation}\label{mai:eq031}
+            f(x) \circ (h(x) + g(x)) = f(x) \circ h(x) + f(x) \circ g(x)
+          \end{equation}
+        \item existence univerzálního neutrálního  prvku \(O\) (nulová funkce \(O:\mathcal{D}\ni x 
+          \rightarrow O(x)=0\))
+          \begin{equation}\label{mai:eq032}
+            f(x) + O = O + f(x) = f(x)
+          \end{equation}
+        \item existence právě jednoho opačného prvku k funkci \(f\), přičemž \((-f)(x) = -f(x)\)
+          \begin{equation}\label{mai:eq033}
+            f(x)+(-f(x))=(-f(x))+f(x)=O
+          \end{equation}
+        \item komutativní zákon pro součet funkcí
+          \begin{equation}\label{mai:eq034}
+            f(x) + g(x) = g(x) + f(x)
+          \end{equation}
+        \item asociativní zákon pro součet funkcí  
+          \begin{equation}\label{mai:eq035}
+            (f(x) + g(x)+h(x) = f(x) + (g(x) + h(x)
+          \end{equation}
+        \item existence univerzálního neutrálního  prvku \(O\) (nulová funkce \(O:\mathcal{D}\ni x 
+          \rightarrow O(x)=0\))
+          \begin{equation}\label{mai:eq036}
+            f(x) + O = O + f(x) = f(x)
+          \end{equation}        
+      \end{itemize}   
+      Předchozí vztahy platí na patřičně zúžených definičních oborech funkcí, které do nich 
+      vstupují.
+      
+  %-------------------------------------------------------------------------------------------------
+  \section{Zvěřinec funkcí}\label{mai:IchapIIIsecII}
+    Základními elementárními funkcemi nazýváme \cite[s.~10]{PolakMA1}:
+    %------------- Goniometrické funkce ------------------------------------------------------------
+    \input{../src/MAI/sections/fce_goniometricke.tex} 
+  \section{Cvičení}\label{mai:IchapIIIsecIII}
+  
+  %================ Podkapitola: Limita funkce =====================================================
+  \section{Limity všeho druhu}\label{mai:IchapIIIsecIV}  
+    „Limes“ znamená latinsky příční cesta, mez, v přeneseném významu pak hranice, pomezí, atd. V 
+    matematice představuje limita hodnotu, ke které se „neomezeně blíží hodnota funkce, jestliže se 
+    hodnota proměnné neomezeně blíží zadanému číslu“. Poslední formulace musí být v uvozovkách, 
+    protože je i přes svou dobrou názornost velice nepřesná. A takové nepřesnosti nejsou v 
+    matematice dovoleny. K čemu vůbec úvaha o limitě je? Stačí přece do funkčního předpisu hodnotu 
+    proměnné dosadit a získat funkční hodnotu. Tak jednoduché to ale není. Funkční hodnota pro 
+    danou hodnotu proměnné \(x\) vůbec nemusí být definována, zato může být definována pro hodnoty 
+    velmi blízké. Nebo definována je, ale pro hodnoty proměnné, které jsou k \(x\) velmi blízké, 
+    jsou funkční hodnoty od \(f(x)\) velmi vzdálené. Potřebnost pojmu limita ukážeme na 
+    geometrickém a fyzikálním příkladu.
+    
+    V matematické analýze hraje např. důležitou úlohu podíl \cite[s.~117]{Brabec1989}
+    \begin{equation*}
+      \dfrac{\varphi(x) - \varphi(a)}{x - a}
+    \end{equation*}
+    kde \(\varphi\) je daná funkce, \(a\) pevný bod. Tento podíl tzv. \emph{přírůstku funkce} 
+    \(\varphi(x) - \varphi(a)\) k přírůstku argumentu \(x - a\) může značit např. \emph{průměrnou 
+    rychlost pohybu bodu po přímce}, jehož zákon dráhy je dán vztahem \(y = \varphi(x)\), kde \(y\) 
+    je dráha, kterou bod urazí za čas \(x\). Zajímá nás, jak se mění hodnota tohoto podílu - jinak 
+    řečeno, jak se mění hodnota funkce \(f\) dané vztahem
+    \begin{equation}\label{mai:eq037}
+      f(x) = \dfrac{\varphi(x) - \varphi(a)}{x - a}
+    \end{equation}
+    když hodnoty argumentu \(x\) se blíží k číslu \(a\), což často značíme \(x\rightarrow a\). V 
+    uvedeném fyzikálním významu daného podílu se ptáme, jak se mění průměrná rychlost pohybu, když 
+    se časový úsek zkracuje. Je zřejmé, že musí být stále \(x \neq a\) a že jmenovatel se blíží k 
+    nule; obvykle se blíží k nule i čitatel. Jakých hodnot však nabývá přitom podíl, tj. jaké jsou 
+    hodnoty funkce \(f(x)\)? Než vyslovíme přesnou definici limity, uvedeme ještě pár jednoduchých 
+    příkladů.
+
+    %-------------------------------------
+      \input{../src/MAI/exam/exam028.tex}
+    %-------------------------------------
+
+    Definičním oborem funkce z příkladu \ref{MAI:exam028} je tedy množina \(\mathcal{D} = \realset -
+    {1}\) (pro \(a = 1\) by ve jmenovateli zlomku byla nula). Grafem funkce je tedy přímka s
+    „vynechaným“ bodem \([1, 2]\) (obr. \ref{mai:fig017}). V bodě \(a = 1\) funkční hodnota není
+    definována. Pokud bychom chtěli rozšířit definiční obor funkce na celou reálnou osu, musíme
+    předepsat, jaké hodnoty má funkce nabývat v bodě \(a = 1\). Původní vzorec, jímž je funkce
+    zadána, výpočet hodnoty \(f(1)\) neumožňuje. Dodatečné zadání funkční hodnoty, její
+    \emph{dodefinování}, můžeme provést zcela libovolně. Zvolme například \(f(1) = 2\). Jiná
+    možnost, jak funkci dodefinovat, je například \(f(1) =-1\). Které číslo je ovšem limitou funkce
+    \(f(x)\) v bodě \(a = 1\)? Je to číslo \(2\), které je v případe \(f(x) = x+1\) její funkční
+    hodnotou? Nebo číslo \(-1\)? A nebo nějaká jiná hodnota? Intuice nám napovídá, že je to číslo
+    \(2\). Když dvojku použijeme pro dodefinování funkce, přetržený graf se „zacelí“. Vidíme, že
+    vezmeme-li dostatečně malý interval proměnné \(x\) v blízkosti bodu \(a=1\) můžeme docílit toho,
+    že všechny odpovídající funkční hodnoty \(f(x)\) budou ležet tak blízko hodnotě \(2\), jak si
+    předem určíme. Skutečně, zkusme docílit toho, aby hodnoty \(f(x)\) ležely v intervalu
+    \((\num{1.99}, \num{2.01})\), tj.
+    \begin{equation*}
+      \num{1.99} < x + 1 < \num{2.01} \Rightarrow \num{0.99} < x < \num{1.01},\qquad x\neq1.
+    \end{equation*}
+    Podařilo se. A kdybychom interval \(I(\varepsilon) = (2 - \varepsilon, 2 + \varepsilon)\) 
+    funkčních hodnot kolem \(2\) ještě zmenšili, podařilo by se opět najít (o něco menší) interval 
+    kolem bodu \(a = 1\) tak, aby pro všechny hodnoty \(x\) v něm (samozřejmě s případnou výjimkou 
+    hodnoty \(a =2\)) platilo \(f(x)\in I(\varepsilon)\). A takto bychom mohli \(\varepsilon\) 
+    stále zmenšovat. Jak by takový postup dopadl s hodnotou \(-1\), která, jak intuitivně cítíme, 
+    limitou funkce v bodě \(a = 1\) není, protože je graf funkce od bodu \([-1,0]\) dost vzdálen? 
+    Vezměme třeba interval (\num{-0.5}, \num{0.5}) a hledejme hodnoty \(x\) obdobně jako v 
+    předchozím případě. Požadujeme
+    \begin{equation*}
+      \num{-0.5} < x + 1 < \num{0.5} \Rightarrow \num{-1.5} < x < \num{-0.5}.
+    \end{equation*}
+    Tento interval vůbec neobsahuje bod \(a = 1\). Dostali jsme se mimo blízkost bodu \(a = 1\).
+
+    %-------------------------------------
+      \input{../src/MAI/exam/exam029.tex}
+    %-------------------------------------
+
+    Je třeba říci, že při zkoumání limit funkcí nás nezajímají jen funkce „tvaru“ 
+    (\ref{mai:eq037}), i když tento případ je v diferenciálním počtu velmi častý, jak poznáme v 
+    kap. \ref{mai:IchapVI}. Někdy nás zajímá i chování funkcí v okolí nevlastních bodů \(-\infty\), 
+    \(+\infty\) 
+
+    %-------------------------------------
+      \input{../src/MAI/exam/exam030.tex}
+    %-------------------------------------
+    
+    %-------------------------------------
+      \input{../src/MAI/exam/exam031.tex}
+    %-------------------------------------
+    
+    V uvedených případech bychom mohli zkoumat i limity funkcí pro \(x \to - \infty\).  Všimněme si 
+    ještě, že ve všech případech nebylo nutné, aby funkce \(f\) byla definována v bodě, ke kterému 
+    se blíží hodnoty argumentu, ale bylo zapotřebí, aby funkce \(f\) byla definována v bodech 
+    libovolně blízkých tomuto bodu. Tomuto požadavku bude vyhověno, jestliže daný bod, v němž 
+    zkoumáme limitu, bude \emph{hromadným bodem definičního oboru}. Není ovšem nutné, aby funkce 
+    byla definována v celém nějakém \emph{prstencovém okolí uvažovaného bodu}.
+    
+    Nechť \(a\) je bod, blízko kterého se pohybuje hodnota proměnné \(x\). Pro definici limity je 
+    důležitý pojem \textbf{okolí bodu} \(a\) (obr. 2.16). Zvolme kladná čísla \(\delta_1\) a 
+    \(\delta_2\). Nazýváme
+    
+    
+  \section{Seznámení s posloupnostmi a funkcemi}\label{mai:IchapIIIsecV}  
+  \section{Spojité funkce}\label{mai:IchapIIIsecVI}
+  \twocolumn[\section{Derivace - rychlost změny funkce}\label{mai:IchapIIIsecVII}]
+    \subsection{Hledáme tečny}\label{mai:IchapIIIsecVIIssecI}
+    \subsection{Graf funkce snadno a rychle}\label{mai:IchapIIIsecVIIssecII}
+    \subsection{Spokojíme se i s přibližnou hodnotou - diferenciál funkce}\label{mai:IchapIIIsecVIIssecIII}
+      Pojem diferenciálu funkce \(y = f(x)\) v bodě \(a\) názorně ukazuje obrázek 2.38.
+      Předpokládejme, že ke grafu funkce lze v jeho bodě \([a, f(a)]\) sestrojit tečnu. Uvažujeme o
+      grafu funkce \(f(x)\) v intervalu \([a, a+h]\), kde \(h\) je \emph{přírůstek} proměnné \(x\).
+      \emph{Přírůstek funkční hodnoty} neboli \emph{diference} funkce \(f(x)\) mezi body \(x = a\) a
+      \(x = a+h\) je \(\Delta f = f(a+h)-f(a)\). Diferenci lze \uv{složit} sečtením přírůstku na
+      tečně, který je v obrázku vyznačen symbolem \(df(a)(h)\), a hodnoty \(\chi_a(h)\), kterou lze
+      považovat za funkční hodnotu jisté funkce \(\chi_a\) v bodě \(h\). Platí
+      \begin{align}
+        \Delta f &= f(a+h) - f(a) = df(a)(h) + \chi_a(h) =                   \nonumber      \\
+                 &= h\tan\alpha+\chi_a(h) = f'(a)h + \chi_a(h)               \label{mai:eq093}
+      \end{align}  
+      Přírůstek na tečně, který můžeme také psát ve tvaru
+      \begin{equation}\label{mai:eq094}
+        df(a)(x-a) = f'(a)(x-a),
+      \end{equation}
+      je lineární funkcí proměnné \(h = x - a\) a nazývá se \emph{diferenciálem funkce \(f(x)\) v
+      bodě \(a\)}. Pokud existuje v bodě a derivace \(f'(a)\), lze diferenciál definovat. Jaký je
+      jeho význam poznáme, když prošetříme chování funkce \(\chi_a(h)\) v okolí hodnoty \(h = 0\).
+      Platí
+
+    \subsection{Poznáváme funkci z její derivace - neurčitý integrál}\label{mai:IchapIIIsecVssecIV}
+    \subsection{Zpět k logaritmu a exponenciále}\label{mai:IchapIIIsecVssecV}
+    \subsection{Rozmanité pohyby}\label{mai:IchapIIIsecVssecVI}
+    \subsection{Od zrychlení k trajektorii}\label{mai:IchapIIIsecVssecVII}
+  \twocolumn[\section{Integrování - sčítání mnoha malých příspěvků}\label{mai:IchapIIIsecVIII}]
+  
+%} % tikzset
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

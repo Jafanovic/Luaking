@@ -1,0 +1,177 @@
+% !TeX spellcheck = cs_CZ
+%---------------------------------------------------------------------------------------------------
+% file opamp.tex
+%---------------------------------------------------------------------------------------------------
+%================================ Kapitola: Zesilovače==============================================
+\setchaptertoc
+\chapter{Napěťové komparátory}\label{aesIchV}  
+  
+  Komparátor je podobný operačnímu zesilovači. Má dva vstupy (invertující, neinvertující) a jeden
+  výstup (viz \ref{aes:fig066}). Je však speciálně navržen pro porovnání napětí mezi oběma vstupy.
+  Komparátor pracuje s otevřenou smyčkou a poskytuje dvoustavové logické výstupní napětí. Tyto dva
+  stavy odpovídají znaménku rozdílu\footnote{včetně účinků vstupního ofsetového napětí komparátoru}
+  mezi oběma vstupy.
+  
+  Na výstupu komparátoru bude vysoká úroveň napětí, pokud vstupní signál na neinvertujícím vstup
+  převyšuje signál na invertujícím vstupu (plus ofsetové napětí, \(V_{os}\)) a nízkou úroveň pro
+  opačný případ. Z hlediska terminologie používané v oblasti logických obvodů nabývá komparátor
+  logickou "\texttt{1}" nebo "\texttt{0}", případně \texttt{H} (high) nebo \texttt{L} (low).
+  
+  Komparátor je běžně používán v aplikacích, kde je nějaká proměnná úroveň signálu porovnána s
+  pevnou úrovní (obvykle referenční napětí). Protože je to ve skutečnosti \emph{1-bitový}
+  analogově-digitální převodník (ADC), je komparátor základním prvkem ve všech ADC.
+  (\cite[s.~72]{Vrba2000} a \cite[s.~2]{MT083}).
+
+  \luagraphic[1]{aes_fig066.png}{Napěťový komparátor \cite[s.~1]{MT083}}{aes:fig066}
+
+  \section{Funkce komparátoru}\label{aesIchVsecI}
+    Zapojíme-li operační zesilovač podle obr. \ref{aes:fig067a}, potom se bude projevovat jeho velké
+    zesílení. Je-li napájecí napětí zesilovače \SI{15}{\volt}, potom můžeme předpokládat, že
+    maximální rozkmit výstupního signálu bude asi \SI{13.5}{\volt}. Meze, mezi kterými se může
+    výstupní signál pohybovat jsou na převodní charakteristice uvedené na obr. \ref{aes:fig067b}
+    označeny \(U_{sat}\) a \(-U_{sat}\). Velmi velká hodnota zesílení otevřené smyč­ky \(A_{os}\)
+    činí operační zesilovač velmi citlivý na velikost rozdílu vstupních signálů.
+
+    \begin{figure}[ht!]  %\ref{aes:fig067}
+      \centering
+      \subcaptionbox{\label{aes:fig067a}}{\luafigure[0.9]{aes_fig067a.png}} \newline    
+      \subcaptionbox{\label{aes:fig067b}}{\luafigure[0.9]{aes_fig067b.png}}                                             
+      \caption{a) Zapojení operačního zesilovače bez obvodu zpětné vazby, b) převodní
+              charakteristika operačního zesilovače (\cite[s.~177]{Dolecek2007})}
+      \label{aes:fig067}
+    \end{figure}
+
+    Na charakteristice na obr. \ref{aes:fig067b} jsou uvedené meze výstupního signálu dosaže­ny již
+    při velmi malých hodnotách diferenčního napětí ud na vstupu zesilovače (v příkladu uvedeném na
+    obr. \ref{aes:fig067b} je výstup zesilovače v saturaci při rozdílu vstup­ ních napětí \(U_d =
+    u_2 - u_1 = \SI{67.5}{\micro\volt}\).
+
+    Prakticky můžeme říci, že když je \(u_2 > u_1\). bude mít napětí na výstupu zesilovače velikost
+    \(U_{sat}\), když \(u_1 > u_2\), bude mít výstupní napětí velikost \(-U_{sat}\).
+
+    \begin{mdframed}[style=mdnote] 
+      Doba přepnutí výstupního napětí OZ z jedné meze na druhou je omezena rychlostí přeběhu
+      použitého zesilovače.
+    \end{mdframed}
+
+    Napěťový komparátor je, stejně jako operační zesilovač, \textbf{diferenční zesilovač} s velmi
+    vysokým zesílením, jehož výstup nabývá pouze dva stavy. K výstupům komparátorů je možné připojit
+    různá zařízení včetně různých typů logických obvodů. Z toho důvodu mají různé komparátory různá
+    zapojení výstupních obvodů. Nebudeme-li uvažovat velikosti výstupních napětí a rychlosti
+    spínání, můžeme uvést dvě základní zapojení výstupních obvodů:
+    \begin{itemize}[noitemsep]
+      \item zapojení typu \textbf{otevřený kolektor} - označení OC \emph{(open collector)};
+      \item dvojčinné zapojení s \textbf{komplementárními tranzistory} - \emph{(push-pull)}.
+    \end{itemize}
+
+    \begin{figure}[ht!]  %\ref{aes:fig068}
+      \centering
+      \subcaptionbox{\label{aes:fig068a}}{\luafigure[0.5]{aes_fig068a.png}} \newline    
+      \subcaptionbox{\label{aes:fig068b}}{\luafigure[0.6]{aes_fig068b.png}} \newline
+      \subcaptionbox{\label{aes:fig068c}}{\luafigure[0.6]{aes_fig068c.png}}
+      \caption{a) Znázornění výstupu komparátoru s otevřeným kolektorem, c) sepnutí tranzistoru, 
+              když  \(u_1 > u_2\), c) tranzistor je rozepnut, když \(u_2 > u_1\) 
+              (\cite[s.~177]{Dolecek2007})}
+      \label{aes:fig068}
+    \end{figure}
+
+  \section{OZ ve funkci komparátoru}
+    OZ jsou určeny k přesnému zesilování signálů s vysokou lineari­tou a stabilitou, samozřejmostí u
+    nich je \emph{záporná zpětná vazba}.
+    
+    Stejně jako OZ se komparátory vyznačují malou vstupní napěťovou nesymetrií, velkým zesílením
+    diferenčního signálu a velkým potlačením souhlasného napětí. Hlavní rozdíly mezi nimi
+    spočívají v tom, že:
+    \begin{itemize}[noitemsep]
+      \item komparátor má logický výstup, který po překlopení do jedné ze dvou logických úrovní
+            (log 1 nebo log 0) vyjadřuje, které ze dvou vstupních napětí je větší, přechod z jedné
+            do druhé úrovně je velmi rychlý, ideálně skokový;
+      \item OZč má analogový výstup, jeho výstupní napětí zpravidla nedo­sahuje mezí daných
+            velikostmi napájecích napětí;
+      \item OZ jsou konstruovány pro aplikace se zápornou zpětnou vaz­bou, nemělo by dojít k jejich
+            přebuzení, které způsobí saturaci tranzistorů.
+    \end{itemize}
+
+    Komparátory jsou většinou rychlé, některé OZ rovněž. Kompará­tory jsou konstruovány pro velké
+    vstupní diferenční signály, zatímco záporná zpětná vazba u OZ velikost diferenčních signálů
+    minimalizuje. Když je OZ přebuzený, někdy i o několik \si{\mV}, některé tranzistory ve vnitřních
+    zesilovacích stupních se mohou dostat do saturace. Doba zotavení nutná k přechodu ze saturace
+    může trvat relativně dlouhou dobu a zesilovač je potom mnohem pomalejší než tehdy, kdy k
+    saturaci nedošlo (\ref{aes:fig070}).
+
+    \luagraphic[1]{aes_fig070.pdf}{Doba desaturace přebuzeného OZ bývá podstatně delší než jeho
+                normální skupinové zpoždění (efektivně doba průchodu signálu ze vstupu na výstup)
+                a často závisí na úrovni přebuzení (\emph{overdrive}).
+                \cite[s.~2]{AN849}}{aes:fig070}
+
+    \begin{mdframed}[style=mdnote]       
+      Protože pouze malá skupina OZ na trhu mají uvedenou dobu zotavení pro různé úrovně přebuzení,
+      je pro uživatele nezbytné stanovit tuto dobu experimentem.  Naměřené zpoždění bude záviset na
+      úrovní přebuzení v dané aplikaci. Hodnota použitá při výpočtech, by měla být nejméně dvakrát
+      větší než nejhorší hodnota pozorovaná testech, protože testované vzorky nemusí být
+      reprezentativním vzorkem.
+    \end{mdframed} 
+    
+    \luagraphic[0.5]{aes_fig071.pdf}{Stejná napájecí napětí umožňuje přímé buzení logického obvodu
+                výstupem OZ. \cite[s.~2]{AN849}}{aes:fig071}
+
+    Moderní OZ často mají výstupy typu rail to rail. Jejich největší kladná hodnota výstupního
+    napětí se blíží k velikosti kladné hodnoty napájecího napětí, záporná hodnota se blíží k
+    velikosti záporné hodnoty napájecího napětí. Když OZ a logické obvody mají stejná napájecí
+    napětí, např. +\SI{5}{\volt}, je možné z výstupů OZ přímo budit následující logické obvody
+    \ref{aes:fig071}. V opačném případě je nutné mezi výstupem OZ a vstupem logického obvodu vložit
+    přizpůsobovací člen \cite[s.~2]{AN849} jak je tomu na obrázku \ref{aes:fig069}.
+    
+
+    \begin{figure}[ht!]  %\ref{aes:fig069}
+      \centering
+        \subcaptionbox{\label{aes:fig069a}}{\luafigure[0.5]{aes_fig069a.pdf}}  
+        \subcaptionbox{\label{aes:fig069b}}{\luafigure[0.5]{aes_fig069b.pdf}} \newline
+        \subcaptionbox{\label{aes:fig069c}}{\luafigure[0.6]{aes_fig069c.pdf}}
+      \caption{Přizpůsobení výstupu OZ ke vstupu logického obvodu: a) NPN, c) MOSFET N-channel, c)
+                Complementary MOS inverter (\cite[s.~2]{AN849})}
+      \label{aes:fig069}
+    \end{figure}
+
+    Nejjednodušší obvody rozhraní jsou \textbf{invertory}. Mohou být postaveny s NPN tranzistory,
+    avšak za cenu vyšší spotřeby dané proudem báze, nebo výhodněji MOSFET s kanálem typu N.
+    vytvořeny invertory s tranzistory NPN, případné s tranzistory MOSFET s kanálem typu N. 
+    
+    Rezistor \(R_B\) na obr. \ref{aes:fig069a} slouží k nastavení proudu báze, rezistor \(R_L\) k
+    nastavení kolektorového proudu a je-li tranzistor uzavřen, zabezpeču­je vstupní proud logického
+    členu ve stavu log 1. Čím menší jsou velikosti odporů, tím rychlejší je činnost zapojení. NMOS
+    tranzistor na obr. \ref{aes:fig069b} by měl mít malé prahové napětí \(V_{GS(th)}
+    <\SI{2}{\volt}\) a také průrazné napětí hradla \(V_{GS_{max}}\) musí být větší než \(V_A\).
+    Obecně musí platit, že napájecí napětí OZ \(+V_A > +V_L\) a zároveň \(-V_A < -V_L\).
+
+    Invertor vytvořený pomocí komplementárních tranzistorů MOSFET je znázorněn na obr.
+    \ref{aes:fig068c}. Jeho výhodou je malý klidový proud. Nevýhoda spočívá ve vzniku proudových
+    špiček v časovém intervalu přepínání tranzistorů, kdy jsou oba tranzis tory krátkou dobu
+    současně otevřeny.
+
+    \section{Komparační úroveň a hystereze}
+      \subsection{Komparační úroveň}
+        
+    \section{Shrnutí}
+      \begin{itemize}[noitemsep]
+        \item Operační zesilovač může být použit s velkou přesností jako komparátor na níz­kých
+              kmitočtech\footnote{Nemá smysl použít operační zesilovač jako komparátor, pokud je
+              důležitá vysoká rychlost.}. Použití přesných OZ je důležité hlavně pn porovnávání
+              signálů na úrovni mikrovoltů.
+        \item Použití OZ může být výhodné též z cenových důvodů, když využíváme např. tři operační
+              zesilovače ze čtyř umístěných v jednom pouzdru. Použití čtvrtého zesilovače jako
+              komparátoru potom může být velmi ekonomické. 
+        \item Pro jejich použití jako komparátorů je nutné znát rozdíly a podobnosti mezi
+              komparátory a OZ, podrobně se seznámit s jejich vlastnostmi z technické dokumentace
+              a to hlavně s jejich dobami zotavení, rychlostmi přeběhu, spotřebou a cenou.
+        \item Komparátory jsou určeny pro rychlé rychlé spínání a v důsledku toho často mají horší
+              DC parametry než mnoho operačních zesilovačů. Proto může být vhodné použít operační
+              zesilovač jako komparátor v aplikacích vyžadující nízký \(V_{OS}\), nízký \(I_B\) a
+              široký \(CMR\).
+      \end{itemize}        
+
+  
+  \section{Aplikace}  
+
+
+%---------------------------------------------------------------------------------------------------

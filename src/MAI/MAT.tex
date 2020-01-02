@@ -1,0 +1,127 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = cs_CZ
+% !TeX root = ../../tex/lauking.tex
+
+%     Mathematical analysis
+%---------------------------------------------------------------------------------------------------
+% file MA.tex
+% Notes>
+% notes:
+%~~~~~~~~~
+% \label{mai:eq087}
+% \label{mai:fig099}
+% \label{mai:lemma006}
+% \label{mai:exam034}
+% \label{mai:tab001}
+% \label{mai:def001}
+% Mezery v matematickém režimu:
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\! záporná uzká mezera,   \; široká mezera,   \ mezislovní mezera,
+%\, úzká mezera,   \: střední mezera,   \quad čtverčík,   \qquad dva čtverčíky
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+  \graphicspath{{../src/MAI/img/}}
+% https://tex.stackexchange.com/questions/135416/lstmakeshortinline-with-delimiter
+% \lstMakeShortInline[basicstyle=\small\ttfamily\color{cyan}] 
+%---------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------
+%                               MA I
+%---------------------------------------------------------------------------------------------------
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+  % Debug mode ON
+  % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \input{../src/MAI/chap/mai1ch04a.tex}
+  \input{../src/FYZ/chap/fey1ch06.tex}
+  \input{../src/MAI/chap/mai1ch04b.tex}
+  % \input{../src/MAI/chap/mai1ch03.tex}
+  % \input{../src/MAI/chap/mai1ch06.tex}
+  % \input{../src/MAI/chap/mai1ch04.tex}
+  % \input{../src/MAI/chap/mai1ch07.tex}
+  % \input{../src/MAI/chap/mai1ch08.tex}
+}
+{
+% DEBUG was off
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{MA I}{Matematická Analýza I}{MAI}
+\parttoc
+%---------------------Logika a teorie množin ------------------------------------------------------
+  \input{../src/MAI/chap/mai1ch01.tex}
+%---------------------Všemocná úměra aneb lineární algebra poprvé ---------------------------------
+  \input{../src/MAI/chap/mai1ch02.tex}
+%-------------------- Funkce jedné proměnné -------------------------------------------------------
+  \input{../src/MAI/chap/mai1ch03.tex}
+%--------------------- Kombinatorika, pravděpdobnost, statistika ----------------------------------
+  \input{../src/MAI/chap/mai1ch04a.tex}
+  \input{../src/FYZ/chap/fey1ch06.tex}
+  \input{../src/MAI/chap/mai1ch04b.tex}
+%-------------------- Theory_of_Derivatives -------------------------------------------------------
+  \input{../src/MAI/chap/mai1ch05.tex}
+%-------------------- Differential Calculus applications ------------------------------------------
+  \input{../src/MAI/chap/mai1ch06.tex}
+%--------------------Primitive Functions ----------------------------------------------------------
+  \input{../src/MAI/chap/mai1ch07.tex}
+%--------------------an Integrals of functions of one real variable -------------------------------
+  \input{../src/MAI/chap/mai1ch08.tex}
+%---------------------Řady-------------------------------------------------------------------------
+  \input{../src/MAI/chap/Series.tex}
+%-------------------Introduction to mathematical analysis -----------------------------------------
+  \input{../src/MAI/chap/history_MA.tex}
+%======= Kapitola: Seznam literatury ===============================================================
+\printbibliography[title={Seznam literatury}, heading=bibliography]
+}  
+
+%---------------------------------------------------------------------------------------------------
+%                               MA II
+%---------------------------------------------------------------------------------------------------
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+%  \input{../src/MAI/chap/mai2ch01.tex} 
+%  \input{../src/MAI/chap/mai2ch04.tex}
+%  \input{../src/MAI/chap/mai2ch05.tex}
+%  \input{../src/MAI/chap/mai2ch07.tex}
+%  \input{../src/MAI/chap/mai2ch08.tex}
+
+}{
+% Debug mode OFF
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{MA II}{Matematická Analýza II}{MAII}
+\parttoc
+%======= Kapitola: Vícerozměrná algebra aneb lineární algebra podruhé ==============================
+  \input{../src/MAI/chap/mai2ch01.tex}
+%======= Kapitola: Souřadnicové soustavy obvyklejší i méně obvyklé =================================
+  \input{../src/MAI/chap/mai2ch02.tex}
+%======= Kapitola: Linearita v aplikacích aneb lineární algebra do třetice =========================
+  \input{../src/MAI/chap/mai2ch03.tex}
+%======= Kapitola: Obyčejné diferenciální rovnice ==================================================
+  \input{../src/MAI/chap/mai2ch04.tex} 
+%======= Kapitola: Řady funkcí =====================================================================
+  \input{../src/MAI/chap/mai2ch05.tex}
+%======= Kapitola: Závislosti na více parametrech aneb funkce více proměnných ======================
+  \input{../src/MAI/chap/mai2ch06.tex}
+%======= Kapitola: Základy variačního počtu pro mechaniku ==========================================
+  \input{../src/MAI/chap/mai2ch07.tex}
+%======= Kapitola: Parciální diferenciální rovnice =================================================
+  \input{../src/MAI/chap/mai2ch08.tex}
+%======= Kapitola: Seznam literatury ===============================================================
+  \printbibliography[title={Seznam literatury}, heading=bibliography]
+}
+
+
+%---------------------------------------------------------------------------------------------------
+%                               NM I
+%---------------------------------------------------------------------------------------------------
+\ifthenelse{ \equal{\DebugMode}{true} }{
+%---------------------Numerické metody ------------------------------------------------------------
+  % \input{../src/MAI/chap/nm1ch01.tex}
+}{
+% Debug mode OFF
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{MA III}{Numerické metody I}{NMI}
+\parttoc
+%======= Kapitola: Numerické metody ================================================================
+  \input{../src/MAI/chap/nm1ch01.tex}
+%======= Kapitola: Seznam literatury ===============================================================
+\printbibliography[title={Seznam literatury}, heading=bibliography]
+}

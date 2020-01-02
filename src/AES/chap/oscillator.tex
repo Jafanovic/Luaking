@@ -1,0 +1,146 @@
+% !TeX spellcheck = cs_CZ
+%---------------------------------------------------------------------------------------------------
+% file oscillator.tex
+%---------------------------------------------------------------------------------------------------
+%======================== Kapitola: Generátory signálů==============================================
+\setchaptertoc
+\chapter{Generátory signálů}
+
+
+  \textbf{Generátory signálů} jsou elektronické obvody, které za určitých podmínek generují 
+  jednorázový nebo periodický signál. Na rozdíl od zesilovačů nejsou buzeny z vnějších zdrojů 
+  signálů, patří tedy mezi \emph{autonomní obvody}.
+  
+  \begin{itemize}[noitemsep]
+    \item \emph{Podle druhu vyráběných signálů:}
+      \begin{itemize}
+        \item neperiodických průběhů (jednorázových)
+        \item periodických průběhů.
+      \end{itemize}
+    \item  \emph{Podle tvaru generovaného signálů:}
+    \begin{itemize}
+      \item harmonických signálů - \emph{oscilátory}
+      \item impulzních průběhů - \emph{klopné obvody}
+      \item funkční generátory - vytvářejí různé periodické průběhy jako trojúhelníkové, pilovité, 
+            můžeme sem zařadit také generátory speciálních průběhů, jako jsou generátory, televizního signálů
+            apod.
+    \end{itemize} 
+  \end{itemize}
+  
+  Mezi hlavní vlastnosti generátorů zahrnujeme tyto parametry:
+  \begin{itemize}[noitemsep]
+    \item kmitočet (perioda) kmitů
+    \item stabilita kmitočtu a amplitudy
+    \item doba náběžné a sestupné hrany impulzů - v \emph{klopných obvodech} 
+    \item zkreslení harmonického průběhu - u \emph{oscilátorů}.
+  \end{itemize}
+
+  \section{Generátory harmonických signálů - oscilátory}
+    Základními typy oscilátorů jsou:
+    \begin{itemize}[noitemsep]
+      \item Jednobranové LC oscilátory, též nazývané oscilátory se záporným diferenciálním odporem 
+            (\emph{Negative Resistance Oscillators});
+      \item Zpětnovazební oscilátory;
+      \item Oscilátory RC;
+      \item LC oscilátory;
+      \item Krystalem řízené oscilátory.
+    \end{itemize}
+
+    Pro pásmo nízkých kmitočtů do několika set kHz může být sinusový signál generován oscilátorem s 
+    RC selektivním zpětnovazebním obvodem, pro vyšší kmitočty jsou používány LC oscilátory. Pro 
+    velmi přesné a stabilní oscilátory jsou využívány oscilátory řízené krystaly.
+    
+    \subsection{LC oscilátory se záporným diferenciálním odporem}
+      Připojíme-li k paralelnímu rezonančnímu LC obvodu zdroj proudu o proměnném kmitočtu podle 
+      obr. \ref{AES:fig_MUE6_311b}, na kterém jsou sériové ztrátové odpory přepočítány na paralelní 
+      vodivost \(G_p\), můžeme získat modulové charakteristiky podle obr. \ref{AES:fig_MUE6_311a}. 
+      Kmitočtová závislost přenosu je závislá na velikosti činitele jakosti obvodu \(Q\) (na 
+      velikosti činných ztrát v obvodu). Čím užší je rezonanční křivka a stabilnější kmitočet 
+      \(\omega_0\), tím přesnější a stabilnější je kmitočet oscilátoru.
+
+      \begin{figure}[ht!]
+        \centering     
+        \subcaptionbox{\label{AES:fig_MUE6_311a}}{\luafigure[0.5]{MUE6_311a.pdf}} 
+        \subcaptionbox{\label{AES:fig_MUE6_311b}}{\luafigure[0.4]{MUE6_311b.png}}  \newline
+        \subcaptionbox{\label{AES:fig_MUE6_311c}}{\luafigure[0.4]{MUE6_311c.png}} 
+        \subcaptionbox{\label{AES:fig_MUE6_311d}}{\luafigure[0.5]{MUE6_311d.pdf}}  \newline
+        \subcaptionbox{\label{AES:fig_MUE6_311e}}{\luafigure[0.5]{MUE6_311e.pdf}} 
+        \caption{a) Modulové charakteristiky paralelního rezonančního obvodu pro napěťový přenos.
+                 b) model paralelního rezonančního obvodu a jeho napájení ze zdroje o proměnném 
+                 kmitočtu, c) přeměna rezonančního obvodu v oscilátor, d) časová závislost napětí 
+                 na svorkách ztrátového LC obvodu po rozkmitání, d) výstupní napětí bezeztrátového 
+                 LC obvodu 
+                 \cite[s.~135]{Dolecek2009}.}
+        \label{AES:fig_MUE6_311}
+      \end{figure}
+      
+      Na obr. \ref{AES:fig_MUE6_311c} je nakreslen paralelní rezonanční obvod, u kterého do obvodu 
+      po přepnutí spínače z polohy \(1\) do polohy \(2\) připojujeme předem nabitý kondenzátor. V 
+      obvodu vzniknou vlastní tlumené kmity o kmitočtu \(\omega_0\). Obvod lze popsat diferenciální 
+      rovnicí
+      \begin{equation}\label{AES:eq_osc04}
+        \dder{i}{t} + \frac{R}{L}\cdot\der{i}{t} + \omega^2 i = 0
+      \end{equation}
+      Rovnice má řešení
+      \begin{equation}
+        i(t) = I_{0}e^{-\delta t}\sin\omega_v t  \qquad u(t) = U_{0}e^{-\delta t}\cos\omega_v t
+      \end{equation}
+      kde \(I_0\) je \emph{počáteční amplituda proudu}, \(U_0\) je \emph{počáteční amplituda napětí 
+      na kapacitoru}, \(\delta = \frac{R}{2L}\) je \textbf{činitel tlumeni obvodu}, \(\omega_0 
+      =\frac{1}{\sqrt{LC}}\) je \textbf{rezonanční kmitočet} a \(\omega_v = \sqrt{\omega^2_0 - 
+      \delta^2}\) je \textbf{vlastní kmitočet volných kmitů} obvodu. 
+      
+      Ze vztahu (\ref{AES:eq_osc04}) je zřejmé, Že je-li činitel tlumeni a \textbf{kladný} je 
+      kmitání \textbf{tlumené}, je-li a \textbf{záporný} je kmitání \textbf{netlumené}, je-li 
+      \(\delta = 0\) mají kmity konstantní amplitudu. Velikost činitele tlumení je závislá na 
+      velikosti rezistoru \(R\), který modeluje ztráty v rezonančním obvodu viz obr. 
+      \ref{AES:fig_MUE6_311d}, \ref{AES:fig_MUE6_311e}.
+      
+      V reálném obvodu je vždy \(\delta > 0\) a proto pozorujeme tlumené kmity, jejichž amplituda 
+      klesá exponenciálně podle vztahu 
+      \begin{equation}\label{AES:eq_osc02}
+        u(t) = U_{ss}e^{-\delta t},
+      \end{equation}
+      kde \(u(t)\) představuje časovou závislost amplitudy kmitů na svorkách paralelního LC obvodu. 
+      Dosáhnout nulového tlumení je možné sériovým zapojením rezistoru \(-R_N = R\) - tedy 
+      rezistoru se \textbf{záporným odporem}. K tomu by bylo zapotřebí najít takovou součástku, 
+      jejíž voltampérová charakteristika vykazuje úsek se zápornou derivací. Hledáme tedy součástky 
+      které mají voltampérovou charakteristiku jako je na obr. \ref{AES:fig_AES62a} nebo 
+      \ref{AES:fig_AES62b}.
+      
+      \begin{figure}[ht!]
+        \centering  
+        \subcaptionbox{nelinearita typu \textbf{S} \label{AES:fig_AES62a}}{\luafigure[0.5]{AES_62a.pdf}}
+        \subcaptionbox{nelinearita typu \textbf{N} \label{AES:fig_AES62b}}{\luafigure[0.5]{AES_62b.pdf}}                                          
+        \caption{Voltampérové charakteristiky s úseky vykazující záporný diferenciální odpor 
+        \cite[s.~93]{Koucky1997}}
+        \label{MIT:fig_AES_62}
+      \end{figure}
+      
+      Pro sériový model kmitavého obvodu obr. \ref{AES:fig_AES63a} je použitelná nelinearita 
+      \texttt{typu S} (např. lavinová dioda), pro paralelní model kmitavého obvodu obr. 
+      \ref{AES:fig_AES63b} je použitelná nelinearita \texttt{typu N} (např. tunelová dioda) 
+      \cite[s.~93]{Koucky1997}.
+
+      \begin{figure}[ht!]
+        \centering  
+        \subcaptionbox{sériový rezonanční obvod   \label{AES:fig_AES63a}}{\luafigure[0.5]{AES_63a.pdf}} 
+        \subcaptionbox{paralelní rezonanční obvod \label{AES:fig_AES63b}}{\luafigure[0.5]{AES_63b.pdf}}                                           
+        \caption{ }
+        \label{MIT:fig_AES_63}
+      \end{figure}
+      
+      Na velikosti ztrátového odporu \(R\) závisí velikost činitele tlumení \emph{(damping factor)} 
+      obvodu podle vztahu:
+      \begin{equation}\label{AES:eq_osc01}
+        \delta = \frac{R}{2L} \qquad [rad/s]
+      \end{equation}
+      
+      LC oscilátory obsahují klasický rezonanční obvod, jehož rezonanční kmitočet je určen 
+      \textbf{Thomsonovým vztahem}:
+      \begin{equation}\label{AES:eq_osc03}
+        f_0 = \frac{1}{2\pi\cdot\sqrt{LC}} \quad [Hz], \;\text{nebo}\; 
+        \omega_0 = \frac{1}{\sqrt{LC}} \quad [rad/s].
+      \end{equation}
+      
+%---------------------------------------------------------------------------------------------------

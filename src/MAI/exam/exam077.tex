@@ -1,0 +1,60 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam077}
+    \textbf{Měříme výšku válečku}\newline
+    Student měřil za stejných podmínek výšku válečku dvacetkrát. Při měření byly vyloučeny
+    systematické chyby. Měřil tentokrát přesněji - posuvným měřítkem neboli „šuplérou“. Mohl tedy
+    odhadovat desetiny milimetru. Získal tyto hodnoty \(x_1\) až \(X_{20}\) v milimetrech (levá část
+    tabulky):
+    
+    {\centering
+      \resizebox{\textwidth}{!}{%
+      \begin{tabular}{c|ccccc|ccccc}
+        \hline
+        měření & \multicolumn{5}{l}{\(x_i\) [mm]} & \multicolumn{5}{l}{\(\delta_i\) [mm]} \\ \hline
+        1.  až 5.  & \num{35.5} & \num{35.4} & \num{34.9} & \num{35.7} &
+                  \num{36.0} & \num{0.2}  & \num{0.1}  & \num{-0.4} & \num{0.4}
+                  & \num{0.7}     \\
+        6.  až 10. & \num{35.8} & \num{35.2} & \num{35.2} & \num{34.8} &
+                  \num{35.0} & \num{0.5}  & \num{-0.1} & \num{-0.1} & \num{-0.5}
+                  & \num{-0.3}    \\
+        11. až 15. & \num{35.5} & \num{34.8} & \num{35.1} & \num{35.3} &
+                  \num{34.9} & \num{0.2}  & \num{-0.5} & \num{-0.2} & \num{0.0}
+                  & \num{-0.4}    \\
+        16. až 20. & \num{35.8} & \num{35.4} & \num{35.8} & \num{34.8} &
+                  \num{35.1} & \num{0.5}  & \num{0.1}  & \num{0.5}  & \num{-0.5}
+                  & \num{-0.2}    \\ \hline
+      \end{tabular}}
+    \par}
+    \vspace{\baselineskip}
+    Aritmetický průměr těchto hodnot je \(\langle x\rangle = \SI{35.30}{\mm}\). Uvádíme jej zatím s
+    přesností o jedno desetinné místo „lepší“ , než jsou jednotlivá měření, neboť ještě nevíme, jak
+    dopadnou výpočty chyb. V pravé části tabulky jsou hodnoty \(\delta_i\), tj. odchylky
+    jednotlivých měření od aritmetického průměru. Snadno se přesvědčíme, že jejich součet je nulový,
+    přesně, jak má být. Směrodatná odchylka vychází \(\sigma \doteq \SI{0.381}{\mm}\) pro jednotlivé
+    měření, pro aritmetický průměr pak \(\overline{\sigma} \doteq \SI{0.085}{\mm}\). Na rozdíl od
+    hodnot měření se výsledné chyby měření zaokrouhlují vždy nahoru, a to na jedno platné místo.
+    (Zaokrouhlujeme nahoru proto, abychom zajistili, že správná hodnota veličiny leží v intervalu
+    určeném chybou nejméně s pravděpodobností, která této chybě odpovídá. Po zaokrouhlení tedy máme
+    \(\sigma \doteq \SI{0.4}{\mm}\) a \(\overline{\sigma} = \SI{0.09}{\mm}\). Změřenou výšku válečku
+    pak zapisujeme takto:
+    \begin{equation*}
+      \text{výška válečku } = (\langle x \rangle\pm \overline{\sigma}) = \SI{35.30 \pm 0.09}{\mm}.
+    \end{equation*}
+    Z předchozích úvah víme, jak je nutno takový zápis interpretovat:
+    \begin{itemize}
+      \item Správná hodnota výšky válečku leží v intervalu \SIrange[range-units =
+            brackets]{35.21}{35.39}{\mm} a pravděpodobností nejméně \SI{68.3}{\percent}.
+    \end{itemize}
+    Při použití krajní chyby, tj. \(\overline{\kappa} \doteq \SI{0.27}{\mm} \doteq \SI{0.3}{\mm}\),
+    konstatujeme, že
+    \begin{itemize}
+      \item Správná hodnota výšky válečku leží v intervalu \SIrange[range-units =
+            brackets]{35.0}{35.6}{\mm} s pravděpodobnosti nejméně \SI{99.7}{\percent}.
+    \end{itemize}
+    Pozn.: Při zcela korektním přístupu ke zpracování laboratorních měření je třeba uvážit, že
+    intervaly se stejným pravděpodobnostním obsahem \SI{68.3}{\percent}, resp. \SI{99.7}{\percent}
+    jsou ve skutečnosti širší. Správně by totiž měly být stanoveny na základě nekonečného počtu
+    měření
+  \end{example}
+\end{mdframed}

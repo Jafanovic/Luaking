@@ -1,0 +1,90 @@
+% !TeX spellcheck = cs_CZ
+% \wikitextrule
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam038}
+    \textbf{Gaussova eliminační metoda}\newline
+    Je zadána soustava tří (\(m = 3\)) rovnic o pěti (\(n = 5\)) neznámých:
+    \begin{alignat*}{7}
+        x_1 &+ 2x_2 &-  x_3 &+  x_4 &- 5x_5 &=  &&0, \\
+      -2x_1 &- 4x_2 &+ 2x_3 &+ 4x_4 &+ 4x_5 &= -&&6, \\
+       -x_1 &- 2x_2 &+  x_3 &+ 5x_4 &-  x_5 &=  &&6.
+    \end{alignat*}
+    Budeme provádět ekvivalentní úpravy matice \(\matr{B}\) tak, abychom ji zjednodušovali.
+    Ekvivalenci matic budeme označovat znakem \(\sim\). 
+    \begingroup
+      \renewcommand\arraystretch{1.0}
+      \renewcommand\arraycolsep{3pt}
+      \begin{equation*}
+        \matr{B} = (\matr{A}\lvert\overline{\matr{B}}) =
+        \left(
+          \begin{array}{rrrrr|r}
+             1 &  2 & -1 & 1 & -5 &  0    \\
+            -2 & -4 &  2 & 4 &  4 & -6    \\
+            -1 & -2 &  1 & 5 & -1 &  6
+          \end{array}
+        \right).
+      \end{equation*}
+    \endgroup
+    V prvním řádku je na první pozici jednička. Toho využijeme k snadné „likvidaci“, tedy eliminaci,
+    prvních prvků v druhém a třetím řádku pomocí elementárních úprav. Provedeme tyto dvě úpravy:
+    první řádek vynásobený číslem \num{2} přičteme k druhému řádku, první řádek přičteme ke třetímu
+    řádku. Dostaneme
+    \begingroup
+      \renewcommand\arraystretch{1.0}
+      \renewcommand\arraycolsep{3pt}
+      \begin{equation*}
+        \matr{B} \sim
+        \left(
+          \begin{array}{rrrrr|r}
+            1 &  2 & -1 & 1 & -5 &  0         \\
+            \bm{0} &  0 &  0 & 6 & -6 & -6    \\
+            \bm{0} &  0 &  0 & 6 & -6 &  6
+          \end{array}
+        \right).
+      \end{equation*}
+    \endgroup  
+    Vidíme, že jsme v druhém i třetím řádku dostali na první sloupcové pozici nulu (tučná). (Nuly na
+    dalších  pozicích vznikly náhodou, vlivem jednoduchosti zadání.) Nyní vynásobíme druhý i třetí
+    řádek číslem (\num{1/6}):
+    \begingroup
+      \renewcommand\arraystretch{1.0}
+      \renewcommand\arraycolsep{3pt}    
+      \begin{equation*}
+        \matr{B} \sim
+        \left(
+          \begin{array}{rrrrr|r}
+                  1 &  2 & -1 & 1 & -5 &  0    \\
+                  0 &  0 &  0 & 1 & -1 & -1    \\
+                  0 &  0 &  0 & 1 & -1 &  1
+          \end{array}
+        \right).
+      \end{equation*}
+    \endgroup  
+    Přestože již nyní vidíme, že soustava nemá řešení (rovnice druhého a třetího řádku znějí \(x_4 -
+    x_5 = - 1\) a \(x_4 -x_5 = 1\), takže jim nevyhovuje žádná dvojice čísel \((x_4, x_5)\)), budeme
+    v eliminaci pokračovat. Další úpravy se již týkají pouze druhého a třetího řádku. Druhý řádek
+    vynásobený (\num{-1}) přičteme ke třetímu. Pak
+
+    \begingroup
+    \renewcommand\arraystretch{1.0}
+    \renewcommand\arraycolsep{3pt}
+      \begin{equation*}
+        \matr{B} \sim
+        \left(
+          \begin{array}{rrrrr|r}
+                  1 &  2 & -1 & 1      & -5 &  0    \\
+                  0 &  0 &  0 & 1      & -1 & -1    \\
+                  0 &  0 &  0 & \bm{0} &  0 &  2
+          \end{array}
+        \right).
+      \end{equation*}
+    \endgroup  
+    Získáváme tak ekvivalentní soustavu rovnic
+    \begin{alignat*}{5}
+          x_1 + 2x_2 - x_3 &+  x_4 &- 5x_5 &=  &&0, \\
+                            &+  x_4 &-  x_5 &= -&&1, \\
+                            &       &     0 &=  &&2.
+    \end{alignat*}
+    V poslední rovnici je ihned vidět rozpor - soustava nemá řešení
+  \end{example}
+\end{mdframed}

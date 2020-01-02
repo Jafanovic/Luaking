@@ -1,0 +1,33 @@
+%     Železniční zabezpečovací technika
+% notes:
+%~~~~~~~~~
+% notes:
+%~~~~~~~~~
+% \label{zzt:eq000}
+% \label{zzt:fig001}
+% \label{zzt:exam000}
+% \label{zzt:tab000}
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+\graphicspath{{../src/ZZT/img/}}
+%---------------------------------------------------------------------------------------------------
+% file ZZT.tex
+
+%---------------------------------------------------------------------------------------------------
+%                               ZZT I
+%---------------------------------------------------------------------------------------------------
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{BZT}{Železniční zabezpečovací technika}{BZT}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+  \input{../src/ZZT/chap/ra1ch001.tex}
+}
+{
+ % DEBUG was off
+%========== Kapitola 001: Bezpečnost a spolehlivost zabezpečovacích systémů =======================
+  \input{../src/ZZT/chap/ra1ch001.tex}
+} % DEBUG was off
+
+\printbibliography[title={Seznam literatury}, heading=bibliography]

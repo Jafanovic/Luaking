@@ -1,0 +1,34 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam095}
+    Je dán čtverec \(ABCD\) a na jeho každé straně n vnitřních bodů. Určete počet všech trojúhelníků
+    \(XYZ\), jejichž vrcholy leží v daných bodech a na různých stranách čtverce \(ABCD\). Kredit
+    \cite[s.~9]{calda2008matematika}.\newline
+    \textbf{Řešení}:
+    \begin{itemize}[noitemsep]
+      \item Vrchol \(X\) je možno zvolit v libovolném z daných bodů, takže pro něj máme \(4n\)
+            způsobů výběru. Po výběru bodu \(X\) lze bod \(Y\) vybrat už jen \(3n\) způsoby, neboť
+            nesmí ležet na téže straně čtverce jako bod \(X\).
+      \item Po výběru bodu \(Y\) je možné bod \(Z\) vybrat pouze \(2n\) způsoby, neboť nesmí ležet
+            na těch stranách čtverce \(ABCD\), na nichž leží body \(X\), \(Y\). Existuje tedy
+            \(4n\cdot3n \cdot2n = 24n^3\) uspořádaných trojic utvořených z bodů \(X\), \(Y\), \(Z\).
+      \item Uvědomme si však, že šest uspořádáných trojic takto sestavených určuje stejný
+            trojúhelník. Tak např. každá z uspořádaných trojic \((X, Y, Z)\), \((X, Z, Y)\), \((Y,
+            X, Z)\), \((Y, Z, X)\), \((Z, X, Y),\) \((Z, Y, X)\) představuje trojúhelník, a to
+            \(\Delta XYZ\). 
+      \item Abychom dostali počet všech trojúhelníků požadované vlastnosti, musíme získaný počet
+            uspořádaných trojic dělit šesti. Trojúhelníků dané vlastnosti je tedy:
+            \begin{equation*} 
+              \dfrac{24n^3}{6}
+            \end{equation*}
+    \end{itemize}
+
+    {\centering
+    \captionsetup{type=figure} 
+    \luafigure[0.8]{mai_fig069}
+    \captionof{figure}{Ilustace k příkladu \ref{mai:exam095}}
+    \label{mai:fig069}
+    \par}
+
+  \end{example}
+\end{mdframed}

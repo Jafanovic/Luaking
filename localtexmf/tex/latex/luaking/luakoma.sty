@@ -1,0 +1,198 @@
+% package: lualayout
+% ==================================================================================================
+%                                     Luaking KOMA settig 
+% ==================================================================================================
+%                     !!!  Package conflicts in LaTeX are a hell. !!!
+% http://www.macfreek.nl/memory/LaTeX_package_conflicts
+
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{scrwfile}                   % avoid trouble with the limited number of write handles
+                                            % No room for new \write” message!
+\RequirePackage{LuaMyColor} 
+\RequirePackage{ifluatex}                   % provides the switch \ifluatex. 
+\RequirePackage{xpatch}
+\RequirePackage{blindtext}
+% \RequirePackage{ifthen}
+% \RequirePackage{scrextend}                % It should never be used with a KOMA-Script class
+\RequirePackage[headsepline]{scrlayer-scrpage}
+% http://tex.stackexchange.com/questions/51867/koma-warning-about-toc
+\RequirePackage{scrhack}                      % KOMA warning about ToC
+% ~~~~~~~~ Page Layout ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% \KOMAoptions{twoside=false}
+
+% ---- Part ----------------------------------------------------------------------------------------
+% https://tex.stackexchange.com/questions/102303/
+% \newcommand{\partformat}{{\partname}{}} % Remove chapter and part text from LaTeX documents
+% https://tex.stackexchange.com/questions/110092/how-to-change-part-and-chapter-pages-on-koma-script
+\colorlet{partcolor}{luapartclr}
+\addtokomafont{partprefix}{\color{partcolor}}% change color of part prefix
+\addtokomafont{part}{\normalcolor}% use normal color for part title
+
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% °°°°°                     TITLE                                                             °°°°°°
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% Remove space before chapter title:
+% https://tex.stackexchange.com/questions/43087/
+\addtokomafont{chapterprefix}{\raggedleft}
+% EBOOK setting
+  \setkomafont{part}{\fontsize{60}{72}\selectfont}
+  \addtokomafont{part}{\color{luapartclr}}
+  \setkomafont{chapter}{\fontsize{18}{22}\selectfont}
+  \setkomafont{section}{\fontsize{13}{15}\selectfont}
+    % https://tex.stackexchange.com/questions/194585/
+  \addtokomafont{section}{\newpage}
+  \setkomafont{subsection}{\fontsize{11}{13}\selectfont}
+  \setkomafont{subsubsection}{\fontsize{10}{12}\selectfont}
+  \setkomafont{paragraph}{\normalsize\mdseries}
+  \setkomafont{subparagraph}{\normalsize\mdseries}
+
+
+% Adjusting spacing around section subsection titles with koma script
+% https://tex.stackexchange.com/questions/223508/
+% https://tex.stackexchange.com/questions/43087/
+
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% °°°°°                     NUMBERS & CHAPTER  Headers                                        °°°°°°
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% \enskip is similar to \hspace{.5em}
+
+\renewcommand*{\chapterformat}{%
+  \mbox{\chapappifchapterprefix{\nobreakspace}%
+  \scalebox{2}{\color{gray}\thechapter\autodot}\enskip}
+}
+
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% °°°°°                           HEADER & FOOTER                                             °°°°°°
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\pagestyle{scrheadings}
+\setkomafont{pageheadfoot}{\normalfont\normalcolor\itshape\small}
+\setkomafont{pagenumber}{\normalfont\bfseries}
+\ihead{\pagemark}                         % scrguien page 255
+\ofoot[]{}                                % remove pagenumber from outer foot
+\cfoot[]{}                                % remove pagenumber from centre foot
+
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% °°°°°                           TABLE OF CONTENT -TOC                                       °°°°°°
+% °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\RedeclareSectionCommand[
+  tocdynnumwidth=true,  %
+  tocbeforeskip=1em,
+  tocindent=1.5em
+]{part}
+
+\RedeclareSectionCommand[
+  beforeskip=0pt,
+  afterindent=false,
+  afterskip=2\baselineskip,
+  tocdynnumwidth,
+  tocbeforeskip=1em plus 1pt minus 1pt,   % add some glue
+  toclinefill=\TOCLineLeaderFill
+]{chapter}
+
+\RedeclareSectionCommand[
+  beforeskip=\baselineskip,
+  afterindent=false,
+  afterskip=.5\baselineskip,
+  tocindent=1.5em,
+  tocnumwidth=3.5em
+]{section}
+
+\RedeclareSectionCommand[
+  beforeskip=.75\baselineskip,
+  afterindent=false,
+  afterskip=.5\baselineskip,
+  tocindent=3.8em,
+  tocnumwidth=4em
+]{subsection}
+
+\RedeclareSectionCommand[
+  beforeskip=.5\baselineskip,
+  afterindent=false,
+  afterskip=.25\baselineskip,
+  tocindent=7em,
+  tocnumwidth=4.1em
+]{subsubsection}
+
+\RedeclareSectionCommand[
+  tocindent=10em,
+  tocnumwidth=5em
+]{paragraph}
+
+\RedeclareSectionCommand[
+  tocindent=12em,
+  tocnumwidth=6em
+]{subparagraph}
+
+\RedeclareSectionCommands[
+    tocpagenumberwidth=3em
+]{part,chapter,section,subsection,paragraph,subparagraph}
+
+
+% https://tex.stackexchange.com/a/359758
+% https://tex.stackexchange.com/a/502077
+\makeatletter
+  \newif\ifuseparttoc
+  \newcommand*{\parttoc}[1][\thepart]{  % new command to generate and show a chapter toc
+    \useparttoctrue                     % switch on part-toc-entries
+    \edef\ext@parttoc{tcp#1}            % extension of the part-toc-file, e.g., tcpI
+    \DeclareNewTOC[
+      listname=Obsah,
+      %unset=onecolumn                  % if the part toc should use twocolumn
+    ]{\ext@parttoc}                     % declare a new toc file
+    \begingroup
+      \value{tocdepth}=\chaptertocdepth % we want entries down to chapter
+      \listoftoc{\ext@parttoc}          % show the toc with header
+    \endgroup
+  }
+  \xapptocmd\addtocentrydefault{        % patch the KOMA-Script's generic toc entry generator
+    \ifuseparttoc                       % if part toc entries should be generated
+      \expandafter\tocbasic@addxcontentsline\expandafter{\ext@parttoc}{#1}{#2}{#3} % do it
+    \fi
+  }{}{}
+  \xpretocmd\part{\useparttocfalse}{}{} % automatically switch of part toc entries at 
+                                        % start of every \part
+
+  \newif\ifusechaptertoc                % Switch to tell \addtocentrydefault to not only make entries
+                                        % to the toc-file but also to the current section-toc-file
+  \newcommand*{\chaptertoc}[2][\thechapter]{  % new command to generate and show a chapter toc
+    \usechaptertoctrue                  % switch on chapter-toc-entries
+    \edef\ext@chaptoc{tcc#1}            % extension of the chapter-toc-file, e.g., tcc1
+    \DeclareNewTOC{\ext@chaptoc}        % declare a new toc file
+    %\addsec*{Contents}                 % header of the chaptertoc
+    \setchapterpreamble{%
+      \begin{minipage}{\linewidth}
+        \hrulefill\par
+        \value{tocdepth}=\subsectiontocdepth  % we want entries down to subsection
+        \listoftoc*{\ext@chaptoc}       % show the toc without header
+      \end{minipage}%
+      \par\bigskip\nobreak\noindent\hrulefill\par
+      \bigskip\noindent\ignorespaces    % add some vertical space after the toc and do not indent 
+    }                                   % the following text
+  }
+  \xapptocmd\addtocentrydefault{        % patch the KOMA-Script's generic toc entry generator
+    \ifusechaptertoc                    % if chapter toc entries should be generated
+      \ifstr{#1}{chapter}{}
+        {\expandafter\tocbasic@addxcontentsline\expandafter{\ext@chaptoc}{#1}{#2}{#3}}% do it
+    \fi
+  }{}{}
+  \xpretocmd\chapter{\usechaptertocfalse}{}{} % automatically switch of chapter toc entries at start 
+                                              % of every \chapter
+  \xpretocmd\part{\usechaptertocfalse}{}{}    % entries in chapter toc are automatically switched off
+                                              % at start of \part
+\makeatother
+
+\newcommand\setchaptertoc[1][]{%
+  \ifstr{#1}{}
+    {\AddtoOneTimeDoHook{heading/preinit/chapter}{\chaptertoc}}
+    {\AddtoOneTimeDoHook{heading/preinit/chapter}{\chaptertoc[#1]}}%
+}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%                          PACKAGE INCOMPATIBILITY ISSUE DESCRIPTIONS
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% https://tex.stackexchange.com/questions/336617/
+% http://www.macfreek.nl/memory/LaTeX_package_conflicts#TOCLoft_and_Subfig
+% https://tex.stackexchange.com/questions/7415/roman-numerals-become-too-wide-in-table-of-contents
+% If I use KOMA classes, such as the mentioned scrreprt, I don't like tocloft to redefine class macros
+% nepouzivej tocloft - konflikt s knihovnou komascript !!!
+% \RequirePackage[titles,subfigure]{tocloft}  

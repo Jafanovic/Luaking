@@ -1,0 +1,42 @@
+% !TeX spellcheck = cs_CZ
+\documentclass[11pt]{standalone}
+\usepackage{xltxtra}
+\usepackage{siunitx}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{intersections, calc, positioning}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+\usepackage{amsmath}
+
+\pgfplotsset{
+    standard/.style={%Axis format configuration
+        axis x line=middle,
+        axis y line=middle,
+        enlarge x limits=0.15,
+        enlarge y limits=0.15,
+%        every axis x label/.style={at={(current axis.right of origin)},anchor=north west},
+%        every axis y label/.style={at={(current axis.above origin)},anchor=north east},
+        every axis plot post/.style={mark options={fill=white}}
+        }
+  }
+  
+\begin{document}
+      \begin{tikzpicture}
+        \begin{axis}[%
+          scale=0.45,
+          width = 10cm, 
+          standard,
+          domain = 0:15,
+          samples = 16,
+          x label style={at={(axis description cs:1.11,0.48)},anchor=east},
+          y label style={at={(axis description cs:0.22,1.1)},anchor=north},
+          xlabel={\(n\)},
+          ylabel={\(1[n]\)},
+          ymin=-1,
+          ymax=1.1]
+          \addplot+[ycomb,blue,thick] {sin(5*180*x/25)};
+        \end{axis}
+      \end{tikzpicture}
+\end{document}

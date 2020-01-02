@@ -1,0 +1,163 @@
+% !TeX spellcheck = cs_CZ
+%{\tikzset{external/prefix={tikz/MAI/}}
+% \tikzset{external/figure name/.add={ch07_}{}}
+%---------------------------------------------------------------------------------------------------
+% file: chap_Int_rfce_1var.tex
+%---------------------------------------------------------------------------------------------------
+%===================================================================================================
+% ------------------------------------------- Definite Integral -----------------------------------
+\setchaptertoc
+\chapter{Určitý integrál}
+
+
+\section{Motivace} 
+
+  \begin{figure}
+    \centering
+    \animategraphics[controls,autoplay,loop]{2}{mai_fig022}{}{}
+    \caption{text
+             (\cite[s.~10000]{Feynman01})}
+  \end{figure}
+
+  \begin{figure}[ht!]  %\ref{mai:fig031}
+    \centering
+    \includegraphics[width=0.7\linewidth]{mai_fig031.pdf}
+    \caption{
+            (\cite[s.~10000]{Feynman01})}
+    \label{mai:fig031}
+  \end{figure}
+
+  \subsection{Výpočet integrálu}
+      \begin{example}
+        Spočítejme integrál $\displaystyle \int_1^{ln5}{(x+1)e^xdx}$  metodou per partes: 
+        \begin{align*}
+          \int{(x+1)e^xdx} &= \int{e^xdx}+\int{x\cdot e^xdx}     \\
+                           &= e^x + (x-1)e^x = xe^x              \\
+          \int_1^{ln5}{(x+1)e^xdx} &= [xe^x]_1^{ln5} = 5ln5-e    \\
+        \end{align*}
+        kde integrál
+        \begin{align*}
+            \int{xe^xdx}
+              &=\left[\begin{array}{cc}
+                  u=x   & dv=e^x \\ [-1em]
+                  du=dx & v=e^x
+                \end{array}\right]= xe^x-\int{e^xdx}  \\
+              &= xe^x - e^x+C
+        \end{align*}
+      \end{example}
+
+\section{Vlastnosti určitého integrálu}
+  V této kapitole mluvíme o spojitých funkcích $\Rightarrow$ příslušné integrály tedy vždy
+  existují. Čerpáno z knih:
+  \cite{Knichal}.
+
+  \begin{lemma}
+    \textbf{První věta o střední hodnotě integrálního počtu}: Je-li funkce $f(x)$ spojitá v
+    intervalu $\langle a, b\rangle$, existuje alespoň jeden takový bod $c\in(a, b)$, že platí
+
+    \begin{equation}\label{MA:eq_av1}
+      \int_a^b f(x)dx = (b-a)f(c).
+    \end{equation}
+  \end{lemma}
+
+  \begin{proof} Použitím Lagrangeovy věty napsané pro funkci $F(x)$, primitivní na intervalu
+    $\langle a, b\rangle$ k dané funkci $f(x)$. Podmínky věty jsou zřejmě splněny: $F(x)$ je
+    spojitá na intervalu $\langle a, b\rangle$ a má všude derivaci $F'(x)= f(x)$. Tedy existuje
+    alespoň jeden bod $c\in(a, b)$,
+    
+    \begin{figure}[ht!]  %\ref{mai:fig029}
+      \centering
+      \includegraphics[width=0.7\linewidth]{mai_fig029.pdf}
+      \caption{Vztah mezi silou tření a kolmou silou při smýkání
+              (\cite[s.~173]{Feynman01})}
+      \label{mai:fig029}
+    \end{figure}
+
+     že $$F(b)-F(a) = (b-a)F'(c),$$ čímž je věta dokázána, neboť $F(b)-F(a) = \int_a^bf(x)dx$ a
+     $F'(c) = f(c)$. Funkční hodnotu $f(c)$, danou podle (\ref{MA:eq_av1}) rovnicí  
+     \begin{equation}\label{MA:eq_av2}
+        f(c) = \frac{1}{b-a}\int_a^b f(x)dx
+     \end{equation}
+     nazýváme \texttt{střední hodnotou}.
+  \end{proof}
+
+  Pro spojitou nezápornou funkci $f(x)$, lze větu o střední hodnotě jednoduše geometricky
+  interpretovat dle (obr.\ref{mai:fig029}). Levá strana (\ref{MA:eq_av1}) určuje obsah
+  křivočarého lichoběžníka $ABCD$, pravá strana obsah obdélníka $ABEF$. Podle této věty nabývá
+  funkce $f(x)$ aspoň v jednom bodě intervalu $(a, b)$ takové hodnoty $f(c)$, že uvažovaný
+  křivočarý lichoběžník má stejný obsah jako obdélník o základně $b-a$ a výšce $f(c)$ (str. 155
+  knihy \cite{Knichal}).
+
+  %---------------------------------------------------------------
+  \input{../src/MAI/exam/exam032.tex}
+  %---------------------------------------------------------------
+
+  %---------------------------------------------------------------
+  \input{../src/MAI/exam/exam101.tex}
+  %---------------------------------------------------------------
+
+  Následující věta může být využita k odhadu některých integrálů
+  \begin{lemma}
+    \textbf{Druhá věta o střední hodnotě integrálního počtu}: Jsou-li funkce $f(x)$ a $g(x)$
+    spojité v intervalu $\langle a, b \rangle$ a je-li funkce $g(x)$ v $\langle a, b \rangle$
+    nezáporná a nerostoucí, existuje alespoň jeden bod $c\in\langle a, b \rangle$ tak, že platí
+    \begin{equation}\label{MA_eq_av3}
+        \int_a^b f(x)g(x) = g(a)\int_a^c f(x)dx.
+    \end{equation}
+  \end{lemma}
+  Zcela obdobnou větu lze vyslovit pro případ, že $g(x)$ je v intervalu $\langle a, b \rangle$
+  nezáporná a neklesající, tj. na pravé straně \ref{MA_eq_av3} je pak integrál $g(b)\int_c^b
+  f(x)dx$
+
+   %--Odhad hodnoty integrálu \int_{100\pi}^{1000\pi}\frac{\sin x}{x}dx---------
+   \input{../src/MAI/exam/exam097.tex}
+   %----------------------------------------------------------------------------
+
+\section{Numerický výpočet integrálu pomocí Matlabu}
+  Matlab obsahuje dvě funkce pro výpočet určitého integrálu |quad| a |quadl|. Výpočet je založen na
+  \emph{numerické kvadratuře}. Funkce |quad| využívá pro výpočet rekurzivní adaptivní Simpsonovo
+  pravidlo. Příkaz |quad(fce,a,b)| vypočte určitý integrál funkce \emph{fce}, kde \emph{fce} je
+  odkaz na funkci, \(a\) a \(b\) jsou meze integrace. Meze integrace musí být konečné. 
+
+  Použití si ukážeme na příkladu výpočtu určitého inegrálu následující funkce
+  \begin{equation*}
+    \int_0^\pi x\cdot\sin{x}\dd{x}
+  \end{equation*}
+  Nejprve je potřeba nadefinovat funkci, kterou chceme integrovat (\(y=x\cdot\sin{x}\)), pomocí
+  funkce Matlabu. Nazveme tuto funkci |int\_xsinus| a uložíme ji do zvláštního souboru 
+  \begin{lstlisting}[style=luaMatlabStyle] 
+        function [y] = int_xsinus(x)
+        y = x.*sin(x);
+  \end{lstlisting} 
+  Výpočet integrálu pak provedeme pomocí funkce |quad(@int\_xsinus, 0, pi)|, kde první parametr je
+  odkaz na funkci |int\_xsinus| a druhé dva parametry jsou meze integrace.
+  \begin{lstlisting}[style=luaMatlabStyle] 
+        >> quad(@int_xsinus, 0 , pi)
+        ans = 3.1416
+  \end{lstlisting}  
+  Funkci je možné také definovat jako anonymní funkci, zápis se zkrátí a zpřehlední
+  \begin{lstlisting}[style=luaMatlabStyle]  
+        >> xsinus = @(x) x.*sin(x); % anonymni funkce
+        >> quad(xsinus, 0, pi)      % vypocet integralu
+        ans = 3.1416
+  \end{lstlisting}
+  Hodnota určitého integrálu na intervalu od \(0\) do \(\pi\) bude tedy \(\int_0^\pi
+  x\cdot\sin{x}\dd{x} =\num{3.1416}\)
+
+  Následující kód vypočítá hodnotu určitého integrálu zadané funkce a vykreslí graf integrované
+  funkce a jejího integrálu.
+
+  \lstinputlisting[style=luaMatlabStyle, caption=\texttt{int\_xsinus\_graph.m}: Výpis programu  
+          druhého.]{../src/MAI/matlab/int_xsinus_graph.m}
+
+  Určitý integrál je možné interpretovat jako plochu pod modrou křivkou na obrázku xx. Červená
+  křivka zobrazuje hodnotu určitého integrálu v mezích od nuly do \(\pi\).
+
+  Funkce |quadl| používá \emph{rekurzivní adaptivní Lobattovo kvadratur}. Tento postup je možné
+  použí pro výpočet integrálu s větší přesností, nebo pokud integrace s |quad| selže. 
+
+  Standardně je nastavena tolerance pro absolutní chybu menší než \num{e-6}. Tuto toleranci je možné
+  změnit dalším parametrem funkcí ro integraci |quad(fce, a, b, tol)|.
+
+%} %tikzset
+%---------------------------------------------------------------------------------------------------

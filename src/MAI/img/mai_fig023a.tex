@@ -1,0 +1,81 @@
+\documentclass[11pt]{standalone}
+  \usepackage{helvet}                        % font
+  \usepackage{xltxtra}                       % fontspec package
+  \usepackage{tikz}  
+  \usetikzlibrary{matrix, arrows}
+  \usepackage{circuitikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+  \newcommand{\unit}{0.9cm}
+  \tikzset{
+            node  style    sp/.style={draw,circle,minimum size=\unit},
+            node  style    ge/.style={circle,minimum size=\unit}, 
+            arrow style   mul/.style={draw,sloped,midway,fill=white}, 
+            arrow style  plus/.style={midway,sloped,fill=white},
+            yl/.style={},
+      }
+
+  \matrix (A) [matrix of math nodes, row sep=-0.5em, column sep=-0.5em, 
+               text height=1.5ex, text depth=0.25ex,
+         nodes={node style ge}, left delimiter={(}, right delimiter={)}] at (0,0) {
+    a_{11}                          & a_{12}                          & \ldots     & 
+    a_{1p}                         \\
+    | [node style sp] | {a_{21}}    & | [node style sp] | {a_{22}}    & \ldots     & | [node style 
+    sp] | {a_{2p}}   \\
+    \vdots                          & \vdots                          & \ddots     & 
+    \vdots                         \\
+    a_{n1}                          & a_{n2}                          & \ldots     & 
+    a_{np}                         \\
+  };
+    
+  \matrix (B) [matrix of math nodes, row sep=-0.5em, column sep=-0.5em, 
+               text height=1.5ex, text depth=0.25ex,
+         nodes={node style ge}, left delimiter={(}, right delimiter={)}] at (4.5*\unit,4.5*\unit) {
+    b_{11}                          & | [node style sp] | {b_{12}}    & \ldots     & 
+    b_{1q}                         \\
+    b_{21}                          & | [node style sp] | {b_{22}}    & \ldots     & 
+    b_{2q}                         \\
+    \vdots                          & \vdots                          & \ddots     & 
+    \vdots                         \\
+    b_{p1}                          & | [node style sp] | {b_{p2}}    & \ldots     & 
+    b_{pq}                         \\
+  };
+  
+  % matrice result
+  \matrix (C) [matrix of math nodes, row sep=-0.5em, column sep=-0.5em, 
+               text height=1.5ex, text depth=0.25ex,
+               nodes={node style ge}, left delimiter={(}, right delimiter={)}] at (4.5*\unit,0) {
+    c_{11}                          & c_{12}                            & \ldots     & 
+    c_{1q}                       \\
+    c_{21}                          & | [node style sp,red] | {c_{22}}  & \ldots     & 
+    c_{2q}                       \\
+    \vdots                          & \vdots                            & \ddots     & 
+    \vdots                       \\
+    c_{n1}                          & c_{n2}                            & \ldots     & 
+    c_{nq}                       \\
+  };
+
+  \draw[blue] (A-2-1.north) -- (C-2-2.north);
+  \draw[blue] (A-2-1.south) -- (C-2-2.south);
+  \draw[blue] (B-1-2.west)  -- (C-2-2.west);
+  \draw[blue] (B-1-2.east)  -- (C-2-2.east);
+  \draw[angle 60-angle 60,red](A-2-1) to[in=180,out=90] node[arrow style mul] (x) 
+    {\tiny\(a_{21}\times b_{12}\)} (B-1-2);
+  \draw[angle 60-angle 60,red](A-2-2) to[in=180,out=90] node[arrow style mul] (y) 
+    {\tiny\(a_{22}\times b_{22}\)} (B-2-2);
+  \draw[angle 60-angle 60,red](A-2-4) to[in=180,out=90] node[arrow style mul] (z) 
+    {\tiny\(a_{2p}\times b_{p2}\)} (B-4-2);
+  \draw[red,-angle 60] 
+    (x) to node[arrow style plus] {$+$} (y)%
+        to node[arrow style plus] {$+\raisebox{.5ex}{\ldots}+$} (z)%
+        to (C-2-2.north west);   
+  \node [draw, below=5pt] at (A.south) 
+    { \tiny\(A\) : \textcolor{red}{\(n\) řádků} \(p\) sloupků};
+  \node [draw, above=5pt] at (B.north) 
+    { \tiny\(B\) : \(p\) řádků \textcolor{red}{\(q\) sloupků}}; 
+  \node [draw, below=5pt] at (C.south) 
+    {\tiny\(C=A\times B\) : \textcolor{red}{\(n\) řádků}  \textcolor{red}{\(q\) sloupků}}; 
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,71 @@
+% !TeX spellcheck = cs_CZ 
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{teo:exam093}
+    Světelný zdroj \(B\) (např. pouliční svítilna) má vzdálenost \SI{36}{\m} od světelného zdroje
+    \(A\). Zdroj \(B\) má osmkrát větší intenzitu než zdroj \(A\). Který bod na spojnici obou zdrojů
+    bude nejméně osvětlený? (Přitom intenzita osvětlení světelným zdrojem je přímo úměrná intenzitě
+    zdroje a klesá s druhou mocninou vzdálenosti od uvažovaného zdroje.)
+
+    {\centering
+      \captionsetup{type=figure}
+      \luafigure[1]{mai_fig063.png} 
+      \captionof{figure}{K příkladu \ref{teo:exam093}. Kredit: \cite[s.~48]{rektorys2011}}
+      \label{mai:fig063}
+    \par}      
+
+    Matematická formulace: Označme \(a\) intenzitu zdroje \(A\). Pak intenzita zdrojo \(8\) je
+    \(8a\). Označme dále \(x\) vzdálenost bodu \(P\) na spojnici bodů \(A\) a \(B\) meřenou od
+    zdroje \(A\). Pak intenzita osvětlení v bodě \(P\) od zdroje \(A\) bude úměrná číslu
+    \(\frac{a}{x^2}\) zdroje B číslu \(\frac{8a}{(36 - x)^2}\) (se stejnou konstantou úměrnosti).
+    Máme tedy najít v intervalu \((0,36)\) takové \(x\), pro které bude součet obou intenzit
+    minimalni, a tj.
+    \begin{equation}\label{mai:eq089}
+      y = \dfrac{a}{x^2} + \dfrac{8a}{(36 - x)^2} = \text{min}
+    \end{equation}
+    Ale funkce \ref{mai:eq089} má všude v otevřeném intervalu  \((0,36)\) první a druhou derivaci.
+    Nastává chvíle si procvičit derivování podílu:
+    \begin{gather*}
+      \begin{align*} 
+        \left(\dfrac{a}{x^2}\right)'          
+          &= (ax^{-2})' = -\dfrac{2a}{x^3},   \\ 
+        \left( \dfrac{8a}{(36 - x)^2}\right)' 
+          &= \dfrac{(8a)'\cdot(36 - x)^2 - (8a)\cdot(36^2 - 72x + x^2)'}{(36 - x)^4} \\
+          &= \dfrac{-8a(-72 + 2x)}{(36 - x)^4} 
+          = +\dfrac{8a\cdot2\cdot\cancel{(36 - x)}}{(36 - x)^{\cancel{4}3}}
+          =  \dfrac{16a}{(36 - x)^3}
+      \end{align*}
+    \end{gather*}
+    (neboť \(8a = \text{konst}\), takže \((8a)' = 0\); k derivování funkce \(8a/(36 - x)^2\) jsme
+    také mohli místo věty o derivování podílu použít větu o derivování složených funkcí a psát
+    \begin{equation*}
+      \dfrac{8a}{(36 - x)^2} = \dfrac{8a}{z}, \quad\text{kde}\quad z = 36 - x
+    \end{equation*}  
+    Tedy 
+    \begin{align*}
+      y'  &= -\dfrac{2a}{x^3} + \dfrac{16a}{(36 - x)^3} \\
+      y'' &=  \dfrac{6a}{x^4} + \dfrac{48a}{(36 - x)^4}. 
+    \end{align*}
+    Jak víme, v bodě lokálního minima bude \(y' = 0\)
+    \begin{equation}\label{mai:eq090}
+      -\dfrac{2a}{x^3} + \dfrac{16a}{(36 - x)^3} = 0.
+    \end{equation}
+    Rovnici můžeme řešit tak, že zlomky na levé straně dáme na společného jmenovatele. (Zkuste to,
+    nebude to hezká rovnice!) Ale má být \(x > 0\), \(36 - x > 0\), takže (\ref{mai:eq090}) můžeme
+    zapsat ve tvaru
+    \begin{align*}
+      \dfrac{(36 - x)^3}{x^3} &= -\dfrac{16a}{2a} = 8 \qquad\text{takže}      \\
+      \dfrac{36 - x}{x}       &= \sqrt[3]{8} \Rightarrow 36 - x = 2x.
+    \end{align*}
+    Zároveň \(y''>0\), takže v bodě \(x=12\) bude ostré lokální minimum. Nejméně osvětlený bod bude
+    tedy ve vzdálenosti \SI{12}{\m} od zdroje \(A\).
+
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[1]{mai_fig064.pdf} 
+    \captionof{figure}{K příkladu \ref{teo:exam093}.}
+    \label{mai:fig064}
+    \par}   
+  \end{example}
+\end{mdframed}
+
+

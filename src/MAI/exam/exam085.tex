@@ -1,0 +1,47 @@
+  % !TeX spellcheck = cs_CZ
+% Musilova2009MA2
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam085}
+    \textbf{Příklad s koupelnou}\newline
+      V koupelně o celkovém objemu \(V = \num{12000}\) litrů byl nainstalován větrák, jehož výkon je
+      \(P = \num{400}\) litrů za minutu. Položme si otázku: Jaká je optimální doba, na kterou je
+      třeba nastavit časový spínač, aby větrák neběžel příliš dlouho a přitom se vyměnil všechen
+      vzduch v místnosti? A je to vůbec možné? Může se opravdu vzduch vyměnit všechen? Přemýšlejme o
+      této situaci důkladněji. Označme \(c(t)\) funkci popisující okamžitou objemovou koncentraci
+      „původního vzduchu“ v místnosti, tj. poměr objemu původního vzduchu ku objemu místnosti. (V
+      okamžiku zapnutí větráku, tj. pro \(t = 0\), je \(c(0) = c_0 = 1\), v okamžiku, kdy bude
+      původní vzduch zcela vyčerpán, pokud to vůbec nastane, bude \(c = 0\).) V intervalu \([t,t +
+      \Delta t]\) větrák odčerpá \(P\Delta t\) litrů vzduchu celkem, z toho množství starého vzduchu
+      činí \(c(t)P\Delta t\) a jeho podíl na celkovém množství vzduchu je \(c(t)P\Delta t/V\). Tato
+      hodnota představuje pro velmi malé \(\Delta t\) \textbf{úbytek} koncentrace starého vzduchu v
+      koupelně v časovém intervalu \([t, t + \Delta t]\), tj.
+      \begin{equation*}
+        \Delta c(t) = - \frac{c(t)P\Delta t}{V} \Rightarrow 
+        \dfrac{\Delta c(t)}{\Delta t} = - \dfrac{P}{V}c(t)
+      \end{equation*}
+      
+      (uměli bychom vysvětlit záporné znaménko?). Získáváme rovnici
+      \begin{equation}\label{mai:eq078}
+        \der{c(t)}{t} = - \dfrac{P}{V}c(t)
+      \end{equation}
+      Dosazením snadno ověříme, že řešením rovnice (\ref{mai:eq078}) je každá funkce
+      \begin{equation*}
+        c(t) = Ke^{-\frac{Pt}{V}},
+      \end{equation*}
+
+      {\centering
+      \captionsetup{type=figure}
+      \luafigure[1]{mai_fig056.png}
+      \captionof{figure}{Graf řešení úlohy s koupelnou.}
+      \label{mai:fig056}
+      \par}
+      
+      kde \(K\) je libovolné číslo. Jeho konkrétní hodnotu pro náš případ určíme z počáteční
+      podmínky \(c(0) = 1\), tj. \(K = 1\). A vida, pokud jsme počítali správně, můžeme usoudit, že
+      koncentrace původního vzduchu neklesne na nulovou hodnotu nikdy. Naše řešení samozřejmě
+      nevylučuje použití časového spínače - rozumně bychom mohli například požadovat, aby
+      koncentrace původního vzduchu klesla na hodnotu \(c(\tau) = \num{0.1}\). Hledaná doba bude \(t
+      =\frac{P}{V}\ln(1/c(\tau)) =\SI{69}{\min}\). Řešení naší počáteční úlohy je v grafu na obrázku
+      \ref{mai:fig056} vyznačeno červeně. Jakým počátečním úlohám odpovídají modré křivky?
+  \end{example}
+\end{mdframed}

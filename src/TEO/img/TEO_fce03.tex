@@ -1,0 +1,63 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{intersections}
+\usepackage{subfigure} 
+\usetikzlibrary{calc}
+
+\begin{document}
+  \newcommand{\MyPath}[1]{%
+    (0 + #1,18) .. controls
+    (0 + #1,18) and (7 + #1,50) ..
+    (17 + #1,50) .. controls
+    (27 + #1,50) and (25 + #1,33) ..
+    (33 + #1,37) .. controls
+    (41 + #1,41) and (48 + #1,18) ..
+    (48 + #1,18);
+  }
+  
+  \newcommand{\MyXY}{%
+    \draw[name path=axeX,->] (\xmin,\nula) -- (\xmax,\nula)   node[right] {$t$} coordinate(x axis);
+    \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {$v(t)$} coordinate(y 
+    axis);
+    \path[name intersections={of=axeX and axeY, name=pocatek}];
+    \node[below left] at (pocatek-1) {$0$};
+    \draw[fill=white] (pocatek-1) circle(2pt);
+  }
+  
+  \centering
+    \def\xmin{-20}
+    \def\xmax{160}
+    \def\ymin{-15}
+    \def\ymax{80}
+    \def\nula{0}
+    \def\phase{10}
+    \def\period{48}
+    \def\myscale{0.8}
+           
+  \subcaptionbox{ 
+    \begin{tikzpicture}[scale=0.6]
+      \begin{scope}[draw=black,line join=round, miter limit=4.00,line width=0.5pt, y=1pt,x=1pt, 
+      scale=\myscale]  
+        \MyXY;         
+        \draw[thick, name path=fce1, draw=black,line join=round,even odd rule,line cap=butt,miter   
+          limit=4.00] \MyPath{0}; 
+        \draw[] (\period + \phase,0) ++ (0,2) -- +(0,-4) node[below] {$T$};       
+        \draw[thick, draw=black,line join=round,even odd rule,line cap=butt,miter   
+          limit=4.00] \MyPath{\period}; 
+        \draw[thick, draw=black,line join=round,even odd rule,line cap=butt,miter   
+          limit=4.00] \MyPath{2*\period};
+      \end{scope}  
+    \end{tikzpicture}
+  }
+  \subcaptionbox{ 
+    \begin{tikzpicture}[scale=0.6]
+      \begin{scope}[draw=black,line join=round, miter limit=4.00,line width=0.5pt, y=1pt,x=1pt, 
+      scale=\myscale]  
+        \MyXY;     
+        \draw[thick] (\xmin+10, \nula + 40) -- (\xmax-30, \nula + 40);  
+        \draw[] (\period + \phase,0) ++ (0,2) -- +(0,-4) node[below] {$T$};   
+      \end{scope}    
+    \end{tikzpicture}
+    }
+\end{document}

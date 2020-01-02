@@ -1,0 +1,97 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+\begin{example}\label{mai:exam069} \textbf{Normální rozdělení}\newline
+  Veličinou s normálním rozdělením rozumíme takovou náhodnou veličinu \(X\), jejíž hustota 
+  pravděpodobnosti má tvar
+  \begin{mdframed}[style=highlight]
+    \begin{equation}\label{mai:eq069}
+      w(x) = \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right],
+             \qquad x\in(-\infty, \infty).
+    \end{equation}
+  \end{mdframed}
+  Grafem této funkce je \textbf{Gaussova křivka}. Distribuční funkce má tvar
+  \begin{mdframed}[style=highlight]
+    \begin{equation}\label{mai:eq70}
+      F(x) = \int_{-\infty}^{x}\dfrac{1}{\sigma\sqrt{2\pi}}
+               \exp\left[-\dfrac{(t-\mu)^2}{2\sigma^2}\right]\dd{t}.
+    \end{equation}
+  \end{mdframed}
+  udává pravděpodobnost, že hodnota náhodné proměnné je menší než zadaná hodnota (nerovnost může 
+  být i neostrá). Přitom \(F(\infty) = 1\) (pravděpodobnost jistého jevu). Skutečně, platí
+  \begin{equation*}
+    \begin{multlined}
+      \int_{-\infty}^{\infty}\dfrac{1}{\sigma\sqrt{2\pi}}
+      \exp\left[-\dfrac{(t-\mu)^2}{2\sigma^2}\right]\dd{t}   \\
+      \shoveleft[1cm]= \dfrac{\sigma\sqrt{2}}{\sigma\sqrt{2\pi}}
+              \int_{-\infty}^{\infty}\exp\left(-u^2\right)\dd{u} =1.
+    \end{multlined}
+  \end{equation*}
+  Takzvaný Laplaceův integrál \(\int_{-\infty}^{\infty}\exp(-u^2)\dd{u} = \sqrt{\pi}\) 
+  sice můžeme najít v tabulkách a v dalším dílu jej i odvodíme, v tu to chvíli se však budeme řídit 
+  výrokem lorda Kelvina: „Matematik je ten, komu je toto zřejmé jako je zřejmé vám, že dvakrát dvě 
+  jsou čtyři.“ Příklady normálního rozdělení pro různé hodnoty \(\sigma,\,\mu\) a odpovídající 
+  distribuční funkce vidíme na obrázku \ref{mai:fig046a} a \ref{mai:fig046b}.
+
+  {\centering
+    \captionsetup{type=figure}
+     \subcaptionbox{\label{mai:fig046a}}{\luafigure[1]{mai_fig046a.pdf}}              \newline
+     \subcaptionbox{\label{mai:fig046b}}{\luafigure[1]{mai_fig046b.pdf}}
+     \captionof{figure}{Hustota pravděpodobnosti normálních rozdělení a jejich distribuční funkce 
+              s různými charakteristikami \(\sigma\) a \(\mu\). Červenou čárou je vyznačeno 
+              normované normální rozdělení. \cite[s.~240]{Musilova2009MA1}
+    \label{mai:fig046}}
+  \par}
+  \vspace*{10px} Určíme střední hodnotu a rozptyl veličin s tímto rozdělením:
+  \begin{align*}
+    \langle x \rangle 
+      &= \int_{-\infty}^{x}\dfrac{1}{\sigma\sqrt{2\pi}}x\cdot
+         \exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]\dd{x}                                     \\
+      &= \dfrac{\sigma\sqrt{2}}{\sigma\sqrt{2\pi}}
+         \int_{-\infty}^{\infty}\left(\mu+t\sigma\sqrt{2}\right)\cdot\exp\left(-t^2\right)\dd{t}  \\
+      &= \dfrac{\mu}{\sqrt{\pi}}\int_{-\infty}^{\infty}\exp\left(-t^2\right)\dd{t}                \\
+      &+ \dfrac{1}{\sqrt{\pi}}\int_{-\infty}^{\infty}t\sigma\sqrt{2}\cdot\exp\left(-t^2\right)\dd{t}
+       =\mu.
+  \end{align*}
+  Druhý z integrálů je totiž roven nule, neboť integrand je lichá funkce.
+  \begin{align*}
+    D(X)  &= \dfrac{1}{\sigma\sqrt{2\pi}}\int_{-\infty}^{\infty}\left(x - \mu\right)^2 
+             \exp\left[-\dfrac{(x-\mu)^2}{2\sigma^2}\right]\dd{x}                                \\
+          &= \dfrac{2\sqrt{2}\sigma^3}{\sigma\sqrt{2\pi}}
+             \int_{-\infty}^{\infty}t^2\exp\left(-t^2\right)\dd{t}
+           = \sigma^2.
+  \end{align*}
+  Integrál \(\int_{-\infty}^{\infty}t^2\exp\left(-t^2\right)\dd{t} = \frac{\sqrt{\pi}}{2}\) lze buď 
+  opět najít v tabulkách, nebo jej metodou per partes převést na výpočet Laplaceova integrálu:
+  \begin{align*}
+    I &= \int_{-\infty}^{\infty}t\cdot t\exp\left(-t^2\right)\dd{t}         \\
+      &= \left[-\dfrac{t}{2}\exp\left(-t^2\right)\right]_{-\infty}^{\infty}
+       + \dfrac{1}{2}\int_{-\infty}^{\infty}\exp\left(-t^2\right)\dd{t}.
+  \end{align*}
+  
+  Distribuční funkce normálního rozdělení, zvaná \(errorfunkce\), je běžnou součástí různých 
+  počítačových programů, takže poměrně snadno zjistíme pravděpodobnostní obsah intervalu určeného 
+  směrodatnou odchylkou \(\sigma(x) = \sqrt{d(X)} = \sigma\). Pravděpodobnost, že hodnota náhodné 
+  veličiny \(X\) s normálním rozdělením leží v intervalu \((\mu - \sigma, \mu + \sigma)\), je 
+  zhruba \SI{68.3}{\percent}. V souvislosti s normálním rozdělením se často užívají další 
+  dva druhy odchylek. \textbf{Pravděpodobná chyba} \(\theta\) určuje interval \((\mu - \theta, \mu 
+  + \theta)\), v  němž leží hodnota veličiny \(X\) s pravděpodobností \SI{50}{\percent}. 
+  \textbf{Krajní chyba} \(\kappa\) určuje interval \((\mu - \kappa, \mu + \kappa)\), v němž leží 
+  hodnota veličiny \(X\) s pravděpodobností \SI{99.7}{\percent}. Z tabelovaných hodnot 
+  \(errorfunkce\) zjistíme, že platí
+  \begin{equation}\label{mai:eq71}
+   \theta \simeq \dfrac{2}{3}\sigma, \qquad \kappa = 3\sigma
+  \end{equation}
+  Poznamenejme, že normálním rozdělením \(w(x)\) (\ref{mai:eq069}) lze přibližně nahradit 
+  Bernoulliovo rozdělení
+  \begin{align*}
+    w_{Ber}(x)        &= \binom{n}{x}p^x(1 - p)^{n-x},  \\
+    \langle x \rangle &= np, \;  D(x) = np(1-p)
+  \end{align*}
+  pro velké hodnoty \(n\) a také Poissonovo rozdělení
+  \begin{equation*}
+    w_{Pois}(x) = e^{-\langle x \rangle}\dfrac{\langle x \rangle^x}{x!}, \qquad 
+    D(x) = \langle x \rangle
+  \end{equation*}
+  s velkou střední hodnotou \(\langle x \rangle\)
+\end{example}
+\end{mdframed}

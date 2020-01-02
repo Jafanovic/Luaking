@@ -1,0 +1,1462 @@
+% !TeX spellcheck = cs_CZ
+% Basis of Linear Algebra:
+%{\tikzset{external/prefix={tikz/MAI/}}
+% \tikzset{external/figure name/.add={ch02_}{}}
+%---------------------------------------------------------------------------------------------------
+% mai1ch02.tex
+%---------------------------------------------------------------------------------------------------
+% ==================================================================================================
+% In linear algebra, a basis is a set of linearly independent vectors that, in a
+% linear combination, can represent every vector in a given vector space or free
+% module, or, more simply put, which define a "coordinate system".[1] In more
+% general terms, a basis is a linearly independent spanning set. 
+% --------------------------------------------------------------------------------------------------
+\setchaptertoc
+\chapter{Všemocná úměra aneb lineární algebra poprvé}\label{mai:IchapII}
+
+  Tuto kapitolu bychom mohli opatřit podtitulem \emph{„To nejnutnější z lineární algebry“}. Dovíme
+  se v ní, co je třeba si představit pod pojmem \emph{„linearita“}, najdeme příklady linearity v
+  geometrii i v přírodovědě (fyzice, chemii, biologii) a formulujeme základní poznatky týkající se
+  řešení soustav lineárních rovnic. Do této oblasti patří i počítání s vektory a maticemi - objekty,
+  které jsou velmi vhodné k vyjádření fyzikálních veličin.
+    
+  \section{Lineární rovnice}\label{mai:IchapIIsecI}
+    Co tedy znamená slovo \textbf{linearita}? Pochází z latiny, \emph{linea recta = přímka}, 
+    česky bychom řekli \emph{přímá úměrnost} nebo jen jednoduše \emph{úměra}.
+    
+    Nejjednodušší příklady linearity patří do oblasti geometrie - vyjádření \emph{přímek} a 
+    \emph{rovin}. Jistě si ze střední školy vzpomínáme, že body těchto útvarů popisujeme jejich 
+    souřadnicemi na přímce \(\mathbb{R}\), v rovině \(\mathbb{R}^2\), v prostoru \(\mathbb{R}^3\). 
+    Souřadnice bodu v rovině tedy tvoří \emph{uspořádanou dvojici} reálných čísel, v prostoru pak 
+    \emph{uspořádanou trojici} reálných čísel. (Pozor, dvojice \([a, b]\) a \([b, a]\) představují 
+    různé body.)
+    
+    %--Parametrické vyjádření přímky--------------------------------
+      \input{../src/MAI/exam/exam001.tex}
+    %---------------------------------------------------------------
+
+    Vidíme, že kartézské souřadnice bodu na přímce se vůči souřadnicím bodu \(A\) mění přímo 
+    úměrně v závislosti na hodnotě parametru \(t\), tj. závisí na jeho první mocnině. Příslušná 
+    závislost se nazývá \textbf{lineární funkcí}.
+
+    Obdobně zapíšeme parametrické vyjádření roviny v \(\mathbb{R}^3\):
+    
+    %--Parametrická vyjádření roviny--------------------------------
+    \input{../src/MAI/exam/exam004.tex}
+    %---------------------------------------------------------------
+
+    Všimněme si nyní příkladů linearity z oblasti přírodovědy.
+    
+    %--Fyzika - Ohmův zákon-----------------------------------------
+    \input{../src/MAI/exam/exam035.tex}
+    %---------------------------------------------------------------
+
+    %--Fyzika - speciální typy pohybů-------------------------------
+    \input{../src/MAI/exam/exam036.tex}
+    %---------------------------------------------------------------
+    
+    \subsection{Soustavy lineárních rovnic a jejich rychlé řešení}\label{mai:IchapIIsecIssecI}
+      Příkladů linearity v přírodě bychom mohli nalézt bezpočet. Vraťme se však k matematice a k
+      problematice uvedené v názvu tohoto odstavce, k soustavám lineárních rovnic. Začněme
+      jednoduchou slovní úlohou ze základní školy:
+      
+      %--Jeníček a Mařenka kradli ježibabě perník---------------------
+      \input{../src/MAI/exam/exam037.tex}
+      %---------------------------------------------------------------
+      
+      O samotné řešení této jednoduché úlohy v tuto chvíli nejde. Pojmenujme si však vztahy, které
+      jsme pro neznámé hodnoty \(M\) a \(J\) ze zadání úlohy dostali. Neznámé vystupují v rovnicích
+      v první mocnině, tedy \emph{lineárně}. Máme \emph{soustavu dvou rovnic} o dvou neznámých \(M\)
+      a \(J\). Úvahu snadno zobecníme: Předpokládejme, že máme neznámé veličiny
+      \begin{equation*}
+        (x_1, x_2, \ldots, x_n)
+      \end{equation*}
+      a máme o nich \(m\) informací, které lze zapsat ve tvaru lineárních rovnic (neznámé budou v
+      těchto rovnicích vystupovat v první mocnině),
+      \begin{align}
+        a_{11}x_1 + a_{12}x_2 + \ldots + a_{1n}x_n &= b_1,     \nonumber           \\
+        a_{21}x_1 + a_{22}x_2 + \ldots + a_{2n}x_n &= b_2,     \label{mai:eq002}   \\
+        .......................................... &= \ldots   \nonumber           \\
+        a_{m1}x_1 + a_{m2}x_2 + \ldots + a_{mn}x_n &= b_m,     \nonumber
+      \end{align}
+      Soustavu (\ref{mai:eq002}) \textbf{nazýváme soustavou \(\mathbf{m}\) lineárních rovnic o
+      \(\mathbf{n}\) neznámých}. Označme ji jako \(S\) a pod tímto označením se k ní budeme vracet.
+      Soubory reálných čísel \((a_{ij})\) a \((b_i)\), kde \(1 \leq i \leq m\), \(1 \leq j \leq n\),
+      jsou zadány. Lze je uspořádat do takzvaných \textbf{matic}:
+      \begingroup
+        \renewcommand\arraycolsep{3pt}
+        \begin{equation*}
+          \matr{A} =
+            \begin{pmatrix}[0.9]
+              a_{11} & a_{12} & \ldots & a_{1n} \\
+              a_{21} & a_{22} & \ldots & a_{2n} \\
+              \ldots & \ldots & \ldots & \ldots \\
+              a_{m1} & a_{m2} & \ldots & a_{mn}          
+            \end{pmatrix},\quad
+            \overline{\matr{B}} =
+            \begin{pmatrix}[0.9]
+              b_1     \\
+              b_2     \\
+              \ldots  \\
+              b_m 
+            \end{pmatrix}
+        \end{equation*}
+      \endgroup
+
+      Matice \(\matr{A}\) je typu \(m/n\), má \(m\) řádků a \(n\) sloupců, \(i\) je řádkový index a
+      \(j\) je sloupcový index. Matice \(\overline{\matr{B}}\) je typu \(m/1\) (\(m\) řádků a jeden
+      sloupec), hovoříme také o sloupcové matici. Soustavu \(S\) můžeme zapsat zkráceně pomocí
+      maticového násobení (podrobněji viz později odstavec \ref{mai:IchapIIsecIII}):
+      \begin{align}\label{mai:eq004}
+        \matr{A} \cdot \matr{X} &= \overline{\matr{B}}, \quad \text{nebo} \nonumber\\
+        \setlength{\arraycolsep}{3pt}
+          \begin{pmatrix}[0.9]
+            a_{11} & a_{12} & \ldots & a_{1n} \\
+            a_{21} & a_{22} & \ldots & a_{2n} \\
+            \ldots & \ldots & \ldots & \ldots \\
+            a_{m1} & a_{m2} & \ldots & a_{mn}
+          \end{pmatrix} \cdot
+          \begin{pmatrix}[0.9]
+            x_1     \\
+            x_2     \\
+            \ldots  \\
+            x_m 
+          \end{pmatrix}  &=
+          \begin{pmatrix}[0.9]
+            b_1     \\
+            b_2     \\
+            \ldots  \\
+            b_m 
+          \end{pmatrix}
+      \end{align} 
+      V tuto chvíli vysvětlíme podstatu maticového násobení jen technicky: Násobit mezi sebou
+      můžeme matici \(\matr{A} = (a_{ij})\) typu \(m/n\) (levý činitel) a matici \(\matr{C} =
+      (c_{jk})\) typu \(n/p\) (pravý činitel, činitele nelze zaměňovat). Výsledkem je matice
+      \(\matr{D} = (d_{ik})\) typu \(m/p\), jejíž prvky se počítají podle předpisu
+      \begin{equation}\label{mai:eq005}
+        d_{ik} = \sum_{j=1}^{n} a_{ij}\cdot c_{jk}.
+      \end{equation}
+      
+      Z tohoto obecného předpisu vidíme, že levé strany soustavy \(S\) lze interpretovat ve tvaru
+      součinu matice \(A\) typu \(m/n\) s maticí neznámých typu \((n/1)\), výsledkem je matice
+      pravých stran \(\overline{\matr{B}}\), která je typu \(m/1\). Matice \(\matr{A}\) se nazývá
+      \textbf{maticí soustavy}. Matice, která vznikne jejím \emph{rozšířením} o sloupec pravých
+      stran, tj.
+      \begingroup
+        \renewcommand\arraystretch{0.8}
+        \renewcommand\arraycolsep{3pt}
+        \begin{equation*}
+          \matr{B} = (\matr{A}\lvert\overline{\matr{B}}) =
+          \left(
+            \begin{array}{cccc|c}
+              a_{11} & a_{12} & \ldots & a_{1n} & b_1    \\
+              a_{21} & a_{22} & \ldots & a_{2n} & b_2    \\
+              \ldots & \ldots & \ldots & \ldots & \ldots \\
+              a_{m1} & a_{m2} & \ldots & a_{mn} & b_m 
+            \end{array}
+          \right)
+        \end{equation*}
+      \endgroup
+      je pak \textbf{rozšířenou maticí soustavy}. Je-li sloupec pravých stran soustavy tvořen samými
+      nulami, nazývá se soustava \textbf{homogenní}, v opačném případě \textbf{nehomogenní}. Řešením
+      soustavy \(S\) nazýváme každou \(n\)-tici \((x_i, x_2,\ldots, x_n)\), která soustavu \(S\)
+      splňuje. Cílem je najít všechna řešení soustavy \(S\). Abychom řešení nalezli, musíme soustavu
+      upravovat, zjednodušovat. Prováděné úpravy mají vést k jednodušší, avšak ekvivalentní soustavě
+      rovnic, tj. takové, která má naprosto stejný soubor všech řešení jako soustava původní. Takové
+      úpravy nazýváme \textbf{ekvivalentními}. Dvě základní, pomocí nichž lze uskutečnit všechny
+      ostatní, jsou
+      \begin{mdframed}[style=highlight]
+        \begin{itemize}[noitemsep]
+          \item vynásobení libovolné, například \(i\)-té, rovnice libovolným \emph{nenulovým}
+                číslem,
+          \item přičtení \(i\)-té rovnice vynásobené libovolným číslem k \(l\)-té rovnici.
+        \end{itemize} 
+      \end{mdframed}
+      V soustavě lze samozřejmě také měnit pořadí rovnic. Tato úprava je rovněž ekvivalentní.
+      Nevypisujeme ji však zvlášť proto, že ji lze realizovat pomocí vhodně zvolené posloupnosti
+      základních dvou úprav.
+      
+      Abychom nemuseli soustavu stále opisovat i s neznámými, provádíme obvykle ekvivalentní úpravy
+      jen s maticí \(\matr{B} = (\matr{A}\vert\overline{\matr{B}})\) (každý řádek této matice
+      představuje jednu rovnici soustavy \(S\)). Může se stát, že soustava má právě \emph{jedno
+      řešení}, jako tomu bylo v  úloze o Mařence a Jeníčkovi. Také nemusí mít \emph{řešení žádné},
+      jako například soustava \(x + y = 0\), \(x + y = 1\) (součet dvou čísel nemůže nabývat
+      současně dvou různých hodnot). A třeba má také řešení \emph{nekonečně mnoho} (řešením soustavy
+      jedné rovnice o dvou neznámých \(x + y = 1\) jsou všechny dvojice tvaru \((x, 1 - x)\), kde
+      \(x\) je libovolné). A může mít soustava \(S\) třeba právě dvě řešení? Prostřednictvím
+      následujícího příkladu ukážeme metodu, která vede velmi rychle k nalezení všech řešení a
+      umožňuje také vyslovit obecné závěry o jejich vlastnostech a počtu. Jedná se o
+      \textbf{Gaussovu eliminační metodu}.
+
+      %Gaussova eliminační metoda-------------------------------------
+      \input{../src/MAI/exam/exam038.tex}
+      %---------------------------------------------------------------
+
+      Na základě výsledného tvaru matice soustavy a rozšířené matice soustavy získané ekvivalentními
+      úpravami soustavy \(S\) nyní formulujeme obecné kritérium pro to, aby soustava S měla vůbec
+      nějaké řešení. Matice \(\matr{A}\) i \(\matr{B}\) se po provedení ekvivalentních úprav dostaly
+      do velmi jednoduchého tvaru, který připomíná schodiště obrácené „vzhůru nohama“, odmyslíme-li
+      si nuly v levé části jednotlivých řádků (následující zápis pouze usnadňuje názornou představu,
+      znak ekvivalence již psát nemůžeme):
+      \begingroup
+        \renewcommand\arraystretch{0.9}
+        \renewcommand\arraycolsep{3pt}
+        \begin{align*}
+          \matr{A} &\ldots
+          \left(
+            \begin{array}{rrrrr}
+                    1 &  2 & -1 & 1      & -5     \\
+                      &    &    & 1      & -1 
+            \end{array}
+          \right),  \\
+          \matr{B} &\ldots
+          \left(
+            \begin{array}{rrrrr|r}
+                    1 &  2 & -1 & 1      & -5 &  0    \\
+                      &    &    & 1      & -1 & -1
+            \end{array}
+          \right).
+        \end{align*}
+      \endgroup
+
+      Všimněme si, že „schodiště“ jsou nepravidelná, pokud jde o šířku schodů, výška všech schodů je
+      však stejná - jeden řádek. Tímto způsobem je dán \emph{schodovitý tvar} matice \(\matr{A}\),
+      resp. \(\matr{B}\). Úzce s ním souvisí důležitá charakteristika matice, která je nezávislá jak
+      na provedených úpravách tak na výsledném schodovitém tvaru. Je to hodnost matice, definovaná
+      takto:      
+      \begin{mdframed}[style=highlight] 
+        \textbf{Hodnost} matice je počet nenulových řádků jejího schodovitého tvaru.
+      \end{mdframed}
+      V našem příkladu je hodnost matice \(\matr{A}\) soustavy \(S\) rovna dvěma, hodnost matice
+      rozšířené \(\matr{B}\) je rovna třem. Píšeme
+      \begin{equation*}
+        h(\matr{A}) = 2,\qquad h(\matr{B}) = 3.
+      \end{equation*}
+      
+      \begin{mdframed}[style=mdnote] 
+        \begin{note}
+          Že lze získat schodovitý tvar různými posloupnostmi ekvivalentních úprav je zřejmé. Uvědomme
+          si však, že ani výsledný schodovitý tvar není určen jednoznačně - stačí třeba vynásobit
+          některý řádek dvěma a výsledná matice ekvivalentní s původní je rovněž schodovitá. Poněvadž
+          má matice \(\matr{B}\) o jeden sloupec více než matice \(\matr{A}\), platí vždy
+          \(h(\matr{A}) < h(\matr{B})\). V případě \(h(\matr{A}) < h(\matr{B})\) pak \(h(\matr{A}) =
+          h(\matr{B}) - 1\). Jak názorně ukazuje náš příklad, má pro \(h(\matr{A}) < h(\matr{B})\)
+          některá z rovnic ekvivalentní soustavy tvar \(0 = 1\), soustava tedy nemá řešení. Můžeme tak
+          formulovat kritérium (podmínku nutnou a postačující) řešitelnosti soustavy lineárních
+          rovnic.
+        \end{note}
+      \end{mdframed}
+      
+      \begin{lemma}\label{mai:lemma001}
+        (\textbf{Frobeniova}): Soustava lineárních rovnic má řešení právě tehdy, je-li hodnost její
+        matice rovna hodnosti matice rozšířené.
+      \end{lemma}
+      
+      Ihned vidíme, že homogenní soustava má podle této věty řešení vždy, neboť poslední sloupec
+      její rozšířené matice je složen ze samých nul. Skutečně, jedním ze souboru řešení každé
+      homogenní soustavy je \(n\)-tice
+      \begin{equation*}
+        (x_1, x_2, \ldots, x_n) = (0, 0, \ldots, 0),
+      \end{equation*}
+      zvaná \textbf{triviální řešení}.
+      
+      Nyní se vraťme k otázce, jak zjistit, kolik řešení má daná soustava, a jak je všechna popsat.
+      Poslouží nám příklad \ref{mai:exam038} v mírné obměně spočívající v záměně koeficientu \(b_3\)
+      z hodnoty \num{6} na \num{-6}.
+      
+      %Ještě jednou Gaussova eliminační metoda------------------------
+      \input{../src/MAI/exam/exam039.tex}
+      %---------------------------------------------------------------
+      
+      Soubor řešení ve tvaru (\ref{mai:eq040}) se nazývá obecným řešením soustavy. Jeho jednotlivé
+      prvky, jednotlivá konkrétní řešení soustavy, jsou dány volbou volných neznámých \(x_2\),
+      \(x_3\) a \(x_5\). Také z příkladu \ref{mai:exam039} lze učinit obecný závěr:
+      
+      \begin{lemma}\label{mai:lemma002}
+        Nechť pro soustavu \(m\) lineárních rovnic o \(n\) neznámých platí \(h(\matr{A}) =
+        h(\matr{B}) = h\). Pak její obecné řešení závisí (lineárně) na \(d = n - h\) volných
+        neznámých.
+      \end{lemma}
+      
+      Číslo \(d\) se nazývá \textbf{dimenze prostoru řešení soustavy}. Tento pojem ještě podrobněji
+      vysvětlíme později.
+      
+      Nyní již snadno zodpovíme otázku, čím je dána \emph{mohutnost souboru řešení soustavy
+      lineárních rovnic}, tj. kolik má taková soustava řešení. Možnosti jsou pouze:
+      \begin{mdframed}[style=highlight]
+        \begin{itemize}[leftmargin=3pt,noitemsep]
+          \item žádné řešení - pro \(h(\matr{A}) \neq h(\matr{B})\),
+          \item právě jedno řešení - pro \(h = h(\matr{A}) = h(\matr{B})\) a současně \(h = n\),
+                takže nezbývá žádná volná neznámá,
+          \item nekonečně mnoho řešení - pro \(h = h(\matr{A}) = h(\matr{B})\) a současně \(h < n\),
+                kdy máme k dispozici \(d = n - h\) volných neznámých.
+        \end{itemize}  
+      \end{mdframed}  
+      Že by tedy třeba měla soustava právě dvě, tři či osmnáct řešení není možné.
+      
+      Jakési zvláštní postavení můžeme přisoudit \emph{homogenním soustavám}. Ty mají, jak jsme se
+      již přesvědčili, řešení vždy, alespoň to triviální, složené ze samých nul. Zajímejme se o
+      situaci, kdy má homogenní soustava i jiná, netriviální, řešení. U homogenní soustavy je
+      hodnost její matice vždy shodná s hodností matice rozšířené, \(h = h(\matr{A}) =
+      h(\matr{B})\). Je-li navíc \(h = n\), má podle obecného tvrzení \ref{mai:lemma002} soustava
+      právě jedno řešení, jímž nutně je řešení triviální. V opačném případě, tj. pro \(h < n\), máme
+      opět k dispozici \(d = n - h\) volných neznámých, a tedy nekonečně mnoho netriviálních řešení.
+      Všimněme si ještě jedné zajímavosti u homogenní soustavy. Jsou-li dvě \(n\)-tice čísel \(X =
+      (x_1, x_2, \ldots, x_n)\) a \(\overline{X} = (\overline{x}_1, \overline{x}_2, \ldots,
+      \overline{x}_n)\) jejím řešením, pak také \(n\)-tice vytvořená jako jejich lineární kombinace
+      \begin{equation*}
+        \alpha\cdot X + \overline{\alpha}\cdot\overline{X} = 
+          (\alpha x_1, \alpha x_2, \ldots, \alpha x_n) + 
+          (\overline{\alpha}\,\overline{x}_1, 
+          \overline{\alpha}\,\overline{x}_2, \ldots, 
+          \overline{\alpha}\,\overline{x}_n)
+      \end{equation*}
+      kde \(\alpha\) a \(\overline{\alpha}\) jsou libovolná čísla, je \emph{řešením soustavy}.
+      Možnost tohoto „lineárního kombinování“ připadá samozřejmě v úvahu pro libovolný počet
+      libovolných řešení soustavy. Fyzik by řekl, že soustava vyhovuje principu superpozice.
+      Soustava nehomogenní tu to vlastnost nemá „vinou“ nenulového sloupce pravých stran.
+    
+    \subsection{Přímky a roviny - lineární geometrické útvary}
+      Vraťme se ještě na chvíli k linearitě v geometrii a všimněme si problematiky vzájemné polohy
+      přímek a rovin. Procvičíme si na ní mimo jiné i řešení soustav lineárních rovnic. V odstavci
+      \ref{mai:IchapIIsecIssecI} jsme odvodili parametrické vyjádření přímky a roviny v
+      trojrozměrném prostoru. Nyní se pokusíme z těchto vyjádření vyloučit parametry a získat obecné
+      rovnice přímky a roviny, které již budou obsahovat pouze kartézské souřadnice bodů ležících v
+      příslušné přímce či rovině. Začněme případem roviny.
+
+      %--Obecná rovnice roviny----------------------------------------
+      \input{../src/MAI/exam/exam040.tex}
+      %---------------------------------------------------------------
+
+      %--Obecná rovnice přímky----------------------------------------
+      \input{../src/MAI/exam/exam041.tex}
+      %---------------------------------------------------------------
+      
+      %--Vektor rovnoběžný s rovinou----------------------------------
+      \input{../src/MAI/exam/exam042.tex}
+      %---------------------------------------------------------------
+  
+      Máme připraveno vše pro řešení otázky vzájemné polohy přímek a rovin.
+
+      %--Vzájemná poloha tří rovin------------------------------------
+      \input{../src/MAI/exam/exam043.tex}
+      %---------------------------------------------------------------
+
+      %--Vzájemná poloha dvou přímek----------------------------------
+      \input{../src/MAI/exam/exam044.tex}
+      %---------------------------------------------------------------
+      
+      %--Vzájemná poloha přímky a roviny------------------------------
+      \input{../src/MAI/exam/exam045.tex}
+      %---------------------------------------------------------------
+      
+%--------------------------------------------------------------------------------------------------
+  \section{Počítání s čísly}\label{mai:IchapIIsecII}
+    Někdo se jistě pozastaví nad tím, že jej chceme učit počítání s čísly. To přece každý umí už od
+    základní školy! Jenže základní a do značné míry i střední škola nás učí počítat jen s určitým
+    typem čísel - s čísly reálnými. Pravidla pro počítání s nimi se pro „běžné uživatele“stala
+    natolik rutinní záležitostí, že už o nich vůbec nepřemýšlejí, nehledají v nich zákonitosti, a
+    kdybychom se jich zeptali, kde se tato pravidla vzala, pravděpodobně budou s odpovědí velmi
+    váhat. Pravidla pro jakékoli početní operace totiž skutečně nelze z ničeho odvodit, ta je třeba
+    definovat, samozřejmě tak, aby měla rozumné praktické vlastnosti.
+    
+    \subsection{Reálná čísla}\label{mai:IchapIIsecIIsubI}
+      U reálných čísel se opravdu dlouho nezdržíme, s těmi snad opravdu každý umí počítat. Všimneme
+      si jen trochu podrobněji struktury množiny všech reálných čísel, \textbf{reálné osy}
+      \(\mathbb{R}\). Zobrazit  reálná čísla na reálné ose, tedy na přímce, umíme proto, že na
+      množině reálných čísel je definováno \textbf{úplné uspořádání} „< “:
+      \begin{itemize}[noitemsep]
+        \item Je-li současně \(a ≤ b\) a \(b ≤ a\), pak \(a = b\) 
+              pro všechna \(a, b\in\mathbb{R}\ldots\) \textbf{antisymetrie},
+        \item je-li současně \(a ≤ b\) a \(b ≤ c\), pak \(a ≤ c\) 
+              pro všechna \(a,b,c\in\mathbb{R}\ldots\) \textbf{tranzitivita},
+        \item \(a ≤ a\) pro všechna \(a\in\mathbb{R}\ldots\) \textbf{reflexivita},
+        \item platí \(a ≤ b\) nebo \(b ≤ a\) pro všechna \(a, b \in\mathbb{R}\ldots\) 
+              \textbf{úplnost}.
+      \end{itemize}
+      Pro každá dvě čísla \(a\) a \(b\) tedy dokážeme rozhodnout, zda jsou shodná (\(a = b\)), nebo 
+      zda \(a\) je menší (\(a < b\)) či větší (\(a > b\)) než \(b\). Platí:
+      \begin{itemize}[noitemsep]
+        \item Je-li současně \(a < b\) a \(c < d\), pak \(a + c < b + d\),
+        \item je-li současně \(a < b\) a \(c > 0\), pak \(ac < bc\),
+        \item je-li současně \(a < b\) a \(c < 0\), pak \(ac > bc\).
+      \end{itemize}
+      
+      Množina reálných čísel obsahuje tyto důležité podmnožiny:
+      \begin{itemize}[noitemsep]
+        \item Množinu přirozených čísel \(\naturalset = \{1, 2, \ldots, n, \ldots\}\). Platí 
+              princip \textbf{úplné indukce}: Je-li \(\mathcal{M} \subseteq \naturalset\) nějaká 
+              množina přirozených čísel, která obsahuje číslo \num{1} a která současně s každým 
+              číslem \(n\) obsahuje i \(n + 1\), pak \(\mathcal{M} = \naturalset\).
+        \item Množinu celých čísel \newline\(\mathbb{Z} = \{\ldots, -n, \ldots,
+              -2, -1, 0, 1, 2, \ldots, m, \ldots\}\).
+        \item Množinu racionálních čísel \(\mathbb{Q}\) (zlomky). Racionální čísla lze vyjádřit 
+              konečnými desetinnými zlomky (například \(p/q = 1/4 = \num{0.25}\)), nebo nekonečnými 
+              periodickými desetinnými zlomky (například \(p/q = 4/3 = 1,33\ldots33\ldots = 
+              1,\overline{3}\), \(p/q = 24/11 = 2,1818\ldots1818\ldots = 2,\overline{18}\)).
+        \item Množinu iracionálních čísel, tj. čísel, která nejsou racionální. Iracionálními čísly 
+              jsou neracionální řešení algebraických rovnic, například \(x^2 - 2 = 0 \Rightarrow x 
+              = \sqrt{2}\), nebo \(x = - \sqrt{2}\) (čísla algebraická), a čísla typu \(\pi\), 
+              \(e\), atd. (čísla transcendentní). Iracionální čísla jsou vyjádřena       
+              nekonečnými neperiodickými desetinnými zlomky, např. 
+              \(e = \num{2.718281828459545}\ldots\). Mezi každými dvěma reálnými čísly leží 
+              nekonečně mnoho čísel racionálních i nekonečně mnoho čísel iracionálních.
+      \end{itemize}
+      
+      Pro počítání s reálnými čísly jsou zavedeny základní operace, s nimiž umíme pracovat na
+      základě zkušenosti, \textbf{sčítání} \(a + b\), \textbf{odčítání} \(a - b\), \textbf{násobení}
+      \(a \cdot b\), resp. \(ab\) a \textbf{dělení} \(a : b\). Ve skutečnosti jsou potřeba jen dvě,
+      neboť odčítání je odvozeno pomocí sčítání a dělení pomocí násobení. Uvědomili jste si někdy
+      základní vlastnosti těchto operací? Možná ne, ale pracujeme s nimi zcela samozřejmě:
+      \begin{table*}[ht!]
+        \centering
+        \resizebox{0.9\textwidth}{!}{
+        \renewcommand{\arraystretch}{1.0}  
+        \begin{tabular}{L{0.3\textwidth}|L{0.65\textwidth}}
+        \toprule
+          \(a + b = b + a\)            & komutativní zákon pro součet  \\ %\midrule
+          \((a + b) + c = a + (b +c)\) & asociativní zákon pro součet  \\
+          \(a + 0 = 0 + a = a\)        & existence univerzálního neutrálního prvku \num{0}      \\
+          \(a + (-a) = (-a) + a = 0\)  & existence právě jednoho opačného prvku k číslu \(a\)   \\ 
+          \(ab = ba\)                  & komutativní zákon pro součin \\
+          \(a(bc) = (ab)c\)            & asociativní zákon pro součin \\
+          \(a(b + c) = ab + ac\)       & 1. distributivní zákon  \\
+          \((b+ c)a =  ba + ca\)       & 2. distributivní zákon  \\
+          \(a \cdot 1 = 1 \cdot a\)    & existence univerzálního jednotkového prvku 1 \\
+          \(aa^{-1} = a^{-1}a\)        & existence právě jednoho inverzního prvku k číslu \(a\),  
+                                         pokud \(a\neq 0\)       \\
+          \(ab = 0 \Leftrightarrow a = 0\) nebo \(b = 0\) & neexistence dělitelů nuly \\
+         \bottomrule
+        \end{tabular}
+        }
+        \caption{Přehled operací s reálnými čísly}
+        \label{mai:tab002}
+      \end{table*}
+
+      Odčítání a dělení:
+      \begin{equation*}
+        a - b = a + (-b),\quad a:b = ab^{-1}, \quad\text{pokud } b\neq0.
+      \end{equation*}
+      
+    \subsection{Komplexní čísla}\label{mai:IchapIIsecIIsubII}
+      Komplexní čísla začali poprvé používat italští matematikové v 17. století při řešení
+      algebraických rovnic. Zlatou érou komplexních čísel bylo století osmnácté, kdy se stala
+      nedílnou součástí matematických a fyzikálních postupů. K jejich slávě nejvíce přispěli
+      francouzský matematik \emph{Abraham de Moivre} (1667-1754), švýcarský matematik \emph{Johann
+      Bernoulli} (1667-1748) a jeho žák \emph{Lenohard Euler} (1707-1803), který zavedl známý symbol
+      „\(\imath\)“ pro \(\sqrt{(−1)}\) a začal komplexní čísla interpretovat jako body roviny, a
+      samozřejmě německý matematik \emph{Karl Fridrich Gauss} (1777-1855), který toto pojetí dovedl
+      k dokonalosti. K zobecnění komplexních čísel na \textbf{kvaterniony} (využívající čtyři osy)
+      nejvíce přispěl irský matematik \emph{Willard Hamilton} (1667-1748).
+      \cite[s.~5]{Kulhanek2018}
+
+      Komplexními čísly rozumíme uspořádané dvojice \([x, y]\) čísel reálných, pro které zavedeme 
+      určité operace. Uspořádaností dvojice zde myslíme to, že jedno z čísel (v našem zápisu \(x\)) 
+      je umístěno na první pozici dvojice a představuje reálnou část čísla \(z\), \(x = 
+      \operatorname{Re}(z)\), druhé (v našem zápisu \(y\)) je na druhé pozici a je imaginární částí 
+      čísla \(z\), \(y = \operatorname{Im}(z)\). Je tedy obecně  \([x, y] ≠ [y, x]\). Množinu
+      komplexních čísel značíme \(\cmplxset\). Počítání s komplexními čísly je definováno pomocí 
+      počítání s čísly reálnými takto: Označme \(z = [x, y]\), \(z_1 = [x_1, y_1]\), \(z_2 = 
+      [x_2, y_2]\). Definujeme
+      \begin{align*}
+        \text{\textbf{součet}}\quad & z_1 + z_2 = [x_1 + x_2, y_1 + y_2],               \\
+        \text{\textbf{součin}}\quad & z_1 \cdot z_2  = [x_1x_2-y_1y_2, x_1y_2+x_2y_1]. 
+      \end{align*}
+      Zvláštní postavení zaujímají čísla \(0 = [0, 0]\), \(1 = [1, 0]\) a \(\imath = [0, 1]\).
+      Přesvědčíme se z definice násobení, že \(z \cdot 1 = 1 \cdot z = z\), \(z + 0 = 0 + z = z\),
+      \(\imath \cdot \imath = [-1, 0]\). Snadno se také můžeme přesvědčit, že pro počítání s
+      komplexními čísly, definované součtem a součinem, platí stejná pravidla jako pro čísla reálná.
+      Neutrálním prvkem při sčítání je přitom \emph{nula} \(0 = [0, 0]\), neutrálním prvkem při
+      násobení \emph{jednička} \(1 = [1, 0]\). Prvkem opačným k číslu \(z = [x, y]\) je číslo \(-z =
+      [-x, -y] = [-1, 0] \cdot z\), prvkem inverzním k číslu \(z\neq [0, 0]\) je číslo
+      
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq73}
+          z^{-1} = \left[\dfrac{x}{x^2 + y^2}, -\dfrac{y}{x^2 + y^2} \right]
+        \end{equation}
+      \end{mdframed}
+      Sami ověřme, že opravdu platí
+      \begin{equation*}
+        [x,y]\cdot\left[\dfrac{x}{x^2 + y^2}, -\dfrac{y}{x^2 + y^2} \right] = [1,0].
+      \end{equation*}
+      
+      Číslem \textbf{komplexně sdruženým} k číslu \(z = [x, y]\) rozumíme číslo \(z^* = [x, -y]\). 
+      Platí \(zz^* = z^*z = [x^2 + y^2, 0]\). Všimněme si, že platí
+      \begin{figure}[ht!]  %\ref{mai:fig059}
+        \centering
+        \luafigure[1]{mai_fig059.pdf}
+        \caption{Komplexním sdružením nazýváme transformaci, při níž komplexní číslo
+          symetricky zrcadlíme kolem reálné (vodorovné) osy. (\cite[s.~6]{Kulhanek2018}}
+        \label{mai:fig059}
+      \end{figure}
+
+      \begin{align*}
+        z^{-1} &= \dfrac{1}{z} =\dfrac{z^*}{zz^*}=[x, -y]\cdot\left[\dfrac{1}{x^2+y^2}, 0\right] \\
+               &= \left[\dfrac{x}{x^2 + y^2}, -\dfrac{y}{x^2 + y^2} \right]
+      \end{align*}
+      Pohodlněji než s uspořádanými dvojicemi se s komplexními čísly počítá v takzvaném 
+      \textbf{algebraickém tvaru}
+      \begin{align*}
+        z&= [x ,y] = x + iy,            \\
+        \shortintertext{přesněji}
+        z &= [x, 0] + [0, 1] \cdot [y, 0].
+      \end{align*}
+      Přepíšeme-li pravidla pro součet a součin při takovém způsobu zápisu a využijeme-li vztahu 
+      \(i \cdot i=i^2 = - 1\), dostaneme je ve tvaru, na který jsme zvyklí ze střední školy:
+      \begin{align*}
+        z_1 + z_2 &= (x_1 + iy_1) + (x_2 + iy_2)             \\
+                  &= (x_1 + x_2) + i(y_1 + y_2),             \\
+        z_1z_2    &= (x_1 + iy_1)(x_2 + iy_2)                \\
+                  &= x_1x_2 + ix_1y_2 + ix_2y_1 + i^2y_1y_2  \\ 
+                  &= (x_1x_2 - y_1y_2) + i(x_1y_2 + x_2y_1).
+      \end{align*}
+      Tento způsob počítání budeme preferovat před prací s uspořádanými dvojicemi. 
+      
+      %--Počítání s komplexními čísly v algebraickém tvaru -----------
+        \input{../src/MAI/exam/exam078.tex}
+      %---------------------------------------------------------------
+      
+      Pro řešení některých typů úloh není algebraický tvar komplexního čísla příliš vhodný.
+      Představme si například, že bychom chtěli najít všechna komplexní čísla, která vyhovují rovni
+      \(z^4 + 1 = 0\), tj. \(z^4 = -1\), a nesměli bychom \(z\) zapsat jinak než v algebraickém
+      tvaru. Museli bychom vyjádřit \(z^4\), oddělit reálnou a imaginární část a řešit soustavu
+      rovnic \(\operatorname{Re}z^4 =-1\). \(\operatorname{Im}z^4 = 0\). Zkusme, jak reálná a
+      imaginární část čísla \(z^4 = (x + iy)^4\) vypadá. Naštěstí je možné zapsat komplexní číslo
+      \(i\) jinak. Situaci přibližuje obrázek \ref{mai:fig053}, který znázorňuje číslo \(z\) v
+      \textbf{komplexní (Gaussově) rovině}: Reálné číslo \(\abs{z}\) se nazývá \textbf{modul
+      komplexního čísla} \(z\) a reálné číslo \(\operatorname{z} = \varphi\in [0, 2\pi)\) je
+      \textbf{hlavní hodnota argumentu komplexního čísla} \(z\). 
+      
+      \begin{figure}[ht!]  %\ref{mai:fig053}
+        \centering
+        \luafigure[1]{mai_fig053.pdf}
+        \caption{Algebraický a goniometrický tvar komplexního čísla. (\cite[s.~20]{Musilova2009MA1}}
+        \label{mai:fig053}
+      \end{figure}
+
+      \begin{mdframed}[style=highlight]
+        \begin{gather*}
+          \abs{z} = \sqrt{x^2 + y^2}, \quad \tan\varphi = \dfrac{x}{y},    \\
+          x = \abs{z}\cos\varphi, \quad y = \abs{z}\sin\varphi,            \\
+          z = \abs{z}(\cos\varphi + i\sin\varphi).
+        \end{gather*}
+      \end{mdframed}
+      Do vztahů pro \(x\) a \(y\) bychom mohli místo \(\varphi\) dosadit také kteroukoli z hodnot 
+      \begin{equation*}
+        \varphi_k = \varphi + 2k\pi,\; \text{kde}\;k\in\mathbb{Z}, 
+      \end{equation*}
+      aniž by se hodnoty \(x\) a \(y\) změnily. Množinu všech hodnot
+      \begin{equation*}
+        \arg{z} = \{\varphi_k\lvert\varphi_k = \varphi + 2k\pi, k\in\mathbb{Z}\}
+      \end{equation*}
+      nazýváme \textbf{argumentem} komplexního čísla \(z\), \(\varphi_k\) pak představují jeho 
+      jednotlivé větve. Platí \(\varphi_0 = \varphi\) (nultá větev představuje hlavní hodnotu 
+      argumentu). Argument čísla \([0, 0]\) není definován. 
+        
+      %--Počítání s komplexními čísly v goniometrickém tvaru----------
+       \input{../src/MAI/exam/exam079.tex}
+      %---------------------------------------------------------------
+    
+      \begin{mdframed}[style=highlight]
+        Vidíme, že
+        \begin{subequations}\label{mai:eq74}
+          \begin{align}
+              \abs{z_1z_2}   &= \abs{z_1}\cdot\abs{z_2}, \\
+              \arg{(z_1z_2)} &= \arg{z_1} + \arg{z_2} 
+          \end{align}
+        \end{subequations}  
+      \end{mdframed}
+      (popřípadě \(\arg{(z_1z_2)} = \arg{z_1} + \arg{z_2} - 2\pi\), vyjde-li \(\varphi_1+\varphi_2 > 
+      2\pi\). Při násobení komplexních čísel tedy \emph{sčítáme} jejich argumenty. Je-li například 
+      \(z_1=\sqrt{3} - i\), tj. \(\abs{z_1} = 2\), \(\arg{z_1} = 11\pi/6\), \(z_2 = -\sqrt{3} - 3i\), 
+      tj. \(\abs{z_2} = 2\sqrt{3}\), \(\arg{z_2} = 4\pi/3\), je \(\abs{z_1z_2} = 4\sqrt{3}\), 
+      \(\arg{z_1} + \arg{z_2} = 11\pi/6 + 4\pi/3 = 19\pi/6\), \(\arg{(z_1z_2)} = 7\pi/ 6\), 
+      \(z_1z_2 = 4\sqrt{3}(\cos7\pi/6 + i\sin7\pi/6)= -6 -2i\sqrt{3}\). 
+      
+      Pro číslo \(z = \abs{z}(\cos\varphi+ i\sin\varphi)\) také platí
+      \begin{gather*}
+        \begin{align*}
+          z^{-1} &= \dfrac{1}{\abs{z}(\cos\varphi+ i\sin\varphi)}                  \\
+                &= \dfrac{1}{\abs{z}}
+                    \left(\dfrac{\cos\varphi}{\cos^2\varphi + \sin^2\varphi}
+                        -i\dfrac{\sin\varphi}{\cos^2\varphi + \sin^2\varphi}\right) \\
+                &= \dfrac{1}{\abs{z}}(\cos(-\varphi)+ i\sin(-\varphi))
+        \end{align*}
+      \end{gather*}
+      Číslo s jednotkovým modulem má tvar \(E(\varphi) = \cos\varphi+i\sin\varphi\) a nazývá se 
+      \textbf{komplexní jednotka}. Pro počítání s komplexními jednotkami vyplývá z řešení příkladu 
+      \ref{mai:exam079}:
+      \begin{subequations}
+        \begin{align}\label{mai:eq75}
+          E(\varphi_1)E(\varphi_2) &= E(\varphi_1 + \varphi_2), \\  
+                 E^{-1}(\varphi_1) &= E(-\varphi_1),            \\
+                              E(0) &= 1.
+        \end{align}
+      \end{subequations}
+      Veličiny \(E(\varphi)\) se tedy při násobení a dělení chovají jako mocniny o stejném základu: 
+      Při násobení mocnin se exponenty sčítají, při dělení odčítají, jakýkoli základ umocněný na 
+      nultou dává hodnotu \num{1}. 
+      \begin{mdframed}[style=highlight]
+        Na základě této analogie budeme zapisovat komplexní jednotku \(E(\varphi)\) v 
+        \textbf{exponenciálním tvaru}, pomocí \emph{Eulerova vzorce}:
+        \begin{equation}\label{mai:eq76}
+          E(\varphi) = \cos\varphi+ i\sin\varphi = e^{i\varphi},
+        \end{equation}
+      \end{mdframed}
+      kde transcendentní číslo \(e = \num{2.718 281828}\ldots\) je základ \emph{přirozených 
+      logaritmů}. Poznamenejme, že takový zápis, využívající pouhé analogie, není ještě korektní 
+      definicí. Eulerův vzorec však lze dokázat i korektními matematickými postupy. Také libovolné 
+      komplexní číslo lze zapsat v exponenciálním tvaru 
+      \begin{equation}\label{mai:eq77}
+        z = \abs{z}e^{i\varphi}.
+      \end{equation}
+        
+      %--Počítání s komplexními čísly v exponenciálním tvaru----------
+      \input{../src/MAI/exam/exam080.tex}
+      %---------------------------------------------------------------
+
+      %--Cvičení------------------------------------------------------
+      \input{../src/MAI/exam/exam081.tex}
+      %---------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
+  \section{Počítání s maticemi}\label{mai:IchapIIsecIII}
+    Algebra matic, tedy počítání s nimi, je v praxi zase jen počítání s čísly, samozřejmě podle
+    specifických pravidel. S maticemi jsme se již setkali v odstavci \ref{mai:IchapIIsecI}, kde 
+    jsme jich využili jako vhodné „pomůcky“ při řešení soustav rovnic. Nyní posuneme naše 
+    znalosti o nich na poněkud vyšší úroveň. Zavedeme na množině matic \emph{algebraickou 
+    strukturu}, která nám umožní s nimi počítat nezávisle na jejich vztahu k nějakým praktickým 
+    aplikacím.
+    \subsection{Základní operace s maticemi a hodnost matic}\label{mai:IchapIIsecIIIsubI}
+      Víme již, že maticí typu \(m/n\) (též obdélníková matice) rozumíme soubor reálných,       
+      popřípadě i komplexních čísel uspořádaných do \(m\) řádků a \(n\) sloupců:
+      \begin{mdframed}[style=mdmathdef]
+        \begin{definition}\label{def_matice}
+          Nechť \(m, n\) jsou přirozená čísla. Jestliže každé uspořádané dvojici \((m,n)\in 
+          \{1,2,\ldots,m\}\times \{1,2,\ldots,n\}\) přiřadíme prvek \(a_{i,j}\in\mathbb{R}\) 
+          obdržíme reálnou \href{http://cs.wikipedia.org/wiki/Matice}{matici} typu \(m,n\) nad 
+          \(\mathbb{R}\). 
+          
+          Matici zapisujeme jako
+          \begin{equation}\label{matice_zapis}
+            \matr{A} = \left(a_{ij}\right) =\left(
+                                          \begin{array}{ccc}
+                                            a_{11} & \ldots & a_{1n} \\
+                                            \vdots & \ddots & \vdots \\
+                                            a_{m1} & \ldots & a_{mn}
+                                          \end{array}
+                                     \right)
+          \end{equation}
+          která má právě \(mn\) prvků \((a_{ij})\) uspořádaných do \(m\) řádků a \(n\) sloupců. 
+          Stručně píšeme \(\matr{A} = (a_{ij})\)
+        \end{definition}
+      \end{mdframed}
+
+      Defince nám říká, že prvky matice jsou označeny indexy udávajícími \textbf{řádek} a
+      \textbf{sloupec}, v nichž se prvek nalézá. Prvek v \(i\)-tém řádku a \(j\)-tém sloupci matice
+      \(\matr{A}\) se obvykle značí \(a_{ij}\). Například \(i\)-tý řádek matice  obsahuje vodorovnou
+      \(n\)-tici prvků \(a_{i1}, a_{i2}, \ldots,a_{in}\), kde \(i=  1,2,\ldots,m\) a \(j\)-tý
+      sloupec matice obsahuje svislou matici čísel \(a_{1j},a_{2j},\ldots,a_{mj}\), kde \(j =
+      1,2,\ldots,n\). Pro \(m = n\) se matice nazývá \textbf{čtvercová} n-tého řádu. 
+      
+      %--Čtvercová matice --------------------------------------------
+      \input{../src/MAI/exam/exam033.tex}
+      %---------------------------------------------------------------
+
+      V tabulce \ref{LA:tab_basic_matrix} jsou uvedeny nejčastější typy matic, které se v algebře
+      často vyskytují. Jsou to například matice řádkové, sloupcové, diagonální\footnote{Prvky
+      \(a_{ii}\) kde \(i=1,2,\ldots,\min(m,n)\) tvoří hlavní diagonálu. Matice \(\matr{D}\) je typu
+      \(m,m\), obecně může mít diagonální matice buď ještě další sloupce, v nichž budou samé nuly,
+      anebo další řádky, v nichž budou opět samé nuly.}, jednotkové\footnote{Jestliže \(m = n\), pak
+      mluvíme o čtvercové matici řádu \(n\).}, nulové, \emph{transponované}, \emph{symetrické} a
+      \emph{dolní (horní) trojúhleníkové} - její nenulové prvky tvoří trojúhelníkové uspořádání
+      zahrnující diagonálu a oblast pod diagonálou (obdobně vznikne horní trojúhelníková matice).
+      
+      Maticí transponovanou k matici \(\matr{A}\) typu \(m/n\) rozumíme matici \(\matr{A}^T\) typu
+      \(n/m\), kterou z matice \(\matr{A}\) získáme záměnou řádků za sloupce. Maticí transponovanou
+      k čtvercové matici řádu \(n\) je opět čtvercová matice řádu \(n\). Platí následující
+      vlastnosti:
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq80}
+          (\matr{A}^T)^T = A, \qquad (\matr{A}\matr{B})^T = \matr{B}^T\matr{A}^T.
+        \end{equation}
+      \end{mdframed}
+
+      \begin{table}[!ht]
+          \centering       
+          \renewcommand\arraycolsep{3pt}
+          \resizebox{1\linewidth}{!}{
+            \begin{tabular}{|l||c@{}|}
+              \hline 
+              \textbf{Matice}                  & \textbf{Zápis}           \\ \hline\hline
+              \ttfamily řádková   \(\matr{A}\) &  \((a_1,a_2,\ldots,a_n)\)\\
+              \ttfamily sloupcová \(\matr{B}\) & 
+                \(\begin{pmatrix}[0.9]
+                  a_1     \\
+                  a_2     \\
+                  \vdots  \\
+                  a_n
+                \end{pmatrix}\)                       \\
+              \ttfamily diagonální \(\matr{C}\) & 
+                \(\begin{pmatrix}[0.9]
+                   a_{11} &    0   & \ldots &   0     \\
+                      0   & a_{22} & \ldots &   0     \\
+                   \vdots & \vdots & \ddots & \vdots  \\
+                      0   &   0    & \ldots & a_{mm}
+                \end{pmatrix}\)                       \\
+              \ttfamily jednotková \(\matr{I}\) &
+                \(\begin{pmatrix}[0.9]
+                     1    &    0   & \ldots &   0    \\
+                     0    &    1   & \ldots &   0    \\
+                   \vdots & \vdots & \ddots & \vdots \\
+                      0   &   0    & \ldots & 1
+                \end{pmatrix}\)                      \\
+              \ttfamily nulová \(\matr{0}\) & \((a_{ij}),\quad a_{ij} = 0\,\forall\,i, j\) \\
+              \ttfamily transponovaná \(\matr{D^T}\) &
+                \(\begin{pmatrix}[0.9]
+                  a_{11} & a_{21} & \ldots &  a_{m1}\\
+                  a_{12} & a_{22} & \ldots &  a_{m2}\\
+                  \vdots & \vdots & \ddots & \vdots \\
+                  a_{1n} & a_{2n} & \ldots & a_{mn}
+                \end{pmatrix}\)    \\
+              \ttfamily symetrická \(\matr{S}\)  & 
+                \((a_{ij}),\quad a_{ij}= a_{ji}\,\forall\,i,j\) \\ 
+              \ttfamily trojúhleníková \(\matr{T}\) &
+                \(\begin{pmatrix}[0.9]
+                  a_{11} & a_{12} & \ldots &  a_{1n}\\
+                      0  & a_{22} & \ldots &  a_{2n}\\
+                  \vdots & \vdots & \ddots & \vdots \\
+                      0  &   0    & \ldots & a_{nn}
+                \end{pmatrix}\)    \\   \hline
+            \end{tabular}
+          }
+          \caption{Speciální typy matic}\label{LA:tab_basic_matrix}
+      \end{table}
+    
+      Matice téhož typu \((m,n)\) nad \(\mathbb{R}\) budeme značit \(\mathbb{R}_{m,n}\). Nebude-li 
+      nutné specifikovat, zda-li hovoříme o matici nad reálnými nebo komplexními čísly, pak budeme 
+      pracovat prostě s množinou \(\mathcal{M}(m/n)\) všech matic typu \(m/n\). 
+      
+      První operací, která nás napadne je \textbf{sčítání matic}, což je operace kterou vznikne nová 
+      matice pouhým sečtením odpovídajících prvků sčítaných matic. 
+      \begin{mdframed}[style=mdmathdef]
+        \begin{definition} 
+          \textbf{Součtem matice} \(\matr{A} \in \mathbb{R}_{mn}\) a matice \(\matr{B} \in 
+          \mathbb{R}_{mn}\), je matice \(\matr{C} \in \mathbb{R}_{mn}\) pro kterou platí:
+          \begin{gather*}
+            \begin{aligned}
+              \matr{C}  &=  \matr{A} + \matr{B} = (c_{ij}) = (a_{ij} + b_{ij}) \\
+                        &=  \begin{pmatrix}[0.9]
+                              a_{11} + b_{11}  & a_{12} + a_{12} & \ldots &  a_{1n} + b_{1n}\\
+                              a_{21} + b_{21}  & a_{22} + b_{22} & \ldots &  a_{2n} + b_{2n}\\
+                                  \vdots       &     \vdots      & \ddots &      \vdots     \\
+                              a_{m1} + b_{m1}  & a_{m2} + b_{m2} & \ldots &  a_{mn} + b_{mn}
+                            \end{pmatrix}.
+            \end{aligned}
+          \end{gather*} 
+        \end{definition}
+      \end{mdframed}
+      Je-li \(k\) reálné (popřípadě i komplexní) číslo, rozumíme \(k\)-násobkem matice \(\matr{A}\) 
+      matici \(\matr{F} = k\matr{A} = (f_{ij})\in \mathcal{M}(m/n)\)
+      \begin{equation*}
+        \matr{F} = k\matr{A} = (k\cdot a_{ij}) = 
+                    \begin{pmatrix}[0.9]
+                       ka_{11} & ka_{12} & \ldots & ka_{1n} \\
+                       ka_{21} & ka_{22} & \ldots & ka_{2n} \\
+                       \vdots  & \vdots  & \ddots & \vdots  \\
+                       ka_{m1} & ka_{m2} & \ldots & ka_{mn}
+                    \end{pmatrix}.
+      \end{equation*}
+      Zdůrazněme, že sčítat můžeme pouze matice téhož typu. Z toho, že se operace sčítání matic a 
+      násobení matice číslem provádějí „prvek po prvku“, pracuje se tedy stále s čísly, je ihned 
+      zřejmé, že tyto operace mají následující vlastnosti:
+      
+      \begin{table*}[ht!]
+        \centering
+        \resizebox{0.9\textwidth}{!}{
+        \renewcommand{\arraystretch}{1.0} 
+        \begin{tabular}{c | L{8cm}}
+        \toprule
+          \(\matr{A} + \matr{B} = \matr{B} + \matr{A}\)
+                                       & komutativní zákon pro součet matic  \\ %\midrule
+          \((\matr{A} + \matr{B}) + \matr{C} =\matr{A} + (\matr{B} + \matr{C})\)
+                                       & asociativní zákon pro součet matic  \\
+          \(\matr{A} + \matr{O} = \matr{O} + \matr{A} = \matr{A}\)
+                                       & existence univerzálního neutrálního prvku \(\matr{O}\)  \\
+          \(\matr{A} + (-\matr{A}) = (-\matr{A}) + \matr{A} = \matr{O}\)
+                                       & existence právě jednoho opačného prvku k matici 
+                                       \(\matr{A}\)\\ 
+          \((k_1k_2)\matr{A} = k_1(k_2\matr{A})\) 
+                                       & asociativní zákon pro násobení číslem \\
+          \(k(\matr{A} + \matr{B}) = k\matr{A} + k\matr{B}\)
+                                       & 1. distributivní zákon  \\
+          \((k_1 + k_2)\matr{A} = k_1\matr{A} + k_2\matr{A}\)
+                                       & 2. distributivní zákon \\
+          \((-1)\matr{A}= -\matr{A}\)
+                                       & násobení číslem (\num{-1}) dává opačný prvek  \\
+         \bottomrule
+        \end{tabular}
+        }
+        \caption{Přehled operací s maticemi}
+        \label{mai:tab003}
+      \end{table*}
+      Říkáme, že množina \(\mathcal{M}(m/n)\) matic typu \(m/n\) vybavená operacemi sčítání matic a 
+      násobení matice číslem s vlastnostmi uvedenými v předchozí tabulce má \textbf{strukturu 
+      vektorového prostoru nad polem reálných, popřípadě komplexních, čísel}. Množina 
+      \(\mathcal{M}(m/n)\) se samotnou operací sčítání má \textbf{strukturu komutativní grupy} (viz 
+      \ref{part:MAII}. díl). Každá matice typu \(m/n\) obsahuje \(mn\) nezávislých prvků (můžeme je 
+      volit libovolně). Říkáme pak, že vektorový prostor \(\mathcal{M}(m/n)\) má rozměr, neboli 
+      \textbf{dimenzi}, \(d = mn\).
+      
+      Pozn.: V tuto chvíli jsme ještě pojem dimenze nedefinovali zcela korektně. Později se k němu 
+      vrátíme.
+      
+    \subsection{Hodnost matic}\label{mai:IchapIIsecIIIsubII}
+      Vyberme nyní z matice \(\matr{A}\) jistý počet řádků, například řádky s indexy \(i_1, \ldots, 
+      i_p, p < m\). Nechť \(\ell \neq i_1, \ldots, i_p\).
+
+      \begin{mdframed}[style=highlight]
+        Řekneme, že \(i\)-tý řádek je lineární kombinací těchto vybraných řádků, existují-li čísla 
+        \(k_1, \ldots, k_p\) tak, že platí
+        \begin{align*}
+          a_{\ell1}  &= k_1 a_{i_11} + k_2 a_{i_21} + \cdots k_p a_{i_p1},       \\
+          a_{\ell2}  &= k_1 a_{i_12} + k_2 a_{i_22} + \cdots k_p a_{i_p2},       \\
+          \cdots     &= \cdots \qquad \cdots \qquad \cdots \qquad \cdots,        \\
+          a_{\ell n} &= k_1 a_{i_1n} + k_2 a_{i_2n} + \cdots k_p a_{i_pn}.
+        \end{align*}
+        Čísla \(k_1\) až \(k_p\) se nazývají \textbf{koeficienty} lineární kombinace. Řádky matice 
+        \(\matr{A}\) se nazývají \textbf{lineárně závislé}, jestliže je některý z nich lineární 
+        kombinací ostatních. V opačné případě říkáme, že řádky matice jsou \textbf{lineárně 
+        nezávislé}.
+      \end{mdframed}
+      
+      Ale co když má matice jediný řádek? Na takový případ se naše definice nevztahuje a musíme ji 
+      doplnit: bude-li tento řádek tvořen samými nulami, prohlásíme jej za lineárně závislý, jinak 
+      za lineárně nezávislý. Můžeme namítnout, proč jsme to neudělali naopak. Nulový řádek je 
+      zvláštní tím, že jej vždy můžeme napsat jako lineární kombinaci jiných řádků, a to s nulovými 
+      koeficienty. Řádky matice, která obsahuje nulový řádek, jsou tedy vždy lineárně závislé. A s 
+      tím je náš způsob doplnění definice v souladu. 
+      
+      Je zřejmé, že počet lineárně nezávislých řádků matice typu \(m/n\) nemůže překročit hodnotu 
+      \(m\). Ukažme, že při \(n < m\) jsou řádky matice vždy závislé a počet lineárně nezávislých z 
+      nich nemůže překročit hodnotu \(n\).
+      
+      %--Matice s lineárně závislými řádky ---------------------------
+      \input{../src/MAI/exam/exam082.tex}
+      %---------------------------------------------------------------
+      
+      Počet lineárně nezávislých řádků matice určuje její hodnost. A není tato definice hodnosti 
+      náhodou jiná, než jsme zavedli v odstavci \ref{mai:IchapIIsecI}?  Naštěstí jsou obě definice 
+      ekvivalentní, můžeme použít kteroukoli z nich a druhá nám pak vyjde jako důsledek. Uvažujme: 
+      S maticemi lze provádět elementární úpravy, které jsme definovali v odstavci 
+      \ref{mai:IchapIIsecIssecI}. Z toho, co jsme si nyní řekli o lineárně závislých řádcích matice, 
+      vidíme, že pomocí elementárních úprav dokážeme postupně anulovat řádky, které jsou lineárně 
+      závislé na ostatních. Počet lineárně nezávislých řádků matice a počet nenulových řádků jejího 
+      schodovitého tvaru jsou shodné. Z definice hodnosti matice jakožto počtu jejích lineárně 
+      nezávislých řádků je také ihned zřejmé, že hodnost matic lišících se pouze elementárními 
+      úpravami je shodná.
+      
+      Označme nyní pro každou dvojici konkrétních hodnot řádkového indexu \(i\) a sloupcového 
+      indexu \(j\) jako \(\matr{E}_{ij}\) matici typu \(m/n\), pro kterou je \(e_{ij} = 1\) a 
+      ostatní prvky jsou nulové. Libovolnou matici \(\matr{A} = (a_{ij})\) typu \(m/n\) můžeme 
+      dostat jako \emph{lineární kombinaci matic} \(\matr{E}_{ij}\) takto:
+      
+      \begin{alignat*}{7}
+        \matr{A} 
+          &= &&  &&a_{11}\matr{E}_{11} &&+ a_{12}\matr{E}_{12} &&+\cdots+ a_{1n}\matr{E}_{1n} &&+\\
+          &  &&+ &&a_{21}\matr{E}_{21} &&+ a_{22}\matr{E}_{22} &&+\cdots+ a_{2n}\matr{E}_{2n} &&+\\
+          &  &&+ &&\cdots              &&+\cdots               &&+\cdots+ \cdots              &&+\\
+          &  &&+ &&a_{m1}\matr{E}_{m1} &&+ a_{m2}\matr{E}_{m2} &&+\cdots+ a_{mn}\matr{E}_{mn} &&
+      \end{alignat*}
+      
+      Matici \(\matr{A}\) jsme tedy získali pomocí jakýchsi „základních“ matic, jejichž počet je 
+      \(mn\) (všimněme si souvislosti s pojmem dimenze). Soubor matic (\(\matr{E}_{ij}\)) tvoří 
+      bázi vektorového prostoru matic typu \(m/n\). Pokud bychom zvolili \(mn\) jiných navzájem 
+      nezávislých matic typu \(m/n\), opět bychom mohli vyjádřit každou matici \(\matr{A}\) téhož 
+      typu jako jejich lineární kombinaci. Koeficienty této lineární kombinace by však již obecně 
+      nebyly přímo prvky matice \(\matr{A}\). V prostoru matic dimenze \(mn\) lze volit různé báze. 
+      Počet prvků každé z nich je však vždy \(mn\).
+      
+      %--Určení hodnosti matice úpravou na schodovitý tvar------------
+      \input{../src/MAI/exam/exam083.tex}
+      %---------------------------------------------------------------
+
+    \subsection{Násobení matic}\label{mai:IchapIIsecIIIsubIII}
+      Další důležitou operací s maticemi je jejich \textbf{násobení}. Aby bylo možné mezi sebou 
+      vynásobit dvě matice, musí být vhodných typů. Pro definici součinu matic \(\matr{A}\) a 
+      \(\matr{B}\), v uvedeném pořadí, musí mít matice \(\matr{A}\) stejný počet sloupců, jako má 
+      matice \(\matr{B}\) řádků. Nechť je tedy \(\matr{A}\) matice typu \(m/n\) a \(\matr{B}\) 
+      matice typu \(n/p\).
+      
+      \begin{mdframed}[style=highlight]
+        \begin{definition} 
+          \textbf{Součinem matice} \(\matr{A} \in \mathbb{R}_{mn}\) a matice \(\matr{B} \in
+          \mathbb{R}_{np}\), v uvedeném pořadí, je matice \(\matr{C} \in \mathbb{R}_{mp}\) pro
+          kterou platí:
+          \begin{align*}
+            \matr{C} &= \matr{A}\matr{B}; \quad \matr{C} = (c_{ij}); \\
+                 \shortintertext{kde}
+            c_{ij} &= \sum^n_{k=1}{a_{ik}b_{kj}};\quad
+                       i = 1,\ldots,m; \, j = 1,\ldots,p.
+          \end{align*} 
+        \end{definition}
+      \end{mdframed}
+      Obrázek \ref{LA:fig_LA001a} demonstruje jakým způsobem se dostane prvek, který je ve výsledné 
+      matici třeba ve druhém řádku a druhém sloupci, násobením druhého řádku levé matice s druhým 
+      sloupcem pravé ze zadaných matic. Stejným způsobem získáme hodnotu prvku \(c_{ij}\) (viz 
+      \ref{LA:fig_LA001b}).
+      %----------------------------------
+      \begin{figure}[ht!]
+        \centering  
+        \subcaptionbox{1. krok \label{LA:fig_LA001a}}{\luafigure[1]{mai_fig023a}} \newline
+        \subcaptionbox{2. krok \label{LA:fig_LA001b}}{\luafigure[1]{mai_fig023b}} 
+        \caption{Postup při maticovém násobení}
+      \end{figure}
+
+      Pro získání prvku \(c_{ij}\) tedy vytváříme součiny prvků v \(i\)-tém řádku matice
+      \(\matr{A}\) s odpovídajícími prvky v \(j\)-tém sloupci matice \(\matr{B}\) a sčítáme je.
+      Rozepsáno
+      \begin{equation*}
+        c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{in}b_{nj} 
+      \end{equation*}
+    
+      %--Násobení matice----------------------------------------------
+      \input{../src/MAI/exam/exam087.tex}
+      %---------------------------------------------------------------
+      Všimněme si nyní vlastností maticového násobení. Předpokládejme, že matice \(\matr{A}\),
+      \(\matr{A_1}\) a \(\matr{A_2}\) jsou typu \(m/n\), matice \(\matr{B}\), \(\matr{B_1}\) a
+      \(\matr{B_2}\) typu \(n/p\), matice \(\matr{C}\) typu \(p/q\). Označme jako \(\matr{E_n}\)
+      čtvercovou diagonální matici, jejíž diagonálu tvoří samé jedničky (takzvaná \emph{jednotková
+      matice \(n\)-tého řádu)}. Platí tato pravidla:
+      
+      \begin{table}[ht!]
+        \centering
+        \resizebox{1\linewidth}{!}{
+          \renewcommand{\arraystretch}{1.0}  
+          \begin{tabular}{c | L{3.5cm}}
+            \toprule
+            \(\matr{A}(\matr{B}\matr{C}) = (\matr{A}\matr{B})\matr{C}\)
+                                        & asociativní zákon pro součin matic  \\ %\midrule
+            \((\matr{A_1} + \matr{A_2})\matr{B} = \matr{A_1}\matr{B} + \matr{A_2}\matr{B}\)
+                                        & 1. distributivní zákon  \\
+            \(\matr{A}(\matr{B_1} + \matr{B_2}) = \matr{B}\matr{A_1} + \matr{B}\matr{A_2}\)
+                                        & 2. distributivní zákon  \\
+            \(\matr{A}\matr{E_n} = \matr{A}, \matr{E_m}\matr{A} = \matr{A}\)
+                                        & násobení jednotkovou maticí \\
+            \bottomrule
+          \end{tabular}
+        }  
+      \end{table}
+      
+      Všimněme si, že maticové násobení \textbf{není} komutativní. Pro obdélníkové matice
+      \(\matr{A}\) typu \(m/n\) a \(\matr{B}\) typu \(n/p\) nelze součin \(\matr{B}\matr{A}\) ani
+      vytvořit. Pro \(m = p\) sice existuje jak součin \(\matr{A}\matr{B}\), tak
+      \(\matr{B}\matr{A}\), jsou to však matice různých typů. Pro případ čtvercových matic, tj. pro
+      \(m = n = p\), jsou matice \(\matr{A}\matr{B}\) i \(\matr{B}\matr{A}\) téhož typu \(n/n\),
+      obecně však jsou různé.
+      
+      \begin{definition}\label{rovnost_matic}
+        (Rovnost matic):  Matice \(\matr{A} = \left(a_{ij}\right)\) je rovna matici \(\matr{B}=
+        \left(b_{kl}\right)\), jsou-li matice stejného typu a stejnolehlé prvky se sobě
+        \textbf{rovnají}, tj. \(\matr{A} \in \mathbb{R}_{m,n}, \matr{B}\in\mathbb{R}_{m,n}, 
+        a_{ij} = b_{ij}, \forall i\in\lbrace1,2,\ldots,m\rbrace, \forall j\in\lbrace1,2, \ldots 
+        ,n\rbrace\).
+      \end{definition}
+
+    \subsection{Čtvercová matice a její determinant}\label{mai:IchapIIsecIIIsubIV}
+      Pro praktické počítání jsou významné \textbf{čtvercové matice}. Všimněme si jich nyní
+      podrobněji. Důležitou charakteristikou čtvercové matice řádu \(n\) je její determinant, číslo
+      utvořené z jejích prvků takto: Pořadí řádkových indexů matice ponechme pevné, tj. \((1,2,...,
+      n)\). Ze sloupcových indexů utvořme všechny permutace, tj. všechna možná pořadí. Každé takové
+      pořadí lze označit indexy \(P = (j_1, j_2, \ldots, j_n)\). Množinu všech \textbf{permutací}
+      sloupcových indexů označme \(\mathcal{P}_n\). Počet jejích prvků je \(n!\)
+      (\emph{n-faktoriál}). Permutaci nazveme sudou, jestliže v sudém počtu případů předchází větší
+      index menšímu, a lichou, jestliže taková „přesmyčka“ nastane v lichém počtu případů. Například
+      permutace \((2,3,1)\) indexů \((1,2,3)\) je sudá (dvojka je před jedničkou, trojka je před
+      jedničkou - dvě přesmyčky). Permutace \((3,2,1)\) je lichá (trojka před dvojkou, trojka před
+      jedničkou, dvojka před jedničkou - tři přesmyčky). Permutaci \(P\) přiřadíme znaménko plus,
+      tj. \(\sgn P = 1\), je-li sudá, a minus, \(\sgn P = -1\), je-li lichá.
+
+      \begin{mdframed}[style=highlight]
+        \textbf{Determinantem} matice \(\matr{A}=(a_{ij})\), \(i,j = 1, 2, \ldots, n\), je číslo
+        \begin{equation}\label{mai:eq79}
+          \begin{gathered}
+            \det{\matr{A}} = \sum_{P\in \mathcal{P}_n}(\sgn{P})\,a_{1j_1}a_{2j_2}\cdots a_{nj_n}.
+          \end{gathered}
+        \end{equation}
+      \end{mdframed}
+      Předchozí součet obsahuje \(n!\) součinů, z nichž polovina je opatřena záporným znaménkem.
+      %--Determinant matice třetího řádu------------------------------
+      \input{../src/MAI/exam/exam088.tex}
+      %---------------------------------------------------------------
+      Co se stane s determinantem matice, provedeme-li s ní elementární úpravy? Všimněme si každé ze
+      základních dvou úprav zvlášť. Vynásobíme-li \(i\)-tý řádek matice \(\matr{A}\) nenulovým
+      číslem \(k\), budou na \(i\)-tém řádku upravené matice (označme ji \(\bar{\matr{A}}\) místo
+      prvků \((a_{i1}, a_{i2}, \ldots, a_{in})\)  prvky \((ka_{i1}, ka_{i2}, \ldots, ka_{in})\).
+      Její determinant pak bude podle (\ref{mai:eq79})
+      \begin{align*}
+        \det{\overline{\matr{A}}}  &= \sum_{P\in \mathcal{P}_n}
+                                 (\sgn{P})\,a_{1j_1}a_{2j_2}\cdots ka_{ij_i} \cdots a_{nj_n}      \\
+                                  &= k\cdot\det{\matr{A}}.
+      \end{align*}
+      Oproti původnímu determinantu je totiž každý z \(n!\) sčítanců vynásoben číslem \(k\).
+      
+      Při druhé základní úpravě přičítáme \(i\)-tý řádek vynásobený číslem \(k\) k řádku
+      \(\ell\)-tému. Nová matice \(\bar{\matr{A}}\) má v \(\ell\)-tém řádku místo původních prvků
+      \((a_{\ell1}, a_{\ell2},\ldots, a_{\ell n})\) prvky \((a_{\ell1} + ka_{i1}, a_{\ell2} +
+      ka_{i2},\ldots, a_{\ell n} + ka_{in})\). Pak
+      \begin{gather*}
+       \begin{align*}
+         \det{\overline{\matr{A}}} = % 
+                &\sum_{P\in \mathcal{P}_n} 
+                  (\sgn{P})\,a_{1j_1}a_{2j_2}\cdots a_{ij_i} 
+                  \cdots (a_{\ell j_\ell} + ka_{ij_\ell})\cdots a_{nj_n}   \\
+               =&\sum_{P\in \mathcal{P}_n} 
+                  (\sgn{P})\,a_{1j_1}a_{2j_2}\cdots a_{ij_i}\cdots a_{\ell j_\ell}\cdots a_{nj_n} \\
+         +k\cdot&\sum_{P\in \mathcal{P}_n} 
+                  (\sgn{P})\,a_{1j_1}a_{2j_2}\cdots a_{ij_i} \cdots a_{ij_\ell} \cdots a_{nj_n}.
+       \end{align*}
+      \end{gather*}
+      Dostali jsme součet determinantu původní matice \(\matr{A}\) a determinantu další matice,
+      která má však \(i\)-tý a \(\ell\)-tý řádek shodný. Determinant této matice je nulový.
+      Přesvědčíme se o tom velmi snadno, uvážíme-li, co se děje s determinantem matice při výměně
+      jejích dvou řádků: Všechny sčítance v definičním vztahu (\ref{mai:eq79}), a tedy celý
+      determinant, změní znaménko. Jsou-li však současně vyměňované řádky shodné, matice (a tedy ani
+      její determinant) se výměnou nezmění. Tyto dva závěry platí současně. To lze splnit jedině
+      tehdy, je-li determinant matice nulový. Nakonec dospíváme k závěru, že druhá základní
+      elementární úprava nemění determinant matice. 
+
+      Předchozí závěry mohou být velmi užitečné pro praktický výpočet determinantu. Definiční vztah
+      je pro něj totiž velmi nepohodlný. Proto si ještě jednou zopakujme:
+      \begin{mdframed}[style=highlight]
+        \begin{itemize}[noitemsep]
+          \item Vynásobíme-li libovolný z řádků matice číslem \(k\), bude determinant výsledné
+                matice \(k\)-násobkem původního determinantu.
+          \item Přičtením \(k\)-násobku libovolného řádku k jinému řádku se determinant matice
+                nezmění.
+        \end{itemize}
+      \end{mdframed} 
+      Jestliže matici dokážeme upravit do schodovitého tvaru pouze za pomoci elementárních úprav
+      druhého typu, bude determinant získané schodovité matice \(\bar{\matr{A}} =\bar{a}_{ij}\)
+      shodný s determinantem matice původní. Protože však schodovitý tvar bude mít pod diagonálou
+      samé nuly, může být ve vztahu (\ref{mai:eq79}) nenulový pouze sčítanec určený jako součin
+      prvků na diagonále, tj. \((\bar{a}_{11}, \bar{a}_{22}, \ldots, \bar{a}_{nn})\) . A tento
+      výpočet je už snadný.
+
+      A ještě trocha terminologie: Matice řádu \(n\) s \emph{nenulovým determinantem} se nazývá
+      \textbf{regulární}. Její hodnost je maximální možná, tj. \(h(\matr{A}) = n\) (plyne to ze
+      schodovitého tvaru). Matice, jejíž determinant je \emph{nulový}, má hodnost \(h(\matr{A}) <
+      n\) a nazýváme ji \textbf{singulární}. Ke každé regulární matici \(\matr{A}\) existuje jediná
+      matice \textbf{inverzní} \(\matr{A}^{-1}\), pro kterou platí
+      \begin{equation*}
+        \matr{A}\matr{A}^{-1} = \matr{A}^{-1}\matr{A} = \matr{E}_n.
+      \end{equation*}
+      (Vida, v tomto speciálním případě platí komutativita násobení.)
+
+      Jak ale inverzní matici určíme? Základ postupu je opět v elementárních úpravách. Pomocí nich
+      můžeme danou matici \(\matr{A}\) převést nejen na \emph{schodovitý tvar}, ale dokonce na
+      \emph{jednotkovou matici}. Provádíme-li současně úplně stejné úpravy také s jednotkovou
+      maticí, vznikne z ní matice \(\matr{A}^{-1}\). Tomuto tvrzení, prosím, pro tuto chvíli věřme a
+      berme je jen jako praktický návod, s jehož zdůvodněním se seznámíme v příští kapitole.
+
+      %--Výpočet inverzní matice--------------------------------------
+        \input{../src/MAI/exam/exam090.tex}
+      %---------------------------------------------------------------
+      Znalost inverzní matice může posloužit také k řešení soustavy \(n\) lineárních rovnic o \(n\)
+      neznámých, pokud je matice soustavy \emph{regulární}. V tomto případě jsou rovnice nezávislé a
+      soustava má právě jedno řešení (společná hodnost matice soustavy a matice rozšířené je rovna
+      počtu neznámých, nezbývá žádná volná neznámá). Skutečně, zapíšeme-li soustavu rovnic v
+      maticovém tvaru
+      \begin{equation*}
+        \matr{A}\cdot\matr{x} = \bar{\matr{B}}
+      \end{equation*}
+      (odstavec \ref{mai:IchapIIsecI}) a vynásobíme-li celý vztah zleva maticí \(\matr{A}^{-1}\),
+      dostaneme
+      \begin{equation*}
+        (\matr{A}^{-1}\matr{A})\cdot \matr{x} = \matr{A}^{-1}\bar{\matr{B}} \Rightarrow 
+        \matr{x} = \matr{A}^{-1}\bar{\matr{B}}.
+      \end{equation*}
+      Pro čtvercové matice \(\matr{A}\), \(\matr{B}\) platí také:
+      \begin{mdframed}[style=highlight]
+        \begin{subequations}\label{mai:eq81}
+        \begin{align}
+          \det{\matr{A}}         &= \det{\matr{A}^T},                         \\ 
+          \det{\matr{A}\matr{B}} &= \det{\matr{A}}\cdot\det{\matr{B}}.  
+        \end{align}
+      \end{subequations}  
+      \end{mdframed}
+      Jsou-li navíc matice \(\matr{A}\) a \(\matr{B}\) \emph{regulární}, pak
+      \begin{mdframed}[style=highlight]
+        \begin{subequations}\label{mai:eq82}
+          \begin{align}
+            (\matr{A}^{-1})^{-1}     &= \matr{A},                             \\
+            (\matr{A}\matr{B})^{-1}  &= \matr{B}^{-1}\matr{A}^{-1},           \\
+            \det{\matr{A}^{-1}}      &= \frac{1}{\det{\matr{A}}},             \\
+            (\matr{A}^{-1})^{T}      &= (\matr{A}^{T})^{-1}.
+          \end{align}
+        \end{subequations}  
+      \end{mdframed}
+
+      \subsubsection{Manipulace se čtvercovou maticí v Matlabu}\label{mai:IchapIIsecIIIsubIVssubI}
+      
+%--------------------------------------------------------------------------------------------------
+  \section{Počítání s vektory}\label{mai:IchapIIsecIV}
+    \textbf{Vektory} budeme nazývat matice typu \(1/n\) a značit je
+    \begin{equation*}
+      \vec{u} = (u_1, u_2, \ldots, u_n).
+    \end{equation*}
+    Takže počítat s nimi již umíme! (V zápisu složek vektoru je vynechán řádkový index. V případě 
+    matice s jedním řádkem, takzvané \emph{řádkové matice}, je totiž zbytečný.) Číslům \(u_1\) až 
+    \(u_n\) budeme pro tuto chvíli říkat \emph{složky vektoru} \(\vec{u}\). Za chvíli tento pojem 
+    ještě upřesníme. Celou řadu pojmů, s nimiž jsme se seznámili při počítání s maticemi, můžeme 
+    pro vektory přímo použít. Namísto značení \(\mathcal{M} (1/n)\) budeme pro prostor vektorů 
+    používat symbol \((\mathbb{R}^n)\) nebo \(\mathbb{C}^n\) (obvyklý symbol pro množinu 
+    uspořádaných \(n\)-tic reálných nebo komplexních čísel).
+    
+    \subsection{Vektory a jejich vyjádření v bázích}\label{mai:IchapIIsecIVsubI}
+      Uvažujme nyní o systémech vektorů. Ke zjištění důležitých vlastností takového systému poslouží
+      pojem hodnosti. Systém vektorů
+      \[
+        \renewcommand{\arraycolsep}{0pt}% Remove separation between array columns
+        \begin{array}{rr}
+          \vec{u}_1 &= (u_{11}, u_{12}, \ldots, u_{1n}),   \\
+          \vec{u}_2 &= (u_{21}, u_{22}, \ldots, u_{2n}),   \\
+          \hdotsfor{2} \\
+          \vec{u}_k &= (u_{k1}, u_{k2}, \ldots, u_{kn})
+        \end{array}
+      \]
+      se nazývá \emph{lineárně závislý}, jsou-li řádky matice
+      \begingroup
+        \renewcommand\arraystretch{0.9}
+        \renewcommand\arraycolsep{3pt}
+        \begin{equation*}
+          \matr{U}=
+          \begin{pmatrix}
+            u_{11} & u_{12} & \cdots & u_{1n}    \\
+            u_{21} & u_{22} & \cdots & u_{2n}    \\
+            \cdots & \cdots & \ddots & \cdots    \\
+            u_{k1} & u_{k2} & \ldots & u_{kn}
+          \end{pmatrix}
+        \end{equation*}
+      \endgroup
+      lineárně závislé. Její hodnost je tedy \(h(U) < k\). V opačném případě je systém vektorů
+      \emph{lineárně nezávislý}, hodnost matice je \(h(U) = k\).
+        
+      \begin{note}
+        První index složky \(u_{ij}\) značí \(i\)-tý vektor systému, tj. \(i = 1, 2, \ldots, k\).
+        Druhý index čísluje složky, tj. \(j = 1, 2, \ldots, n\).
+      \end{note}
+
+      Lineární závislost či nezávislost vektorů tedy můžeme snadno zjistit úpravou matice
+      \(\matr{U}\) na schodovitý tvar. Víme také, že i když v definici hodnosti matice figurují
+      řádky (počet nezávislých řádků matice či počet nenulových řádků jejího schodovitého tvaru),
+      nemůže hodnost překročit počet sloupců. Znamená to, že systém \(k\) vektorů o \(n\) složkách
+      bude pro \(k > n\) vždy závislý. Lineárně nezávislý systém vektorů o \(n\) složkách tedy může
+      obsahovat nejvýše \(n\) prvků. Každý další vektor pak bude lineární kombinací takového
+      maximálního lineárně nezávislého systému vektorů, zvaného krátce \textbf{báze} prostoru
+      \(\mathbb{R}^n\), resp. \(\mathbb{C}^n\). Bází je nekonečně mnoho a pro vyjádření vektorů jsou
+      všechny stejně dobré. Množina \(\mathbb{R}^n\) nebo \(\mathbb{C}^n\) s operacemi sčítání
+      vektorů a násobení vektoru číslem se nazývá \textbf{vektorový prostor dimenze} \(n\) nebo také
+      \textbf{\(n\)-rozměrný vektorový prostor nad polem reálných či komplexních čísel}. Nejčastěji
+      používaná standardní báze má tvar
+      \begin{align*}
+        \vec{e}_1 &= (1, 0, \ldots, 0),   \\
+        \vec{e}_2 &= (0, 1, \ldots, 0),   \\
+        \cdots    &\cdots\cdots\cdots\cdots\cdots\cdots\cdots \\
+        \vec{e}_k &= (0, 0, \ldots, 1).
+      \end{align*}
+      Pro vektor \(\vec{u} = (u_1, u_2, ..., u_n)\) platí
+      \begin{equation*}
+        \vec{u} = u_1\vec{e}_1 + u_2\vec{e}_2 + \cdots u_n\vec{e}_n
+      \end{equation*}
+      
+      Zpřesníme názvosloví pro čísla \((u_1, u_2, ..., u_n)\). Jsou to \textbf{složky vektoru
+      \(\vec{u}\) vzhledem k bázi \(\vec{e}_1, \vec{e}_2, \cdots, \vec{e}_n\)}. 
+      
+      Můžeme však také vyjádřit vektor \(\vec{u}_1)\) v jiné bázi než standardní. Řekli jsme přece,
+      že všechny báze jsou rovnocenné. Zvolme vektory jiné báze, například
+      \begin{equation*}
+        \vec{e}'_1, \vec{e}'_2, \cdots, \vec{e}'_n
+      \end{equation*}
+      (Příkladem takové, rovněž velmi jednoduché báze by mohl být třeba soubor vektorů \(\vec{e}'_1
+      = (1, 1, 0,\ldots, 0)\), \(\vec{e}'_2 = (0, 1, 1, 0, \ldots, 0), \ldots, \vec{e}'_n = (0, 0,
+      ..., 0, 1, 1)\).) Každý z nich můžeme vyjádřit jako lineární kombinaci vektorů standardní
+      báze,
+      \begin{align}\label{mai:eq081}
+        \vec{e}'_1&=\tau_{11}\vec{e}_1+\tau_{12}\vec{e}_2+\ldots+\tau_{1n}\vec{e}_n, \nonumber \\
+        \vec{e}'_2&=\tau_{21}\vec{e}_1+\tau_{22}\vec{e}_2+\ldots+\tau_{2n}\vec{e}_n, \nonumber \\
+        \cdots&\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\\
+        \vec{e}'_n&=\tau_{n1}\vec{e}_1+\tau_{n2}\vec{e}_2+\ldots+\tau_{nn}\vec{e}_n. \nonumber      
+      \end{align}
+      Také obrácené vyjádření je možné:
+      \begin{align}\label{mai:eq082}
+        \vec{e}_1&=\sigma_{11}\vec{e}'_1+\sigma_{12}\vec{e}'_2+\ldots+\sigma_{1n}\vec{e}'_n, \nonumber \\
+        \vec{e}_2&=\sigma_{21}\vec{e}'_1+\sigma_{22}\vec{e}'_2+\ldots+\sigma_{2n}\vec{e}'_n, \nonumber \\
+        \cdots&\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\\
+        \vec{e}_n&=\sigma_{n1}\vec{e}'_1+\sigma_{n2}\vec{e}'_2+\ldots+\sigma_{nn}\vec{e}'_n. \nonumber      
+      \end{align}  
+      Matice
+      \begin{gather*}
+        \begin{aligned}
+          \matr{T} &= 
+            \begin{pmatrix}
+              \tau_{11} & \tau_{12} & \cdots & \tau_{1n}    \\
+              \tau_{21} & \tau_{22} & \cdots & \tau_{2n}    \\
+              \cdots    & \cdots    & \ddots & \cdots       \\
+              \tau_{k1} & \tau_{k2} & \ldots & \tau_{kn}
+            \end{pmatrix}           \\
+          \qquad \matr{S} &=
+          \begin{pmatrix}
+            \sigma_{11} & \sigma_{12} & \cdots & \sigma_{1n}    \\
+            \sigma_{21} & \sigma_{22} & \cdots & \sigma_{2n}    \\
+            \cdots      & \cdots      & \ddots & \cdots         \\
+            \sigma_{k1} & \sigma_{k2} & \ldots & \sigma_{kn}
+          \end{pmatrix}
+        \end{aligned}  
+      \end{gather*}    
+      tvořené složkami vektorů \(\vec{e}'_1, \vec{e}'_2, \cdots, \vec{e}'_n\) v bázi \(\vec{e}_1,
+      \vec{e}_2, \cdots, \vec{e}_n\), resp. opačně, se nazývají \textbf{matice přechodu mezi
+      bázemi}. Protože oba systémy vektorů báze jsou \emph{lineárně nezávislé}, jsou matice
+      \(\matr{T}\) i \(\matr{S}\) \emph{regulární} (mají hodnost \(n\). Jsou navzájem inverzní, tedy
+      \begin{equation*}
+        \matr{S} = \matr{T}^{-1} \qquad \text{a} \qquad \matr{T} = \matr{S}^{-1}
+      \end{equation*}
+      Dokážeme to snadno:
+      \begin{gather*}
+        \vec{e}'_i = \sum_{j=1}^n\tau_{ij}\vec{e}_j 
+                   = \sum_{j=1}^n\tau_{ij}\sum_{\ell=1}^n\sigma_{j\ell}\vec{e}'_\ell
+                   = \sum_{\ell=1}^n\left(\sum_{j=1}^n\tau_{ij}\sigma_{j\ell}\right)\vec{e}'_\ell.
+      \end{gather*} 
+      Na levé straně je vektor \(\vec{e}'_i\). Aby na pravé straně z celé sumy zůstal také jen
+      vektor \(\vec{e}'_i\), musí být
+      \begin{equation*}
+        \sum_{j=1}^n\tau_{ij}\sigma_{j\ell} = 
+        \begin{cases}
+          0 & \text{pro} i \neq \ell, \\
+          1 & \text{pro} i = \ell.
+        \end{cases}
+      \end{equation*}
+      Ve výrazu na levé straně jsme bezpochyby poznali prvek s indexy \(i\) a \(\ell\) maticového
+      součinu \(\matr{T}\matr{S}\). Je tedy
+      \begin{equation}\label{mai:eq083}
+        \matr{T}\matr{S} = \matr{E}_n \quad\text{a podobně}\quad
+        \matr{S}\matr{T} = \matr{E}_n \Rightarrow 
+        \matr{S} = \matr{T}^{-1} \quad\text{a}\quad
+        \matr{T} = \matr{S}^{-1}
+      \end{equation}
+
+      Aby byl přechod mezi dvěma bázemi definován, je třeba zadat, popřípadě z jiných zadaných údajů
+      zjistit, matici přechodu \(\matr{T}\) nebo \(\matr{S}\). Pak si již snadno poradíme s převodem
+      složek vektoru \(\vec{u}\). Předpokládejme, že známe složky vektoru u v bázi \((\vec{e}_1,
+      \vec{e}_2, \cdots, \vec{e}_n)\) a potřebujeme zjistit jeho složky v bázi \((\vec{e}'_1,
+      \vec{e}'_2, \cdots, \vec{e}'_n)\). Počítejme a využijme transformačních rovnic
+      (\ref{mai:eq082}) pro vektory báze:
+      \begin{gather*}
+        \vec{u}= \sum_{j=1}^nu_{ij}\vec{e}_j 
+               = \sum_{j=1}^nu_{j}\left(\sum_{i=1}^n\sigma_{ji}\vec{e}'_i\right)
+               = \sum_{i=1}^n\left(\sum_{j=1}^nu_{j}\sigma_{ji}\right)\vec{e}'_i.
+      \end{gather*} 
+      Vektor \(\vec{u}\) původně zadaný jako lineární kombinace vektorů nečárkované báze, jsme nyní
+      vyjádřili jako lineární kombinaci vektorů báze čárkované. Výraz v závorce, který stojí jako
+      koeficient u vektoru \(\vec{e}'_i\), vypadá sice poněkud komplikovaně, ale má jednoduchý
+      význam: Představuje složku \(\vec{u}'_i\) vektoru \(\vec{u}\) v čárkované bázi. Je tedy
+      \begin{equation*}
+        \vec{u}'_i= \sum_{j=1}^nu_{j}\sigma_{ji}
+      \end{equation*}
+      Opět v tomto zápisu jistě spatříte maticové násobení,
+      \begingroup
+      \renewcommand\arraystretch{0.9}
+      \renewcommand\arraycolsep{3pt}
+      \begin{gather*}
+        (u'_1, u'_2, ..., u'_n) = (u_1, u_2, ..., u_n)
+        \begin{pmatrix}
+          \sigma_{11} & \sigma_{12} & \cdots & \sigma_{1n}    \\
+          \sigma_{21} & \sigma_{22} & \cdots & \sigma_{2n}    \\
+          \cdots      & \cdots      & \ddots & \cdots         \\
+          \sigma_{k1} & \sigma_{k2} & \ldots & \sigma_{kn}
+        \end{pmatrix}
+      \end{gather*} 
+      Platí také obrácený převod
+      \begin{gather*}
+        (u_1, u_2, ..., u_n) = (u'_1, u'_2, ..., u'_n)
+        \begin{pmatrix*}[r]
+          \tau_{11} & \tau_{12} & \cdots & \tau_{1n}    \\
+          \tau_{21} & \tau_{22} & \cdots & \tau_{2n}    \\
+          \cdots    & \cdots    & \ddots & \cdots       \\
+          \tau_{k1} & \tau_{k2} & \ldots & \tau_{kn}
+        \end{pmatrix*}
+      \end{gather*}  
+      \endgroup
+      Zkráceně
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq84}
+          \begin{gathered}
+            ({u}') = ({u})\matr{S} = ({u})\matr{T}^{-1}, \\
+            ({u}) = ({u}')\matr{T}.
+          \end{gathered}
+        \end{equation}
+        kde jsme jako \(({u})\), resp. \(({u}')\) označili řádkovou matici složek vektoru
+        \(\vec{u}\) v nečárkované, resp. čárkované bázi.
+      \end{mdframed}
+
+      %---------------------------------------------------------------
+        \input{../src/MAI/exam/exam089.tex}
+      %---------------------------------------------------------------
+
+    \subsection{Vektory jako geometrické objekty}\label{mai:IchapIIsecIVsubII}
+      Ve fyzice pracujeme často v prostorech nižších dimenzí - na přímce, v rovině, v trojrozměrný
+      prostoru. Jedná se o prostory euklidovské, v nichž umíme měřit délky a úhly. Jak to máme dělat,
+      víme ze zkušenosti. Euklides také nijak základní pojmy geometrie, jako jsou \emph{bod},
+      \emph{přímka}, \emph{úhel}, \emph{délka}, \emph{rovnóběžnost}, apod., nedefinoval. Považoval
+      jejich znalost za samozřejmou právě protop že jsou dány především zkušeností. Z fyziky tedy máme
+      o vektorech určitou geometrickou představu. Interpretujeme je jako \textbf{orientované úsečky},
+      tj. \emph{uspořádané dvojice bodů}. První z nich je bodem \emph{počátečním}, druhý bodem
+      \emph{koncovým}. Při geometrických konstrukcích často označujeme orientované úsečky šipkami.
+      Konkrétní orientovaná úsečka představuje \textbf{vázaný vektor}. (Typickým příkladem vázaného
+      vektoru je síla, která působí na těleso v konkrétním bodě - působišti.) Dvojici totožných bodů
+      nazveme \emph{nulový vázaný vektor}, i když neurčuje orientovanou úsečku. Zvolme kartézskou
+      soustavu souřadnic \(S = (O: x, y, z)\) určenou počátkem \(O\) a třemi navzájem kolmými osami
+      (reálnými přímkami) \(x\), \(y\), \(z\). Na každé z os je dána stejně velká jednotka. Poloha
+      bodu \(A\) je v této soustavě určena jeho kartézskými souřadnicemi, \(A = (x_A, y_A, z_A)\),
+      které získáme sestrojením kolmých průmětů bodu \(A\) do souřadnicových os (obr.
+      \ref{mai:fig060}). Bod \(A\) můžeme chápat jako koncový bod vázaného vektoru
+      \(\overrightarrow{AO}\). Tomuto vektoru přisoudíme složky \(\overrightarrow{OA} = (u_1, u_2,
+      u_3)\), kde \(u_1 = x_A\), \(u_2 = y_A\), \(u_3 = z_A\). Zvolme vektory \(\vec{e}_1\),
+      \(\vec{e}_2\), \(\vec{e}_3\) s počátkem v bodě \(O\) tak, aby směřovaly podél souřadnicových os
+      a měly jednotkovou velikost. Jedná se o vektory \textbf{ortonormální báze}. Zavedeme-li operaci
+      sčítání vázaných vektorů umístěných v tomtéž počátečním bodě (v tomto případě v bodě \(O\))
+      pomocí známého vektorového rovnoběžníka bude vektor \(\overrightarrow{OA}\) lineární kombinací
+      vektorů \(\vec{e}_1, \vec{e}_2, \vec{e}_3\) s koeficienty právě rovnými hodnotám \(x_A\),
+      \(y_A\) a \(z_A\). Uvažme nyní jinou orientovanou úsečku, třeba \(\overrightarrow{CD}\), která
+      však má s vázaným vektorem \(\overrightarrow{OA}\) shodnou velikost i směr (včetně orientace).
+      Jezřejmé, že posuneme-li vektory ortonormální báze tak, aby měly počátek v bodě \(C\), dostaneme
+      \begin{gather*}
+        \begin{align*}
+          \overrightarrow{CD} &= u_1\vec{e}_1 + u_2\vec{e}_2 + u_3\vec{e}_3       \\
+                              &= (x_D - x_C)\vec{e}_1 + (y_D - y_C)\vec{e}_2 + (z_D - z_C)\vec{e}_3
+        \end{align*}
+      \end{gather*}
+      \begin{figure}[ht!]  %\ref{mai:fig060}
+        \centering
+        \luafigure[1]{mai_fig060.png}
+        \caption{ (\cite[s.~6]{Kulhanek2018}}
+        \label{mai:fig060}
+      \end{figure}
+
+      Množina všech vázaných vektorů shodné velikosti a směru (včetně orientace), tj. orientovaných
+      úseček lišících se pouze \emph{umístěním} (poloha počátečního bodu je libovolná), se nazývá
+      \textbf{volný vektor} \(\vec{u}\). Konkrétní prvek této množiny, tj. konkrétní vázaný vektor, je
+      \emph{umístění} volného vektoru \(\vec{u}\). Nulový volný vektor značíme \(\vec{o}\). Také
+      pomocí vektorů ortonormální báze můžeme vytvořit volné vektory. K nedorozumění nemůže dojít, a
+      tak je opět značíme \(\vec{e}_1, \vec{e}_2, \vec{e}_3\). Platí
+      \begin{equation*}
+        \vec{u} = u_1\vec{e}_1 + u_2\vec{e}_2 + u_3\vec{e}_3.
+      \end{equation*}
+      Velikost vektoru \(\vec{u}\) je (pozor - platí jen v ortonormální bázi)
+      \begin{equation*}
+        \abs{\vec{u}} = \sqrt{u_1^2 + u_2^2 + u_3^2}.
+      \end{equation*}
+
+      Situace, které jsme právě popsali, znázorňuje obrázek \ref{mai:fig060}. Na tomto obrázku je
+      nakresléno několik umístění volného vektoru \(\vec{u} = (3, 5, 4)\), například
+      \(\overrightarrow{OA}\), \(\overrightarrow{CD}\), \(\overrightarrow{EF}\). Vektory \(\vec{e}_1 =
+      (1, 0, 0)\), \(\vec{e}_2 = (0, 1, 0)\), \(\vec{e}_3 = (0, 0, 1)\) jsou jednotkové vektory ve
+      směru souřadnicových os, \(\vec{u}_1 = (3, 0, 0)\), \(\vec{u}_2 = (0, 5, 0)\), \(\vec{u}_3 =
+      (0, 0, 4)\) jsou kolmé (pravoúhlé) průměty vektoru \(\vec{u}\) do souřadnicových os. Snadno
+      uvidíme, že operace sčítám vektorů definovaná pro vázané vektory pomocí vektorového rovnoběžníka
+      dává stejný výsledek jako sčítání „po složkách“. Zobecníme
+      \begin{gather*}
+        \begin{align*}
+        \overrightarrow{CD} + \overrightarrow{CE}  
+          &= [(x_D - x_C) + (x_E - x_C)]\vec{e}_1                              \\
+          &+ [(y_D - y_C) + (y_E - y_C)]\vec{e}_2                              \\
+          &+ [(z_D - z_C) + (z_E - z_C)]\vec{e}_3.
+        \end{align*}
+      \end{gather*}
+      Pro součet volných vektorů pak platí
+      \begin{gather*}
+        \vec{u} + \vec{v}= (u_1+v_1)\vec{e}_1 + (u_2+v_2)\vec{e}_2 + (u_3+v_3)\vec{e}_3.
+      \end{gather*}
+
+      Násobek vázaného vektoru \(\overrightarrow{CD}\) reálným číslem a definujeme přirozeně jako
+      vázaný vektor \(\overrightarrow{CE}\), jehož délka je \(\abs{\alpha}\)-násobkem délky vektoru
+      \(\overrightarrow{CD}\) a který má s vektorem \(\overrightarrow{CD}\) stejný směr a
+      \emph{souhlasnou orientaci}, je-li \(\alpha > 0\), stejný směr a \emph{nesouhlasnou orientaci}
+      pro \(\alpha < 0\), a je vektorem nulovým (dvojice totožných bodů) pro \(\alpha = 0\). Pro
+      \(\alpha\)-násobek \(\vec{v}\) volného vektoru \(\vec{u}\) pak platí
+      \begin{gather*}
+        \vec{v} = v_1\vec{e}_1 + v_2\vec{e}_2 + v_3\vec{e}_3 
+                =  (\alpha u_1)\vec{e}_1 + (\alpha u_2)\vec{e}_2 + (\alpha u_3)\vec{e}_3.
+      \end{gather*}
+      Je zřejmé, že operace sčítání vektorů a násobení vektoru číslem mají v této geometrické
+      reprezentaci stejné vlastnosti jako v odstavci \ref{mai:IchapIIsecIVsubI}. Opět jde o počítání
+      s maticemi. Stejná pravidla platí pro přechody mezi bázemi, a to nejen bázemi ortonormálními,
+      ale i obecným? V případě obecných bází používáme k získání průmětů bodů a vektorů nikoli
+      kolmého, nýbrž rovnoběžného promítání. V dalším odstavci ukážeme, že vyjádření vektorů v
+      ortonormálních bázích má přece jen velkou výhodu. Zjednodušuje totiž všechny výpočty s
+      vektory.
+
+    \subsection{Součiny vektorů}\label{mai:IchapIIsecIVsubIII}
+      Kromě základních operací s vektory, tj. sčítání vektorů a násobení vektoru skalárem, se 
+      často používají další operace, které obohacují \emph{strukturu vektorového prostoru}. 
+      Zůstaneme u vektorů v trojrozměrném prostoru \(\mathbb{R}^3\) a definujeme si skalární, 
+      vektorový a smíšený součin vektorů. Skalární součin vektorů definujeme prostřednictvím 
+      geometrické definice jako zobrazení, které uspořádané dvojici vektorů (volných vektorů nebo 
+      jejich libovolných umístění) přiřazuje reálný číslo podle předpisu
+      \begin{equation}\label{mai:eq038}
+        \vec{u}\vec{v} = \abs{\vec{u}}\cdot\abs{\vec{v}}\cos\varphi,
+      \end{equation}
+      kde \(\varphi = \sphericalangle(\vec{u},\vec{v})\) je velikost minimálního z obou úhlů mezi 
+      vektory\(\vec{u},\vec{v}\).
+
+      %--Skalární součiny vektorů ortonormální báze-------------------
+        \input{../src/MAI/exam/exam034.tex}
+      %---------------------------------------------------------------
+      
+      Shrneme nyní vlastnosti skalárního součinu. Dokázat bychom je mohli, i když by to mohlo být i 
+      velmi pracné, užitím znalostí z goniometrie. Zkuste to alespoň pro jednu z nich! Třeba se    
+      vám podaří zvolit si tu nejjednodušší.
+
+      \todo[inline]{Kapitola: "Součiny vektorů" bílé místo} 
+
+      \subsection{Vektory v ortonormálních bázích}\label{mai:IchapIIsecIVsubIV} 
+        V praxi pracujeme většinou s vektory v trojrozměrném prostoru \(\mathbb{R}^3\) a pro jejich
+        vyjádření volíme (pravotočivé) ortonormální báze. Tato volba je celkem pochopitelná: Proč
+        bychom si komplikovali výpočty obecnými bázemi? Uvidíme, jak se výpočty zjednoduší. Prvky
+        matic přechodu mají totiž v případě ortonormálních bází velmi názorný geometrický význam.
+        Označme \(\vec{e}_1, \vec{e}_2, \vec{e}_3\) a \(\vec{e}'_1, \vec{e}'_2, \vec{e}'_3\) dvě
+        ortonormální báze v trojrozměrném prostoru \(\mathbb{R}^3\). Nechť \(\matr{T}\) a
+        \(\matr{S}\) jsou matice přechodu (význam viz v odstavci \ref{mai:IchapIIsecIVsubI}).
+        Přechod „tam“ :
+        \begin{align*}
+          \vec{e}'_1&=\tau_{11}\vec{e}_1+\tau_{12}\vec{e}_2+\tau_{13}\vec{e}_3,    \\
+          \vec{e}'_2&=\tau_{21}\vec{e}_1+\tau_{22}\vec{e}_2+\tau_{23}\vec{e}_3,    \\
+          \vec{e}'_3&=\tau_{31}\vec{e}_1+\tau_{32}\vec{e}_2+\tau_{33}\vec{e}_3.    
+        \end{align*}
+        Přechod „zpět“:
+        \begin{align*}
+          \vec{e}_1&=\sigma_{11}\vec{e}'_1+\sigma_{12}\vec{e}'_2+\sigma_{13}\vec{e}'_3,    \\
+          \vec{e}_2&=\sigma_{21}\vec{e}'_1+\sigma_{22}\vec{e}'_2+\sigma_{23}\vec{e}'_3,    \\
+          \vec{e}_3&=\sigma_{31}\vec{e}'_1+\sigma_{32}\vec{e}'_2+\sigma_{33}\vec{e}'_3.    
+        \end{align*}
+        Řádky v maticích přechodu
+        \begingroup
+          \renewcommand\arraystretch{1.0}
+          \renewcommand\arraycolsep{3pt}
+          \begin{gather*}
+            \matr{T} = 
+            \begin{pmatrix}
+              \tau_{11} & \tau_{12} & \tau_{13}    \\
+              \tau_{21} & \tau_{22} & \tau_{23}    \\
+              \tau_{31} & \tau_{32} & \tau_{33}
+            \end{pmatrix}, \quad\text{resp.}\quad
+            \matr{S} = 
+            \begin{pmatrix}
+              \sigma_{11} & \sigma_{12} & \sigma_{13}    \\
+              \sigma_{21} & \sigma_{22} & \sigma_{23}    \\
+              \sigma_{31} & \sigma_{32} & \sigma_{33}
+            \end{pmatrix}
+          \end{gather*} 
+        \endgroup
+      \todo[inline]{Kapitola "Vektory v ortonormálních bázích" bílé místo}
+%} % tikzset
+%---------------------------------------------------------------------------------------------------

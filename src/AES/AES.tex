@@ -1,0 +1,65 @@
+%===================================================================================================
+% Analogové elektronické systémy
+% file AES.tex
+%===================================================================================================
+% notes:
+%~~~~~~~~~
+% \label{aes:fig075}
+% \label{aes:eq091}
+% \label{aes:sec011}
+% \label{aes:exam004}
+% \label{aes:tab000}
+
+% Setting path to image 
+\graphicspath{{../src/AES/img/}}
+
+%---------------------------------------------------------------------------------------------------
+%                               AES
+%---------------------------------------------------------------------------------------------------
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{AES}{Analogové elektronické systémy}{AES}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \input{../src/AES/chap/aes1ch01.tex}
+  % \input{../src/AES//chap/amplifier.tex}
+  % \input{../src/AES/chap/oscillator.tex}
+  % \input{../src/AES/chap/DA_AD_converter.tex} 
+  % \input{../src/AES/chap/aes1ch03.tex}  
+  % \input{../src/AES/chap/aes1ch04.tex}  
+  % \input{../src/AES/chap/aes1ch05.tex}
+  \input{../src/AES/chap/aes1ch09.tex} 
+}
+{
+% DEBUG was off
+%=============== Kapitola: Modelování, analýza a simulace elektronických obvodů ===================
+  \input{../src/AES/chap/aes1ch01.tex}
+%=============== Kapitola: Amplifiers =============================================================
+  \input{../src/AES//chap/amplifier.tex}
+%=============== Kapitola: Signal generators ======================================================
+  \input{../src/AES/chap/oscillator.tex}
+%=============== Kapitola: Operační zesilovače ====================================================
+  \input{../src/AES/chap/aes1ch03.tex}   
+  \input{../src/AES/chap/aes1ch04.tex} 
+%=============== Kapitola: Komparátory ============================================================
+  \input{../src/AES/chap/aes1ch05.tex}     
+%=============== Kapitola: Systémy pro digitální zpracování analogového signálů ===================
+  \input{../src/AES/chap/DA_AD_converter.tex}  
+%=============== Kapitola: Kmitočtové filtry ======================================================
+  \input{../src/AES/chap/filter.tex}
+%=============== Kapitola: Autonomní zdroje elektrické energie ====================================
+  \input{../src/AES/chap/BATT.tex}
+%=============== Kapitola: Spojitě regulované napájecí zdroje =====================================
+  \input{../src/AES/chap/lin_reg_power.tex}
+%=============== Kapitola: Základy spínaných napájecích zdrojů ====================================
+  \input{../src/AES/chap/SMPS.tex} 
+%=============== Kapitola: Elektromagnetická kompatibilita ========================================
+%  \input{../src/AES/chap/EMC.tex}
+%=============== Kapitola: Osciloskopy a jejich použití ===========================================
+  \input{../src/AES/chap/aes1ch09.tex}
+%=============== Seznam literatury ================================================================  
+  \printbibliography[title={Seznam literatury}, heading=bibliography]  
+}  % DEBUG was off
+

@@ -1,0 +1,48 @@
+% xelatex -enable-write18 -shell-escape mai_fig027.tex
+\documentclass[11pt]{standalone}
+  \usepackage{helvet}                        % font
+  \usepackage{xltxtra}                       % fontspec package
+  \usepackage{tikz}  
+  \usepackage{amsmath, amsthm, amssymb, amsfonts, amsbsy}
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{intersections}
+  \usetikzlibrary{calc}
+
+  \newcommand{\MyXYcross}{%
+    \draw[name path=axeX,->] (\xmin,\zero)  -- (\xmax,\zero)  node[right] {$x$} coordinate(x axis);
+    \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {$y$} coordinate(y axis);
+    \path[name intersections={of=axeX and axeY, name=pocatek}]; 
+    \node[below left] at (pocatek-1) {$0$};
+    \draw[fill=white] (pocatek-1) circle(2pt);  
+}
+
+\begin{document} 
+  \def\xmin{-15}
+  \def\xmax{110}
+  \def\ymin{-15}
+  \def\ymax{+90}
+  \def\zero{0}
+  \def\phase{0}
+  \begin{tikzpicture}
+    \begin{scope}[draw=black,line join=round, miter limit=4.00,line width=0.5pt,y=1pt,x=1pt] 
+      \MyXYcross;   
+    \end{scope}
+    
+    \begin{scope}[domain=0:2*pi, line join=round, miter limit=4.00,line width=0.5pt, 
+                  x=10pt,y=30pt, xshift=25, yshift=45]      
+      \draw[name path=sinx, color=red, smooth] plot[mark=triangle*] (\x,{sin(\x r)}); % r .. radian
+      \draw[thin, dashed] 
+        (0,0)    node[left]  {$f(a)$} -- +(0,-1.5) node[below] {$a$} 
+        (2*pi,0) node[right] {$f(b)$} -- +(0,-1.5) node[below] {$b$}
+        ({pi*0.5},{sin(pi*0.5 r)}) coordinate(max) -- +(0,-2.5)  node[below] {$\xi_1$}
+        ({pi*1.5},{sin(pi*1.5 r)}) coordinate(min) -- +(0,-0.5)  node[below] {$\xi_2$};
+      \draw[fill=white] (0,0) -- (2*pi,0) circle(1pt);
+      \draw[] (max) ++(-1,0)  -- +(2,0);
+      \draw[] (min) ++(-1,0)  -- +(2,0);
+      \draw[fill=white] (max) circle(1pt);
+      \draw[fill=white] (min) circle(1pt);
+      \draw[fill=white] (0,0) circle(1pt); 
+      \draw[fill=white] (2*pi,0) circle(1pt);
+    \end{scope}  
+  \end{tikzpicture}
+\end{document}

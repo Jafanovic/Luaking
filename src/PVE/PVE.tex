@@ -1,0 +1,31 @@
+%    Výkonová elektronika
+% notes:
+%~~~~~~~~~
+%--------------------------------------------------------------------------------------------------
+% Setting path to image 
+\graphicspath{{../src/PVE/img/}}
+%--------------------------------------------------------------------------------------------------
+% file VE.tex
+%---------------------------------------------------------------------------------------------------
+%                               VEI
+%---------------------------------------------------------------------------------------------------
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{VEI}{Pohony a výkonová elektronika I}{VEI}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+  % \input{../src/PVE/chap/menice_s_vnejsi_komutaci.tex}  
+  % \input{../src/PVE/chap/design_IGBT_driver.tex}   
+}
+{
+% DEBUG was off
+%========== Kapitola: Měniče s vnější komutací ====================================================
+  \input{../src/PVE/chap/menice_s_vnejsi_komutaci.tex}  
+%========== Kapitola: Součástky pro výkonovou elektroniku =========================================
+%  \input{../src/PVE/chap/power_sem.tex}  % TODO **
+%========== Kapitola: Budiče IGBT a MOSFET tranzistorů ============================================
+  \input{../src/PVE/chap/design_IGBT_driver.tex}    
+} % DEBUG was off
+
+\printbibliography[title={Seznam literatury}, heading=bibliography]

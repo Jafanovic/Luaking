@@ -1,0 +1,66 @@
+% Technická kybernetika
+% notes:
+%~~~~~~~~~
+% \label{tky:eq003}
+% \label{tky:exam000}
+% \label{tky:fig000}
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+\graphicspath{{../src/TKY/img/}}
+  % \makeatletter
+  %   \@addtoreset{chapter}{part}
+  % \makeatother
+%---------------------------------------------------------------------------------------------------
+% file TKY.tex
+%---------------------------------------------------------------------------------------------------
+\lstset{ %
+  language=Matlab,                       % choose the language of the code
+  basicstyle=\footnotesize,              % the size of the fonts that are used for the code
+  backgroundcolor=\color{White},         % choose the background color. You must add \usepackage{color}
+  commentstyle=\color{help}\textit,
+  keywordstyle=\color{keyword}\textbf,
+  breaklines=true,                       % sets automatic line breaking
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  frame=none,	                           % adds a frame around the code - none, single
+  tabsize=8,                             % sets default tabsize to 8 spaces
+  captionpos=b,                          % sets the caption-position to bottom
+  numbers=left,                          % where to put the line-numbers -none, left, right
+  numberstyle=\footnotesize,             % the size of the fonts that are used for the line-numbers
+  stepnumber=1,                          % the step between two line-numbers. If it's 1 each line
+                                         % will be numbered
+  xleftmargin=3em,                       % adjust left margin
+}
+
+%---------------------------------------------------------------------------------------------------
+%                               TKY
+%---------------------------------------------------------------------------------------------------
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{TKY}{Technická kybernetika}{TKY}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+  % \input{../src/TKY/chap/tky1ch01.tex}
+  % \input{../src/TKY/chap/cis_sig.tex}
+  \input{../src/TKY/chap/lin_sys.tex}
+  \input{../src/TKY/chap/feedback_theory.tex}
+  \input{../src/TKY/chap/Sensor_Temp.tex}
+}
+{
+% DEBUG was off
+%======================= Kapitola: Základy technické kybernetiky ===================================
+  \input{../src/TKY/chap/tky1ch01.tex}
+%======================= Kapitola: Číslicové signály - posloupnosti ================================
+  \input{../src/TKY/chap/cis_sig.tex}
+%======================= Kapitola: Popis spojitých a diskrétních systémů ===========================
+  \input{../src/TKY/chap/lin_sys.tex}
+%========================= Kapitola: Měření teploty ================================================
+  \input{../src/TKY/chap/feedback_theory.tex}
+%========================= Kapitola: Měření teploty ================================================
+  \input{../src/TKY/chap/Sensor_Temp.tex}
+}
+
+\printbibliography[title={Seznam literatury}, heading=bibliography]

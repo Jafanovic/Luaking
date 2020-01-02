@@ -1,0 +1,84 @@
+% !TeX spellcheck = cs_CZ
+%====================== Sbírka řešených příkladů ==================================================
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam016}
+    \begin{equation}\label{mai:exam016_001}
+      \int{xe^x\dx}
+    \end{equation}
+    Užijeme metodu per partes 
+      \(\left[\begin{array}{cc}
+              u=x   & dv=e^x \\
+              du=dx & v=e^x
+        \end{array}\right]\) 
+    \begin{equation*}
+      \int{xe^xdx} = xe^x-\int{e^x\dx} = xe^x - e^x+ c
+    \end{equation*}
+%--------------------------------------------------------------------------------------------------
+    \begin{equation}\label{mai:exam016_002}
+      \int{\arctan x\dx}\qquad x\in R
+    \end{equation}
+    Užijeme metodu per partes 
+       \(\left[\begin{array}{cc} 
+                u =\arctan x                     &  dv= 1  \\ 
+               du =\displaystyle\frac{1}{x^2+1}  &   v= x
+             \end{array}
+       \right]\)
+       
+    \begin{align*}
+       \int{\arctan xdx}                      &= x\arctan x-\int\frac{x}{x^2+1}         \\
+       x\arctan x-\int\frac{x}{x^2+1}         &= 
+         \left[\begin{array}{c} 
+                  x^2 + 1 = t  \Rightarrow 2xdx = dt        \\ 
+                      xdx = \displaystyle{\frac{dt}{2}}
+               \end{array} 
+         \right] =                                                                    \\ 
+       x\arctan x-\frac{1}{2}\int\frac{dt}{t} &= x\arctan x-\frac{1}{2}\ln\abs{t}     \\
+         &=   x\arctan x-\frac{1}{2}\ln\abs{1+x^2}+ c                                 \\
+    \end{align*}
+%--------------------------------------------------------------------------------------------------
+    \begin{equation}\label{mai:exam016_003}
+      \int{\sqrt{x^2+a}\dx}, \text{kde} a\neq0, x^2+a>0
+    \end{equation}  
+    \begin{align*}
+      \int{\sqrt{x^2+a}\dx}                           &=
+        \left[
+          \begin{array}{cc} 
+             u =\sqrt{x^2+a}              & dv = 1 \\ 
+            du =\displaystyle
+                  \frac{x}{\sqrt{x^2+a}}  &  v = x
+          \end{array}
+        \right]                                                                                   \\
+      x\sqrt{x^2+a}-\int{\frac{x^2}{\sqrt{x^2+a}}\dx} &= 
+        \displaystyle{x\sqrt{x^2+a}-\int{\frac{x^2+a-a}{\sqrt{x^2+a}}\dx}}                        
+    \end{align*}\vspace*{-1em}
+    \begin{align*}
+      \int{\sqrt{x^2+a}\dx}                           &= 
+        \displaystyle{x\sqrt{x^2+a}-\int{\sqrt{x^2+a}\dx} + \int{\frac{a}{\sqrt{x^2+a}}\dx}}      \\
+      \int{\sqrt{x^2+a}\dx}                           &= 
+        \frac{1}{2}\left[x\sqrt{x^2+a}+a\int{\frac{1}{\sqrt{x^2+a}}}\dx\right]
+    \end{align*}
+    
+    Integrál \(\int\frac{1}{\sqrt{x^2+a}}\dx\) na pravé straně vyjádříme podle příkladu 
+    \ref{ma:ex_sub_metoda1} a výsledek do\-sta\-ne\-me ve tvaru
+    \begin{equation*}
+      \int\displaystyle{{\sqrt{x^2+a}\dx}
+          =\frac{1}{2}\left[x\sqrt{x^2+a}+a\ln{\abs{x + \sqrt{x^2+a}}}\right]}
+    \end{equation*}
+%---------------------------------------------------------------------------------------------------
+    \begin{equation}\label{mai:int_ex_02}
+      \int{\frac{2x^4-5x^2+14x+13}{x^2-x-2}\dx} \qquad x\in R - \{1,2\}
+    \end{equation}
+    Dělením čitatele integrandu jmenovatelem dostaneme rozklad integrandu na součet funkcí, jejich 
+    integrály najdeme snadno:
+    \begin{equation*}
+      \polylongdiv[style=C,div=:]{2x^4-5x^2+14x+13}{x^2-x-2}
+    \end{equation*}
+
+    Zbytek po dělení představuje integrál, jež je počítán v příkladu \ref{MA:eq_ex1} a proto ho 
+    vynecháme. 
+    \begin{align*}
+       &= 2\int x^2\dx + 2\int x\dx + \int\dx + \int\frac{19x+15}{x^2-x-2}\dx     \\
+       &= \frac{2}{3}x^3 + x^2 + x + \frac{4}{3}\ln\abs{x+1} - \frac{53}{3}\ln\abs{x-2} + C 
+    \end{align*}
+  \end{example}
+\end{mdframed}

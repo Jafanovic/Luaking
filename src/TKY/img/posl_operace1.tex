@@ -1,0 +1,10 @@
+\begin{tikzpicture}[scale=1,>=latex']
+  \coordinate (A) at (-1,-1.5) {};
+  \coordinate (B) at (-1,-2.5) {};
+  \coordinate (C) at (0,-2) {};    
+  \coordinate (D) at ($ (A)!0.5!(B) $) {};
+    \fill[fill=blue!20!white, draw=blue!50!black, very thick] (A) -- (B) -- (C) -- (A);
+    \node[] at ($ (D)!0.4!(C) $) {\(b\)};
+    \draw[->] (C) ++ (-2,0)  node[left] {\(x[n]\)} -- (D);
+    \draw[->] (C) -+ (1,-2) node[right] {\(bx[n]\)}; 
+\end{tikzpicture}

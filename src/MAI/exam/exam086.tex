@@ -1,0 +1,53 @@
+  % !TeX spellcheck = cs_CZ
+% Musilova2009MA2
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam086}
+    \textbf{Příklad o sáňkování}\newline
+    Kdo bude rychlejší na sáňkách? Tatínek o hmotnosti \(M\), nebo Pepíček s Mařenkou o hmotnosti
+    \(m\)? Každý fyzik hned namítne, že tíhové zrychlení, které určuje rozjezd sáněk, na hmotnosti
+    nezávisí. Z praxe však víme, že tatínkové bývají rychlejší. Jak to? Zřejmě proto, že sáňkování
+    ve vakuu není obvyklé. Kromě průmětu tíhové síly do nakloněné roviny (\(F_1 = Mg\sin\alpha\)),
+    který „nás urychluje", jsme brzděni silou odporu prostředí. V jednoduchém přiblížení ji můžeme
+    předpokládat ve tvaru \(F_2 = -Cv^2\). Konstanta \(C\) závisí na tvaru a rozměrech pohybujícího
+    se objektu a na hustotě vzduchu. Pro jednoduchost předpokládáme, že je stejná u tatínka i
+    Pepíčka. Fyzikální zákon \(Ma= F_1 + F_2 = Mg\sin\alpha - Cv^2\)
+
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[1]{mai_fig057.jpg}
+    \captionof{figure}{Ladův obrázek dětí na sáňkách.}
+    \label{mai:fig057}
+    \par}
+
+    například pro tatínka můžeme přepsat na diferenciální rovnici takto:
+    \begin{equation}\label{mai:eq079}
+      M\der{v}{t} = Mg\sin\alpha - Cv^2
+    \end{equation}
+    
+    Hledanou funkcí je nyní časová závislost rychlosti, jako počáteční podmínku budeme uvažovat, že
+    rychlost v čase \(t = 0\) byla nulová. Řešením této počáteční úlohy je funkce
+    \begin{align*}
+      v(t) &= \sqrt{\dfrac{Mg\sin\alpha}{C}}
+              \left[\dfrac{e^{2t\sqrt{\dfrac{Cg\sin\alpha}{M}}}-1}
+                          {e^{2t\sqrt{\dfrac{Cg\sin\alpha}{M}}}+1}
+              \right]                                                                           \\
+          &= \sqrt{\dfrac{Mg\sin\alpha}{C}}\tanh\left(t\sqrt{\dfrac{Cg\sin\alpha}{M}}\right).
+    \end{align*}
+    Graf takovéto závislosti pro dvě různé hmotnosti \(M = \SI{100}{\kg}\) (červená) a \(m =\SI{10}
+    {\kg}\) (modrá) vidíme na obrázku \ref{mai:fig057}. (Poměr hmotností byl takto zvolen pro
+    zvýraznění rozdílnosti výsledků - každému je zřejmé, že mimino samo sáňkovat nemůže.) Další
+    hodnoty: \(\alpha = \ang{20}\), \(g = \SI{10}{\m\per\square\s}\), \(C =
+    \SI{1.00}{N\m^2s^{-2}}\). Na obrázku \ref{mai:fig058} si všimněme, že rychlost se nejprve
+
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[1]{mai_fig058.png}
+    \captionof{figure}{Graf řešení úlohy o sáňkování. \cite[s.~221]{Musilova2012MA2}}
+    \label{mai:fig058}
+    \par}
+
+    poměrně prudce zvyšuje, ale poté se asymptoticky blíží k tzv. \textbf{mezní rychlosti} \(v_{max}
+    = Mg\sin\alpha\). Mezní rychlost odpovídá situaci, kdy se síly \(F_1\) a \(F_2\) „vyrovnají“.
+    (Taková situace však nenastane, je pouze limitním případem pro \(t \rightarrow \infty\).) 
+  \end{example}
+\end{mdframed}

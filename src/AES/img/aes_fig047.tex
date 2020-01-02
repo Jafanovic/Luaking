@@ -1,0 +1,37 @@
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{circuitikz}
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{calc,decorations.markings}
+
+\begin{document}
+  \begin{circuitikz} %to [short,*-] 
+    \draw
+      (0, 0) node[op amp, xscale=-1] (opamp1) {}
+      (0, -2) node[op amp] (opamp2) {}
+      (opamp2.out) --++(0.5,0) coordinate(out2) |- (opamp1.+) 
+      (opamp1.out) --++(-0.5,0) coordinate(end) |- (opamp2.-) 
+      (opamp2.+) -| ++(-0.5,-0.3) node[rground]{} coordinate(ground)
+      (opamp1.-) -| ++(0.5,-0.3) node[rground]{};
+  
+    \node[left=0.1cm] at ($ (end)!0.3!(ground) $) {\(I_R^-\)};
+    \draw[-latex,blue] (end) ++(0,-1cm) --++(0,-0.1cm);
+    \draw[black, fill=black] (end) circle (.15em);
+
+    \node[left=0.1cm] at ($ (end)!0.95!(ground) $) {\(I_R^+\)};
+    \draw[-latex,blue] (ground) --++(0,0.1cm); 
+
+    \node[above right = 0.1mm and -0.2cm of opamp2.out] {\(I_0\)};
+    \draw[-latex,blue] (opamp2.out) --++(0.2cm,0);
+
+    \draw[latex-] (opamp2.+) --++(-0.5cm,0.4cm) node[above]{\(u_{CM}\)};
+    \draw[latex-] (out2) ++(0,0.7cm) --++(0.5cm,0.4cm) node[above]{\(u_{0}\)};
+   
+    
+    \draw[-latex] (end) --++ (-0.8,0) node[left] {\(E_R\)};  
+    \node[below=1cm,text width=8em] at (opamp2.out) {\textbf{Měřený OZ}};
+    \node[above=0.5cm,text width=12em] at (opamp1.out) {
+      \textbf{Pomocný ideální OZ} \\
+      (Nulový indikátor)};
+  \end{circuitikz}
+\end{document}

@@ -1,0 +1,28 @@
+\documentclass{standalone}
+    \usepackage{xltxtra}
+    \usepackage{tikz}
+    \usetikzlibrary{intersections, calc}
+    \usepackage[
+        american, 
+        europeanresistors,
+        cuteinductors,  
+        smartlabels]{circuitikz}
+        \usetikzlibrary{shapes} 
+        \ctikzset{bipoles/thickness=1}
+        \ctikzset{bipoles/length=0.8cm}
+        \ctikzset{bipoles/vsourceam/height/.initial=.7}
+        \ctikzset{bipoles/vsourceam/width/.initial=.7}
+        \tikzstyle{every node}=[font=\small]
+        \tikzstyle{every path}=[line width=0.8pt,line cap=round,line join=round]
+\begin{document}
+    \begin{circuitikz}
+        \draw
+        (0,0)
+            to[L, l^=$L$] ++(0,2)
+            to[short] (2,2)
+            to[C, l=$C$] ++(0,-2)
+            to [R, l_=$R_N$] ++ (-1,0)
+            to [R, l_=$R$] ++ (-1,0) 
+            --(0,0);
+    \end{circuitikz}
+\end{document}    

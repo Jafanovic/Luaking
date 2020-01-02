@@ -1,0 +1,95 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam058}
+    \textbf{Jak nekoupit zmetek}\newline
+      Do finále soutěže o „šmejd roku“ se dostaly dva podniky, „Hvizd, s.r.o.“ a „Svist, a.s.“,
+      které zásobují trh zábavnou pyrotechnikou. První z nich kryje požadavky trhu ze
+      \SI{70}{\percent}, druhý ze zbývajících \SI{30}{\percent}. “Zjistilo se, že \SI{83}{\percent}
+      ze všech výrobků Hvizdu je vadných (nebouchají, když je to třeba, zejména však bouchají, když
+      se to nejméně očekává). V případě Svistu je zmetků pouze \SI{63}{\percent}. Porota soutěže
+      rozhodla, že cenu dostane ten z obou podniků, jehož ředitel zodpoví správně následující
+      otázky:
+      \begin{enumerate}[noitemsep]
+      \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle bude fungovat tak, jak má?
+      \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle, o níž se na obalu píše, že byla
+      vyrobena podnikem Hvizd, není zmetek?
+      \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle, kterou se podařilo úspěšně
+      odpálit, byla vyrobena podnikem Svist?
+      \end{enumerate} 
+      Postupně jednotlivé úkoly vyřešíme. V případě a) posuzujeme pravděpodobnost jevu \(A\):
+      „Náhodně zakoupený výrobek je funkční.“ bez dalších podmínek. Jedná se o nepodmíněnou
+      pravděpodobnost. Dejme tomu, že na trhu je v dané chvíli ke koupi \(n\) rachejtlí. Z nich
+      \SI{70}{\percent}, tj. \(\num{0.7}n\), bylo vyrobeno v Hvizdu a zbytek, \(\num{0.3}n\), ve
+      Svistu. Víme, že \SI{17}{\percent} výrobků Hvizdu je funkčních, v případě Svistu je to
+      \SI{37}{\percent}. Na trhu je tedy v tuto chvíli
+      \begin{equation*}
+        m = \num{0.17}\cdot\num{0.7}n + \num{0.37}\cdot\num{0.3}n = \num{0.23}n
+      \end{equation*}
+      funkčních raket. Pravděpodobnost zakoupení funkční rakety je tedy
+      \begin{equation*}
+        p(A) = \dfrac{m}{n} = \num{0.23}.
+      \end{equation*}
+      Výsledek lze snadno zobecnit. Označíme-li \(p_1\) pravděpodobnost zmetku ve firmě Hvizd a
+      \(p_2\) pravděpodobnost zmetku ve firmě Svist, je pravděpodobnost funkčního výrobku ve Hvizdu
+      \((1 - p_1)\) a ve Svistu \((1 - p_2)\). Označme \(q\) podíl Hvizdu na celkové produkci. Podíl
+      Svistu je pak \((1 - q)\). Pravděpodobnost koupě funkčního výrobku je
+      \begin{align*}
+        p(A) &= (1 - p_1)q + (1 - p_2)(1 - q)    \\
+             &= (1 - p_2) + q(p_2 - p_1).
+      \end{align*}
+      
+      V úloze b) se již jedná o \textbf{podmíněnou pravděpodobnost}. Koupíme v obchodě raketu,
+      podíváme se na obal a zjistíme, že byla vyrobena ve Hvizdu. S touto dodatečnou informací
+      chceme zjistit pravděpodobnost, že až raketu rozbalíme a odpálíme, bude skutečně fungovat.
+      Označme jako jev \(B\) „Raketa byla vyrobena ve Hvizdu.“ Naším úkolem je tedy zjistit
+      pravděpodobnost jevu \(A\) (raketa bude funkční) za podmínky, že nastal jev \(B\) (byla
+      vyrobena ve Hvizdu). Tuto pravděpodobnost značíme \(p_B(A)\). Víme, že na trhu je \(qn =
+      \num{0.7}n\) raket vyrobených ve Hvizdu. To představuje pro náš další výpočet počet případů
+      možných. Pouze \((1 - p_1) = \num{0.17}\) z nich je však funkčních, počet případů příznivých
+      je tedy \((1 - p_1)qn = \num{0.17}\cdot\num{0.7}n = \num{0.119}n\). Hledaná pravděpodobnost je
+      \begin{equation*}
+        p_B(A) = \dfrac{(1 - p_1)qn}{qn} = 1 - p_1 = \num{0.17}
+      \end{equation*}
+      Všimněme si výpočtu podrobněji. \((1 - p_1)q\) představuje pravděpodobnost jevu \((A\text{
+      a }B)\), že náhodně zakoupená raketa bude funkční a zároveň bude vyrobena ve Hvizdu. Skutečně,
+      na trhu je v dané chvíli \(n\) raket, z nich \(qn\) bylo vyrobeno ve Hvizdu a z těchto \(qn\)
+      výrobků Hvizdu je \((1 - p_1)qn\) funkčních. Proto 
+      \begin{equation*}
+        p(A\text{ a }B) = \dfrac{(1 - p_1)qn}{n} = (1 - p_1)q = \num{0.119}
+      \end{equation*}
+      (Divíte se, že tato pravděpodobnost není součinem \(p(A)p(B)\)? Nedivte se, jevy \(A\) a \(B\)
+      nejsou totiž nezávislé!). Vidíme, že platí
+      \begin{equation*}
+        \boxed{p(A\text{ a }B) = p(B)p_B(A)}\,,
+      \end{equation*}
+      neboť \(q = p(B)\). Získáváme tedy vztah pro výpočet podmíněné pravděpodobnosti:
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq057}
+          p_B(A) = \dfrac{p(A\text{ a }B)}{p(B)} \quad\text{obdobně}\quad
+          p_A(B) = \dfrac{p(A\text{ a }B)}{p(A)}.
+        \end{equation}
+      \end{mdframed}
+    
+      Zbývá vyřešit soutěžní úkol c). Koupili jsme raketu a odpálili ji. Fungovala. Jaká je
+      pravděpodobnost, že když se nyní podíváme na obal, zjistíme, že šlo o výrobek Svistu? Můžeme
+      již využít vztahu (\ref{mai:eq057}). Máme totiž počítat pravděpodobnost jevu \(B\) za
+      podmínky, že nastal jev \(A\). (Poznamenejme, že je-li jev \(B\) definován jako „Náhodně
+      koupená raketa pochází z Hvizdu.“, je jev „Náhodně koupená raketa pochází ze Svistu.“ jevem
+      opačným k \(B\).) Platí
+      \begin{align*}
+        p_A(\overline{B})&= \dfrac{p(A\text{ a }\overline{B})}{p(A)}
+                          = \dfrac{p_{\overline{B}}(A)p(\overline{B})}{p(A)}                \\             
+                         &= \dfrac{(1 - p_2)(1 - q)}{(1 - p_2) + q(p_2 - p_1)}              \\
+                         &= \dfrac{\num{0.37}\cdot\num{0.3}}{\num{0.37} + \num{0.7}\cdot(\num{-0.2})}
+                          \simeq\num{0.483}
+      \end{align*}
+      Kdo chce, může snadno dospět k výsledku přímou úvahou: Na trhu je \(n\) raket, z nich
+      funkčních je \(\num{0.17}\cdot\num{0.7}n + \num{0.37} - \num{0.3}n = \num{0.23}n\). Tato
+      hodnota je při výpočtu \(p(A\text{ a }B)\)  počtem případů možných. Počet funkčních raket
+      vyrobených Svistem je \(\num{0.37}\cdot\num{0.3}n = \num{0.111}n\). To je počet případů
+      příznivých. Hledaná pravděpodobnost je tedy podílem
+      \begin{equation*}
+        p(A\text{ a }\overline{B}) = \dfrac{\num{0.111}n}{\num{0.23}n}\simeq\num{0.483}.
+      \end{equation*}
+  \end{example}
+\end{mdframed}

@@ -1,0 +1,59 @@
+% !TeX spellcheck = cs_CZ
+% Draw CDF of normal distribution in Tikz
+% https://tex.stackexchange.com/questions/60950
+
+\documentclass[11pt]{standalone}
+\usepackage{xltxtra}
+\usepackage{siunitx}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+\usepackage{amsmath}
+
+\def\cdf(#1)(#2)(#3){0.5*(1+(erf((#1-#2)/(#3*sqrt(2)))))}%
+% to be used: \cdf(x)(mean)(variance)
+
+\DeclareMathOperator{\CDF}{cdf}
+
+\begin{document}
+  \begin{tikzpicture}[thick,scale=0.7, every node/.style={transform shape}]
+    \begin{axis}[
+      xmin = -4, xmax = 4, ymin = 0, ymax = 1,
+      unit vector ratio=1 4 1,  % axis equal
+      grid = both,   % both, major
+      grid style={line width=.1pt, draw=gray!20},
+      major grid style={dashed, line width=.2pt, draw=gray!40},
+      minor tick num=3,
+      clip = true,
+      clip mode=individual,
+      axis x line = middle,
+      axis y line = middle,
+      x label style={at={(axis description cs:1.06,0.14)},anchor=east},
+      y label style={at={(axis description cs:0.5,1.17)},anchor=north},
+      xlabel={\(x\)},
+      ylabel={\(F_{\mu,\,\sigma^2}(x)\)},
+%      xticklabels={, , 1, 2, 3},
+      enlarge y limits={rel=0.2},
+      enlarge x limits={rel=0.07}
+    ]
+    
+      \addplot[color=Gold3, samples=1000, smooth, ultra thick, unbounded coords=jump, no markers, 
+               domain = -4:4] 
+        gnuplot{\cdf(x)(1)(0.4)};
+      \addplot[color=red, samples=1000, smooth, ultra thick, unbounded coords=jump, no markers, 
+               domain = -4:4] 
+        gnuplot{\cdf(x)(0)(1)};
+      \addplot[color=blue, samples=1000, smooth, ultra thick, unbounded coords=jump, no markers, 
+               domain = -4:4] 
+        gnuplot{\cdf(x)(-1)(0.4)};
+
+      \draw[Gold3, ultra thick] (2.5,0.8) -- (2.0,0.8);
+      \draw[red,   ultra thick] (2.5,0.6) -- (2.0,0.6);
+      \draw[blue,  ultra thick] (2.5,0.4) -- (2.0,0.4);
+      \node at (2.5,0.8) [right, fill=white] {\small\(\mu =  1,\, \sigma^2 = \num{0.4}\)};
+      \node at (2.5,0.6) [right, fill=white] {\small\(\mu =  0,\, \sigma^2 = \num{1.0}\)};
+      \node at (2.5,0.4) [right, fill=white] {\small\(\mu = -1,\, \sigma^2 = \num{0.4}\)};
+    \end{axis}
+  \end{tikzpicture}
+\end{document}

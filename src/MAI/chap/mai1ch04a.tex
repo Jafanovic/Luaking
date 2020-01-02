@@ -1,0 +1,1001 @@
+% !TeX program = lualatex
+% !TeX root = luaking.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = cs_CZ
+%---------------------------------------------------------------------------------------------------
+\graphicspath{{../src/MAI/img/}}
+% file mai1ch04a.tex
+%---------------------------------------------------------------------------------------------------
+\setchaptertoc
+\chapter{Determinismus a náhodnost, míra jistoty}\label{mai:IchapIVa}
+  \epigraph{\emph{The true logic of this world is in the calculus of probabilities.}}{James Clerk 
+    Maxwell}
+  \section{Determinismus a náhodnost, míra jistoty}
+    Okolo nás existuje spousta věcí, jevů a událostí, které nelze předvídat - jsou důsledkem náhody.
+    Patří mezi ně např. zakoupení losu, který vyhrává, doba čekání na tramvaj, zlomení nohy na
+    náledí, výsledky parlamentních voleb, obsažená či neobsazená telefonní linka, zasažení stromu
+    bleskem, počet poruch jaderné elektrárny a doba mezi nimi, atd. Běžné matematické prostředky
+    nelze k popisu náhodných dějů použít. Např. diferenciální rovnice popisují, jaké vztahy platí za
+    daných podmínek mezi jednotlivými veličinami. Jestliže dodržíme všechny předpoklady, výsledek
+    bude vždy stejný a přesně definovaný.
+    
+    Jinak je tomu u náhodných dějů. I když si koupím los vždy u stejného prodavače, zavřu oči a
+    vyberu ho levou rukou, mohu někdy vyhrát a jindy ne. Záleží-li výsledek děje na náhodě, nemůžeme
+    ho nikdy přesně spočítat a popsat. V takovém případě nemůže žádná exaktní věda pomoci již ze
+    samé podstaty náhody. Můžeme se ale snažit popsat, tj. kvantiﬁkovat tuto náhodu.
+    
+    Nejjednodušším kvantiﬁkacím náhody všichni alespoň částečně rozumíme. Jestliže řekneme, že
+    pravděpodobnost šestky při hodu kostkou je \num{1/6}, znamená to, že při velkém počtu hodů i
+    padne přibližně jedna šestina šestek. Co je to ale „velký počet hodů “? Jestliže ze šedesáti
+    hodů mine pouze jedna šestka, je to v rozporu s tímto tvrzením? Nejlépe si výpovědní hodnotu
+    tohotu tvrzení uvědomíme v mezní situaci.
+
+    %--Do nemocnice přichází pacient na operaci---------------------
+    \input{../src/MAI/exam/exam102.tex}
+    %---------------------------------------------------------------
+
+    Otázkami náhody a náhodných dějů se zabývají dvě matematické disciplíny: teorie pravděpodobnosti
+    a matematická statistika.
+
+    \textbf{Teorie pravděpodobnosti} řeší následující problém: jistý jev má řadu různých možných
+    následků. Náhoda určuje, který (jediný) z nich skutečně nastane. Jde-li někdo na zkoušku na
+    vysoké škole, může dostat jedničku, dvojku, trojku nebo čtyřku. Mám-li jít zítra na zkoušku, lze
+    předem říct něco o možnosti, že ji neudělám (dostanu 4)? Teorie pravděpodobnosti dává návod, jak
+    mohu své šance na jednotlivé známky předem kvantiﬁkovat.
+
+    \textbf{Matematická Statistika} řeší v jistém smyslu opačnou situaci. Vidím nějaký jev, který
+    může mít řadu příčin. Např. můj syn dostal ve škole pětku. To může být způsobeno tím, že se
+    neučil, bolela ho hlava, učitele bolela hlava, učitel si něho zasedl atd. Matematická statistika
+    přináší metody, jak (na základě zkušenosti) tyto možné příčiny třídit a kvantiﬁkovat, např.
+    kterou z nich vybrat jako nejvěrohodnější.
+
+    Schematicky lze tyto disciplíny znázornit takto:
+    \luagraphic[1]{mai_fig072.png}{Disciplíny
+                     \cite[s.10]{Rogalewicz2007}}{mai:fig072}
+
+    Teorie pravděpodobnosti a matematická statistika jsou založeny na známých matematických teoriích
+    - kalkulu, lineární algebře, teorii míry. Nepřinášejí (až na výjimky) nové matematické postupy,
+    ale dávají známým metodám nový výklad. Je zde tedy přirozeně věnována mnohem větší pozornost
+    tomu, jak budou vstupní údaje i výsledky interpretovány než vlastnímu průběhu výpočtu.
+
+    Jedná se vlastně o porozumění číslům a vztahům mezi nimi. Špatnou interpretaci (ať již nechtěnou
+    nebo záměrnou) často dochází k posunutí smyslu nebo minimálně k závěrům, které budí úsměv. 
+
+    Jedním ze základních úkolů teorie pravděpodobnosti je počítání s nepřesnými čísly. Průměr nebo
+    relativní chyba jsou speciálními případy obecnějších statistických metod. Opět je třeba získat
+    určitý cit, aby nedocházelo k situacím popsaným v následujících příkladech:
+
+    %--Egyptským muzeem prochází výprava turistů--------------------
+    \input{../src/MAI/exam/exam103.tex}
+    %---------------------------------------------------------------
+
+    Reichmann ve Své knize \emph{Use and Abuse of Statistics} (Používání a zneužívání statistiky)
+    říká: Denní tisk vybírá a zdůrazňuje vždy to, co se zdá zvlášť pozoruhodné, na úkor tabulek a
+    poznámek, které často současně neotiskuje. To není kritika tisku, jehož úkolem je na skutečnosti
+    upozorňovat, nikoli však je do všech podrobností popisovat. Žádný čtenář novin nechce místo
+    svého obvyklého čtení dlouhé statistické tabulky, ale nesmí podlehnout pokušení brát doslovně
+    znázornění, která se stala povrchními. Mnohé zprávy jsou ovšem dokonce výslovně nesprávnými
+    výklady, dovozují nesprávné závěry a tím neprávem kazí pověst statistiky.
+
+    %--Tramvaj (dilema nerozhodného zamilovaného)-------------------
+    \input{../src/MAI/exam/exam104.tex}
+    %--------------------------------------------------------------- 
+  
+  \section{Klasická definice pravděpodobnosti}
+    Hry jsou staré jako lidstvo samo. Řada her byla jistě konstruována na základě zkušenosti a
+    intuice. U složitějších her se ale autor neobešel bez výpočtu, kterým porovnal možnosti výhry a.
+    prohry. Stejně výpočty se snažili provádět i hráči. Jejich snahou bylo, je, a jistě i nadále
+    bude nalézt hrací systém, který by jim umožnil pohádkové zisky.
+    
+    Většina hazardních her má následující schéma: existuje konečný počet možných výsledků. Ten může
+    být malý (např. 6 u hodu kostkou) i velmi vysoký (např. 13.983.816 při tahu šesti čísel ze 49
+    možných ve Sportce). Některé výsledky přinášejí výhru, jiné ne. Spravedlivá hra je taková, u
+    které jsou tyto počty stejné. U hazardních her je počet výsledků, při kterých hráč prohrává vždy
+    (alespoň nepatrně) vyšší než počet výsledků, při kterých vyhraje. Tento rozdíl přináší
+    organizátorovi hry (držiteli banku, majiteli výherního automatu) při dlouhodobém provozování hry
+    zaručený zisk.
+    
+    Výsledek pravděpodobností v tomto schématu je znám již dlouho. Jeho zobecnění přineslo první
+    deﬁnici pravděpodobnosti:
+    \begin{mdframed}[style=mdmathdef]
+      \begin{definition}\label{mai:def001}
+        Klasická definice pravděpodobnosti: Může-li určitý jev vykázat \(n\) (\(n\) je konečné
+        číslo) různých, vzájemně se vylučujících výsledků, které jsou stejně možné (např. na základě
+        symetrie   a homogenity), a jestliže \(m\) z těchto výsledků má nevyhnutelně za následek
+        realizaci jevu \(A\) a zbylých \(n – m\) výsledků tuto realizaci vylučuje potom
+        pravděpodobnost jevu \(A\) (píšeme \(P(A)\)) položíme rovnu \(\frac{m}{n}\)
+      \end{definition}
+    \end{mdframed}
+
+    Tato „deﬁnice“ pochází od francouzského matematika Pierra Simona de Laplace (1749- 1829) a celé
+    století sloužila za základ pro výpočet pravděpodobností. Přesto vzbuzuje značné pochyby:
+
+    \begin{itemize}[noitemsep]
+      \item Jak spočítat pravděpodobnosti na nesymetrické kostce?
+      \item Co když mám nekonečně mnoho možností? 
+      \item Co to vůbec znamená, že výsledky jsou stejně možné? To vlastně jen jinými slovy říkám,
+            že jsou stejně pravděpodobné. Pravděpodobnost (její míru) chci ale touto větou deﬁnovat.
+            Jedná se tedy o tautologii (v deﬁnici pojmu již tento pojem používám).
+    \end{itemize}
+    
+    Ze všech těchto důvodů nemůže být „klasická definice“ považována za definici pravděpodobnosti v
+    matematickém smyslu. Může ale v určitých případech sloužit jako algoritmus výpočtu.
+ 
+
+  \section{Kombinatorika}\label{mai:IchapIVsecI}
+    \textbf{Kombinatorika} se od všech matematických disciplín, v několika směrech liší. Zatímco v
+    geometrii má každá přímka nekonečnou délku a každý trojúhelník nekonečně mnoho bodů, zatímco v
+    algebře některé rovnice i nerovnice mají nekonečně mnoho řešení a zatímco matematická analýza
+    zkoumá limity posloupností a funkcí, roste-li příslušná proměnná do nekonečna, v kombinatorice
+    se s nekonečnem nesetkáme. Kombinatorika je součástí \textbf{finitní matematiky}, která studuje
+    konečné soubory (množiny a uspořádané \(k\)-tice, \(k\in \mathcal{N}\)). 
+    
+    Další odlišností je to, že často nemáme možnost ověřit si správnost výsledku, ke kterému jsme 
+    při řešení kombinatorické úlohy dospěli, a jsme odkázáni jen na svůj vlastní úsudek. Proto v 
+    kombinatorice v míře větší než jinde platí, že „cvičení dělá mistra“. 
+    
+    V této kapitole je probrána část kombinatoriky, která se zabývá vytvářením skupin z daných 
+    prvků a určováním jejich počtu. Jde o klasickou problematiku, která byla řešena již v 17. a 18. 
+    století a která je spojena se jmény \emph{B. Pascala}, \emph{P. Fermata}, \emph{J Bernoulliho}, 
+    \emph{G. W. Leibnize}  a \emph{L. Eulera}. Dnes představuje kombinatorika rozsáhlou 
+    matematickou disciplínu, některé její problémy byly již vyřešeny (problém čtyř barev) mnohé 
+    další na své vyřešení čekají. 
+    
+    A závěrem ještě důležitá poznámka terminologická: přirozenými čísly se v této kapitole rozumějí 
+    čísla celá kladná tj. čísla 1, 2, 3, 4, \(\ldots\), nula se tedy mezi přirozená čísla 
+    nezahrunuje. \cite[s.~7]{calda2008matematika} 
+    
+    \subsection{Základní kombinatorická pravidla}\label{mai:IchapIVsecIssecI}
+      K řešení velké části kombinatorických úloh vystačíme s dvěma jednoduchými pravidly. Je dost
+      pravděpodobné, že jsme je už sami několikrát použili, aniž nám bylo známo, že se o nějaká
+      kombinatorická pravidla vůbec jedná. Vysvětlíme si je na řešení následujících (velmi snadných
+      příkladů).
+
+      %--Počet všech přirozených dvojciferných čísel------------------
+      \input{../src/MAI/exam/exam094.tex}
+      %---------------------------------------------------------------
+
+      V prvním řešení příkladu je obsaženo kombinatorické pravidlo součinu:
+      
+      \begin{mdframed}[style=highlight]
+        Počet všech uspořádaných \(k\)-tic, jejichž první člen lze vybrat \(n_1\) způsoby, druhý
+        člen po výběru prvního členu \(n_2\) způsoby atd. až \(k\)-tý člen po výběru všech
+        předcházejících členů \(n_k\) způsoby, je roven \(n_1\cdot n_2\cdots n_k\).
+      \end{mdframed}
+
+      Vskutku: uvedená dvojciferná čísla lze považovat za uspořádané dvojice s různými členy,
+      protože první člen lze vybrat devíti způsoby a druhý (po výběru prvního) rovněž devíti
+      způsoby, je počet těchto uspořádaných dvojic - tj. uvažovaných dvojciferných čísel - roven
+      \(9\cdot9= 81\).
+
+      Ve druhém řešení bylo použito kombinatorické pravidlo součtu:
+      
+      \begin{mdframed}[style=highlight]       
+        Jsou-li \(A_1\), \(A_2\), \(\cdots\), \(A_n\) konečné množiny, které mají po řadě \(p_1\),
+        \(p_2\), \(\cdots\), \(p_n\) prvků, a jsou-li každé dvě disjunktní, pak - počet prvků množiny
+        \(A_1 \cup A_2 \cup\cdots\cup A_n\), je roven \(p_1 + p_2 \cdots + p_n\).        
+      \end{mdframed}
+
+      Je jasné, že v uvedeném příkladu je \(A_1\) množina všech dvojciferných čísel s různými
+      číslicemi a \(A_2\) množina všech dvojciferných čísel s týmiž číslicemi. 
+      
+      Jak je vidět, jsou obě pravidla téměř samozřejmá, což jim vsak neubírá na významu; pomocí nich
+      odvodíme v dalších článcích některé kombinatorické vzorce. V následujícím příkladu uvidíme,
+      jak kombinatorické pravidlo součinu může pomoci při rozhodování, kolikrát je vlastně daný
+      objekt (v příkladu jde o trojúhelník) počítán.
+    
+      %--Počet všech trojúhelníků XYZ---------------------------------
+      \input{../src/MAI/exam/exam095.tex}
+      %---------------------------------------------------------------
+
+      V řešení následujícího „turistického” příkladu jsou použita obě uvedená pravidla. Poznáme jak?
+      
+      %--Turistický příklad-------------------------------------------
+      \input{../src/MAI/exam/exam096.tex}
+      %---------------------------------------------------------------
+
+    \subsection{Variace}\label{mai:IchapIVsecIssecII}
+      V kombinatorice se často setkáváme s \(k\)-člennými skupinami utvořenými z daných \(n\) prvků
+      tak, že v nich \emph{záleží na pořadí} a žádný z daných prvků se v nich \emph{neopakuje}.
+      Ptáme-li se třeba, kolika možnými způsoby může být mezi osm finalistů olympijského sprintu na
+      \SI{100}{\m} rozdělena zlatá, stříbrná a bronzová medaile, ptáme se vlastně na to, kolika
+      způsoby lze z daných osmi atletů utvořit uspořádanou trojici. Uspořádanou trojicí v tomto
+      případě rozumíme trojici, v níž záleží na tom, kdo z jejích členů dostane zlatou, kdo
+      stříbrnou a kdo bronzovou medaili. Takovéto skupiny se nazývají \textbf{variace}, přesněji
+      \(k\)-členné variace z \(n\) prvků.
+
+      \begin{mdframed}[style=highlight]      
+        \(k\)-členná variace bez opakování z \(n\) prvků je uspořádaná \(k\)-tice sestavená z těchto
+        prvků tak, že každý se v ní vyskytuje nejvýše jednou.
+      \end{mdframed}
+      
+      Pro ilustraci uveďme všechny tříčlenné variace ze čtyř prvků \(a\), \(b\), \(c\), \(d\) do
+      tabulky \ref{mai:tab001}:
+      \begin{table}[ht!]      %\ref{fyz:tab006}
+        \centering
+        \scalebox{0.8}{ 
+        \begin{tabular}{cccc}
+          (a, b, c)& (a, c, b)& (b, a, c)& (b, c, a) \\ 
+          (c, a, b)& (c, b, a)& (a, b, d)& (a, d, b) \\ 
+          (b, a, d)& (b, d, a)& (d, a, b)& (d, b, a) \\ 
+          (a, c, d)& (a, d, c)& (c, a, d)& (c, d, a) \\
+          (d, a, c)& (d, c, a)& (b, c, d)& (b, d, c) \\  
+          (c, b, d)& (c, d, b)& (d, b, c)& (d, c, b)
+        \end{tabular}}
+        \caption{Tříčlenné variace ze čtyř prvků \(a\), \(b\), \(c\), \(d\)}
+        \label{mai:tab001}
+      \end{table}
+
+      Určíme nyní počet všech \(k\)-členných variací bez opakování z \(n\) prvků; budeme jej značit
+      symbolem \(V(k,n)\) a k jeho určení použijeme \emph{kombinatorické pravidlo součinu}.
+
+      Mějme tedy dáno \(n\) navzájem různých prvků a přirozené číslo \(k\), \(k\leq n\). Pro výběr
+      prvního členu uspořádané \(k\)-tice máme \(n\) možností, neboť zde může stát libovolný z
+      daných \(n\) prvků; po jeho výběru máme pro výběr 2. členu už jen \(n - 1\) možností, neboť na
+      tomto místě už nemůže být prvek, který jsme vybrali na místo první. Po výběru prvních dvou
+      členů máme pro výběr 3. členu \(n - 2\) možností a tak dále, až pro výběr \(k\)-tého členu
+      máme po výběru všech členů předcházejících právě \(n - (k - 1)\) možností. Schematicky to lze
+      znázornit obrázkem \ref{mai:fig067}:
+
+      \luagraphic[1]{mai_fig067.pdf}{Variace bez opakování - schématické znázornění 
+                     \cite[s.~13]{calda2008matematika}}{mai:fig067}
+
+      Podle kombinatorického pravidla součinu je počet všech těchto uspořádaných \(k\)-tic roven
+      součinu \(n(n-1)(n-2)\cdots(n-(k-1)) = n(n-1)(n-2)\cdots(n - k + 1)\). Máme tedy výsledek
+
+      \begin{mdframed}[style=highlight]
+        Počet \(V(k,n)\) všech \(k\)-členných variací z \(n\) prvků je
+        \begin{equation*}
+          V(k,n) = n(n-1)(n-2)\cdots(n - k + 1)
+        \end{equation*}
+      \end{mdframed} 
+
+      Vzorec pro \(V(k,n)\) si můžeme zapamatovat takto: \(V(k,n)\) je rovno součinu \(k\)
+      přirozených čísel takových, že největší je rovno \(n\) a ke každké další je o jednu menší. V
+      následujícím článku vyjádříme číslo \(V(k,n)\) pomocí tzv. \textbf{faktoriálu}. 
+
+      Na otázku z úvodu tohto článku, kolika způsoby mohou být obsazeny stupně vítězů po olympijském
+      finále v běhu na \SI{100}{\meter}, už tedy umíme odpovědět: počet těchto způsobů je \(V(3.8) =
+      8\cdot7\cdot6=336\)
+
+      %--Vlajky-------------------------------------------------------
+      \input{../src/MAI/exam/exam099.tex}
+      %---------------------------------------------------------------
+    
+      \subsection{Permutace}\label{mai:IchapIVsecIssecIII}
+        V předcházejícím článku jsme se zabývali \(k\)-člennými variacemi z \(n\) prvků, tj.
+        uspořádanými \(k\)-ticemi, v nichž se každý z daných \(n\) prvků vyskytuje nejvýše jednou;
+        pro přirozená čísla \(k\), \(n\) přitom platí \(k \leq n\), neboť pro \(k > n\) nelze z
+        daných \(n\) prvků utvořit žádnou uspořádanou \(k\)-tici, v níž by se žádný prvek
+        neopakoval. V tomto článku se budeme zabývat uspořádanými \(n\)-ticemi sestavenými z daných
+        \(n\) prvků, tj. případem \(k = n\); takovéto skupiny se nazývají \textbf{permutace}
+        (pořadí).
+        \begin{mdframed}[style=highlight]
+          Permutace z \(n\), prvků je každá n-členná variace z těchto prvků.
+        \end{mdframed}
+        Jinak řečeno:
+        \begin{mdframed}[style=highlight]
+          Permutace z \(n\) prvků je uspořádaná \(n\)-tice sestavená z těchto prvků tak, že každý se
+          v ní vyskytuje právě jednou.
+        \end{mdframed}
+
+        Pro ilustraci uveďme všechny permutace ze tří prvků \(a\), \(b\), \(c\).
+        \begin{align*}
+          (a,b,c)\, &, (a,c,b)\,, (b,a,c)\,, \\
+          (b,c,a)\, &, (c,a,b)\,, (c,b,a).
+        \end{align*}        
+
+        Poznamenejme ještě, že každá permutace z daných \(n\) prvků určuje nějakou uspořádanou
+        \(n\)-tici z těchto prvků, tj. nějaké jejich pořadí. Určit počet všech možných pořadí \(n\)
+        prvků neznamená nic jiného než určit všechny permutace z těchto \(n\) prvků. 
+        
+        Určíme nyní počet \(P(n)\) všech permutací z \(n\) prvků; dostaneme jej evidentně tak, že do
+        vzorce pro počet \(k\)-členných variací z \(n\) prvků dosadíme \(k = n\):
+        \begin{equation*}
+          P(n) = V(n,n) = n\cdot (n-1)\cdot(n-2)\cdot\cdots\cdot2\cdot1
+        \end{equation*}
+        Tento výsledek upravíme zavedením symbolu \(n!\) (čteme: \(n\) faktoriál) pro součin všech
+        přirozených čísel od jedné do \(n\):
+        \begin{mdframed}[style=highlight]
+          Pro každé přirozené číslo \(n\) definujeme:
+          \begin{equation*}
+            n! = 1\cdot2\cdot3\cdot\cdots\cdot(n-1)\cdot n
+          \end{equation*}
+        \end{mdframed}
+
+        Je užitečné si uvědomit, že je \(n! = (n-1)!\cdot n = (n-2)!\cdot(n-1)\cdot n\) atd. Tyto
+        vztahy se často používají při úpravách výrazů s faktoriály. Užitím faktoriálu lze tedy
+        výsledek, který jsme odvodili pro počet permutací z \(n\) prvků, vyslovit takto:
+        \begin{mdframed}[style=highlight]
+          Počet \(P(n)\) všech permutací z \(n\) prvků je
+          \begin{equation*}
+            P(n) = n!
+          \end{equation*}
+        \end{mdframed}
+
+        Vraťme se na okamžik ke vzorci pro \(V(k,n)\), který jsme odvodili v předcházejícím článku a
+        vyjádříme jej pomocí faktoriálu. Dostaneme tak, že pro všechna přirozená čísla \(n, k\),
+        \(k<n\) platí
+        \begin{equation*}
+          V(k, n) = n\cdot(n-1)\cdot\ldots\cdot(n-k+1) 
+        \end{equation*}
+        což lze rozepsat jako podíl dvou faktoriálů
+        \begin{gather*}
+          \dfrac{n\cdot(n-1)\cdot\ldots\cdot(n-k+1)
+                  \cdot(n-k)\cdot(n-k-1)\cdot\ldots\cdot3\cdot2\cdot1}
+                      {(n-k)\cdot(n-k-1)\cdot\ldots\cdot3\cdot2\cdot1}  
+        \end{gather*}                    
+        konečně dostáváme vztah \(V(k, n) = \frac{n!}{(n-k)!}\)
+        \vspace{2em}
+        Aby tento vzorec platil i prok \(k=n\), kdy \(V(n,n) = n!\) je nutné, aby jmenovatel zlomku
+        \(\frac{n!}{(n-n)!}\) byl roven jedné.
+        \begin{mdframed}[style=highlight]
+          Definujeme
+          \begin{equation*}
+            0! = 1
+          \end{equation*}
+          Dostáváme tak, že pro všechna přirozená čísla \(n, k\),\(k<n\) platí
+          \begin{equation*}
+            V(k,n) = \dfrac{n!}{(n-k)!}
+          \end{equation*}
+        \end{mdframed}
+        
+        %--Parlament----------------------------------------------------
+          \input{../src/MAI/exam/exam057.tex}
+        %---------------------------------------------------------------
+
+      \subsection{Kombinace}\label{mai:IchapIVsecIssecIV}
+        Až dosud jsme se zabývali skupinami vybranými z daných prvků, ve kterých záleželo na pořadí,
+        tj. \(k\)-ticemi uspořádanými. Nyní nám půjde o skupiny, ve kterých na pořadí nezáleží;
+        přitom - stejně jako v předchozích případech - budeme požadovat, aby v těchto skupinách byl
+        každý z daných \(n\) prvků nejvýše jednou, tj. aby se v nich žádný prvek neopakoval.
+        Chceme-li například vědět, kolik bude sehráno utkání ve volejbalovém turnaji, jehož se
+        zúčastní \(n\) družstev a který se hraje jednokolově systémem každý s každým, pak se vlastně
+        ptáme na počet všech neuspořádaných dvojic takových, že v každé se každé družstvo vyskytuje
+        nejvýše jednou; např. pro čtyři družstva \(A\), \(B\), \(C\), \(D\) to jsou dvojice \(\{A,
+        B\}\), \(\{A,C\}\), \(\{A, D\}\), \(\{B,C\}\), \(\{B, D\}\), \(\{C, D\}\). Proč přitom jde o
+        neuspořádané dvojice, je jasné: dvojice \(\{A, B\}\) představuje totéž utkání jako dvojice
+        \(\{B, A\}\). Skupiny tohoto typu se nazývají kombinace, přesněji \(k\)-členné kombinace z
+        \(n\) prvků.
+
+        \begin{mdframed}[style=highlight] 
+          \(k\)-členná kombinace z \(n\) prvků je neuspořádaná \(k\)-tice sestavená z těchto prvků 
+          tak, že každý se v ní vyskytuje nejvýše jednou.
+        \end{mdframed}  
+
+        Abychom \(k\)-členné kombinace odlišili od \(k\)-členných variací, které jsme zapisovali
+        užitím závorek kulatých, budeme je zapisovat pomocí množinových závorek. Vrátíme-li se ještě
+        k popisovanému volejbalovému turnaji, představují uvedené dvojice výčet všech dvoučlenných
+        kombinací ze čtyř prvků \(A\), \(B\), \(C\), \(D\). Všimněme si, že jde vlastně o všechny
+        dvouprvkové podmnožiny množiny \(\{A, B, C, D\}\). Je zřejmé, že pojem \(k\)-členná
+        kombinace z \(n\) prvků má stejný význam jako termín \(k\)-prvková podmnožina \(n\)-prvkové
+        množiny. Můžeme tedy říci:
+
+        \begin{mdframed}[style=highlight] 
+          \(k\)-členná kombinace z \(n\) prvků je \(k\)-prvková podmnožina množiny těmito \(n\) 
+          prvky určené.
+        \end{mdframed}  
+
+        Výhodou definice, kterou jsme uvedli jako první, je, že pojmy variace, permutace a kombinace
+        (a to nejen bez opakování, které už jsme poznali, ale i s opakováním, které nás ještě
+        čekají) jsou definovány „jednotně", pomocí uspořádaných, resp. neuspořádaných \(k\)-tic.
+        Přesto však je užitečné obsah \uv{druhé} definice si zapamatovat.
+        
+        Určíme nyní počet všech \(k\)-členných kombinací z \(n\) prvků; označíme jej \(C_k(n)\) a k
+        jeho určení použijeme již odvozený výsledek pro počet \(V(k,n)\) všech \(k\)-členných
+        variací z \(n\) prvků.
+
+        Mějme tedy \(n\) prvků a utvořme z nich všechny \(k\)-členné variace; tyto variace rozdělme
+        do skupin tak, aby všechny variace z téže skupiny se lišily pouze pořadím jednotlivých prvků
+        a každé dvě variace z různých skupin se lišily aspoň v jednom prvku. Každá taková skupina
+        obsahuje k uspořádaných \(k\)-tic, neboť \(k\) prvků lze uspořádat \(k!\) způsoby. Jestliže
+        nám však nebude záležet na pořadi, splyne“ všech \(k!\) uspořádaných \(k\)-tic každé skupiny
+        v jedinou \(k\)-tici neuspořádanou, tj. v jedinou \(k\)-člennou kombinaci z \(n\) prvků. To
+        však znamená, že počet skupin, do nichž jsme původně všechny \(k\)-členné variace rozdělili,
+        je roven počtu \(k\)-členných kombinaci z daných \(n\) prvků, a protože pak v každé skupině
+        je \(k!\) variací, platí
+        \begin{equation*}
+          V(k,n) = k!\cdot C_k(n).
+        \end{equation*}
+
+        Celý tento postup ilustruje schéma na obr.  pro tříčlenné variace ze čtyř prvků \(a\),
+        \(b\), \(c\), \(d\).
+
+        \luagraphic[1]{mai_fig071.png}{Tvorba \(k\)-členných variací a jejich rozdělení do skupin 
+                     \cite[s.~26]{calda2008matematika}}{mai:fig071}
+        
+        Počet \(C_k(n)\) všech \(k\)-členných kombinací z \(n\) prvků je
+        \begin{equation*}
+          C_k(n) = \dfrac{1}{k!}\cdot V(k,n) = \dfrac{n!}{(n-k)!k!}
+        \end{equation*}
+
+        Připomeňme si, že jsme definovali \(0! = 1\), a všimněme si, že zlomek
+        \(\frac{n!}{(n-k)!k!}\) má smysl nejen pro \(n\), \(k\) přirozená, , ale i pro \(n\)
+        přirozená a \(k=0\), a dokonce i pro \(n = 0\), \(k = 0\); má tedy smysl pro všechna \(n\),
+        \(k\) celá nezáporná, \(k\leq n\). Pro tento zlomek se používá symbol \(\binom{n}{k}\),
+        který se čte, \uv{n nad k} a nazývá se \textbf{kombinační číslo}; definuje se takto:
+
+        \begin{mdframed}[style=highlight] 
+          Pro všechna celá nezáproná čísla \(n\), \(k\), \(k\leq n\), je 
+          \begin{equation*}
+            \binom{n}{k} = \dfrac{n!}{(n-k)!k!}.
+          \end{equation*}  
+        \end{mdframed}
+
+        Výsledek, který jsme odvodili pro počet \(k\)-členných kombinací z \(n\) prvků, lze tedy
+        formulovat následovně:
+        \begin{mdframed}[style=highlight] 
+          Počet \(C_k(n)\) všech \(k\)-členných kombinací z \(n\) prvků je 
+          \begin{equation*}
+            C_k(n) = \binom{n}{k}.
+          \end{equation*}  
+        \end{mdframed}     
+        
+        Z toho, co bylo řečeno, také vyplývá, že kombinační číslo určuje počet \(k\)-prvkových
+        podmnožin \(n\)-prvkové množiny.
+
+        Všimněme si dále, že z definice kombinačního čísla dostaneme
+        \begin{align*}
+          \binom{n}{n-k} &= \dfrac{n!}{(n-k)![n-(n-k)]!}             \\
+                         &= \dfrac{n!}{(n-k)!k!} = \binom{n}{k}.
+        \end{align*}  
+        Odvodili jsme tak užitečnou větu:
+
+
+
+      \subsection{Variace s opakováním}\label{mai:IchapIVsecIssecV}
+      \subsection{Permutace s opakováním}\label{mai:IchapIVsecIssecVI}
+      \subsection{Kombinace s opakováním}\label{mai:IchapIVsecIssecVII}
+      \subsection{Vlastnosti kombinačních čísel}\label{mai:IchapIVsecIssecVIII}
+      \subsection{Binomická věta}\label{mai:IchapIVsecIssecIX}
+        
+      
+        Uvedené vlastnosti kombinačních čísel je možno ilustrovat na následujícím schématu, které se
+        nazývá \textbf{Pascalův trojúhelník} \emph{(B. PASCAL, 1623-1662, francouzský filozof,
+        matematik a fyzik, jeden ze zakladatelů počtu pravděpodobnosti; z fyziky známe Pascalův
+        zákon)}.
+
+        \begin{align*}
+          \begin{array}{c} 
+            \binom{0}{0}                                                                          \\
+            \binom{1}{0}\quad \binom{1}{1}                                                        \\  
+            \binom{2}{0}\quad \binom{2}{1}\quad \binom{2}{2}                                      \\ 
+            \binom{3}{0}\quad \binom{3}{1}\quad \binom{3}{2}\quad \binom{3}{3}                    \\ 
+            \binom{4}{0}\quad \binom{4}{1}\quad \binom{4}{2}\quad \binom{4}{3}\quad  \binom{4}{4} \\ 
+            \hdotsfor{1}                                                                          \\
+            \binom{n}{0}\; \binom{n}{1}\; \binom{n}{2}\; \cdots\; 
+            \binom{n}{n-2}\; \binom{n}{n-1}\; \binom{n}{n}                                        \\ 
+          \end{array}
+        \end{align*}
+        Jestliže kombinační čísla v tomto schématu vyčíslíme, dostaneme Pascalův trojúhelník ve tvaru:
+
+        Všimněme si symetrického rozmístění stejných čísel vzhledem k ose souměrnosti Pascalova
+        trojúhelníku. Je to způsobeno tím, že čísla \(\binom{n}{k}\) a \(\binom{n}{n-k}\), která se
+        sobě rovnají, jsou stejně vzdálená od středu každého řádku.
+
+% ------------------------------- PRAVDĚPODOBNOST---------------------------------------------------      
+  \section{Pravděpodobnost}\label{mai:IchapIVsecII}
+    Slovo pravděpodobnost používáme velmi často. Jaký však je jeho přesný význam? Jsme přesvědčeni, 
+    že pravděpodobnost výhry ve sportce je velmi malá. Ani pravděpodobnost, že se vyplní předpověď 
+    počasí, nepovažujeme mnohdy za výraznou. Přesto je mezi oběma příklady obrovský kvantitativní 
+    rozdíl. Zkusme význam pojmu pravděpodobnost ukázat pomocí konkrétních číselných příkladů.
+  
+    \begin{itemize}[noitemsep]
+      \item \textbf{Příklad se střelcem}: Sportovní střelec střílí na terč série \num{100} ran. 
+            Předpokládejme, že podmínky při střelbě jsou stále stejné. Stejná je zbraň, terč, 
+            vzdálenost, povětrnostní podmínky i momentální zdravotní stav střelce. Při hodnocení 
+            střelcova „mistrovství“ někdo řekne, že střelec zasáhne terč s pravděpodobností 
+            \num{92}\%. Jak tomu rozumět? Znamená to, že v souboru sérií výstřelů jsou velmi časté 
+            ty, v nichž zasáhl střelec terč \num{92}-krát. Samozřejmě, není řídké, že se objeví i 
+            série s \num{93} nebo \num{94} zásahy, ale také s \num{91} nebo \num{90}. Vyloučen není 
+            ani případ s úspěšností \num{96} či \num{88}, a dokonce i stovku bychom mohli 
+            zaznamenat. Situace výrazně odlišné od \num{92} zásahů však budou řídké, a to tím více, 
+            čím více se úspěšnost série liší od \num{92} oběma směry.
+      \item \textbf{Příklad se zmetky}: Koupíte si výrobek u firmy, o které je známo, že vyrábí 
+            zmetky s pravděpodobností 0,16\%? Situaci lze posuzovat obdobně jako úspěšnost střelce. 
+            Budeme-li například zkoumat série obsahující 1000 výrobků, bude každá z nich obsahovat 
+            „v průměru“ 16\% zmetků. Z příkladu se střelcem již zhruba víme, jak posuzovat slovo v 
+            průměru.
+    \end{itemize}
+    
+    V této kapitole se budeme pravděpodobnostmi zabývat podrobněji. Zjistíme, že i když se týkají 
+    náhodných jevů, platí i pro ně jisté zákonitosti. V úvodních příkladech jsme si vyložili, jak 
+    intuitivně chápat pojem pravděpodobnost. Jednalo se v nich o posouzení průměrné úspěšnosti ve 
+    velkém souboru operací či úkonů prováděných za stejných podmínek, šlo tedy o jakousi 
+    „průměrnou“ pravděpodobnost. Nyní definujeme pravděpodobnost matematicky.
+    
+    \twocolumn[\subsection{Co se pravdě podobá - definice pravděpodobnosti}\label{mai:IchapIVsecIIssecI}]
+      Pro definici pravděpodobnosti použijeme pojmu \textbf{náhodný pokus}, jehož význam si ukážeme 
+      na příkladu. Dobrým příkladem náhodných pokusů je třeba házení mincí, hraní kostkou, výběr 
+      karet z balíčku, vidíme-li pouze jejich rub, apod. Budeme třeba házet kostkou. Abychom si 
+      situaci zbytečně nekomplikovali, budeme předpokládat, že všechny výsledky hodu kostkou 
+      (náhodné pokusy) jsou stejně časté, žádný z nich není nijak preferován\footnote{Kostka by 
+      tedy měla být homogenní, plocha, na kterou po hodu dopadne, vodorovná, kvalita povrchu všech 
+      stěn kostky stejná (žádná stěna by třeba neměla být natřena lepidlem), apod.}. Počet možných 
+      výsledků jednotlivého hodu je \(N = 6\) (kostka má \num{6} stěn, na každé je vyznačen odlišný 
+      počet ok, tedy \num{1} až \num{6}). Jednotlivé situace, které mohou nastat, nazýváme 
+      náhodnými jevy. Náhodným jevem \(A\) tak může být situace \emph{„padne číslo \num{2}“}, jiným 
+      náhodným jevem \(B\) situace \emph{„padne číslo dělitelné třemi“}, apod. Počet situací, kdy 
+      výsledek hodu lze hodnotit tak, že určitý jev nastal, označíme \(M\). Například pro jev \(A\) 
+      \emph{„padne číslo \num{2}“} je \(M(A)= 1\), pro jev \(B\) \emph{„padne číslo dělitelné 
+      třemi“} je \(M(B) = 2\) (počet ok \num{3} nebo \num{6}). Můžeme také definovat jev \(O\) 
+      \emph{„nepadne žádné číslo“} (\(M(0) = 0\)) nebo jev \(J\) \emph{„padne jakékoli číslo“} 
+      (\(M(J) = 6\)).      
+      \begin{mdframed}[style=mdmathdef]
+    `   \begin{definition}
+          Pravděpodobností jevu rozumíme podíl
+          \begin{equation}\label{mai:eq011}
+            p = \frac{M}{N} = \frac{\text{počet případů příznivých}}{\text{počet případů možných}}.
+          \end{equation}  
+          Počtem případů možných jsme zkráceně nazvali počet všech možných výsledků náhodného 
+          pokusu, počtem případů příznivých pak počet všech takových výsledků pokusu, při nichž daný 
+          jev nastal.
+        \end{definition}
+      \end{mdframed}
+
+      Je zřejmé, že hodnota pravděpodobnosti jakéhokoli jevu je nezáporná a může nabývat hodnoty 
+      nejvýše \num{1}, tj. \(0 <p< 1\). Jev s \emph{nulovou pravděpodobností} se nazývá 
+      \textbf{nemožný}, jev s \emph{jednotkovou pravděpodobností} je \textbf{jistý}. V našem 
+      příkladu s kostkou tak dostáváme
+      \begin{equation*}
+        p(A) = \frac{1}{6}, \; p(B) = \frac{2}{6} = \frac{1}{3}, \; p(O) = 0, \; p(J) = 1.
+      \end{equation*}  
+
+      %--Barevné ponožky----------------------------------------------
+      \input{../src/MAI/exam/exam006.tex}
+      %---------------------------------------------------------------
+    \subsection{Cifry, kostky, karty - kombinatorické opakování}\label{mai:IchapIVsecIIssecII}
+      Příklad s ponožkami byl velmi jednoduchý. Podařilo se nám vyjmenovat všechny případy možné i 
+      všechny případy příznivé, neboť obojího bylo docela málo. Daleko běžnější jsou však situace, 
+      kdy výčet případů není schůdný. A tehdy potřebujeme \textbf{kombinatoriku}.
+      
+      Nechť \(\mathcal{M}\) je \(n\)-prvková množina, z níž budeme provádět výběry \(k\) prvků 
+      podle určitých pravidel. Prvky množiny \(\mathcal{M}\) nemusíme nijak konkretizovat. Abychom 
+      si však o výběrech a pravidlech pro jejich tvorbu dokázali udělat nějakou názornou představu, 
+      je taková konkretizace vhodná. Prvky množiny \(\mathcal{M}\): mohou být třeba žáci ve třídě, 
+      barvy, hrací karty, apod. Výběry mohou představovat třeba družstva pro odbíjenou, signály 
+      tvořené barevnými praporky, možnosti rozdání karet při mariáši, apod. Jednotlivé typy výběrů 
+      získaly své názvy právě na základě pravidel stanovených pro jejich vytváření. Rozhodující 
+      jsou dvě základní kritéria:
+      \begin{itemize}[noitemsep]
+        \item Je pro tvorbu výběru podstatné pořadí prvků ve výběru či nikoliv?
+        \item Mohou se prvky ve výběru opakovat či nikoliv?
+      \end{itemize}
+      
+      Typy výběrů shrnuje následující diagram:
+      \luagraphic[1]{mai_fig021.pdf}{Typy výběrů. \cite[s.~201]{Musilova2009MA1}}{mai:fig021}
+
+      Představuje-li daný výběr například volejbalové družstvo osmi děvčat (šest hráček a dvě 
+      náhradnice), které bude reprezentovat v soutěži třídu osmou bé, do níž chodí \num{25} děvčat 
+      a \num{18} chlapců, jedná se o výběr \(k - 8\) prvků z počtu \(n = 25\) prvků. Chlapce nelze 
+      postavit do družstva volejbalistek. Každý výběr možného družstva bude představovat 
+      \emph{kombinaci bez opakování}, neboť pořadí hráček nehraje roli a třeba Aničku Novákovou 
+      máme ve třídě jen jednu. Budeme-li však chtít vytvářet z deseti cifer \(0, 1, \ldots, 9\) 
+      trojciferná čísla, pak tyto výběry tří prvků z deseti (\(k = 3\), \(n = 10\)) jsou 
+      \emph{variacemi s opakováním}. Čísla \num{125}, \num{512}, \num{251}, \num{215}, \num{521} a 
+      \num{152} jsou totiž různá, a například \num{222} je také trojciferné číslo. Kombinace s 
+      opakováním bychom mohli vytvářet třeba i při výběru různobarevných ponožek ze zásuvky a 
+      konečně \emph{variacemi bez opakování} by mohly být dejme tomu trojbarevné signály (\(k = 
+      3\)) tvořené trojicemi barevných hadříků vybíraných z \(n\) barev (pro \(n = 3\) třeba zrovna 
+      z těch ponožek). Nyní bychom však rádi věděli, jak pro zadané hodnoty \(n\) a \(k\) určit 
+      počet všech možných výběrů předepsaného typu. Ukážeme si to na příkladech.
+
+      %--Šance milion-------------------------------------------------
+      \input{../src/MAI/exam/exam007.tex}
+      %---------------------------------------------------------------
+      
+      Zobecněním předchozího příkladu získáváme vzorec pro počet \textbf{variací s opakováním} 
+      \emph{k}-té třídy z \(n\) prvků. Při tahu totiž záleží na pořadí bubnů a každý buben obsahuje 
+      všechny cifry. Výsledky tahů z jednotlivých bubnů se tedy mohou opakovat. Pokud by bubnů bylo 
+      \(k\) a v každém \(n\) různých cifer, dostali bychom pro \textbf{variace s opakováním 
+      \(k\)-té třídy z \(n\) prvků} celkový počet
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq007}
+          \boxed{V_k' = n^k}\, .
+        \end{equation}
+      \end{mdframed}
+
+      %--Modifikovaná šance milion------------------------------------
+      \input{../src/MAI/exam/exam008.tex}
+      %---------------------------------------------------------------
+      
+      Uvážíme-li, že v předchozím příkladu je \(n = 10\) a \(k = 6\), dostáváme pro \textbf{počet 
+      variací bez opakování \(k\)-té třídy z \(n\) prvků} obecný vztah
+      \begin{align}
+        V_k(n) &= n(n-1)(n-2)\cdots(n-k+1)  \nonumber \\
+        \shortintertext{neboli}
+        V_k(n) &= \frac{n!}{(n-k)!}\, .    \label{mai:eq008}
+      \end{align}
+      Poznamenejme, že \(n!\) značí \textbf{faktoriál}, \(n! = n(n - 1)\cdots 3 \cdot 2 \cdot 1\). 
+      Pro nulu definujeme \(0! = 1\). Je zřejmé, že při vytváření variací bez opakování musí být 
+      \(k\leqq n\). Variace bez opakování \(n\)-té třídy z \(n\) prvků se nazývají 
+      \textbf{permutace}. Každá z nich představuje určité uspořádání těchto \(n\) prvků. Platí
+      \begin{equation}\label{mai:eq009}
+        \boxed{P(n) = V_n(n) = n!}\, .
+      \end{equation}
+      
+      Nyní odvodíme vzorec pro počet \textbf{kombinací \(k\)-té třídy z \(n\) prvků bez opakování}. 
+      Již jsme si řekli, že \emph{kombinací} rozumíme takový výběr z celkového počtu \(n\) prvků, 
+      který obsahuje určitých \(k\) prvků nezávisle na jejich pořadí. Představme si, že máme k 
+      dispozici všechny variace bez opakování \(k\)-té třídy ze zmíněných \(n\) prvků. Vezměme 
+      kteroukoli z nich. Soubor všech variací \(k\)-té třídy z \(n\) prvků však obsahuje i další 
+      variace, lišící se od té naší jen pořadím prvků. Celkem je takových variací (i s tou první) 
+      \(k!\) a z hlediska kombinací představují totéž. Soubor variací se tak rozpadá na podsoubory, 
+      z nichž každý obsahuje \(k!\) variací lišících se navzájem pouze pořadím prvků. Každý z 
+      těchto podsouborů představuje však jedinou kombinaci. Počet kombinací \(k\)-té třídy z \(n\) 
+      prvků bez opakování je tedy
+      \begin{equation}\label{mai:eq010}
+        \boxed{C(k) = \frac{V_k(n)}{P(k)} = \frac{n!}{(n-k)!\,k!} = \binom{n}{k}}\, .
+      \end{equation}
+      
+      Pro odvození vzorce pro \textbf{kombinace s opakováním} použijeme opět příkladu.
+      %--Kuličky v přihrádkách----------------------------------------
+      \input{../src/MAI/exam/exam009.tex}
+      %---------------------------------------------------------------
+      
+      %--Obsazování kvantových stavů----------------------------------
+      \input{../src/MAI/exam/exam010.tex}
+      %---------------------------------------------------------------
+      
+      Získané kombinatorické vzorce nyní použijeme při řešení základních úloh o pravděpodobnostech. 
+      V každé úloze bude důležité
+      \begin{itemize}
+        \item definovat jev \(A\), jehož pravděpodobnost počítáme,
+        \item určit počet \(N\) případů možných, tj. počet všech možných výsledků pokusu, při 
+              kterém sledujeme, zda jev \(A\) nastal či nenastal,
+        \item určit počet \(M\) případů příznivých, tj. počet těch výsledků daného pokusu, při 
+              kterých jev \(A\) nastal.
+      \end{itemize}
+
+      %--Výhra ve sportce---------------------------------------------
+      \input{../src/MAI/exam/exam052.tex}
+      %---------------------------------------------------------------
+
+      %--Losování karet-----------------------------------------------
+      \input{../src/MAI/exam/exam053.tex}
+      %---------------------------------------------------------------
+
+      %--Sestavování čísel z cifer------------------------------------
+      \input{../src/MAI/exam/exam054.tex}
+      %---------------------------------------------------------------
+
+    \subsection{Sčítání a násobení - základní počty s pravděpodobnostmi}\label{mai:IchapIVsecIIssecIII}
+      Někdy je třeba určit pravděpodobnosti jevů, které jsou nějakým způsobem „složeny“ z jevů
+      jednodušších. Uvažujme například o jevech \(A\) a \(B\), jejichž pravděpodobnosti známe a 
+      označíme je \(p(A)\) a \(p(B)\). Definujme nové jevy \(C\) a \(D\) takto:
+      \begin{equation*}
+        C = A \text{ a } B, \qquad D = A \text{ nebo } B.
+      \end{equation*}
+      Vzniká přirozená otázka, zda můžeme na základě znalosti pravděpodobností \(p(A)\) a \(p(B)\) 
+      určit pravděpodobnosti \(p(C)\) a \(p(D)\). Ukazuje se, že za jistých předpokladů ano. Jako 
+      obvykle nám napoví příklady.
+
+      %--Hody kostkou a mincí - jev \(C\)-----------------------------
+      \input{../src/MAI/exam/exam055.tex}
+      %---------------------------------------------------------------
+      
+      Z příkladu intuitivně chápeme, co jsou to nezávislé jevy, a usuzujeme, že obecně platí
+      \begin{mdframed}[style=mdmathdef]
+        \begin{lemma}\label{mai:lemma003}
+          \textbf{(Násobení pravděpodobností)}: Pravděpodobnost současného výskytu dvou nezávislých 
+          jevů \(A\) a \(B\) (jev \(C\)) je rovna součinu jejich pravděpodobností, tj.
+          \begin{equation}\label{mai:eq052}
+            p(A \text{ a } B)= p(A)p(B) 
+          \end{equation}
+          pro \(A\) a \(B\) neslučitelné.
+        \end{lemma}
+      \end{mdframed}
+      
+      Pokusme se o přesnější definici nezávislých jevů a o odvození vztahu (\ref{mai:eq052}). 
+      Označme jako \(N_A\) množinu všech možných výsledků pokusu, při němž může nastat jev \(A\), a 
+      obdobně \(N_B\) množinu všech možných výsledků pokusu, při němž může nastat jev \(B\). V 
+      předchozím příkladu je \(N_A = \{1, 2, 3, 4, 5, 6\}\) a \(N_B = \{\mathcal{A}, 
+      \mathcal{B}\}\). Jako \(N_C\) označme množinu všech možných výsledků pokusu, při němž může 
+      nastat současně jev \(A\) i jev \(B\). Jevy \(A\) a \(B\) nazveme nezávislé, jestliže
+      platí \(N_C = N_A \times N_B\) (kartézský součin množin). Označíme-li obdobně \(M_A \subseteq 
+      N_A\) a, \(M_B \subseteq N_B\) a \(M_C \subseteq N_C\) podmnožiny příznivých výsledků pro 
+      jednotlivé jevy, je zřejmé, že také \(M_C = M_A \times M_B\). Počty prvků jednotlivých množin 
+      označíme \(N(A)\), \(N(B)\), \(N(C)\) (počty možných případů) a \(M(A)\), \(M(B)\), \(M(C)\) 
+      (počty příznivých případů). O konečných množinách víme, že mohutnost (počet prvků) 
+      kartézského součinu množin je rovna součinu mohutností jednotlivých
+      činitelů v tomto kartézském součinu. Proto
+      \begin{align*}
+        N(C) &= N(A)N(B),\qquad M(C) = M(A)M(B). \\
+        \shortintertext{Odtud}
+        p(C) &= \dfrac{M(C)}{N(C)} = \dfrac{M(A)M(B)}{N(A)N(B)} = p(A)p(B).
+      \end{align*}
+      Platnost tohoto vzorce lze zobecnit na nezávislé jevy \(A_1\), \(A_2\) až \(A_k\) s 
+      pravděpodobnostmi \(p(A_1)\), \(p(A_2)\) až \(p(A_k)\). Pravděpodobnost jevu \(C = (A_1\text{ 
+      a }A_2\text{ a }...\text{ a }A_K)\) pak je
+      \begin{equation*}
+        p(C) = p(A_1)p(A_2)\cdots p(A_k).
+      \end{equation*}
+ 
+      %--Hody kostkou trochu jinak - jev \(D\)-----------------------
+      \input{../src/MAI/exam/exam056.tex}
+      %--------------------------------------------------------------
+      
+      Je vidět, že opět směřujeme k obecnému tvrzení:
+      \begin{mdframed}[style=mdmathdef]
+        \begin{lemma}\label{mai:lemma004}
+          \textbf{(Sčítání pravděpodobností)}: Pravděpodobnost jevů \(A\) nebo \(B\),
+          (jev \(C\)) pro neslučitelné (vylučující se) jevy \(A\) a \(B\) rovna součtu
+          pravděpodobností jevů \(A\) nebo \(B\).
+          \begin{equation}\label{mai:eq053}
+            p(A \text{ nebo } B)= p(A) + p(B)
+          \end{equation}
+          pro \(A\) a \(B\) nezávislé.
+        \end{lemma}
+      \end{mdframed}
+      
+      Opět se pokusme o přesnější definici neslučitelných jevů a o odvození vztahu 
+      (\ref{mai:eq053}). Označme, obdobně jako v předchozí úvaze o nezávislých jevech, množiny 
+      \(N_A\), \(N_B\), \(N_D\) možných výsledků, při nichž mohou nastat jevy \(A\), \(B\), \(D\). 
+      Předpokládejme, že \(N_A = N_B\). Pak \(N_A = N_B = N_D\), a tedy \(N(A) = N(B) = N(D) = N\). 
+      Jako \(M_A\), resp. \(M_B\), resp. \(M_D\) označme podmnožiny výsledků, při nichž nastane jev 
+      \(A\), resp. \(B\), resp. \(D\). Zřejmě \(M_D = M_A \cup M_B\). Pro počet prvků množiny 
+      \(M_D\) platí 
+      \begin{align*}
+        M(D) &= M(A) + M(B) - M(A\text{ a }B).                                    \\
+        \shortintertext{Pravděpodobnost jevu \(D\) je pak}
+        p(D) &= \dfrac{M(D)}{N(D)} = \dfrac{M(A) + M(B) - M(A\text{ a }B)}{N}     \\
+             &= p(A) + p(B) - p(A\text{ a }B).
+      \end{align*}
+      
+      Jevy \(A\) a \(B\) se nazývají \textbf{neslučitelné}, neboli \emph{vylučující se}, je-li 
+      \(M_A \cap M_B = 0\). V takovém případě je ovšem \(M(A\text{ a }B) = 0\), a tedy
+      \begin{equation*}
+        p(A\text{ nebo }B) = p(A) + p(B).
+      \end{equation*}
+      Zobecněním na \(k\) jevů \(A_1\) až \(A_k\) po dvou neslučitelných dostáváme
+      \begin{equation*}
+        p(A_1\cdots\text{ nebo }\cdots A_k) = p(A_2) + p(A_2) + \cdots + p(A_k).
+      \end{equation*}
+      Mají-li po dvou neslučitelné jevy \(A_1\) až \(A_k\) tu vlastnost, že při daném pokusu musí 
+      nastat právě jeden z nich, říkáme, že tvoří \textbf{úplný systém jevů}. Součet jejich 
+      pravděpodobností je roven jedné.
+      
+      Jev \(\overline{A}\) se nazývá \textbf{opačný} k jevu \(A\), jestliže nastává právě tehdy, 
+      když jev \(A\) nenastává. Z této definice je vidět, že jevy \(\overline{A}\) a \(A\) jsou 
+      \emph{neslučitelné}. Na druhé straně je zřejmé, že jev (\(A\) nebo \(\overline{A}\)) je jevem 
+      \textbf{jistým}, nastává vždy. Jeho pravděpodobnost je tedy \num{1}. Odtud
+      \begin{equation}\label{mai:eq054}
+        p(\overline{A}) = 1 - p(A).
+      \end{equation}
+      Jev \(A\) a jev \(\overline{A}\) k němu opačný tvoří úplný systém.
+      
+      Na závěr odstavce ještě jeden prakticky důležitý případ.
+      
+    \subsection{Bernoulliův pokus}\label{mai:IchapIVsecIIssecIV}
+      Bernoulliův pokus spočívá v tom, že \(n\)-krát nezávisle provedeme určitý pokus, například hod
+      mincí. (V terminologii teorie pravděpodobnosti nazýváme každé takové provedení opakováním
+      pokusu.) Sledujeme, v kolika případech z těchto \(n\) opakování nastal daný jev (například jev
+      \(A\) - padne hlava). Výsledek opakování pokusu, při kterém daný jev nastal, nazveme zdarem,
+      výsledek, kdy nastal jev opačný, nezdarem. Dejme tomu, že pravděpodobnost zdaru je \(p\). (Pro
+      případ padnutí hlavy na minci je \(p = 1/2\).) Pravděpodobnost nezdaru je pak \((l - p)\). (V
+      případě hodů mincí je \((1 - p) = 1/2\).) Zajímáme se o to, jaká je pravděpodobnost \(P(x)\),
+      že při \(n\) opakováních pokusu docílíme \(x\)-krát zdaru, \(x\) přitom můžeme předem volit
+      libovolně v rozmezí \(0 \leq x \leq n\). V případě hodů mincí jistě dokážeme předem odhadnout,
+      že pravděpodobnosti \(P(0)\) a \(P(n)\), tj. pravděpodobnosti toho, že nepadne hlava vůbec
+      nebo že padne hlava vždy, budou při větším počtu opakování pokusu malé a budou se blížit nule
+      tím více, čím větší bude \(n\). Naopak bychom se mohli domnívat, že pravděpodobnost
+      \(P(n/2)\), tj. že padne hlava v polovině opakování pokusu, by měla být při velkém počtu \(n\)
+      blízká \SI{100}{\percent}. Správnost tohoto našeho předběžného odhadu však posoudíme teprve
+      poté, co si odvodíme obecný vzorec pro \(P(x)\). Budeme možná překvapeni. Zvolme nejprve
+      pevně, při kterých konkrétních opakováních pokusu má dojít ke zdaru  (například při prvních
+      \(x\)). Při ostatních pak požadujeme nezdar. Protože jevy
+      \begin{gather*}
+        \begin{array}{ll}
+          A_1                &: \text{Při prvním opakování dojde ke zdaru.}                  \\
+          A_2                &: \text{Při druhém opakování dojde ke zdaru.}                  \\
+          \hdotsfor{2}                                                                       \\
+          A_x                &: \text{Při \(x\)-tém opakování dojde ke zdaru.}               \\
+          \overline{A}_{x+1} &: \text{Při \((x + 1)\)-tém opakování dojde k nezdaru.}        \\
+          \hdotsfor{2}                                                                       \\
+          \overline{A}_n     &: \text{Při posledním \(n\)-tém opakování dojde k nezdaru,}
+        \end{array}
+      \end{gather*}
+      jsou nezávislé, je pravděpodobnost jevu
+      \begin{itemize}
+        \item \(B_1\): Při každém z prvních \(x\) opakování dojde ke zdaru a současně při každém z
+              dalších \((n - x)\) opakování dojde k nezdaru, rovna součinu pravděpodobností
+              \begin{align*}
+                p(B_1) &= p(A_1)p(A_2)\cdots p(A_x)p(\overline{A}_{x+1})\cdots p(\overline{A}_n) \\
+                       &= p^x (1 - p)^{n-x}.
+              \end{align*}
+      \end{itemize}
+      Nám však jde o pravděpodobnost následujícího jevu
+      \begin{itemize}
+        \item \(B\): Právě při \(x\) opakováních pokusu (bez ohledu na to, kterých) dojde ke zdaru a
+              současně při každém ze zbývajících opakování pokusu dojde k nezdaru.
+      \end{itemize}
+      
+      Možností výběru \(x\) opakování, při kterých dojde ke zdaru, je \(N(x) = \binom{n}{x}\). Pokud
+      bychom očíslovali jednotlivé výběry \(j = 1, 2, \cdots, N(x)\), dostaneme odpovídající jevy
+      \(B_1, \cdots, B_{N(x)}\) Pravděpodobnost každého z nich je stejná a rovna pravděpodobnosti
+      jevu \(B_1\), který jsme popsali před chvílí. Tyto jevy jsou po dvou neslučitelné a jev \(B\)
+      znamená, že nastane právě jeden (kterýkoli) z nich. Pro jeho pravděpodobnost tedy platí, podle
+      pravidla pro součet pravděpodobností po dvou neslučitelných jevů, 
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq055}
+          p(B) = P(x) = \binom{n}{x}p^x (1 - p)^{n-x}.
+        \end{equation}
+      \end{mdframed}
+      
+      Zkusme nyní prověřit správnost našeho odhadu týkajícího se hodů mincí:
+      \begin{align*}
+        P(0) &= \binom{n}{0}
+                \left(\dfrac{1}{2}\right)^0\left(\dfrac{1}{2}\right)^{n-0} 
+              = \dfrac{1}{2^n}                                                 \\
+        P(n) &= \binom{n}{n} 
+                \left(\dfrac{1}{2}\right)^n\left(\dfrac{1}{2}\right)^{n-n} 
+              = \dfrac{1}{2^n}     
+      \end{align*}
+      Vidíme, že náš odhad byl správný. Obě pravděpodobnosti klesají s rostoucím počtem opakování
+      pokusu k nule.  Pro jediné opakování pokusu, tj. \(n = 1\), jsou obě rovny jedné polovině, a
+      to bychom jistě také měli očekávat. 
+      
+      Pro \(n\) sudé nyní počítejme \(P(n/2)\). Položme \(n = 2m\):
+      \begin{align*}
+        P(m) &= \binom{2m}{m}
+                \left(\dfrac{1}{2}\right)^m\left(\dfrac{1}{2}\right)^{2m-m}                       \\
+             &= \dfrac{(2m)!}{m!m!}\left(\dfrac{1}{2}\right)^{2m}     
+      \end{align*}
+  
+      {\centering
+       \resizebox{1\linewidth}{!}{
+        \begin{tabular}{c|rrrrr}
+          \(m\)    & 1 & 2 & 3 & 5 & 10  \\ \hline
+          \(P(m)\) & \num{0.500} & \num{0.375} & \num{0.313} & \num{0.246} & \num{0.176}
+        \end{tabular}
+       }
+      \par}
+     
+      Tady se zdá, že nás naše intuice při odhadu pravděpodobnosti \(P(n/2)\) zklamala. Tendence
+      hodnot \(P(n/2)\) je pro rostoucí \(n\) klesající. Pravděpodobnost je největší pro \(n = 2\),
+      a to právě padesátiprocentní! Zkusme ještě odhad pro velká \(n\) pomocí \textbf{Stirlingova
+      vzorce}. Podle něj pro velká \(n\) platí    
+      \begin{equation}\label{mai:eq056}
+        \boxed{n! \doteq \left(\dfrac{n}{e}\right)^n\sqrt{2\pi n}}
+      \end{equation}
+      Použijeme-li jej pro výpočet P(m), dostáváme
+      \begin{align*}
+        P(m)&\doteq \dfrac{\left(\dfrac{2m}{e}\right)^{2m}\sqrt{4\pi m}}
+             {\left(\dfrac{m}{e}\right)^m\left(\dfrac{m}{e}\right)^m\left(\sqrt{2\pi m}\right)^2}
+              \left(\dfrac{1}{2}\right)^{2m}                                       \\
+            &= \dfrac{\sqrt{4\pi m}}{2\pi m}
+         =\dfrac{1}{\sqrt{\pi m}} \longrightarrow 0
+      \end{align*}
+      pro velká \(m\). Kde jsme se tedy zmýlili? Ze zkušenosti víme, že budeme-li házet mincí
+      mnohokrát, je prakticky jisté, že hlava skutečně padne zhruba v polovině případů! Problém
+      spočívá ve slovíčku zhruba. Pravděpodobnost \(P(m)\) pro \(n = 2m\) se však týká jevu, kdy
+      hlava padne přesně v polovině případů. A ta samozřejmě bude tím menší, čím větší je počet
+      posuzovaných hodů mincí. Při zvyšujícím se počtu \(n\) opakování pokusu totiž roste i počet
+      jednotlivých možností volby \(x\) a \(n\) a každou z nich tak „připadne“ menší
+      pravděpodobnost. (Součet pravděpodobností přes všechna přípustná \(x\) musí být roven jedné.)
+      Později, v odstavci \ref{mai:IchapIVsecII}, uvidíme, že jsme \textbf{nevědomky místo
+      pravděpodobnosti odhadovali střední hodnotu náhodné veličiny}.
+      
+      Položme si ještě poslední otázku v souvislosti s Bernoulliovým pokusem: Jaká je
+      pravděpodobnost, že alespoň při jednom z \(n\) opakování pokusu nastane zdar? Pokud si po
+      předchozím neúspěchu s intuitivními odhady ještě trochu věříme, můžeme předpovídat, že tato
+      pravděpodobnost poroste s počtem opakování pokusu \(n\) a pro velmi velká \(n\) se bude blížit
+      jedné. Musíme ji ale spočítat. Někdo, kdo nečetl předchozí text příliš pečlivě, by mohl
+      navrhnout jednoduchou úvahu: Pravděpodobnost zdaru při každém opakování pokusu je \(p\),
+      pravděpodobnost, že nastane zdar při alespoň jednom z nich tedy musí být, podle pravidla pro
+      sčítání pravděpodobností, \(np\). Úvaha je sice jednoduchá, ale zcela chybná. Vidíme to již ze
+      skutečnosti, že při pevné hodnotě \(p\) a dostatečně velkém \(n\) může hodnota \(np\)
+      překročit jedničku, a to nemůže žádná pravděpodobnost udělat. Kde se málo pozorný čtenář
+      dopustil chyby, když chtěl sčítat pravděpodobnosti zdaru při jednotlivých opakováních?
+      Neuvědomil si, že pravidlo součtu pravděpodobností jednotlivých jevů \(A_1\) až \(A_k\) při
+      výpočtu pravděpodobnosti jevu (\(A_1\) nebo \(A_2\) nebo \(\cdots\) nebo \(A_k\)) může použít
+      jedině pro jevy po dvou neslučitelné. Zdar při některém z opakování pokusu však nevylučuje
+      možnost zdaru při jiném pokusu. Pravidlo tedy bylo použito nesprávně. Pravděpodobnost zdaru
+      při alespoň jednom opakování pokusu snadno vypočteme pomocí jevu opačného. Opačný jev znamená,
+      že nenastane zdar ani při jednom opakování pokusu. Jednotlivá opakování jsou nezávislá, proto
+      je pravděpodobnost nezdarů při všech opakováních rovna součinu pravděpodobností při
+      jednotlivých z nich, tj. \((1 - p)^n\) . Pravděpodobnost zdaru při alespoň jednom opakováni je
+      pak doplňkem do jedničky, tedy \(1 - (1 - p)^n\). Je vidět, že je tím větší, čím je větší
+      \(n\), a její limita pro \(n\rightarrow \infty\) je rovna jedné. A to je výsledek, který jsme
+      předpověděli.
+
+    \twocolumn[\subsection{Pravděpodobnější, než bychom čekali - podmíněná pravděpodobnost}]
+      Kdysi se objevila, jako nepříliš dobrý vtip, úvaha o pravděpodobnosti bomby na palubě letadla:
+      Řekněme, že pravděpodobnost, že některý z pasažérů letadla má s sebou bombu, je jedna
+      tisícina. Pravděpodobnost, že dva pasažéři nezávisle na sobě budou mít bombu, je pak pouze
+      jedna milióntina (\(\num{e-3}\cdot\num{e-3}= \num{e-6}\)). Vezmu-li si tedy s sebou do 
+      letadla svou vlastní bombu, kterou ovšem nehodlám uvést do chodu, snížím tím pravděpodobnost 
+      druhé bomby na palubě na onu jednu milióntinu. Nezabývejme se nyní tím, že již první úvaha o 
+      jedné milióntině je v podstatě nesprávná, i když pro případ, že pravděpodobnost \(p\), že 
+      konkrétní pasažér bude mít bombu, je velmi malá, dává správný přibližný výsledek. Klíčová 
+      chyba je v úvaze, že snížení pravděpodobnosti bomby na palubě můžeme napomoci vlastní bombou 
+      v zavazadle. Tato úvaha nerespektuje totiž \textbf{pojem podmíněné pravděpodobnosti}, který 
+      si nyní na příkladu vyložíme.
+      
+      %--Jak nekoupit zmetek------------------------------------------
+      \input{../src/MAI/exam/exam058.tex}
+      %---------------------------------------------------------------
+
+      Vzorec (\ref{mai:eq057}) jsme získali pro konkrétní příklad. Odvoďme jej nyní obecně. Označme
+      \(p(A)\) a \(p(B)\) pravděpodobnost jevu \(A\) a pravděpodobnost jevu \(B\), \(p_B(A)\)
+      podmíněnou pravděpodobnost jevu \(A\) za podmínky, že nastal jev \(B\), a \(p_A(B)\)
+      podmíněnou pravděpodobnost jevu \(B\) za podmínky, že nastal jev \(A\). \(p(A\text{ a }B)\) je
+      pravděpodobnost současného nastoupení jevů \(A\) a \(B\). Dejme tomu, že v celkovém počtu
+      \(n\) opakování pokusu nastal jev \(B\) \(s\)-krát. Nechť v \(\ell\) případech z těch, kdy
+      nastal jev \(A\), nastal také jev \(B\). Pro pravděpodobnosti pak platí
+      \begin{align*}
+        p(B) &= \dfrac{s}{n}, \quad p_B(A) = \dfrac{\ell}{s}, 
+                              \quad p(A\text{ a }B) = \dfrac{\ell}{n}  \\
+        p(A\text{ a }B) &= \dfrac{sp_B(A)}{n}                          \\ 
+             &= \dfrac{np(B)p_B(A)}{n} = p(B)p_B(A).
+      \end{align*}
+      Získali jsme tak obecně první část formule (\ref{mai:eq057}). Záměnou jevů \(A\) a \(B\) 
+      dostaneme její druhou část. Poznamenejme, že v případě nezávislých jevů \(A\) a \(B\) je 
+      samozřejmě \(p_B(A) = p(A)\) a \(p_A(B) = p(B)\). Vzorec (\ref{mai:eq057}) tak přejde v 
+      pravidlo pro součin pravděpodobností nezávislých jevů.
+            
+      Nyní již snadno dokážeme přijít na chybu v úvaze o bombě v letadle, kterou jsme tento 
+      odstavec uvedli. Pravděpodobnost další bomby v letadle za podmínky, že jsme tam jednu sami 
+      donesli, je podmíněnou pravděpodobností. Proto je rovna podílu pravděpodobnosti, že v letadle 
+      budou dvě bomby, a pravděpodobnosti, že tam bude jedna bomba, tj. \(\num{e-6}/\num{e-3} = 
+      \num{e-3}\). Pocit bezpečí bychom si tedy vlastní bombou nezvýšili. Ještě abychom se báli, že 
+      bouchne, zejména pokud by byla vyrobená ve Hvizdu.
+      
+      %--Kolika let se dožijeme?--------------------------------------
+      \input{../src/MAI/exam/exam059.tex}
+      %---------------------------------------------------------------
+      
+      %--Ještě jednou bomba v letadle---------------------------------
+      \input{../src/MAI/exam/exam060.tex}
+      %---------------------------------------------------------------
+      
+      Nakonec ještě odvodíme obecný případ takzvané Bayesovy formule. Předpokládejme, že při
+      každém opakování jistého pokusu může nastat právě jeden z \(k\) různých výsledků. Jevy \(A_1,
+      A_2,\cdots, A_k\), z nichž \(j\)-tý znamená, že při pokusu byl zaznamenán \(j\)-tý výsledek, 
+      jsou po dvou neslučitelné a tvoří úplný systém. Platí tedy
+      \begin{equation*}
+        p(A_1) + p(A_2) + \ldots  + p(A_k) = 1.
+      \end{equation*}
+      Označme jako \(B\) libovolný jev, který popisuje celkový výsledek pokusu. Vzhledem k 
+      neslučitelnosti jevů \(A_1\) až \(A_k\) jsou neslučitelné i jevy (\(A_1\) a \(B\)) až 
+      (\(A_k\) a \(B\)). Zároveň je zřejmé, že jev \(B\) lze zapsat jako
+     \begin{equation*}
+       B = (A_1\text{ a }B)\;\text{nebo}\; (A_2\text{ a }B) \quad\ldots
+       \;\text{nebo}\; (A_k\text{ a }B),
+     \end{equation*} 
+      a tedy
+      \begin{equation*}
+        p(B) = \sum_{j=1}^{k}p(A_j\text{ a }B) = \sum_{j=1}^{k}p(A_j)\cdot p_{A_j}(B),
+      \end{equation*}
+      s využitím vztahu (\ref{mai:eq057}). Současně, podle téhož vztahu, platí 
+      \begin{equation*}
+        p(A_j\text{ a }B) = p(B)\cdot  p_B(A_j).
+      \end{equation*}
+      Pomocí dvou předchozích vztahů dostáváme:
+      
+      \begin{mdframed}[style=mdmathdef]
+        \begin{lemma}\label{mai:lemma005}
+          \textbf{(Bayesova formule):}
+          \begin{equation}\label{mai:eq058}
+            p_B(A_j) = \dfrac{p(A_j\text{ a }B)}{\sum_{i=1}^{k}p(A_i)\cdot p_{A_i}(B)} 
+                     = \dfrac{p(A_j)\cdot p_{A_j}(B)}{\sum_{i=1}^{k}p(A_i)\cdot p_{A_i}(B)} .
+          \end{equation}
+        \end{lemma}
+      \end{mdframed}
+      
+      Bayesova formule pro výpočet podmíněné pravděpodobnosti má řadu užitečných aplikací
+      
+      %--Potřebují lékaři pravděpodobnost?----------------------------
+      \input{../src/MAI/exam/exam061.tex}
+      %---------------------------------------------------------------
+      
+      A na závěr ještě hádanky:
+
+      %--Pohádka o Honzovi--------------------------------------------
+      \input{../src/MAI/exam/exam062.tex}
+      %---------------------------------------------------------------
+      
+      %--Může se člověk živit sázením?--------------------------------
+      \input{../src/MAI/exam/exam063.tex}
+      %---------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------

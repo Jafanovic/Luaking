@@ -1,0 +1,52 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam096}
+    Z místa \(A\) do místa \(B\) vedou čtyři turistické cesty, z místa \(B\) do místa \(C\) tři.
+    Určete, kolika zpåsoby lze vybrat trasu z \(A\) do \(C\) a zpět tak, že z těchto sedmi cest je
+    právě jedna použita dvakrát. \newline
+    \textbf{Řešení}: Nejprve určíme, kolika způsoby lze vybrat trasu z \(A\) do \(C\): ke každému ze
+    čtyř způsobů, jak dojít z \(A\) do \(B\), existují tři způsoby, jak dojít z \(B\) do \(C\).
+    Trasu z \(A\) do \(C\) lze tedy vybrat \(4\cdot3\), tj. dvanácti způsoby (obr.
+    \ref{mai:fig066a}).
+
+    {\centering
+      \captionsetup{type=figure}
+      \captionsetup[subfigure]{justification=centering}
+      \subcaptionbox{\label{mai:fig066a}}{\luafigure[0.5]{mai_fig066a.png}}  
+      \subcaptionbox{\label{mai:fig066b}}{\luafigure[0.5]{mai_fig066b.png}} \newline
+      \subcaptionbox{\label{mai:fig066c}}{\luafigure[0.5]{mai_fig066c.png}}
+      \captionof{figure}{K příkladu \ref{mai:exam096} \cite[s.~11]{calda2008matematika}}
+      \label{mai:fig066}
+    \par}
+    
+    Nyní jde o to, kolika způsoby lze vybrat zpáteční trasu z \(C\) do \(A\) tak, aby v ní byla
+    použita právě jedna cesta z těch, po kterých jsme už šli z \(A\) do \(C\). Máme tedy dvě
+    možnosti:
+    \begin{itemize}[noitemsep]
+      \item Po stejné cestě se budeme vracet z \(C\) do \(B\). Potom z \(B\) do \(A\) půjdeme jinou
+            cestou, než kterou jsme šli z \(A\) do \(B\). V tomto případě lze vybrat zpáteční trasu
+            z \(C\) do \(A\) třemi způsoby (obr. \ref{mai:fig066b}).
+      \item Z \(C\) do \(B\) půjdeme jinou cestou, než kterou jsme přišli, a z \(B\) do \(A\)
+            půjdeme po stejné cestě, jako z \(A\) do \(B\). V tomto případě lze vybrat zpáteční
+            trasu z \(C\) do \(A\) dvěma způsoby. (obr. \ref{mai:fig066c})
+    \end{itemize}
+    Protože obě uvedené možnosti se navzájem vylučují a jiné nejsou, dostáváme (podle
+    kombinatorického pravidla součtu), že celkový počet tras z \(C\) do \(A\), které splňují dané
+    podmínky, je roven pěti. Ke každé z dvanácti tras z \(A\) do \(C\) existuje tedy pět tras z
+    \(C\) do \(A\), které splňují požadovanou podmínku. Pomocí kombinatorického pravidla součinu
+    získáme výsledek úlohy: 
+    
+    Počet všech způsobů, kterými lze vybrat trasu z \(A\) do \(C\) a zpět tak, že z daných cest je
+    právě jedna použita dvakrát, je \(12\cdot5 = 60\).
+
+    \textbf{Podobné úlohy:} Určete počet způsobů, jimiž lze vybrat trasu
+    \vspace*{-0.5\baselineskip}
+    \begin{itemize}[noitemsep]
+      \item z \(A\) do \(C\) a zpět: \(4\cdot3\cdot3\cdot4=144\);
+      \item z \(A\) do \(C\) a zpět tak, že z těchto cest není žádná použita dvakrát:
+            \(4\cdot3\cdot3\cdot2=72\);
+      \item z A do C a zpět tak, že z těchto cest jsou právě dvě použity dvakrát:
+            \(4\cdot3\cdot1\cdot1 = 12\).
+    \end{itemize}
+  \end{example}
+\end{mdframed}

@@ -1,0 +1,17 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{cpp:exam012}
+    Třída \lstinline[style=luaCPPText]!stack! vytvořená v příkladu \ref{cpp:exam006} vyžadovala
+    inicializační funkci k nastavení proměnné pro index zásobníku. To je přesně ten druh
+    operací, pro něž byl konstruktor navržen. Zde je vylepšení verze třídy
+    \lstinline[style=luaCPPText]!stack!, která používá konstruktor pro automatickou inicializaci
+    zásobníkového objektu po jeho vytvoření:
+    %---------------------------------------------------------------
+    \lstinputlisting[style=luaCPPStyle]{../src/CES/CPP/HS_57_stack.cpp}
+    %---------------------------------------------------------------
+    Je Vidět, že úloha inicializace je konstruktorem provedena automaticky lépe, než pomocí 
+    samostatné funkce, která by musela být explicitně volána programem. Když je inicializace 
+    provedena automaticky při vytváření objektu, eliminuje to možnost, že by kvůli výskytu 
+    chyby inicializace neproběhla. Je to další cesta, jak omezit složitost programu.
+  \end{example}
+\end{mdframed}

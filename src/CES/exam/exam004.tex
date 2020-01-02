@@ -1,0 +1,65 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{cpp:exam004}
+   Tento program vybídne uživatele ke vložení hodnoty integer:
+    %---------------------------------------------------------------
+      \begin{lstlisting}[style=luaCPPStyle]
+        #include <iostream> 
+        using namespace std;
+        
+        int main()
+        {
+          int i;
+
+          cout << "Enter a value: "; 
+          cin >> i;
+          cout << "Here's your number: " << i << "\n";
+
+          return 0;
+        }
+      \end{lstlisting}
+    %---------------------------------------------------------------
+    Zde je příklad běhu programu:
+    \begin{mdframed}[style=mdmsdos]
+      Enter a value: 100 \newline
+      Here's your number: 100
+    \end{mdframed}  
+    Hodnota vložená uživatelem je, jak vidíte, předána do \texttt{i}. 
+
+    Program nyní trochu zmodifikujeme tak, aby uživatele vybídla ke vložení hodnoty integer,
+    hodnoty v pohyblivé řádové čárce a řetězce. Vše v jediném vstupním příkazu.
+    %---------------------------------------------------------------
+      \begin{lstlisting}[style=luaCPPStyle]    
+        int main()
+        {
+          int i; 
+          float f; 
+          char s[80];
+
+          cout << "Enter an integer, float, and string: "; 
+          cin >> i >> f >> S; 
+          cout << "Here's your data: "; 
+          cout << i << ' ' << f «< ' « s;
+
+          return 0;
+        }
+      \end{lstlisting}
+    %---------------------------------------------------------------   
+    Tento příklad ilustruje, že v jediném příkazu může vstupovat libovolný počet položek. Stejně
+    jako v C musí být položky odděleny vhodnými oddělovacími znaky (mezery, tabelátory nebo konec
+    řádku).  
+
+    Při načítání řetězce se vstup zastaví v okamžiku, kdy se objeví první oddělovací znak. Když
+    například vložíte do předchozího programu následující data 
+    \begin{mdframed}[style=mdmsdos]
+      10 100.12 This is a test
+    \end{mdframed}  
+    zobrazí program toto:
+    \begin{mdframed}[style=mdmsdos]
+      10 100.12 This
+    \end{mdframed}  
+    Řetězec není úplný, protože se jeho načítání zastavilo na mezeře za \texttt{This}. Zbytek
+    řetězce zůstal ve vstupním bufferu a čeká na další vstupní operaci. (Je to podobné, jako když
+    vstupuje řetězec s využitím \lstinline[style=luaCPPText]!scanf()! ve formátu \texttt{\%s}.)   
+  \end{example}
+\end{mdframed}

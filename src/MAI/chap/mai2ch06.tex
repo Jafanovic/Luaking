@@ -1,0 +1,113 @@
+% !TeX spellcheck = cs_CZ
+%---------------------------------------------------------------------------------------------------
+% mai2ch06.tex
+%---------------------------------------------------------------------------------------------------
+\setchaptertoc
+\chapter{Závislosti na více parametrech aneb funkce více proměnných}\label{mai:IIchapVI}
+  Skalárními funkcemi jedné reálné proměnné jsme se zabývali velmi podrobně v \ref{part:MAI} dílu.
+  Umíme počítat jejich limity v bodech \emph{vlastních} i \emph{nevlastních}, umíme je derivovat i
+  integrovat. Totéž dokážeme provádět i s vektorovými funkcemi jedné proměnné. Každý vektor je totiž
+  dán svými složkami, takže každá vektorová funkce je zadána tolika „obyčejnými“ skalárními
+  funkcemi, kolik má daný vektor složek. S vektoroVými funkcemi jedné proměnné jsme pracovali při
+  zadávání trajektorií hmotných bodů a výpočtech jejich dalších charakteristik (rychlost, zrychlení,
+  křivost trajektorie, apod). Tou jedinou proměnnou byl obvykle čas. Veličiny popisující objekty a
+  děje v přírodě, ať již jsou tyto veličiny skaláry či vektory, však většinou závisí na více
+  proměnných než jedné. Kromě času bývají typicky závislé na poloze. Vezměme třeba takové gravitační
+  pole Země. Na čase sice nezávisí, zato však klesá s druhou mocninou vzdálenosti od středu Země.
+  Veličina, která je charakterizuje, je buď vektorová, nebo skalární. Tou vektorovou je
+  \emph{gravitační zrychlení} neboli \emph{intenzita} gravitačního pole Země, tou skalární je
+  \emph{potenciál},
+  \begin{equation*}
+    \vec{g}(\vec{r}) = - \kappa\dfrac{M_Z}{r^2}\left(\dfrac{\vec{r}}{r}\right),\,
+    V(\vec{r}) = -\kappa\dfrac{M_Z}{r}, \, r\geq R_Z
+  \end{equation*}
+  V předchozích Vztazích jsou \(M_Z\) a \(R_Z\) hmotnost a poloměr Země, \(\vec{r}\) je polohový
+  vektor místa, v němž pole zjištujeme, vzhledem ke středu Země. Skalární i vektorové veličiny
+  popisující elektrické a magnetické pole nábojů a proudů, rychlosti elementů proudící kapaliny nebo
+  plynu a řada dalších fyzikálních veličin jsou nejen funkcemi času, ale také polohy bodu, v němž je
+  počítáme nebo měříme. A stejně jako byly změny funkcí jedné proměnné vyjádřeny pomocí derivací,
+  změny změn pomocí druhých derivací, atd., je třeba umět počítat i změny veličin závisejících na
+  více proměnných. Mohou samozřejmě nastat situace, kdy se mění jen jedna z proměnných, zatímco
+  ostatní zůstávají konstantní. Nejsnáze si takovou situaci představíme například tak, že měříme
+  třeba elektrické pole stále ve stejném bodě prostoru, ale běží při tom čas. Pole se v daném bodě s
+  časem mění. Nebo naopak v daném okamžiku sledujeme rozdílnost pole v bodech velmi blízkých danému
+  bodu. Obecně se samozřejmě mění všechny proměnné a s nimi i hodnoty skalární funkce nebo složky
+  vektorové funkce. Jak takové obecné změny co nejvýstižněji popsat, uvidíme právě v této kapitole.
+  Setkáme se v ní s \emph{parciální derivací}, která vystihuje, jak rychle se mění hodnota funkce se
+  změnou jedné z proměnných. Dále poznáme obecnější, \emph{směrovou derivaci}, která popisuje
+  rychlost změny funkční hodnoty, mění-li se všechny proměnné, ale tak, že bod, který reprezentuje
+  soubor jejich hodnot, se pohybuje v prostoru proměnných po libovolné přímce (nikoli jen po jedné
+  souřadnicové ose, jako tomu je u parciálních derivací). A konečně zavedeme pojmy \emph{úplného
+  diferenciálu} a \emph{Jacobiho zobrazení}, které popisují změnu hodnot skalární či vektorové
+  funkce v lineární aproximaci, mění-li se hodnoty proměnných zcela obecně.
+
+  Stejně jako u funkcí jedné proměnné je základem pro definici veličin popisujících rychlost změny
+  funkce pojem \textbf{limity}, který úzce souvisí s pojmem \emph{okolí bodů} a obecně i s
+  definičními obory funkcí. Pro případ funkcí více proměnných klade požadavek hlubšího pochopení
+  pojmu limity větší nároky na soustředěnost a důkladné promýšlení různých situací, než tomu bylo u
+  limit funkcí jedné proměnné. Proto se jím zabývá podstatná část poměrně rozsáhlého odstavce
+  \ref{mai:IIchapVIsecII} poté, co je v odstavci \ref{mai:IIchapVIsecI} věnována značná pozornost
+  různým typům definičních oborů funkcí. Čtenář, který se chce rychle propracovat k praktickým
+  výpočtům a spokojí se vatím s intuitivním pochopením pojmu limity funkce více proměnných
+  (založeným na dobré znalosti definice a vlastností limit funkcí jedné proměnné), může k nim v
+  podstatě rovnou přejít s vědomím, že sice bude umět prakticky provádět různé standardní operace s
+  funkcemi více proměnných, ale nebude si pravděpodobně vědět rady s netypickými případy. K
+  důkladnému pročtení odstavců \ref{mai:IIchapVIsecI} a \ref{mai:IIchapVIsecII} se může samozřejmě
+  vrátit kdykoli.
+
+  \section{Podmonožiny euklidovských prostorů \(\mathcal{R}^n\)}\label{mai:IIchapVIsecI}
+    S definičními obory funkcí jedné proměnné to bylo docela jednoduché. Byly to Většinou intervaly
+    - otevřené intervaly nebo jejich sjednocení, uzavřené intervaly, popřípadě intervaly uzavřené
+    jen z jedné strany. Také zde figurovala okolí bodů, ať již ryzí, z nichž byl daný bod vyloučen,
+    nebo taková, která daný bod obsahovala. Nic složitého tam nebylo. Aby bylo možné funkce
+    derivovat, což byla nejčastější operace, kterou jsme prováděli s cílem zjistit, jak rychle se
+    funkce mění, nemohly být definiční obory „moc divoké“. Vždy bylo třeba předpokládat, že bod, v
+    němž jsme funkci nebo její změnu vyšetřovali, má okolí, ve kterém je funkce přinejmenším
+    definována. Pro případ funkcí více proměnných je to podobné, ale bude třeba se definičním oborům
+    věnovat trochu podrobněji. Dejme tomu, že nějaká fyzikální, nebo i nefyzikální veličina bude
+    záviset na \(n\) proměnných. Každá z nich může nabývat nějakých hodnot. Funkční hodnota naší
+    funkce bude tak jednoznačně určena souborem \(n\) hodnot jednotlivých proměnných. Tuto
+    \(n\)-tici budeme považovat za bod v prostoru \(mathcal{R}^n\). S \(n\)-ticemi jsme již
+    pracovali v algebře, takže takový popis známe. V algebře jsme však s nimi prováděli algebraické
+    operace, sčítání a násobení číslem. Měli jsme tedy v \(mathcal{R}^n\) zavedenou
+    \textbf{algebraickou strukturu}. Pro práci s funkcemi a pro sledování jejich změn \uv{bod od bodu}
+    potřebujeme v \(mathcal{R}^n\) ještě jinou strukturu. Ta je tvořena okolími, podobně jako tomu
+    bylo u funkcí jedné proměnné. Taková struktura se nazývá \emph{topologická} a matematická
+    disciplína, která se zabývá topologickými strukturami, se jmenuje \textbf{topologie}.
+
+    Topologickými strukturami se nebudeme zabývat v celé obecnosti, i když je to velmi zajímavé.
+    Budeme pracovat pouze se speciálním typem, takzvanou euklidovskou topologtí v \(mathcal{R}^n\).
+
+    \subsection{Okolí bodů, otevřené a uzavřené množiny}
+    S pojmem okolí bodu jsme se setkali hned v první části druhé kapitoly prvního dílu. Vzpomínáte?
+    Šlo tehdy o okolí bodu \(a\) na reálné ose \(mathcal{R}\). Okolím jsme rozuměli otevřený
+    interval \((a - \delta_1,a + \delta_2)\), \(\delta_1, \delta_2 > O\), ryzím okolím pak množinu
+    \((a - \delta_1, a + \delta_2)\backslash{a}\), tj. sjednocení otevřených intervalů \((a -
+    \delta_1, a) \cup (a, a + \delta_2)\). Sjednocení jakýchkoli otevřených intervalů jsme později
+    nazývali otevřenou množinou, doplňky otevřených množin v \(mathcal{R}\) byly uzavřené množiny.
+    Vybudovali jsme tak na \(mathcal{R}\) \emph{euklidovskou topologii} (dodatek F prvního dílu).
+    Podobná bude situace i ve vícerozměrném případě, tedy v \(mathcal{R}^n\).
+
+  \section{Skalární funkce více proměnných}\label{mai:IIchapVIsecII}
+    V předchozím odstavci jsme si vcelku důkladně připravili pojmy týkající se vhodných definičních
+    oborů funkcí více proměnných. Nyní budeme tyto funkce definovat a studovat jejich vlastnosti.
+    Obdobně jako u funkcí jedné proměnné půjde o limity, spojitost a derivace. Výhoda důkladné
+    přípravy pojmů v předchozím odstavci se ukáže již při budování pojmu limity, zejména v
+    nevlastním bodě. Samotnému pojmu limity a s ním úzce spjatého pojmu spojitosti bude věnována
+    velká pozornost. Někdo se nad tím může pozastavit: Vždyť jak často se s potřebou výpočtu limit
+    setkáváme v praktických příkladech? Málo. Potřebujeme spíše derivovat, integrovat, řešit
+    diferenciální rovnice. S příklady na limity se setkáváme ponejvíce v matematických sbírkách, kde
+    slouží k procvičení naučené látky. Taková úvaha by byla poněkud krátkozraká. Řada vlastností
+    funkcí, a vůbec možnost s nimi rozumně operovat při běžných výpočtech, je založena na
+    spojitosti. A spojitost je těsně spjata s pojmem limity. Opět by mohla vzniknout námitka, že
+    spojitost přece intuitivně dobře chápeme - spojitá funkce nemá „zpřetrhaný“ graf. Umíme si však
+    představit graf funkce tří proměnných? Není to dost dobře možné ani u funkce dvou proměnných,
+    je-li složitější, nebo chová-li se v okolí některého bodu „podezřelé“. Limitě tedy potřebujeme
+    porozumět, i když její výpočet v praktických příkladech skutečně nebude na „denním pořádku“.
+    Abychom porozumění podpořili, budeme se vedle teoretických úvah věnovat i řadě praktických
+    příkladů.
+
+
+
+
+%---------------------------------------------------------------------------------------------------

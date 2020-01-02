@@ -1,0 +1,31 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam057}
+    \textbf{Návrh zákona}\newline
+    S připomínkami k navrhovanému zákonu chce v parlamentě vystoupit šest poslanců \(A\), \(B\),
+    \(C\), \(D\), \(E\), \(F\). Určete počet: 
+    \begin{enumerate}[leftmargin=2em,rightmargin=1em, label=\emph{\alph*}),noitemsep]
+      \item všech možných pořadí jejich vystoupení;
+      \item všech pořadí, v nichž vystupuje \(A\) po \(E\);
+      \item všech peřadí, v nichž vystupuje \(A\) ihned po \(E\).
+    \end{enumerate} \vspace{0.5em}
+    \textbf{Řešení} \vspace{0.5em}
+
+    \begin{enumerate}[leftmargin=2em, label=\emph{\alph*}),noitemsep]
+      \item Jde o permutace ze sešti prvků, takže všech možných pořadí vystoupení jednotlivých
+            poslanců je \(P(6) = 6! = 720\).
+      \item Každému pořadí, v němž vystupuje \(A\) po \(E\), lze přiřadit jediné pořadí, v němž
+            vystupuje \(E\) po \(A\), a. také obráceně. Pořadí těchto dvou druhů je tedy stejný
+            počet, a protože jiná neexistují, je počet všech pořadí, v nichž vystupuje \(A\) po
+            \(E\), roven
+            \begin{equation*}
+              \dfrac{1}{2}P(6) = \dfrac{1}{2}6! = 360
+            \end{equation*}      
+      \item Tento případ se od b) odlišuje tím, že po projevu poslance \(E\) násleleduje projev
+            poslanece \(A\) ihned, takže si oba projevy poslanců \(E\), \(A\) můžeme myslet jako
+            jediný projev hypotetického poslance \(EA\). Počet všech pořadí, v nichž vystupuje \(A\)
+            ihned po \(E\), je tedy roven počtu všech permutací z pěti prvků \(B\), \(C\), \(D\),
+            \(F\), \(EA\), takže máme výsledek: \(P(5) = 5! = 120\).
+    \end{enumerate}
+  \end{example}
+\end{mdframed}

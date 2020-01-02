@@ -1,0 +1,235 @@
+% package: lualayout
+% ==================================================================================================
+%                                     Page Layout 
+% ==================================================================================================
+%                     !!!  Package conflicts in LaTeX are a hell. !!!
+% http://www.macfreek.nl/memory/LaTeX_package_conflicts
+
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{LuaMyColor}
+\RequirePackage{etoolbox} % programming tools geared primarily towards LaTeX class and package
+% ~~~~~~~~ Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% polyglossia, which is needed for various international languages, implicitly loads fontspec
+
+% There is one important difference between the font handling in LuaLaTeX and XeLaTeX: While LuaLaTeX
+% allows you to access all your fonts by file name or font name, XeLaTeX restricts this:
+%       * System fonts in your system font directory (the fonts visible to other programs) 
+%         can only be called by the font name (like "TeX Gyre Termes"). 
+%       * Fonts installed in the TeX directories can only be called by their file names.
+\RequirePackage{fontspec} 
+  % \setmainfont{Cambria}  
+  % \setmainfont{Latin Modern Roman}
+  % \setmainfont{XCharter} % https://tex.stackexchange.com/questions/349113/ 
+  % \setmainfont[Script=Greek]{Cambria}
+  % \setmainfont{TeX Gyre Pagella}
+    \setmainfont{TeX Gyre Termes}
+\RequirePackage[style=british]{csquotes}
+% https://www.semipol.de/2018/06/12/latex-best-practices.html#put-each-sentence-on-a-single-line
+\RequirePackage[activate={true,nocompatibility},final,tracking=true,kerning=false,factor=1100,stretch=10,shrink=10]{microtype}  % mi­cro-ty­po­graphic ex­ten­sions
+
+% ~~~~~~~~ Title Page ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\newcommand{\LuaPartTitle}[3]{
+  \begin{titlepage}
+    \BgThispage           % background
+    \setpartpreamble[u]{
+      \begin{center}
+        \vspace{5cm}
+        {\fontsize{40}{52}\selectfont\uppercase{\textbf{#2}}} \\
+      \end{center}
+    }
+    \part[\textcolor{red}{#1: #2}]{#1}\label{part:#3}
+  \end{titlepage}
+}  
+% ~~~~~~~~ Chapter style ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% ~~~~~~~~ České uvozovky ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ \newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft}   % nahradit knihovnou csquotes
+% ~~~~~~~~ Geometry ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\RequirePackage{calc}
+% The total body width and height would be defined:
+%      width := textwidth (+ marginparsep + marginparwidth)
+%     height := textheight (+ headheight + headsep + footskip)
+\RequirePackage{geometry} 
+% \addtolength{\oddsidemargin}{-.875in}
+% \addtolength{\evensidemargin}{-.875in}
+% \addtolength{\topmargin}{-.875in}
+
+\RequirePackage[pages=some,placement=top]{background}
+
+\newcommand{\LuaPartBckgrnd}[1]{
+  \backgroundsetup{%
+    scale=1, angle=0,
+    contents={%
+      \includegraphics[width=\paperwidth,
+                      height=\paperheight]{#1}
+      },
+    position=current page.north east,
+    opacity=1,
+    anchor=below left,
+  }
+}
+\RequirePackage{tikzpagenodes}
+\RequirePackage{layouts}
+% ~~~~~~~~ ‘Floating’ figures ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\RequirePackage{float}      % \Load {float} before {hyperref}
+\RequirePackage{amsmath}    % \Load {amsmath} before {hyperref}:
+                            % https://tex.stackexchange.com/questions/975/
+                            % https://tex.stackexchange.com/questions/65926/
+% ~~~~~~~~ Hyperref ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% hyperref should be loaded before geometry. Otherwise the resulted PDF size will become wrong.
+% https://tex.stackexchange.com/questions/24445/
+% https://tex.stackexchange.com/questions/1863/
+% https://tex.stackexchange.com/questions/42520/
+\RequirePackage{hyperref}
+\hypersetup{%
+  % pdfpagelabels = true,
+  % bookmarks=true,         % show bookmarks bar?
+    unicode=true,           % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=black!80,     % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan,          % color of external links
+    pdfencoding=auto,
+    pdfauthor={Jaroslav Fait},
+    pdftitle={Technická knižnice inženýra},
+    pdfkeywords={Math, Physics, Electronics}, % list of keywords
+}
+% see example grain0019.tex
+\RequirePackage[
+    open,
+    openlevel=2,
+    atend
+  ]{bookmark}
+    
+% Package hyperref needs to be loaded before !
+\RequirePackage{caption}         % Captions
+  \captionsetup{
+    font={small},               % 
+    labelfont={bf},             % make all caption labels small and bold or:
+    justification={justified},
+    textfont={it},
+    labelfont={color=Sepia,bf},
+    textfont={color=black!90},
+    singlelinecheck=false,
+    format={plain},            % plain >> Typesets the captions as a normal 
+                               % paragraph. {options: plain, hang}
+    belowskip={3pt},           % sets the skip below caption
+    indention={1em},           % setup an extra indention starting at the second 
+                               % line of the caption.
+    parindent={-1em}            % sets the paragraph indention
+    }
+
+\RequirePackage{subcaption}    % typesetting of sub-captions     
+% \RequirePackage{subfig}        % Multipart figures 
+% command-clofdepth-already-defined-when-using-packages-subfigure-and-tocloft  
+          
+% \RequirePackage{wrapfig}       % Floats, Figures and aptions
+\RequirePackage{rotating}      % sidewaysfigure environment
+% --- Bibliography ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% how-to-fix-the-incompatility-between-biber-and-biblatex-versions
+% https://tex.stackexchange.com/questions/309991/
+% Bibliography with UTF8 support
+% note: - The backend option is not read correctly by the parser, if it is in the first
+%         position (right after the square bracket) of the usepackage command. 
+\RequirePackage[
+  backref=true,                             % 
+  hyperref=true,                            % 
+  refsection=part,                          % Start a reference section at every \part command.
+  indexing=true,                            %
+  url=true,                                 % 
+  style=ieee,                               % alphabetic, authoryear, ieee
+  backend=biber,                            % 
+  doi=false,
+  isbn=true,
+  sortlocale=en-GB,
+  texencoding=utf8,
+  bibencoding=utf8]{biblatex}
+  \addbibresource{MasterBiblioLib.bib}
+
+% ~~~~~~~~~~~~~ Code Highlighting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\RequirePackage{LuaCodeLst}
+% ~~~~~~~~~~~~ Tables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\RequirePackage{booktabs} 
+\RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{multirow}                  % Columns spanning multiple rows 
+\RequirePackage{multicol}                  % Using by Listings package see:
+                                           % https://tex.stackexchange.com/questions/34098/ 
+% This LATEX package provides the command \tablefootnote to be used in a table or sidewaystable 
+% environment, where \footnote will not work and when using \footnotemark and \footnotetext and 
+% adjusting the counters (including Hfootnote) manually is either too much work or would not 
+% even work (sidewaystable).
+\RequirePackage{tablefootnote}
+\renewcommand{\arraystretch}{1.5}          % factor for stretching the height of the lines -
+                                           % modification is global
+\RequirePackage{array}                     % implementation tabular and array
+\RequirePackage{longtable}                                              
+% tex.stackexchange.com/questions/12703 
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\RequirePackage{colortbl}                  % Color tables - pckg requires color and arrays packages
+% \newcolumntype{C}[1]{>{\centering}m{#1}} % buňka bude centrovaná horizontálně i vertikálně -
+                                           % nutný balík array !  
+                                           % http://tex.stackexchange.com/questions/94799/
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+\newcolumntype{b}{>{\columncolor{white}}c}
+% ~~~~~~~~~~~~ Matrix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% https://tex.stackexchange.com/questions/14071/how-can-i-increase-the-line-spacing-in-a-matrix
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
+
+% ~~~~~~~~ Enumeration lists ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\RequirePackage[inline]{enumitem}          % provides extensions  LaTeX's list environments 
+
+% ~~~~~~~~ Attache file into PDF ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% insert pages of external PDF documents without `Overfull \hbox' and `Overfull \vbox' warnings
+% when inserted pages does not match the print space. 
+% \RequirePackage{pdfpages}                  % \includepdf - Inserts pages of an external PDF doc.
+% \RequirePackage{attachfile2}
+\RequirePackage[author=jafa]{pdfcomment}   % A user-friendly interface to pdf annotations.
+
+% ~~~~~~~~ Animation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Guide: Convert and split animated GIF into PNG sequence >>>
+% https://tex.stackexchange.com/questions/240243/
+\RequirePackage{animate}
+% see grain0018.tex
+  \makeatletter
+  \def\@anim@getpagecount#1#2#3{%
+      \edef\@anim@tempfilename{\noexpand\unquote@name{#1.#2}}%
+      \pdfximage page 1 {\@anim@tempfilename}\xdef#3{\the\pdflastximagepages}%
+    }
+  \makeatother
+
+\RequirePackage{media9}
+\newcommand{\AddVideo}[3]{
+  \includemedia[
+    activate=pagevisible,%
+    deactivate=pageclose,%
+    width=#1pt,height=#2pt,
+    addresource=../media/#3.mp4,
+    flashvars={ src=../media/#3.mp4 &loop=true &scaleMode=stretch}
+  ]{}{StrobeMediaPlayback.swf}            % VPlayer.swf StrobeMediaPlayback.swf
+  }
+ 
+% ~~~~~~~~ Date and time formats ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\RequirePackage{datetime2}
+% ~~~~~~~~ ToDo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% Incompatibility between mdframed and todonotes - problem: Float losts!
+% https://tex.stackexchange.com/questions/126948/incompatibility-between-mdframed-and-todonotes
+\RequirePackage[]{todonotes}
+% ~~~~~~~~ Ohter user commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\newcommand{\wikitextrule}{\noindent\rule[-0.5pt]{\linewidth}{1pt}}
+% ~~~~~~~~ Title page design ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\newcommand{\LuaTitlePage}[3]{
+}

@@ -1,0 +1,21 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam097}
+    Odhadněte hodnotu integrálu:
+    \begin{equation}\label{MA_eq_sinx_x}
+        \int_{100\pi}^{1000\pi}\frac{\sin x}{x}dx
+    \end{equation}
+    Řešení: Funkce $f(x) = \sin x$ a $g(x) = \frac{1}{x}$ jsou v uvažovaném intervalu $\langle
+    100\pi, 1000\pi \rangle$ spojité a funkce $g(x)$ je kladná a nerostoucí.
+    \begin{align*}
+      \int_{100\pi}^{1000\pi}\frac{\sin x}{x}dx 
+        &=\frac{1}{100\pi}\int_{100\pi}^c\sin xdx                                   \\
+        &=\frac{1}{100\pi}\left(\cos100\pi - \cos c\right)
+    \end{align*}
+    kde $c$ je kladné číslo z intervalu $\langle 100\pi, 1000\pi \rangle$. Dále pro všechna
+    $c\in\langle 100\pi, 1000\pi \rangle$ platí $0\leq1-\cos c\leq2$, takže
+    \begin{equation*}
+        0\leq\int_{100\pi}^{1000\pi}\frac{\sin x}{x}dx\leq \frac{1}{50\pi}.
+    \end{equation*}
+  \end{example}  
+\end{mdframed}

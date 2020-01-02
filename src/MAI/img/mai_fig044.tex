@@ -1,0 +1,159 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\documentclass[10pt]{standalone}
+  \usepackage{helvet}                        % font
+  \usepackage{xltxtra}                       % fontspec package
+  \usepackage{tikz, pgfplots}  
+  \usepackage{amsmath, amsthm, amssymb, amsfonts, amsbsy}
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{intersections}
+  \usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}
+  
+  \begin{axis}[%
+    width=4.521in,
+    height=3.566in,
+    at={(0.758in,0.481in)},
+    scale only axis,
+    xmin=0,
+    xmax=35,
+    xticklabel style = {
+		font=\large,
+		yshift=-1ex,
+	    /pgf/number format/.cd,
+			fixed,
+			fixed zerofill,
+			precision=0,
+		/tikz/.cd
+	},
+    xlabel style={
+		font=\color{white!15!black},
+		font=\large
+	},
+    xlabel={j},
+    ymin=0,
+    ymax=0.2,
+    yticklabel style = {
+		font=\large,
+		/pgf/number format/.cd,
+			fixed,
+			fixed zerofill,
+			precision=2,
+		/tikz/.cd
+	},
+    ylabel style={
+		font=\color{white!15!black},
+		font=\large		
+	},
+    ylabel={p(j)},
+    axis background/.style={fill=white},
+    xmajorgrids,
+    ymajorgrids,
+    legend style={
+		legend cell align=left, 
+		align=left, 
+		draw=white!15!black,
+		font=\large	
+	}
+  ]
+  \addplot [color=red, draw=none, mark=asterisk, mark options={solid, red, scale=2}]
+    table[row sep=crcr]{%
+      1  0.000457763671875\\
+      2  0.003204345703125\\
+      3  0.013885498046875\\
+      4  0.041656494140625\\
+      5  0.091644287109375\\
+      6  0.152740478515625\\
+      7  0.196380615234375\\
+      8  0.196380615234375\\
+      9  0.152740478515625\\
+      10  0.091644287109375\\
+      11  0.041656494140625\\
+      12  0.013885498046875\\
+      13  0.003204345703125\\
+      14  0.000457763671875\\
+      15  3.0517578125e-05\\
+      };
+  \addlegendentry{\(n = 15\)}
+  
+  \addplot [color=blue, draw=none, mark=asterisk, mark options={solid, blue, scale=2}]
+    table[row sep=crcr]{%
+      1  7.45058059692383e-07\\
+      2  8.94069671630859e-06\\
+      3  6.85453414916992e-05\\
+      4  0.000376999378204346\\
+      5  0.00158339738845825\\
+      6  0.00527799129486084\\
+      7  0.0143259763717651\\
+      8  0.0322334468364716\\
+      9  0.0608853995800018\\
+      10  0.0974166393280029\\
+      11  0.132840871810913\\
+      12  0.154981017112732\\
+      13  0.154981017112732\\
+      14  0.132840871810913\\
+      15  0.0974166393280029\\
+      16  0.0608853995800018\\
+      17  0.0322334468364716\\
+      18  0.0143259763717651\\
+      19  0.00527799129486084\\
+      20  0.00158339738845825\\
+      21  0.000376999378204346\\
+      22  6.85453414916992e-05\\
+      23  8.94069671630859e-06\\
+      24  7.45058059692383e-07\\
+      25  2.98023223876953e-08\\
+      };
+  \addlegendentry{\(n = 25\)}
+  
+  \addplot [color=green, draw=none, mark=asterisk, mark options={solid, green, scale=2}]
+    table[row sep=crcr]{%
+      1  1.01863406598568e-09\\
+      2  1.73167791217566e-08\\
+      3  1.90484570339322e-07\\
+      4  1.52387656271458e-06\\
+      5  9.44803468883038e-06\\
+      6  4.72401734441519e-05\\
+      7  0.000195709289982915\\
+      8  0.000684982514940202\\
+      9  0.00205494754482061\\
+      10  0.00534286361653358\\
+      11  0.0121428718557581\\
+      12  0.0242857437115163\\
+      13  0.0429670850280672\\
+      14  0.0675197050441056\\
+      15  0.0945275870617479\\
+      16  0.118159483827185\\
+      17  0.13206059957156\\
+      18  0.13206059957156\\
+      19  0.118159483827185\\
+      20  0.0945275870617479\\
+      21  0.0675197050441056\\
+      22  0.0429670850280672\\
+      23  0.0242857437115163\\
+      24  0.0121428718557581\\
+      25  0.00534286361653358\\
+      26  0.00205494754482061\\
+      27  0.000684982514940202\\
+      28  0.000195709289982915\\
+      29  4.72401734441519e-05\\
+      30  9.44803468883038e-06\\
+      31  1.52387656271458e-06\\
+      32  1.90484570339322e-07\\
+      33  1.73167791217566e-08\\
+      34  1.01863406598568e-09\\
+      35  2.91038304567337e-11\\
+      };
+  \addlegendentry{\(n = 35\)}
+  
+  \end{axis}
+\end{tikzpicture}%
+
+\end{document}

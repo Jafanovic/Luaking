@@ -1,0 +1,74 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam062}
+    \textbf{Pohádka o Honzovi}\newline
+    Honza se vydal ke zlému černokněžníkovi vysvobodit princeznu. Černokněžník se zachechtal a
+    pravil: „Princezna je za jedním z těchto tří závěsů. Uhodneš-li, za kterým, můžeš si ji odvést.
+    Ne-li, zkameníš.“ Honza tentokrát neměl na pomoc hodné mravenečky ani mazanou lišku Ryšku, a tak
+    se rozhodl použít svých znalostí o pravděpodobnosti. Když zjistil, že mu nepomohou, protože
+    pravděpodobnosti, že princezna je za jednotlivými závěsy, jsou stejné a rovny jedné třetině,
+    zvolil závěs A. Černokněžníka napadlo, že se na Honzovy znalosti o pravděpodobnostech podívá
+    lépe, a aniž závěs A odhrnul, řekl: „Mám už na zahradě kamení dost, a proto ti dám jednu
+    nápovědu. Ze dvou zbývajících závěsů, B a C, odhrnu ten, za kterým princezna není.“ A odhrnul
+    závěs B. Princezna tam opravdu nebyla. Černokněžník řekl: „Teď se teprve rozhodni, budeš-li
+    trvat na závěsu A, nebo změníš své rozhodnutí a označíš C.“ Honza přemýšlel, až se mu z hlavy
+    kouřilo, a snažil se určit pravděpodobnosti, že princezna je za závěsem A, resp. C. Napadly ho
+    dvě úvahy, které vypadaly docela dobře, ale vedly k různým výsledkům:
+    \begin{itemize}[noitemsep]
+    \item Úvaha prvá: Za závěsem B princezna není a závěsy A a C jsou rovnocenné. Pravděpodobnost,
+          že je moje vyvolená ze kterýmkoli z nich, je proto \num{0.5}. Černokněžník mi tedy nijak
+          nepomohl. (Nic jiného se od něj taky čekat nedalo.)
+    \item Úvaha druhá: Pravděpodobnost, že princezna je za závěsem A, který jsem předem zvolil, byla
+          rovna jedné třetině. Tím, že černokněžník odkryl závěs B, se však nemohla změnit. Proto
+          pravděpodobnost, že najdu princeznu za závěsem C, je nyní rovna dvěma třetinám.
+    \end{itemize}
+    
+    Poradíme Honzovi, který ze závěsů A a C má zvolit? Vzpomeneme-li si na to, co jsme před chvílí
+    zjistili o podmíněných pravděpodobnostech, určitě mu poradit můžeme: Označme jako \(A\), \(B\),
+    \(C\) jevy
+    \begin{itemize}
+      \item Jev \(A\) : Princezna je za závěsem A.
+      \item Jev \(B\) : Princezna je za závěsem B.
+      \item Jev \(C\) : Princezna je za závěsem C.
+    \end{itemize}
+    Jejich pravděpodobnosti jsou
+    \begin{equation*}
+      p(A) = \dfrac{1}{3}, \qquad p(B) = \dfrac{1}{3}, \qquad p(C) = \dfrac{1}{3}.
+    \end{equation*}
+    Víme, že Honza vybral závěs A, černokněžník tedy může odhrnout závěs B nebo C. Označme jako
+    \(B'\) a \(C'\) tyto jevy.
+    \begin{itemize}
+      \item Jev \(B'\) : Černokněžník odhrne závěs B.
+      \item Jev \(C'\) : Černokněžník odhrne závěs C.
+    \end{itemize}
+    Pravděpodobnosti jevů \(B'\) i \(C'\) jsou shodné a rovny jedné polovině, tj. \(p(B') = p(C') =
+    1/2\) . Podle vztahu (\ref{mai:eq057}) platí
+      \begin{gather*}
+        \begin{aligned}
+        p(A\text{ a }B') &= p(B')\cdot p_{B'}(A) = p(A)\cdot p_{A}(B') 
+                          = \dfrac{1}{3}\cdot\dfrac{1}{2} = \dfrac{1}{6},  \\
+        p(A\text{ a }C') &= p(C')\cdot p_{C'}(A) = p(A)\cdot p_{A}(C')
+                          = \dfrac{1}{3}\cdot\dfrac{1}{2} = \dfrac{1}{6},  \\
+        \shortintertext{Obdodně je}
+        p(C\text{ a }B') &= p(B')\cdot p_{B'}(C) = p(C)\cdot p_{C}(B')
+                          = \dfrac{1}{3}\cdot1 = \dfrac{1}{3},              \\
+        p(C\text{ a }C') &= p(C')\cdot p_{C'}(C) = p(C)\cdot p_{C}(C') = 0  \\
+      \end{aligned}
+    \end{gather*}
+    Použijeme-li těchto výsledků, dostaneme podmíněné pravděpodobnosti, že princezna je za závěsem
+    A, resp. C za podmínky, že černokněžník odhrnul B:
+    \begin{align*}
+      p_{B'}(A) &= \dfrac{p(A\text{ a }B')}{p_{B'}} = \dfrac{1}{6}:\dfrac{1}{2} = \dfrac{1}{3},  \\
+      p_{B'}(C) &= \dfrac{p(C\text{ a }B')}{p_{B'}} = \dfrac{1}{6}:\dfrac{1}{2} = \dfrac{1}{3}    
+    \end{align*}
+    Správná je tedy druhá Honzova úvaha. Můžeme ještě provést její kontrolu pomocí podmíněných
+    pravděpodobností: Pro jev (\(A\) a \(B'\)) nebo (\(A\) a \(C'\)), utvořený ze dvou
+    neslučitelných jevů pomocí spojky „nebo“, je tedy
+    \begin{equation*}
+      p\left((A\text{ a }B')\text{ nebo }(A\text{ a }C')\right) = \dfrac{1}{6} + \dfrac{1}{6} 
+        = \dfrac{1}{3}.
+    \end{equation*}
+    Poslední výsledek představuje skutečnost, že princezna je za závěsem A stále s pravděpodobností
+    rovnou jedné třetině, ať se černokněžník chystá odhrnout kterýkoli ze zbývajících závěsů.
+  \end{example}
+\end{mdframed}

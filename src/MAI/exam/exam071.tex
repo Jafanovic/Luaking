@@ -1,0 +1,103 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam071}
+    \textbf{Jak číst výsledky studentské ankety aneb není průměr jako průměr}\newline
+    Každý semestr na Masarykově univerzitě se uzavírá vyhodnocením velmi užitečné studentské ankety
+    v Informačním systému MU. Studenti hodnotí na jedenáctihodnotové stupnici (nula až deset bodů)
+    několik položek pro každý studijní předmět (obtížnost, zajímavost, srozumitelnost výkladu,
+    přístup učitele, rozmanitost literatury) a mohou doplnit i slovní komentáře. Na ty se učitelé
+    těší nejvíce, neboť díky anonymitě pisatelů se tak o sobě mohou dovědět leccos zajímavého.
+    Všimneme si však statistického zpracování ankety. U každého předmětu je pro danou položku
+    vypočtena průměrná bodová hodnota odpovědí a vyznačena na téže jedenáctihodnotové stupnici. Pro
+    porovnání je na stupnici vyznačen i takzvaný „fakultní průměr“. Každý přednášející může vidět
+    svá hodnocení a hodnocení svých kolegů, kteří mu vedou cvičení. Děkan má přístupové právo k celé
+    statistice, a tak může porovnávat. Jednoho deštivého večera přestalo děkana bavit vyplňování
+    rektorátních formulářů a začal si výsledky ankety prohlížet. Zajímala jej zejména položka
+    „srozumitelnost výkladu“. Řekl si, že všem učitelům, kteří v této položce budou hodnoceni
+    nadprůměrně, zvýší osobní ohodnocení. Soubor předmětů je veliký, a tak děkan klikal a klikal.
+    Zjišťoval, že u veliké většiny předmětů leží průměrné hodnocení srozumitelnosti nad fakultním
+    průměrem. Jeho pocity byly smíšené. Na jedné straně se radoval, jakými jsou jeho podřízení
+    dobrými pedagogy, na druhé straně trnul, kolik to bude stát. Snad aby se raději vrátil k
+    protivným formulářům. Najednou v něm zahlodalo podezření i naděje, že není všechno v pořádku.
+    Jak je možné, že většina hodnocení leží nad průměrem? Kladné a záporné odchylky by se přece měly
+    kompenzovat. Zavolal proto na koberec proděkana pro informační technologie, aby se jej zeptal,
+    co je to „fakultní průměr“. Proděkan odpověděl takto: Máme soubor \(K\) předmětů \(\lbrace
+    X_\alpha\rbrace\), \(\alpha = 1, \ldots, K\). V předmětu \(X_\alpha\) vyplnilo anketu
+    \(N_\alpha\)  studentů, jednotlivé hodnoty odpovědí pro danou položku (srozumitelnost výkladu)
+    byly označeny \(\lbrace x_{\alpha,j}\rbrace\), \(j = 1, \ldots, N_\alpha\). Celkem přirozeně
+    předpokládáme, že váha odpovědi každého studenta je stejná, nezávisle na předmětu. Tato váha je
+    rovna převrácené hodnotě celkového počtu studentů, kteří vyplnili anketu, tj. \(w = N^{-1}\),
+    \(N = N_1 + \ldots + N_k\). Fakultní průměr je proto dán vzorcem
+    \begin{gather*}
+      \langle x \rangle 
+        = \sum_{\alpha=1}^{K}\sum_{j=1}^{N_\alpha}wx_{\alpha,j} 
+        = \dfrac{1}{N}\sum_{\alpha=1}^{K}\left(\sum_{j=1}^{N_\alpha}x_{\alpha,j}\right)
+        = \dfrac{1}{N}\sum_{\alpha=1}^{K}A_\alpha,
+    \end{gather*}
+    kde jsme označili \(A_\alpha = \sum_{j=1}^{N_\alpha}x_{\alpha,j}\). Děkan chvíli přemýšlel a
+    pravil: To vypadá docela logicky. Neměli bychom však počítat fakultní průměr tak, že vezmeme
+    průměrné hodnoty pro každý předmět a vypočteme jejich aritmetický průměr? Pak bychom dostali
+    \begin{gather*}
+      \langle \overline{x} \rangle
+        = \dfrac{1}{K}\sum_{\alpha=1}^{K}\langle x_{\alpha}\rangle
+        = \dfrac{1}{K}\sum_{\alpha=1}^{K}
+          \left(\dfrac{1}{N_\alpha}\sum_{j=1}^{N_\alpha}x_{\alpha,j}\right)
+        = \dfrac{1}{K}\sum_{\alpha=1}^{K}\dfrac{A_\alpha}{N_\alpha}.
+    \end{gather*}
+    Tento závěr se akademickým funkcionářům na první pohled nijak zvlášť nelíbil. Bylo totiž jasné,
+    že náhodné veličiny \(X_1, \ldots, X_k\) mají odlišná rozdělení. No jo, řekli si oba, musíme
+    počítat. My už ale počítat nemusíme, neboť jsme takový problém před chvílí vyřešili obecně.
+    Zjistili jsme totiž, že střední hodnota součtu náhodných veličin je rovna součtu středních
+    hodnot, bez ohledu na konkrétní rozdělení každé z veličin. Definujeme-li tedy náhodnou veličinu
+    \(Y\) jako aritmetický průměr veličin \(X_\alpha\), tj.
+    \begin{align*}
+      Y &= \dfrac{1}{K}\left(X_1 + \ldots + X_K\right),  \\
+      \shortintertext{dostaneme}
+      \langle y \rangle &= \dfrac{1}{K}\left(\langle x_1 \rangle +\ldots+\langle x_K \rangle\right).
+    \end{align*}
+    Tento výsledek se shoduje s hodnotou \(\langle \overline{x} \rangle\), kterou pro výpočet
+    „fakultního průměru“ navrhl děkan. Vypočteme-li součet odchylek hodnot \(\langle x_\beta
+    \rangle\) od \(\langle y \rangle\), dostaneme skutečně nulu:
+    \begin{equation*}
+      \sum_{\beta =1}^{K}\left(\langle x_\beta \rangle - \langle y \rangle\right)
+        = \sum_{\beta =1}^{K}\left(\dfrac{A_\beta}{N_\beta} 
+        - \dfrac{1}{K}\sum_{\alpha=1}^{K}\langle x_\alpha \rangle\right)
+        = 0.
+    \end{equation*}
+    Zkusme se ještě zamyslet nad tím , jak použití „špatného“ fakultního průměru zkreslilo výsledky
+    a proč. Vypočtěme si rozdíl \(\Delta = \langle \overline{x} \rangle - \langle x \rangle\):
+    \begin{align*}
+      \Delta &= \langle \overline{x} \rangle - \langle x \rangle 
+              = \dfrac{1}{K}\sum_{\alpha=1}^{K}\langle x_\alpha \rangle
+              - \dfrac{1}{N}\sum_{\alpha=1}^{K}A_\alpha                           \\
+             &= \dfrac{1}{K}\sum_{\alpha=1}^{K}\langle x_\alpha \rangle
+              - \dfrac{1}{N}\sum_{\alpha=1}^{K}N_\alpha\langle x_\alpha \rangle   \\
+             &= \dfrac{1}{K}\sum_{\alpha=1}^{K}\langle x_\alpha\rangle\left(1 - 
+               K\dfrac{N_\alpha}{N}\right).
+    \end{align*}
+    Platí přitom
+    \begin{equation*}
+      \sum_{\alpha=1}^{K}\left(1 - K\dfrac{N_\alpha}{N}\right) = 0.
+    \end{equation*}
+    Pokud by byl počet studentů, kteří vyplnili anketu, ve všech předmětech stejný, tj. \(N_\alpha =
+    \dfrac{N}{K}\) , byla by odchylka \(\Delta\) podle očekávání nulová. Stejná situace by nastala,
+    kdyby byly shodné všechny průměrné hodnoty \(\langle x_\alpha \rangle\). Je-li odchylka
+    \(\Delta\) kladná, je „nesprávný“ fakultní průměr \(\langle x \rangle\) nižší než \(\langle
+    \overline{x} \rangle\). Proto hodnocení jednotlivých předmětů vypadají příznivěji, právě tak,
+    jak to zjistil děkan. Odchylku \(\Delta\) posouvají do kladných hodnot předměty, které hodnotilo
+    málo studentů, a předměty, které měly vysoké hodnocení. Dobře je to vidět na příkladu dvou
+    předmětů, tj. pro \(K = 2\), kde vychází
+    \begin{equation*}
+      \Delta = \langle \overline{x} \rangle - \langle x \rangle 
+            = \dfrac{N_2 - N_1}{2(N_2+N_1)}\left(\langle\overline{x}\rangle-\langle x\rangle\right).
+    \end{equation*}
+    
+    Pro \(N_1\ll N_2\) a \(\langle x_1 \rangle  \gg \langle x_2 \rangle\) bude rozdíl \(\Delta\)
+    skoro polovina hodnoty \(\langle x_1 \rangle\)! U volitelných specializovaných předmětů, které
+    si vybírají jen poměrně malé počty studentů, kteří navíc mají o předmět opravdový zájem a
+    hodnotí jej proto většinou vyšším počtem bodů, je splněno obojí (malý počet hodnotících a vysoké
+    bodové hodnocení). Je vidět, že při nesprávně zvoleném výpočtu srovnávací hodnoty (fakultního
+    průměru) mohou právě předměty, jejichž statistický význam je spíše okrajový, ovlivnit celkové
+    hodnocení.
+  \end{example}
+\end{mdframed}

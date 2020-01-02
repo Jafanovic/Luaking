@@ -1,0 +1,954 @@
+% !TeX program = lualatex
+% !TeX root = luaking.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = cs_CZ
+%---------------------------------------------------------------------------------------------------
+\graphicspath{{../src/MAI/img/}}
+% file mai1ch04b.tex
+%---------------------------------------------------------------------------------------------------
+\setchaptertoc
+\chapter{Náhodné veličiny}\label{mai:IchapIVb}
+  \epigraph{\emph{The true logic of this world is in the calculus of probabilities.}}{James Clerk 
+    Maxwell}
+  \section{Úvod}\label{mai:IchapIVsecIII}
+    Hodnota některých veličin je určena jednoznačně a „jednou provždy“. Kdykoli budeme její hodnotu 
+    zjišťovat, tehdy dostaneme totéž - takže ji ani opakovaně zjišťovat nemusíme. Příkladem může 
+    být skoro prázdná peněženka, ve které jsou třeba tři koruny. Dokud nebudeme pracovat a do 
+    peněženky něco nepřidáme, bude hodnota veličiny \(X\) (počet korun v peněžence) stále rovna 
+    \num{3}. Nemá smysl se do peněženky vůbec dívat. Pokud budeme do peněženky přidávat každý den 
+    dvě koruny, také budeme vědět, jak se veličina \(X\) mění, aniž bychom se do peněženky dívali. 
+    Po \(n\) dnech bude hodnota \(X = 3 + 2n\). Většina veličin, se kterými se setkáváme, se však 
+    takto nechová. Jejich hodnoty se totiž často řídí náhodnými vlivy, takže při každém
+    měření veličiny \(X\), tj. zjišťování její hodnoty, můžeme získat odlišný výsledek než při 
+    měřeních předchozích. Uveďme některé příklady náhodných veličin.
+    
+    \begin{itemize}
+      \item \textbf{Příklad s novorozenci}: Nechť jé veličinou \(X\) počet chlapců ve stovce 
+            novorozených dětí. Zkušenost říká, že tento počet je v průměru o něco větší než 
+            \num{50}, avšak pro různé skupiny po stovce novorozených dětí bude počet chlapců 
+            kolísat. V jedné skupině bude \num{52}, v jiné \num{54}, někde třeba \num{60}, nebo 
+            také \num{45}.
+      \item \textbf{Příklad s meteoroidy a meteority}: Pro astronomy může být důležitou veličinou 
+            \(X\) počet meteoroidů, které za rok dopadnou do zemské atmosféry. Jinou veličinou, 
+            třeba \(K\), může být roční počet meteoritů, tj. těch meteoroidů, které v atmosféře 
+            neshořely zcela, ale jejich část dopadla na povrch Země. Také tyto hodnoty budou pro 
+            každý roční interval poněkud odlišné, neboť i počet dopadnuvších meteoroidů a 
+            meteoritů podléhá vlivům, které se nedají přesně předvídat.
+      \item \textbf{ Příklad s tlakoměrem}: Bude-li lékař měřit pacientovi tlak několikrát po 
+            sobě, určitě také naměří několik různých hodnot. Krevní tlak je citlivý na náhodné 
+            vlivy, třeba i na vnitřní rozrušení pacienta vyplývající ze strachu z bílého pláště.
+      \item \textbf{Opakovaná měření fyzikální veličiny}: Chceme-li změřit třeba odpor elektrického
+            vodiče (drátu), jedná se o měření nepřímé. Nemůžeme odpor změřit přímo, třeba jako      
+            to můžeme udělat pro délku. Většinou měříme napětí \(U\) na vodiči a proud \(I\), který 
+            jím protéká. Odpor pak zjišťujeme jako podíl \(R = U/I\). Změříme-li napětí i proud 
+            jednou, dostaneme konkrétní hodnotu \(R\). Budeme-li měření napětí a proudu provádět 
+            opakovaně, budeme dostávat poněkud odlišné hodnoty \(U\) a \(I\), a tedy i odlišné 
+            hodnoty \(R\). Sledované veličiny se chovají jako náhodné. Je to způsobeno řadou 
+            náhodných vlivů jak na veličiny samotné, tak na jejich měření (nepřesnost odečítání 
+            údajů na stupnicích, apod.).
+    \end{itemize}
+  
+    Při každém fyzikálním (a vlastně i nefyzikálním) experimentu máme co do činění s náhodnými 
+    veličinami. Při chemických analýzách je náhodnou veličinou třeba koncentrace dané látky
+    v roztoku, při experimentech biologických třeba počet uhynuvších rostlin ve stovce sazenic, 
+    počet pozorovaných prvoků v zorném poli mikroskopu, výskyt vzácných ptáků ve sledované 
+    lokalitě, apod. V následujících odstavcích definujeme náhodné veličiny přesněji a naučíme se s 
+    nimi zacházet. Uvidíme, že zjištění určité hodnoty náhodné veličiny je otázkou jisté 
+    pravděpodobnosti. Také lépe objasníme, co znamená vyjádření „v průměru“, které jsme občas v 
+    předchozím textu použili a intuitivně mu jistě rozuměli.
+  
+    \subsection{Jak dobrý je to střelec - diskrétní rozdělení}
+      Mimořádně vhodnou ukázkou náhodné veličiny je příklad se sportovním střelcem, kterým jsme
+      uvedli celou kapitolu o pravděpodobnostech.
+  
+      %--Ještě jednou střelba, tentokrát přesněji---------------------
+      \input{../src/MAI/exam/exam064.tex}
+      %---------------------------------------------------------------
+    
+    Položme si ještě otázku, jak můžeme zjistit pravděpodobnosti, se kterými střelec dosáhne při
+    jednom výstřelu daného počtu bodů. Prakticky to lze provést jedině tak, že střelec mnohokrát
+    vystřelí na terč a jeho zásahy budou při tom zaznamenávány. Dejme tomu, že vystřelil \(n\)-krát 
+    a že počet výstřelů, při nichž byl bodový zisk \(j\) bodů ( \(j = 0, 1, 2, 3\)), byl \(n_j\). 
+    Pak pro pravděpodobnost bodového zisku \(j\) bodů při jednom výstřelu je \(p_j = n_j/n\). 
+    Kdybychom provedli skutečný experiment se střelcem a počítali pravděpodobnosti \(p_j\) znovu a 
+    znovu po každém dalším výstřelu, viděli bychom, že pro malé hodnoty \(n\) nejprve kolísají a 
+    pro rostoucí \(n\) se začínají ustalovat a již kolísají velmi málo. Tímto postupem bychom je 
+    mohli určit tak, aby byly pro náš účel rozumně přesné - třeba s přesností na dvě platná místa. 
+    Rozumnou přesností je zde myšlena skutečnost, že nemá smysl chtít zjišťovat pravděpodobnost 
+    třeba na šest platných míst. Vzhledem k principiální přítomnosti náhodných vlivů se kolísání 
+    pravděpodobností nikdy nezbavíme, takže platná místa na pozicích, kde se kolísání trvale 
+    projevuje již bez ohledu na zvyšující se \(n\), nemají smysl.
+    
+    V příkladu \ref{mai:exam064} jsme se již velmi těsně přiblížili důležitým charakteristikám, 
+    které určují náhodnou veličinu a jsou přitom matematicky korektně definovány. Viděli jsme, že 
+    známe-li jen hodnoty, kterých může náhodná veličina nabývat, nemůžeme o ní říci již nic 
+    dalšího. Známe-li však ještě pravděpodobnosti, se kterými jednotlivých hodnot nabývá, můžeme o 
+    ní získat již velmi mnoho informací.
+
+    \begin{mdframed}[style=highlight]
+      \textbf{Náhodnou veličinou s diskrétním rozdělením} nazýváme takovou veličinu \(X\), která
+      může nabývat konečně mnoha různých hodnot \((x_1, x_2, \ldots, x_k)\) s pravděpodobnostní
+      \((p_1, p_2, \ldots, p_k)\) popřípadě spočetně mnoha hodnot \((x_1, x_2, \ldots)\) s 
+      pravděpodobnostmi \((p_1, p_2, \ldots)\).
+    \end{mdframed}
+
+    Jevy \(A_j\) \uv{veličina \(X\) nabývá hodnoty \(x_j\)}, jsou po dvou neslučitelné. Platí
+    \begin{equation*}
+      \sum_{j=1}^{k}p_j = 1, \qquad\text{resp.}\qquad \sum_{j=1}^{k=\infty}p_j = 1
+    \end{equation*}
+    Pokud jde o druhý z obou případů, nebudeme se jím prozatím zabývat. Soubor všech dvojic
+    \begin{equation*}
+      \left\lbrace(x_j, p_j)\right\rbrace,\qquad j = 1, 2, \ldots, k,
+    \end{equation*}
+    se nazývá \textbf{rozdělení} náhodné veličiny \(X\). Můžeme je znázornit i graficky.
+
+    %--Bernoulliovo (binomické) rozdělení---------------------------
+    \input{../src/MAI/exam/exam065.tex}
+    %---------------------------------------------------------------
+    
+    Nyní definujeme další charakteristiky náhodné veličiny. Těmi základními jsou, kromě již 
+    definované \emph{nejpravděpodobnější hodnoty}, ještě \textbf{střední hodnota}, \textbf{rozptyl} 
+    (popřípadě jeho odmocnina, zvaná \textbf{střední kvadratická} nebo \textbf{směrodatná 
+    odchylka}), \textbf{medián}, popřípadě \textbf{P-kvantil}. Pojem střední hodnoty jsme již v 
+    podstatě vybudovali v příkladu se střelcem. Nyní postup zobecníme. Předpokládejme, že při 
+    velkém počtu \(n\) měření náhodné veličiny \(X\) naměříme různé hodnoty \((x_1, x_2, \ldots, 
+    x_k)\) tak, že hodnota \(x_1\) byla naměřena \(n_1\)-krát, hodnota \(x_2\) \(n_2\)-krát, atd., 
+    až hodnota \(x_k\) \(n_k\)-krát. Je zřejmé, že součet četností \(n_1\), \(n_2\), až \(n_k\) 
+    jednotlivých hodnot musí být roven celkovému počtu měření \(n\) a že podíly
+    \begin{equation*}
+      p_1 = \dfrac{n_1}{n}, \qquad p_2 = \dfrac{n_2}{n}, \qquad \ldots, \qquad p_k = \dfrac{n_k}{n},
+    \end{equation*}
+    představují pravděpodobnosti jednotlivých hodnot veličiny \(X\). Tím je zadáno její rozdělení,
+    které ji plně charakterizuje. Položme si však otázku, zda by se veličina \(X\) přece jen nedala
+    charakterizovat jedinou hodnotou, která by všechny různě pravděpodobné hodnoty v jistém
+    smyslu „zastupovala“. Kdybychom třeba takto měřili délku stolu, jistě bychom na otázku „Kolik
+    měří stůl?“ neodpovídali tím, že bychom tazateli předložili získané rozdělení, i když by taková
+    odpověď byla nejvýstižnější. Určitě bychom uvedli jedinou hodnotu. Ale jakou? I laika napadne,
+    že by takovou reprezentativní hodnotou mohl být aritmetický průměr naměřených hodnot \(x_1\) až
+    \(x_k\). Bylo by ale správné vzít jen prostý aritmetický průměr těchto různých hodnot a nebrat 
+    ohled na skutečnost, že některé byly naměřeny s větší a jiné s menší četností? Nikoliv. 
+    Reprezentativní hodnota veličiny \(X\) nemá zastupovat jen naměřené hodnoty, ale celé 
+    rozdělení. Určitá hodnota \(x_j\) bude mít tím větší vliv na reprezentativní hodnotu, s čím 
+    větší četností byla naměřena. Protože byla naměřena \(n_j\)-krát, musíme ji také tolikrát do 
+    aritmetického průměru započíst.Získáváme tak \textbf{vážený aritmetický průměr} naměřených 
+    hodnot, neboli \emph{střední hodnotu}
+    
+    \begin{mdframed}[style=highlight]
+      \begin{align}\label{mai:eq059}
+        \left\langle x \right\rangle 
+          &= \dfrac{n_1x_1 + n_2x_2 + \cdots + n_kx_k}{n}  \nonumber \\
+          &= p_1x_1 + p_2x_2 + \cdots + p_kx_k             \nonumber \\
+          &= \sum_{j=1}^{k}p_jx_j.
+      \end{align}
+    \end{mdframed}
+    Součet všech pravděpodobností \(p_1 + p_2 + \cdots + p_k\) je pochopitelně \textbf{roven jedné}.
+
+    %--Střední hodnota Bernoulliova rozdělení-----------------------
+    \input{../src/MAI/exam/exam066.tex}
+    %---------------------------------------------------------------
+    
+    Posuďme nyní situaci, kdy náhodná veličina \(Y\) je funkcí náhodné veličiny \(X, Y = f(X)\).
+    V takovém případě má rozdělení veličiny \(Y\) tvar
+    \begin{equation*}
+      \left\lbrace (f(x_j), p_j)\right\rbrace, \qquad j = 1, 2, \ldots, k.
+    \end{equation*}
+    Pravděpodobnost hodnoty \(f(x_j)\) je stejná jako pravděpodobnost hodnoty \(x_j\). Pro výpočet
+    střední hodnoty veličiny \(Y\) pak platí
+    \begin{equation}\label{mai:eq060}
+      \left\langle y \right\rangle = \sum_{j=1}^{k}f(x_j)p_j.
+    \end{equation}
+    (V obecnější situaci může být náhodná veličina \(Y\) funkcí několika náhodných veličin \(X_1\), 
+    \(X_2\), až \(X_s\)).
+    
+    Může vzniknout oprávněná otázka, zda při výpočtu \(\left\langle y \right\rangle\), popřípadě 
+    dalších charakteristik veličiny \(Y\), nevznikne nějaký problém, nebude-li funkce \(f(X)\) 
+    prostá. V takovém případě by totiž některé hodnoty veličiny \(Y\) splynuly i pro různá \(x_j\). 
+    Například pro \(Y = f(X) = X^2\) by pro hodnoty \(x_r\) a \(x_s\) vázané vztahem \(x_r = -x_s\) 
+    (pokud by veličina \(X\) směla takových hodnot nabývat) platilo \(y_{rs} = y_r = y_s\). 
+    Pravděpodobnost této společné hodnoty by pak přece byla \((p_r + p_s)\). Tato úvaha je 
+    samozřejmě správná, avšak ve výpočtu střední hodnoty veličiny Y
+    podle vztahu (\ref{mai:eq060}) je již obsažena. Do součtu totiž vstupují sčítance \(y_rp_r\) i 
+    \(y_sp_s\), jejichž součet je při rovnosti \(y_r = y_s\) roven \(y_{rs}(p_r +p_s)\) Společná 
+    hodnota \(y_{rs}\) je tedy započtena se správnou vahou.
+    
+    Uvažujme nyní o tom, jak „směrodatná“, tj. do jaké míry opravdu „reprezentativní“, je
+    střední hodnota náhodné veličiny. Intuitivně cítíme, že střední hodnota bude reprezentovat
+    rozdělení náhodné veličiny tím lépe, čím méně se od ní budou jednotlivé hodnoty odchylovat na 
+    obě strany. Význam slova „odchylovat“ musíme ovšem nějak kvantitativně zachytit.
+    \emph{Odchylkou} hodnoty \(x_j\) veličiny \(X\) od střední hodnoty \(\left\langle x 
+    \right\rangle\) budeme celkem přirozeně rozumět rozdíl \((x_j - \langle x\rangle)\). Vzniká tak 
+    náhodná veličina \(\Sigma = X - \langle x \rangle\) s rozdělením \(\{(x_j - \langle x\rangle, 
+    p_j)\}\), \(j = 1, 2, \ldots, k\) . Bude tou správnou charakteristikou odchýlení hodnot 
+    veličiny \(X\) od střední hodnoty střední hodnota \(\langle\sigma\rangle\)? Vypočtěme ji 
+    (odhadněte předem, co asi tak vyjde):
+    \begin{align*}
+      \langle\sigma\rangle 
+          &= \sum_{j=1}^{k}(x_j - \langle x\rangle)p_j
+           = \sum_{j=1}^{k}x_jp_j - \langle x\rangle\sum_{j=1}^{k}p_j   \\
+          &= \langle x\rangle - \langle x\rangle = 0.
+    \end{align*}
+    Čekali jste to? Nepochybně ano. Veličina \(X - \langle x\rangle\) nedává tedy žádný obraz o 
+    tom, jak jsou hodnoty \(x_j\) „rozptýleny“ okolo střední hodnoty \(\langle x\rangle\). Kladné 
+    odchylky jsou to tiž kompenzovány těmi zápornými. Aby k takové kompenzaci nedošlo, stačí vzít 
+    v úvahu absolutní hodnotu veličiny \(\Sigma\), popřípadě její kvadrát. Vezměme v úvahu druhý z 
+    obou námětů a vypočtěme \(\langle \sigma^2\rangle\), takzvaný \textbf{rozptyl veličiny} \(X\):
+    \begin{align}\label{mai:eq061}
+       D(X) &= \langle \sigma\rangle = \sum_{j=1}^{k}(x_j - \langle x\rangle)^2p_j    \nonumber \\
+            &= \sum_{j=1}^{k}x_j^2p_j - 2\langle x\rangle\sum_{j=1}^{k}x_jp_j 
+              + \langle x\rangle^2\sum_{j=1}^{k}p_j                                   \nonumber \\
+            &= \langle x^2\rangle - 2\langle x\rangle^2 + \langle x\rangle^2          \nonumber \\
+            &= \langle x^2\rangle - \langle x\rangle^2.
+    \end{align}
+    hodnota
+    \begin{mdframed}[style=highlight]
+      \begin{equation}\label{mai:eq062}
+        \sigma(x) = \sqrt{\langle \sigma^2\rangle} = \sqrt{\langle x^2\rangle - \langle x\rangle^2}
+      \end{equation}
+    \end{mdframed}
+    se nazývá \textbf{směrodatná odchylka} (v některých terminologiích též \emph{střední 
+    kvadratická odchylka}) veličiny \(X\). Podíl \(\sigma(x)/ \langle x\rangle\) se nazývá 
+    \textbf{relativní směrodatná odchylka} (v některé terminologii též \emph{variační koeficient}).
+
+    \begin{mdframed}[style=highlight]
+      Důležitým pojmem je \textbf{distribuční funkce}. Je to funkce \(F\) jedné reálné proměnné 
+      \(x\) definovaná ve vztahu k náhodné veličině \(X\) takto: Předpokládejme, že hodnoty \(x_1\)
+      až \(x_k\), jichž může náhodná veličina \(X\) nabývat, jsou seřazeny vzestupně, tj. \(x_1 <
+      < x_2 < \ldots < x_k\). Pak
+      \begin{equation}\label{mai:eq063}
+        F: \realset\ni x\longleftrightarrow 
+        F(x) = \sum_{\mathclap{\substack{j=1\\ x_s \leq x \leq x_{s+1}}}}^{s}p_j
+      \end{equation}
+    \end{mdframed}
+
+    Přestože je veličina \(X\) diskrétní, je distribuční funkce funkcí spojité proměnné. Její 
+    funkční hodnoty se však mění skokem. Vidíme to z následující tabulky a z grafu na obrázku 
+    \ref{mai:fig045}, v němž je distribuční funkce znázorněna pro případ střelby (příklad 
+    \ref{mai:exam064})
+
+    \begin{table}[ht!]
+      \centering
+      \begin{tabular}{c|c}
+        \textbf{interval}                 &  \textbf{distribuční funkce}             \\ \hline
+            \(-\infty, x_1\)              &    \(F(x) = 0\)                         \\
+            \(\left[x_1, x_2\right)\)     &    \(F(x) = p_1\)                       \\
+            \(\left[x_2, x_3\right)\)     &    \(F(x) = p_1 + p_2\)                 \\
+                    \(\ldots\)            &       \(\ldots\)                         \\
+            \(\left[x_j, x_{j+1}\right)\) &    \(F(x) = p_1 + p_2 + \cdots + p_j\)  \\
+                   \(\ldots\)             &       \(\ldots\)                         \\
+            \(\left[x_k, \infty\right)\)  &    \(F(x) = p_1 + \cdots + p_k =1\)     \\ \hline
+            \end{tabular}
+      % \caption{ }
+    \end{table}
+
+    \luagraphic[1]{mai_fig045.pdf}{Distribuční funkce k příkladu \ref{mai:exam064}. 
+    \cite[s.~233]{Musilova2009MA1}}{mai:fig045}
+
+    Zadáním distribuční funkce je naopak jednoznačně určeno rozdělení veličiny \(X\). Pro jednotlivé
+    pravděpodobnosti totiž platí
+    \begin{equation*}
+      p_j = F(x_j) - F(x_{j-1})\;\text{pro}\; 2\leq j \leq k, \; p_1 = F(x_1).
+    \end{equation*}
+    
+    Hledejme nyní hodnotu \(\overline{x}_P\) definovanou tak, že pravděpodobnost, že při náhodném 
+    opakování pokusu nabude veličina \(X\) kterékoli z přípustných hodnot \(x_j \leq 
+    \overline{x}_p\), je rovna \(P\). Znamená to, že pro \(x = \overline{x}_P\) má distribuční 
+    funkce nabýt předepsané hodnoty \(P\). Abychom \(\overline{x}_P\), takzvaný 
+    \(P\)\textbf{-kvantil}, určili, řešíme rovnici
+    \begin{equation}\label{mai:eq064}
+      \sum_{j=1}^{s}p_j = P
+    \end{equation}
+    vzhledem k neznámému počtu sčítanců \(s\). V případě veličiny s diskrétním rozdělením se ovšem
+    může stát, že pro nevhodně zvolenou hodnotu \(P\) nebude mít rovnice řešení. To proto, že 
+    veličina \(X\) může nabývat jen hodnot, které lze očíslovat přirozenými čísly, takže při každé 
+    změně horní meze sumy \(s\) o jedničku se suma mění skokem. Vidíme to jak v předcházející 
+    tabulce, tak v grafu na obrázku \ref{mai:fig045}. Pro \(P = \num{0.5}\) se \(P\)-kvantil 
+    \(\overline{x}_p\), pokud je vůbec definován, nazývá \textbf{medián}. Značí se pouze 
+    \(\overline{x}\).
+
+    %--Ještě střelba------------------------------------------------
+    \input{../src/MAI/exam/exam067.tex}
+    %---------------------------------------------------------------
+    
+    Příklad \ref{mai:exam067} názorně vypovídá o významu směrodatné odchylky. Viděli jsme, že 
+    intervalu o šířce \(2\sigma(y)\) s hodnotou \(\langle y \rangle\) uprostřed odpovídá vysoká 
+    pravděpodobnost, že v něm bude ležet bodový zisk střelce při každé pětici výstřelů. Čím bude 
+    tento interval užší, tím v průměru blíže budou jednotlivé hodnoty bodového zisku ležet v 
+    blízkosti střední hodnoty. Mohli bychom říci, že střelec, jehož výsledky vykazují malou 
+    směrodatnou odchylku resp. malý rozptyl, míří přesněji. Směrodatná odchylka je tedy v jistém 
+    smyslu jedním z parametrů charakterizujících kvalitu střelby - střelba s malou hodnotou  
+    \(\sigma(y)\) je přesnější než střelba s velkou hodnotou \(\sigma(y)\). Druhým parametrem 
+    kvality střelby, který je pro její hodnocení z hlediska možnosti vyhrávat soutěže jistě 
+    podstatně důležitější, je samozřejmě samotná střední hodnota bodového zisku. Čím je větší, tím 
+    je střelcovo pořadí při závodech lepší. Pro interpretaci směrodatné odchylky to ovšem není 
+    podstatné. Kdybychom porovnávali dva střelce, jejichž střední bodový zisk při
+    pěti výstřelech je třeba \num{12} bodů a \num{3} body, avšak směrodatná odchylka je u obou 
+    stejná, musíme konstatovat, že oba jsou stejně přesní. Jeden z nich však systematicky dělá 
+    nějakou chybu a přesně střílí do nesprávného místa. Význam pojmu přesnost z hlediska hodnocení 
+    náhodných veličin je tedy oproti jeho běžnému chápání poněkud posunut.
+    
+    Všimněme si ještě jedné důležité obecné věci: Tvar vzorce pro výpočet rozptylu resp. směrodatné 
+    odchylky je stejný pro všechny typy rozdělení. Konkrétní pravděpodobnost, že hodnota
+    veličiny padne do intervalu určeného směrodatnou odchylkou, tj. do intervalu \((\langle y 
+    \rangle - \sigma(y), \langle y \rangle + \sigma(y))\), však pochopitelně na konkrétním 
+    rozdělení závisí.
+
+    %--Poissonovo rozdělení-----------------------------------------
+    \input{../src/MAI/exam/exam068.tex}
+    %---------------------------------------------------------------
+    
+    \subsection{Kolik rychlostí má molekula plynu - spojité rozdělení}
+      Již nadpis napovídá, že veličina se spojitým rozdělením může zřejmě nabývat „spojitě 
+      rozložených“ hodnot, tj. přípustným i hodnotami budou například právě všechna čísla \(x\) z 
+      jistého intervalu, \(x\in[a, b]\). Jaká však bude pravděpodobnost \(p(x)\), že veličina \(X\) 
+      nabývá právě hodnoty \(x\in[a, b]\)? Jestliže víme, že „součet“ všech \(p(x)\) musí být roven 
+      jedné, vzniká problém.
+      
+      Hodnot \(x\) je totiž nekonečně (dokonce nespočetně) mnoho! Je jich tolik, jako je čísel na 
+      celé reálné ose. A kdyby byla pravděpodobnost \(p(x)\) jakkoli malinkatá, nikdy nebude součet 
+      všech \(p(x)\) konečný. Pravděpodobnost nabývání hodnoty \(x\) tedy musí být nulová. Vzniklou 
+      překážku odstraníme snadno. Rozdělení náhodné veličiny \(X\) bude nutno charakterizovat 
+      nikoli pravděpodobností, ale \textbf{hustotou pravděpodobnosti}. Je to obdobná situace jako 
+      třeba při popisu rozložení hmotnosti nějakého tělesa, předpokládáme-li, že je ta to hmotnost 
+      rozložena v objemu tělesa spojitě. Také nemá příliš smysl se ptát, jaká je hmotnost jednoho 
+      bodu tohoto tělesa. I zde by byla odpověď, že nulová. Spíše si vždy klademe otázku, jaká je 
+      hmotnost \(\Delta m(\vec{r})\) jistého malého objemu \(\Delta V\), například malého kvádříku, 
+      umístěného třeba jedním z vrcholů v bodě o poloze \(\vec{r}\). Hustota \(\varrho(\vec{r})\) 
+      tělesa v bodě \(\vec{r}\) je pak limitou podílu \(\Delta m(\vec{r})/\Delta V\) pro \(\Delta V 
+      \longrightarrow 0\). Obdobně je tomu i s rozdělením spojité náhodné veličiny \(X\). 
+      Zvolíme-li pro jistou hodnotu \(x\) interval \([a, x + \Delta x]\), má smysl otázka, jaké je 
+      pravděpodobnost \(\Delta p(x)\), že veličina nabývá hodnoty (kterékoli) právě z tohoto 
+      intervalu.
+
+      \begin{mdframed}[style=highlight]
+        Limitu
+        \begin{equation}\label{mai:eq066}
+          w(x) = \lim\limits_{\Delta\longrightarrow0}\dfrac{\Delta p(x)}{\Delta x}
+        \end{equation}
+        nazýváme \textbf{hustotou pravděpodobnosti} veličiny \(X\) v bodě \(x\) (pro \(x = a\), 
+        resp. \(x = b\) se jedná o limitu zprava, resp. zleva).
+      \end{mdframed}
+      
+      Přímo tato funkce pak představuje ono spojité rozdělení náhodné veličiny \(X\). Určuje totiž
+      hustotu pravděpodobnosti \(w\) pro hodnotu \(x\) náhodné veličiny \(X\), obdobně jako \(p_j\) 
+      v případě diskrétního rozdělení určuje pravděpodobnost hodnoty \(x_j\). Předpokládejme, že je 
+      funkce \(w(x)\) na intervalu \([a, b]\) spojitá.
+  
+      \begin{mdframed}[style=highlight]
+        Pro \(x \in [a, b]\) definuje integrál jako funkce horní meze
+        \begin{equation}\label{mai:eq067}
+          F(x) = \int_a^xw(u)\dd{u}
+        \end{equation}
+        \textbf{distribuční funkci}.
+      \end{mdframed}
+      Jeho hodnota pro dané \(x\) udává pravděpodobnost, že hodnota veličiny \(X\) padne do 
+      intervalu \([a, x]\), opět v plné analogii s případem diskrétního rozdělení. Na \((a, b)\) je 
+      tedy hustota pravděpodobnosti \(w(x)\) derivací distribuční funkce. Je zřejmé, že \(F(b) = 
+      1\). Integrál z hustoty pravděpodobnosti v mezích \([a, b]\) udává totiž pravděpodobnost, že 
+      hodnota veličiny \(X\) padne do intervalu přípustných hodnot, tedy pravděpodobnost jistého 
+      jevu. V případě diskrétního rozdělení jsme však distribuční funkci definovali nejen pro 
+      přípustné hodnoty náhodné veličiny, ale pro všechna x \in (-\infty, +\infty). Tento postup 
+      budeme respektovat i nyní a definujeme
+      \begin{align*}
+        F(x) =
+          \begin{cases}
+            0 &\quad\text{ pro }x \in (-\infty,a)\text{ a }  \\
+            1 &\quad\text{ pro }x \in (b , +\infty).
+          \end{cases}
+      \end{align*}
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq068}
+          \langle x \rangle = \int_a^bxw(x)\dd{x}, \qquad 
+                       D(X) = \int_{a}^{b}(x - \langle x \rangle)^2w(x)\dd{x}.
+        \end{equation}
+      \end{mdframed}
+      \textbf{Relativní směrodatná odchylka} je opět podílem \(\sqrt{D(X)}/\langle x \rangle\), 
+      nejpravděpodobnější hodnota neboli \textbf{modus} \(x_m\) je taková hodnota veličiny \(X\) , 
+      pro kterou je hustota pravděpodobnosti maximální
+      
+      Daleko lépe než u veličin s diskrétním rozdělením vypadá možnost definovat \(P\)-kvantil 
+      \(\tilde{x}_p\) a \textbf{medián} \(\tilde{x}\). Jsou jednoduše řešením rovnic
+      \begin{equation*}
+        F(\tilde{x}_P) = P, \qquad F(\tilde{x}) = \dfrac{1}{2}
+      \end{equation*}
+      (Mohli bychom mediánu třeba i říkat „půlkvantil“. To ale není zvykem.) \(P\)-kvantil je 
+      definován pro jakoukoli hodnotu \(P\) zadanou v intervalu \((0, 1)\). Skutečně, hustota 
+      pravděpodobnosti je nezápornou funkcí na intervalu \([a, b]\) (podle předpokladu i spojitou), 
+      takže distribuční funkce je na \([a, b]\) \emph{spojitá} a \emph{rostoucí} a nabývá hodnot 
+      \(0 = F(a) \leq F(x) \leq F(b) = 1\). Podle jedné z vět o spojitých funkcích (odstavec 
+      2.1.7*) nabývá funkce spojitá na uzavřeném intervalu všech hodnot mezi svým minimem a 
+      maximem. V intervalu \([a, b]\) tedy existuje alespoň jedna hodnota \(\tilde{x}_P\) , pro 
+      kterou je \(F(\tilde{x}_P) = P\). Ze skutečnosti, že je \(F(x)\) navíc rostoucí, vyplývá, že 
+      i \(\tilde{x}_P\) existuje jednoznačně.
+  
+      Tyto závěry zůstanou v platnosti, i kdyby veličina \(X\) nabývala svých hodnot v intervalu
+      typu \(\left[0, \infty\right), \left(-\infty, b\right]\) nebo \((-\infty, \infty)\). Vzhledem 
+      k požadavku
+      \begin{equation*}
+        \int_{a}^{b}w(x)\dd{x} = 1,
+      \end{equation*}
+      kde kterákoli z mezí \(a\), resp. \(b\) může být i nevlastní, je zřejmé, že funkce \(w(x)\) 
+      musí být na svém definičním oboru \(D_f\) omezená. Navíc je na něm spojitá. Vybereme-li tedy 
+      jakýkoli uzavřený podinterval oboru \(D_f\), můžeme předchozí argumentaci týkající se 
+      \(P\)-kvantilu bez problémů použít.
+
+      %--Normální rozdělení-------------------------------------------
+      \input{../src/MAI/exam/exam069.tex}
+      %---------------------------------------------------------------
+  
+      %--Kolik rychlostí má molekula plynu----------------------------
+      \input{../src/MAI/exam/exam070.tex}
+      %---------------------------------------------------------------
+  
+  \section{Náhoda a zpracování měření}\label{mai:IchapIVsecIV}
+    \subsection{Součet a součin náhodných veličin}
+      Nyní vyřešíme ještě jeden důležitý problém. Víme již, že veličinu \(Y = f(X)\) lze popsat 
+      stejnými pravděpodobnostmi jako veličinu \(X\). V řadě případů je však náhodná veličina \(Y\) 
+      funkcí několika náhodných veličin \(X_1, X_2, \ldots, X_s\). Každá z nich má nějaké 
+      rozdělení. Jaké potom bude rozdělení veličiny \(Y\)? Rozebereme jen dvě základní situace, z 
+      nichž je ovšem možné „poskládat“ řadu případů složitějších. Půjde o situace, kdy náhodná 
+      veličina bude součtem nebo součinem dvou náhodných veličin, pro jednoduchost značení 
+      například \(U\) a \(V\), tedy \(Y = U + V\), \(Z = U \cdot V\). Předpokládejme nejprve, že 
+      veličiny \(U\) a \(V\) jsou zcela nezávislé, tj. hodnoty veličiny \(U\) nejsou nijak 
+      ovlivněny hodnotami veličiny \(V\) a naopak. Dejme tomu, že \(U\) a \(V\) mají rozdělení
+      \begin{equation*}
+        \left\lbrace (u_1, p_1), \ldots, (u_k, p_k) \right\rbrace, \qquad
+        \left\lbrace (v_1, q_1), \ldots, (v_\ell, v_\ell) \right\rbrace
+      \end{equation*}
+      Veličiny \(Y = U + V\), resp. \(Z = U \cdot V\) tedy mohou nabývat hodnot \(\lbrace u_i + 
+      v_\alpha\rbrace\), resp. \(\lbrace u_i v_\alpha\rbrace\) s pravděpodobnostmi \(p_iq_\alpha\). 
+      Jevy \uv{Veličina \(U\) nabude hodnoty \(u_i\)} a \uv{veličina \(V\) nabude hodnoty 
+      \(v_\alpha\)} jsou totiž nezávislé. Rozdělení veličin \(Y\) a \(Z\) je 
+      \begin{equation*}
+        \lbrace (u_i +v_\alpha, p_iq_\alpha)\rbrace,\, \text{resp.}\,
+        \lbrace(u_iv_\alpha, p_iq_\alpha)\rbrace,\qquad 1\leq i\leq k,\quad 1\leq\alpha\leq\ell,
+      \end{equation*}
+      Pro jejich střední hodnoty dostáváme
+      \begin{align*}
+        \langle y \rangle 
+          &= \sum_{i=1}^{k}\sum_{\alpha=1}^{\ell}(u_i + v_\alpha)p_iq_\alpha        \\
+          &= \sum_{i=1}^{k}u_ip_i\left(\sum_{\alpha=1}^{\ell}q_\alpha\right) + 
+             \sum_{\alpha=1}^{\ell}v_\alpha q_\alpha\left(\sum_{i=1}^{k}p_i\right)  \\
+          &= \sum_{i=1}^{k}u_ip_i + \sum_{\alpha=1}^{\ell}v_\alpha q_\alpha         \\
+        \langle z \rangle 
+          &= \sum_{i=1}^{k}\sum_{\alpha=1}^{\ell}(u_i \cdot v_\alpha)p_iq_\alpha    \\
+          &= \left(\sum_{i=1}^{k}u_ip_i\right)
+             \left(\sum_{\alpha=1}^{\ell}v_\alpha q_\alpha\right) 
+           = \langle u \rangle \langle v \rangle.
+      \end{align*}
+      Střední hodnota součtu, resp. součinu náhodných veličin je tedy součtem, resp. součinem jejich
+      středních hodnot. Pro součet náhodných veličin platí tento výsledek i v případě, když nebudou
+      nezávislé. V tak jednoduchý závěr jsme snad ani nedoufali! Hned uvidíme, jak jej lze využít.
+      
+      %--Jak číst výsledky studentské ankety aneb není průměr jako průměr----------
+      \input{../src/MAI/exam/exam071.tex}
+      %----------------------------------------------------------------------------
+      
+      Pro střední hodnotu součtu a součinu nezávislých náhodných veličin jsme získali velmi
+      jednoduché výsledky:
+      
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq070}
+          \langle u + v \rangle = \langle u \rangle + \langle v \rangle\quad
+          \langle uv \rangle    = \langle u \rangle \langle v \rangle.
+        \end{equation}
+      \end{mdframed}
+      
+      Dokážeme také určit rozptyl veličin \(Y = U + V\) a \(Z = U\cdot V\)? Pro rozptyl každé 
+      náhodné veličiny platí obecný vztah (\ref{mai:eq061}). Použijeme jej pro naše konkrétní 
+      případy:
+      \begin{gather*}
+        \begin{align*}
+          D(U + V) &= \langle (u + v)^2 \rangle - \langle u + v \rangle^2                     \\
+                   &= \langle u^2 + 2uv + v^2 \rangle - \left(\langle u \rangle^2 +
+                      \langle 2uv \rangle + \langle v^2 \rangle\right)                        \\
+                   &= \left(\langle u^2\rangle - \langle u \rangle^2\right)
+                    + \left(\langle v^2\rangle - \langle v \rangle^2\right) = D(U) + D(V).
+        \end{align*}
+      \end{gather*}
+      Pro rozptyl náhodné veličiny \(Z = U \cdot V\) dostaneme
+      \begin{align*}
+        D(Z)  &= \langle z^2\rangle - \langle z \rangle^2 
+               = \langle u^2\rangle\langle v^2\rangle - \langle u \rangle^2 \langle v \rangle^2  \\
+              &= \left[D(U) + \langle u^2\rangle\right]\left[D(V) + \langle v^2\rangle\right]
+               - \langle u \rangle^2 \langle v \rangle^2                                         \\
+              &= D(U)D(V) + \langle u \rangle^2D(V) + \langle v \rangle^2D(U).
+      \end{align*}
+      Pak
+      \begin{mdframed}[style=highlight]
+        \begin{equation*}
+          \dfrac{D(z)}{ \langle z \rangle^2} = \dfrac{D(U)}{ \langle u \rangle^2} \cdot
+            \dfrac{D(V)}{ \langle v \rangle^2} + \dfrac{D(U)}{ \langle u \rangle^2} +
+            \dfrac{D(v)}{ \langle v \rangle^2}.
+        \end{equation*}
+      \end{mdframed}
+      Při výpočtu jsme využili vztahu (\ref{mai:eq061}) a vztahů (\ref{mai:eq070}) pro střední 
+      hodnotu součtu a součinu náhodných veličin. Pokud mají veličiny \(U\) a \(V\) shodný rozptyl 
+      \(D(U) = D(V) = D\), pak je \(D(U + V) = 2D\). V případě součtu s veličin \(Y = X_1 + \cdots 
+      + X_s\) se shodným rozptylem \(D\) resp. směrodatnou odchylkou \(\sigma\) dostáváme
+      \begin{equation*}
+        D(Y) = sD  \Rightarrow \sigma(y) = \sqrt{s}\sigma.
+      \end{equation*}
+      Znovu připomeňme, že všechny vztahy týkající se součtu a součinu náhodných veličin, které
+      jsme zatím získali, platí za předpokladu, že výchozí veličiny, které sčítáme nebo násobíme, 
+      jsou nezávislé.
+      
+      Aniž bychom se podrobněji zabývali vlastnostmi rozdělení závislých veličin, definujeme pro
+      ně charakteristiky, které tuto závislost popisují. Nechť \(U\) a \(V\) jsou dvě libovolně 
+      náhodné veličiny, ne nutně nezávislé. Míru jejich závislosti určují veličiny
+      \begin{subequations}\label{mai:eq071}
+        \begin{align}
+          \sigma_{uv} 
+            &= \langle (u - \langle u \rangle) (v - \langle v \rangle) \rangle,  \\
+          \varrho_ {uv}
+            &=\dfrac{\sigma(u)}{\sqrt{D(U)D(V)}} = \dfrac{\sigma(u)}{\sigma{D(u)\sigma(v)}}
+        \end{align}
+      \end{subequations}  
+      zvané \textbf{kovariance} a \textbf{korelační koeficient} veličin \(U\) a \(V\). Platí 
+      \(\varrho(uv) \leq 1\). Pro nezávislé veličiny vychází \(\sigma(uv) = 0\) a \(\varrho(uv) = 
+      0\).
+      
+      %-- Rozptyl při Bernoulliově pokusu-----------------------------
+      \input{../src/MAI/exam/exam072.tex}
+      %---------------------------------------------------------------
+      
+      %-- Rozptyl aritmetického průměru-------------------------------
+      \input{../src/MAI/exam/exam073.tex}
+      %---------------------------------------------------------------
+      
+      Můžeme tedy říci, že aritmetický průměr všech výsledků měření dané fyzikální veličiny je
+      \(\sqrt{n}\)-krát přesnější než jednotlivý výsledek měření. Jakkoli se toto konstatování zdá 
+      intuitivně zřejmé, je třeba je používat s opatrností.
+      
+      Především je třeba mít na mysli, co toto konstatování znamená. Jeho charakter je totiž
+      opět jen pravděpodobnostní. Jestliže jsou jednotlivá měření prováděna za stejných podmínek,
+      jsou rozdělení veličin \(X_1\) až \(X_n\) funkcemi téhož typu. Tyto veličiny mají také 
+      stejnou střední hodnotu \(\langle x \rangle\) a směrodatnou odchylku \(\sigma\). Také 
+      pravděpodobnost, že při měření padne hodnota veličiny \(X_j\) do intervalu \((\langle x 
+      \rangle - \sigma, \langle x \rangle + \sigma)\), je pro všechna \(j\) prakticky stejná. 
+      Označme ji \(P_\sigma\).  Se stejnou pravděpodobností nabude aritmetický průměr \(\Xi\) 
+      hodnoty v intervalu určeném svou směrodatnou odchylkou. Ta je však \(\sqrt{n}\)-krát menší. V 
+      tomto smyslu jsou hodnoty aritmetického průměru \uv{\(\sqrt{n}\)-krát méně rozptýleny} kolem 
+      střední hodnoty \(\langle\xi \rangle\) než hodnoty náhodných veličin \(X_j\) kolem svých 
+      středních hodnot \(\langle x \rangle\).
+      
+      Dalším problémem může být splnění výchozích předpokladů, které vedly ke vztahu pro
+      směrodatnou odchylku aritmetického průměru. Ukážeme to na následujícím příkladu.
+      
+      %-- Jak přesně lze změřit čínského císaře?----------------------
+      \input{../src/MAI/exam/exam074.tex}
+      %---------------------------------------------------------------
+      
+      %-- Záhada přijímací zkoušky aneb k čemu může posloužit distribuční funkce-----
+      \input{../src/MAI/exam/exam075.tex}
+      %------------------------------------------------------------------------------
+      
+    \subsection{Který výsledek je ten pravý?}
+      První věc, kterou budete dělat ve fyzikálním praktiku, bude zjišťování průměrné hustoty 
+      materiálu, z něhož je vyroben kovový váleček. Budete váleček vážit, abyste určili jeho 
+      hmotnost,a měřit jeho výšku a průměr, abyste mohli vypočítat jeho objem. Hustotu stanovíte 
+      jako podíl hmotnosti a objemu. Jedná se stále o jeden a týž váleček, jehož průměrná hustota 
+      má za daných podmínek (stálá teplota, váleček se nedeformuje, apod.) stále stejnou „správnou“ 
+      hodnotu, kterou však neznáme. (Nezná ji ani učitel v praktiku, i když se tak tváří.) Změří-li 
+      hustotu válečku všichni studenti ve skupině, každý jen jednou, získá se řada různých hodnot. 
+      Která z nich je ta správná? Není vyloučeno, a je to dokonce velmi pravděpodobné, že žádná. A 
+      mohli bychom pomocí nich správnou hodnotu určit nebo se k ní alespoň přiblížit? Možné by to 
+      bylo, pokud bychom zaručili, že všechny výsledky získané jednotlivými studenty jsou „stejně 
+      hodnotné“. Znamenalo by to, že bychom museli vyloučit hrubé a systematické chyby, které by 
+      vznikly třeba tak, že by někteří studenti vážili na vadných vahách, někteří by měli špatné 
+      měřítko, popřípadě by odečítali údaj „zboku“, takže by byl zkreslený, nebo by se dokonce 
+      zmýlili při odečítání údaje. Museli bychom také zaručit, že náhodné vlivy, které ovlivňují 
+      měření, zatěžují je náhodnými chybami a v principu je nelze odstranit, byly při všech 
+      měřeních stejné. U různých studentů si tím však nemůžeme být jisti (vzpomeňte si na měření 
+      čínského císaře), proto budeme raději postupovat tak, že jeden pečlivý student provede větší 
+      počet měření třeba výšky válečku, která je pro určení hustoty potřebná. Dejme tomu, že bude 
+      měřit milimetrovým měřítkem a bude odhadovat s přesností na půl milimetru. Jeho údaje tedy 
+      mohou mít tvar \SI{33.0}{\mm}, \SI{34.5}{\mm}, atd. Získá takto za stejných podmínek třeba 
+      dvacet nebo i padesát hodnot, ale co teď s nimi? Jak určit hodnotu, která se bude nejvíce 
+      blížit správné hodnotě výšky válečku? (Dalo by se jistě diskutovat i o tom, co je to správná 
+      hodnota. Pro tuto chvíli však předpokládejme, že taková hodnota skutečně existuje, neboť 
+      váleček je opravdu válcem, je vysoustružen pečlivě, přesněji, než jsme schopni jej měřit, při 
+      měření se nemění teplota, váleček není dáván do lisu a deformován, ani upravován tak, že by 
+      se měnila jeho hmotnost.) Předpokládejme, že správná hodnota výšky válečku je \(x\) a že 
+      student naměřil hodnoty \(\lbrace x_1, X_2, \ldots, x_n\rbrace\), mezi nimiž mohou být 
+      pochopitelně i některé hodnoty stejné. Odchylky jeho měření od správné hodnoty jsou
+      \begin{equation*}
+        \lbrace \varepsilon_1, \varepsilon_2, \ldots, \varepsilon_n\rbrace, \qquad
+        \varepsilon_i = x_i - x, \qquad i = 1, 2, \ldots, n.
+      \end{equation*}
+      I kdybychom správnou hodnotu \(x\) znali, nedokázali bychom předpovědět, nakolik se od ní při
+      jednotlivém měření odchýlíme. Můžeme, se však zajímat o to, jaká je pravděpodobnost, že
+      hodnota, o kterou bude měření od správné hodnoty odkloněno, bude ležet v určitém intervalu.
+      Odchylky \(\varepsilon_i\) lze totiž interpretovat jako hodnoty náhodné veličiny. Abychom 
+      mohli požadované pravděpodobnosti určit, potřebujeme znát rozdělení této veličiny. Označme ji 
+      \(\varepsilon\) a odpovídající hustotu pravděpodobnosti \(\mathcal{w}(\varepsilon)\). Toto 
+      rozdělení je za určitých podmínek \textbf{rozdělením normálním}, splňuje tedy vztah 
+      (\ref{mai:eq069}). Zkusme se o tom přesvědčit. Zvolme podmínky měření tak, aby byly ve hře 
+      jen náhodné chyby způsobené \(m\) nezávislými vlivy. Každý z nich hodnotu měření
+      odchýlí od \(x\) o stejně velkou hodnotu \(\alpha\), kladnou nebo zápornou, s 
+      pravděpodobností \num{0.5}. Schéma této úvahy je na obrázku \ref{mai:fig050}. Výsledná 
+      odchylka naměřené hodnoty \(x_i\) od hodnoty správné s jistotou leží v intervalu \((-m\alpha, 
+      m\alpha)\) a může nabývat pouze hodnot celých násobků \(\alpha\). Při uplatnění jednotlivého 
+      „chybového“ vlivu vzniká, jak jsme již řekli, kladná nebo záporná odchylka o velikosti 
+      \(\alpha\). Vznik odchylky \(+\alpha\) nazveme zdarem, vznik odchylky \(-\alpha\) nezdarem.
+      
+      \luagraphic[1]{mai_fig050.png}{Vznik kladných a záporných odchylek při měření s \(m\) vlivy. 
+      \cite[s.~255]{Musilova2009MA1}}{mai:fig050}
+     
+      Mohlo by tomu být i naopak, slova „zdar“ a „nezdar“ zde nemají svůj obvyklý význam, jde
+      pouze o to, že díky nim můžeme hned uvidět souvislost s Bernoulliovým pokusem a tedy
+      i s Bernoulliovým rozdělením. Při \(j\) kladných a \(m - j\) záporných odchylkách je měření od
+      správné hodnoty odkloněno o
+      \begin{equation*}
+        j\alpha + (m - j)(-\alpha) = (2j - m)\alpha
+      \end{equation*}
+      s pravděpodobností
+      \begin{equation*}
+        p_j = \binom{m}{j}p^j(1 - p)^{m - j} = 2^{-m}.
+      \end{equation*}
+      Střední hodnota náhodné veličiny \(\varepsilon\) je nulová. Skutečně, v příkladu 
+      \ref{mai:exam066} jsme zjistili, že střední hodnota veličiny \(Y\) nabývající hodnot \(y_j = 
+      j\) s Bernoulliovým rozdělením je \(\langle y \rangle = mp\), střední hodnota veličiny \((2j 
+      - m)\) a pak musí být \((2mp - m)\alpha\). Pro \(p = \num{0.5}\) je tato hodnota nulová.
+      Pro velká \(m\) lze Bernoulliovo rozdělení nahradit rozdělením normálním (obr. 3.8), a proto 
+      má náhodná veličina \(\varepsilon\) hustotu pravděpodobnosti tvaru (\ref{mai:eq069}), tj.
+      \begin{equation*}
+        \mathcal{w}(\varepsilon) = 
+        \dfrac{1}{\sigma\sqrt{2\pi}}\exp\left(\dfrac{-\varepsilon^2}{2\sigma^2}\right).   
+      \end{equation*}
+
+      \luagraphic[0.8]{mai_fig051.png}{Normální rozdělení jako limitní případ Bernoulliova 
+      \cite[s.~256]{Musilova2009MA1}}{mai:fig051}
+    
+      Vraťme se nyní k otázce zpracování naměřených hodnot \(\lbrace x_1, \ldots, x_n\rbrace\) 
+      výšky válečku. Jejich odchylky od správné hodnoty jsou \(x_1 - x\) až \(x_n - x\). Na místě 
+      neznámé správné hodnoty \(x\) si nyní představme nějakou proměnnou, označme ji 
+      \(\varepsilon\). Budeme se snažit určit její hodnotu \(\varepsilon_0\) tak, aby 
+      pravděpodobnost, že odchylky jednotlivých měřených hodnot od \(\varepsilon_0\) padnou 
+      současně do intervalů
+      \begin{equation*}
+        \begin{multlined}
+          \left(\varepsilon_1 - \dfrac{\dd{\varepsilon_1}}{2}, 
+                \varepsilon_1 + \dfrac{\dd{\varepsilon_1}}{2}
+          \right),
+          \left(\varepsilon_2 - \dfrac{\dd{\varepsilon_2}}{2}, 
+                \varepsilon_2 + \dfrac{\dd{\varepsilon_2}}{2}
+          \right), \cdots, \\
+          \shoveleft[0.5cm]\left(\varepsilon_n - \dfrac{\dd{\varepsilon_n}}{2}, 
+                                \varepsilon_n + \dfrac{\dd{\varepsilon_n}}{2}
+                          \right),          
+        \end{multlined}
+      \end{equation*}
+      byla maximální. Pro tuto pravděpodobnost v závislosti na \(\xi\) platí
+      \begin{gather}
+        \begin{aligned}
+          \dd{W} &= \dd{\mathcal{w}(\varepsilon_1)}\cdots\dd{\mathcal{w}(\varepsilon_n)} \nonumber\\
+                 &= \dfrac{1}{\sigma\sqrt{2\pi}}
+                    \exp\left(-\dfrac{(x_1 - \xi)^2 + \cdots + (x_n - \xi)^2}{2\sigma^2}
+                        \right)\dd{\varepsilon_1}\cdots\dd{\varepsilon_n}.      \label{mai:eq072}
+        \end{aligned}
+      \end{gather}
+      (Víte proč je ve vztahu (\ref{mai:eq072}) součin pravděpodobností?) Tato pravděpodobnost bude 
+      maximální, bude-li hodnota exponentu minimální. Z podmínky
+      \begin{equation*}
+        (x_1 - \xi)^2 + \cdots + (x_n - \xi)^2 = \text{min}
+      \end{equation*}
+      dostáváme derivací podle \(\xi\) požadavek
+      \begin{equation*}
+        2(x_1 - \xi) + \cdots + 2(x_n - \xi) = 0 \Rightarrow \xi_0 = 
+        \dfrac{1}{n}\sum_{i=1}^{n}x_j = \langle x \rangle.
+      \end{equation*}
+      Vidíme, že veličina, která charakterizuje míru odchýlení naměřených hodnot od \(\xi\), je 
+      minimální, zvolíme-li za \(\xi\) aritmetický průměr naměřených hodnot. Pozor, zjištěný 
+      výsledek znamená právě jen konstatovanou skutečnost: Při dosazení aritmetického průměru za 
+      proměnnou \(\xi\) bude pravděpodobnost, že odchylky jednotlivých měření od \(\xi\) budou 
+      ležet v uvažovaných intervalech, maximální. Neznamená to, že správnou hodnotou veličiny \(X\) 
+      je aritmetický průměr měření \(x_1, X_2, \ldots, x_n\). Správnou hodnotu ze souboru měření 
+      prostě nezjistíme, avšak aritmetický průměr je jí blízký s vysokou pravděpodobností. Jaká je 
+      tato „blízkost“ a její pravděpodobnost konkrétně? Hned uvidíme. Správnou hodnotu výšky 
+      válečku \(x\) sice neznáme, ale víme, že náhodná veličina \(\varepsilon\), jejíž hodnoty jsou 
+      odchylkami výsledků měření od této (neznámé) správné hodnoty, se řídí normálním rozdělením s 
+      nulovou střední hodnotou. Potřebujeme stanovit další důležitý parametr tohoto rozdělení, 
+      směrodatnou odchylku \(\sigma\). Tu lze vyjádřit velmi jednoduše. Je totiž střední hodnotou 
+      náhodné veličiny \(\varepsilon^2\), tedy aritmetickým průměrem čtverců odchylek 
+      \(\varepsilon_i\): 
+      \begin{equation*}
+        \sigma^2 = D(\varepsilon) = \dfrac{1}{n}\sum_{i=1}^{n}\varepsilon_i^2.
+      \end{equation*}
+      Ať je však tento vzorec jakkoli jednoduchý, k čemu může sloužit, nedokážeme-li jej vyčíslit?
+      Když přece neznáme správnou hodnotu \(x\), nemáme k dispozici ani hodnoty \(\varepsilon_i\). 
+      Ani tato kaše však není tak horká, jak se zdá: Odchylku výsledku \(i\)-tého měření od 
+      aritmetického průměru označme \(\delta_i = x_i - \langle x \rangle\), přičemž jsme již dříve 
+      označili jako \(\varepsilon_i= x_i - x\) odchylku výsledku \(i\)-tého měření pd správné 
+      hodnoty. Platí
+      \begin{equation*}
+        \sum_{i=1}^{n}\varepsilon_i = \sum_{i=1}^{n}(x_i - x) \Rightarrow 
+        \sum_{i=1}^{n}x_i = \sum_{i=1}^{n}\varepsilon_i + nx, 
+      \end{equation*}
+      odkud 
+      \begin{equation*}
+        \langle x \rangle = x + \dfrac{1}{n}\sum_{i=1}^{n}\varepsilon_i.
+      \end{equation*}
+      Pak dostaneme
+      \begin{equation*}
+        \delta_i = (x_i - x) - \dfrac{1}{n}\sum_{i=1}^{n}\varepsilon_i 
+                 = \varepsilon_i - \dfrac{1}{n}\sum_{j=1}^{n}\varepsilon_j.
+      \end{equation*}
+      Součet čtverců odchylek \(\delta_i\) je
+      \begin{align*}
+        \sum_{i=1}^{n}\delta_i^2 
+          &= \sum_{i=1}^{n}\left(\varepsilon_i - 
+             \dfrac{1}{n}\sum_{j=1}^{n}\varepsilon_j\right)^2 \\
+          &= \sum_{i=1}^{n}\varepsilon_i^2 - 
+             \dfrac{2}{n}\sum_{i=1}^{n}\sum_{j=1}^{n}\varepsilon_i\varepsilon_j + 
+             \dfrac{1}{n^2}\sum_{i=1}^{n}\left(\sum_{j=1}^{n}\varepsilon_j\right)^2     \\
+          &= \sum_{i=1}^{n}\varepsilon_i^2 - 
+             \dfrac{1}{n}\left(\sum_{j=1}^{n}\varepsilon_j\right)^2                     
+             \doteq \left(1 - \dfrac{1}{n}\right)\sum_{i=1}^{n}\varepsilon_i^2.
+      \end{align*}
+      Při poslední úpravě jsme pro získání výsledného přibližného vyjádření součtu čtverců odchylek
+      \(\delta_i\) použili následující úvahy:
+      \begin{equation*}
+        \left(\sum_{j=1}^{n}\varepsilon_j\right)^2 = \sum_{i=1}^{n}\varepsilon_i^2 + 
+        2\sum_{i=1}^{n}\sum_{j>1}\varepsilon_i\varepsilon_j \doteq \sum_{i=1}^{n}\varepsilon_i^2,
+      \end{equation*}
+      neboť při rovnocenném zastoupení kladných a záporných odchylek je druhý sčítanec, obsahující
+      součiny \(\varepsilon_i\varepsilon_j\), zanedbatelný proti prvnímu. Nakonec tedy dostáváme
+      \begin{equation*}
+        \sum_{i=1}^{n}\delta_i^2 \doteq \dfrac{n-1}{n}\sum_{i=1}^{n}\varepsilon_i^2 = (n-1)\sigma^2.
+      \end{equation*}
+      Protože odchylky \(\delta_i\) již z daného souboru měření určit můžeme (jsou to odchylky 
+      jednotlivých měření od jejich aritmetického průměru), získali jsme alespoň přibližný vztah 
+      pro směrodatnou odchylku rozdělení veličiny \(\varepsilon\), 
+      \begin{equation}\label{mai:eq074}
+        \sigma = \left(\dfrac{1}{n-1}\sum_{i=1}^{n}\delta_i^2\right)^{\dfrac{1}{2}}.
+      \end{equation}
+      Jaký význam má tato hodnota pro náš soubor měření? Vymezuje interval
+      \begin{equation*}
+        (x - \sigma, x + \sigma),
+      \end{equation*}
+      symetrický kolem (stále neznámé) správné hodnoty výšky válečku \(x\), do kterého padne 
+      výsledek měření této výšky s pravděpodobností \SI{68.3}{\percent} (příklad 
+      \ref{mai:exam069}). Neznámá správná hodnota je tedy naopak s toutéž pravděpodobností vzdálena 
+      od výsledku jednotlivého měření o méně než \(\sigma\). A to už je docela slušná informace o 
+      tom, kde správná hodnota může ležet. Polohu \(x\) však můžeme „omezit“ ještě lépe. Směrodatná 
+      odchylka \(\overline{\sigma}\) rozdělení, které přísluší aritmetickému průměru, je
+      totiž ještě \(\sqrt{n}\)-krát menší než \(\sigma\), tj. \(\overline{\sigma}= 
+      \sigma/\sqrt{n}\). Správná hodnota \(x\) (navždy neznámá) je tedy od aritmetického průměru 
+      výsledků měření \(\langle x \rangle\) vzdálena s pravděpodobností \SI{68.3}{\percent} o méně 
+      než \(\overline{\sigma}\). Použijeme-li krajní chybu \(\overline{\kappa} = 
+      3\overline{\sigma}\) (příklad \ref{mai:exam069}), můžeme říci, že správná hodnota \(x\) je od
+      aritmetického průměru souboru měření \(\langle x \rangle\) vzdálena o méně než 
+      \(\overline{\kappa}\) s pravděpodobností \SI{99.7}{\percent}. Více se o správné hodnotě výšky 
+      válečku říci nedá. Ale i tak jsme ji lokalizovali docela úspěšně. Následující příklad 
+      ukazuje vyhodnocení konkrétního souboru měření.
+
+      %-- Měříme výšku válečku----------------------------------------
+      \input{../src/MAI/exam/exam077.tex}
+      %---------------------------------------------------------------
+      Na závěr odstavce si všimneme ještě jedné důležité otázky. Formulujeme ji pro případ určení
+      hustoty válečku. Změřili jsme výšku válečku \(x\) a jeho poloměr \(r\), vážením jsme určili 
+      také jeho hmotnost \(m\). Získali jsme tak intervaly
+      \begin{align*}
+          \left(\langle x \rangle - \overline{\sigma}(x), 
+                \langle x \rangle + \overline{\sigma}(x)\right)&,  \\ 
+          \left(\langle r \rangle - \overline{\sigma}(r), 
+                \langle r \rangle + \overline{\sigma}(r)\right)&,   \\ 
+          \left(\langle m \rangle - \overline{\sigma}(m), 
+                \langle m \rangle + \overline{\sigma}(m)\right)&. 
+      \end{align*}
+      
+      Směrodatná odchylka v případě každé z veličin \(x\), \(r\) a \(m\) určuje velikost intervalu 
+      se středem daným aritmetickým průměrem všech měření této veličiny, v němž leží správná 
+      hodnota s pravděpodobností \SI{68.3}{\percent}. Průměrná hustota válečku je dána vztahem
+      \begin{equation*}
+        \varrho = \dfrac{m}{V} = \dfrac{m}{\pi r^2x},
+      \end{equation*}
+      je tedy funkcí tří proměnných \(x\), \(r\), \(m\). Jak stanovíme interval, v němž leží 
+      správná hodnota hustoty s pravděpodobností rovněž \SI{68.3}{\percent}? Hustotu totiž neměříme 
+      přímo, ale vypočítáváme z přímo měřených veličin. Abychom mohli na tuto otázku odpovědět 
+      matematicky korektně, potřebujeme základní znalosti o funkcích více proměnných. Závěr tohoto 
+      odstavce lze tedy do důsledku pochopit po přečtení kapitoly o funkcích více proměnných. Proto 
+      jej v tuto chvíli klidně přeskočte.
+      
+      Předpokládejme, že veličina \(z\) je pro jednoduchost pouze funkcí dvou nezávislých náhodných
+      veličin \(x\) a \(y\), \(z = f(x,y)\). Jsou-li chyby \(\varepsilon_i(x)\), resp. 
+      \(\varepsilon_i(y)\), kterých jsme se dopustili při \(i\)-tém měření veličiny \(x\), resp. 
+      \(y\) velmi malé, můžeme pro vyjádření malé změny veličiny \(z\) způsobené chybami veličin 
+      \(x\) a \(y\) použít úplného diferenciálu
+      \begin{equation*}
+        \dd{z} = \dd{f(x,y)} = \left(\pder{f(x,y)}{x}\right)\dd{x} + 
+                               \left(\pder{f(x,y)}{y}\right)\dd{y}
+      \end{equation*}
+      Pro chybu veličiny \(z\) pak platí
+      \begin{equation*}
+        \varepsilon_i(z) = \left(\pder{f}{x}\right)\varepsilon_i(x) + 
+                           \left(\pder{f}{y}\right)\varepsilon_i(y) \Rightarrow
+      \end{equation*}
+      \begin{gather*}
+        \begin{align*}
+          \Rightarrow \sum_{i=1}^{n}\varepsilon_i^2(z) 
+          &=  \sum_{i=1}^{n}\left(\pder{f}{x}\right)^2\varepsilon_i^2(x) 
+           +  \sum_{i=1}^{n}\left(\pder{f}{y}\right)^2\varepsilon_i^2(y)    \\
+          &+ 2\sum_{i=1}^{n}\left(\pder{f}{x}\right)^2\left(\pder{f}{y}\right)^2\varepsilon_i(x)
+            \varepsilon_i(y).
+        \end{align*}
+      \end{gather*}
+      Vzhledem k rovnocennému zastoupení kladných a záporných odchylek je součet obsahující
+      součiny \(\varepsilon_i(x)\varepsilon_i(y)\) zanedbatelný proti zbytku výrazu. Pak
+      \begin{align*}
+        \sum_{i=1}^{n}\varepsilon_i^2(z) 
+          &\doteq \left(\pder{f}{x}\right)^2 \sum_{i=1}^{n}\varepsilon_i^2(x) + 
+                  \left(\pder{f}{y}\right)^2\sum_{i=1}^{n}\varepsilon_i^2(y)                 \\ 
+          &= \left(\pder{f}{x}\right)^2 n\sigma^2(x) + \left(\pder{f}{y}\right)^2n\sigma^2(y).
+      \end{align*}
+      Odtud, vzhledem k platnosti vztahu
+      \begin{equation*}
+        \sum_{i=1}^{n}\varepsilon_i^2 = n\sigma^2(z),
+      \end{equation*}
+      dostáváme
+      \begin{equation}\label{mai:eq075}
+        \sigma^2(z) = \left(\pder{f}{x}\right)^2\sigma^2(x)
+                    + \left(\pder{f}{y}\right)^2\sigma^2(y).
+      \end{equation}
+      Parciální derivace funkce \(f(x, y)\) podle \(x\), resp. \(y\) je třeba vyčíslit dosazením 
+      \(x = \langle x\rangle\) a \(y = \langle y \rangle\). Zobecnění tohoto vzorce na případ, kdy 
+      hledaná veličina je funkcí více proměnných, je jednoduché.
+      
+    \subsection{Lineární závislost a metoda nejmenších čtverců}
+      Tento poslední odstavec se zabývá zpracováním měření veličin, které jsou vázány lineárním
+      vztahem (už zase ta linearita). Situaci si opět snadno představíme na jednoduchém příkladu
+      Víme, že pro elektrické vodiče platí za jistých okolností \emph{Ohmův zákon}. Podle něj je 
+      proud \(I\) protékající vodičem, třeba drátem, přímo úměrný napětí \(U\) mezi konci vodiče. 
+      Konstanta úměrnosti ve vztahu
+      \begin{equation*}
+        U = R\cdot I
+      \end{equation*}
+      představuje \emph{elektrický odpor vodiče} \(R\). Změříme-li napětí a proud, můžeme určit 
+      odpor vodiče, pokud Ohmův zákon opravdu platí. Mohli bychom tedy postupovat například tak, že 
+      bychom při několika různých hodnotách napětí \(\lbrace U_1, U_2, \ldots, U_n \rbrace\) 
+      (napětí bychom mohli například postupně zvyšovat) změřili proud protékající vodičem, tj. 
+      \(\lbrace I_1, I_2, \ldots, I_n \rbrace\), a určili odpovídající hodnoty odporu \(R_1 = 
+      U_1/I_1\), \(R_2 = U_2/I_2\), \(\ldots\), \(R_n = U_n/I_n\)  Protože by měřené hodnoty napětí 
+      i proudu byly ovlivněny náhodnými vlivy a byly tak zatíženy chybami, byly by získané hodnoty 
+      odporu obecně různé, i když blízké. Zpracovali bychom je podobně jako soubor \(\langle x_1, 
+      x_2, \ldots, x_n \rangle\) při měření výšky válečku. Co když ale Ohmův zákon neplatí? Máme-li 
+      k dispozici změřený soubor odpovídajících si hodnot napětí a proudu, můžeme Ohmův zákon pro 
+      daný případ dokonce ověřit. Nebudeme však z jednotlivých údajů \(U_i\) a \(I_i\) počítat 
+      hodnoty \(R_i\) a pak je průměrovat, ale zpracujeme celý soubor měření „najednou“. Představme 
+      si dvojice \([U_i, I_i]\) jako body grafu. Kdyby měření napětí ani proudu nebyla zatížena 
+      chybami a kdyby přesně platil Ohmův zákon, ležely by body grafu přesně na přímce. Odpor 
+      vodiče bychom pak, s uvážením jednotek na osách, určili jako její směrnici (resp. v našem 
+      případě, kdy na vodorovnou osu nanášíme napětí a na svislou osu proud, je směrnicí převrácená 
+      hodnota odporu). Pro každou dvojici odpovídajících si hodnot napětí a proudu by mělo platit
+      \begin{equation*}
+        U_1 = R\cdot I_1, U_2 = R\cdot I_2, \ldots, U_n = R\cdot I_n.
+      \end{equation*}
+      Předchozí zápis můžeme chápat jako nehomogenní soustavu \(n\) lineárních rovnic pro jedinou
+      neznámou \(R\). Rozšířená matice této soustavy je
+      \begin{equation*}
+        \overline{B} = (A\lvert B) = 
+          \left(
+            \begin{array}{c|c}
+              I_1    & U_1     \\
+              I_2    & U_2     \\
+              \cdots & \cdots  \\
+              \cdots & \cdots  \\
+              I_n    & U_n
+            \end{array}
+          \right).
+      \end{equation*}
+      Matice soustavy \(A\) má hodnost \(h(A) = 1\), matice \(\overline{B} = (A\lvert B)\) však bude
+      mít vlivem chyb měření hodnost \(h(\overline{B}) = 2\). Soustava tedy obecně nemá řešení. Je
+      „přeučena“, neboť máme více nezávislých rovnic a jen jednu neznámou. Přímku, která by
+      procházela všemi body grafu, nenajdeme. Položíme si proto splnitelný úkol: Budeme hledat
+      přímku, která by se co „nejlépe přimykala“ k souboru bodů grafu. Tento požadavek je třeba
+      matematicky formulovat, jinak bude k nepotřebě. Označme hledanou hodnotu odporu \(R\). Pokud
+      by hodnoty \(\lbrace I_1, I_2, \ldots, I_n \rbrace\) byly bezchybné, odpovídaly by jim hodnoty
+      napětí \(\lbrace R_1\cdot I_1, R_2\cdot I_2, \ldots, R_n\cdot I_n \rbrace\). Odchylky skutečně
+      naměřených napětí \(\lbrace U_1, U_2, \ldots, U_n \rbrace\) od těchto „teoretických“jsou
+      \begin{equation*}
+        \lbrace U_1 - R_1\cdot I_1, U_2 - R_2\cdot I_2, \ldots, U_n - R_n\cdot I_n \rbrace.
+      \end{equation*}
+      Součet jejich čtverců je funkcí veličiny \(R\), kterou na chvíli považujme za proměnnou:
+      \begin{equation*}
+        D(R) = \sum_{i = 1}^{n}(U_i - R_i\cdot I_i)^2.
+      \end{equation*}
+      Řekneme, že se přímka o rovnici \(U = R\cdot I\) nejlépe přimyká k souboru bodů \(\lbrace[ 
+      U_i, I_i]\rbrace\) právě tehdy, je-li \(R\) zvoleno tak, aby hodnota \(D(R)\) byla co 
+      nejmenší. Nutnou podmínkou pro minimum funkce \(D(R)\) je nulovost její derivace,
+      \begin{equation*}
+        \der{D(R)}{R} = -2\sum_{i = 1}^{n}(U_i - R_i\cdot I_i)I_i = 0,
+      \end{equation*}
+      odkud
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq073}
+          R=  \dfrac{\sum_{i = 1}^{n}U_i\cdot I_i}{\sum_{i = 1}^{n}I_i^2}.
+        \end{equation}
+      \end{mdframed}
+      Předchozím vztahem je určena hodnota odporu. Jejím dosazením do vzorce pro \(D(R)\) zjistíme
+      odpovídající odchylku
+      \begin{mdframed}[style=highlight]
+        \begin{equation*}
+          \sigma(R) = \sqrt{\dfrac{D(R)}{n-1}}.
+        \end{equation*}
+      \end{mdframed}
+      Velikost \(\sigma(R)\) dává informaci o tom, jak „dobře“ vyhovuje testovaný soubor měření 
+      zvolenému fyzikálnímu modelu, v tomto případě lineární závislosti.
+
+      %-- Ověření Ohmova zákona---------------------------------------
+      \input{../src/MAI/exam/exam076.tex}
+      %---------------------------------------------------------------
+      
+      Popsaný způsob nalezení hodnoty elektrického odporu vodiče v příkladu \ref{mai:exam076} se
+      nazývá\textbf{ metodou nejmenších čtverců} (minimalizuje součet čtverců odchylek prokládané
+      závislosti od souboru naměřených bodů), v případě použití lineárního modelu, jako tomu bylo u
+      Ohmová zákona, pak jde o \textbf{lineární regresi}
+      
+      Obdobně se postupuje, je-li některá z měřených veličin lineární funkcí veličin jiných s 
+      neznámými koeficienty lineární kombinace. Nechť
+      \begin{equation*}
+        Z = f(X_1, X_2, \ldots, X_K) = A_1X_1 + A_2X_2 + \cdots + A_KX_K.
+      \end{equation*}
+      Předpokládejme, že veličiny \(X_1, X_2, \ldots, X_K\) a \(Z\) měříme \(n\)-krát a naměříme 
+      hodnoty
+      \begin{equation*}
+        X_j = \lbrace x_{j1}, \ldots x_{jn} \rbrace, \; 1 \leq j \leq K, \; 
+        Z = \lbrace z_{1}, \ldots z_{n} \rbrace
+      \end{equation*}
+      Součet čtverců odchylek teoretické závislosti od naměřených bodů je
+      \begin{equation*}
+        D(Z) = \sum_{i=1}^{n}\left(z_i - \sum_{j=1}^{K}A_jx_{ji}\right)^2.
+      \end{equation*}
+      Nutnou podmínkou pro minimum tohoto výrazu jakožto funkce proměnných \(A_x, A_2, \ldots, A_K\)
+      je platnost souboru rovnic
+      \begin{equation*}
+        \pder{D(Z)}{A_p} = 0 \Rightarrow 
+        \sum_{i=1}^{n}2\left(z_i - \sum_{j=1}^{K}A_jx_{ji}\right)\cdot x_{pi} = 0
+      \end{equation*}
+      pro \(1 \leq i \leq n, 1 \leq j \leq K\). Tyto podmínky představují nehomogenní soustavu 
+      \(K\) rovnic pro \(K\) neznámých \(( A_1, A_2, \ldots, A_K)\). Rozšířená matice soustavy je
+      \begin{strip}
+      \begin{equation*}
+        \overline{B} = (A\lvert B) = 
+          \left(
+            \begin{array}{cccc|c}
+              \sum_{i=1}^{n}x_{1i}x_{1i} & \sum_{i=1}^{n}x_{1i}x_{2i} & \cdots & 
+              \sum_{i=1}^{n}x_{1i}x_{Ki} & \sum_{i=1}^{n}z_{i}x_{1i}                    \\
+              \sum_{i=1}^{n}x_{1i}x_{1i} & \sum_{i=1}^{n}x_{2i}x_{2i} & \cdots & 
+              \sum_{i=1}^{n}x_{2i}x_{Ki} & \sum_{i=1}^{n}z_{i}x_{2i}                    \\
+                        \cdots           & \cdots & \cdots & \cdots   & \cdots          \\
+              \sum_{i=1}^{n}x_{Ki}x_{1i} & \sum_{i=1}^{n}x_{Ki}x_{2i} & \cdots & 
+              \sum_{i=1}^{n}x_{Ki}x_{Ki} & \sum_{i=1}^{n}z_{i}x_{Ki}                    \\
+            \end{array}
+          \right),
+      \end{equation*}
+      \end{strip}
+      \begin{equation*}
+        \sigma(z) = \sqrt{\dfrac{D(z)}{n - K}}.
+      \end{equation*}
+      V dalších kapitolách věnovaných lineární algebře se k tomuto problému znovu vrátíme a ukážeme,
+      že jej lze elegantně řešit také jako úlohu algebraickou, konkrétně úlohu o ortogonální
+      projekci vektorů na podprostory.
+      
+%} %tikzset
+%---------------------------------------------------------------------------------------------------

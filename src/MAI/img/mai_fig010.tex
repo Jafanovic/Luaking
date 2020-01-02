@@ -1,0 +1,38 @@
+% !TeX spellcheck = cs_CZ
+% Příklad sudé a liché funkce
+
+\documentclass[11pt]{standalone}
+\usepackage{xltxtra}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+\usepackage{amsmath}
+
+\begin{document}
+  \begin{tikzpicture}[thick,scale=0.7, every node/.style={transform shape}]
+    \begin{axis}[
+      xmin = -3.5, xmax = 3.5, ymin = -6, ymax = 6,  % osy
+      domain = -3:3,
+      restrict y to domain=0:6,
+      unit vector ratio=1 1 1,  % axis equal
+      grid = major,   % both
+      grid style={line width=.1pt, draw=gray!20},
+      major grid style={dashed, line width=.2pt, draw=gray!40},
+      minor tick num=5,
+      clip = true,
+      clip mode=individual,
+      /pgfplots/xtick={-2,-1,1,2}, % make steps of length 0.2
+      axis x line = middle,
+      axis y line = middle,
+      xlabel={$x$}, ylabel={$y$},
+      enlarge y limits={rel=0.07},
+      enlarge x limits={rel=0.07},
+    ]
+    
+      \addplot[color=Gold3, samples=200, smooth, ultra thick, unbounded coords=jump, no markers] 
+         gnuplot{x^2};  
+      \node [draw,fill=white] at (rel axis cs: 1,0.9) {\(f(x) = x^2\)};
+    \end{axis}
+  \end{tikzpicture}
+\end{document} 

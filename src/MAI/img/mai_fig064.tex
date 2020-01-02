@@ -1,0 +1,75 @@
+\documentclass[12pt, border=2pt]{standalone}
+  \usepackage{pgf,tikz,pgfplots}
+    \pgfplotsset{compat=1.16}
+  \usepackage{mathrsfs}
+  \usetikzlibrary{arrows, calc, intersections,
+                  shapes,
+                  decorations.shapes,
+                  decorations.fractals,
+                  decorations.markings,
+                  shadows
+  }
+
+  \pagestyle{empty}
+  \usepackage{amsmath}
+
+  \newsavebox{\mycandle}
+  \savebox{\mycandle}{ 
+  \begin{tikzpicture}[scale=.2]
+  \shade[top color=yellow,bottom color=red] (0,0) .. controls (1,.2) and (1,.5) .. (0,2) .. controls (-1,.5)  and  (-1,.2) .. (0,0);
+  \fill[yellow!90!black] (.8,0) rectangle (-.8,-5); 
+  \end{tikzpicture} }
+  \tikzset{
+    paint/.style={draw=#1!50!black, fill=#1!50},
+    my star/.style={decorate,decoration={shape backgrounds,shape=star},
+                    star points=#1}
+  } 
+
+\begin{document}
+  \definecolor{wwwwww}{rgb}{0.4,0.4,0.4}
+  \definecolor{ccqqqq}{rgb}{0.8,0,0}
+    \begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=.1cm,y=.1cm]
+      \begin{axis}[
+        x=.25cm,y=.25cm,
+        axis lines=middle,
+        ymajorgrids=true,
+        xmajorgrids=true,
+        xmin=-15,
+        xmax=40,
+        ymin=-15,
+        ymax=30,
+        xtick={-15,-10,...,40},
+        ytick={-15,-10,...,30},]
+        \clip(-30,-77) rectangle (61,42);
+        \draw[line width=4pt,color=ccqqqq,smooth,samples=100,domain=-30:-3] 
+          plot(\x,{200/(\x)^(2)+(8*200)/(36-(\x))^(2)});
+        \draw[line width=4pt,color=ccqqqq,smooth,samples=100,domain=3:27.8, name path=curve] 
+          plot(\x,{200/(\x)^(2)+(8*200)/(36-(\x))^(2)});  
+        \draw[line width=4pt,color=ccqqqq,smooth,samples=100,domain=44.2:50] 
+          plot(\x,{200/(\x)^(2)+(8*200)/(36-(\x))^(2)});  
+          
+        \draw[line width=2pt,color=wwwwww,smooth,samples=100,domain=-30:-2.5] 
+          plot(\x,{(-(2*200))/(\x)^(3)+(16*200)/(36-(\x))^(3)});
+        \draw[line width=2pt,color=wwwwww,smooth,samples=100,domain=3:31] 
+          plot(\x,{(-(2*200))/(\x)^(3)+(16*200)/(36-(\x))^(3)});
+        
+        % MIN:
+        \draw[name path=yline, dotted, line width=2pt] (12,6) -- (12,-2) node[below] {P}; 
+        \path[name intersections={of=yline and curve, name=point}]; % prusecik cary yline s funkcí 
+        \node[below left] at (point-1) {MIN}; 
+        \draw[fill=black] (point-1) circle(3pt);
+        \draw[fill=black] (12,0) circle(5pt);
+
+        \begin{normalsize}
+          \draw (5,+20) node[anchor=north west, color=ccqqqq] 
+            {$y = \dfrac{a}{x^2} + \dfrac{8a}{(36 - x)^2}$};
+          \draw (5,-10) node[anchor=north west, color=wwwwww] 
+            {$y'=-\dfrac{2a}{x^3} + \dfrac{16a}{(36 - x)^3}$};
+        \end{normalsize}
+
+        % lights>
+        \node at (0,0) {\usebox{\mycandle}}; 
+        \node at (36,0) {\usebox{\mycandle}}; 
+      \end{axis}
+    \end{tikzpicture}
+\end{document}

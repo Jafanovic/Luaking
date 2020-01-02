@@ -1,0 +1,39 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{MAI:exam025}
+    Uvažme funkci z příkladu \ref{fyz:fey_exam017}. 
+    
+    {\centering
+    \captionsetup{type=figure}
+  %   \input{../src/MAI/img/mai_fig013.tex}
+    \includegraphics[width=0.6\linewidth]{mai_fig013.pdf}
+    \captionof{figure}{K příkladu \ref{MAI:exam025} \(y=\log_2{(\sqrt{1-x^2})}\) 
+    \cite[s.~57]{Musilova2009MA1}
+    \label{mai:fig013}}
+    \par}
+    
+    Ukážeme, jak tato funkce vzniká postupně složením tří funkcí a jak při tom dochází k postupnému 
+    omezování definičního oboru. Písmeny \(\mathcal{D}\) a \(H\) s příslušným indexem budeme značit 
+    definiční obory a obory hodnot jednotlivých funkcí.
+    \begin{gather*}
+      \begin{align*}
+        g&:  \realset =\mathcal{D}_g\ni x\rightarrow u=g(x) = 1- x^2  \in\mathcal{H}_g=(-\infty,1], \\
+        h&: [0,\infty)=\mathcal{D}_h\ni u\rightarrow w=h(u) = \sqrt{u}\in\mathcal{H}_h=[0,\infty),  \\
+       \shortintertext{\(\mathcal{D}_h\cap\mathcal{H}_g = [0,1]\Rightarrow\mathcal{D}_{h\circ g}=[-1,1], 
+                       \mathcal{H}_{h\circ g} = [0,1],\)}                                    \\
+       f&:(0,\infty)=\mathcal{D}_f\ni w \rightarrow y=f(w)=\log_2w\in\mathcal{H}_f=\realset  \\
+       \shortintertext{\(\mathcal{H}_{h\circ g}\cap\mathcal{D}_f = (0,1] 
+                       \Rightarrow\mathcal{D}_F=(-1,1),\mathcal{H}_F=(-\infty,0].\)} 
+      \end{align*}
+    \end{gather*}
+    Je tedy
+    \begin{gather*}
+      \begin{align*}
+        F:\mathcal{D}_F\ni x\rightarrow 
+        y&=F(x)=(f\circ(h\circ g))(x) = f{h[g(x)]}          \\
+        &= \log_2\sqrt{1-x^2}\in(-\infty,0].
+      \end{align*}
+    \end{gather*}
+    Názorněji než tento zápis ukazuje situaci obrázek \ref{mai:fig013}.
+  \end{example}
+\end{mdframed}

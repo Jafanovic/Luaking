@@ -1,0 +1,50 @@
+\documentclass[11pt]{standalone}
+  \usepackage{helvet}                        % font
+  \usepackage{xltxtra}                       % fontspec package
+  \usepackage{tikz}  
+  \usetikzlibrary{arrows}
+  \usetikzlibrary{intersections}
+  \usetikzlibrary{calc}
+  \usepackage[american, europeanresistor, cuteinductors,smartlabels]{circuitikz}
+    \ctikzset{bipoles/thickness=1}
+    \ctikzset{bipoles/length=0.8cm}
+    \ctikzset{bipoles/vsourceam/height/.initial=.7}
+    \ctikzset{bipoles/vsourceam/width/.initial=.7}
+    \tikzstyle{every node}=[font=\small]
+    \tikzstyle{every path}=[line width=0.4pt,line cap=round,line join=round]
+
+\begin{document}
+  \begin{circuitikz} 
+      \draw
+      (0,0) node[transformer] (T) {}
+  node[ocirc] (A) at ([xshift=-1.5cm]T.A1) {}
+  node[ocirc] (B) at ([xshift=-1.5cm]T.A2) {}
+  node[ocirc] (C) at ([xshift=1.5cm]T.B1) {}
+  node[ocirc] (D) at ([xshift=1.5cm]T.B2) {}
+  node[circ]  (E) at ([xshift=0.4cm,yshift=-5pt]T.A1) {}
+  node[circ]  (F) at ([xshift=-0.4cm,yshift=-5pt]T.B1) {}
+  (T.A1) to [-o] (A)
+  (T.A2) to [-o] (B) 
+  (T.B1) to [L]  (C) ([xshift=1.8cm,yshift=-.35cm]T.north) node{$L_\sigma$}
+  (T.B2) to [-o] (D)
+  ([xshift=-0.8cm,yshift=-0.9cm]T) node{$L_1$}
+  ([xshift=-0.8cm,yshift=-1.3cm]T) node{$N_1$}
+  ([xshift= 0.8cm,yshift=-0.9cm]T) node{$L_2$}
+  ([xshift= 0.8cm,yshift=-1.3cm]T) node{$N_2$} 
+  ;
+  \coordinate (X) at ([xshift=-0.6cm]B);
+  \coordinate (Y) at ([xshift=+0.6cm]D);
+%  \draw       (A) --+(-0.6,0) to [sV] (X) -- (B); 
+%  \draw       (C) --+(0.6,0)  to [L]  (Y) -- (D); 
+  
+%  \begin{scope}[shorten >= 10pt,shorten <= 10pt,]
+%    \draw[-latex] (A) -- node[right] {$u_1(t)$} (B); 
+%    \draw[-latex] (C) -- node[left] {$u_2(t)$} (D);
+%  \end{scope}
+  
+  \draw[-latex] ([xshift=2.4cm,yshift=9pt]T.A1) -- node[above]
+            {$\Delta u_2$} +(22pt,0);
+%  \draw[open triangle 45-] ([xshift=0.9cm,yshift=10pt]T.B1)  -- node[above] 
+%            {$i_2(t)$} +(-20pt,0);  
+  \end{circuitikz}
+\end{document}

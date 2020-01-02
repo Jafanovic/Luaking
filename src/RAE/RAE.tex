@@ -1,0 +1,37 @@
+%===================================================================================================
+% Radiotechnika
+% RA.tex
+%===================================================================================================
+% notes:
+%~~~~~~~~~
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+  \graphicspath{{../src/RAE/img/}}
+
+%---------------------------------------------------------------------------------------------------
+%                               RAE
+%---------------------------------------------------------------------------------------------------
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{VFT}{Radioelektronika}{VFT}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+  % \input{../src/RAE/chap/RF_theory.tex}
+  % \input{../src/RAE/chap/Smith_chart.tex}
+  % \input{../src/RAE/chap/Antenna_Theory.tex}
+  % \input{../src/RAE/chap/Modulation.tex} 
+}
+{
+% DEBUG was off
+%=====================================Kapitola: Hlavní etapy vývoje fyziky==========================
+%  \input{../src/RAE/chap/RF_theory.tex}  % ** TODO
+%================================= Kapitola: Přehled jazyka C++=====================================
+%  \input{../src/RAE/chap/Smith_chart.tex} % ** TODO
+%================================= Kapitola: Přehled jazyka C++=====================================
+  \input{../src/RAE/chap/Antenna_Theory.tex}
+%================================= Kapitola: Přehled jazyka C++=====================================
+  \input{../src/RAE/chap/Modulation.tex} 
+} % DEBUG was off
+
+\printbibliography[title={Seznam literatury}, heading=bibliography]

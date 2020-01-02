@@ -1,0 +1,77 @@
+  % 
+  %===================================================================================================
+%                                     Graphic environment 
+% ===================================================================================================
+\NeedsTeXFormat{LaTeX2e}
+% ~~~~~~~~ Libraries ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \RequirePackage{lipsum}
+% make sure figures do not appear before their text:  
+% flafter package can be used to ensure that floats are never placed before their references.   
+  \usepackage{flafter}
+  \usepackage{graphicx}                   % This package provides an alternative interface to the 
+                                          % LATEX2e graphics functions.
+  \usepackage[all]{xy}                    % X-pic: The picture environment and gnuplot 
+  \usepackage{rotating}                   % gives the possibility to rotate any object of an  
+                                          % arbitrary angle
+                                          
+% ~~~~~~~~~~~~ Tables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\usepackage{booktabs} 
+\usepackage{multirow}                      % Columns spanning multiple rows 
+% This LATEX package provides the command \tablefootnote to be used in a table or sidewaystable 
+% environment, where \footnote will not work and when using \footnotemark and \footnotetext and 
+% adjusting the counters (including Hfootnote) manually is either too much work or would not 
+% even work (sidewaystable). 
+\usepackage{tablefootnote}
+\renewcommand{\arraystretch}{1.5}          % factor for stretching the height of the lines -
+                                           % modification is global
+\usepackage{array}                         % Using the array package, the column specification can
+                                           % be altered
+\usepackage{colortbl}                      % Color tables - this package requires color and arrays
+                                           % packages
+\newcolumntype{C}[1]{>{\centering}m{#1}}   % buňka bude centrovaná horizontálně i vertikálně -
+                                           % nutný balík array !  
+% http://tex.stackexchange.com/questions/94799/how-do-i-color-table-columns-and-rows   
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+\newcolumntype{b}{>{\columncolor{white}}c}
+% ~~~~~~~~~~~ 3D object, flash, video ~~~~~~~~~~~
+ \usepackage{media9}
+% using ffmpeg convertor and command line (cmd): mpeg -> mp4
+%       ffmpeg -i video.mpeg -vcodec libx264 -x264opts keyint=30 -r 30 video.mp4
+  \addmediapath{../media}
+    \newcommand{\AddVideo}[3]{
+      \includemedia[
+        activate=pageopen,
+        width=#1pt,height=#2pt,
+        addresource=#3.mp4,
+        flashvars={ src=#3.mp4 &loop=true &scaleMode=stretch}
+      ]{}{StrobeMediaPlayback.swf} %VPlayer.swf StrobeMediaPlayback.swf
+      }
+% ~~~~~~~~ Attache file into PDF ~~~~~~~~~~~~~~~~
+% insert pages of external PDF documents without `Overfull \hbox' and `Overfull \vbox' warnings
+% when inserted pages does not match the print space. 
+  \usepackage{pdfpages}                   % \includepdf >> Inserts pages of an external PDF document.
+  \usepackage{attachfile2}
+  \usepackage[author=jafa]{pdfcomment}    % A user-friendly interface to pdf annotations.
+% ~~~~~~~~ Figures ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \usepackage{subfig}                     % Multipart figures
+                                          % the package subfigure is really outdated, use subfig
+                                          % instead
+  \usepackage{wrapfig}                    % Floats, Figures and aptions
+% ~~~~~~~~~~ Animation ~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+  \usepackage{animate}
+% ~~~~~~~~~~~ Code Highlighting ~~~~~~~~~~~~~~~~~
+% Highlighting of all the most common languages 
+% \usepackage{listings} 
+  \usepackage{listings}        % UTF8 package load aborted because missnig \pdf@unescapehex
+  \renewcommand\lstlistingname{Výpis}     % change the caption name for listings
+  \renewcommand\lstlistlistingname{Výpis} % header name for the list of listings which is printed
+                                          % by the \lstlistoflistings command
+  \def\lstlistingautorefname{Alg.}        % Then when you're referring to a particular listing, e.  
+                                          % g. For details see
+                                          % \autoref{sec2:bubblesort}. it is written as "For
+                                          % details see Alg. 2.1."
+% Include the contents of any ascii file  
+ \usepackage{verbatim}

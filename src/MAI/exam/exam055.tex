@@ -1,0 +1,49 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam055}
+    \textbf{Hody kostkou a mincí - jev \(C\)}\newline
+    Označme jako jev \(A\) „Při náhodném hodu kostkou padne šestka.“ a jako jev \(B\) \uv{Při
+    náhodném hodu mincí padne hlava.} Platí
+    \begin{alignat*}{3}
+      N(A) &= 6\qquad   M(A) &&=1 \qquad \Rightarrow \qquad p(A) &&= \frac{1}{6} \\
+      N(B) &= 2\qquad   M(B) &&=1 \qquad \Rightarrow \qquad p(B) &&= \frac{1}{2}
+    \end{alignat*}
+    Jev \(C\) je definován jako \(A\) \textbf{a} \(B\), tj. „Při náhodném provedení současného hodu
+    kostkou a mincí padne na kostce šestka a na minci hlava.“ Počítejme pravděpodobnost \(p(C)\).
+    Jevy \(A\) a \(B\) jsou \textbf{nezávislé}, to znamená, že výsledek hodu kostkou neovlivní
+    výsledek hodu mincí a naopak. Počet možných výsledků současného hodu kostkou a mincí je
+    \begin{equation*}
+      N(C) = N(A \text{ a } B) = N(A)N(B) = 12.
+    \end{equation*}
+    Každý možný výsledek hodu kostkou je totiž možno kombinovat s každým možným výsledkem hodu
+    mincí. Označme výsledky hodu mincí jako \(\mathcal{A}\) (hlava neboli avers) a opačný výsledek
+    jako \(\mathcal{R}\). (orel neboli revers). Výčet možných výsledků současného hodu kostkou a
+    mincí je
+    
+    % https://tex.stackexchange.com/questions/12703/
+    {\centering
+    % \resizebox{\textwidth}{!}{%
+      \begin{tabular}{c|@{\hspace{3pt}}r@{\hspace{3pt}}r@{\hspace{3pt}}r@{\hspace{3pt}}r
+                        @{\hspace{3pt}}r@{\hspace{3pt}}r@{\hspace{3pt}}r@{\hspace{3pt}}r
+                        @{\hspace{3pt}}r@{\hspace{3pt}}r@{\hspace{3pt}}r@{\hspace{3pt}}r}
+        \textbf{kostka} & 1 & 2 & 3 & 4 & 5 & 6 & 1 & 2 & 3 & 4 & 5 & 6 \\
+        \hline
+        \textbf{mince}  & \(\mathcal{A}\) & \(\mathcal{A}\) & \(\mathcal{A}\) & \(\mathcal{A}\) &
+                          \(\mathcal{A}\) & \(\mathcal{A}\) & \(\mathcal{R}\) & \(\mathcal{R}\) &
+                          \(\mathcal{R}\) & \(\mathcal{R}\) & \(\mathcal{R}\) & \(\mathcal{R}\) 
+      \end{tabular}
+    % }
+    \par}
+    
+    Příznivý případ je pouze jeden, tj. situace, kdy se výsledek \num{6} na kostce kombinuje s
+    výsledkem \(\mathcal{A}\) na minci    
+    \begin{equation*}
+      M(C) = M(A)M(B) = 1.
+    \end{equation*}
+    \begin{align*}
+      p(C) &= \dfrac{M(C)}{N(C)} = \dfrac{M(A)M(B)}{N(A)N(B)} 
+            = \dfrac{M(A)}{N(A)}\cdot\dfrac{M(B)}{N(B)}                            \\
+           &= p(A)p(B).
+    \end{align*}
+  \end{example}
+\end{mdframed}

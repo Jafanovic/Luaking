@@ -1,0 +1,37 @@
+% !TeX spellcheck = cs_CZ
+% \wikitextrule
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam044}
+    \textbf{Vzájemná poloha dvou přímek}\newline
+    Dvě přímky \(p\) a \(q\) jsou určeny dvěma dvojicemi rovin. Jejich společné body jsou tedy
+    řešením soustavy čtyř lineárních rovnic o třech neznámých (pišme rovnou rozšířenou matici
+    soustavy):
+    \begin{equation}\label{mai:eq045}
+      \matr{B} = (\matr{A}\lvert\overline{\matr{B}}) =
+      \left(
+        \begin{array}{rrr|r}
+          a_1 & b_1 & c_1 & -d_1    \\
+          a_2 & b_2 & c_2 & -d_2    \\
+          a_3 & b_3 & c_3 & -d_3    \\
+          a_4 & b_4 & c_4 & -d_4
+        \end{array}
+      \right).
+    \end{equation}
+    Protože soustava obsahuje rovnice dvojic nerovnoběžných rovin, je \(h(\matr{A}) \geq 2\)
+    (zdůvodněte podrobněji). Možnosti vzájemné polohy přímek \(p\) (první dvě rovnice) a \(q\)
+    (druhé dvě rovnice) jsou tyto:
+    \begin{itemize}
+      \item Přímky jsou mimoběžné, nemají tedy žádný společný bod a roviny, které je určují, nemají
+            žádný společný směr. Soustava (\ref{mai:eq045}) nemá řešení, odpovídající homogenní
+            soustava pak rovněž ne, kromě řešení triviálního. Je tedy \(h(\matr{A}) = 3\),
+            \(h(\matr{B}) = 4\).
+      \item Přímky jsou různoběžné, mají tedy společný právě jeden bod. Soustava (\ref{mai:eq045})
+            má právě jedno řešení, a proto \(h(\matr{A}) = h(\matr{B}) = 3\).
+      \item Přímky jsou rovnoběžné. Nemají tedy žádný společný bod, soustava nemá řešení, ale
+            roviny, které je určují, mají společný směr. To odpovídá situaci \(h(\matr{A}) = 23\),
+            \(h(\matr{B}) = 3\).
+      \item Přímky jsou totožné. Řešení soustavy je popsáno jednou volnou neznámou, tj.
+            \(h(\matr{A}) = h(\matr{B}) = 2\)
+    \end{itemize}
+  \end{example}
+\end{mdframed}

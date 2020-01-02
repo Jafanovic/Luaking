@@ -1,0 +1,71 @@
+% mai_fig016b.tex
+
+\documentclass[11pt]{standalone}
+\usepackage{xltxtra}
+\usepackage[usenames,x11names]{xcolor}
+\usepackage{tikz}
+  \usetikzlibrary{intersections}
+  \usetikzlibrary{decorations.markings}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+  
+\usepackage{amsmath}
+\usepackage{amsfonts}       % \mathbb{R}
+
+\begin{document}
+  \begin{tikzpicture}[thick,scale=0.7, 
+      every node/.style={transform shape},
+           point/.style={fill=black,minimum size=.3ex,inner sep=0pt, circle}
+      ]
+  
+  \tikzset{->-/.style={decoration={
+    markings,
+    mark=at position #1 with {\arrow{stealth}}},postaction={decorate}}}
+    
+    \begin{axis}[
+      xmin = -1.5, xmax = 4.5, ymin = 0, ymax = 6,  % osy
+      domain = -1:5,
+      restrict y to domain=0:6,
+      axis equal image,
+      grid = major,   % both
+      grid style={line width=.1pt, draw=gray!20},
+      major grid style={dashed, line width=.2pt, draw=gray!40},
+      minor tick num=4,
+      clip = true,
+      clip mode=individual,
+      xtick={-2,-1,1,2,3,4}, % make steps of length 0.2
+        ytick={0,1,2,3,4,5,6}, 
+      axis x line = middle,
+      axis y line = middle,
+      xlabel={$x$}, ylabel={$y$},
+      enlarge y limits={rel=0.07},
+      enlarge x limits={rel=0.07}
+      ]
+  
+      \addplot +[no markers, raw gnuplot, color=Gold3, ultra thick, name path global=func] 
+        gnuplot {
+          plot 'mai_fig016b.dat' smooth sbezier;
+      };  % '../src/MAI/img/mai_fig016b.dat'
+      \node [fill=white] at (rel axis cs: 0.9,0.9) {\(y=g(x)\)};
+      \draw[line width = 3pt, red, line cap=butt] (-1,0) -- (1,0);
+      \draw [thick] (-1,-.1) -- (-1,0.1);
+      \draw [thick] (1,-.1) -- (1,0.1);
+      \node [fill=white] at (rel axis cs: 0.35,-0.01) {\(\bar{\mathcal{D}}_g\)};
+  
+      \path[name path=line] (0,2.4) -- (4,2.4); 
+      % Intersections points
+          \path [name intersections={of=func and line,by={P1,P2,P3}}]
+              (P1) node [] {} (P2) node [] {} (P3) node [] {};
+       
+       \draw[dashed] (0,3) |- (P1) -- (P3);
+       \draw[black,fill=black] (P1) circle (.3ex);
+       \draw[black,fill=black] (P2) circle (.3ex);
+       \draw[black,fill=black] (P3) circle (.3ex);
+       
+       \draw[->-=.5, dashed] (P1) -- (P1 |- 3,0);
+       \draw[->-=.5, dashed] (P2) -- (P2 |- 3,0);
+       \draw[->-=.5, dashed] (P3) -- (P3 |- 3,0);
+  
+    \end{axis}
+  \end{tikzpicture}
+\end{document}

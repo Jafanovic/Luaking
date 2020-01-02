@@ -1,0 +1,49 @@
+% !TeX spellcheck = cs_CZ
+\documentclass[10pt]{scrartcl}
+\usepackage[]{geometry}     %showframe
+\geometry{
+  paperwidth=7cm,
+  paperheight=2cm,
+  margin=1pt
+}
+
+\usepackage[usenames,x11names]{xcolor}
+  \definecolor{beige}{rgb}{0.96, 0.96, 0.86}
+  \definecolor{bazaar}{rgb}{0.6, 0.47, 0.48}
+  \definecolor{blue(pigment)}{rgb}{0.2, 0.2, 0.6}
+  \definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
+\usepackage{tikz}
+  \usetikzlibrary{positioning}
+\usepackage{pgfplots}
+  \pgfplotsset{compat=newest}
+\usepackage{amsmath}
+
+\begin{document}
+\noindent
+  \begin{tikzpicture}[]
+    \tikzstyle{nome}=[ %
+      draw, rectangle,
+      % anchor=west, 
+      % minimum width=7cm,
+      fill=beige,
+      outer sep=1,inner sep=0
+      % node distance=12,
+      % text width=7cm
+    ]
+    \path (0,0)  node(a) [nome]
+                {\(\begin{array}{c} 
+                    \text{\textbf{zapouzdření}} \\ \text{\emph{(encapsulation)}}
+                    \end{array}\)
+                }
+          (4.1,0) node(b) [nome] 
+                {\(\begin{array}{c} 
+                    \text{\textbf{polymorfismus}} \\ \text{\emph{(polymorphism)}}
+                    \end{array}\)
+                }
+          (2,-1) node(c) [nome] 
+          {\(\begin{array}{c} 
+              \text{\textbf{dědičnost}} \\ \text{\emph{(inheritance)}}
+              \end{array}\)
+          };
+  \end{tikzpicture}
+\end{document}

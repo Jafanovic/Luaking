@@ -1,0 +1,42 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam073}
+    \textbf{Rozptyl aritmetického průměru}\newline
+    Již v úvodu odstavce o náhodných veličinách jsme konstatovali, že opakujeme-li v nezměněných
+    podmínkách měření jisté fyzikální veličiny (délka závěsu kyvadla, proud procházející vodičem,
+    napětí na vodiči, atd.), budeme díky náhodným vlivům dostávat pokaždé poněkud jiný výsledek.
+    Říkáme, že měření je zatíženo náhodnými chybami. Výsledek získaný při každém opakování lze
+    interpretovat jako hodnotu náhodné veličiny. Dejme tomu, že jsme provedli uměření fyzikální
+    veličiny \(X\) a získali hodnoty \(x_1\) až \(x_n\) . V praktické situaci budou tyto hodnoty
+    většinou navzájem různé, nemusí tomu tak však nutně být. Fyzikální veličinu chceme ovšem
+    reprezentovat jediným údajem, a tím bude její střední hodnota, tj.
+    \textbf{aritmetický průměr}
+    \begin{equation*}
+      \langle x \rangle = \dfrac{x_1 + x_2 + \cdots + x_n}{n}.
+    \end{equation*}
+    Rozptyl veličiny \(X\) je dán vztahem
+    \begin{align*}
+      D &= D(X)                                                             \\
+        &= \dfrac{\left(x_1 - \langle x \rangle\right)^2 + 
+                  \left(x_2 - \langle x \rangle\right)^2 + \cdots +
+                  \left(x_n - \langle x \rangle\right)^2}{n}.
+    \end{align*}
+    Víme, že směrodatná odchylka \(\sigma( x ) = \sqrt{D(X)}\) určuje, nakolik jsou jednotlivé
+    výsledky měření v průměru odchýleny od střední hodnoty, charakterizuje tedy přesnost každého
+    opakování měření. Podívejme se na celou úlohu z jiné strany: Představme si, že sledujeme \(n\)
+    po dvou nezávislých náhodných veličin \(X_1\) až \(X_n\) se shodnou střední hodnotou \(\langle
+    x_j \rangle = \langle x \rangle\) a shodnou směrodatnou odchylkou \(\sigma(x_j) = \sqrt{D},\, 1
+    \leq j \leq n\). Aritmetický průměr těchto veličin,
+    \begin{equation*}
+      \langle \Xi \rangle = \dfrac{X_1 + X_2 + \cdots + X_n}{n}.
+    \end{equation*}
+    je tedy rovněž náhodnou veličinou. Pro jeho střední hodnotu, rozptyl a směrodatnou odchylku
+    platí
+    \begin{align*}
+      \langle \xi \rangle 
+                  &= \dfrac{n\langle x \rangle}{n}, \\
+      D(\Xi)      &= \dfrac{1}{n^2}\cdot D(X_1 + \cdots + X_n)=\dfrac{nD^2}{n^2}=\dfrac{D}{n}, \\
+      \sigma(\xi) &= \dfrac{\sigma(x)}{\sqrt{n}}.
+    \end{align*}
+  \end{example}
+\end{mdframed}

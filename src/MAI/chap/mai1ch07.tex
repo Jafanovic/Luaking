@@ -1,0 +1,638 @@
+% !TeX spellcheck = cs_CZ
+%{\tikzset{external/prefix={tikz/MAI/}}
+% \tikzset{external/figure name/.add={ch06_}{}}
+%---------------------------------------------------------------------------------------------------
+% file: chap_PrimitiveFce.tex
+%---------------------------------------------------------------------------------------------------
+%============================ Primitivní funkce ====================================================
+\setchaptertoc
+\chapter{Primitivní funkce}
+
+  %----------------------------Neurčitý integrál----------------------------------------------------
+  \section{Motivace}
+    Problém \emph{neurčitého integrálu}, neboli \textbf{primitivní funkce}, lze vyložit velmi 
+    jednoduše: Máme podezření, že zadaná funkce \(f(x)\) vznikla derivováním jisté, zatím neznámé, 
+    funkce \(F(x)\). Dokážeme ji najít? 
+  
+    K danému problému můžeme přistupovat také fyzikálně: Zavedením pojmu derivace funkce jsme 
+    motivovali důležitým požadavkem definovat okamžitou rychlost pohybu bodu po přímce. Existuje 
+    přirozeně i požadavek opačný, tj. nalézt zákon dráhy pohybu bodu po přímce, je-li dána jeho 
+    okamžitá rychlost jako funkce času \cite[s.~253]{Brabec1989}. Vše si ukážeme na následujícím 
+    příkladu:   
+   
+    \begin{example}
+      Je dána okamžitá rychlost $v$ pohybu bodu po přímce (ose) $x$ rovnicí $v(t) = 2t + 1$, 
+      $t\in\langle -\infty,+\infty \rangle$. Najděte zákon dráhy pohybu, je-li známo, že v čase $t 
+      = 0$ měl bod polohu $x = x_0$.
+      \newline
+      \textbf{řešení:}\newline
+      Označíme-li $x(t)$ polohu bodu v okamžiku $t$, pak $v(t) = \frac{dx}{dt}$. Hledáme tedy 
+      funkci $x = x(t)$, pro níž platí 
+      \begin{align}
+        \frac{dx}{dt} &= 2t + 1 \qquad x(0) = x_0.  \nonumber \\ 
+        \shortintertext{Je ihned patrné, že první podmínce vyhovuje nekonečně mnoho funkcí}
+        x(t)          &= t^2 + t + C,           \label{MA:int_ex_09}    \\ 
+        \shortintertext{ kde $C$ je libovolná konstanta. Funkce, která splňuje i druhou podmínku 
+          (říkáme ji též počáteční podmínka), najdeme z rovnice \ref{MA:int_ex_09} dosazením dané podmínky 
+          $t = 0,\ x = x_0$. Dostaneme $x_0 = C$. Dosazením do \ref{MA:int_ex_09} za $C$ plyne hledaný 
+          zákon dráhy}
+        x(t)          &= t^2+t+x_0.                 \nonumber 
+        \shortintertext{Jednoduchou zkouškou se přesvědčíme, že tato funkce splňuje obě dané podmínky a 
+          zároveň vidíme, že hledaná primitivní funkce daných vlastností je jediná.}  \nonumber
+      \end{align}
+    \end{example} 
+    Každé takové funkci, jejíž derivací je daná funkce, budeme říkat \emph{primitivní funkce} k 
+    dané funkci. Na uvedeném příkladě je patrné, že k dané funkci může existovat nekonečně mnoho 
+    primitivních funkcí. Množinu všech primitivních funkcí se často nazývá \textbf{neurčitým 
+    integrálem}. Po tomto názorném uvedení do problému přejděme k přesné formulaci základních pojmů.
+    
+    \begin{definition} 
+      Funkce $F: J\rightarrow \realset$, kde $J\subset \realset$ je interval, se nazývá primitivní 
+      funkce k funkci \(f\) na intervalu \(J\) právě když, pro všechna $x\in J$ je $F'(x) = f(x)$ 
+      (v krajních bodech intervalu \(J\), pokud k němu patří, jde o derivace jednostranné).
+    \end{definition}
+    
+    \begin{example} 
+      K funkci $\sin x$ je primitivní funkcí na libovolném intervalu $J\subset(-\infty,+\infty)$ 
+      funkce $-\cos x$, protože $(-\cos x)' = \sin x$. Ale též funkce $3-\cos x$ je primitivní 
+      funkcí k funkci $\sin x$, protože $(3 - \cos x)' = \sin x$ pro všechna $x\in(-\infty, 
+      \infty)$.
+    \end{example}
+    
+    Je vidět, že rozdíl dvou primitivních funkcí k téže funkci je konstanta. To není náhoda, jak 
+    potvrzuje následující věta:
+    
+    \begin{lemma}
+      \begin{enumerate}[noitemsep]
+        \item Je-li funkce $F$ primitivní funkcí k funkci \(f\) na intervalu \(J\) a \(c\) reálná  
+              konstanta, pak i funkce $G = F + c$ je primitivní funkcí k funkci \(f\) na intervalu 
+              \(J\).
+        \item Jsou-li funkce $F$ a $G$ primitivní funkce k funkci \(f\) na intervalu \(J\), pak 
+        funkce
+              $F-G$ je na intervalu \(J\) konstantní.
+      \end{enumerate} 
+      \begin{proof}
+        Tvrzení a) plyne z definice protože $G'(x) = [F(x) + c] = F'(x) = f(x)$ pro všechna $x\in
+        J$. Tvrzení b) je důsledkem věty \ref{MA1:lem_diff01}.
+      \end{proof}
+    \end{lemma}
+    Neurčitost vyplývá právě z toho, že primitivní funkce není dána jednoznačně, je určena až na 
+    konstantu. Značíme
+    \begin{equation*}
+      \boxed{F(x) = \int f(x)\dx + C}
+    \end{equation*}
+        
+    Jak ale primitivní funkce hledat? V jednoduchých příkladech poslouží tabulka derivací, již 
+    čteme „zprava doleva“. (Je dobré si ji uložit do paměti.) Tabulka však pokryje jen velmi málo 
+    případů, pouze elementární funkce. Je tedy třeba najít metody, jak při hledání primitivních 
+    funkcí postupovat. Nejprve však uvedeme dvě základní pravidla pro primitivní funkce, která 
+    plynou z pravidel pro derivování:
+    \begin{align}
+      \int[f(x)\pm g(x)]\dx &= \int[f(x)\pm g(x)]\dx + \int[f(x)\pm g(x)]\dx \label{MA1:eq_int10} \\
+      \int cf(x)\dx         &= c \int f(x)\dx, \qquad \text{\(c\) je konstanta.} \label{MA1:eq_int11}
+    \end{align}
+  
+  \section{Tabulka neurčitých integrálů}\label{MA:chap_tabINT}
+    Pokud není nic uvedeno, platí vzorce pro všechna \(x\) a pro všechny hodnoty uvedených
+    konstant. Místo platí pro \(x\) z intervalu \((-\infty,0),(0,+\infty)\) píšeme stručně
+    \(x\neq0\) apod. Literatura: \cite[p.~396]{Rektorys1963}.
+    \begin{flalign}
+      \hline
+      & \int 0\dx = c                                        &         \label{MA:baseInt01}     \\
+      & \int a\dx = ax+c                                     &         \label{MA:baseInt02}     \\
+      & \int x^n\dx = \frac{x^{n+1}}{n+1}+c, \,                             
+        \qquad\text{kde}\begin{cases}
+          \forall x\in\realset,\,n\in\naturalset, n>0,         \\
+          \forall x\in\realset-\{0\},\,n\in\naturalset, n<-1,  \\
+          \forall x>0,\,n\in\realset\,\,n\notin\naturalset
+        \end{cases}                                          &        \label{MA:baseInt03}     \\
+      & \int\frac{1}{x}\dx = 
+            \ln\abs{x}+c \hspace{1ex}\forall x\neq0          &         \label{MA:baseInt04}    \\
+      & \int e^x \dx       = e^x+c                           &         \label{MA:baseInt05}    \\
+      & \int\ln x\dx       = 
+          x\ln x - x + c \hspace{1ex}\forall x>0             &         \label{MA:baseInt06}    \\
+      & \int a^x \dx     =
+        \frac{a^x}{\ln a}+c 
+        \hspace{1ex}\forall a>0,\,a\neq1                     &         \label{MA:baseInt07}     \\
+      & \int \sin x \dx  = -\cos x                           &         \label{MA:baseInt08}     \\
+      & \int \cos x \dx  =  \sin x                           &         \label{MA:baseInt09}     \\
+      & \int\frac{1}{\cos^2x}\dx =  \tan x+c 
+           \hspace{1ex}\forall x\neq(2k+1)\pi,\,k\in\naturalset &      \label{MA:baseInt10}     \\ 
+      & \int\frac{1}{\sin^2x}\dx     =  -\cotg x+c
+         \hspace{1ex}\forall x\neq k\pi,\,k\in\naturalset    &         \label{MA:baseInt11}    \\
+      & \int\frac{1}{\sqrt{1-x^2}}\dx =
+        \begin{cases}
+          +\arcsin x + c         \\
+          -\arccos x + c
+        \end{cases} 
+        \forall x\in(-1,1)                                  &         \label{MA:baseInt12}     \\
+     & \int\cosh\dx = \sinh x + c                           &         \label{MA:baseInt13}     \\
+     & \int\sinh\dx = \cosh x + c                           &         \label{MA:baseInt14}     \\
+     & \int\frac{1}{1+x^2}\dx = \arctan x + c               &         \label{MA:baseInt15}     \\
+     & \int \frac{1}{\sqrt{x^2 + 1}}\dx =
+         \begin{cases}
+           \ln(x + \sqrt{x^2+1}) + c         \\
+           \sinh^{-1}x + c 
+         \end{cases}                                        &         \label{MA:baseInt16}     \\ 
+     & \int \frac{1}{\sqrt{x^2 - 1}}\dx =
+         \begin{cases}
+           \ln(x + \sqrt{x^2-1}) + c         \\
+           \cosh^{-1}x + c \hspace{4ex}x\in(1,+\infty) 
+         \end{cases}                                        &         \label{MA:baseInt17}       
+    \end{flalign}
+    \begin{flalign}
+      & \int\frac{1}{\sqrt{x^2+a^2}}\dx 
+        = \sinh^{-1} \frac{x}{a} = \ln (x+\sqrt{x^2+a^2})    &         \label{MA:baseInt18}     \\
+      & \int \frac{1}{\sqrt{x^2-a^2}}\dx 
+        = \cosh^{-1} \frac{x}{a} = \ln (x+\sqrt{x^2-a^2})    &         \label{MA:baseInt19}     \\
+      & \int\frac{1}{\sqrt{x^2-1}}\dx 
+        = \left\{ 
+          \begin{array}{l l}
+            \ln\abs{x+\sqrt{x^2-1}}+c      &  \abs{x}>1  \\
+            \cosh^{-1}x+c                  &  \abs{x}<1
+          \end{array} 
+          \right.                                            &         \label{MA:baseInt20}     \\
+      & \int\tan x \dx   = \ln\abs{\sec x} + c               &         \label{MA:baseInt21}     \\
+      & \int\sec x \dx   = \ln\abs{\sec x + \tan x} + c      &         \label{MA:baseInt22}     \\
+      & \int\sec^2 x \dx = \tan x + c                        &         \label{MA:baseInt23}     \\
+      & \int\sec x\tan x \dx = \sec x + c                    &         \label{MA:baseInt24}     \\
+      & \int\frac{a}{a^2+x^2}\dx = \tan^{-1}\frac{x}{a}      &         \label{MA:baseInt25}     \\
+      & \int\frac{a}{a^2-x^2}\dx = 
+        \frac{1}{2}\ln\left\lvert\frac{x+a}{x-a}\right\rvert &         \label{MA:baseInt26}     \\
+      & \int\frac{1}{\sqrt{a^2-x^2}} \dx = 
+          \sin^{-1} \frac{x}{a}                              &         \label{MA:baseInt27}     \\
+      & \int\frac{a}{x\sqrt{x^2-a^2}}\dx = 
+          \sec^{-1} \frac{x}{a}                              &         \label{MA:baseInt28}    
+    \end{flalign}
+
+  \section{Metody určení primitivní funkce}
+    Procesu hledání primitivní funkce se často říká integrování nebo integrace (od slova 
+    “integrál”), což z matematického hlediska znamená provést inverzní operaci k operaci 
+    derivování. Smutnou zprávou je, že na rozdíl od derivování neexistuje obecný vzorec pro 
+    integrování součinu či podílu, ani obecný vzorec pro integrování složených funkcí. Při 
+    hledání integrálů složitějších funkcí se využívá např. \emph{linearita, metoda per partes, 
+    substituční metoda}, popř. některé další speciální metody. Řešitel v mnoha případech musí 
+    projevit důvtip a intuici, která mu pomůže nalézt primitivní funkci k dané funkci.
+  
+    % --------------------------Integrace po částech - per partes-----------------------------------
+    \subsection{Integrace po částech - per partes}
+      Metoda integrace \emph{per partes} neboli \emph{po částech} využívá vzorce pro derivaci 
+      součinu funkcí. Připomeňme si jej: Pro derivaci součinu dvou funkcí \(u(x)\) a \(u(x)\) platí
+      \cite[p.~137]{Musilova2009MA1}.
+      \begin{align}
+        [u(x)v(x)]' &= u(x)'v(x) + u(x)v'(x).  \label{MA:eq_Int29} \\
+        \shortintertext{Primitivní funkcí levé strany je \(F(x) = u(x)v(x)\), a tedy}
+        u(x)v(x)    &=  \int u'(x)v(x)\dx + \int u(x)v'(x)\dx \nonumber
+      \end{align}  
+      za předpokladu, že existují obě primitivní funkce na pravé straně. K čemu může tento 
+      samozřejmý vzorec sloužit při hledání primitivní funkce? Dejme tomu, že zadaná funkce 
+      \(f(x)\), k níž máme hledat funkci primitivní, je tvaru \(f(x) = u'(x)v(x)\), a my si s ní 
+      nevíme rady. Je však možné, že bychom si docela dobře poradili s primitivní funkcí k funkci 
+      \(g(x) = u(x)v(x)\). A předchozí vzorec umožňuje nahradit výpočet neurčitého integrálu z 
+      funkce \(f(x)\) výpočtem neurčitého integrálu z funkce \(g(x)\), tedy
+      \begin{equation}\label{ma:eq_perpartes}
+        \int u'(x)v(x)\dx = u(x)v(x) - \int u(x)v'(x)\dx 
+      \end{equation}
+      \begin{example}
+        Máme za úkol najít primitivní funkci k funkci \(f(x) = x\sin x\). Představíme-li si ji jako 
+        součin \(f(x) = u'(x)v(x)\), kde \(u'(x) = \sin x\), tj. \(u(x) = -\cos x\), a \(v(x)= x\), 
+        tj. \(v'(x) = 1\), dostaneme
+        \begin{equation*}
+          \int x\sin x\dx = -x\cos x + \int\cos x\dx = -x\cos x + \sin x + C.
+        \end{equation*}          
+      \end{example}
+      Není vždy jednoduché rozpoznat, jak máme rozložit funkci \(f(x)\) na součin funkcí \(u'(x)\) 
+      a \(v(x)\). Takový rozklad není určen jednoznačně a požadavek na něj bychom mohli (dosti 
+      nepřesně) formulovat tak, aby funkce \(v'(x)\) byla jednodušší než v \(v(x)\) (například 
+      derivováním polynomu se snižuje jeho stupeň) a funkce \(u'(x)\) a \(u(x)\) aby byly zhruba 
+      „stejně složité“ (například \(u'(x) =e^x\), \(u(x) = e^x\), nebo \(u'(x) = \cos x\), \(u(x) = 
+      \sin x\), apod.). Spolehlivě používat metodu per partes se však můžeme naučit pouze studiem 
+      vyřešených příkladů z literatury a praktickým procvičováním \cite[p.~138]{Musilova2009MA1}.
+      
+      \begin{example}
+        (\emph{Umělý rozklad na součin}): Někdy zadaná funkce \(f(x)\) jako součin vůbec nevypadá, 
+        a přesto je použití metody per partes vhodné. Například pro elementární funkci \(f(x) = \ln 
+        x\) sice najdeme primitivní funkci \ref{MA:baseInt06} v tabulce základních neurčitých 
+        integrálů z odstavce \ref{MA:chap_tabINT}, ale je možné postupovat i jinak. Představme si 
+        \(f(x)\) jako součin \(f(x) = 1\cdot\ln x\) a zvolme \[u'(x) = 1 ⇒ u(x) = x, \qquad v(x) = 
+        lnx ⇒ v'(x) = \frac{1}{x}\] Pak \[\int \ln\dx = x\ln x - \int x\cdot\frac{1}{x}\dx = x\ln 
+        x - x.\]
+      \end{example}
+  
+    %--------------------------- Substituční metoda ----------------------------------------------
+    \subsection{Substituční metoda I}
+      Tato metoda \emph{substituce} neboli \emph{náhrady} spočívá v tom, že vhodně zvolenou funkci 
+      obsaženou v předpisu \(f(x)\) označíme jako novou jednoduchou proměnnou. Čeho tím dosáhneme? 
+      Předpokládejme například, že \[f(x)=\varphi'(x)g[\varphi(x)]\] a označme jako novou proměnnou 
+      \(u = f(x)\). Že to vypadá, jako bychom se chystali použít vzorec pro derivaci složené 
+      funkce? Správně! Dejme tomu, že známe primitivní funkci \(G(u)\) k funkci \(g(u)\). Pak platí
+      \begin{align*}
+       \left[G\left(\varphi(x)\right)\right]' 
+          &= G'\left[\varphi(x)\right]\cdot\varphi'(x) =
+             g\left[\varphi(x)\right]\cdot\varphi'(x),     \\
+          \shortintertext{a tedy}
+       \int \varphi'(x) g\left[\varphi(x)\right]\dx 
+          &=  G\left[\varphi(x)\right]. 
+      \end{align*}      
+      Na základě těchto úvah formulujeme následující větu:
+      \begin{lemma}
+        Jestliže
+        \begin{equation}\label{ma:eq_subst1}
+          \int{f(u)du}=F(u)+c
+        \end{equation}
+        a $u=\varphi(x)$, pak
+        \begin{equation}\label{ma:eq_subst2}
+            \int{f[\varphi(x)]\varphi'(x)du}=F(\varphi(x))+c
+        \end{equation}
+      \end{lemma}
+  
+      Základem úspěchu při aplikací věty je správný výběr funkce $\varphi(x)$. Praxe je totiž
+      taková, že výpočet konkrétních příkladů je schématicky veden od rov. \ref{ma:eq_subst2} ke
+      vzorci rov. \ref{ma:eq_subst1}.
+      
+      \begin{example} Jak poznat kandidáta na substituční metodu I.\newline
+        Počítejme neurčitý integrál \[\int \frac{x}{\sqrt{x^2+1}}.\]
+        Vidíme, že čitatel funkce za integrálem je až na násobení konstantou derivací výrazu pod 
+        odmocninou. Při označení \(u=\varphi(x) = x^2 + 1\) dostáváme \(\varphi'(x) = x\):
+        \begin{equation*}
+          \int\frac{x}{\sqrt{x^2+1}}\dx 
+            = \frac{1}{2}\int\frac{2x}{\sqrt{x^2+1}}\dx 
+            = \frac{1}{2}\int\frac{1}{\sqrt{u}}\dd{u}         
+            = \sqrt{u} + c = \sqrt{x^2 + 1} + c  
+        \end{equation*}
+      \end{example}
+      
+      \begin{example}\label{ma:ex_sub_metoda}$\displaystyle\int{e^{x^{x^2}}dx}$
+        \begin{equation*}
+            \int{e^{x^{x^2}}dx}=
+               \left[
+                 \begin{array}{c}u=x^2 \\ du=2xdx\end{array}
+               \right]=
+               \frac{1}{2}\int{e^udu}=\frac{1}{2}e^u=\frac{1}{2}e^{x^2} + c.
+        \end{equation*}
+      \end{example}
+      
+      \begin{example}$\displaystyle\int{x^3e^{x^4}}dx \qquad x\in R$
+        \begin{align*}
+          \displaystyle\int{x^3e^{x^4}}dx
+             &= 
+             \left[
+               \begin{array}{cc}
+                  u=x^4   & du=4x^3dx \Rightarrow \displaystyle\frac{du}{4} = x^3dx  \\
+               \end{array}
+             \right]                                                                           \\
+             &= \frac{1}{4}\int{e^u}du = \frac{e^u}{4} = \frac{e^{x^4}}{4} + c 
+        \end{align*}
+      \end{example}
+
+    % -------------------Substituční metoda II------------------------------------------------------
+    \subsection{Substituční metoda II}
+      Druhý typ substituční metody spočívá naopak v tom, že na místo původní proměnné \(x\) 
+      dosadíme vhodnou funkci \(x = \psi(t)\). Místo primitivní funkce k funkci \(f(x)\) pak 
+      hledáme primitivní funkci k funkci \(g(t) = f[\psi(t)]\psi'(t)\). Skutečně, je-li \(F(x)\) 
+      primitivní funkcí k \(f(x)\), pak derivací složené funkce \(G(t) = F[\psi(t)]\) dostaneme
+      \begin{equation*}
+       G'(t) = F'[\psi(t)]\psi'(t) = f[\psi(t)]\psi'(t) = g(t).
+      \end{equation*}
+      
+      \begin{example} Náhrada proměnně \(x\) funkcí
+        Typické jsou neurčité integrály, které vedou na goniometrické substituce, například
+        \[\int\sqrt{1-x^2}\dx\]
+        
+        Označme \(x=\psi(t)=\sin(t)  \Rightarrow \psi'(t)=\cos(t)\) a můžeme psát
+        \begin{align*}
+          \int\sqrt{1-x^2}\dx 
+            &= \int\sqrt{1-\sin^2t}\cos t\dd{t}                      \\
+            &= \int\cos^2 t \dd{t} = \int\frac{1+\cos2t}{2}\dd{t}    \\
+          = \frac{1}{2}t+\frac{\sin2t}{4}+C
+            &= \frac{1}{2}\arcsin x + \frac{2\sin t\cos t}{4}        \\
+            &= \frac{1}{2}\arcsin x + \frac{x\sqrt{1-x^2}}{2} + c.
+        \end{align*}
+        Správně bychom měli místo \(\sqrt{1 - \sin^2x}\) psát \(\abs{\cos x}\). Vzhledem k tomu, že 
+        jde o neurčitý integrál, je možné hledat primitivní funkci na intervalu, kde platí \(\cos x 
+        = \abs{\cos x}\).
+      \end{example}
+      Jistě nám neuniklo, že princip substitučních metod I a II je stejný. Jsou totiž obě založeny 
+      na použití pravidla pro derivaci složené funkce.
+  
+    % ---------Integrování součtu, úprava integrandu a integrování rozkladem------------------------
+    \subsection{Integrování součtu, úprava integrandu a integrování rozkladem}
+      \begin{example}
+        Zdroj \cite[s.~29]{Knichal}.
+        \begin{equation}\label{MA:int_ex_01}
+          \int{\frac{x^4+3x^3-3x^2+3x}{x^2+1}\dx}
+        \end{equation}
+        Dělením čitatele integrandu jmenovatelem  dostaneme rozklad integrandu na součet funkcí,
+        jejich integrály najdeme snadno:
+         \begin{equation*} 
+           \polylongdiv[style=C,div=:]{x^4+3x^3-3x^2+3x}{x^2+1}
+         \end{equation*}
+         Tedy
+         \begin{equation*}
+           \frac{x^4+3x^3-3x^2+3x}{x^2+1} = x^2+3x-4+\frac{4}{x^2+1}  
+         \end{equation*}
+         Pro uvedený integrál dostaneme
+         \begin{equation*}
+           \int{x^2}\dx+\int{3x}\dx-4\int\dx+\int{\frac{4}{x^2+1}\dx}
+            = \frac{x^3}{3}+\frac{3x^2}{2}-4x+4\arctan x + c.
+         \end{equation*}
+      \end{example}
+      
+      \begin{example}
+        Zdroj \cite[s.~29]{Knichal}.
+        \begin{equation}\label{MA:int_ex_02}
+          \int\frac{3}{(1+x^2)x^2}\dx
+        \end{equation}
+        Integrand upravíme přičtením a odečtením výrazu $3x^2$ v čitateli zlomku takto:
+        \begin{align*}
+          \frac{3}{(1+x^2)x^2} 
+            &= \frac{3+3x^2-3x^2}{(1+x^2)x^2} = \frac{3}{x^2}-\frac{3}{1+x^2}                      \\  
+          \intertext{Tedy v každém otevřeném intervalu, který neobsahuje bod \(x=0\), platí}
+          \int{\frac{3}{(1+x^2)x^2}\dx} 
+            &= 3\int{\frac{1}{x^2}dx} - 3\int{\frac{1}{1+x^2}dx}                                   \\
+            &= -\frac{3}{x}-3\arctan x + c. 
+        \end{align*}
+      \end{example}
+      
+      \begin{example}
+        Zdroj \cite[s.~30]{Knichal}.
+        \begin{equation}\label{MA:int_ex_04}
+          \int{\sqrt{1+\cos2x}\dx}
+        \end{equation}
+        Funkci $\sqrt{1+\cos2x}$ upravíme na základě goniometrické identity \ref{MA1:eq_cos2x}:
+        \(1+\cos2x = 1+\cos^2x-\sin^2x=2\cos^2x\) takto
+        \begin{equation*}
+          \sqrt{1+\cos2x} =\sqrt{2\cos^2x} = \sqrt{2}\abs{\cos x} = \varepsilon\sqrt{2}\cos x, 
+        \end{equation*}
+        \begin{equation*}
+          \text{kde}\,\varepsilon =
+            \begin{cases} 
+             +1, &  x\in \left(-\frac{\pi}{2}+2n\pi,\frac{\pi}{2}+2n\pi\right), \\
+             -1, &  x\in \left(\frac{\pi}{2}+2n\pi,\frac{3\pi}{2}+2n\pi\right),
+            \end{cases}
+        \end{equation*}
+        $n$ je přirozené číslo. Proto pro $x$ ležící v uvedených intervalech je
+        \begin{equation*}
+          \int\sqrt{1+\cos2x}\dx = \varepsilon\sqrt{2}\int\cos x\dx 
+                                 = \varepsilon\sqrt{2}\sin x + c.
+        \end{equation*}
+      \end{example}
+      
+      \begin{example}Zdroj \cite[s.~30]{Knichal}.
+        \begin{equation}\label{MA:int_ex_05}
+          \int\cos^2\frac{x}{2}\dx
+        \end{equation}
+        Integrand upravíme na součet dvou tabulkových integrálů použitím vzorce
+        \begin{align*}
+          \cos^2\frac{x}{2} &= \frac{1}{2}(1+\cos x)     \\ 
+          \shortintertext{takže}
+          \int{\cos^2\frac{x}{2}}\dx 
+                            &= \frac{1}{2}\int{(1+\cos x)}\dx = \frac{1}{2}(x+\sin x) + c.
+        \end{align*}          
+      \end{example}
+      
+      \begin{example}
+        Zdroj \cite[s.~30]{Knichal}.
+        \begin{equation}\label{MA:int_ex_06}
+          \int{\tan^2x}\dx
+        \end{equation}
+        funkci napíšeme ve tvaru 
+        \begin{align*}
+          \tan^2x &= \frac{\sin^2x}{\cos^2x}=\frac{1-\cos^2x}{\cos^2x} = \frac{1}{\cos^2x}-1   \\
+          \shortintertext{takže}
+          \int{\tan^2x}dx &= \int{\left(\frac{1}{\cos^2x}-1\right)}\dx = \tan x - x + c.  
+          \intertext{$\forall x\in\left(-\frac{\pi}{2}+k\pi, \frac{\pi}{2}+k\pi\right)$,
+                     $k\in\naturalset$.}
+        \end{align*}        
+      \end{example}
+      
+      \begin{example}
+        \begin{equation}\label{MA:int_ex_07} 
+          \int\frac{\cos2x}{\cos^2x\cdot\sin^2x}\dx, 
+        \end{equation} 
+        Je-li \(\sin^2x\cos^2x\neq0;\, x\neq k\frac{\pi}{2};\, k\in Z\).
+        Integrand upravíme pomocí vzorce pro dvojnásobný úhel \ref{MA1:eq_cosx2}:
+        \begin{align*}
+          \int\frac{\cos^2x-\sin^2x}{\cos^2x\cdot\sin^2x}\dx 
+             &= \int\frac{1}{\sin^2x}\dx -\int\frac{1}{\cos^2x}\dx        \\
+             &= -\cot x - \tan x + c. 
+        \end{align*}
+      \end{example}
+      
+      \begin{example}
+       \begin{equation}\label{MA:int_ex_08}
+         \int\frac{1}{\cos x\cdot\sin x}\dx, 
+       \end{equation}
+       \((\sin x\cos x\neq0; x\neq k\frac{\pi}{2}; k\in Z)\).
+       Integrand rozšíříme o funkci $\displaystyle{\frac{1}{\cos^2x}}$
+        \begin{equation*}
+          \bigintss\dfrac{\dfrac{1}{\cos^2x}}{\dfrac{\sin x\cdot\cos x}{\cos^2x}} \dx = 
+          \bigintss\dfrac{\dfrac{1}{\cos^2x}}{\tan x}\dx = \ln\abs{\tan x} + C.
+        \end{equation*}            
+      \end{example}
+  
+    %--------------------------- Integrace racionální funkce--------------------------------------
+    \subsection{Integrace racionální funkce}
+      Některé příklady v předchozím odstavci, (viz např. \ref{MA:int_ex_01} a 
+      \ref{MA:int_ex_02}) jsme dělením čitatele integrandu jmenovatelem dostali rozklad
+      integrandu na součet racionální funkce (polynomu) a ryze lomené racionální funkce.
+      Integrování polynomu je snadné, neboť jde o součet integrálů tvaru $\int c_kx^k dx$, kde
+      $k$ je celé nezáporné číslo. Omezíme se tedy na integrování \emph{ryze lomené racionální
+      funkce},  tj. funkce ve tvaru $P(x)/Q(x)$, kde $P(x), Q(x)$ jsou polynomy, přičemž stupeň
+      polynomu $P(x)$ je menší než stupeň polynomu $Q(x)$. Taková funkce může vzniknout součtem
+      několika jednoduchých zlomků.
+      
+      \begin{example}
+        Upravte
+        \footnotesize\begin{equation*}
+          \frac{1}{x-1}+\frac{x+2}{x^2+x+3} 
+             = \frac{x^2+x+3+x^2+x-2}{(x-1)(x^2+x+3)}              
+             = \frac{2x^2+2x+1}{x^3+2x-3}
+        \end{equation*}          
+      \end{example}
+      
+      Jsme tedy vedeni myšlenkou, zda naopak každá ryze lomená racionální funkce se dá rozložit
+      na součet jednoduchých zlomků určitého tvaru - budeme jim říkat \texttt{parciální zlomky},
+      které umíme integrovat. Tím se budeme zabývat v dalších odstavcích. 
+            
+      \begin{example}
+        \begin{equation}
+          \int\frac{1}{x^2 - x + 1}\dx, \qquad x\in R
+        \end{equation}
+        Kvadratický polynom ve jmenovateli upravíme na čtverec $f(x) = (x + m)^2 + n$:
+        \begin{align*}
+          \int\dfrac{1}{\left(x-\dfrac{1}{2}\right)^2+\dfrac{3}{4}}\dx   &=
+            \dfrac{1}{\sqrt{1-\left(\dfrac{1}{2}\right)^2}}\arctan
+            \dfrac{x-\dfrac{1}{2}}{\sqrt{1-\left(\dfrac{1}{2}\right)^2}}                       \\
+          \dfrac{2}{\sqrt{3}}\arctan\dfrac{2x-1}{\sqrt{3}}               &=
+            \dfrac{2\sqrt{3}}{3}\arctan\dfrac{\sqrt{3}(2x-1)}{3} + C
+        \end{align*}
+      \end{example}     
+      
+      \begin{definition} Parciální (částečným) zlomkem, budeme nazývat zlomek tvaru
+         \begin{equation}
+            \frac{A}{(x-\alpha)^k} \qquad\text{nebo}\qquad\frac{Mx + N}{x^2 + px +q}
+         \end{equation}  
+         $A,\ M,\ N,\ \alpha\ , p,\ q$ reálné $p^2-4q < 0$, $k$ celé nezáporné.         
+      \end{definition}
+      
+      Integrál prvního zlomku, tj. $\displaystyle{\int\frac{A}{(x-\alpha)^k}\dx}$, vypočteme 
+      substitucí $x-\alpha=t$, odtud plyne $dx = dt$,
+      \begin{equation}\label{MA:int_ex_14}
+        \int\frac{A}{(x-\alpha)^k}dx = \int\frac{A}{t^k}dt.
+      \end{equation}
+      Tento integrál se rovná
+      \begin{equation}\label{MA:int_ex_16}
+        -\frac{A}{k-1}\frac{1}{(x-\alpha)^{k-1}} + C.
+      \end{equation}        
+      je-li $k>1$, a rovná se $A\ln\abs{x-\alpha} + C$, je-li $k = 1$. Výsledek platí na každém
+      intervalu neobsahujícím bod $\alpha$.
+      
+       U integrál druhého zlomku uvedeme postup výpočtu pro $k = 1$. 
+      \begin{align*}
+         \intertext{\(\displaystyle\int{\frac{Mx + N}{x^2+px+q}dx}\)}
+           \quad &=  \int{\frac{Mx}{x^2+px+q}dx} + \int{\frac{N}{x^2+px+q}dx}                     
+           \\  
+           \quad &=  \frac{M}{2}\int{\frac{(2x + p) - p}{x^2+px+q}dx} + 
+                     N\int{\frac{1}{x^2+px+q}dx}                                                   \\ 
+           \quad &=  \frac{M}{2}\int{\frac{2x + p}{x^2+px+q}dx} + 
+                      \left(N-\frac{Mp}{2}\right)\int{\frac{1}{x^2+px+q}dx.}                   
+      \end{align*}  
+      
+      Z naznačeného postupu je vidět hlavní myšlenka: upravit integrál na lineární kombinaci dvou 
+      integrálů, z nichž první má v čitateli integrandu derivaci jmenovatele a je podle příkladu 
+      *** roven $\ln\abs{x^2+px+q}$ kde $x^2+px+q >0$ pro $x\in R$ a integrand druhého integrálu má 
+      čitatel konstantní.
+      
+      Výpočet druhého integrálu probíhá takto: 
+      \begin{equation}\label{MA:int_ex_10}
+        \int\dfrac{1}{x^2+px+q}\dx = 
+          \int\dfrac{1}{\left(x+\dfrac{p}{2}\right)^2 + q - \dfrac{p^2}{4}}\dx;
+      \end{equation}
+      substitucí $x+\dfrac{p}{2} = t\sqrt{q - \dfrac{p^2}{4}}$ dostáváme dále
+      \begin{equation*}\label{MA:int_ex_11}
+        \bigints{\frac{1}{\displaystyle{\left(x+\frac{p}{2}\right)^2 + q - \frac{p^2}{4}}}}dx 
+          =\displaystyle{
+            \bigints{
+              \frac{\sqrt{q-\frac{p^2}{4}}}{\left(q-\frac{p^2}{4}\right)(t^2+1)}}dt
+            }   
+      \end{equation*}
+      po úpravě dostaneme tabulkový integrál
+      \begin{equation}\label{MA:int_ex_12}
+        \frac{1}{\sqrt{q-\frac{p^2}{4}}}\int{\frac{dt}{t^2+1}},
+      \end{equation}
+      jehož řešení je  
+      \begin{equation*}\label{MA:int_ex_13}
+        \frac{1}{\sqrt{q-\frac{p^2}{4}}}\arctan{t} 
+          = \sqrt{q-\frac{p^2}{4}}\arctan\frac{x+\frac{p}{2}}{\sqrt{q-\frac{p^2}{4}}}.     
+      \end{equation*}   
+      Z postupu je opět vidět hlavní myšlenka: úprava integrandu na tvar $\frac{1}{t^2+1}$.
+      Jmenovatel $x^2+px+q$ jsme doplnili na úplný čtverec a užili uvedenou substituci (uvažme,
+      že $q-\frac{p^2}{4}>0$, protože diskriminant $\frac{p^2}{4}-q$ trojčlenu $x^2+px+q$ je
+      podle předpokladu záporný). Výsledek platí u obou integrálu v intervalu \((-\infty,
+      +\infty)\).
+      
+      % -----------------------Funkce typu {f(x)=\sqrt{ax+b}} ------------------------------------
+      \subsubsection*{Funkce typu $\boxed{f(x)=\sqrt{ax+b}}$ :}
+         Funkci, jež je dána rovnicí, jež obsahuje polynomy proměnné x  ve výrazu $\sqrt{ax+b}$,
+         v němž $ax+b>0$, $a>0$, integrujeme pomocí substituce:
+         \begin{equation}\label{ma:eq_sub_fce1}
+             u=\sqrt{ax+b},\quad du=\frac{1}{2}\frac{a}{u}dx,\quad dx=2\frac{u}{a}du
+         \end{equation}
+         Je-li potřeba dosadit do integrované funkce také za $x$, vyjádříme ze substituční
+         rovnice $x=\frac{u^2-b}{a}$.
+      % ----------------------Funkce typuf(x)=\frac{1}{\sqrt{x^2+a}}, a\neq0 -------------------- 
+      \subsubsection*{Funkce typu $\boxed{f(x)=\frac{1}{\sqrt{x^2+a}}}, a\neq0$ :}
+         \begin{example}\label{ma:ex_sub_metoda1}
+           \(\int\frac{1}{\sqrt{x^2+a}}\dx\):\vskip0.5mm
+           Užijeme \textbf{Eulerovu substituci}: \(u=x+\sqrt{x^2+a}\), a dostáváme
+           \(du=\frac{u}{\sqrt{x^2+a}}dx\), \(\frac{du}{u}=\frac{dx}{\sqrt{x^2+a}}\).
+           \begin{equation*}
+             \int{\frac{1}{\sqrt{x^2+a}}dx}=\int{\frac{du}{u}}=\ln\abs{u}
+                                           =\ln\left\lvert x+\sqrt{x^2+a}\right\rvert+C
+           \end{equation*}
+         \end{example}
+  
+    % --------------------------Integrály goniometrických funkcí------------------------------------
+    \subsubsection{Integrace goniometrických funkcí}
+      
+    % ---------------- Rozklad ryze lomené funkce v parciální zlomky -------------------------------
+    \subsubsection{Rozklad ryze lomené funkce v parciální zlomky}
+      Nechť je dána racionální funkce $R = \frac{P}{Q}$ s reálnými koeficienty. Můžeme
+      předpokládat, že je \emph{ryze lomená}\footnote{tj. stupeň polynomu $P$ je menší než
+      stupeň polynomu $Q$}. Pokud by tomu tak nebylo, dostaneme dělením čitatele jmenovatelem
+      zlomku součet polynomu a ryze lomené racionální funkce.
+      
+      \begin{example}$\displaystyle\int{\frac{8x-31}{x^2-9x+14}}dx$\cite[s.~90]{Knichal}\newline
+        Kořeny polynomu ve jmenovateli $\alpha_1 = 2$, $\alpha_2 = 7$ jsou jednoduché - každému z
+        nich bude v rozkladu odpovídat jen jeden člen $$\frac{8x-31}{x^2-9x+14} = \frac{A}{x-2}
+        + \frac{B}{x-7}.$$ Členy mnohočlenu na pravé straně seřadíme podle mocnin $x$ $$8x-31 =
+         x(A+B)+(7A-2B).$$ Porovnáním odpovídajících si koeficientů dostaneme
+        \begin{align*}
+          8   &=   \; A + \, B \\
+          -31 &= -7A - 2B
+        \end{align*}
+        Řešením této soustavy je $A = 3, B = 5$. Platí tedy (pro všechna $x \neq 2$ a $x \neq 7$)
+        $$\frac{8x-31}{x^2-9x+14} = \frac{3}{x-2} + \frac{5}{x-7}.$$
+        \begin{align*}
+          \int{\frac{8x-31}{x^2-9x+14}}dx 
+            &= \int{\frac{3}{x-2}}dx + \int{\frac{5}{x-7}}dx      \\
+            &= 3\ln\abs{x-2} + 3\ln\abs{x-7} + C.
+        \end{align*}
+        Výsledek platí v každém intervalu, který neobsahuje body \(x = 2\), \(x = 7\).
+      \end{example}
+      
+      \begin{example}\label{MA:eq_ex1}$\displaystyle\int{\frac{19x+15}{x^2-x-2}}dx \qquad 
+      x\in
+        R-\{1,2\} $ \newline Kořeny polynomu ve jmenovateli $\alpha_1 = -1$, $\alpha_2 = 2$ jsou
+        jednoduché - každému z nich bude v rozkladu odpovídat jen jeden člen: 
+        \begin{align*}
+          \frac{19x+15}{x^2-x-2}     &= \frac{A}{x+1} + \frac{B}{x-2} \\
+                           19x +15   &= A(x-2) + B(x+1)               \\
+                           19x +15   &= x(A+B) - 2A + B               \\
+                           19        &= A + B                         \\
+                                15   &=        - 2A + B
+        \end{align*}              
+        Řešením této soustavy je $A = \frac{4}{3}$, $B = \frac{53}{3}$.
+        \begin{equation*}
+          = \frac{4}{3}\int{\frac{1}{x+1}}dx+\frac{53}{3}\int{\frac{1}{x-2}}dx 
+          = \frac{4}{3}\ln\abs{x+1} - \frac{53}{3}\ln\abs{x-2} +  C
+        \end{equation*}      
+      \end{example}
+  
+      \begin{example}
+        $\displaystyle\int{\frac{2x^2+34x+14}{x^3-4x^2-x-4}}dx$ \cite[s.~90]{Knichal}\newline
+        Polynom $Q(x)=x^3-4x^2-x-4$ má kořeny $\alpha_{1,2}=\pm1$, $\alpha_{3}=-4$, které jsou
+        jednoduché tj. $Q(x)=(x-1)(x+1)(x+4)$ $$\frac{2x^2+34x+14}{x^3-4x^2-x-4} =
+        \frac{A}{x-1}+\frac{B}{x+1}+\frac{C}{x+4}$$ Vynásobíme-li tuto rovnici společným
+        jmenovatelem zlomků pravé strany (polynomem $Q(x)$), dostaneme
+        \footnotesize\begin{align*}
+          2x^2+34x+14 &= A(x+1)(x+4)+B(x-1)(x+4)+C(x-1)(x+1) \\
+          \shortintertext{čili}
+          2x^2+34x+14 &= A(x^2+5x+4)+B(x^2+3x-4)+C(x^2-1) \\
+          2x^2+34x+14 &= (A+B+C)x^2+(5A+3B)x + (4A-4B-C)
+        \end{align*}\small
+        Porovnáním odpovídajících si koeficientů u stejných mocnin $x$  dostaneme pro nez\-ná\-mé
+        koeficienty $A, B, C$ soustavu rovnic
+        \begin{align*}
+        % \nonumber to remove numbering (before each equation)
+           A+   B + C &= 2 \\
+          5A + 3B     &= 34 \\
+          4A - 4B - C &= 14
+        \end{align*}
+        Řešením této soustavy je $A = 5, B = 3, C = -6$ a tedy
+        $$\frac{2x^2+34x+14}{x^3-4x^2-x-4} = \frac{5}{x-1}+\frac{3}{x+1}-\frac{6}{x+4}$$
+        \begin{equation*}
+          \int{\frac{2x^2+34x+14}{x^3-4x^2-x-4}}dx 
+            = \int{\frac{5}{x-1}}dx + \int{\frac{3}{x+1}}dx + \int{\frac{6}{x+4}}dx            
+        \end{equation*}
+        \begin{equation*}
+            = 5\ln\abs{x-1} +  3\ln\abs{x+1} - 6\ln\abs{x+4} +c.
+        \end{equation*}
+      \end{example}
+
+  % ---------------- Sbírka řešených příkladů ------------------------------------------------------
+  \section{Sbírka řešených příkladů}
+    Hledejme primitivní funkce \(F(x)\) k následujícím funkcím
+    \input{../src/MAI/exam/exam016.tex}
+%---------------------------------------------------------------------------------------------------

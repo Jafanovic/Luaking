@@ -1,0 +1,45 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{cpp:exam003}
+    Výstupem z tohoto programu je řetězec, dvě hodnoty integer a hodnota v rozšířené pohyblivé
+    řádové čárce: 
+    %---------------------------------------------------------------
+      \begin{lstlisting}[style=luaCPPStyle]
+        #include <iostream> 
+        using namespace std;
+        
+        int main()
+        {
+          int i, j; 
+          double d;
+
+          i = 10; 
+          j = 20; 
+          d = 99.101;
+          
+          cout << "Here are some values: "; 
+          cout << i; 
+          cout << ' '; 
+          cout << j;
+          cout << ' '; 
+          cout << d;
+
+          return 0;
+        }
+      \end{lstlisting}
+    %---------------------------------------------------------------
+    Výstup z programu bude vypadat takto: 
+    \begin{mdframed}[style=mdmsdos]
+      Here are some values: 10 20 99.101
+    \end{mdframed}
+
+    V jediném I/O výrazu je možné provést výstup více než jedné hodnoty. 
+      %---------------------------------------------------------------
+      \begin{lstlisting}[style=luaCPPStyle]
+        cout << i << ' ' << j << ' ' << d;
+      \end{lstlisting}
+    %---------------------------------------------------------------
+    Povšimněme si, že mezi položky musíme explicitně vložit mezery. Když mezera chybí, neoddělená
+    data se při zobrazení na obrazovce spojí.
+  \end{example}
+\end{mdframed}

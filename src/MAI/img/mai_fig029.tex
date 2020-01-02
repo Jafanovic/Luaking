@@ -1,0 +1,47 @@
+% !TeX spellcheck = cs_CZ
+
+% xelatex -enable-write18 -shell-escape mai_fig029.tex
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{intersections}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+  \begin{tikzpicture}
+     [scale=3,line cap=round,
+      % Styles
+        axes/.style=,
+        important line/.style={very thick},
+        information text/.style={rounded corners,fill=red!10,inner sep=1ex}]
+    \begin{scope}[axes]     
+      \draw[->] (-0.2, 0) -- (1.5, 0) node[right] {$x$} coordinate(x axis);
+      \draw[->] (0, -0.2) -- (0, 1.5) node[left] {$y$} coordinate(y axis);
+    \end{scope}
+    % my function  
+     \draw[very thick,red](1.5,1.4) node[left=1pt,fill=white]{$y=f(x)$};
+     \coordinate [label={[blue]left:$D$}] (D) at (0.3,0.5);
+     \coordinate [label={[blue]right:$C$}] (C) at (1.2,1.2);
+     \draw[name path=func] (D) .. controls (1.0,0.5) and (0.5,1.2) .. (C);
+    % horizontal line
+     \draw[name path=my_line, gray, dotted] (0.75,0) node[below, red]{$c$} -- (0.75,0.9);
+    % intersection between vertical line and my function
+     \fill[red, opacity=0.5, name intersections={of=func and my_line, by={intersect}}]
+          (intersect) circle (1pt);
+    % x-axis labels
+     \draw[gray, dotted, text = blue] (D) -- +(0,-0.5) 
+        node [label={[xshift=-0.2cm, yshift=0.5mm]$A$},below] (A) {$a$};
+     \draw[gray, dotted, text=blue] (C) -- +(0,-1.2)
+        node [label={[xshift=0.2cm, yshift=0.5mm]$B$},below] (B) {$b$};
+     \draw[red](-0.05,-0.08) node[left=1pt,fill=white]{$0$};
+    % y-axis labels
+     \draw[gray, dotted] let \p1=(D), \p2=(intersect), \p3=(C) in (\x1,\y2)
+        -- +(-\x1,0) node[left, red]{$f(c)$} 
+        -- (\x1,\y2) node[above, blue] (F) {$F$} 
+        -- (\x3,\y2) node[right, blue]{$E$}; 
+    % dotted line between F and D
+     \draw[gray, dotted] (F) -- (D);
+  \end{tikzpicture}
+
+\end{document}

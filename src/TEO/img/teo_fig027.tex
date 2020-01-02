@@ -1,0 +1,39 @@
+\documentclass{standalone}
+  \usepackage{fontspec,xltxtra,xunicode,unicode-math}
+  \usepackage{amsmath}
+  \usepackage{siunitx}
+  \usepackage{tikz}
+    \usetikzlibrary{intersections}
+    \usetikzlibrary{calc}
+    \usetikzlibrary{positioning}
+    \usetikzlibrary{arrows}
+  \usepackage[
+    american voltages,
+    europeanresistors,
+    cuteinductors,  
+    smartlabels]{circuitikz}
+    \usetikzlibrary{shapes} 
+    \ctikzset{bipoles/thickness=1}
+%   \ctikzset{bipoles/length=0.8cm}
+    \ctikzset{bipoles/vsourceam/height/.initial=.9}
+    \ctikzset{bipoles/vsourceam/width/.initial=.9}
+%   \tikzstyle{every node}=[font=\small]
+    \ctikzset {label/align = straight }
+    \tikzstyle{every path}=[line width=0.8pt,
+%                           line cap=round,  %
+                            line join=round  %
+                            ]
+  
+\begin{document}
+  \begin{circuitikz}[scale=3,node distance = 0.5cm, auto, font=\normalsize, inner sep =0.8mm ]
+    \draw
+      (0,0)
+      to[V, l^=$U$, invert] ++(0,1)
+      to [R, l^=$R$] ++ (1,0) 
+      to[L,  l^=$L$] ++(0.5,0) 
+      to[C,  l^=$C$] ++(1,0) 
+      to[short] ++ (0,-1)
+      --(0,0);
+    \draw[->] (1.5,0.2) -- +(-0.5,0) node[left] {$i$};
+  \end{circuitikz}
+ \end{document}

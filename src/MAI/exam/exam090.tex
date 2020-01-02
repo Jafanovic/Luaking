@@ -1,0 +1,56 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{MAI:exam090}
+    \textbf{Výpočet inverzní matice}
+    \begin{gather*}
+      \begin{aligned}
+        (\matr{E}_3\lvert\matr{A}) &=
+        \left(
+        \begin{array}{rrr|rrr}
+          1 & 0 & 0 & -1 & 1 & 0 \\
+          0 & 1 & 0 &  1 & 0 & 1 \\
+          0 & 0 & 1 &  1 & 1 & 1 
+        \end{array}
+        \right) \approx
+        \left(
+        \begin{array}{rrr|rrr}
+          1 & 0 & 0 & -1 & 1 & 0 \\
+          1 & 1 & 0 &  0 & 1 & 1 \\
+          1 & 0 & 1 &  0 & 2 & 1 
+        \end{array}
+        \right)         \\
+        &\approx    
+        \left(
+        \begin{array}{rrr|rrr}
+          1 & 0 & 0 & -1 & 1 &  0 \\
+          1 & 1 & 0 &  0 & 1 &  1 \\
+          -1 & 2 & 1 &  0 & 0 & -1 
+        \end{array}
+        \right) \sim   
+        \left(
+        \begin{array}{rrr|rrr}
+          1 &  0 &  0 & -1 & 1 &  0 \\
+          0 & -1 &  1 &  0 & 1 &  0 \\
+          1 &  2 & -1 &  0 & 0 &  1 
+        \end{array}   
+        \right)~    \\
+        &\sim
+        \left(
+        \begin{array}{rrr|rrr}
+          -1 & -1 &  1 &  1 & 0 &  0 \\
+           0 & -1 &  1 &  0 & 1 &  0 \\
+           1 &  2 & -1 &  0 & 0 &  1 
+        \end{array}
+        \right) \sim (\matr{A}^{-1}\lvert\matr{E}_3)   
+      \end{aligned}  
+    \end{gather*}
+
+    Byly prováděny tyto úpravy:
+    \begin{itemize}[noitemsep]
+      \item přičtení prvního řádku k druhému a třetímu řádku,
+      \item přičtení (-2)-násobku druhého řádku k třetímu řádku,
+      \item přičtení třetího řádku k druhému a vynásobení třetího řádku číslem (-1),
+      \item přičtení (-l)-násobku druhého řádku k prvnímu a vynásobení prvního řádku číslem (-1).
+    \end{itemize}
+  \end{example}
+\end{mdframed}

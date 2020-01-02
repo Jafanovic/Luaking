@@ -1,0 +1,34 @@
+% Aplikovaná elektronika
+% notes:
+%~~~~~~~~~
+% \label{ape:eq003}
+% \label{ape:exam000}
+% \label{ape:fig000}
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+\graphicspath{{../src/APE/img/}}
+  % \makeatletter
+  %   \@addtoreset{chapter}{part}
+  % \makeatother
+%---------------------------------------------------------------------------------------------------
+%                               APE
+%---------------------------------------------------------------------------------------------------
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{APE}{Aplikovaná elektronika}{APE}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  \input{../src/APE/chap/ape1ch03.tex}
+  % \input{../src/APE/chap/kap_LabView.tex} 
+}
+{
+% DEBUG was off
+%========= Kapitola: Metodika návrhu plošných spojů ================================================
+  \input{../src/APE/chap/ape1ch03.tex}
+%========== Kapitola: Labivew ======================================================================
+  \input{../src/APE/chap/kap_LabView.tex} 
+}  % DEBUG was off
+
+\printbibliography[title={Seznam literatury}, heading=bibliography]

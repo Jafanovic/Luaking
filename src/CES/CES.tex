@@ -1,0 +1,84 @@
+%===================================================================================================
+% Číslicové elektronické systémy
+% CES.tex
+%===================================================================================================
+% notes:
+%~~~~~~~~~
+% \label{ces:eq000}
+% \label{ces:fig001}
+% \label{ces:exam000}
+% \label{ces:tab000}
+%---------------------------------------------------------------------------------------------------
+% Setting path to image 
+\graphicspath{{../src/CES/img/}}
+%---------------------------------------------------------------------------------------------------
+% file CES.tex
+
+%---------------------------------------------------------------------------------------------------
+%                               CES I
+%---------------------------------------------------------------------------------------------------
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{CES I}{Číslicové elektronické systémy}{CESI}
+\parttoc
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+%  \input{../src/CES/chap/cis_sig_sys.tex}
+%  \input{../src/CES/chap/technology.tex}
+ \input{../src/CES/chap/mit1ch02.tex}
+%  \input{../src/CES/chap/mit1ch03.tex}
+}
+{
+% DEBUG was off
+%======================= Kapitola01: Číslicové systémy a signály ===================================
+  \input{../src/CES/chap/cis_sig_sys.tex} 
+%======================= Kapitola02: Číslicové součástky a technologie =============================
+  \input{../src/CES/chap/technology.tex} 
+%======================= Kapitola03: Základy mikroprocesorové techniky =============================
+  \input{../src/CES/chap/mit1ch02.tex} 
+%======================= Kapitola04: Historie mikroprocesorové techniky ============================
+  \input{../src/CES/chap/mit1ch03.tex} 
+}  % DEBUG was off
+
+\printbibliography[title={Seznam literatury}, heading=bibliography]
+
+%---------------------------------------------------------------------------------------------------
+%                               CES II
+%---------------------------------------------------------------------------------------------------
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{CES II}{Mikroprocesorová technika}{CESII}
+\parttoc
+
+
+\ifthenelse{ \equal{\DebugMode}{true} }{
+% Debug mode ON
+%  \input{../src/CES/chap/ANSI_C_MCU.tex}
+ \input{../src/CES/chap/CPP.tex}
+%  \input{../src/CES/chap/AVR_MCU.tex}
+%  \input{../src/CES/chap/ARM_MCU.tex}
+%  \input{../src/CES/chap/STM32.tex}
+%  \input{../src/CES/chap/STM32F4_discovery.tex}
+%  \input{../src/CES/chap/architecture_PLD.tex}
+%  \input{../src/CES/chap/VHDL.tex}
+}
+{
+% DEBUG was off
+%======================= Kapitola01: ANSI C pro  mikrokontroléry ===================================
+  \input{../src/CES/chap/ANSI_C_MCU.tex}
+%====================== Kapitola02: Přehled jazyka C++ =============================================
+  \input{../src/CES/chap/CPP.tex}
+%====================== Kapitola03: AVR mikroprocesory =============================================
+  \input{../src/CES/chap/AVR_MCU.tex}
+%====================== Kapitola04: Vestavěné systémy s ARM procesory===============================
+  \input{../src/CES/chap/ARM_MCU.tex}
+%====================== Kapitola05: STM32 procesory=================================================
+  \input{../src/CES/chap/STM32.tex}
+%====================== Kapitola06: STM32 VL Discovery Kit==========================================
+  \input{../src/CES/chap/STM32F4_discovery.tex}
+%====================== Kapitola07: FPGA & CPLD ====================================================
+  \input{../src/CES/chap/architecture_PLD.tex}
+%====================== Kapitola08: VHDL ===========================================================
+  \input{../src/CES/chap/VHDL.tex} 
+}  % DEBUG was off
+
+\printbibliography[title={Seznam literatury}, heading=bibliography]

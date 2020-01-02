@@ -1,0 +1,231 @@
+% package: luaCodeLst
+% ==================================================================================================
+%                                     Code HighLighting 
+% ==================================================================================================
+%                     !!!  Package conflicts in LaTeX are a hell. !!!
+% http://www.macfreek.nl/memory/LaTeX_package_conflicts
+
+\NeedsTeXFormat{LaTeX2e}
+% ~~~~~~~~ Color ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+\RequirePackage{LuaMyColor} 
+% ~~~~~~~~~~~~~ Code Highlighting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\RequirePackage{LuaCodeLst}
+% Highlighting of all the most common languages 
+\RequirePackage{listings}                % UTF8 package load aborted because 
+% https://tex.stackexchange.com/questions/40415/avoiding-minus-sign-dash-in-listings-commentstyle
+\makeatletter
+\lst@CCPutMacro\lst@ProcessOther {"2D}{\lst@ttfamily{-{}}{-{}}}
+\@empty\z@\@empty
+\makeatother
+%missnig \pdf@unescapehex
+\renewcommand\lstlistingname{Výpis}      % change the caption name for listings
+\renewcommand\lstlistlistingname{Výpis}  % header name for the list of listings which is printed
+                                         % by the \lstlistoflistings command
+\def\lstlistingautorefname{Alg.}         % Then when you're referring  
+% https://tex.stackexchange.com/questions/30512/how-to-insert-code-with-accents-with-listings
+\lstset{
+  numbersep=8pt,                         %   
+  literate=%
+         {á}{{\'a}}1
+         {í}{{\'i}}1
+         {é}{{\'e}}1
+         {ý}{{\'y}}1
+         {ú}{{\'u}}1
+         {ó}{{\'o}}1
+         {ě}{{\v{e}}}1
+         {š}{{\v{s}}}1
+         {č}{{\v{c}}}1
+         {ř}{{\v{r}}}1
+         {ž}{{\v{z}}}1
+         {ď}{{\v{d}}}1
+         {ť}{{\v{t}}}1
+         {ň}{{\v{n}}}1                
+         {ů}{{\r{u}}}1
+         {Á}{{\'A}}1
+         {Í}{{\'I}}1
+         {É}{{\'E}}1
+         {Ý}{{\'Y}}1
+         {Ú}{{\'U}}1
+         {Ó}{{\'O}}1
+         {Ě}{{\v{E}}}1
+         {Š}{{\v{S}}}1
+         {Č}{{\v{C}}}1
+         {Ř}{{\v{R}}}1
+         {Ž}{{\v{Z}}}1
+         {Ď}{{\v{D}}}1
+         {Ť}{{\v{T}}}1
+         {Ň}{{\v{N}}}1                
+         {Ů}{{\r{U}}}1    
+}
+
+\lstdefinestyle{luaMatlabStyle}{
+  language=Matlab,                       % choose the language of the code
+  basicstyle=\scriptsize,                % font size the code: \footnotesize
+  numberstyle=\scriptsize,               % font size for the line-numbers
+%  backgroundcolor=\color{White},        % choose the background color.
+  commentstyle=\color{help}\textit,
+  keywordstyle=\color{keyword}\textbf,
+  escapeinside={\%*}{*)},
+  % inputencoding=utf8,
+  breaklines=true,                       % sets automatic line breaking
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  frame=none,                            % adds a frame around the code - none, single
+  tabsize=8,                             % sets default tabsize to 8 spaces
+  captionpos=b,                          % sets the caption-position to bottom
+  numbers=left,                          % where to put the line-numbers -none, left, right
+  stepnumber=1,                          % the step between two line-numbers. If it's 1 each line
+                                         % will be numbered
+  numberblanklines=false,                % Suppress line numbering for empty lines 
+  xleftmargin=2em, xrightmargin=1em      % adjust left margin  
+}
+
+\lstdefinestyle{luaMaltabext}{
+  language=Matlab,                          % choose the language of the code
+  basicstyle=\normalsize\ttfamily,       % the size of the fonts that are used for the code
+  commentstyle=\color{help}\textit,
+  keywordstyle=\color{keyword}\textbf,
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  tabsize=2,                             % sets default tabsize to 8 spaces
+  breaklines=true
+}
+
+\lstdefinestyle{luaCStyle}{
+  language=C,                            % choose the language of the code
+  basicstyle=\scriptsize\ttfamily,       % the size of the fonts that are used for the code
+  backgroundcolor=\color{beige},         % choose the background color. 
+  commentstyle=\color{help}\textit,
+  keywordstyle=\color{keyword}\textbf,
+  breaklines=true,                       % sets automatic line breaking
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  frameround = ffff,
+  frame=trBL,                            % adds a frame around the code - none, single
+  rulesepcolor=\color{bazaar},
+  tabsize=2,                             % sets default tabsize to 8 spaces
+  captionpos=b,                          % sets the caption-position to bottom
+  numbers=left,                          % where to put the line-numbers -none, left, right
+  numberstyle=\scriptsize,               % the size of the fonts that are used for the line-numbers
+  stepnumber=1,                          % the step between two line-numbers. If it's 1 each line
+                                         % will be numbered
+  numberblanklines=false,                % Suppress line numbering for empty lines 
+  xleftmargin=2.2em,                     % adjust left margin
+  xrightmargin=.5em,                     % adjust right margin
+  rulecolor=\color{black},               % rule 
+  breaklines=true,
+  lineskip=0pt,
+  gobble=8                              % number of characters at the beginning of each 
+                                        % environment code line
+}
+
+\lstdefinestyle{luaCPPStyle}{
+  language=C++,                          % choose the language of the code
+  basicstyle=\scriptsize,                % the size of the fonts that are used for the code
+  backgroundcolor=\color{beige},         % choose the background color. 
+  commentstyle=\color{help}\textit,
+  keywordstyle=\color{keyword}\textbf,
+  breaklines=true,                       % sets automatic line breaking
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  frameround = ffff,
+  frame=trBL,                            % adds a frame around the code - none, single
+  rulesepcolor=\color{bazaar},
+  tabsize=2,                             % sets default tabsize to 8 spaces
+  captionpos=b,                          % sets the caption-position to bottom
+  numbers=left,                          % where to put the line-numbers -none, left, right
+  numberstyle=\scriptsize,               % the size of the fonts that are used for the line-numbers
+  stepnumber=1,                          % the step between two line-numbers. If it's 1 each line
+                                         % will be numbered
+  numberblanklines=false,                % Suppress line numbering for empty lines 
+  xleftmargin=2.2em,                     % adjust left margin
+  xrightmargin=.5em,                     % adjust right margin
+  rulecolor=\color{black},               % rule 
+  breaklines=true,
+  lineskip=0pt,
+  gobble=8,                             % number of characters at the beginning of each 
+                                        % environment code line
+  extendedchars=true,
+  escapeinside={(*@}{@*)},              % https://tex.stackexchange.com/questions/320342/
+  inputencoding=utf8
+}
+
+\lstdefinestyle{luaCPPText}{
+  language=C++,                          % choose the language of the code
+  basicstyle=\normalsize\ttfamily,       % the size of the fonts that are used for the code
+  commentstyle=\color{help}\textit,
+  keywordstyle=\color{keyword}\textbf,
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  tabsize=2,                             % sets default tabsize to 8 spaces
+  breaklines=true
+}
+
+\lstdefinestyle{luaMITASMStyle}{
+  language={[x86masm]Assembler},         % choose the language of the code
+  basicstyle=\scriptsize,                % the size of the fonts that are used for the code
+  backgroundcolor=\color{beige},         % choose the background color. 
+  commentstyle=\color{help}\textit,
+  keywordstyle=\color{keyword}\textbf,
+  breaklines=true,                       % sets automatic line breaking
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  frameround = ffff,
+  frame=trBL,                            % adds a frame around the code - none, single
+  rulesepcolor=\color{bazaar},
+  tabsize=2,                             % sets default tabsize to 8 spaces
+  captionpos=b,                          % sets the caption-position to bottom
+  numbers=left,                          % where to put the line-numbers -none, left, right
+  numberstyle=\scriptsize,               % the size of the fonts that are used for the line-numbers
+  stepnumber=1,                          % the step between two line-numbers. If it's 1 each line
+                                         % will be numbered
+  numberblanklines=false,                % Suppress line numbering for empty lines 
+  xleftmargin=2.2em,                     % adjust left margin
+  xrightmargin=.5em,                     % adjust right margin
+  rulecolor=\color{black},               % rule 
+  breaklines=true,
+  lineskip=0pt,
+  gobble=11,                            % number of characters at the beginning of each 
+                                        % environment code line
+  extendedchars=true,
+  escapeinside={(*@}{@*)},              % https://tex.stackexchange.com/questions/320342/
+  inputencoding=utf8, 
+  morekeywords={ADDC, ASHR, SUBB,CLR,    % if you want to add more keywords to the set
+    MAC,  MULS, DIVS, BSET, BCLR, BCPL, 
+    BAND, BOR,  BXOR, BCMP, TRL,  EX,  BMOV,
+    JCC,  BCC,  DJNZ, RETI, JSR,  CSP, LDR,
+    IDLE, STOP}
+}
+
+\lstdefinestyle{luaVHDLStyle}{
+  language=VHDL,                         % choose the language of the code
+  basicstyle=\scriptsize,                % the size of the fonts that are used for the code
+  backgroundcolor=\color{beige},         % choose the background color. 
+  commentstyle=\color{help}\textit,
+  keywordstyle=\color{keyword}\textbf,
+  breaklines=true,                       % sets automatic line breaking
+  breakatwhitespace=true,                % sets if automatic breaks should only happen at whitespace
+  showspaces=false,                      % show spaces adding particular underscores
+  showstringspaces=true,                 % underline spaces within strings
+  showtabs=true,                         % show tabs within strings adding particular underscores
+  frame=none,	                           % adds a frame around the code - none, single
+  tabsize=2,                             % sets default tabsize to 8 spaces
+  captionpos=b,                          % sets the caption-position to bottom
+  numbers=left,                          % where to put the line-numbers -none, left, right
+  numberstyle=\footnotesize,             % the size of the fonts that are used for the line-numbers
+  stepnumber=1,                          % the step between two line-numbers. If it's 1 each line
+                                         % will be numbered
+  xleftmargin=3em,                       % adjust left margin
+}

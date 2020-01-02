@@ -1,0 +1,80 @@
+% !TeX spellcheck = cs_CZ
+%---------------------------------------------------------------------------------------------------
+% mai2ch05.tex
+%---------------------------------------------------------------------------------------------------
+\setchaptertoc
+\chapter{Řady funkcí}\label{mai:IIchapV}
+  Možná si po prolistování obsahu této kapitoly a klademe otázku, proč se máme ještě zabývat
+  posloupnostmi a řadami, když jsme jim už popřáli docela dost pozornosti v partii \ref{part:MAI}.
+  Cíl této kapitoly je Však trochu jiný, než studovat detaily vlastnosti konvergence či divergence
+  číselných posloupnosti a řad. Půjde nám totiž, jak napovídá název kapitoly, o \emph{řady funkcí}.
+  S takovým případem jsme se již také v prvním dílu setkali. Vzpomínáte na příklad 2.47. v odstavci
+  \ref{mai:IchapIIIsecVIIssecIII} nazvaný \uv{Když diferenciál nestačí?} V něm jsme řešili problém
+  přibližné náhrady funkce \(\cos\varphi\) pro malé hodnoty úhlu \(\varphi\) jinou funkcí, snadněji
+  vyčíslitelnou. Zjistili jsme, že náhrada lineární funkcí, jaká byla možná v případě sinu, tj.
+  \(\sin\varphi = \varphi\), u kosinu nefunguje, neboť diferenciál funkce \(\cos\varphi\) v bodě
+  \(\varphi = 0\) je nulový. Poté jsme obecně dospěli k možnosti náhrady funkce \(f(x)\) v okolí
+  bodu \(x=a\), Taylorovým polynornem \(n\)-tého stupně (vztah (227)), který představuje prvních \(n
+  +1\) členů nekonečně Taylorovy řady
+  \begin{strip}
+    \begin{equation*}
+      f(a)+f'(a)(x-a)+\frac{1}{2!}f''(a)(x-a)^2+\cdots+\frac{1}{n!}f^{(n)}(a)(x-a)^n+\cdots
+    \end{equation*}
+  \end{strip}
+  Předchozí výraz je nekonečným součtem funkcí speciálního typu - mocnin proměnné \((x-a)\)
+  násobených konstantami. Obecně bychom takový nekonečný součet mohli zapsat ve tvaru
+  \begin{strip}
+    \begin{equation*}
+      s(x) = c_0 + c_1(x-a)+c_2(x-a)^2 + \cdots + c_n(x-a)^n + \cdots = \sum_{n=0}^\infty c_n(x-a)^n.
+    \end{equation*}
+  \end{strip}
+  Nazýváme jej \emph{nekonečnou mocninnou řadou}. Taylorova řada je tedy speciálním případem
+  mocninně řady. Praktický význam Taylorovy řady je nepochybný a vyložili jsme si jej již v odstavci
+  \ref{mai:IchapIIIsecVIIssecIII} v partii \ref{part:MAI}. Obecně má nekonečná řada funkcí tvar
+
+  \begin{equation*}
+    f_1(x) + f_2(x) + \cdots f_n(x) + \cdots = \sum_{n=0}^\infty f_n(x).
+  \end{equation*}
+
+  Další řadu s praktickým významem může přiblížit následující příklad.
+
+  \textbf{Příklad hudební}: Kdyby houslista zahrál na různých houslích stejný tón, mohli bychom si
+  všimnout, že každý z nástrojů zní trochu jinak. Tón má stejnou výšku, ale jinou barvu. Čím to je?
+  Výška tónu je z fyzikálního hlediska popsána frekvencí \(\nu\), resp. úhlovou frekvencí \(\omega
+  = 2\pi f\) (například jednočárkované, komorní \uv{a} má frekvenci \SI{440}{\Hz}). Struna skutečně
+  kmitá s touto frekvencí. Závislost výchylky jednotlivých jejích bodů na čase je periodickou funkcí
+  času s touto frekvencí. Obecně Však není přesně harmonickým (například sinusovým) signálem, ale
+  jeho mírnou modifikací. Z toho důvodu jsou v tónu slyšet i jiné frekvence, ne však jakékoli, ale
+  celočíselné násobky původní frekvence, tj. \(2\nu\), \(3\nu\), atd. Barva tónu pak souvisí s
+  amplitudami těchto \emph{vyšších harmonických frekvencí}. Matematický můžeme závislost výchylky
+  bodu struny v obecnosti zapsat jako
+  \begin{equation*}
+    a_0 + \sum_{n=1}^\infty[a_n\cos(n\omega t) + b_n\sin(n\omega t)].
+  \end{equation*}
+
+  Tato nekonečná řada funkcí se nazývá \emph{Fourierova}. Její význam například ve fyzice,
+  elektrotechnice či elektronice je nedozírný - umožňuje rozložit periodický signál na signály
+  základní frekvence a vyšších harmonických.
+
+  V souvislosti s Taylorovou řadou jsme si také kladli otázku, jak zjistit, zda takový nekonečný
+  součet opravdu \uv{dospěje} k nějaké funkci \(s(x)\), tj. zda řada konverguje. Zmínili jsme se
+  také o \uv{obyčejné} \emph{(bodové)} a o \emph{stejnosměrné} konvergenci. Pojem bodové a
+  stejnoměrné konvergence má samozřejmě význam nejen pro Taylorovy či obecnější mocninné řady, ale i
+  pro řady Fourierovy a jakékoli jiné řady funkcí. A právě o to v této kapitole převážně půjde.
+  Abychom však vlastnosti řad funkcí mohli studovat po matematické stránce důkladněji, musíme se
+  ještě na chvíli vrátit k posloupnostem a řadám číselným. V Závěru kapitoly si pak podrobněji
+  všimneme právě řad mocninných a Fourierových a možností jejich aplikace.
+
+  Vedle své užitečnosti praktické jsou řady docela zábavné a jsou užitečné i tím, že pomáhají tříbit
+  matematické myšlení. Výrok Alexandra Ženíška  \uv{... zcela pochopit nekonečné řady znamená začít
+  rozumět matematice ...} je možná určitou nadsázkou, ne však příliš velkou.
+
+  \section{Posloupnosti a řady podruhé - čísla}\label{mai:IIchapVsecI}
+    V tomto odstavci podrobněji probereme některé vlastnosti číselných posloupnosti a řad, které
+    budeme pro zavedení pojmů souvisejících s řadami funkcí a studium jejich vlastností potřebovat.
+    Nebudeme se tedy číselnými posloupnostmi a řadami zabývat „pro ně samotné“, ale s cílem jejich
+    využití v úvahách o řadách funkcí.
+
+    \subsection{Číselné posloupnosti a jejich konvergence}\label{mai:IIchapVsecIssecI}
+
+%---------------------------------------------------------------------------------------------------

@@ -1,0 +1,51 @@
+% !TeX program = lualatex
+% !TeX encoding = UTF-8
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\input{ebook}
+\documentclass{scrbook}
+\usepackage{luakoma}
+\usepackage{lualayout}
+\usepackage{luamath} 
+\usepackage{wikiWWWrefs}
+
+\providecommand\DebugMode{true}
+\providecommand\eBookMode{true}
+%============================= L * U * A * K * I* N * G ============================================
+% \listfiles
+\setcounter{tocdepth}{\partnumdepth}      % depth of TOC
+\begin{document}
+\ifthenelse{\equal{\DebugMode}{true}}{
+  \overfullrule=1cm                       % Obviously Visible Bad Box Warnings
+  % Debug mode ON
+  \input{../src/MAI/MAT}
+  % \input{../src/FYZ/FYZ}
+  % \input{../src/TKY/TKY}
+  % \input{../src/TEO/TEO}
+  % \input{../src/AES/AES}
+  % \input{../src/CES/CES}
+  % \input{../src/RAE/RAE}
+  % \input{../src/PVE/PVE}
+  % \input{../src/EPR/EPR}
+  % \input{../src/ZZT/ZZT}
+  % \input{../src/APE/APE}
+  % \listoftodos
+}
+{ % DEBUG was off
+  \frontmatter
+    \input{booktitle}
+    \tableofcontents
+  \mainmatter  
+    \input{../src/MAI/MAT}
+    \input{../src/FYZ/FYZ}
+    \input{../src/TKY/TKY}
+    \input{../src/TEO/TEO}
+    \input{../src/AES/AES}
+    \input{../src/CES/CES}
+    \input{../src/RAE/RAE}
+    \input{../src/PVE/PVE}
+    \input{../src/EPR/EPR}
+    \input{../src/ZZT/ZZT}
+    \input{../src/APE/APE}
+    % \input{../src/NJ/NJ}
+}
+\end{document}

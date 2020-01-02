@@ -1,0 +1,242 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam053}
+    \textbf{Losování karet}\newline
+      Máme karetní hru mariáš, která obsahuje celkem \num{32} karet osmi hodnot \num{7}, \num{8},
+      \num{9}, \num{10}, J (kluk), Q (dáma), K (král), A (eso), každá hodnota je ve čtyřech barvách,
+      červené barvy jsou \(\heartsuit\) (srdce) a \(\lozenge\) (kára), černé barvy jsou
+      \(\spadesuit\) (piky) a \(\clubsuit\) (kříže). Jaká je pravděpodobnost, že při náhodném
+      vylosování deseti karet budou mezi nimi:
+      \begin{enumerate}[leftmargin=1cm,rightmargin=1cm, label=\emph{\Alph*}),noitemsep]
+        \item právě dvě esa,
+        \item alespoň dvě esa,
+        \item nejvýše dvě esa,
+        \item alespoň šest karet stejné barvy,
+        \item právě dvě dámy a alespoň jeden kluk,
+        \item právě dvě dámy nebo alespoň jeden kluk?
+      \end{enumerate}
+
+      Písmena (A) až (F) představují různé části úlohy a také zároveň definují jevy, jejichž
+      pravděpodobnost počítáme. Jedná se opět o kombinace. Nezáleží totiž na pořadí, v jakém karty
+      vytahujeme. Důležité je jen to, zda jsou vyjmenované karty ve výběru obsaženy. Počet možných
+      výsledků náhodného vylosování deseti karet z dvaatřiceti, tj. počet případů možných, je pro
+      všechny části úlohy stejný,
+      \begin{align*}
+        N&=\binom{32}{10} = \dfrac{32!}{(32-10)!\cdot10!}                                   \\
+		 &= \dfrac{32\cdot31\cdots24\cdot23}{10\cdot9\cdots2\cdot1} = \num{64512240}.
+      \end{align*}
+      
+      Počítejme nyní případy příznivé pro jednotlivé jevy \(A\) až \(F\) a pravděpodobnosti těchto
+      jevů:
+      \begin{align*}
+        M(A) &= \binom{4}{2}\binom{32 - 4}{10 - 2}
+              = \binom{4}{2}\binom{28}{8}                                     \\
+             &= 6\cdot\dfrac{28\cdot27\cdots21}{8\cdot7\cdots2\cdot1} = \num{18648630}.
+      \end{align*}
+      Jak jsme k tomuto výsledku došli? Příznivý pro daný jev je každý výběr, v němž jsou obsažena
+      právě dvě esa (libovolných barev) a žádná další esa (význam slova „právě“). Počet výběrů dvou
+      es z celkového počtu čtyř es je \(C_2(4)\), počet výběrů dalších libovolných osmi karet ze
+      zbývající části hry, která vznikne po odstranění es (nechceme, aby v příznivém výběru byla
+      další esa), je \(C_{(10-2)}(32 - 4) = C_8(28)\). Každý výběr dvojice es lze kombinovat s
+      každým výběrem zbývajících osmi karet ze zbytku hry, tj. \(M(A) = C_2(4)\cdot C_8(28)\). A to
+      je právě náš předchozí výsledek. Potom:
+      \begin{equation*}
+        p(A) = \dfrac{M(A)}{N} 
+             = \dfrac{\binom{4}{2}\binom{28}{8}}{\binom{32}{10}}
+             = \dfrac{\num{18648630}}{\num{64512240}} \simeq \num{0.29}
+      \end{equation*}
+      
+      Aby nastal jev \(B\), požadujeme, aby v náhodném výběru deseti karet z dvaatřiceti byla
+      alespoň dvě esa. To znamená, že výběr považujeme za příznivý, obsahuje-li dvě esa libovolné
+      barvy a osm libovolných karet jiné hodnoty, nebo obsahuje tři esa libovolné barvy a sedm
+      libovolných karet jiné hodnoty, nebo obsahuje všechna čtyři esa a šest libovolných karet jiné
+      hodnoty, \(k\) es (pro \(k = 2, 3, 4\)) můžeme ze čtyř es vybrat \(\binom{4}{k}\) způsoby.
+      \(10 - k\) karet jiné hodnoty pak musíme vybírat pouze z \num{28} karet (esa je nutno
+      odstranit, aby bylo zaručeno, že „doplňkové“ karty budou mít jinou hodnotu než eso). Výběr
+      zbývajících karet lze učinit \(\binom{28}{10-k}\) způsoby. Nakonec
+      tedy dostáváme
+      \begin{gather*}
+        \begin{align*}
+          M(B) &= \binom{4}{2}\binom{28}{8} +\binom{4}{3}\binom{28}{7} +\binom{4}{4}\binom{28}{6} \\
+               &=  6\cdot\dfrac{28\cdot27\cdots22\cdot21}{8\cdot7\cdots2\cdot1}
+                  +4\cdot\dfrac{28\cdot27\cdots23\cdot22}{7\cdot6\cdots2\cdot1}+                  \\
+               &  +1\cdot\dfrac{28\cdot27\cdots24\cdot23}{6\cdot5\cdots2\cdot1} = \num{23761530}, \\
+          P(B) &= \dfrac{M(B)}{N} = \dfrac{\num{23761530}}{\num{64512240}} \simeq\num{0.37}.
+        \end{align*}
+      \end{gather*}
+      Pozn.: Někomu se předchozí výpočet může zdát příliš složitý. Nelze jej nějak zjednodušit? Co
+      kdybychom uvažovali třeba takto: Výběr dvou es již zajistí splnění požadavku. Doplňkové karty
+      tedy již pak můžeme vybírat ze třiceti karet - nebudeme tedy odstraňovat esa, protože budou-li
+      vybrána mezi doplňkovými kartami, požadavek „alespoň dvou es ve výběru“ to nenaruší. Při
+      takové interpretaci bychom dostali
+      \begin{align*}
+        M(B) &= \binom{4}{2}\binom{30}{8}   
+              = 6\cdot\dfrac{30\cdot29\cdots24\cdot23}{8\cdot7\cdots2\cdot1}     \\
+             &= \num{35117550}.
+      \end{align*}
+      Vidíme, že vyšlo číslo vyšší než při předchozí úvaze. Co je tedy správně? Správně je první
+      úvaha vedoucí k nižšímu počtu příznivých případů. Při druhé úvaze jsme některé případy
+      započetli vícekrát. Zkuste přijít na to, jak se to stalo. V každém případě vidíme, že
+      kombinatorické úvahy, ať již vypadají jakkoli jednoduše, mohou být zrádné a je třeba dát si na
+      ně pozor. 
+      
+      Jev \(C\) podle zadání nastane, obsahuje-li náhodný výběr deseti karet nejvýše dvě esa.
+      Znamená to, že výběr je příznivý, neobsahuje-li žádné eso a obsahuje deset karet jiné hodnoty,
+      nebo obsahuje-li jedno eso a devět karet jiné hodnoty, nebo obsahuje-li dvě esa a osm karet
+      jiné hodnoty. Počet \(M(C)\) určíme analogicky jako \(M(B)\), ale pro \(k= 0, 1, 2\):
+      \begin{align*}
+        M(C) &= \binom{4}{0}\binom{28}{10} + \binom{4}{1}\binom{28}{9} +\binom{4}{2}\binom{28}{8} \\
+             &=        \dfrac{28\cdot27\cdots20\cdot19}{10\cdot9\cdots2\cdot1}
+                +4\cdot\dfrac{28\cdot27\cdots21\cdot20}{ 9\cdot8\cdots2\cdot1}                    \\
+             &  +6\cdot\dfrac{28\cdot27\cdots22\cdot21}{ 8\cdot7\cdots2\cdot1} = \num{59399340},  \\
+        P(C) &= \dfrac{M(C)}{N} = \dfrac{\num{59399340}}{\num{64512240}} \simeq\num{0.92}.
+      \end{align*}
+      
+      Jev \(D\) znamená alespoň šest karet stejné barvy (připomeňme, že barvou rozumíme jednu z
+      možností \(\heartsuit\), \(\lozenge\), \(\spadesuit\), \(\clubsuit\)). Hra obsahuje osm karet
+      od každé barvy. Současně je tedy zřejmé, že karet stejné barvy může být ve výběru nejvýše osm.
+      Výběr je příznivý pro \(k = 6, 7, 8\). Obdobnou úvahou jako v předchozích případech dostáváme
+      \begin{align*}
+        M(D) &= 4\cdot\sum^{8}_{k=6}\binom{8}{k}\binom{32 - 8}{10 - k}                    \\
+             &= 4\cdot\sum^{8}_{k=6}\dfrac{8!}{(8-k)!k!}\cdot\dfrac{24!}{(14+k)!(10-k)!}  \\
+             &= \num{1255984}.
+      \end{align*}
+      
+      Faktor \num{4} před celou sumou se objevuje proto, že nebylo specifikováno, která ze čtyř
+      barev má být zastoupena alespoň šesti kartami. Všechny čtyři možnosti volby barvy jsou tedy
+      příznivé. Pravděpodobnost jevu \(D\) je
+      \begin{equation*}
+          p(D) = \dfrac{M(D)}{N} = \dfrac{\num{1255984}}{\num{64512240}} \simeq \num{0.019}.
+      \end{equation*}
+      Případy (\(E\)) a (\(F\)) v zadání se liší pouze slůvkem „a“ a „nebo“. Uvidíme, že nejde o
+      slovíčka, ale o podstatný rozdíl. 
+      
+      Aby nastal jev \(E\), požadujeme, aby náhodný výběr deseti karet obsahoval právě dvě dámy a
+      alespoň jednoho kluka. Znamená to, že výběr je příznivý, obsahuje-li dvě dámy libovolné barvy
+      a současně alespoň jednoho kluka libovolné barvy. Příznivé možnosti tedy jsou:
+      \begin{enumerate}[leftmargin=10pt,noitemsep]
+        \item  dvě dámy libovolné barvy, jeden kluk libovolné barvy, \num{7}
+              libovolných karet, které nemají hodnotu dámy ani kluka, celkem 
+              \(\binom{4}{2}\binom{4}{1}\binom{32-2\cdot4}{7} = \num{8306496}\) možností,
+        \item dvě dámy libovolné barvy, dva kluci libovolné barvy, \num{6}
+              libovolných karet, které nemají hodnotu dámy ani kluka, celkem 
+              \(\binom{4}{2}\binom{4}{2}\binom{32-2\cdot4}{6} = \num{4845456}\) možností,
+        \item dvě dámy libovolné barvy, tři kluci libovolné barvy, \num{5}
+              libovolných karet, které nemají hodnotu dámy ani kluka, celkem 
+              \(\binom{4}{2}\binom{4}{3}\binom{32-2\cdot4}{5} = \num{1020096}\) možností,
+        \item dvě dámy libovolné barvy, všichni čtyři kluci, \num{4} libovolné karty, které nemají
+              hodnotu dámy ani kluka, celkem 
+              \(\binom{4}{2}\binom{4}{4}\binom{32-2\cdot4}{4} = \num{63756}\) možností.
+      \end{enumerate}
+      \begin{gather*}     
+        \begin{align*}
+          M(E) &= \binom{4}{2}\cdot\sum^{4}_{k=1}\binom{4}{k}\binom{24}{8 - k}                    \\
+               &= 6\left[4\binom{24}{7} + 6\binom{24}{6} + 4\binom{24}{5} + \binom{24}{4}\right]  \\ 
+          M(E) &= \num{14235804}, 
+        \end{align*}
+      \end{gather*}
+      Pravděpodobnost jevu \(E\) je
+      \begin{equation*}
+        p(E) = \dfrac{M(E)}{N} = \dfrac{\num{14235804}}{\num{64512240}} \simeq \num{0.22}.
+      \end{equation*}
+
+      Aby nastal jev \(F\), požadujeme, aby náhodný výběr deseti karet obsahoval právě dvě dámy nebo
+      alespoň jednoho kluka. Znamená to, že výběr je příznivý, obsahuje-li dvě dámy libovolné barvy
+      a jakékoli další karty, nebo obsahuje alespoň jednoho kluka a jakékoli další karty. Nyní je
+      nutno o všech možnostech pečlivě rozvažovat, abychom některé nezapočítali vícekrát. Pozor,
+      slůvko \uv{nebo} zde nemá vylučovací význam, připouští se, že mohou být splněny obě podmínky
+      jevu \(F\), tj. jak právě dvě dámy, tak alespoň jeden kluk. Příznivé možnosti jsou:
+      \begin{enumerate}[leftmargin=10pt,noitemsep]
+        \item dvě dámy libovolné barvy, žádný kluk, \num{8} libovolných karet, které nemají hodnotu
+              dámy ani kluka, celkem
+              \begin{gather*}
+                \binom{4}{2}\binom{4}{0}\binom{32 - 2\cdot4}{8} = 6\binom{24}{8},
+              \end{gather*}
+        \item žádná dáma, \(k\) kluků libovolné barvy pro \(k = 1, 2, 3, 4\) (alespoň jeden kluk),
+              \(10 - k\) karet, které nemají hodnotu dám y ani kluka, celkem
+              \begin{gather*}
+                \binom{4}{0}\sum^{4}_{k=1}\binom{4}{k}\binom{32 - 2\cdot4}{10 - k} =
+                            \sum^{4}_{k=1}\binom{4}{k}\binom{24}{10 - k},
+              \end{gather*}
+        \item jedna dáma libovolné barvy, \(k\) kluků libovolné barvy pro \(k = 1,2, 3, 4\) (alespoň
+              jeden kluk), \(10 - k - 1\) karet, které nemají hodnotu dámy ani kluka, celkem
+              \begin{gather*}
+                \binom{4}{1}\sum^{4}_{k=1}\binom{4}{k}\binom{32 - 2\cdot4}{10 - k - 1} =
+                           4\sum^{4}_{k=1}\binom{4}{k}\binom{24}{9 - k},
+              \end{gather*}
+        \item dvě dámy libovolné barvy, \(k\) kluků libovolné barvy pro \(k = 1, 2, 3, 4\) (alespoň
+              jeden kluk), \(10 - 2 - k = 8 - k\) karet, které nemají hodnotu dámy ani kluka, celkem
+              \begin{gather*}
+                \binom{4}{2}\sum^{4}_{k=1}\binom{4}{k}\binom{32 - 2\cdot4}{10 - k - 2} =
+                           6\sum^{4}_{k=1}\binom{4}{k}\binom{24}{8 - k},
+              \end{gather*}
+        \item tři dámy libovolné barvy, k kluků libovolné barvy pro \(k = 1, 2, 3, 4\) (alespoň
+              jeden kluk), \(10 - k - 3\) karet, které nemají hodnotu dámy ani kluka, celkem
+              \begin{gather*}
+                \binom{4}{3}\sum^{4}_{k=1}\binom{4}{k}\binom{32 - 2\cdot4}{10 - k - 3} =
+                           4\sum^{4}_{k=1}\binom{4}{k}\binom{24}{7 - k},
+              \end{gather*}
+        \item všechny čtyři dámy, k kluků libovolné barvy pro \(k = 1, 2, 3, 4\) (alespoň jeden
+              kluk), \(10 - k - 4\) karet, které nemají hodnotu dámy ani kluka, celkem
+              \begin{gather*}
+                \binom{4}{4}\sum^{4}_{k=1}\binom{4}{k}\binom{32 - 2\cdot4}{10 - k - 4} =
+                            \sum^{4}_{k=1}\binom{4}{k}\binom{24}{6 - k},
+              \end{gather*}
+      \end{enumerate}
+      
+      Počet příznivých případů \(M(F)\) je dán součtem všech těchto možností, tedy
+      \begin{gather*}
+        \binom{4}{2}\binom{4}{0}\binom{24}{8} + \sum^{4}_{s=0}\binom{4}{s}
+        \left[\sum^{4}_{k=1}\binom{4}{k}\binom{24}{10 - k - s}\right].
+      \end{gather*}
+      Všimněme si nyní výsledku. Výraz s dvojitou sumou můžeme přepsat jak
+      \begin{equation*}
+        \sum^{4}_{k=1}\binom{4}{k}\left[\sum^{4}_{s=0}\binom{4}{s}\binom{24}{10 - k - s}
+          \right].
+      \end{equation*}
+      V učebnicích můžeme najít různé vzorce pro kombinační čísla, mezi nimi i vzorec
+      \begin{mdframed}[style=highlight]
+        \begin{equation}\label{mai:eq084}
+          \sum^{p}_{s=0}\binom{p}{s}\binom{r}{q - s} = \binom{r + p}{q} 
+          \quad\text{pro } r\geq q,\,q \geq p.
+        \end{equation}
+      \end{mdframed}
+      (Nebo si jej můžeme sami odvodit - pokuste se o to!) Pro \(p = 4\), \(r = 24\), \(q = 10 -
+      k\), \(1 \leq k \leq 4\) máme právě náš případ, takže
+      \begin{gather*} 
+        \begin{align*}
+          \sum^{4}_{k=1}\binom{4}{k}\left[\sum^{4}_{s=0}\binom{4}{s}\binom{24}{10 - k - s}\right] = 
+          \sum^{4}_{k=1}\binom{4}{k}\binom{28}{10 - k}.
+        \end{align*}
+      \end{gather*}
+      Jak můžeme tento výsledek interpretovat? Jedná se o počet případů, kdy náhodný výběr deseti
+      karet z mariášové hry dvaatřiceti karet obsahuje alespoň jednu kartu pevně zvolené hodnoty (v
+      našem případě kluka), bez ohledu na to, kolik obsahuje karet ostatních hodnot. Přidáme-li
+      počet případů, kdy výběr neobsahuje žádného kluka a právě dvě dámy, dostaneme právě počet
+      případů příznivých pro jev \(F\). Pň úpravě použijeme ještě jednou vzorce
+      \begin{gather*} 
+        \begin{align*}
+        \sum^{4}_{k=1}\binom{4}{k}\binom{28}{10 - k}  &= 
+        \sum^{4}_{k=0}\binom{4}{k}\binom{28}{10 - k} - \binom{4}{0}\binom{28}{10}                 \\
+                                                      &=\binom{32}{10} - \binom{28}{10},
+      \end{align*}
+      \end{gather*}
+      kde podle vzorce \ref{mai:eq084} je \(p=4\), \(q=10\), \(s=k\) a \(r=28\).   
+      \begin{gather*} 
+      \begin{align*}
+        M(F)&= \binom{4}{2}\binom{4}{0}\binom{24}{8}                                             \\
+            &+ \sum^{4}_{k=1}\binom{4}{k}
+               \left[\sum^{4}_{s=0}\binom{4}{s}\binom{24}{10 - k - s}\right]                     \\
+            &= \binom{4}{2}\binom{24}{8} + \sum^{4}_{k=1}\binom{4}{k}\binom{28}{10 - k}          \\
+            &= \binom{ 4}{2}\binom{24}{8} + \left[\binom{32}{10} - \binom{28}{10}\right]         \\
+            &= \binom{32}{10} - \left[\binom{28}{10} - \binom{4}{2}\binom{24}{8}\right],         \\
+        p(F)&= \dfrac{M(F)}{N}=1-\dfrac{\binom{28}{10}-\binom{4}{2}\binom{24}{8}}{\binom{32}{10}}\\
+            &= 1 - \dfrac{\num{8710284}}{\num{64512240}} \simeq \num{0.86}.
+      \end{align*}
+      \end{gather*}  
+      Zamysleme se ještě nad interpretací posledního výrazu pro \(M(F)\). Od počtu všech možných
+      případů se odečítá hodnota \(\binom{28}{10}\) představující počet situací, kdy ve výběru
+      nebude žádný kluk, zmenšená o hodnotu \(\binom{4}{2}\binom{24}{8}\), která představuje počet
+      situací, kdy ve výběru budou právě dvě dámy a žádný kluk.
+  \end{example}
+\end{mdframed}  

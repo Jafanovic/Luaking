@@ -1,0 +1,73 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+% https://tex.stackexchange.com/questions/226971/change-fontsize-in-tikz-figure
+\tikzset{font={\fontsize{12pt}{14}\selectfont}}
+\usepackage{amsmath}
+\usetikzlibrary{calc}
+
+\begin{document}
+  \begin{tikzpicture}[%
+    auto,
+    block/.style={
+      rectangle,
+      draw=blue,
+      thick,
+      fill=blue!20,
+      text width=12em,
+      align=center,
+      rounded corners,
+      minimum height=2em
+    },
+    block1/.style={
+      rectangle,
+      draw=blue,
+      thick,
+      fill=green!20,
+      text width=7em,
+      align=center,
+      rounded corners,
+      minimum height=2em
+    }
+  ]
+    \draw (2.5,-0.5) node[block] (C) {
+      {\textbf{Vstupní rušivé zdroje}} \par 
+      {\(E_R\), \(I_R^-\), \(I_R^+\)}
+    };
+    \path (-1,-3) node[block] (G) {
+            {\textbf{Vstupní ofset}} \par
+            {\(E_{OS}\), \(I_B^-\), \(I_B^+\)} \par
+            {\(E_{OS}\), \(I_B\), \(I_{OS}\)}
+    }
+          (6,-3) node[block] (J) {
+            {\textbf{Vstupní šum}} \par 
+            {\(E_N\), \(I_N^-\), \(I_N^+\)}
+    }
+          (-1,-4.7) node[block] (H) {
+            {\textbf{Vstupní drift}}
+    }
+          (-4,-6.5) node[block1] (I) {
+            {\textbf{Teplotní}} \par 
+            {\(\dfrac{\Delta E_{OS}}{\Delta T}, \cdots\)}
+    }
+          (-1,-6.5) node[block1] (K) {
+            {\textbf{Napájecí}} \par
+            {\(\dfrac{\Delta E_{OS}}{\Delta U_S}, \cdots\)}
+    }
+          (+2,-6.5) node[block1] (L) {
+            {\textbf{Časový}} \par 
+            {\(\dfrac{\Delta E_{OS}}{\Delta t}, \cdots\)}
+    };
+    \draw (C.south) -- ++(0,-0.5) coordinate (linga);
+    \draw (linga)   -- ++(-0.7,0) coordinate (ling);
+
+    \draw[-{Latex[length=3mm,width=3mm]}] (G.south) -- (H.north);
+    \draw[-{Latex[length=3mm,width=3mm]}] (G.south) -- (H.north);
+    \draw[-{Latex[length=3mm,width=3mm]}] (ling) |- (G.east);
+    \draw (linga) -- ++(0.7,0) coordinate (hling);
+    \draw[-{Latex[length=3mm,width=3mm]}] (hling) |- (J.west);
+    \draw[-{Latex[length=3mm,width=3mm]}] (H.east) -| (L.north);
+    \draw[-{Latex[length=3mm,width=3mm]}] (H.west) -| (I.north);
+    \draw[-{Latex[length=3mm,width=3mm]}] (H.south) -- (K.north);
+  \end{tikzpicture}
+\end{document}

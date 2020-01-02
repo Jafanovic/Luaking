@@ -1,0 +1,48 @@
+% !TeX spellcheck = cs_CZ
+%---------- Driftová rychlost elektroknů ve vodiči: 
+\begin{mdframed}[style=mdexam]
+\begin{example}\label{TEO:exam008} \emph{Driftová rychlost elektronů ve vodiči:} Vodičem z 
+jednomocné mědi o
+  průřezu $S_0 = \SI{1}{\mm^2}$ prochází elektrický proud $I = \SI{5}{\A}$. Vypočtěte:
+  \begin{itemize}[noitemsep]
+    \item počet volných elektronů v jednotkovém objemu \ce{Cu},
+    \item úhrnný náboj volných elektronů v jednotkovém objemu,
+    \item driftovou rychlost volných elektronů při proudu $I$.
+  \end{itemize}
+  Měď má poměrnou atomovou hmotnost $A_r = 63,54$ a hustotu\footnote{Pro hustotu budeme používat 
+  alternativní značku $s$, s ohledem na kolizi značky $\rho$, jež označuje hustotu náboje.} $s = 
+  \SI{8.93e3}{\kg.\m^{-3}}$.\newline  
+  \textbf{Řešení:}
+  \begin{itemize}
+    \item Jeden mol mědi o molové hmotnosti $M = \SI{0.06354}{\kg.\mol^{-1}}$ a o molovém
+          objemu 
+          \begin{equation*}s
+            V_m = \frac{M}{s} 
+                = \frac{\SI{63.54e-3}{\kg.\mol^{-1}}}{\SI{8.93e3}{\kg.\m^{-3}}}
+                = \SI{7.12e-6}{\m^3.\mol^{-1}}
+          \end{equation*}
+          obsahuje $N_A = 6,0221\cdot10^{23}$ jednoatomových molekul \emph{Cu} na jeden mol,
+          z nichž každý má volný jeden (valenční) elektron. Tedy počet volných elektronů v
+          jednotkovém objemu je 
+          \begin{equation*}
+            n_0 = \frac{N_A}{V_m} = \frac{sN_A}{M}                                           
+                = \frac{\SI{6.0221e23}{\mol^{-1}}}{\SI{7.12e-6}{\m^{3}.\mol^{-1}}} 
+                = \SI{8.46e28}{\m^{-3}}.
+          \end{equation*}  
+    \item Úhrnný náboj volných elektronů v jednotkovém objemu mědi je 
+          \begin{equation}
+            Q_v = -e\cdot n_0 = \SI{-1.36e10}{\coulomb.m^{-3}}.
+          \end{equation}
+    \item Velikost driftové rychlosti určíme ze vztahu $I = -en_0v_dS_0 = - Q_v v_d S_0$ tj.
+    \begin{align*}
+      v_d &= \left\lvert\frac{I}{Q_v\cdot S_0}\right\rvert                       
+           = \frac{\SI{5}{\coulomb\per\s}}{\SI{1.36e10}{\coulomb.m^{-3}}\cdot\SI{1e-6}{\m^2}}   \\
+          &= \SI{3676e-4}{\m\per\s} = \SI{0.3676}{\mm\per\s}.  
+    \end{align*}
+  \end{itemize}
+  Z provedených výpočtů si můžeme udělat názor o mikroskopických poměrech v kovových
+  vodičích: počet volných nositelů náboje - elektronů a jejich úhrný náboj v jednotkovém
+  objemu je značný a proto driftová rychlost elektronů potřebná k vyvolání proudu běžné
+  velikosti v drátových vodičích je nesmírně malá (doslova hlemýždí).
+\end{example}  
+\end{mdframed}
