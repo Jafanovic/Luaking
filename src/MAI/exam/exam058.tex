@@ -9,12 +9,20 @@
       se to nejméně očekává). V případě Svistu je zmetků pouze \SI{63}{\percent}. Porota soutěže
       rozhodla, že cenu dostane ten z obou podniků, jehož ředitel zodpoví správně následující
       otázky:
-      \begin{enumerate}[noitemsep]
-      \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle bude fungovat tak, jak má?
-      \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle, o níž se na obalu píše, že byla
-      vyrobena podnikem Hvizd, není zmetek?
-      \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle, kterou se podařilo úspěšně
-      odpálit, byla vyrobena podnikem Svist?
+
+      {\centering
+      \captionsetup{type=figure} 
+      \includegraphics[width=0.8\linewidth]{mai_fig075.png}
+      \captionof{figure}{Pat \& Mat: Silvestr}
+      \label{mai_fig075}
+      \par}
+
+      \begin{enumerate}[noitemsep, label=\emph{\alph*}]
+        \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle bude fungovat tak, jak má?
+        \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle, o níž se na obalu píše, že
+              byla vyrobena podnikem Hvizd, není zmetek?
+        \item Jaká je pravděpodobnost, že náhodně zakoupená rachejtle, kterou se podařilo úspěšně
+              odpálit, byla vyrobena podnikem Svist?
       \end{enumerate} 
       Postupně jednotlivé úkoly vyřešíme. V případě a) posuzujeme pravděpodobnost jevu \(A\):
       „Náhodně zakoupený výrobek je funkční.“ bez dalších podmínek. Jedná se o nepodmíněnou
@@ -23,7 +31,8 @@
       Svistu. Víme, že \SI{17}{\percent} výrobků Hvizdu je funkčních, v případě Svistu je to
       \SI{37}{\percent}. Na trhu je tedy v tuto chvíli
       \begin{equation*}
-        m = \num{0.17}\cdot\num{0.7}n + \num{0.37}\cdot\num{0.3}n = \num{0.23}n
+        m = \underbrace{\num{0.17}\cdot\num{0.7}n}_\text{Hvizd} + 
+            \underbrace{\num{0.37}\cdot\num{0.3}n}_\text{Svist} = \num{0.23}n
       \end{equation*}
       funkčních raket. Pravděpodobnost zakoupení funkční rakety je tedy
       \begin{equation*}
@@ -32,7 +41,7 @@
       Výsledek lze snadno zobecnit. Označíme-li \(p_1\) pravděpodobnost zmetku ve firmě Hvizd a
       \(p_2\) pravděpodobnost zmetku ve firmě Svist, je pravděpodobnost funkčního výrobku ve Hvizdu
       \((1 - p_1)\) a ve Svistu \((1 - p_2)\). Označme \(q\) podíl Hvizdu na celkové produkci. Podíl
-      Svistu je pak \((1 - q)\). Pravděpodobnost koupě funkčního výrobku je
+      Svistu je pak \((1 - q)=\num{0.3}\). Pravděpodobnost koupě funkčního výrobku je
       \begin{align*}
         p(A) &= (1 - p_1)q + (1 - p_2)(1 - q)    \\
              &= (1 - p_2) + q(p_2 - p_1).
@@ -50,15 +59,15 @@
       \begin{equation*}
         p_B(A) = \dfrac{(1 - p_1)qn}{qn} = 1 - p_1 = \num{0.17}
       \end{equation*}
-      Všimněme si výpočtu podrobněji. \((1 - p_1)q\) představuje pravděpodobnost jevu \((A\text{
-      a }B)\), že náhodně zakoupená raketa bude funkční a zároveň bude vyrobena ve Hvizdu. Skutečně,
+      Všimněme si výpočtu podrobněji. \((1 - p_1)q\) představuje pravděpodobnost jevu \((A\text{ a
+      }B)\), že náhodně zakoupená raketa bude funkční a zároveň bude vyrobena ve Hvizdu. Skute čně,
       na trhu je v dané chvíli \(n\) raket, z nich \(qn\) bylo vyrobeno ve Hvizdu a z těchto \(qn\)
       výrobků Hvizdu je \((1 - p_1)qn\) funkčních. Proto 
       \begin{equation*}
         p(A\text{ a }B) = \dfrac{(1 - p_1)qn}{n} = (1 - p_1)q = \num{0.119}
       \end{equation*}
-      (Divíte se, že tato pravděpodobnost není součinem \(p(A)p(B)\)? Nedivte se, jevy \(A\) a \(B\)
-      nejsou totiž nezávislé!). Vidíme, že platí
+      (Proč pravděpodobnost není součinem \(p(A)p(B)\)? Nedivme se, jevy \(A\) a \(B\) nejsou totiž
+      nezávislé!). Vidíme, že platí
       \begin{equation*}
         \boxed{p(A\text{ a }B) = p(B)p_B(A)}\,,
       \end{equation*}
@@ -75,7 +84,7 @@
       již využít vztahu (\ref{mai:eq057}). Máme totiž počítat pravděpodobnost jevu \(B\) za
       podmínky, že nastal jev \(A\). (Poznamenejme, že je-li jev \(B\) definován jako „Náhodně
       koupená raketa pochází z Hvizdu.“, je jev „Náhodně koupená raketa pochází ze Svistu.“ jevem
-      opačným k \(B\).) Platí
+      opačným k \(B\) tj. \(p(\overline{B})=1-q\).) Platí
       \begin{align*}
         p_A(\overline{B})&= \dfrac{p(A\text{ a }\overline{B})}{p(A)}
                           = \dfrac{p_{\overline{B}}(A)p(\overline{B})}{p(A)}                \\             
