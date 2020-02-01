@@ -93,22 +93,195 @@
     s rotací předmětů nebo s tím, co se děje v dané souřadnicové soustavě. Určuje jen vztah mezi
     souřadnicovými osamì jednoho a souřadnicovými osamì druhého pozorovatele, přičemž předpokládáme,
     že je konstantní.) Souřadnice v těchto dvou systémech souvisí navzájem takto:
+    \begin{subequations}\label{fyz:eq712}
+      \begin{align}
+        x' &=  x\cos\Theta + y\sin\Theta, \label{fyz:eq712a}  \\
+        y' &=  y\cos\Theta - x\sin\Theta, \label{fyz:eq712b}  \\
+        z' &=  z.                         \label{fyz:eq712c}        
+      \end{align}
+    \end{subequations} 
+    Podobně, protože síla je vektor, transformuje se do nového systému stejně jako \(x\), \(y\),
+    \(z\), protože veličina je vektorem tehdy a jen tehdy, kdy její různé složky se transformují
+    jako \(x\), \(y\), \(z\)
+    \begin{subequations}\label{fyz:eq713}
+      \begin{align}
+        F_{x'} &=  F_x\cos\Theta + F_y\sin\Theta, \label{fyz:eq713a}  \\
+        F_{y'} &=  F_y\cos\Theta - F_x\sin\Theta, \label{fyz:eq713b}  \\
+        F_{z'} &=  F_z.                           \label{fyz:eq713c}        
+      \end{align}
+    \end{subequations} 
+    Dosazením do (\ref{fyz:eq711}) za \(x'\), \(y'\), \(z'\) z (\ref{fyz:eq712}) a za \(F_{x'}\),
+    \(F_{y'}\), \(F_{z'}\), z (\ref{fyz:eq713}) můžeme nyní snadno zjistit, jak se transformují
+    momenty síly. Tak dostáváme dlouhý výraz pro \(N_{x'y'}\), v němž se ukáže na první pohled
+    překvapující skutečnost, že se zredukuje na \(xF_y - yF_x\), v čemž poznáváme moment síly v
+    rovině \(xy\)
+    \begin{align}\label{fyz:eq714}
+      N_{x′y′}  &=(x\cosθ+y\sinθ)(F_y\cosθ−F_x\sinθ)− (y\cosθ−x\sinθ)(F_x\cosθ+F_y\sinθ) \nonumber
+                &=xF_y(\cos2θ+\sin2θ)−yF_x(\sin2θ+\cos2θ)+ xF_x(−\sinθ\cosθ+\sinθ\cosθ)+ \nonumber
+                  yF_y(\sinθ\cosθ−\sinθ\cosθ)
+                &=xF_y−yF_x=N_{xy}.
+    \end{align}
+    Tento výsledek je jasný, neboť pootočíme-li naše souřadnice jen v rovině, pak otáčení kolem osy
+    \(z\) se nezmění, neboť ani rovina se nezměnila! Zajímavější bude sledování výrazu \(N_{y′z′}\)
+    neboť tu jde o novou rovinu. To, co jsme dělali s rovinou \(x'y'\), proveďme nyní s rovinou
+    \(y'z'\). Dostáváme
+    \begin{align}\label{fyz:eq715}
+      N_{y′z′}  &=(y\cosθ−x\sinθ)F_z− z(F_y\cosθ−F_x\sinθ)  \nonumber
+                &=(yF_z−zF_y)\cosθ+(zF_x−xF_z)\sinθ         \nonumber
+                &=N_{yz}\cosθ+N_{zx}\sinθ.
+    \end{align}
+    Nakonec si zopakujme totéž pro rovinu \(z'x'\)
+    \begin{align}\label{fyz:eq716}
+      N_{z′x′}  &=z(F_x\cosθ+F_y\sinθ)−(x\cosθ+y\sinθ)F_z
+                &=(zF_x−xF_z)\cosθ−(yF_z−zF_y)\sinθ
+                &=N_{zx}\cosθ−N_{yz}\sinθ.
+    \end{align}
+    Chtěli jsme odvodit pravidlo,jak najít momenty síly v nových souřadnicích a už ho máme. Jak si
+    lze toto pravidlo zapamatovat? Když si pozorně prohlédneme vztahy (\ref{fyz:eq714}),
+    (\ref{fyz:eq715}) a (\ref{fyz:eq716}), vidíme, že mezi nimi a vztahy pro \(x\), \(y\) a \(z\)
+    existuje úzká souvislost. Kdybychom \(N_{xy}\) označili jako \(z\)-ovou složku \(N\), pak
+    (\ref{fyz:eq715}) bychom mohli chápat jako vektorovou transformaci, neboť \(z\)-ová složka se
+    nezmění a tak to má být. Dáme-li podobně do souvislosti rovinu \(yz\) a \(x\)-ovou složku našeho
+    nového vektoru a rovinu \(zx\) s \(y\)-ovou složkou tohoto vektoru, pak tyto výrazy budou mít
+    tvar
+    \begin{subequations}\label{fyz:eq717}
+      \begin{align}
+        N_{z'} &=  N_z,                           \label{fyz:eq717a}  \\
+        N_{x'} &=  N_x\cos\Theta + N_y\sin\Theta, \label{fyz:eq717b}  \\
+        N_{y'} &=  N_y\cos\Theta - N_x\sin\Theta. \label{fyz:eq717c}        
+      \end{align}
+    \end{subequations} 
+    což je právě transformační pravidlo vektorů!
+
+    Dokázali jsme, že kombinaci \(xF_y - yF_x\) můžeme ztotožnit s tím, čemu běžně říkáme \(z\)-ová
+    souřadnice určitého uměle zavedeného vektoru. Ačkoli moment síly způsobuje otáčení v rovině, a
+    \emph{apriori} nemá vektorový charakter, matematicky se chová jako vektor. Tento vektor je kolmý
+    k rovině otáčení a jeho délka je úměrná točivé síle. Tři složky takovéto veličiny se
+    transformují jako skutečný vektor.
+
+    Moment síly tedy reprezentujeme vektorem. Každé rovině, v níž moment síly působí, přiřadíme
+    kolmici. Samotná kolmice ještě nespecifikuje znaménko směru kolmice. Proto musíme zavést
+    pravidlo, které nám řekne, že působil-li moment síly v rovině \(xy\) v určitém smyslu, směr
+    kolmice, kterou jí chceme přiřadit, je totožný s kladným směrem osy \(z\), tj. musíme definovat,
+    co je \uv{pravé} a co \uv{levé}. Předpokládáme-li, že souřadnicová soustava \(x\), \(y\), \(z\)
+    je pravotočivá, bude pravidlo následující: Představíme-li si otáčení tak, že otáčíme šroubem s
+    pravotočìvým závitem, směr vektoru, který přiřazujeme tomuto otáčení, bude ve směru pohybu
+    šroubu.
+
+    Proč je moment síly vektor? Je to šťastná shoda okolností, že rovině můžeme přiřadit jednu osu,
+    a tak momentu síly vektor. Je to zvláštnost trojrozměmého prostoru. V dvojrozměmém prostoru je
+    moment síly obyčejný skalár a není třeba, abychom mu přiřazovali směr. V případě tří rozměrů je
+    to vektor. Kdybychom měli čtyři rozměry, dostali bychom se do velkých problémů, neboť (kdybychom
+    jako čtvrtý rozměr měli například čas) bychom neměli jen roviny \(xy\), \(yz\) a \(zx\), ale i
+    \(tx\), \(ty\) a \(tz\). Bylo byjich šest a šest veličin nemůže reprezentovat jeden čtyřrozměrný
+    vektor.
+
+    Delší dobu se budeme zabývat trojrozměmým prostorem, a proto bude dobré, když si všimneme, že
+    předcházející matematický popis nezávisel na tom, že \(x\) byla souřadnice polohy a \(F\) síla;
+    závisel jen na transformačních zákonech platných pro vektory. Kdybychom tedy místo \(x\) použili
+    \(x\)-ovou souřadnici nějakého jiného vektoru, nic by se nezměnilo. Jinými slovy, kdybychom
+    vypočítali \(a_xb_y - a_yb_x\), kde \(\vec{a}\) a \(\vec{b}\) jsou vektory, a kdybychom tento
+    výraz nazvali \(z\)-ovou složkou nějaké nové veličiny \(c\), pak tyto nové veličiny budou tvořit
+    vektor \(\vec{c}\). K popisu vztahu tohoto nového vektoru k vektorům \(\vec{a}\) a \(\vec{b}\)
+    potřebujeme matematické označení. K tomuto účelu se zavedlo označení \(\vec{c} = \vec{a} \times
+    \vec{b}\). V teorii vektorové algebry máme tedy vedle známého skalárního součinu ještě nový druh
+    součinu, tzv. \textbf{vektorový součin}. Mimochodem \(\vec{c} = \vec{a} \times \vec{b}\), je
+    totéž, jako kdybychom napsali
+    \begin{subequations}\label{fyz:eq718}
+      \begin{align}
+        cx =a_yb_z−a_zb_y,    \label{fyz:eq718a}  \\
+        cy =a_zb_x−a_xb_z,    \label{fyz:eq718b}  \\
+        cz =a_xb_y−a_yb_x.    \label{fyz:eq718c}
+      \end{align}
+    \end{subequations}
+    Kdybychom zaměnili pořadí vektorů \(\vec{a}\) a \(\vec{b}\) (\(\vec{a}\) by byl \(\vec{b}\) a
+    \(\vec{b}\) by byl \(\vec{a}\)), znaménko vektoru \(\vec{c}\) by se změnilo, neboť např. \(c_z\)
+    by bylo rovno \(b_xa_y - b_ya_x\). Vektorový součin proto není podobný obyčejnému násobení \(ab=
+    ba\), platí pro něj \(\vec{b}\times\vec{a}=−\vec{a}\times\vec{b}\). Odtud můžeme ihned dokázat,
+    že když \(\vec{a} = \vec{b}\), pak vektorový součin je roven nule: \(\vec{a}\times\vec{a} = O\).
+
+    Vektorový součin je velmi důležitý, neboť jím lze popsat vlastnosti rotací. Důležité je i to,
+    abychom pochopili, jaký je geometrický vztah mezi vektory \(\vec{a}\), \(\vec{b}\) a
+    \(\vec{c}\). Vztah mezi složkami těchto vektorů je dán rovnicemi (\ref{fyz:eq718}) a z toho lze
+    určit i jejich geometrickou souvislost. Především zjistíme, že vektor \(\vec{c}\) je kolmý k
+    oběma vektorům \(\vec{a}\) i \(\vec{b}\). (Zkusme vypočítat zda \(\vec{c}\cdot\vec{a}\) nebude
+    nula.) Dále velikost vektoru \(\vec{c}\) je rovna velikosti \(\vec{a}\) krát velikosti
+    \(\vec{b}\) krát sinus úhlu mezi nimi. Jaký směr má vektor \(\vec{c}\)? Představme si, že vektor
+    \(\vec{a}\) otočíme do směru vektoru \(\vec{b}\) tak, aby příslušný úhel pootočení byl menší než
+    \ang{180}. Pak šroub s pravotočìvým závitem otáčející se takovýmto způsobem bude směřovat ve
+    směru \(\vec{c}\). Skutečnost, že hovoříme o pravotočivěm a ne o levotočivém šroubu, je věc
+    konvence a neustále nám připomíná, že jsou-li \(\vec{a}\) a \(\vec{b}\) \uv{skutečné} vektory v
+    běžném smyslu, pak nový vektor, který jsme sestrojili jako \(\vec{a}\times\vec{b}\), je umělý
+    vektor, jenž se trochu liší od vektorů \( \vec{a}\) a \(\vec{b}\), neboť jsme ho zkonstruovali
+    podle zvláštního pravidla. Pro obyčejné vektory \(\vec{a}\) a \(\vec{b}\) máme zvláštní název,
+    říkáme jim \textbf{polární vektory}. Příkladem takových vektorů je polohový vektor \(\vec{r}\),
+    síla \(\vec{F}\), hybnost \(\vec{p}\), rychlost \(\vec{v}\), intenzita elektrického pole
+    \(\vec{E}\) atd. Vektory, v jejichž definici je jeden vektorový součin, se nazývají
+    \textbf{axiálnímy vektory} nebo \textbf{pseudovektory}. Příkladem pseudovektorů jsou
+    (samozřejmě) moment síly \(\vec{N}\) a moment hybnosti \(\vec{L}\). Úhlová rychlost
+    \(\vec{\oemga}\) je rovněž pseudovektor, podobně jako intenzita magnetického pole \(\vec{B}\).
+
+    Abychom dokončili studium matematických vlastností vektorů, uveďme pravidla jejich
+    násobení pomocí skalárních a vektorových součinů. V této chvíli z toho pro naše aplikace
+    budeme potřebovat velmi málo, ale z důvodu úplnosti uvedeme všechny vzorce násobení
+    vektorů, takže později je budeme moci použít. Jsou to
+    \begin{subequations}\label{fyz:eq719}
+      \begin{align}
+         \vec{a}\times(\vec{b}+\vec{c})&= %
+            \vec{a}\times\vec{b}+\vec{a}\times\vec{c}                   \label{fyz:eq719a}  \\             
+        (\alpha\vec{a})\times\vec{b}&= %
+            \alpha(\vec{a}\times\vec{b})                               \label{fyz:eq719b}  \\     
+         \vec{a}\cdot(\vec{b}\times\vec{c})&= %
+            (\vec{a}\times\vec{b})\cdot\vec{c}                          \label{fyz:eq719c}  \\  
+         \vec{a}\times(\vec{b}\times\vec{c})&= %
+            \vec{b}(\vec{a}\cdot\vec{c})-\vec{c}(\vec{a}\cdot\vec{b})   \label{fyz:eq719d}  \\          
+         \vec{a}\times\vec{a}&=0                                        \label{fyz:eq719e}  \\  
+         \vec{a}\cdot(\vec{a}\times\vec{b})=0.                          \label{fyz:eq719f}
+      \end{align}
+    \end{subequations}
 
   \section{Rovnice rotace a vektorový součin}\label{fyz:IchapXXsecII}
+    je vůbec možné napsat nějaké fyzikální rovnice pomocí vektorového součinu? Takových rovnic je
+    velmi mnoho. Například, hned vidíme, že moment síly je roven vektorovému součinu polohového
+    vektoru a vektoru síly
+    \begin{equation}\label{fyz:eq720}
+      \vec{N} = \vec{r}\times\vec{F}.
+    \end{equation}
+    To je vektorový zápis tří rovnic \(N_x = yF_z - zF_y\), atd. Podobně moment hybnosti jedné
+    částice je roven vektorovému součinu vzdálenosti od počátku a hybnosti
+    \begin{equation}\label{fyz:eq721}
+      \vec{L} = \vec{r}\times\vec{p}.
+    \end{equation}
+    Pro rotace v trojrozměrném prostoru platí jako analog Newtonova zákona \(\vec{F} =
+    \der{\vec{p}}{t}\) tvrzení, že vektor momentu síly je roven časové změně vektoru momentu hybnosti
+    \begin{equation}\label{fyz:eq722}
+      \vec{N} = \der{\vec{L}}{t}.
+    \end{equation} 
+    Sečteme-li (\ref{fyz:eq722}) pro mnoho částic, je moment vnějších sil působící na celý systém
+    roven změně celkového momentu hybnosti
+    \begin{equation}\label{fyz:eq723}
+      \vec{N}_{ext} = \der{\vec{L}_{tot}}{t}.
+    \end{equation}   
+    Odtud plyne: Je-li celkový moment vnějších sil roven nule, je vektor celkového momentu hybnosti
+    soustavy konstantní. Platí tedy \emph{zákon zachování momentu hybnosti}. Nepůsobí-li na daný
+    systém moment síly, jeho moment hybnosti se nemůže změnit.
+
   \section{Setrvačník}\label{fyz:IchapXXsecIII}
+    \begin{figure}[ht!] %\ref{fyz:fig406}
+      \centering
+      \subcaptionbox{\label{fyz:fig406a}}{\luafigure[0.45]{fyz_fig406a.pdf}} 
+      \subcaptionbox{\label{fyz:fig406b}}{\luafigure[0.45]{fyz_fig406b.pdf}}
+      \caption{a) osa má horizontální směr; moment hybnosti vzhledem k vertikální ose je roven nule 
+              b) osa má vertikální směr; moment hybnosti vzhledem k vertikální ose je stále roven 
+              nule; člověk a žídle se otáčejí v opačném směru než kolo
+              (\cite[s.~278]{Feynman01}).}
+      \label{fyz:fig406}
+    \end{figure}
+
   \section{Moment hybnosti tuhého tělesa}\label{fyz:IchapXXsecIV}
   \section{Příklady a cvičení}\label{fyz:IchapXXsecV}  
 
-  \begin{figure}[ht!] %\ref{fyz:fig406}
-    \centering
-    \subcaptionbox{\label{fyz:fig406a}}{\luafigure[0.45]{fyz_fig406a.pdf}} 
-    \subcaptionbox{\label{fyz:fig406b}}{\luafigure[0.45]{fyz_fig406b.pdf}}
-    \caption{a) osa má horizontální směr; moment hybnosti vzhledem k vertikální ose je roven nule 
-             b) osa má vertikální směr; moment hybnosti vzhledem k vertikální ose je stále roven 
-             nule; člověk a žídle se otáčejí v opačném směru než kolo
-             (\cite[s.~278]{Feynman01}).}
-    \label{fyz:fig406}
-  \end{figure}
+
 
   \begin{figure}[ht!] %\ref{fyz:fig407}
     \centering
