@@ -266,7 +266,44 @@
     soustavy konstantní. Platí tedy \emph{zákon zachování momentu hybnosti}. Nepůsobí-li na daný
     systém moment síly, jeho moment hybnosti se nemůže změnit.
 
+    A co úhlová rychlost? I ta je vektor? O rotacích tuhého tělesa kolem pevné osy jsme již
+    hovořili, ale na okamžik předpokládejme, že jím otáčíme současně kolem dvou os. Mohlo by se
+    otáčet kolem nějaké osy uvnitř krabice, přičemž ta by se také otáčela kolem nějaké osy. Celkový
+    výsledek takovéhoto kombinovaného pohybu je, že těleso se otáčí kolem nějaké nové osy! Tato nová
+    osa má tu báječnou vlastnost, že ji lze určit podle pravidel sčítání vektorů. Vyjádříme-li
+    rychlost rotace v rovině \(xy\) jako vektor ve směru osy \(z\), přičemž jeho délka je úměrná
+    rychlosti rotace v této rovině, a druhý takový vektor míří například ve směru osy \(y\) (což
+    odpovídá rotaci v rovině \(zx\)), pak když tyto vektory sečteme podle pravidla rovnoběžníka,
+    velikost výsledného vektoru nám řekne, jak rychle se těleso otáčí a jeho směr určí rovinu
+    otáčení. Takže prostě řečeno, úhlová rychlost je vektor, jehož složky jsou dány pravoúhlýmì
+    projekcemi do tří kolmých rovin\footnote{Pravdivost tvrzení lze odvodit výpočtem posunutí částic
+    tělesa za infinitezimálně krátkou dobu \(dt\). Není to samozřejmé a výpočet přenecháváme těm,
+    kdo se o to chtějí pokusit.}.
+
+    Jako jednoduchou aplikaci použití vektoru úhlové rychlosti můžeme vypočítat výkon dodaný
+    působením momentu síly na tuhé těleso. Výkon je roven práci za jednotku času a vyjde, že v
+    trojrozměmém případě \(P=\vec{N}\cdot\vec{\omega}\).
+
+    Všechny vztahy, jež jsme napsali pro rovinné rotace, lze zobecnit na trojrozměrný případ.
+    Například, otáčí-li se tuhé těleso kolem určité osy úhlovou rychlostí \(\vec{\omega}\), můžeme
+    se zeptat: Jakou rychlost má bod, jehož polohový vektor je \(\vec{r}\)? Ukázat, že rychlost
+    částice je dána jako \(\vec{v} = \vec{\omega} \times \vec{r}\), kde \(\vec{\omega}\) je úhlová
+    rychlost a \(\vec{r}\) je poloha, necháme jako úkol pro studenty. Dalším příkladem vektorového
+    součìnu je \emph{Coriolisova síla}, kterou lze napsat jako \(\vec{F}_c =2m\vec{v} \times
+    \vec{\omega}\). Takže pohybuje-li se částice v souřadnicovém systému rychlostí v a souřadnicový
+    systém sám rotuje úhlovou rychlostí \(\vec{\omega}\), a díváme-li se na věc z hlediska
+    rotujícího systému, pak musíme počítat se setrvačnou silou \(\vec{F}_c\).
+
   \section{Setrvačník}\label{fyz:IchapXXsecIII}
+    Vraťme se k zákonu zachování momentu hybnosti. Tento zákon může být ilustrován na příkladu s
+    rychle se točícím kolem nebo setrvačníkem (obr. \ref{fyz:fig406}). Sedíme-li na otáčivé židli a
+    držíme rotující těleso tak, že jeho osa je horizontální, pak vzhledem k této ose má kolo nějaký
+    moment hybnosti. Moment hybnosti vzhledem k vertikální ose je nulový, neboť židle nasazená na
+    čepu, na kterém se může bez tření otáčet, je v klidu. Musí zůstat nulový i tehdy, když zvedneme
+    kolo tak, aby se otáčelo kolem vertikální osy a mělo tak moment hybnosti vzhledem k této ose.
+    Celý \emph{systém} ovšem (kolo, my a židle) \emph{nemůže} mít vertikální složku, takže aby se
+    tento požadavek splnil, musí se židle i my otáčet na opačnou stranu než rotující kolo.
+
     \begin{figure}[ht!] %\ref{fyz:fig406}
       \centering
       \subcaptionbox{\label{fyz:fig406a}}{\luafigure[0.45]{fyz_fig406a.pdf}} 
@@ -278,60 +315,207 @@
       \label{fyz:fig406}
     \end{figure}
 
+    Proveďme nejprve podrobnější analýzu popisovaného jevu. Co je překvapující, a co je třeba,
+    abychom pochopili, je původ sil, jež způsobí naše otáčení, když natočíme osu setrvačníku do
+    vertikální polohy. Na obr. \ref{fyz:fig407} je znázorněno kolo rychle se otáčející kolem osy
+    \(y\). Vzhledem k této ose má úhlovou rychlost a podobně i moment hybnosti. Představme si, že
+    nyní chceme pootočit kolo kolem osy \(x\) malou úhlovou rychlostí \(\Omega\). Jaké síly k tomu
+    potřebujeme? Za krátkou dobu \(\dd{t}\) se osa otočí do nové polohy a s horizontálou bude svírat
+    úhel \(\dd{\Theta}\). Protože větší část momentu hybnosti pochází od rotace kolem osy (pomalé
+    pootočení přispěje málo), vidíme, že moment hybnosti se změnil. Jaká je tato změna? Moment
+    hybnosti nezměnil svou velikost, ale svůj směr o \(\Delta\Theta}\). Velikost vektoru
+    \(\Delta\vec{}\) je tedy \(\Delta L = L_0\times\Delta\Theta\), takže moment síly, který je roven
+    změně momentu hybnosti podle času, je
+    \begin{equation*}
+      N = \dfrac{ΔL}{Δt} = L_0\dfrac{Δθ}{Δt}=L_0Ω
+    \end{equation*}
+    Vezmeme-li v úvahu směry jednotlivých složek, vidíme, že
+    \begin{equation}\label{fyz:eq724}
+      \vec{N} =\vec{Ω}\times\vec{L}_0.
+    \end{equation}
+
+    \begin{figure}[ht!] %\ref{fyz:fig407}
+      \centering
+      \includegraphics[width=0.3\linewidth]{fyz_fig407.pdf}
+      \caption{Setrvačník
+               (\cite[s.~279]{Feynman01})}
+      \label{fyz:fig407}
+    \end{figure}
+
+    Mají-li oba vektory \(\vec{\Omega}\) a \(\vec{L}_0\) horizontální směr, jako je to na obrázku,
+    potom \(\vec{N}\) má \emph{vertikální} směr. K vytvoření takového momentu síly jsou potřebné
+    síly \(\vec{F}\) a \(-\vec{F}\) na obou koncích osy kola. Odkud pocházejí tyto síly? Způsobíme
+    je našima rukama při změně polohy rotační osy kola. Podle třetího Newtonova zákona stejně velké,
+    ale opačné síly (stejně velké, ale opačné \emph{momenty}) působí na \emph{nás}. To způsobí, že
+    se začneme otáčet v opačném směru kolem osy \(z\).   
+    
+    \begin{figure}[ht!] %\ref{fyz:fig408}
+      \centering
+      \includegraphics[width=0.3\linewidth]{fyz_fig408.pdf}
+      \caption{Rychle se otáčející káča. Směr vektoru momentu síly je směrem precese 
+               (\cite[s.~280]{Feynman01})}
+      \label{fyz:fig408}
+    \end{figure}
+
+    Poslední poznatek lze zobecnit i na rychle se otáčející „dětskou káču“. V tomto známém případě
+    vlastní tíha působící v těžišti vytváří moment síly vzhledem k bodu dotyku s podlahou (obr.
+    \ref{fyz:fig408}). Tento moment síly má horizontální směr a způsobuje precesní pohyb rotační osy
+    káčy po plášti rotačního kužele kolem svislé přímky. Je-li (vertikální) úhlová rychlost precese
+    \(\vec{\Omega}\) máme znovu
+    \begin{equation*}
+      \vect{N} = \der{\vec{L}}{t} = \vec{Ω} \times \vec{L}_0.
+    \end{equation*}
+
+    Takže působíme-li na rychle se otáčející káču momentem síly, je směr precesního pohybu ve směru
+    momentu síly, tedy, pod pravými úhly vzhledem k silám způsobujícím daný moment síly.
+
+    Nyní můžeme tvrdit, že chápeme precesní pohyb setrvačníků. Ve skutečnosti ho chápeme po
+    matematické stránce. V určitém smyslu se celá věc jeví jako \uv{zázrak}. Když budeme probírat
+    složitější fyziku, ukáže se, že mnohé jednoduché jevy lze odvodit matematicky mnohem rychleji,
+    než je lze skutečně pochopit. Je to podivuhodné a jakmile přejdeme ke složitějším problémům,
+    uvidíme, že matematicky dostaneme výsledky, jímž v podstatě nikdo nebyl schopen přímo porozumět.
+    Příkladem je \emph{Diracova rovnice}, jež má velmi pěkný a jednoduchý tvar, ale jejíž důsledky
+    lze těžko pochopit. V našem případě se jeví precesní pohyb jako nějaký zázrak sestávající z
+    pravých úhlů, kruhů, pootočení a pravotočivých šroubů. Měli bychom se pokusit pochopit hlubší
+    fyzikální smysl věci.
+    
+    Jak lze vysvětlit moment síly pomocí skutečných sil a zrychlení? Všimněme si, že když rotující
+    těleso vykonává precesní pohyb, nerotují částice kola ve skutečnosti v rovině (obr.
+    \ref{fyz:fig409}). Jak jsme si dříve vysvětlili (obr. \ref{fyz:fig405}), částice, které právě
+    nyní procházejí osou precesního pohybu, se pohybují po \empH{zakřivených trajektoriích}, a to
+    znamená, že na ně působí síla ze strany. Ta je vytvořena naším tlakem na osu, a přenáší se
+    špicemi až na rám kola. „Počkat“, někdo řekne, „ale co s částicemi, jež se pohybují opačně na
+    druhé straně?“ Rychle lze rozhodnout, že na druhé straně musí působit \emph{opačná síla}.
+    Výsledná síla, jíž musíme působit, je proto rovna nule. Síly jsou vyvážené, ale jedna z nich
+    musí působit na jednom konci kola a druhá na druhém. Těmito silami bychom mohli působit přímo,
+    ale protože kolo je tuhé, stačí působit najeho osu a síly se přenesou dále na obvod.
+
+    \begin{figure}[ht!] %\ref{fyz:fig409}
+      \centering
+      \includegraphics[width=0.3\linewidth]{fyz_fig409.pdf}
+      \caption{Při otáčení osy vykonávají částice rotujícího kola (obr. \ref{fyz:fig407}) pohyb, 
+               který se děje po zakřivených trajektoriích 
+               (\cite[s.~280]{Feynman01})}
+      \label{fyz:fig409}
+    \end{figure}
+
+    Zatím jsme dokázali, že pomocí precesního pohybu může kolo vyvážit moment síly způsobený
+    gravitací nebo jiný moment síly, jenž na něj působí. Přitom všechno, co jsme dokázali je, že
+    takovýto pohyb je jedním řešením nějaké rovnice. Je-li tedy dán moment síly a máme-li těleso,
+    které\emph{nerušeně rotovalo}, pak bude vykonávat precesní pohyb hladce a rovnoměrně. Ale
+    nedokázali jsme (a ani to není pravda), že rovnoměmá, regulární precese je \emph{nejobecnějším}
+    pohybem, jejž může vykonávat rotující těleso pod vlivem daného momentu síly. Obecný pohyb
+    zahrnuje i oscilace kolem středního precesního pohybu, jimž se říká \textbf{nutace}.
+
+    \begin{figure}[ht!] %\ref{fyz:fig410}
+      \centering
+      \includegraphics[width=0.3\linewidth]{fyz_fig410.pdf}
+      \caption{Skutečný pohyb konce setrvačníku pod vlivem tíhy ihned po uvolnění předtím uchycené
+               osy (\cite[s.~281]{Feynman01})}
+      \label{fyz:fig410}
+    \end{figure}
+
+    Někteří lidé rádi říkají, že když na setrvačník působí moment síly, začne vykonávat precesní
+    pohyb, a že moment síly \emph{způsobuje} precesi. Velmi zvláštní je to, že když uvolníme
+    setrvačník, pak pod vlivem tíhy nespadne, ale místo toho se začne pohybovat do strany! Jak to,
+    že svislá tíhová síla, která směřuje dolů a kterou známe a cítíme, způsobí, že se setrvačník
+    bude pohybovat do strany? Všechny vzorce světa jako je (\ref{fyz:eq724}) nám to neřeknou, neboť
+    (\ref{fyz:eq724}) je speciální rovnice a platí jen pro regulární precesní pohyb setrvačníku. Co
+    se ve skutečnosti dopodrobna odehraje, je toto. Kdybychom rotační osu drželi zcela pevně, takže
+    by precesní pohyb vůbec nemohl nastat (ale setrvačník by rotoval), nepůsobil by žádný moment
+    síly, dokonce ani moment síly způsobený tíhou, neboť bychom ho vyvažovali svými prsty. Kdybychom
+    ale náhle setrvačník pustili, okamžitě by se uplatnil tíhový moment síly. Každý, kdo má zdravý
+    rozum, by si myslel, že setrvačník začne padat, a to skutečně začne, což lze vidět, nerotuje-li
+    příliš rychle.
+
+    Setrvačník skutečně padá, jak bychom očekávali. Ale jen co začne padat, začne se otáčet, a k
+    tomu, aby tento otáčivý pohyb pokračoval, je třeba momentu síly. Za nepřítomnosti momentu síly v
+    tomto směru, začne setrvačník „padat“ v opačném směru, tj. ve směru chybějící síly, jež měla
+    horizontální směr. To způsobí pohyb setrvačníku kolem vertikální osy, jaký by měl při regulární
+    precesi. Skutečný pohyb přitom překročí rychlost regulámí precese a rotační osa se zvedne na
+    úroveň, z níž začala padat. Trajektorie opisovaná volným koncem osy, je \emph{cykloida} (takovou
+    trajektorii opisuje například kamínek zachycený v rýze na pneumatice auta). Tento pohyb je
+    obvykle příliš rychlý na to, abychom ho mohli postřehnout, rychle se utlumí v důsledku tření
+    vložiskách závěsu a zůstane jen regulární precesní pohyb (obr. \ref{fyz:fig410}). Čím pomaleji
+    kolo rotuje, tím je nutace zřetelnější.
+
+    Když se pohyb ustálí, osa setrvačníku je o něco níže než na začátku. Proč? To jsou složitější
+    detaily, ale zmiňujeme se o nich, protože nechceme, aby čtenář měl dojem, že setrvačník je
+    absolutní zázrak. Je to nádherná věc, ale není to žádný zázrak. Kdybychom osu drželi zcela
+    vodorovně a najednou ji pustili, pak zjednoduché rovnice precese zjistíme, že se bude otáčet ve
+    vodorovné rovině. Ale to je nemožné! Ačkoli jsme to předtím zanedbali, je pravda, že kolo má
+    určitý moment setrvačnosti kolem precesní osy a pohybuje-li se kolem této osy, i když jen
+    pomalu, má malý moment hybnosti vzhledem k této ose. Odkud se vzal? Jsou-li čepy dokonalé, pak
+    není žádný moment síly vzhledem k vertikální ose. Jak to, že začne precesní pohyb, jestliže se
+    nezměnil moment hybnosti? Odpověď je následující: Cykloidální pohyb konce osy se utlumí na
+    rovnoměmý pohyb středu myšlené valící se kružnice. To znamená, že se ustálí trochu níže. Protože
+    je níže, rotační moment hybnosti má malou vertikální složku, což je přesně to, co je třeba k
+    precesnímu pohybu. Takže rotační osa musela trochu klesnout, aby se mohla začít pohybovat
+    dokola. Musela se trochu poddat gravitaci; tím, že se trochu sklonila, zachovala si rotaci kolem
+    vertikální osy. Tak se tedy pohybuje setrvačník.
+
   \section{Moment hybnosti tuhého tělesa}\label{fyz:IchapXXsecIV}
+    Dříve, než zanecháme trojrozměrné rotace, podívejme se, alespoň kvalitativně, na několik jevů,
+    jež nejsou zcela samozřejmé, a jež se vyskytují při trojrozměrných rotacích. Nejvýraznější
+    zvláštností je to, že obecně moment hybnosti tuhého tělesa \emph{nemá nutně} stejný směr, jako
+    úhlová rychlost. Podívejme se na kolo, které je upevněno šikmo na ose, jež prochází jeho
+    těžištěm (obr. \ref{fyz:fig411}). Když roztočíme takové kolo kolem osy, každý ví, že se budou
+    chvět ložiska, neboť kolo jsme upevnili šikmo. Kvalitativně víme, že v rotujícím systému působí
+    na kolo odstředivá síla, která se snaží odhodit hmotu kola co nejdál od osy otáčení. Tato síla
+    má tendenci vyrovnat rovinu kola, aby byla kolmá na osu. K překonání této tendence působí
+    ložiska momentem síly. Působí-li ložiska momentem síly, musí docházet k změně momentu hybnosti.
+    Jak se může při prostém otáčení kola kolem osy měnit moment hybnosti? Předpokládejme, že
+    rozložíme úhlovou rychlost \(\vec{\Omega}\) na složky \(\vec{\Omega}_1\) a \(\vec{\Omega}_2\),
+    kolmou a podélnou složku s rovinou kola. Čemu je roven moment hybnosti?
+
+    \begin{figure}[ht!] %\ref{fyz:fig411}
+      \centering
+      \includegraphics[width=0.3\linewidth]{fyz_fig411.pdf}
+      \caption{Moment hybnosti rotujícího tělesa není nutně rovnoběný s úhlovou rychlostí
+              (\cite[s.~282]{Feynman01})}
+      \label{fyz:fig411}
+    \end{figure}
+
+    Momenty setrvačnosti vzhledem k těmto osám jsou rozdílné, takže složky momentu hybnosti, jež
+    jsou rovny součinům momentů setrvačnosti a příslušné složky úhlové rychlosti, jsou (jen pro
+    takto speciálně zvolené osy) v jiném poměru než složky úhlové rychlosti. Vektor momentu hybnosti
+    tedy nemíří ve směru osy otáčení kola. Otáčíme-li kolo, otáčíme v prostoru i vektor momentu
+    hybnosti, takže na osu musíme působit momentem síly.
+
+    Ačkoli je to příliš komplikované na dokazování, moment setrvačnosti má velmi důležitou a
+    zajímavou vlastnost, kterou lze snadno popsat a používat, a která tvoří základ naší
+    předcházející analýzy. Je to tato vlastnost: Každé tuhé těleso, dokonce i tak nepravidelné jako
+    brambora, má tři navzájem kolmé osy procházející těžištěm, takové, že moment setrvačnosti
+    vzhledem k jedné z nich má \emph{největší možnou} hodnotu z hodnot určených vůči libovolným osám
+    procházejícím těžištěm. Moment setrvačnosti vzhledem k další z nich má \emph{nejmenší možnou}
+    hodnotu a moment setrvačnosti vzhledem k třetí ose má velikost mezi prvními dvěma (nebo je roven
+    některé z nich). Tyto osy se nazývají \textbf{hlavními osami} tělesa a mají tu zvláštní
+    vlastnost, že když se těleso otáčí kolem některé z nich, má moment hybnosti stejný směrjako
+    úhlová rychlost. V tělese, které má osy symetrie, míří hlavní osy podél os symetrie.
+
+    \begin{figure}[ht!] %\ref{fyz:fig412}
+      \centering
+      \includegraphics[width=0.3\linewidth]{fyz_fig412.pdf}
+      \caption{Úhlová rychlost a moment hybnosti tuhého tělesa (\(A>B>C\))
+              (\cite[s.~283]{Feynman01})}
+      \label{fyz:fig412}
+    \end{figure}
+
+    Ztotožníme-li souřadnicové osy \(x\), \(y\), \(z\) s hlavními osami a odpovídající hlavní
+    momenty setrvačnosti nazveme \(A\), \(B\) a \(C\), můžeme snadno vypočítat moment hybnosti a
+    kinetickou energii rotujícího tělesa pro jakoukoli úhlovou rychlost \(\omega\).
+
+    Rozložíme-li \(\vec{\omega}\) na složky \(ω_x\), \(ω_y\) a \(ω_z\) podél os \(x\), \(y\) a
+    \(z\), můžeme psát moment hybností s použitím jednotkových vektorů \(\vec{i}\), \(\vec{j}\),
+    \(\vec{k}\), směřujících podél \(x\), \(y\) a \(z\) jako 
+    \begin{equation}\label{fyz:eq725}
+      \vec{L}=Aω_x\vec{i}+Bω_y\vec{j}+Cω_z\vec{k}.
+    \end{equation}
+    Kinetická energie rotace je
+    \begin{equation}\label{fyz:eq726}
+      E_k=\frac{1}{2}(Aω^2_x+Bω^2_y+Cω^2_z) =\frac{1}{2}\vec{L}\cdot\vec{ω}. 
+    \end{equation}
+
   \section{Příklady a cvičení}\label{fyz:IchapXXsecV}  
 
-
-
-  \begin{figure}[ht!] %\ref{fyz:fig407}
-    \centering
-    \includegraphics[width=0.3\linewidth]{fyz_fig407.pdf}
-    \caption{Setrvačník
-             (\cite[s.~279]{Feynman01})}
-    \label{fyz:fig407}
-  \end{figure}
-
-  \begin{figure}[ht!] %\ref{fyz:fig408}
-    \centering
-    \includegraphics[width=0.3\linewidth]{fyz_fig408.pdf}
-    \caption{Rychle se otáčející káča. Směr vektoru momentu síly je směrem precese 
-             (\cite[s.~280]{Feynman01})}
-    \label{fyz:fig408}
-  \end{figure}
-
-  \begin{figure}[ht!] %\ref{fyz:fig409}
-    \centering
-    \includegraphics[width=0.3\linewidth]{fyz_fig409.pdf}
-    \caption{Při otáčení osy vykonávají částice rotujícího kola (obr. \ref{fyz:fig407}) pohyb, 
-             který se děje po zakřivených trajektoriích 
-             (\cite[s.~280]{Feynman01})}
-    \label{fyz:fig409}
-  \end{figure}
-
-  \begin{figure}[ht!] %\ref{fyz:fig410}
-    \centering
-    \includegraphics[width=0.3\linewidth]{fyz_fig410.pdf}
-    \caption{Skutečný pohyb konce setrvačníku pod vlivem tíhy ihned po uvolnění předtím uchycené osy
-             (\cite[s.~281]{Feynman01})}
-    \label{fyz:fig410}
-  \end{figure}
-
-  \begin{figure}[ht!] %\ref{fyz:fig411}
-    \centering
-    \includegraphics[width=0.3\linewidth]{fyz_fig411.pdf}
-    \caption{Moment hybnosti rotujícího tělesa není nutně rovnoběný s úhlovou rychlostí
-             (\cite[s.~282]{Feynman01})}
-    \label{fyz:fig411}
-  \end{figure}
-
-  \begin{figure}[ht!] %\ref{fyz:fig412}
-    \centering
-    \includegraphics[width=0.3\linewidth]{fyz_fig412.pdf}
-    \caption{Úhlová rychlost a moment hybnosti tuhého tělesa (\(A>B>C\))
-             (\cite[s.~283]{Feynman01})}
-    \label{fyz:fig412}
-  \end{figure}
-
-  \todo[inline]{Kapitola fey1ch20 je zcela prázdná, pouze obrázky}  
-%} %tikzset
 %---------------------------------------------------------------------------------------------------
