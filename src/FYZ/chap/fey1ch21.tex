@@ -167,9 +167,30 @@
         x=A\cosω_0t+B\sinω_0t.    \label{fyz:eq732c}
       \end{align}
     \end{subequations}
-    
+
+    Některé veličiny v (\ref{fyz:eq732}) mají svůj název: \(\omega_0\) se nazývá \textbf{úhlovou
+    frekvencí}; je to počet radiánů, o které se fáze změní za sekundu. Je určena diferenciální
+    rovnicí. Ostatní konstanty nejsou určeny diferenciální rovnicí, ale počátečními podmínkami. Z
+    těchto konstant udává \(a\) maximální dosaženou výchylku a nazývá se \textbf{amplitudou kmitů}.
+    Konstantě \(A\) se někdy říká \textbf{fáze} oscilací, ale to je nedorozumění, neboť jinak se
+    fází nazývá \(\omega_0t + \Delta\) , přičemž se fáze mění v Závislosti na čase. \(\Delta\)
+    můžeme nazvat \textbf{fázovým posunem} od nějaké deﬁnované nulové fáze. Řekněme to jinak – různá
+    \(\Delta\) odpovídají pohybům v různých fázích. Tak je to správně, ale jestli si můžeme nebo
+    nemůžeme dovolit nazvat \(\Delta\) fází, to je jiná otázka.
 
   \section{Harmonický pohyb a pohyb po kružnici}\label{fyz:IchapXXIsecIII}
+    Skutečnost, že řešení rovnice (\ref{fyz:eq728}) obsahuje kosinus, svědčí o tom, že tu může být
+    nějaká souvislost s kružnicemi. Samozřejmě, je to umělá souvislost, neboť v lineárním pohybu se
+    kružnice nevyskytují - je to prostě pohyb sem a tam. Mohli bychom poukázat na to, že tuto
+    diferenciální rovnici jsme vlastně již vyřešili při studiu mechaniky pohybu po kružnici.
+    Vykonává-li částice pohyb po kružnici konstantní rychlostí \(v\), otáčí se polohový vektor
+    spojující střed kružnice s částicí o úhel, jehož velikost se zvětšuje úměrně s časem. Nazveme-li
+    tento úhel \(θ=vt/R\) (obr. \ref{fyz:fig247}), pak \(\diff{θ}{t}=ω_0= v/R\). Přitom působí
+    dostředivé zrychlení \(a=v^2/R= ω^2_0R\). V jakémkoli okamžiku je souřadnice \(x\) rovna
+    poloměru krát \(\cosθ\) a souřadnice \(y\) je rovna součinu poloměru a \(\sinθ\):
+    \begin{equation*}
+      x=R\cosθ,\qquad y=R\sinθ.
+    \end{equation*}
     \begin{figure}[ht!] %\ref{fyz:fig247}
       \centering
       \includegraphics[width=0.5\linewidth]{fyz_fig247.pdf}
@@ -177,18 +198,169 @@
               (\cite[s.~290]{Feynman01})}
       \label{fyz:fig247}
     \end{figure}
+    A co se zrychlením? Čemu je rovna \(x\)-ová složka zrychlení \(\diff[2]xt=\)? Geometricky jsme
+    si již odvodili, že je rovna velikostí zrychlení vynásobené kosinem prošlého úhlu se záporným
+    znaménkem, neboť směřuje do středu
+    \begin{equation}\label{fyz:eq733}
+      a_x=−a\cosθ=−ω^2_0R\cosθ=−ω^2_0x.
+    \end{equation}
+
+    Jinak řečeno, koná-li částice pohyb po kružnici, má horizontální složka pohybu zrychlení, jež je
+    úměrné horizontální vzdálenosti od středu. Samozřejmě známe i řešení pohybu po kružnici:
+    \(x=R\cosω_0t\). Rovnice (\ref {fyz:eq733}) nezávisí na poloměru kružnice, proto pro jakoukoli
+    kružnici máme stejné řešení při daném \( ω_0\). Na základě různých důvodů můžeme očekávat, že
+    velikost výchylky závaží na pružině bude úměrná \(\cosω_0t\) a bude to představovat stejný
+    pohyb, jaký bychom viděli, kdybychom se dívali na \(x\)-ovou složku polohy tělesa obíhajícího po
+    kružnici úhlovou rychlostí \( ω_0\).  Jako důkaz lze experimentálně ověřit, že pohyb závaží
+    zavěšeného na pružině směrem nahoru a dolů je při pohledu ze strany stejný jako pohyb po
+    kružnici. Na obr. \ref{fyz:fig248} se stíny knoﬂíku na klice kola a závaží svisle kmitajícího na
+    pružině pohybují souběžně. Rozkmitáme-li závaží ve správném okamžiku ze správné polohy a jsou-li
+    obrátky kola nastaveny tak, aby frekvence obou pohybů souhlasily, pak se budou oba stíny
+    pohybovat současně. Stejně lze porovnat numerické řešení, které jsme našli předtím s funkcí
+    kosinus a přesvědčit se, zda souhlasí.
 
     \begin{figure}[ht!] %\ref{fyz:fig248}
       \centering
-      \includegraphics[width=0.5\linewidth]{fyz_fig248.pdf}
+      \includegraphics[width=\linewidth]{fyz_fig248.pdf}
       \caption{Demonstrace ekvivalence jednoduchého harmonického pohybu a rovnoměrného pohybu po 
               krunici
               (\cite[s.~290]{Feynman01})}
       \label{fyz:fig248}
     \end{figure}
 
+    Na tomto místě můžeme poznamenat, že když je rovnoměrný pohyb po kružnici tak úzce spjat s
+    kmitavým pohybem, můžeme kmitavý pohyb popsat jednodušeji jako projekci pohybu hmotného bodu po
+    kružnici. Jinak řečeno, i když vzdálenost \(y\) v případě oscilátoru nemá význam, můžeme rovnici
+    (\ref{fyz:eq728}) napsat i pro \(y\) a obě rovnice spojit. To nám umožní provést analýzu našeho
+    jednorozměrného oscilátoru pomocí znalostí pohybů po kružnici, což je mnohem snadnější, než
+    kdybychom museli řešit příslušnou diferenciální rovnici. To lze provést použitím komplexních
+    čísel, což si ukážeme v následující kapitole.
+
   \section{Počáteční podmínky}\label{fyz:IchapXXIsecIV}
+    Nyní se zamysleme nad tím, co určuje konstanty \(A\) a \(B\) nebo \(a\) a \(\Delta\). Tyto
+    konstanty jsou určeny tím, jak začne pohyb. Uvedeme-li závaží do pohybu tak, že ho trochu
+    vychýlíme, máme jeden druh oscilací. Vychýlíme-li ho nejdříve a při pouštění postrčíme,
+    dostaneme zase jiný pohyb. Konstanty \(A\) a \(B\) nebo \(a\) a \(\Delta\) jsou určeny tím, jak
+    pohyb začal a ničím jiným, tj. takzvanými \textbf{počátečními podmínkami}. Ukážeme si, jak
+    počáteční podmínky souvisí s těmito konstantami. Ačkoli bychom k tomu mohli použít jakýkoli z
+    tvarů (\ref{fyz:eq732}), nejsnadnější to je s tvarem (\ref{fyz:eq732c}). Předpokládejme, že v
+    čase \(t=0\) jsme pohyb začali s počáteční výchylkou \(x_0\) a rychlostí \(v_0\). To je
+    nejobecnější způsob, jak může pohyb začít. (Počáteční \emph{zrychlení} nemůžeme zadat, neboť to
+    je dáno vlastností pružiny, jakmile známe \(x_0\)). Nyní vypočítejme \(A\) a \(B\). Začneme s
+    rovnicí pro \(x\)
+    \begin{equation*}
+      x=A\cosω_0t+B\sinω_0t.
+    \end{equation*}
+    Protože později budeme potřebovat i rychlost, zderivujeme \(x\) a dostaneme
+    \begin{equation*}
+      v=−ω_0A\sinω_0t+ω_0B\cosω_0t.
+    \end{equation*}
+    Tyto vztahy platí pro každé \(t\), ale my známe \(x\) a \(v\) v okamžiku \(t=0\). Dosadíme-li do
+    těchto rovnic \(t=0\), na levé straně budeme mít \(x_0\) a \(v_0\), tj. hodnoty pro \(x\) a
+    \(v\) v okamžiku \(t=0\). Víme, že kosinus nuly je jedna a sinus nuly je nula, a tak
+    \begin{equation*}
+      x_0=A⋅1+B⋅0=A
+    \end{equation*}
+    a
+    \begin{equation*}
+      v_0=−ω_0A⋅0+ω_0B⋅1=ω_0B.
+    \end{equation*}
+    takže pro tento zvláštní případ platí
+    \begin{equation*}
+      A=x_0,\qquad B=v_0/ω_0.
+    \end{equation*}
+    Z hodnot \(A\) a \(B\) můžeme vypočítat \(a\) a \(\Delta\), chceme-li.
+
+    Tím máme problém vyřešen, ale je tu ještě jedna fyzikálně zajímavá věc, kterou bychom měli
+    ověřit, a to zachování energie. Protože nedochází ke ztrátám třením, energie by se měla
+    zachovávat. Použijeme vztahy
+    \begin{align*}
+      x&=a\cos(ω_0t+Δ);   \\
+      \shortintertext{pak}
+      v&=−ω_0a\sin(ω_0t+Δ).
+    \end{align*}
+    Vypočítejme kinetickou \(T\) a potenciální energii \(U\). Potenciální energie v kterémkoli
+    okamžiku je \(1/2kx^2\), kde \(x\) je výchylka a \(k\) tuhost pružiny. Dosadíme-li za \(x\),
+    máme
+    \begin{equation*}
+      U=\frac{1}{2}kx^2=\frac{1}{2}ka^2\cos^2(ω_0t+Δ).
+    \end{equation*}
+    je vidět, že potenciální energie není konstantní. Nikdy není záporná, což je přirozené, neboť
+    v pružině je vždy nějaká energie, ale její velikost se mění s \(x\). Na druhé straně, kinetická
+    energie je rovna \(\frac{1}{2}mv^2\) a dosazením za \(v\) máme
+    \begin{equation*}
+      T=\frac{1}{2}mv^2=\frac{1}{2}mω^2_0a^2\sin^2(ω_0t+Δ).
+    \end{equation*}
+    Pro maximální \(x\) je kinetická energie rovna nule, neboť rychlost je nulová, a v okamžiku, kdy
+    \(x\) prochází nulou, je kinetická energie maximální, neboť tehdy je pohyb nejrychlejší. Tyto
+    změny kinetické energie jsou právě opačné než změny potenciální energie, ale celková energie
+    musí být konstantní. Když si všimneme, že \(k= m\omega^2_0\), vidíme, že
+    \begin{align*}
+      T+U&=\frac{1}{2}mω^2_0a^2[\cos^2(ω_0t+Δ)+\sin^2(ω_0t+Δ)]      \\
+         &=\frac{1}{2}mω^2_0a^2.
+    \end{align*}
+    Energie je úměrná druhé mocnině amplitudy. Zdvojnásobí-li se amplituda, zvětší se energie
+    čtyřnásobně. Střední potenciální energie je rovna polovině celkové energie a střední kinetická
+    energie je podobně rovna polovině celkové energie.
+
   \section{Nucené kmity}\label{fyz:IchapXXIsecV}
+    V dalším textu se budeme zabývat \emph{harmonickým oscilátorem s nucenými kmity}, tj. takovým,
+    na který působí vnější budicí síla. Rovnice takového oscilátoru je
+    \begin{equation}\label{fyz:eq734}
+      m\diff[2]xt=−kx+F(t).
+    \end{equation}
+    Rádi bychom zjistili, co se bude dít za takových okolností. Vnější budicí síla může mít různé
+    závislosti na čase. První závislost, jíž se budeme zabývat, je velmi jednoduchá - budeme
+    předpokládat, že síla se mění harmonicky
+    \begin{equation}\label{fyz:eq735}
+      F(t)=F_0\cosωt.
+    \end{equation}
+    Všimněme si však, že toto \(\omega\) se nemusí rovnat \(\omega_0\): máme pod svou kontrolou -
+    buzení může mít různé frekvence. Rovnici (\ref{fyz:eq734}) se pokusíme vyřešit pro zvláštní sílu
+    (\ref{fyz:eq735}). Jaké řešení má rovnice (\ref{fyz:eq734})? Jedním partikulárním řešením
+    (obecnější případ si probereme později) je
+    \begin{equation}\label{fyz:eq736}
+      x=C\cosωt,
+    \end{equation}
+    kde je třeba určit \(C\) jinak řečeno, můžeme předpokládat, že nutí-li vnější síla těleso
+    pohybovat se sem a tam, pak těleso sleduje působení síly. Ať už je to jakkoli, můžeme to zkusit.
+    Dosadíme (\ref{fyz:eq736}) do (\ref{fyz:eq734}) a máme
+    \begin{equation*}
+      −mω^2C\cosωt=−mω^2_0C\cosωt+F_0\cosωt.
+    \end{equation*}
+    Dosadili jsme i \(k=mω^2_0\), abychom této rovnici nakonec lépe porozuměli. Protože v každém
+    členu je \(\cos\omega t\), můžeme jím rovnici vydělit a vidíme, že (\ref{fyz:eq736}) je skutečně
+    řešením, za předpokladu, že \(C\) zvolíme Správně. \(C\) musí být rovno
+    \begin{equation}\label{fyz:eq738}
+      C=\frac{F_0}{m(ω^2_0−ω^2)}.
+    \end{equation}
+    tj. částice \(m\) kmitá se stejnou frekvencí jako síla, ale s amplitudou, která závisí na
+    frekvenci budicí síly a na vlastní frekvenci oscilátoru. Za prvé to znamená, že je-li \(\omega\)
+    velmi malé ve srovnání s \(\omega_0\), pak posunutí a síla mají stejný směr. Na druhé straně,
+    když budeme závaží nutit kmitat velmi rychle, pak (\ref {fyz:eq738}) nám říká, že \(C\) je
+    záporné pro \(\omega\) větší než vlastní frekvence oscilátoru \(\omega_0\) (\(\omega_0\) budeme
+    nazývat vlastní frekvencí harmonického oscilátoru a \(\omega\) budící frekvencí). Při velmi
+    vysoké frekvenci může být jmenovatel velmi velký a amplituda je potom velmi malá.
+
+    Samozřejmě, řešení, které jsme našli, je vyhovujícím řešením, jen od určitého časového počátku,
+    neboť jinak existuje i takové řešení, které se po chvíli utlumí. Toto druhé řešení se nazývá
+    \textbf{přechodovou odezvou} na \(F(t)\), zatímco (\ref{fyz:eq736}) a (\ref{fyz:eq738}) se
+    nazývají \textbf{ustálenou odezvou}.
+
+    Podle našeho vztahu (\ref{fyz:eq738}) by se měl vyskytovat pozoruhodný jev: Je-li \(\omega\)
+    téměř stejné jako \(\omega_0\), blíží se \(C\) k nekonečnu. Proto nastavíme-li frekvenci vnější
+    síly tak, aby byla v souladu s vlastní frekvencí, měli bychom dostat mimořádně velké výchylky.
+    To ví dobře každý, kdo houpal dítě na houpačce. Nešlo by nám to, kdybychom zavřeli oči a
+    houpačku rozhoupávali libovolně určitou frekvencí. Podaří-li se nám najít správný rytmus, létá
+    houpačka velmi vysoko, máme-li však špatný rytmus, můžeme někdy tlačit, kdybychom správně měli
+    táhnout a podobně - prostě to nejde.
+
+    Nastavíme-li \(\omega\) tak, aby bylo přesně rovno \(\omega_0\), měla by být amplituda
+    oscilátoru nekonečná, což je nemožné. Příčinou je to, že naše rovnice tehdy přestane platit.
+    Projeví se dodatečné členy, které odpovídají tření a dalším silám, jež nejsou v rovnici
+    (\ref{fyz:eq734}) zahrnuty, ale které se vyskytují v reálném světě. Proto se amplituda nezvětší
+    z nějakého důvodu do nekonečna. Například proto, že pružina praskne!
+
   \section{Příklady a cvičení}\label{fyz:IchapXXIsecVI}
 
 %---------------------------------------------------------------------------------------------------
