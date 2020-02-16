@@ -30,7 +30,7 @@
     Předpokládejme, že těleso je rozděleno na malé části, z nichž každá má stejnou hmotnost \(m\).
     Celková hmotnost je pak rovna počtu částí \(N\) násobenému hmotností jednotlivé části. Tato
     rovnice pak znamená, že máme sčítat všechny polohy \(x_i\) a vydělit je počtem částí
-    \begin{equation}\label{fyz:eq740}
+    \begin{equation}\label{fyz:eq743}
       X_{CM} =  \frac{m∑x_i}{mN}= \frac{∑xi}{N}.
     \end{equation}
     
@@ -146,35 +146,230 @@
     \(∑m_ix_i=MX_{CM}\), tj. celková hmotnost krát vzdálenost hmotného středu od osy otáčení, proto
     \(x\)-ová vzdálenost hmotného středu od osy otáčení je rovna nule.
 
+    Zkontrolovali jsme výsledek jen pro vzdálenosti ve směru osy \(x\), ale kdybychom použili
+    skutečný hmotný střed, bylo by těleso v rovnováze v jakékoli poloze, neboť otočíme-li ho o
+    \ang{90}, dostaneme místo \(x\)-ových \(y\)-ové vzdálenosti. Jinými slovy, je-li těleso
+    podepřeno v hmotném středu, nepůsobí na něj moment síly, neboť gravitační pole je homogenní. V
+    případě, že těleso je tak velké, že se projeví nerovnoběžnost gravitačních sil, pak určit bod, v
+    němž je třeba působit rovnovážnou silou, není jednoduché a jeho poloha se trochu vysune z
+    hmotného středu. To je důvodem, proč je třeba rozlišovat mezi hmotným středem a těžištěm. Fakt,
+    že těleso podepřené přesně v hmotném středu je v rovnováze ve všech polohách, má další zajímavý
+    důsledek. Máme-li místo gravitace nepravou sílu vzniklou zrychlením, můžeme přesně stejným
+    matematickým postupem najít polohu bodu k upevnění tělesa, aby setrvačná síla způsobená
+    zrychlením nepůsobila žádným momentem síly. Předpokládejme, že těleso je nějak upevněno v
+    krabici, která se zrychleně pohybuje se vším, co v ní je. Víme, že z hlediska toho, kdo je
+    vzhledem ke krabici v relativním klidu, bude v ní působit efektivní síla setrvačnosti. To
+    znamená, že aby se nějaké těleso pohybovalo spolu s krabicí, musíme na něj působit silou, aby se
+    zrychlovalo. Tato síla je vyvažována „silou setrvačnosti“, jež je nepravou silou a je rovna
+    součinu hmotnosti a zrychlení krabice. Pro člověka v krabici je to stejná situace, jako by se
+    krabice nacházela v homogenním gravitačním poli, jehož hodnota „\(g\)“ je rovna zrychlení \(a\).
+    Proto setrvačná síla způsobená zrychlením tělesa nepůsobí momentem síly vzhledem k hmotnému
+    středu.
 
+    Tato skutečnost má velmi zajímavé důsledky. V inerciální soustavě, jež se nezrychluje, je moment
+    síly vždy roven rychlosti změny momentu hybnosti, ale vzhledem k ose, která prochází hmotným
+    středem tělesa i když se těleso zrychluje, \emph{stále platí}, že moment síly je roven rychlosti
+    změny momentu hybnosti. Dokonce i když se hmotný střed zrychluje, můžeme stále zvolit takovou
+    osu, konkrétně tu, která jím prochází, aby platila rovnost momentu síly a rychlosti změny
+    momentu hybnosti vzhledem k této ose. Proto věta, že moment síly je roven rychlosti změny
+    momentu hybnosti, platí ve dvou obecných případech:
+
+    \begin{enumerate}[noitemsep]
+      \item pro pevnou osu v inerciálním systému,
+      \item pro osu procházející těžištěm - dokonce i když se těleso pohybuje zrychleně.      
+    \end{enumerate}
 
   \section{Poloha hmotného bodu}\label{fyz:IchapXIXsecII}
-  \section{Určení momentu setrvačnosti}\label{fyz:IchapXIXsecIII}
-  \section{Kinetická energie rotace}\label{fyz:IchapXIXsecIV}
-  \section{Příklady a cvičení}\label{fyz:IchapXIXsecV}
+    Matematická technika výpočtu hmotného středu těles spadá do kurzu matematiky a takovéto problémy
+    jsou vhodnými cvičeními v integrálním počtu. I když známe integrální počet, je dobré znát určité
+    triky, jež se k výpočtu polohy hmotného středu dají použít. jeden takový trik využívá tzv.
+    \textbf{Pappovy věty}. Zní takto: Vezmeme-li si libovolnou uzavřenou plochu v rovině a pohybem
+    této plochy v prostoru vytvoříme těleso tak, aby se každý bod plochy pohyboval kolmo k rovině
+    plochy, pak objem tohoto tělesa je roven součinu obsahu plochy průřezu tělesa a vzdáleností,
+    kterou urazil hmotný střed! Určitě to platí, budeme-li plochou pohybovat přímo, kolmo k rovině
+    plochy; ale budeme-li jí pohybovat po kružnici nebo po jiné křivce mohou vznikat velmi zvláštní
+    tělesa. V případě zakřivené dráhy se vzdálenější strana posune víc a bližší méně, takže tyto
+    efekty se vzájemně vyrovnají. Proto, chceme-li určit polohu hmotného středu rovinné desky
+    rovnoměrné hustoty, můžeme si zapamatovat, že objem vytvořený její rotací kolem nějaké osy je
+    roven součinu dráhy, kterou projde hmotný střed a obsahu plochy této desky.
 
-
+    Chceme-li určit hmotný střed pravoúhlého trojúhelníka se základnou \(D\) a výškou \(H\) (obr.
+    \ref{fyz:fig403}), můžeme postupovat následujícím způsobem. Představme si osu podél \(H\) a
+    otočme kolem ní trojúhelník o \num{360} stupňů. Tím se vytvoří kužel. Hmotný střed o souřadnici
+    \(x\) opsal dráhu \(2\pi x\). Plocha, která se pohybovala, je plocha trojúhelníka a má obsah
+    \(\frac{1}{2}HD\). Takže dráha hmotného středu krát obsah plochy trojúhelníka je rovna rotačnímu
+    objemu, který je \(\frac{1}{3}\pi D^2H\). Takže \((2\pi x) (\frac{1}{2}HD) =\frac{1}{3}\pi
+    D^2H\) neboli \(x=D/3\). Podobným způsobem, rotací kolem druhé osy nebo pomocí argumentu
+    symetrie, bychom našli \(y=H/3\). Skutečně, těžiště jakéhokoli homogenního trojúhelníka je v
+    průsečíku těžnic (spojnic vrcholů se středy protilehlých stran). Nachází se v \(1/3\) délky
+    každé těžnice. Rozřežeme-li trojúhelník na množství pásků rovnoběžných se základnou vidíme, že
+    těžnice rozpůlí každý pásek, a proto musí těžiště ležet na těžnici!  
 
     \begin{figure}[ht!] %\ref{fyz:fig403}
       \centering
-      \includegraphics[width=0.3\linewidth]{fyz_fig403.pdf}
+      \includegraphics[width=0.8\linewidth]{fyz_fig403.pdf}
       \caption{Pravoúhlý trojúhelník a přímý rotační kužel vytvořený rotujícím trojúhelníkem 
               (\cite[s.~263]{Feynman01})}
       \label{fyz:fig403}
     \end{figure}
+
+    Nyní zkusme komplikovanější příklad. Hledejme hmotný střed homogenního půlkruhového kotouče -
+    kotouče rozříznutého na polovinu. Kde se nachází hmotný střed? Hmotný střed celého kotouče je ve
+    středu, to je jednoduché, ale pro poloviční, kotouč je situace obtížnější. Nechť \(r\) je
+    poloměr a \(x\) nechť je vzdálenost hmotného středu od rovné hrany kotouče. Zatočme jím kolem
+    této hrany jako kolem osy a vytvořme kouli. Těžiště se přitom posunulo o \(2\pi x\), obsah
+    plochy je \(1/2\pi r^2\) (neboť je to půlkruh). Vytvořený objem je roven \(4/3\pi r^3\), odkud
+    máme že
+    \begin{align*}
+      (2πx)(\frac{1}{2}πr^2)&=\frac{4}{3}πr^3,
+      \shortintertext{nebo}
+                           x&=\frac{4}{3}rπ.
+    \end{align*}
+
+    Existuje další Pappova věta, která je zvláštním případem předcházející věty, takže je rovněž
+    pravdivá. Předpokládejme, že místo půlkruhového kotouče bychom měli půlkružnicový drát, v němž
+    chceme najít hmotný střed. V tomto případě není hmota ve vnitřní oblasti, pouze v drátu. Ukazuje
+    se, že \emph{plocha} vytvořená rotací rovinné křivky je rovna vzdálenosti, o níž se posune
+    hmotný střed, vynásobené \emph{délkou} křivky. (Křivku si můžeme představit jako velmi úzkou
+    plochu a můžeme použít předcházející větu.)
+
+  \section{Určení momentu setrvačnosti}\label{fyz:IchapXIXsecIII}
+    Nyní se věnujme problému určení \textbf{momentu setrvačnosti} různých těles. Vzorec pro výpočet
+    momentu setrvačnosti kolem osy \(z\) je 
+    \begin{align}
+      I&=∑m_i(x^2i+y^2i)  \nonumber \\
+      \shortintertext{nebo}
+      I&=∫(x^2+y^2)\dl m = ∫(x^2+y^2)ρ\dl V. \label{fyz:eq744}
+    \end{align}
+    To znamená, že musíme sečíst hmotnosti, z nichž každá je vynásobena druhou mocninou své
+    vzdálenosti od osy. Všimněme si, že tu nevystupuje trojrozměrná vzdálenost, ale druhá mocnina
+    dvojrozměrné vzdálenosti, ačkoli jde o trojrozměrné těleso. Většinou se omezíme na dvojrozměrné
+    objekty, ale vzorec pro rotaci kolem osy \(z\) je stejný jako v trojrozměrném případě.
+
     \begin{figure}[ht!] %\ref{fyz:fig404}
       \centering
-      \includegraphics[width=0.3\linewidth]{fyz_fig404.pdf}
+      \includegraphics[width=0.8\linewidth]{fyz_fig404.pdf}
       \caption{Přímá tyč \(L\) rotující kolem osy procházející jedním koncem
               (\cite[s.~264]{Feynman01})}
       \label{fyz:fig404}
     \end{figure}
 
-    \begin{figure}[ht!] %\ref{fyz:fig405}
-      \centering
-      \includegraphics[width=0.3\linewidth]{fyz_fig405.pdf}
-      \caption{Tři postupné pohledy na radiálně se pohybující bod na otáčející se podložce
-              (\cite[s.~269]{Feynman01})}
-      \label{fyz:fig405}
-    \end{figure}
+    Jako jednoduchý příklad si představme tyč rotující kolem kolmé osy procházející jejím jedním
+    koncem  (obr. \ref{fyz:fig404}). Je třeba sečíst všechny hmotnosti vynásobené druhou mocninou
+    \(x\)-ové vzdálenosti (všechny vzdálenosti \(y\) jsou v tomto případě rovny nule). „Součtem“
+    máme samozřejmě na mysli integrál z \(x^2\) krát malé elementy hmotnosti. Rozdělíme-li tyč na
+    malé elementy délky \(\dl x\), a je-li délka celé tyče \(L\) a její hmotnost \(M\), pak
+    \begin{equation*}
+      \dl m =\frac{M}{L}\dl x 
+    \end{equation*}
+    a také
+    \begin{equation}\label{fyz:eq745}
+      I =∫^L_0x^2\frac{M}{L}\dl x = \frac{M}{L}∫^L_0x^2\dl x=\frac{ML^2}{3}. 
+    \end{equation}
+
+    Rozměry momentu setrvačnosti jsou vždy hmotnost krát druhá mocnina délky, takže všechno, co jsme
+    skutečně potřebovali zjistit, byl koeﬁcient \(1/3\).
+
+    Čemu je rovno \(I\), prochází-li osa rotace středem tyče? Znovu bychom mohli počítat tento
+    integrál, přičemž \(x\) by se měnilo od \(- 1/2 L\) do \(+ 1/2 L\). Všimněme si však několika
+    vlastností momentu setrvačnosti. Celou tyč si můžeme představit jako by byla složena ze dvou
+    tyčí, každé o hmotnosti \(M/2\) a délce \(L/2\). Momenty setrvačnosti těchto dvou malých tyčí
+    jsou stejné a oba jsou dány vzorcem. Proto moment setrvačnosti celé tyče je
+    \begin{equation}\label{fyz:eq745}
+      I=\dfrac{2\left(\dfrac{M}{2}\right)\left(\dfrac{L}{2}\right)^2}{3} = \dfrac{ML^2}{12}.
+    \end{equation}
+    Takže je mnohem snadnější točit tyč kolem jejího středu než kolem jejího konce.
+    
+    Mohli bychom pokračovat ve výpočtech momentu setrvačnosti pro různá jiná zajímavá tělesa. I když
+    takové výpočty tvoří část důležitých cvičení v integrálním počtu, nejsou pro nás v podstatě
+    zajímavé. Existuje však zajímavá věta, která je velmi užitečná. Předpokládejme, že máme nějaké
+    těleso a chceme vypočítat jeho moment setrvačnosti vzhledem k nějaké ose. To znamená, že chceme
+    určit setrvačnost, kterou musíme překonat při rotaci kolem této osy. Upevníme-li těleso v
+    těžišti na čepu tak, aby se při oběhu kolem osy samo neotáčelo (setrvačně síly nebudou vyvolávat
+    žádný moment síly), pak síly potřebné k jeho oběhu jsou takové, jako by celá hmotnost tělesa
+    byla soustředěna v hmotném středu a moment setrvačnosti bude prostě \( I_1=MR^2_{CM}\), kde
+    \(R_{CM}\) je vzdálenost hmotného středu tělesa od osy otáčení. To zřejmě ale není správný
+    vzorec pro výpočet momentu setrvačnosti tělesa, které ještě navíc rotuje, neboť nejen že jeho
+    hmotný střed se pohybuje po kružnici (to je příspěvek \(I_1\) k momentu setrvačnosti), ale ještě
+    se při každém oběhu jednou otočí kolem vlastního hmotného středu. Proto není nerozumné přidat k
+    \(I_1\) ještě moment setrvačnosti \(I_T\) vzhledem k ose procházející hmotným středem. Správnou
+    odpovědí je, že celkový moment setrvačnosti kolem jakékoli osy je roven
+    \begin{equation}\label{fyz:eq746}
+      I=I_T+MR^2_{CM}.
+    \end{equation}
+
+    Tato věta se někdy nazývá \textbf{větou o rovnoběžných osách}\footnote{Steinerova nebo
+    Huygensova-Steinerova věta. } a lze ji snadno dokázat. Moment setrvačnosti vzhledem k jakékoli
+    ose je \( I=∑(x^2_i+y^2_i)m_i\). Soustředíme se na \(x\)-ové souřadnice, ale samozřejmě stejně
+    se počítá se souřadnicemi \(y\). Vzdálenost určitého hmotného bodu od počátku si označme \(x\).
+    Podívejme se, čemu bude rovna, budeme-li měřit \(x'\) od hmotného středu místo od počátku.
+    Můžeme napsat
+    \begin{align*}
+      x_i&=x′_i + X_{CM}. \\
+      \shortintertext{a druhá mocnina bude}
+      x^2_i&=x′^2_i+2X_{CM}x′_i+X^2_{CM}.
+    \end{align*}
+    Co se stane, vynásobíme-li výraz \(m_i\) a sečteme přes všechna \(i\)? Vytkneme-li všechny
+    konstanty před sumační znaménka, máme
+    \begin{equation}\label{fyz:eq747}
+      I_x=∑m_ix′^2_i+2X_{CM}∑m_ix′_i+X^2_{CM}∑m_i.
+    \end{equation}
+    Třetí suma je jednoduchá, je to \(M_{CM}\). V druhé sumě jsou dva činitelé. Jeden z nich je
+    \(∑m_ix′_i\), ale tento činitel je roven nule, neboť \(x'\) se měří od hmotného středu a v této
+    souřadnicové soustavě je střední poloha všech částic s váhou rovnou hmotnostem rovna nule. První
+    suma je \(x\)-ová část \(I_T\). Takže máme rovnici (\ref{fyz:eq746}), přesně jak jsme
+    předpokládali.
+
+    Prověřme si vztah (\ref{fyz:eq746}) na příkladu. Zjistíme, zda platí i v případě tyče.
+    Vypočítali jsme, že pro osu jdoucí jedním koncem je moment setrvačnosti roven \( ML^2/3\).
+    Hmotný střed tyče se nachází v jejím středu, ve vzdálenosti \(L/2\). Proto by mělo platit, že
+    \(ML^2/3=ML^2/12+M(L/2)^2\). Protože jedna dvanáctina plus jedna čtvrtina je rovna jedné
+    třetině, neudělali jsme žádnou podstatnou chybu.
+
+    Ve skutečnosti jsme ani nepotřebovali počítat integrál, abychom určili moment setrvačnosti
+    (\ref{fyz:eq744}). Kdybychom prostě předpokládali, že je roven \(ML^2\) krát nějaký neznámý
+    koeficient \(\gamma\), a pak použili argument o dvou polovinách, abychom dostali \((1/4\gamma)\)
+    pro (\ref{fyz:eq745}), pak podle naší věty o posunutí osy musí platit
+    \(γ=\frac{1}{4}γ+\frac{1}{4}\) takže \(γ=\frac{1}{3}\). Vždy lze najít ještě nějaký další
+    způsob.
+    
+    Při použití věty o rovnoběžných osách, je důležité mít na paměti, že osa pro \(I_T\) \emph{musí
+    být rovnoběžná} s osou, vzhledem k níž se počítá moment setrvačnosti.
+    
+    Za zmínku stojí i jedna další vlastnost momentu setrvačnosti, neboť ji lze použít při hledání
+    momentu setrvačnosti určitých těles. Máme-li nějaký rovinný obrazec a souřadnicovou soustavu s
+    počátkem v této rovině a se \(z\)-ovou osou kolmou k této rovině, pak moment setrvačnosti
+    obrazce vzhledem k ose \(z\) je roven součtu momentů setrvačnosti vzhledem k osám \(y\) a \(x\).
+    Lze to snadno dokázat, když si všimneme, že
+    \begin{align*}
+      x=∑m_i(y^2_i+z^2_i)=∑m_iy^2_i 
+      \shortintertext{neboť \(z_i=0\)). Podobně,}
+      I_y=∑m_i(x^2_i+z^2_i)=∑m_ix^2_i,
+      \shortintertext{ale}
+      I_z=∑m_i(x^2_i+y^2_i)=∑m_ix^2_i+∑m_iy^2_i=I_x + I_y.
+    \end{align*} 
+    Jako příklad vypočítejme moment setrvačnosti homogenní pravoúhlé desky o hmotnosti \(M\), šířky
+    \(a\) a délky \(b\), vzhledem k ose kolmé na desku a procházející jejím středem). Je
+    \begin{equation*}
+      I=\dfrac{M}{12}(a^2+b^2),
+    \end{equation*}
+    neboť vzhledem k ose ležící v rovině desky rovnoběžné s délkou, je moment setrvačnosti
+    \(Ma^2/12\), tj. jako pro tyč délky \(a\) a moment setrvačnosti vzhledem k druhé ose v rovině
+    obdélníka je \( Mb^2/12\), jako pro tyč délky \(b\).
+    
+    Abychom to shrnuli, moment setrvačnosti tělesa vzhledem k dané ose (kterou budeme nazývat osou
+    \(z\)) má tyto vlastnosti:
+    
+
+  \section{Rotační kinetická energie}\label{fyz:IchapXIXsecIV}
+
+      \begin{figure}[ht!] %\ref{fyz:fig405}
+        \centering
+        \includegraphics[width=0.8\linewidth]{fyz_fig405.pdf}
+        \caption{Tři postupné pohledy na radiálně se pohybující bod na otáčející se podložce
+                (\cite[s.~269]{Feynman01})}
+        \label{fyz:fig405}
+      \end{figure}
+  \section{Příklady a cvičení}\label{fyz:IchapXIXsecV}
+
 %---------------------------------------------------------------------------------------------------
