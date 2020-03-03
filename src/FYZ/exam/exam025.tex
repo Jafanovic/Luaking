@@ -1,0 +1,49 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{fyz:exam025}
+    Nalezněte takové kombinace konstant \(c\), \(G\), \(\hslash\) (rychlosti světla, gravitační
+    konstanty a Planckovy konstanty), které dají přirozenou jednotku pro délku, čas, hmotnost a
+    energii.
+    \begin{subequations}\label{fyz:eq750} 
+      \begin{align}
+        c       &= \SI{3e8}{\m\per\s}                              \label{fyz:eq750a}  \\
+        G       &= \SI{6,67e-11}{\per\kg\cubic\m\per\square\s},    \label{fyz:eq750b}  \\
+        \hslash &= \SI{1,05e-34}{\kg\square\m\per\s} .             \label{fyz:eq750c}
+      \end{align}
+    \end{subequations}
+
+    \textbf{Řešení}: Pokusíme se vytvořit výraz pro délku \(l_0\), čas \(t_0\), hmotnost \(m_0\) a
+    energii \(E_0\). Začneme délkou tak, že napíšeme součin výše uvedených tří konstant, s neznámými
+    exponenty \(α\), \(β\), \(γ\): 
+    \begin{equation*}
+      l_0 = c^αG^β\hslash^γ.
+    \end{equation*}
+    Tato rovnice ve skutečnosti představuje čtyřnásobnou rovnost: rovnost číselnou a rovnost
+    rozměrovou v metrech, kilogramech a sekundách. Napíšeme nyní rozměrové části vytvořeného výrazu:
+    \begin{equation*}
+      \mathrm{m^1kg^0s^0} = \si{\m}^α\si{\s}^{-α}                   %c
+                            \si{\kg}^{β}\si{\m}^{3β}\si{\s}^{-2β}   %G
+                            \si{\kg}^γ\si{\m}^{-2γ}\si{\s}^{-γ}.     %hslash
+    \end{equation*}
+    Nyní zapíšeme soustavu rovnic pro exponenty u metru, kilogramu a sekundy:
+    \begin{align*}
+      1 &=   α + 3β + 2γ    \\
+      0 &=     -  β +  γ    \\
+      0 &= - α - 2β + -γ    
+    \end{align*}
+    Řešením této soustavy získáme jednoznačné řešení pro exponenty
+    \begin{equation*}
+      α =−3/2;\quad β=1/2;\quad γ=1/2. 
+    \end{equation*}
+    Tyto exponenty jednoznačně až na násobící číselný faktor určují velikost Planckovy délky. Zcela
+    analogickým způsobem můžeme odvodit vztahy pro ostatní Planckovy veličiny. Výsledky jsou:
+    \begin{subequations}\label{fyz:eq750} 
+      \begin{align}
+        l_0&=\sqrt{\dfrac{\hslash G}{c^3}}\approx \SI{e-35}{\m},               \label{fyz:eq750a}\\
+        t_0&=\sqrt{\dfrac{\hslash G}{c^5}}\approx \SI{e-43}{\s},               \label{fyz:eq750b}\\
+        m_0&=\sqrt{\dfrac{\hslash c}{G}}  \approx \SI{e-8}{\kg},               \label{fyz:eq750c}\\
+        E_0&=\sqrt{\dfrac{\hslash c^5}{G}}\approx \SI{e19}{\giga\electronvolt},\label{fyz:eq750d}
+      \end{align}
+    \end{subequations} 
+  \end{example}
+\end{mdframed}
