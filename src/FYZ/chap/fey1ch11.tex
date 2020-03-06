@@ -133,7 +133,7 @@
   \section{Rotace}
     Předcházející část byla věnována první z řady stále komplikovanějších tvrzení týkajících se 
     symetrie fyzikálních zákonů. Další tvrzení praví, že nezáleží na tom, v jakém \emph{směru} 
-    zvolíme sou-řadnicové osy. Jinými slovy, postavíme-li někde jedno zařízení a v sousedství 
+    zvolíme souřadnicové osy. Jinými slovy, postavíme-li někde jedno zařízení a v sousedství 
     stejné zařízení, ale pootočíme ho o určitý úhel vzhledem k prvnímu zařízení, ptáme se, zda 
     budou obě dvě zařízení pracovat stejně. Určitě nebudou, jsou-li takovým zařízením, například, 
     dědečkovy kyvadlové hodiny! Je-li kyvadlo ve svislé poloze, hodiny spolehlivě pracují, ale 
@@ -159,7 +159,7 @@
 
     \begin{figure}[ht!]  %\ref{fyz:fig114}
       \centering
-      \includegraphics[width=0.6\linewidth]{fyz_fig114.pdf}
+      \includegraphics[width=0.8\linewidth]{fyz_fig114.pdf}
       \caption{Dvě soustavy souřadnic s různou úhlovou orientací
               (\cite[s.~156]{Feynman01})}
       \label{fyz:fig114}
@@ -177,11 +177,12 @@
     úseček podél osy \(x'\) a \(y'\) zase jako rozdíl dvou úseček podél \(AB\). Délky těchto úseček 
     jsou vyjádřeny pomocí \(x, y\) a rovnicích (\ref{fyz:eq149}), k nimž připojíme rovnici pro 
     třetí rozměr
+
     \begin{subequations}\label{fyz:eq149}
       \begin{align}
-        x' = x\cos\vartheta + y\cos\vartheta, \label{fyz:eq149a} \\
-        y' = y\cos\vartheta - x\sin\vartheta, \label{fyz:eq149b}
-        z' = z.
+        x' &= x\cos\vartheta + y\cos\vartheta, \label{fyz:eq149a} \\
+        y' &= y\cos\vartheta - x\sin\vartheta, \label{fyz:eq149b} \\
+        z' &= z.
       \end{align}
     \end{subequations}
 
@@ -193,11 +194,12 @@
     
     \begin{figure}[ht!]  %\ref{fyz:fig115}
       \centering
-      \includegraphics[width=0.6\linewidth]{fyz_fig115.pdf}
+      \includegraphics[width=0.8\linewidth]{fyz_fig115.pdf}
       \caption{Složky síly ve dvou soustavách
               (\cite[s.~157]{Feynman01})}
       \label{fyz:fig115}
     \end{figure}
+
     Pavel pozoruje podél svých os složky síly \(F_{x'}\), a \(F_{y'}\). \(F_{x}\) má složky ve 
     směrech \(x'\) a \(y'\) a právě tak i \(F_y\). Abychom vyjádřili \(F_{x'}\), pomocí \(F_x\) a 
     \(F_y\), sčítáme složky těchto sil podél osy \(x'\). Podobně můžeme vyjádřit \(F_{y'}\), pomocí 
@@ -217,11 +219,14 @@
     zákony - zda dostane správné výsledky ve své soustavě s pootočenými osami? Jinými slovy, 
     předpokládáme-li, že rovnice (\ref{fyz:eq149}) a (\ref{fyz:eq155}) vyjadřují souvislost mezi 
     měřeními, budou, nebo nebudou správné následující vztahy?
-    \begin{equation}\label{fyz:eq156}
-      m\dder{x'}{t} = F_{x}, \quad
-      m\dder{y'}{t} = F_{y}, \quad
-      m\dder{z'}{t} = F_{z}.
-    \end{equation}
+    
+    \begin{subequations}\label{fyz:eq156}
+      \begin{equation}
+        m\dder{x'}{t} &= F_{x}, \label{fyz:eq156a}  \\
+        m\dder{y'}{t} &= F_{y}, \label{fyz:eq156b}  \\
+        m\dder{z'}{t} &= F_{z}. \label{fyz:eq156c}
+      \end{equation}
+    \end{subequations}
     
     Zkoušku správnosti provedeme tak, že nezávisle vypočteme jejich levé i pravé strany a porovnáme 
     výsledky. Výpočet levých stran provádíme tak, že rovnice (\ref{fyz:eq149}) násobíme \(m\) a za 
@@ -249,14 +254,14 @@
       \end{align}
     \end{subequations}
     
-    Vida! Pravé strany rovnic (\ref{fyz:eq157}) a (\ref{fyz:eq158}) jsou shodné, a proto jsou-li 
-    Newtonovy zákony správné v jedné soustavě souřadnic, jsou správné i v druhé souřadnicové 
-    soustavě. Tento výsledek, platný pro translaci i rotaci os, má jisté důsledky. Především, nikdo 
-    nemůže tvrdit, že jím zvolené souřadnicové osy jsou jediné, ačkoli mohou být 
-    \emph{nejvhodnější} pro určitý problém. Například, je vhodné zvolit souřadnicovou soustavu tak, 
-    aby gravitační síla působila ve směru jedné osy, ale není to fyzikálně nezbytné. Dalším 
-    důsledkem je skutečnost, že každé zařízení, zcela soběstačné v tom smyslu, že obsahuje vše, co 
-    na něho silově působí, bude pracovat stejně při jakémkoli pootočení.
+    Vida! Pravé strany rovnic (\ref{fyz:eq157}) a (\ref{fyz:eq158}) jsou shodné, a proto jsou-li
+    Newtonovy zákony správné v jedné soustavě souřadnic, jsou správné i v druhé souřadnicové
+    soustavě. Tento výsledek, platný pro translaci i rotaci os, má jisté důsledky. Především, nikdo
+    nemůže tvrdit, že jím zvolené souřadnicové osy jsou jediné, ačkoli mohou být \emph{nejvhodnější}
+    pro určitý problém. Například, je vhodné zvolit souřadnicovou soustavu tak, aby gravitační síla
+    působila ve směru jedné osy, ale není to fyzikálně nezbytné. Dalším důsledkem je skutečnost, že
+    každé zařízení, zcela soběstačné v tom smyslu, že obsahuje vše, co na něho silově působí, bude
+    pracovat stejně při jakémkoli pootočení.
     
   \section{Vektory}
     Nejen Newtonovy, ale pokud dnes víme i ostatní zákony fyziky mají dvě vlastnosti, jež nazýváme 
@@ -280,26 +285,26 @@
     posunutí. Když se někdo pohne z jednoho místa na druhé, můžeme zjistit, jakou dráhu urazil. 
     Chceme-li však vědět, kam šel, musíme určit směr jeho pohybu.
     
-    Všechny veličiny, které mají směr (podobně jako posunutí v prostoru), nazýváme 
-    \textbf{vektory}. Vektor je trojice čísel. Abychom vyjádřili posunutí v prostoru, například z 
-    počátku pohybu do bodu \(P\), jenž má souřadnice \((x, y, z)\), skutečně potřebujeme tři čísla, 
-    ale my zavedeme jediný matematický symbol \(\vec{r}\), jenž se liší od dosud používaných 
-    matematických symbolů. \emph{Není to} jediné číslo, představuje trojici čísel: \(x, y, z\). 
-    Tento symbol představuje tři čísla, ale ve skutečnosti nejen \emph{tato} tři čísla, neboť při 
-    změně souřadnicové soustavy se ta tři čísla změní na \(x', y', z'\). Chceme však, aby naše 
-    matematika byla jednoduchá, a proto k označení trojice čísel \((x, y, z)\) a \((x', y', z')\) 
-    použijeme stejný znak. Použijeme vlastně stejný znak k vyjádření první trojice čísel v jedné 
-    souřadnicové soustavě nebo druhé trojice čísel v jiné souřadnicové soustavě. Tento způsob má tu 
-    výhodu, že při změně souřadnicového systému nemusíme měnit písmena v našich rovnicích. 
-    Zapíšeme-li rovnici pomocí \(x, y, z\) a pak použijeme jiný systém, musíme přejít k \(x', y', 
-    z'\), ale my budeme psát prostě \(\vec{r}\) a dohodneme se, že to představuje \(x, y, z\) v 
-    jednom souřadnicovém systému nebo \(x', y', z'\) v druhém souřadnicovém systému. Tři čísla, 
-    která popisují veličinu v dané souřadnicové soustavě, nazýváme \textbf{složkami} vektoru v 
-    směrech souřadnicových os uvažovaného systému. Používáme tedy stejný symbol pro tři písmena, 
-    která odpovídají \emph{stejnému předmětu v pohledu z různých os}. Skutečnost, že říkáme „stejný 
-    předmět“ se zakládá na fyzikální intuici o tom, že krok v prostoru nezávisí na tom, jakými 
-    složkami ho popisujeme. Symbol \(\vec{r}\) bude tedy představovat stejnou věc nezávisle na tom, 
-    jak otočíme osy.
+    Všechny veličiny, které mají směr (podobně jako posunutí v prostoru), nazýváme \textbf{vektory}.
+    Vektor je trojice čísel. Abychom vyjádřili posunutí v prostoru, například z počátku pohybu do
+    bodu \(P\), jenž má souřadnice \((x, y, z)\), skutečně potřebujeme tři čísla, ale my zavedeme
+    jediný matematický symbol \(\vec{r}\), jenž se liší od dosud používaných matematických symbolů.
+    \emph{Není to} jediné číslo, představuje trojici čísel: \(x, y, z\). Tento symbol představuje
+    tři čísla, ale ve skutečnosti nejen \emph{tato} tři čísla, neboť při změně souřadnicové soustavy
+    se ta tři čísla změní na \(x', y', z'\). Chceme však, aby naše matematika byla jednoduchá, a
+    proto k označení trojice čísel \((x, y, z)\) a \((x', y', z')\) použijeme stejný znak. Použijeme
+    vlastně stejný znak k vyjádření první trojice čísel v jedné souřadnicové soustavě nebo druhé
+    trojice čísel v jiné souřadnicové soustavě. Tento způsob má tu výhodu, že při změně
+    souřadnicového systému nemusíme měnit písmena v našich rovnicích. Zapíšeme-li rovnici pomocí
+    \(x, y, z\) a pak použijeme jiný systém, musíme přejít k \(x', y', z'\), ale my budeme psát
+    prostě \(\vec{r}\) a dohodneme se, že to představuje \(x, y, z\) v jednom souřadnicovém systému
+    nebo \(x', y', z'\) v druhém souřadnicovém systému. Tři čísla, která popisují veličinu v dané
+    souřadnicové soustavě, nazýváme \textbf{složkami} vektoru v směrech souřadnicových os
+    uvažovaného systému. Používáme tedy stejný symbol pro tři písmena, která odpovídají
+    \emph{stejnému předmětu v pohledu z různých os}. Skutečnost, že říkáme „stejný předmět“ se
+    zakládá na fyzikální intuici o tom, že krok v prostoru nezávisí na tom, jakými složkami ho
+    popisujeme. Symbol \(\vec{r}\) bude tedy představovat stejnou věc nezávisle na tom, jak otočíme
+    osy.
     
     Dále předpokládejme, že existuje nějaká jiná fyzikální veličina, jež má směr, a proto je možné 
     ji určit trojicí čísel, přičemž tato tři čísla se podle určitého matematického pravidla změní 
@@ -430,6 +435,58 @@
     že derivováním libovolného vektoru podle času dostaneme nový vektor. Tak jsme poznali více 
     způsobů tvorby vektorů: (1) násobením vektoru konstantou, (2) derivováním vektoru podle času, 
     (3) sčítáním i odečítáním dvou vektorů. 
+
+    \begin{mdframed}[style=mdnote]       
+      Zapamatujme si:
+      \begin{itemize}[noitemsep]
+        \item Vektorem rozumíme uspořádanou trojici čísel, jejíž hodnoty závisí na volbě
+              souřadnicové soustavy, tj. v různých soustavách jsou hodnoty různé.
+        \item Vektor si můžeme představit jako orientovanou úsečku, kterou lze libovolně posouvat.  
+        \item Vektory umíme natahovat a skládat. Obě operace provádíme po složkách. Výsledkem obou
+              operací je opět vektor. 
+        \item Rozdíl dvou vektorů je vektor spojující jejich koncové body. 
+      \end{itemize}
+    \end{mdframed}
+
+    \subsection{Stupně abstrakce}
+      V průběhu svého vývoje prošlo lidstvo třemi stupni abstrakce:
+      \begin{enumerate}[leftmargin=1cm,rightmargin=.1cm, label=\emph{\alph*}),noitemsep]
+        \item \textbf{oddělení čísla od předmětů.} Malé dítě počítá různé předměty: tři hrušky, dva
+              domy, pět lidí. Číslo je vždy spojeno s nějakým předmětem a čtyři domy jsou něco
+              jiného než čtyři limonády. V určitém věku začne ale dítě chápat číslo 4 samostatně.
+              Ukáže ho na prstech a ví, že jde o čtyři výskyty jakéhokoli předmětu a netrvá již na
+              tom, aby byl dotyčný předmět jmenován. V tuto chvíli si každý z nás prodělal první
+              stupeň abstrakce – oddělení čísla od pojmu. Číslo nahradilo předměty.
+        \item \texbf{zavedení zástupných symbolů.} Tento stupeň abstrakce jste pravděpodobně zažili
+              na základní škole při počítání obsahu obdélníka. Nejprve paní učitelka kreslila různě
+              veliké obdélníky na čtvercové síti a počítali jste jejich obsah podle počtu čtverečků.
+              Po určité době jste se dopracovali ke vztahu S = ab. Čísla zmizela. Zůstaly zástupné
+              symboly a, b pro velikost stran obdélníka a písmenko S označující jeho plochu. Čísla
+              byla nahrazena proměnnými.
+        \item \textbf{oddělení vlastností od matematických objektů.} Před malou chvílí jsme se
+              zabývali vektory. Představili jsme si je jako tyče, které jsme se naučili natahovat a
+              skládat. Ve skutečnosti jde ale o jednoduché operace s trojicemi čísel. Tyto operace
+              mají zajímavé vlastnosti, které jste si mohli vyzkoušet v příkladech. Například
+              složit dvě tyče a poté je natáhnout je totéž jako natáhnout každou z nich zvlášť a
+              poté je složit. Ve třetím stupni abstrakce se přestaneme zabývat konkrétními
+              matematickými objekty, jako byly naše pokusné tyče. Zajímat nás budou jen vlastnosti
+              těchto objektů. Bude nám jedno, zda jde o tyče, jablka, matice, funkce či cokoli
+              jiného. Ať je objektem cokoli, naučíme se ho natahovat a skládat s jiným podobným
+              objektem tak, aby tyto operace měly stejné vlastnosti jako u tyčí, na kterých jsme si
+              to vyzkoušeli.
+      \end{enumerate} 
+
+      Při třetím stupni abstrakce mizí matematické objekty a zůstávají jen vlastnosti. Hovoříme o
+      zavedení tzv. \emph{lineárního vektorového prostoru}. Takovým prostorem rozumíme jakékoli
+      matematické objekty (vektory, matice, funkce, řešení diferenciálních rovnic), které umíme
+      natahovat a skládat tak, jako jsme to dělali s původními tyčemi. Projít si tímto stupněm
+      abstrakce bude jedním z nejdůležitějších úkolů na počátku vašeho studia a bude to proces velmi
+      bolestný, co se přemýšlení týče. Některým se to podaří, jiným nikoli. Těm prvním se otevře
+      zcela nový svět, ve kterém budou schopni do hloubky porozumět Fourierově frekvenční analýze,
+      pochopí jak hledat řešení soustav diferenciálních rovnic, jak zjednodušovat složité úlohy za
+      pomoci linearizace a naučí se mnoho dalších dovedností. Ti druzí budou pasivně počítat různé
+      úlohy, aniž by někdy porozuměli jejich podstatě. Pevně věřím, že u většiny z vás zvítězí touha
+      po poznání nad pasivitou a probojujete se do první skupiny. 
 
   \twocolumn[\section{Newtonovy zákony ve vektorovém tvaru}]
     Abychom mohli zapsat Newtonovy zákony ve vektorovém tvaru, musíme provést ještě jeden malý krok 
@@ -593,7 +650,8 @@
     \begin{equation}\label{fyz:eq165}
       W_k = \frac{1}{2}m(\vec{v}\cdot\vec{v}) = \frac{1}{2}m(v_x^2 + v_y^2 + v_z^2).
     \end{equation}
-    Energie nemá směr. Hybnost má směr; je to vektor představující součin hmotnosti a vektoru rychlosti.
+    Energie nemá směr. Hybnost má směr; je to vektor představující součin hmotnosti a vektoru
+    rychlosti.
     
     Jiným příkladem skalárního součinu je práce konaná silou při přemisťování předmětu z jednoho 
     místa na druhé. Zatím jsme ještě práci nedefinovali, ale je ekvivalentní změně energie při 
