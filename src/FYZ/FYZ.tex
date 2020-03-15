@@ -11,9 +11,6 @@
 %---------------------------------------------------------------------------------------------------
 % Setting path to image 
 \graphicspath{{../src/FYZ/img/}}
-% \makeatletter
-%   \@addtoreset{chapter}{part}
-% \makeatother
 %---------------------------------------------------------------------------------------------------
 %           ####### #     # ####### ### #    #    #       ### 
 %           #        #   #       #   #  #   #    # #       #  
@@ -23,17 +20,14 @@
 %           #          #     #       #  #   #  #     #     #  
 %           #          #    ####### ### #    # #     #    ### 
 %---------------------------------------------------------------------------------------------------
-\ifthenelse{ \equal{\DebugMode}{true} }{
-% Debug mode ON
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\ifthenelse{ \equal{\DebugMode}{true} }{ % Debug mode ON
   % \input{../src/FYZ/chap/fey1ch01_02_03.tex}
   \input{../src/FYZ/chap/fey1ch11.tex}
   % \input{../src/FYZ/chap/fey1ch19.tex}
   % \input{../src/FYZ/chap/fey1ch20.tex}
   % \input{../src/FYZ/chap/fey1ch21.tex}
   % \input{../src/FYZ/chap/fey1ch52.tex}
-}
-{ % DEBUG was off
+}{ % DEBUG was off
 \LuaPartBckgrnd{fyz_title02.jpg}
 \LuaPartTitle{FYZ I}{Fyzika I}{FYZI}
 \parttoc
@@ -149,10 +143,8 @@
 %           #          #     #       #  #   #  #     #     #   #
 %           #          #    ####### ### #    # #     #    ### ###
 %---------------------------------------------------------------------------------------------------
-\ifthenelse{ \equal{\DebugMode}{true} }{
-% Debug mode ON
+\ifthenelse{ \equal{\DebugMode}{true} }{% Debug mode ON
 % \input{../src/FYZ/chap/fey2ch01.tex} 
-
 }{ % Debug mode OFF
 \LuaPartBckgrnd{titleBG_fractal1.png}
 \LuaPartTitle{FYZ II}{Fyzika II}{FYZII}
@@ -249,11 +241,9 @@
 %           #          #     #       #  #   #  #     #     #   #   #
 %           #          #    ####### ### #    # #     #    ### ### ###
 %---------------------------------------------------------------------------------------------------
-\ifthenelse{ \equal{\DebugMode}{true} }{
-%  DEBUG was on
+\ifthenelse{ \equal{\DebugMode}{true} }{%  DEBUG was on
 %  \input{../src/FYZ/chap/fyz3ch01.tex}
-}
-{ % DEBUG was off
+}{ % DEBUG was off
 \LuaPartBckgrnd{titleBG_fractal1.png}
 \LuaPartTitle{FYZ III}{Elektřina a magnetizmus}{FYZIII}
 \parttoc
@@ -271,13 +261,9 @@
 %           #          #     #       #  #   #  #     #     #    # #   
 %           #          #    ####### ### #    # #     #    ###    #  
 %---------------------------------------------------------------------------------------------------
-
-\ifthenelse{ \equal{\DebugMode}{true} }{
-% Debug mode ON
-% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\input{../src/FYZ/chap/kul1ch01.tex}
-}
-{ % DEBUG was off
+\ifthenelse{ \equal{\DebugMode}{true} }{% Debug mode ON
+  \input{../src/FYZ/chap/kul1ch01.tex}
+}{ % DEBUG was off
 \LuaPartBckgrnd{fyz_title02.jpg}
 \LuaPartTitle{AFYZ I}{Kosmologie}{AFYZI}
 \parttoc

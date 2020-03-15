@@ -1,89 +1,102 @@
-%    Teorie elektrických obvodů
+%===================================================================================================
+% Teorie elektrických obvodů
+% TEO.tex
 %===================================================================================================
 % notes:
 %~~~~~~~~~
 % \ref{TEO:eq010}
 % \ref{teo:fig021}
-% \ref{fyz:exam000}
+% \ref{fyz:exam001}
 % \ref{fyz:tab000}
 %---------------------------------------------------------------------------------------------------
 % Setting path to image 
 \graphicspath{{../src/TEO/img/}}
 %---------------------------------------------------------------------------------------------------
-% file TEO.tex
-% notes:
-%~~~~~~~~~
-% \label{teo:eq001}
-% \label{teo:exam001}
-% \label{teo:fig018}
+%                            /$$$$$$$$ /$$$$$$$$  /$$$$$$ 
+%                            |__ $$__/| $$_____/ /$$__  $$
+%                              | $$   | $$      | $$  \ $$
+%                              | $$   | $$$$$   | $$  | $$
+%                              | $$   | $$__/   | $$  | $$
+%                              | $$   | $$      | $$  | $$
+%                              | $$   | $$$$$$$$|  $$$$$$/
+%                              |__/   |________/ \______/ 
 %---------------------------------------------------------------------------------------------------
-%                               TEO
-%---------------------------------------------------------------------------------------------------
+\ifthenelse{ \equal{\DebugMode}{true} }{% Debug mode ON
+  % \input{../src/TEO/chap/spojity_model_elmag_p.tex}
+  % \input{../src/TEO/chap/teo1ch02.tex} 
+}{ % DEBUG was off
 \LuaPartBckgrnd{titleBG_fractal1.png}
 \LuaPartTitle{TEO}{Teorie elektrických obvodů}{TEO}
 \parttoc
-
-
-\ifthenelse{ \equal{\DebugMode}{true} }{
-% Debug mode ON
-\input{../src/TEO/chap/spojity_model_elmag_p.tex}
-  \input{../src/TEO/chap/teo1ch02.tex} 
-  \input{../src/TEO/chap/teo1ch03.tex}
-  \input{../src/TEO/chap/kap_elemag_p.tex}
-  \input{../src/TEO/chap/kap_skinefekt.tex}
+%========== Kapitola: Základy elektrických obvodů =================================================
   \input{../src/TEO/chap/intro_TEO.tex}
+%========== Kapitola: Přechodné děje ==============================================================
   \input{../src/TEO/chap/teo1ch05.tex}
+%========== Kapitola: Obvody v harmonickém ustáleném stavu ========================================
   \input{../src/TEO/chap/teo1ch07.tex}
+%========== Kapitola: Obvody s rozprostřenými parametry ===========================================
   \input{../src/TEO/chap/teo1ch09.tex}  
-}
-{
-% DEBUG was off
-%========== Kapitola: Spojité matematické modely jednotlivých polí =================================
-  \input{../src/TEO/chap/spojity_model_elmag_p.tex}
-%========== Kapitola: Základní zákony elektromagnetismu ============================================
-  \input{../src/TEO/chap/teo1ch02.tex} 
-%========== Kapitola: Topologické vlastnosti elektromagnetického pole ==============================
-  \input{../src/TEO/chap/teo1ch03.tex}
-%========== Kapitola: Elektromagnetického pole =====================================================
-  \input{../src/TEO/chap/kap_elemag_p.tex}
-%========== Kapitola: Povrchový jev, Skinefekt =====================================================
-  \input{../src/TEO/chap/kap_skinefekt.tex}
-%========== Kapitola: Základy elektrických obvodů ==================================================
-  \input{../src/TEO/chap/intro_TEO.tex}
-%========== Kapitola: Přechodné děje ===============================================================
-  \input{../src/TEO/chap/teo1ch05.tex}
-%========== Kapitola: Obvody v harmonickém ustáleném stavu =========================================
-  \input{../src/TEO/chap/teo1ch07.tex}
-%========== Kapitola: Obvody s rozprostřenými parametry ============================================
-  \input{../src/TEO/chap/teo1ch09.tex}  
+%=============== Seznam literatury ================================================================
+  \printbibliography[title={Seznam literatury}, heading=bibliography]
 }  % DEBUG was off
-
-\printbibliography[title={Seznam literatury}, heading=bibliography]
-
-%---------------------------------------------------------------------------------------------------
-%                               ES
-%---------------------------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------------------------
+%                                       /$$$$$$$$  /$$$$$$ 
+%                                       | $$_____/ /$$__  $$
+%                                       | $$      | $$  \__/
+%                                       | $$$$$   |  $$$$$$ 
+%                                       | $$__/    \____  $$
+%                                       | $$       /$$  \ $$
+%                                       | $$$$$$$$|  $$$$$$/
+%                                       |________/ \______/                     
+%--------------------------------------------------------------------------------------------------
+\ifthenelse{ \equal{\DebugMode}{true} }{ % Debug mode ON
+  \input{../src/TEO/chap/es1ch05.tex}
+}{ % DEBUG was off
 \LuaPartBckgrnd{titleBG_fractal1.png}
 \LuaPartTitle{ES I}{Elektronické součástky}{ESI}
 \parttoc
-
-
-\ifthenelse{ \equal{\DebugMode}{true} }{
-% Debug mode ON
-  \input{../src/TEO/chap/kap_passive_comp.tex}
-}
-{
-% DEBUG was off
 %========== Kapitola: Pasivni součástky ==========================================================
-  \input{../src/TEO/chap/kap_passive_comp.tex}
-%========== Kapitola: Magnetické obvody ==========================================================
-  \input{../src/TEO/chap/kap_mag_obvody.tex}
-%========== Kapitola: Magnetické materiály =======================================================
-  \input{../src/TEO/chap/kap_mag_mat.tex}
-%========== Kapitola: Teorie transformátoru ======================================================
-  \input{../src/TEO/chap/kap_teorie_trafa.tex}
+  \input{../src/TEO/chap/es1ch01.tex}
+%========== Kapitola: Bipolární transzistory =====================================================
+  \input{../src/TEO/chap/es1ch05.tex}
 %========== Kapitola: Optočleny ==================================================================
-  \input{../src/TEO/chap/kap_optocoupler.tex}
-}  % DEBUG was off
-
+  \input{../src/TEO/chap/es1ch09.tex}
+%=============== Seznam literatury ===============================================================
 \printbibliography[title={Seznam literatury}, heading=bibliography]
+}  % DEBUG was off
+%--------------------------------------------------------------------------------------------------
+%                            /$$      /$$  /$$$$$$   /$$$$$$          /$$   /$$                                   | $$$    /$$$ /$$__  $$ /$$__  $$
+%                           | $$$    /$$$ /$$__  $$ /$$__  $$        | $$$ | $$                                   | $$$$  /$$$$| $$  \ $$| $$  \__/
+%                           | $$$$  /$$$$| $$  \ $$| $$  \__/        | $$$$| $$                                   | $$ $$/$$ $$| $$$$$$$$| $$ /$$$$
+%                           | $$ $$/$$ $$| $$$$$$$$| $$ /$$$$ /$$$$$$| $$ $$ $$                                   /$$      /$$  /$$$$$$   /$$$$$$ 
+%                           | $$  $$$| $$| $$__  $$| $$|_  $$|______/| $$  $$$$                                   | $$  $$$| $$| $$__  $$| $$|_  $$
+%                           | $$\  $ | $$| $$  | $$| $$  \ $$        | $$\  $$$                                   | $$\  $ | $$| $$  | $$| $$  \ $$
+%                           | $$ \/  | $$| $$  | $$|  $$$$$$/        | $$ \  $$                                   | $$ \/  | $$| $$  | $$|  $$$$$$/
+%                           |__/     |__/|__/  |__/ \______/         |__/  \__/                                   |__/     |__/|__/  |__/ \______/                    
+%--------------------------------------------------------------------------------------------------
+\ifthenelse{ \equal{\DebugMode}{true} }{% Debug mode ON
+  \input{../src/TEO/chap/spojity_model_elmag_p.tex}
+  \input{../src/TEO/chap/magn1ch01.tex} 
+}{ % DEBUG was off
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{MAGN}{Magnetické obvody}{MAGN}
+\parttoc
+%========== Kapitola: Spojité matematické modely jednotlivých polí =================================
+  \input{../src/TEO/chap/spojity_model_elmag_p.tex}
+%========== Kapitola: Základní zákony elektromagnetismu ============================================
+  \input{../src/TEO/chap/magn1ch01.tex} 
+%========== Kapitola: Topologické vlastnosti elektromagnetického pole ==============================
+  \input{../src/TEO/chap/magn1ch02.tex}  
+%========== Kapitola: Elektromagnetického pole ====================================================
+  \input{../src/TEO/chap/magn1ch03.tex}  
+%========== Kapitola: Povrchový jev, Skinefekt ====================================================
+  \input{../src/TEO/chap/magn1ch04.tex} 
+%========== Kapitola: Magnetické obvody ==========================================================
+  \input{../src/TEO/chap/magn1ch05.tex}  
+%========== Kapitola: Magnetické materiály =======================================================
+  \input{../src/TEO/chap/magn1ch06.tex} 
+%========== Kapitola: Teorie transformátoru ======================================================
+  \input{../src/TEO/chap/magn1ch09.tex}  
+%=============== Seznam literatury ===============================================================
+  \printbibliography[title={Seznam literatury}, heading=bibliography]
+}% DEBUG was off
