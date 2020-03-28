@@ -5,12 +5,12 @@
 %=================== Kapitola: Bipolární tranzistory ==============================================
 \setchaptertoc
 \chapter{Bipolární tranzistory}\label{es:IchapV}
-  \section{Všeobecné poznatky}
+  \section{Všeobecné poznatky}\label{es:IchapVsecI}
     Bipolámí tranzistory představují aktivní polovodičové prvky. Jsou tvořeny dvěma přechody PN,
     tzn. třemi vrstvami z rozdílně dotovaného polovodičového materiálu. Podle pořadí vrstev
     rozlišujeme dvě skupiny bipolárních tranzistorů, a to tranzistory \textsc{NPN} a tranzistory
-    \textsc{PNP}. Obě uspořádání tranzistorů jsou znázorněna na obr. 2.1, kde je zobrazeno jak
-    pořadí vrstev, tak příslušná schematická značka.
+    \textsc{PNP}. Obě uspořádání tranzistorů jsou znázorněna na obr. \ref{teo:fig053}, kde je
+    zobrazeno jak pořadí vrstev, tak příslušná schematická značka.
 
     \begin{figure}[ht!]
       \centering  
@@ -22,4 +22,232 @@
       tranzistorů (\cite[s.~112]{Frohn2006})}
       \label{teo:fig053}
     \end{figure}
+    
+    Označení \uv{tranzistor} je uměle vytvořené slovo z anglických slov \textbf{tran}sfer = přenášet
+    a re\textbf{zistor} = odpor. Označení \uv{bipolámí} (bi = dva) má poukázat na skutečnost, že je
+    hlavní proud určen dvěma rozdílnými druhy nositelů náboje. Ve všeobecném povědomí se však pro
+    bipolární tranzistor ustálil zjednodušený pojem tranzistor. Na rozdíl od bipolárních tranzistorů
+    teče u unipolárních tranzistorů (unum = jeden) hlavní proud pouze jedinou oblastí a z toho
+    vyplývá, že je určen pouze jediným typem nositele náboje podle toho, jakým způsobem byl dotován
+    polovodičový materiál. Unipolární tranzistory často označujeme jako tranzistory řízené
+    elektrickým polem. Jejich princip bude uveden v kapitole \ref{es:IchapVI}.
+    
+    Pro uživatele má velký význam znalost vlastností a chování jednotlivých typů tranzistorů. Proto
+    výrobci ke každému typu tranzistoru vydávají katalogové listy, které obsahují charakteristické
+    hodnoty, charakteristiky a mezní hodnoty (obdobně jako u diod).
+    
+    Protože tranzistor představuje dvojbran, jenž má dvě vstupní a dvě výstupní elektrody, je počet
+    charakteristických hodnot a charakteristik podstatně větší než u polovodičových diod. Některé
+    důležité parametry a charakteristiky budou blíže objasněny v následujících odstavcích.
+    
+    Bipolární tranzistory využívají jako výchozího materiálu nejčastěji křemíku, pro vysoké kmitočty
+    se používají tranzistory ze sloučenin typu \(A^{III}B^{V}\).
+    
+    Tranzistory můžeme rozdělovat podle mnoha hledisek. Z hlediska konstrukce je zásadní rozdělení
+    na tranzistory pro malé signály (nízkého výkonu) a výkonové tranzistory. Takovéto rozdělení
+    podle konstrukce je uvedeno na obr. 2.2.
+    
+    Tranzistory nízkého výkonu se převážně používají pro zesilování malých střídavých signálů.
+    Tranzistory mají v tomto případě pevně nastavený klidový pracovní bod a přiváděné signálové
+    napětí je malé, tzn. že nesmějí být příliš vybuzeny. Další oblastí použití tranzistorů nízkého
+    výkonu jsou elektronické spínače, které jsou buzeny v celém možném rozsahu charakteristik.
+    
+    Výkonové tranzistory jsou dimenzovány na velké proudy a velká napětí. Mají proto relativně větší
+    pouzdra, díky nimž je možné rychleji odvádět větší množství vznikajícího tepla z krystalu
+    polovodiče. Výkonové tranzistory nalézají uplatnění v zesilovačích velkých signálů, tj.
+    výkonových a koncových stupních nebo zastávají funkci elektronických spínačů.
+
+    \begin{mdframed}[style=mdnote]
+      
+      Krátce po skončení války v roce 1945, Bellovy laboratoře vytvořily skupinu pro výzkum fyziky
+      pevných látek, pod vedením \textsc{Shockleyho}. Jejich cílem bylo najít alternativu ke křehkým
+      elektronkovým zesilovačům. Jejich první pokusy byly založeny na Shockleyově myšlence, že
+      vnější elektrické pole na polovodiči ovlivní jeho vodivost. Jejich experimenty však záhadně
+      selhávaly.
+
+      Skupina začala studovat atomové struktury, které se na povrchu a uvnitř látek liší. Hledané
+      výsledky se začaly dostavovat v okamžiku, když začali obklopovat body dotyku mezi polovodičem
+      a přívodními vodiči elektrolytem. \textsc{Hilbert Moore} postavil okruh, který jim dovolil
+      snadno měnit frekvenci vstupního signálu a navrhl, aby používali glykol boritan, viskózní
+      chemikálii, která se nevypařovala. Nakonec získali důkaz schopnosti zesílení signálu, když
+      fyzik \textsc{Gerald Pearson}, podle návrhu Shockleyho, uvedl napětí na kapičku glykol
+      boritanu umístěnou přes \textsc{P-N} přechod. V prosinci 1947 Bardeen a Brattain – pracovali
+      bez Shockleyho – uspěli ve stvoření hrotového tranzistoru, který zesiloval signál.
+
+      Další měsíc začali patentoví zástupci Bellových laboratoří pracovat na patentových
+      přihláškách. Brzo objevili, že Shockleyho vliv elektrického pole na polovodič byl předpovídán
+      a patentován v roce 1930 \textsc{Juliem Lilienfeldem}, který si svůj \textsc{MESFET}
+      patentoval v Kanadě již v 22. října 1925. Přesto byly podány celkem čtyři žádosti o patent. Na
+      žádné z těchto přihlášek se však nevyskytovalo Shockleyovo jméno. To Shockleyho rozzlobilo,
+      protože práce byla založena na jeho nápadu s účinkem elektrického pole. 
+      
+      Ve stejnou dobu tiše pokračoval ve vlastní práci na stavbě různých druhů tranzistoru
+      založených na spojení místo bodového dotyku. Předpokládal, že tento typ tranzistoru bude více
+      komerčně úspěšný. Shockley pracoval na \emph{teorii elektronů a děr v polovodičích}, která
+      byla nakonec vydána jako 558 stránková monografie v roce 1950. V té Shockley vypracoval
+      rozhodující myšlenky týkající se pohybu elektronů a děr a diferenciální rovnici, kterou se
+      řídí tok elektronů v pevných krystalech.
+
+      Shockleyho tato práce vedla k myšlence \emph{sendvičového tranzistoru} a ke vzniku klasického
+      tranzistoru. Jeho objev byl oznámen 4. června 1951 a Shockley obdržel 25. září 1951 za jeho
+      objev patent. Pro výrobu tohoto tranzistoru byla vyvinuta difúzní metoda a tento tranzistor
+      brzy zastínil tranzistor s bodovými kontakty. Shockley pokračoval jako vedoucí skupiny v
+      Bellových laboratořích ještě dva roky.
+
+      {\centering
+        \captionsetup{type=figure}
+        \luafigure[1]{teo_fig071.png}
+        \captionof{figure}{\textsc{John Bardeen}, \textsc{William Shockley} a \textsc{Walter Brattain} 
+          v Bell Labs, 1948. (\cite[s.~6]{KolkaBiolek2011})
+        \label{aes:fig013}}
+      \par}
+
+      V roce 1951 byl zvolen členem National Academy of Sciences (NAS). Za svůj objev tranzistoru
+      získal mnoho cen. Bellovy laboratoře však představovaly všechny tři vynálezce (Shockleyho,
+      Bardeena a Brattaina) jako tým. To vedlo k rozkolu a Shockley později blokoval práci Bardeena
+      a Brattaina na klasickém tranzistoru.
+
+      Shockley nakonec začal řídit svoji vlastní společnost, v níž se pokoušel vytvořit nové a
+      technicky obtížné zařízení (původně nazvané čtyřvrstvá dioda a nyní známé jako tyristor).
+      Projekt se ale rozvíjel velmi pomalu. 
+
+      V roce 1956 Shockley získal, spolu s Bardeenem a Brattainem, Nobelovu cenu za fyziku. Ve své
+      Nobelovské přednášce plně ocenil Brattaina a Bardeena jako vynálezce tranzistoru s bodovými
+      kontakty.
+    \end{mdframed}
+    
+    Pro lepší orientaci ve velkém množství vyráběných typů tranzistorů bylo zavedeno označovací
+    schéma. Evropští výrobci používají hlavně značení \uv{Pro-Electron}\footnote{Pro Electron nebo
+    EECA je evropský typový a registrační systém pro aktivní komponenty (jako jsou polovodiče,
+    displeje z tekutých krystalů, senzorová zařízení, elektronky a katodové trubice). Společnost Pro
+    Electron byla založena v roce 1966 v belgickém Bruselu. V roce 1983 byla sloučena s Evropskou
+    asociací výrobců elektronických součástek (EECA) a od té doby působí jako agentura EECA.},
+    které využívá kombinace písmen a číslic.
+
+    Aby mohl tranzistor řádně pracovat, musí mít potřebné napětí nejen mezi kolektorem a emitorem,
+    ale také dostatečně velké napětí mezi bází a emitorem. Velkou roli přitom hraje teplotní
+    stabilizace klidového pracovního bodu. Je potřebná z toho důvodu, že při stoupající teplotě
+    okolí narůstají též proudy, které tranzistorem protékají. Následkem zvyšování teploty se krystal
+    ohřívá a roste tak jeho vodivost, čímž se příslušné proudy zvětšují. Tímto způsobem stoupá
+    ztrátový výkon, tranzistor se proto více ohřívá atd. Na konci tohoto koloběhu je tepelná
+    destrukce tranzistoru, který se tak stává nepoužitelným.
+
+    \begin{figure*}
+      \centering
+      \luafigure[1]{teo_fig073.png}
+      \caption{Druhy bipolárních tranzistorů podle konstrukce. (\cite[s.~115]{Frohn2006})}
+      \label{teo:fig073}
+    \end{figure*}
+
+    Tranzistory mohou pracovat ve třech různých základních zapojeních - se společným emitorem
+    (\textsc{SE}), se společným kolektorem (\textsc{SC}) a se společnou bází (\textsc{SB}). Zapojení
+    je pojmenováno podle toho, která z elektrod je společná vstupu a výstupu zesilovacího stupně pro
+    zesilování střídavých napětí, tj. která představuje společný pól signálového napětí na vstupu a
+    na výstupu daného stupně. Každé z těchto základních zapojení má své přednosti a nedostatky.
+    Nejčastěji se používá zapojení \textsc{SE}. Zapojení \textsc{SC} se používá jako měnič impedance
+    (velká vstupní a malá výstupní impedance). Zapojení \textsc{SB} má svůj význam hlavně ve
+    vysokofrekvenční technice, jinak představuje také měnič impedance, avšak s přesně opačným
+    účinkem než předchozí zapojení (malá vstupní a velká výstupní impedance).
+
+    Při praktickém využití musejí být tranzistory, a to ať se jedná o jakékoliv zapojení, doplněny
+    dalšími součástkami. Zapojení těchto součástek (rezistorů a kondenzátorů) závisí na tom, jakou
+    úlohu má zapojení s tranzistorem plnit. Musíme rozlišit, zda má tranzistor pracovat ve
+    stejnosměrném zesilovači, v zesilovači střídavých napětí, ve výkonovém zesilovači nebo zda má
+    mít funkci spínače.
+
+    Stejnosměrné zesilovače se používají všude tam, kde je zapotřebí zesilovat stejnosměrná napětí a
+    změny napětí od velmi malých až k vysokým frekvencím. Typickým představitelem je např. zesilovač
+    Y osciloskopu. Aby stejnosměrné zesilovače mohly řádně plnit svou funkci, nesmějí obsahovat
+    žádné součástky, které by ovlivňovaly jejich zesílení na různých frekvencích a neumožňovaly
+    galvanickou vazbu (např. kondenzátory).
+
+    Střídavé zesilovače mohou naproti tomu zesilovat střídavá napětí o frekvenci několika \si{\Hz}
+    až do několika \si{\GHz} (podle typu tranzistoru a dimenzování zapojení), avšak nemusejí
+    zesilovat stejnosměrná napětí. Důležitými prvky v těchto zesilovačích jsou kondenzátory.
+
+    Výkonové zesilovače mají spotřebiči odevzdat pokud možno co největší signálový výkon. Spotřebič
+    může být představován např. reproduktorem (nízkofrekvenční výkonový zesilovač), vysílací anténou
+    (vysokofrekvenční výkonový zesilovač) nebo motorem (aplikace výkonového zesilovače v regulační
+    technice). Na spínače jsou kladeny zcela jiné požadavky než na stejnosměrné nebo střídavé
+    zesilovače. Spínače mají co nejrychleji přecházet ze stavu \uv{zapnuto} do stavu \uv{vypnuto} a
+    naopak. V tomto případě hrají velkou roli parazitní kapacity tranzistorů.
+
+
+  \section{Základní princip}\label{es:IchapVsecII}
+    \subsection{Princip funkce NPN a PNP tranzistorů}\label{es:IchapVsecIIssecI}
+      První tranzistory byly vyráběny legováním. Tato technologie byla převzata z výroby diod. Aby
+      byly vyrobeny dva přechody, byly na obě strany dotovaného základního materiálu umístěny
+      pilulky cizích prvků - donorů nebo akceptorů {obr. \ref{teo:fig072}. Při výrobním procesu pak
+      cizí atomy z obou stran difundovaly do výchozího materiálu. Střední vrstva byla přitom velmi
+      tenká a měla výrazně menší počet volných nositelů náboje než obě vnější vrstvy. Podle
+      použitých výchozích materiálů a cizích prvků vznikl tranzistor NPN nebo PNP.
+
+      \luagraphic[0.8]{teo_fig072.png}{Výroba tranzistoru NPN legováním.
+        (\cite[s.~115]{Frohn2006})}{teo:fig072}
+      
+      Aby tranzistor fungoval, musí být mezi bázi a emitor připojen zdroj napětí tak, aby byl spodní
+      přechod PN polarizován v propustném směru. Tranzistor NPN má proto bázi kladnější než emitor,
+      tranzistor PNP má bázi zápornější než emitor. Napětí mezi bází a emitorem křemíkových
+      tranzistorů má velikost \(U_{BE} \approx \SI{0.7}{\V}\), tj. stejné, jako je difuzní napětí
+      křemíkových diod. Na obr. \ref{teo:fig074} a \ref{teo:fig075} zakreslené proudy vyznačují směr
+      toku elektronů.
+
+      \luagraphic[1]{teo_fig074.png}{Znázornění tranzistoru NPN. \(\longrightarrow\) udáva směr 
+        toku elektronů). (\cite[s.~116]{Frohn2006})}{teo:fig074}
+      
+      Horní přechod PN pracuje v závěrném směru. Zdroje napětí jsou z tohoto důvodu zapojeny tak,
+      aby byl kolektor u NPN tranzistoru kladnější než emitor, u PNP tranzistoru naopak zápornější
+      než emitor.
+
+      Vlivem připojených napětí bude spodní přechod PN zapojen v propustném směru a horní přechod PN
+      v závěrném směru. Ve střední a horní oblasti se vytvoří závěrná vrstva. Ta se rozprostírá
+      téměř po celé šířce střední oblasti, která je velmi tenká a obsahuje pouze malý počet nositelů
+      náboje.        
+
+      \luagraphic[1]{teo_fig075.png}{Znázornění tranzistoru PNP.  \(\longrightarrow\) udáva směr 
+        toku elektronů). (\cite[s.~116]{Frohn2006})}{teo:fig075}
+      
+      Protože je spodní přechod PN zapojen v propustném směru, zaplavují nositelé náboje z emitoru
+      závěrnou vrstvu ve střední oblasti. Tím se tato závěrná vrstva zmenší a její odpor klesne. Tím
+      mohou nositelé náboje z emitoru projít zmenšenou závěrnou vrstvou do kolektorové oblasti a
+      odtud odtéct k baterii (ke zdroji).
+
+      Jelikož nositelé náboje pocházejí ze spodní oblasti, nazývá se tato oblast emitor. Střední
+      oblast představuje výchozí bod pro oba přechody PN a nazývá se proto bází. Horní oblast
+      shromažďuje všechny nositele náboje, které neodtekly bází a nese označení kolektor.
+
+      \luagraphic[1]{teo_fig076.png}{Provozní napětí a proudy tranzistoru NPN. 
+        (\cite[s.~117]{Frohn2006})}{teo:fig076}
+      
+      Proud \(l_B\), který odtéká vývodem báze, je podstatně menší než kolektorový proud \(l_C\),
+      jenž protéká zmenšenou závěrnou vrstvou. Např. při napětí \(U_{BE} \approx \SI{0.7}{\V}\)
+      protéká bází proud \(I_B = \SI{1}{\mA}\) a kolektorem proud \(I_C \approx \SI{100}{\mA}\).
+      Jestliže nyní nepatrné zvětšíme \(U_{BE}\), vzroste proud báze např. na \(I_B = \SI{2}{\mA}\),
+      čímž k závěrné vrstvě doputuje více nositelů náboje z emitoru. Tím se závěrná vrstva ještě
+      více zmenší a kolektorový proud vzroste např. na \(I_C \approx \SI{200}{\mA}\). Naopak při
+      zmenšení napětí \(U_{BE}\) a tím též proudu \(l_B\) se odpor závěrné vrstvy zvětší a
+      kolektorový proud \(I_C\) klesne. Zjišťujeme, že proud báze \(l_B\) a proud kolektoru \(l_C\)
+      tranzistoru se v širokém rozmezí mění proporcionálně. U tranzistoru je tak možné malým proudem
+      báze \(l_B\), jenž představuje vstupní proud, řídit podstatně větší kolektorový proud \(l_C\),
+      který je výstupním proudem. Tato souvislost se udává formou \emph{proudového zesílení
+      nakrátko} \(\beta\).
+
+      \begin{equation*}
+        \beta = \dfrac{\Delta I_C}{\Delta I_B} \qquad \text{při (\(U_{CE} = 0\)))}
+      \end{equation*}
+        
+      \luagraphic[1]{teo_fig077.png}{Provozní napětí a proudy tranzistoru PNP. 
+        (\cite[s.~117]{Frohn2006})}{teo:fig077}
+      
+      Tranzistory NPN a PNP se navzájem principiálně odlišují pořadím vrstev. Proto se odlišují též
+      polaritou napětí \(U_{BE}\) a \(U_{CE}\). Obr. \ref {teo:fig076} a \ref {teo:fig077}
+      vysvětluje souvislosti, které již byly naznačeny na obr. \ref{teo:fig074} a \ref{teo:fig075},
+      tentokrát jsou ale použity schematické značky obou typů tranzistorů. Údaj napětí \(U_BE\) a
+      \(U_{CE}\) je tvořen tak, že poslední písmeno udává vztažnou elektrodu, zde tedy emitor E. Při
+      určování směru toku proudu vycházíme z technické orientace, jež je obvyklá (proud teče obvodem
+      směrem od kladného k zápornému pólu zdroje). Všechny proudy, které tečou do tranzistoru, jsou
+      kladné, vytékající proudy mají záporné znaménko.
+
+      Aby byl tranzistor schopen činnosti, musí být vždy přechod báze-emitor v propustném směru a
+      přechod báze-kolektor v závěrném směru.
 %---------------------------------------------------------------------------------------------------
