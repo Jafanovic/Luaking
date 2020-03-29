@@ -6,6 +6,15 @@
 \setchaptertoc
 \chapter{Bipolární tranzistory}\label{es:IchapV}
   \section{Všeobecné poznatky}\label{es:IchapVsecI}
+    Tranzistor je polovodičový prvek určeny na zesilovaní nebo generovaní elektrických signálu,
+    jedná se tedy o \emph{aktivní} součástku.
+
+    Podle činnosti rozdělujeme tranzistory: 
+    \begin{itemize}[noitemsep]
+      \item s injekcí, které využívají majoritní i minoritní nosiče (bipolární),
+      \item řízené polem, které využívají pouze majoritní nosiče náboje (unipolární).
+    \end{itemize}
+     
     Bipolámí tranzistory představují aktivní polovodičové prvky. Jsou tvořeny dvěma přechody PN,
     tzn. třemi vrstvami z rozdílně dotovaného polovodičového materiálu. Podle pořadí vrstev
     rozlišujeme dvě skupiny bipolárních tranzistorů, a to tranzistory \textsc{NPN} a tranzistory
@@ -14,9 +23,9 @@
 
     \begin{figure}[ht!]
       \centering  
-      \subcaptionbox{\label{teo:fig_fig053a}}{\luafigure[0.3]{teo_fig053a.pdf}}    \hspace{1em}
-      \subcaptionbox{\label{teo:fig_fig053b}}{\luafigure[0.3]{teo_fig053b.pdf}}    \newline
-      \subcaptionbox{\label{teo:fig_fig053a}}{\luafigure[0.3]{teo_fig053c.pdf}}    \hspace{1em}
+      \subcaptionbox{\textsc{PNP}\label{teo:fig_fig053a}}{\luafigure[0.3]{teo_fig053a.pdf}} \hspace{1em}
+      \subcaptionbox{\textsc{NPN}\label{teo:fig_fig053b}}{\luafigure[0.3]{teo_fig053b.pdf}} \newline
+      \subcaptionbox{\label{teo:fig_fig053a}}{\luafigure[0.3]{teo_fig053c.pdf}}             \hspace{1em}
       \subcaptionbox{\label{teo:fig_fig053b}}{\luafigure[0.3]{teo_fig053d.pdf}}                   
       \caption{Pořadí vrstev polovodiče a schematická značka bipolárních NPN a PNP 
       tranzistorů (\cite[s.~112]{Frohn2006})}
@@ -45,7 +54,7 @@
     
     Tranzistory můžeme rozdělovat podle mnoha hledisek. Z hlediska konstrukce je zásadní rozdělení
     na tranzistory pro malé signály (nízkého výkonu) a výkonové tranzistory. Takovéto rozdělení
-    podle konstrukce je uvedeno na obr. 2.2.
+    podle konstrukce je uvedeno na obr. \ref{teo:fig073}.
     
     Tranzistory nízkého výkonu se převážně používají pro zesilování malých střídavých signálů.
     Tranzistory mají v tomto případě pevně nastavený klidový pracovní bod a přiváděné signálové
@@ -58,7 +67,7 @@
     výkonových a koncových stupních nebo zastávají funkci elektronických spínačů.
 
     \begin{mdframed}[style=mdnote]
-      
+      \small
       Krátce po skončení války v roce 1945, Bellovy laboratoře vytvořily skupinu pro výzkum fyziky
       pevných látek, pod vedením \textsc{Shockleyho}. Jejich cílem bylo najít alternativu ke křehkým
       elektronkovým zesilovačům. Jejich první pokusy byly založeny na Shockleyově myšlence, že
@@ -250,4 +259,69 @@
 
       Aby byl tranzistor schopen činnosti, musí být vždy přechod báze-emitor v propustném směru a
       přechod báze-kolektor v závěrném směru.
+
+      Na obr. \ref{teo:fig078a} je mezi vývod kolektoru a baterii zařazen ještě kolektorový rezistor
+      \(R_C\), který plní funkci pracovního odporu. Ten omezuje proudové zesílení tranzistoru a
+      přeměňuje je v napěťové zesílení. Tranzistor a kolektorový rezistor v tomto případě tvoří
+      napěťový dělič pro napájecí napětí \(U_{CC} = \SI{+10}{\V}\). Při \(I_C = \SI{5}{\mA}\) a
+      \(R_C = \SI{1}{\kohm}\) vzniká na kolektorovém rezistoru úbytek napětí
+      \begin{equation*}
+        U_{RC} = \SI{5e-3}{\mA}\cdot\SI{1}{\kohm} = \SI{5}{\V}
+      \end{equation*}
+
+      \luagraphic[1]{teo_fig078a.jpg}{apěťové zesílení tranzistoru NPN. 
+        (\cite[s.~117]{Frohn2006})}{teo:fig078a}
+
+      Napětí kolektor-emitor tranzistoru, které představuje výstupní napětí, bude 
+      \begin{equation*}
+        U_{CE} = U_{CC} - U_{RC} = \SI{10}{\V} - \SI{5}{\V} = \SI{5}{\V}
+      \end{equation*}
+      Jestliže se napětí \(U_{BE}\) vlivem střídavého napětí z připojeného generátoru v daný okamžik
+      zvětší např. na \(U_{BE} = \SI{0.71}{\V}\), vzroste proud báze, který způsobí zvětšení
+      kolektorového proudu, který, dejme tomu, vzroste z \(I_C = \SI{5}{\mA}\) na \(I_C =
+      \SI{6.5}{\mA}\). Tento zvětšený kolektorový proud vyvolá na kolektorovém rezistoru zvětšený
+      úbytek napětí
+      \begin{equation*}
+        U_{RC} = I_C\cdot R_C = \SI{6.5}{\mA}\cdot\SI{1}{\kohm} = \SI{6.5}{\V}
+      \end{equation*}
+      Tím napětí \(U_{CE}\) klesne na hodnotu \(U_{CE} = \SI{3.5}{\V}\). Při záporné půlvlně napětí
+      generátoru se proud báze \(I_B\) zmenší, čímž se zmenši i proud kolektoru \(l_C\) a tím i
+      úbytek napětí na kolektorovém rezistoru \(U_{RC}\). Důsledkem tohoto děje je zvětšení
+      \(l_{CE}\) tranzistoru. Příslušné časové průběhy na obr. \ref{teo:fig078}. Generátor,
+      připojený na bázi tranzistoru, způsobí změnu proudu báze \(\Delta I_B = \SI{20}{\micro\A}\),
+      která vyvolá změnu kolektorového proudu \(\Delta I_C = \SI{3}{\mA}\).
+
+      \begin{figure}[ht!]  %\ref{teo:fig078} 
+        \centering
+        \subcaptionbox{\(U_{BE}(t)\)\label{teo:fig078b}}{\luafigure[0.9]{teo_fig078b.jpg}}  \newline                                                       
+        \subcaptionbox{\(I_{B}(t)\) \label{teo:fig078c}}{\luafigure[0.9]{teo_fig078c.jpg}}  \newline                  
+        \subcaptionbox{\(I_{C}(t)\) \label{teo:fig078d}}{\luafigure[0.9]{teo_fig078d.jpg}}  \newline                 
+        \subcaptionbox{\(U_{RC}(t)\)\label{teo:fig078e}}{\luafigure[0.9]{teo_fig078e.jpg}}  \newline                  
+        \subcaptionbox{\(U_{CE}(t)\)\label{teo:fig078f}}{\luafigure[0.9]{teo_fig078f.jpg}}  \newline                   
+        \caption{Napěťové zesílení tranzistoru zapojeného podle obr. \ref{teo:fig078a} 
+          (\cite[s.~118]{Frohn2006})}
+        \label{teo:fig078}
+      \end{figure}
+
+      Odtud pro uvedený případ zjistíme \emph{proudové zesílení} tranzistoru
+      \begin{equation*}
+        \beta = \dfrac{\Delta I_C}{\Delta I_B} = \dfrac{\num{3e-3}}{\num{20e-6}} = 150
+      \end{equation*}
+      \emph{Napěťové zesílení} \(A_u\) zapojení s tranzistorem je definováno podobně jako proudové
+      zesílení.
+      \begin{equation*}
+        A_u = \dfrac{\Delta U_{out}}{\Delta U_{in}} = \dfrac{\Delta U_{CE}}{\Delta U_{BE}}
+      \end{equation*}
+      Napěťové zesílení závisí kromě proudového zesílení také na velikosti kolektorového rezistoru
+      \(R_C\). V příkladu způsobí vstupní střídavé napětí \(\Delta U_{BE} = \SI{-0.02}{\V}\) změnu
+      výstupního střídavého napětí \(U_{CE} = \SI{-3}{\V}\). V tomto případě je tedy napěťové
+      zesílení
+      \begin{equation*}
+        A_u = \dfrac{\Delta U_{CE}}{\Delta U_{BE}} = \dfrac{\num{-3}}{\num{0.02}} = -150
+      \end{equation*}
+      Pomocí kolektorového rezistoru \(R_{C}\) se změnilo proudové zesílení na napěťové zesílení
+      tranzistoru. Znaménko \uv{-} naznačuje, že kladné půlvlně vstupního napětí odpovídá záporná
+      půlvlna výstupního napětí.
+
+  \section{Základní zapojení tranzistoru}\label{es:IchapVsecIII}
 %---------------------------------------------------------------------------------------------------
