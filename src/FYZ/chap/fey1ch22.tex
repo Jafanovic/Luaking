@@ -627,5 +627,47 @@
     (což jsou vlastně imaginární mocniny reálných čísel), a to vše z deseti postupných druhých
     odmocnin desítky.
 
+  \section{Komplexní čísla v Matlabu}\label{fyz:IchapXXIIsecVII}
+    Jedna ze zajímavých vlastností Matlabu je možnost práce s komplexními čísly bez další potřebných
+    knihoven. Komplexní čísla můžeme zadávat ve složkovém i exponenciálním tvaru. Imaginární
+    jednotku zapíšeme jako \(\imath = \jmath = \sqrt{-1}\). Následující výpis obsahuje několik
+    příkladů zadání komplexních čísel (\cite[s.~30]{Karban2006}).
+    \begin{mdframed}[style=mdmsdos]
+      \begin{lstlisting}[style=luaMaltabext,gobble=8]
+        % slozkovy tvar - i
+        >> c1 = 1-2i 
+           c1 = 1.0000 - 2.0000i
+        % slozkovy tvar - j
+        >> c2 = 2-3j   
+           c2 = 2.0000 - 3.0000i
+        % exponenciální tvar
+        >> c3 = 10*exp(pi/2*i)      
+           c3 = 0.0000 + 10.0000i
+      \end{lstlisting}
+    \end{mdframed} 
+
+    Pro vyjádření imaginární části komplexních čísel lze kromě \(\imath\) použít také \(\jmath\).
+    Při počítání s komplexními čísly se také hodí následující funkce:
+    \begin{description}
+      \item[\texttt{real(c)}]    reálná část.
+      \item[\texttt{imag(c)}]    imaginární část
+      \item[\texttt{conj(c)}]    komplexní doplněk
+      \item[\texttt{abs(c)}]     absolutní hodnota
+      \item[\texttt{angle(c)}]   úhel \(\Theta\) v radiánech (obr. \ref{fyz:fig414}) 
+    \end{description}  
+
+    Příkaz \texttt{compass} zobrazí vektory jako šipky směřující od středu souřadnice systému v
+    Gaussově rovině:
+    \begin{mdframed}[style=mdmsdos]
+      \begin{lstlisting}[style=luaMaltabext,gobble=8]
+        >> x = [1+0i, -1+0.5i, -0.3-0.4i]
+           x = 1.0000 + 0.0000i  -1.0000 + 0.5000i  -0.3000 - 0.4000i
+        >> compass(x)
+      \end{lstlisting}
+    \end{mdframed} 
+
+    \luagraphic[1]{fyz_fig932.pdf}{Kompasový graf vektorů jako šipek z počátku souřadnic 
+      (\cite[s.~91]{Karban2006}}{fyz:fig932}
+
   \section{Příklady a cvičení}\label{fyz:IchapXXIIsecVIII}
 %---------------------------------------------------------------------------------------------------

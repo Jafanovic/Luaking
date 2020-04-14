@@ -13,5 +13,3 @@ S=simplify(Vout)
 Z=simplify(absVout)
 pretty(S)
 pretty(Z)
-
-A = []

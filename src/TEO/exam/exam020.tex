@@ -1,0 +1,36 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{TEO:exam020}
+    Analyzujte obvod podle obrázku \ref{teo:fig080}. Vypočtěte proudy v jednotlivých větvích. Napětí
+    zdrojů: \(U_{01} = \SI{15}{\V}\), \(U_{02} = \SI{10}{\V}\), \(U_{03} = \SI{20}{\V}\), odpory
+    \(R_1 = \SI{10}{\ohm}\), \(R_2 = \SI{15}{\ohm}\), \(R_3 = \SI{30}{\ohm}\), \(R_4 =
+    \SI{20}{\ohm}\), \(R_5 = \SI{10}{\ohm}\),
+    \newline 
+    \textbf{Řešení:}\newline V předchozích kapitolách jsme se seznámili se dvěma základními zákony
+    analýzy elektrických obvodů - Kirchoffovými zákony: Nejprve označíme jednotlivé uzly \(B_1\), \(B_2\) a vztažného uzlu \(B_0\). Dále
+    vyznačíme příslušná uzlová napětí \(U_{B1}\) a \(U_{B2}\) (obr. \ref{teo:fig080}). Pro takto
+    očíslované uzly sestavíme rovnice podle prvního Kirchhoffova zákona a jejich řešením stanovíme
+    napětí označených uzlů.
+    \begin{subequations}\label{teo:eq149}
+      \begin{alignat}{2}
+        B_1&: -I_1 + I_2 + I_3 &&=0,  \label{teo:eq149a}   \\
+        B_2&: -I_1 + I_4 + I_5 &&=0   \label{teo:eq149b} 
+      \end{alignat}
+    \end{subequations}  
+    
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[1]{teo_fig080.pdf}
+    \captionof{figure}{Ilustrace k příkladu \ref{TEO:exam020}}   
+    \label{teo:fig080}
+    \par}
+
+    \begin{align*}
+      P\cdot t &= m\cdot c\cdot(T_2 - T_1)                                               \\
+             t &= \frac{m\cdot c}{P}\cdot(T_2 - T_1)                                     \\     
+               &= \frac{\SI{1}{\kg}\cdot\SI{4200}{\joule\per\kg\per\K}}{\SI{600}{\W}}
+                \cdot(\SI{100}{\degreeCelsius} - \SI{20}{\degreeCelsius})                \\ 
+               &= \SI{560}{\s}.
+    \end{align*}         
+  \end{example}
+\end{mdframed}

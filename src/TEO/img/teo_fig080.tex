@@ -1,0 +1,39 @@
+% http://robotika.trifit.eu/fel_1_b/ZEO_5.pdf
+\documentclass{standalone}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage[europeanresistors]{circuitikz}
+\usetikzlibrary{arrows,shapes,positioning}
+\usetikzlibrary{calc,decorations.markings}
+  \ctikzset{bipoles/thickness=1}
+  \ctikzset{bipoles/length=0.8cm}
+  % \ctikzset{resistors/fill=violet}
+  \ctikzset{bipoles/vsourceam/height/.initial=1}
+  \ctikzset{bipoles/vsourceam/width/.initial=1}
+  % \tikzstyle{every node}=[font=\small]
+  \ctikzset{voltage/distance from line=.1} % defines arrow's distance from wires
+  \ctikzset{voltage/bump b/.initial=4}     % defines arrow's curvature
+
+\begin{document}
+  \begin{circuitikz}[scale=1]
+    \node at(4.5,-0.05) [above, text=red] {\(B_0\)} coordinate(B0); 
+    \draw (0,4) to[battery2, l_=\(U_{01}\), a^=\SI{15}{\V}] (0,0); 
+    \draw (0,4) to[R,l^ =\(R_1\), a=\SI{10}{\ohm}, i  =\(I_1\)]    (3,4) node[anchor=south, text=red] {\(B_1\)} coordinate(B1)        
+                to[R,l^ =\(R_2\), a=\SI{15}{\ohm}, i>_=\(I_2\)]    (3,1) 
+                to[battery2, l_=\(U_{02}\), a^=\SI{10}{\V}, -*] (3,0) -- (0,0);
+    \draw (B1)  to[R=\(R_3\), a=\SI{30}{\ohm}, i>^=\(I_3\), *-*]   (6,4) node[anchor=south, text=red] {\(B_2\)} coordinate(B2)
+                to[R, l_=\(R_4\), a^=\SI{20}{\ohm}, i>^=\(I_4\)]   (6,1) 
+                to[short,-*] (6,0) -- (3,0);
+    \draw (B2)  to[R=\(R_5\), a=\SI{10}{\ohm}, i>^=\(I_5\)]        (9,4)  
+                to[battery2, l^=\(U_{03}\), a_=\SI{20}{\V}] (9,0) -- (6,0);
+
+    % draw voltage arrows
+    \draw (B1) to [open,v^=\( \)] (4.5,0); 
+    \draw (B2) to [open,v =\( \)] (4.5,0); 
+    \node at(4.0,1.5) [above, text=red] {\(U_{B1}\)}; 
+    \node at(5.1,1.5) [above, text=red] {\(U_{B2}\)}; 
+
+    % ground symbol
+    \draw (4.5,0) to[short, *-] (4.5,-0.1) node[ground]{};
+  \end{circuitikz}
+\end{document}
