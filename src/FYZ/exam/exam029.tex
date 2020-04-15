@@ -1,0 +1,44 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{FYZ:exam029}
+    \emph{Určete hmotnost petroleje, který spotřebuje petrolejový vařič k zahřátí vody o hmotnosti
+    \SI{3}{\kg} z \SI{10}{\degreeCelsius} na \SI{100}{\degreeCelsius}. Účinnost vařiče
+    \SI{34}{\percent}, výhřevnost petroleje je \SI{44}{\mega\joule\per\kg} a měrná kapacita vody
+    \SI{4180}{\joule\per\kg\kelvin}. (\cite[s.~31]{Bartuska1997})}
+    
+
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[1]{fyz_fig934.png}
+    \captionof{figure}{Abychom si v terénu dokázali teplé jídlo připravit, neobejdeme se bez vody a
+    bez spolehlivého vařiče a paliva.
+    \label{fyz:fig934}}
+    \par} 
+    
+    \textbf{Řešení:}\newline 
+    Při ohřívání vody petrolejovým vařičem se jen část tepla, které se uvolní při spalování
+    petroleje, spotřebuje na ohřátí vody. Účinnost vařiče je určena vztahem:
+    \begin{equation*}
+      \eta = \dfrac{Q}{Q_1},
+    \end{equation*}
+    kde \(Q = mc(t_2 - t_1\) je teplo, které přijme voda  hmotnosti \(m\) při ohřátí z teploty
+    \(t_1\) na teplotu \(t_2\), a \(Q=m_1H\) teplo uvolněné spálením petroleje o hmotnosti \(m_1\)
+    a výhřevnosti \(H\). Užitím těchto vztahů dostáváme
+    dostáváme
+    \begin{align*}
+     Q = \eta Q_1 = \eta m_1H &= mc(t_2-t_1) \;\rightarrow  \\
+                               m_1 &= \dfrac{mc(t_2-t_1)}{\eta H}.
+    \end{align*}
+    Čísleně 
+    \begin{align*}
+       m_1 &= \dfrac{\SI{3}{\kg}\cdot\SI{4180}{\joule\per\kg\kelvin}\cdot\SI{90}{\kelvin}}
+                    {\num{0.34}\cdot\SI{44}{\mega\joule\per\kg}}                                  \\
+       m_1 &= \dfrac{3\cdot4180\cdot90}{\num{0.34}\cdot\num{44e6}}\cdot
+              \dfrac{\si{\kg}\si{\joule\per\kg\kelvin}\si{\kelvin}}
+                    {\si{\kg\square\m\per\square\s\per\kg}}                                       \\
+       m_1 &\approx \SI{75}{\g}    
+     \end{align*}
+     Na zahřátí vody o hmotnosti \SI{3}{\kg} z \SI{10}{\degreeCelsius} na \SI{100}{\degreeCelsius}
+     na petrolejovém vařiči je zapotřebí \SI{75}{\g} petroleje.
+  \end{example} 
+\end{mdframed}

@@ -1,0 +1,37 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{FYZ:exam028}
+    \emph{Proudové letadlo má čtyři motry, z nich každý vyvíjí tahovu sílu \SI{20}{\kN}. Jaká je
+    hmotnost paliva potřebného k letu o délce \SI{5000}{\km}? Výhřevnost paliva je
+    \SI{45}{\mega\joule\per\kg}, učinnost motorů \SI{25}{\percent}.(\cite[s.~32]{Bartuska1997})}  
+
+    {\centering
+    \captionsetup{type=figure}
+    \luafigure[1]{fyz_fig933.pdf}
+    \captionof{figure}{Řez proudovým motorem (\cite[s.~500]{Borgnakke2012})
+    \label{fyz:fig933}}
+    \par} 
+    
+    \textbf{Řešení:}\newline 
+    Při práci proudových motorů se část enerige, která se uvolní spálením paliva, spotřebuje na
+    vykonání práce. Účinnost motorů je určena vztahem:
+    \begin{equation*}
+      \eta = \dfrac{W}{Q_1},
+    \end{equation*}
+    kde \(W = nFs\) je práce, kterou vykonají motory letadla, a \(Q_1 = m_1H\) teplo, které se
+    uvolní při letu letadla spálením paliva o hmotnosti \(m_1\) a výhřevnosti \(H\). Užitím těchto
+    vztahů dostáváme
+    \begin{equation*}
+     W = \eta Q_1 = \eta m_1H = nFs \quad\rightarrow\quad m_1 = \dfrac{nFs}{\eta H}.
+    \end{equation*}
+    Čísleně 
+    \begin{align*}
+       m_1 &= \dfrac{4\cdot\SI{20}{\kN}\cdot\SI{5000}{\km}}
+                    {\num{0.25}\cdot\SI{45}{\mega\joule\per\kg}}                                  \\
+       m_1 &= \dfrac{4\cdot\num{2e4}\cdot\num{5e6}}{\num{0.25}\cdot\num{45e6}}\cdot
+              \dfrac{\si{\kg\m\per\square\s}\cdot\si{\m}}{\si{\kg\square\m\per\square\s\per\kg}}  \\
+       m_1 &\approx \SI{35.6e3}{\kg} \approx \SI{36}{\tonne}        
+     \end{align*}
+     K letu letadla na dráze \SI{5000}{\km} je zapotřebí palivo o hmotnosti \SI{36}{\tonne}.
+  \end{example} 
+\end{mdframed}
