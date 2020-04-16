@@ -1,0 +1,32 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{FYZ:exam030}
+    \emph{Určete hmotnost střelného prachu v nábojnici, jestliže střela má hmotnost \SI{20}{\g} a
+    při výstřelu získá rychlost \SI{700}{\m\per\s}. Výhřevnost střelného prachu je
+    \SI{3.79}{\mega\joule\per\kg} a účinnost zbraně je \SI{28}{\percent}.
+    (\cite[s.~31]{Bartuska1997})}
+    
+    \textbf{Řešení:}\newline 
+    Při výstřelu se část energie, která se uvolní při spálení střelného prachu přemění na kineticku
+    energii střely. Účinnost zbraně je určena vztahem:
+    \begin{equation*}
+      \eta = \dfrac{E_k}{Q_1},
+    \end{equation*}
+    kde \(E_k = \frac{1}{2}mv^2\) je kinetická energie střeli a \(Q_1 = m_1H\) je celkové teplo,
+    které se při výstřelu uvolní spálením střelného prachu o hmotnosti \(m_1\) a výhřevnosti \(H\).
+    Užitím těchto vztahů dostáváme dostáváme
+    \begin{equation*}
+     E_k = \eta Q_1 = \eta m_1H = \frac{1}{2}mv^2 \;\rightarrow\; m_1 = \dfrac{mv^2}{2\eta H}.
+    \end{equation*}
+    Čísleně 
+    \begin{align*}
+       m_1 &= \dfrac{\SI{20}{\g}\cdot(\SI{700}{\m\per\s})^2}
+                    {2\cdot\num{0.28}\cdot\SI{3.79}{\mega\joule\per\kg}}                          \\
+       m_1 &= \dfrac{0.02\cdot700^2}{\num{0.56}\cdot\num{3.79e6}}\cdot
+              \dfrac{\si{\kg}\cdot\si{\square\m\per\square\s}}
+                    {\si{\kg\square\m\per\square\s\per\kg}}                                       \\
+       m_1 &\approx \SI{4.6}{\g}    
+     \end{align*}
+     V nábojnici je střelný prach o hmotnosti \SI{4.6}{\g}.
+  \end{example} 
+\end{mdframed}
