@@ -7,17 +7,33 @@
     \SI{20}{\ohm}\), \(R_5 = \SI{10}{\ohm}\),
     \newline 
     \textbf{Řešení:}\newline V předchozích kapitolách jsme se seznámili se dvěma základními zákony
-    analýzy elektrických obvodů - Kirchoffovými zákony: Nejprve označíme jednotlivé uzly \(B_1\), \(B_2\) a vztažného uzlu \(B_0\). Dále
-    vyznačíme příslušná uzlová napětí \(U_{B1}\) a \(U_{B2}\) (obr. \ref{teo:fig080}). Pro takto
-    očíslované uzly sestavíme rovnice podle prvního Kirchhoffova zákona a jejich řešením stanovíme
-    napětí označených uzlů.
-    \begin{subequations}\label{teo:eq149}
+    analýzy elektrických obvodů - Kirchoffovými zákony: V obvodu na obrázku \ref{teo:fig080} mamé
+    celkem 3 uzly. 
+    \begin{itemize}
+      \item Nejprve jeden z nich zvolíme jako referenční  \(B_0\) (zem s nulovým potenciálem). 
+      \item Napětí v \(n-1\) zbývajících uzlech \(B_1\) a \(B_2\) vyznačíme jako uzlová napětí
+            \(U_{B1}\) a \(U_{B2}\). Napětí v každém z těchto \(n-1\) uzlů je vztaženo vzhledem k
+            referenčnímu uzlu. 
+      \item Pro takto očíslované uzly sestavíme rovnice podle prvního Kirchhoffova zákona a jejich
+            řešením stanovíme napětí označených uzlů.
+            \begin{subequations}\label{teo:eq149}
+              \begin{alignat}{2}
+                B_1&: -I_1 + I_2 + I_3 &&=0,  \label{teo:eq149a}   \\
+                B_2&: -I_1 + I_4 + I_5 &&=0   \label{teo:eq149b} 
+              \end{alignat}
+            \end{subequations}  
+    \end{itemize}
+    Uvedené proudy v soustavě rovnic \ref{teo:eq149} je možné vyjádřit pomocí známých uzlových
+    napětí:
+    \begin{subequations}\label{teo:eq150}
       \begin{alignat}{2}
-        B_1&: -I_1 + I_2 + I_3 &&=0,  \label{teo:eq149a}   \\
-        B_2&: -I_1 + I_4 + I_5 &&=0   \label{teo:eq149b} 
+        B_1&: - \dfrac{U_{01} - U_{B1}}{R_1} 
+              + \dfrac{U_{B1} - U_{01}}{R_2} 
+              + \dfrac{U_{B1} - U_{B2}}{R_3} &&=0,  \label{teo:eq150a}   \\
+        B_2&: - \dfrac{U_{B1} - U_{B2}}{R_3} 
+              + \dfrac{U_{01} - U_{B1}}{R_4} + I_5 &&=0   \label{teo:eq150b} 
       \end{alignat}
     \end{subequations}  
-    
     {\centering
     \captionsetup{type=figure}
     \luafigure[1]{teo_fig080.pdf}
