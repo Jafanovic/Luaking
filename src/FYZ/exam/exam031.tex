@@ -1,0 +1,39 @@
+% !TeX spellcheck = cs_CZ
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{FYZ:exam030}
+    \emph{Automobil, jehož motor má výkon \SI{40}{\kW}  a účinnost \SI{28}{\percent}, se pohybuje
+    rychlostí \SI{120}{\km\per\hour}. Jakou dráhu může urazit, jestliže zásoba paliva v nádrži je
+    \SI{20}{\litre}? Výhřevnost paliva je \SI{46}{\mega\joule\per\kg}, jeho hustota
+    \SI{750}{\kg\per\cubic\m}. (\cite[s.~33]{Bartuska1997})}
+    
+    \textbf{Řešení:}\newline 
+    Účinnost automobilového motoru je určena vztahem:
+    \begin{equation*}
+      \eta = \dfrac{W}{Q_1},
+    \end{equation*}
+    kde \(W\) je práce, kterou vykoná motor automobilu při jízdě na dráze \(s\) a \(Q_1 = m_1H\)
+    teplo, které se při jízdě po této dráze uvolní spálením paliva o hmotnosti \(m_1\) a výhřevnost
+    \(H\). Pro práci \(W\) proto platí: 
+    \begin{equation*}
+     W = \eta Q_1 = \eta m_1H = \eta\varrho VH.
+    \end{equation*}
+    Výkon automobilového motoru při jízdě na dráze \(s = vt\) je \(P=\dfrac{W}{t}\). Odtud pro práci
+    \(W\) dostáváme
+    \begin{equation*}
+      W = Pt = P\dfrac{s}{t}. 
+    \end{equation*}
+    Z předchozích rovnic pak vyplývá
+    \begin{equation*}
+      P\dfrac{s}{t} = \eta\varrho VH \;\rightarrow\; s = \dfrac{\eta\varrho VHv}{P}
+    \end{equation*}
+    číselně
+    \begin{align*}
+       s  &=  \dfrac{\num{0.33}\cdot750\cdot\num{30e-3}\cdot\num{46e6}\cdot\num{33.3}}{\num{40e3}}
+              \cdot                   
+           =  \dfrac{\si{\kg}\cdot\si{\square\m\per\square\s}}
+                    {\si{\kg\square\m\per\square\s\per\kg}}                                       \\
+       m_1 &\approx \SI{4.6}{\g}    
+     \end{align*}
+     V nábojnici je střelný prach o hmotnosti \SI{4.6}{\g}.
+  \end{example} 
+\end{mdframed}
