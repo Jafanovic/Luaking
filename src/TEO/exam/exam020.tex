@@ -9,7 +9,7 @@
     \textbf{Řešení:}\newline V předchozích kapitolách jsme se seznámili se dvěma základními zákony
     analýzy elektrických obvodů - Kirchoffovými zákony: V obvodu na obrázku \ref{teo:fig080} mamé
     celkem 3 uzly. 
-    \begin{itemize}
+    \begin{itemize}[leftmargin=2em]
       \item Nejprve jeden z nich zvolíme jako referenční  \(B_0\) (zem s nulovým potenciálem). 
       \item Napětí v \(n-1\) zbývajících uzlech \(B_1\) a \(B_2\) vyznačíme jako uzlová napětí
             \(U_{B1}\) a \(U_{B2}\). Napětí v každém z těchto \(n-1\) uzlů je vztaženo vzhledem k
@@ -27,11 +27,12 @@
     napětí:
     \begin{subequations}\label{teo:eq150}
       \begin{alignat}{2}
-        B_1&: - \dfrac{U_{01} - U_{B1}}{R_1} 
-              + \dfrac{U_{B1} - U_{01}}{R_2} 
-              + \dfrac{U_{B1} - U_{B2}}{R_3} &&=0,  \label{teo:eq150a}   \\
-        B_2&: - \dfrac{U_{B1} - U_{B2}}{R_3} 
-              + \dfrac{U_{01} - U_{B1}}{R_4} + I_5 &&=0   \label{teo:eq150b} 
+        &B_1: - \dfrac{U_{01} - U_{B1}}{R_1} 
+              + \dfrac{U_{B1} - U_{02}}{R_2} 
+              + \dfrac{U_{B1} - U_{B2}}{R_3}       &&=0,  \label{teo:eq150a}   \\
+        &B_2: - \dfrac{U_{B1} - U_{B2}}{R_3} 
+              + \dfrac{U_{B2}}{R_4}
+              + \dfrac{U_{B2} - U_{03}}{R_5}       &&=0   \label{teo:eq150b} 
       \end{alignat}
     \end{subequations}  
     {\centering
@@ -40,13 +41,26 @@
     \captionof{figure}{Ilustrace k příkladu \ref{TEO:exam020}}   
     \label{teo:fig080}
     \par}
-
-    \begin{align*}
-      P\cdot t &= m\cdot c\cdot(T_2 - T_1)                                               \\
-             t &= \frac{m\cdot c}{P}\cdot(T_2 - T_1)                                     \\     
-               &= \frac{\SI{1}{\kg}\cdot\SI{4200}{\joule\per\kg\per\K}}{\SI{600}{\W}}
-                \cdot(\SI{100}{\degreeCelsius} - \SI{20}{\degreeCelsius})                \\ 
-               &= \SI{560}{\s}.
-    \end{align*}         
+    Rovnice lze zapsat v maticovém tvaru \(\matr{A}\vec{x} = \vec{b}\). Matice soustavy má hodnost 2
+    a její koeficienty jsou:
+    \begin{equation*}
+      \matr{A} = 
+        \left[
+          \begin{matrix}
+            \dfrac{1}{R_1} +\dfrac{1}{R_2} + \dfrac{1}{R_3}  &  -\dfrac{1}{R_3}        \\
+                           -\dfrac{1}{R_3}  &   \dfrac{1}{R_3} + \dfrac{1}{R_4} + \dfrac{1}{R_5}
+          \end{matrix}
+        \right]
+    \end{equation*}
+    Vektor neznámých obsahuje uzlová napětí \(\vec{x} = \left[\begin{matrix} U_{B1} \\ U_{B2}
+    \end{matrix}\right],\) a zatímco vektor pravých stran obsahuje pouze proudy \(\vec{b} =
+    \left[\begin{matrix} \frac{U_{01}}{R_1} + \frac{U_{02}}{R_2} \\ \frac{U_{02}}{R_5}
+    \end{matrix}\right]\). Pro vyřešení soustavy rovnic použijeme následující skript v Matlabu:
   \end{example}
+  %---------------------------------------------------------------
+  \lstinputlisting[%
+  style=luaMatlabStyle,
+  caption={Výpis programu \ref{TEO:exam020}.}
+  ]{../src/TEO/matlab/teo_exam020.m}
+  %--------------------------------------------------------------- 
 \end{mdframed}

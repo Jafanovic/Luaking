@@ -1,9 +1,9 @@
 % !TeX spellcheck = cs_CZ
 \begin{mdframed}[style=mdexam]
-  \begin{example}\label{FYZ:exam030}
+  \begin{example}\label{FYZ:exam031}
     \emph{Automobil, jehož motor má výkon \SI{40}{\kW}  a účinnost \SI{28}{\percent}, se pohybuje
     rychlostí \SI{120}{\km\per\hour}. Jakou dráhu může urazit, jestliže zásoba paliva v nádrži je
-    \SI{20}{\litre}? Výhřevnost paliva je \SI{46}{\mega\joule\per\kg}, jeho hustota
+    \SI{30}{\litre}? Výhřevnost paliva je \SI{46}{\mega\joule\per\kg}, jeho hustota
     \SI{750}{\kg\per\cubic\m}. (\cite[s.~33]{Bartuska1997})}
     
     \textbf{Řešení:}\newline 
@@ -26,14 +26,16 @@
     \begin{equation*}
       P\dfrac{s}{t} = \eta\varrho VH \;\rightarrow\; s = \dfrac{\eta\varrho VHv}{P}
     \end{equation*}
-    číselně
+    číselně (nezapomeňme převést \SI{120}{\km\per\hour} na \SI{33.3}{\m\per\s})
     \begin{align*}
-       s  &=  \dfrac{\num{0.33}\cdot750\cdot\num{30e-3}\cdot\num{46e6}\cdot\num{33.3}}{\num{40e3}}
-              \cdot                   
-           =  \dfrac{\si{\kg}\cdot\si{\square\m\per\square\s}}
-                    {\si{\kg\square\m\per\square\s\per\kg}}                                       \\
-       m_1 &\approx \SI{4.6}{\g}    
-     \end{align*}
-     V nábojnici je střelný prach o hmotnosti \SI{4.6}{\g}.
+       s  &=\dfrac{\num{0.33}\cdot750\cdot\num{30e-3}\cdot\num{46e6}\cdot\num{33.3}}{\num{40e3}}  \\
+       s  &\approx \SI{284}{\km}    
+    \end{align*}
+    Zkontrolujeme jednotky
+    \begin{equation*}
+      \dfrac{\si{\kg\per\cubic\m}\cdot\si{\cubic\m}\cdot\si{\joule\per\kg}\cdot\si{\m\per\s}}
+            {\si{\joule\per\s}}  
+    \end{equation*}  
+    Automobil se zásobou paliva o objemu \SI{30}{\litre} urzí dráhu \SI{284}{\km}.
   \end{example} 
 \end{mdframed}
