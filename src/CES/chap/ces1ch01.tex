@@ -62,26 +62,27 @@
 
   \section{Základní typy posloupností}\label{ces:IchapIsecII}
     Nyní si stručně popíšeme základní typy číslicových signálů, jejich význam a použití
-    \begin{itemize}
-      \item \textbf{Jednotkový impuls}
-            \begin{equation}\label{ces:eq001}
-              \delta[n]=
-              \begin{cases} 
-                 1, &  n = 0, \\
-                 0, &  n \neq 0,
-              \end{cases}
-            \end{equation}
-            který je zobrazen na obr. \ref{ces:fig051}. Je-li přiveden na vstup číslicové soustavy,
-            objeví se na jejím výstupu \emph{impulsová odezva}. Tento signál je obdobou Diracova
-            impulsu používaného v analové oblasti, i když fyzikálně se jedná o zcela odlišné
-            signály. Rovněž matematická složitost definice obou impulsu je rozdílná. Použití
-            jednotkového impulsu definovaného rovnicí \ref{ces:eq001} je velmi snadn0 a umo6=nuje
-            realizovat výpočet impulsové odezvy libovolného systému jednoduchým způsobem
+
+    \subsection{Jednotkový impuls}
+      Prvním z těchto signálů je \textbf{jednotkový impuls}
+      \begin{equation}\label{ces:eq001}
+        \delta[n]=
+        \begin{cases} 
+            1, &  n = 0, \\
+             0, &  n \neq 0,
+        \end{cases}
+      \end{equation}
+      který je zobrazen na obr. \ref{ces:fig051}. Je-li přiveden na vstup číslicové soustavy,
+      objeví se na jejím výstupu \emph{impulsová odezva}. Tento signál je obdobou Diracova
+      impulsu používaného v analové oblasti, i když fyzikálně se jedná o zcela odlišné
+      signály. Rovněž matematická složitost definice obou impulsu je rozdílná. Použití
+      jednotkového impulsu definovaného rovnicí \ref{ces:eq001} je velmi snadn0 a umo6=nuje
+      realizovat výpočet impulsové odezvy libovolného systému jednoduchým způsobem
             
             \luagraphic[1]{ces_fig051.png}{Diskrétní grafická reprezentace číslicových signálů -
               konkrétně je znázorněna část průbehu z předchozího obrázku pomocí příkazu
               \lstinline[style=luaMatlabText]!stem(x)! (\cite[s.~2]{Davidek1996}).}{ces:fig051}
-
+    \begin{itemize}
       \item \textbf{Jednotkový skok}
             \begin{equation}\label{ces:eq002}
               u[n]=
