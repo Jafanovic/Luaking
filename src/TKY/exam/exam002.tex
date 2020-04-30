@@ -1,159 +1,169 @@
-% !TeX spellcheck = cs_CZ
-% Lineární obvody a systémy - Jan Bičák  - strana 10
-% Popis spojitých systémů
+% !TeX spellcheck = cs_CZ Lineární obvody a systémy - Jan Bičák  - strana 10 Popis spojitých systémů
 %===================================================================================================
-\begin{example}Lineární spojitý systém je dán zapojením dle obrázku. Určete:
-  \begin{enumerate}[noitemsep]
-    \item diferenciální rovnici pro odezvu $u_2(t)$, je-li na vstupu buzen napětím $u_1(t)$,
-    \item přenos napětí $H(p)=\dfrac{U_2(p)}{U_1(p)}$,
-    \item impulsní odezvu $h(t)$.
-  \end{enumerate}
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{tky:exam002}
+    Lineární spojitý systém je dán zapojením dle obrázku. Určete:
+    \begin{enumerate}[leftmargin=12pt,noitemsep]
+      \item diferenciální rovnici pro odezvu $u_2(t)$, je-li na vstupu buzen napětím $u_1(t)$,
+      \item přenos napětí $H(p)=\dfrac{U_2(p)}{U_1(p)}$,
+      \item impulsní odezvu $h(t)$.
+    \end{enumerate}
 
-   {\centering
-    \captionsetup{type=figure}
-    \includegraphics[scale=0.5]{cir_RLC.pdf}
-    \captionof{figure}{Zapojení obvodu RLC.}
-    \label{SAS:fig_RLC}
-    \par}
-  \textbf{Řešení:}\newline
-  Pro zapojení dle obrázku získáme metodou uzlových napětí integrodiferenciální rov\-ni\-ce pro
-  uzly \texttt{A} a \texttt{B}:
-  \begin{align}\label{SAS:eq_RLC_basic_rces}
-    A &:  \frac{u_3(t)-u_1(t)}{R}+\frac{1}{L}
-    \int_0^t{(u_3(t)-u_2(t))}d\tau+i_L(0_+) = 0\,               \\ \nonumber
-    B &:  \frac{1}{L}\int_0^t{(u_2(t)-u_3(t))}d\tau+C\frac{du_c}{dt}-i_L(0_+)        = 0
-  \end{align}
-  Derivováním a eliminací $u_3(t)$ z původních rovnic dostaneme pro odezvu $u_2(t)$ diferenciální
-  rovnici II. řádu
-  \begin{itemize}
-    \item \(\frac{d}{dt}(B)\):
-          \begin{equation*}
-            u_2(t)-u_3(t)+LC\frac{d^2u_2(t)}{dt^2}
-            =0\Rightarrow u_3(t)=u_2 (t)+LC\frac{d^2u_2(t)}{dt^2}
-          \end{equation*}
-    \item \(\frac{d}{dt}(B)\rightarrow(A)\):
-  \end{itemize}
-  \begin{align*}
-    \frac{u_2(t)+LC\frac{d^2u_2(t)}{dt^2}-u_1(t)}{R}+
-    \frac{1}{L}\int_0^t{(LC\frac{d^2u_2(t)}{dt^2})}d\tau+i_L(0_+) &=  0 \\
-    u_2(t)+LC\frac{d^2u_2(t)}{dt^2}-u_1(t)+
-    RC\left[\frac{du_2(t)}{dt}\right]_0^t+Ri_L(0_+)               &=  0
-  \end{align*}
-  Při nulových počátečních podmínkách: $\left.\frac{du_2(t)}{dt}\right\rvert_{t=0}=0$, $i_L(0_+)=0$ dostaneme:
-  \begin{equation}\label{sas:eq_dif_RLC_II_r}
-    LC\frac{d^2u_2(t)}{dt^2}+RC\frac{du_2(t)}{dt}+u_2(t)=u_1(t)
-  \end{equation}
-  V Laplaceově transformaci platí:
-  \begin{align*}
-    \mathcal{L}\left[\frac{du_2(t)}{dt}\right]     &= pU_2(p)-u_2(0) \\
-    \mathcal{L}\left[\frac{d^2u_2(t)}{dt^2}\right] &= p^2U_2(p)-pu_2(0)-u_2(0),\,kde\,u_2(0)=
-    \left.\frac{du_2(t)}{dt}\right\rvert_{t=0}
-  \end{align*}
-  při nulových počátečních podmínkách
-  \begin{equation}\label{sas:eq_L_RLC_rce}
-    p^2LCU_2(p)+pRCU_2(p)+U_2(p)=U_1(p)
-  \end{equation}
-  Odtud vyplývá \textbf{přenosová funkce} $H(p)=\frac{U_2(p)}{U_1(p)}$
-  \begin{equation}\label{sas:eq_Hp_RLC}
-    H(p)=\frac{1}{p^2LC+pRC+1}
-        =\frac{1}{LC}\frac{1}{p^2+p\frac{R}{L}+\frac{1}{LC}}=\frac{Q(p)}{N(p)}
-  \end{equation}
-  K nalezení \textbf{impulsní odezvy} nejprve určíme póly přenosové funkce řešením rovnice
-  $N(p)=0$
-  \begin{equation}\label{sas:eq_koreny_L_rce}
-    p_{\infty_{12}}=\frac{\frac{R}{L}\pm\sqrt{\left(\frac{R}{L}\right)^2-\frac{4}{LC}}}{2}
-    =\frac{R}{2L}\pm\sqrt{\left(\frac{R}{2L}\right)^2-\frac{1}{LC}}
-  \end{equation}
-  přenosovou funkci pak upravíme do tvaru
-  \begin{equation}\label{sas:eq_Hp_forma}
-    H(p)=\frac{K}{(p-p_{\infty_1})\cdot(p-p_{\infty_2})}, \qquad K=\frac{1}{LC}
-  \end{equation}
-  \begin{itemize}
-    \item Uvažujeme-li jednoduché póly a bude-li $R>2\sqrt{\frac{L}{C}}$ , potom z  rov.
-          \ref{sas:eq_koreny_L_rce} vyplývají dva reálné různé póly. Přenosovou funkci tedy můžeme
-          zapsat obecným tvarem:
-          \begin{equation}\label{sas:eq_Hp_forma_2}
-            H(p)=\frac{K}{(p+a_1)\cdot(p+a_2)}=\frac{k_1}{p+a_1}+\frac{k_2}{p+a_2}
-          \end{equation}
-          kde $p_{\infty_1}=-a_1,\, p_{\infty_2}=-a_2$, Rezidua  $k_1=\frac{K}{a_2-a_1}$,
-          $k_2=\frac{K}{a_1-a_2}$ určíme z rov. \ref{tky:eq006}. Impulsní odezvu pak
-          vypočteme užitím rov. \ref{sas:eq_impulzni_odezva}.
-          \begin{equation}\label{sas:eq_ht1}
-            h(t)=\mathcal{L}^{-1}[H(p)]=\frac{K}{a_2-a_1}e^{-a_1t}+\frac{K}{a_1-a_2}e^{-a_2t}
-          \end{equation}
-    \item Když bude $R<2\sqrt{\frac{L}{C}}$, obdržíme dvojici komplexně sdružených pólů a
-          pře\-no\-so\-vou funkci může obecně zapsat takto:
-          \begin{equation}\label{sas:eq_ht2}
-            H(p)=\frac{K}{(p+a_1)\cdot(p+a_2)}=\frac{k_1}{p+a-jb}+\frac{k_2}{p+a+jb}
-          \end{equation}
-          kde $p_{\infty_1}=-a+jb$, $p_{\infty_2}=-a-jb$. Rezidua v pólech jsou dány výrazy
-          $k_1=-\frac{jK}{2b}$, $k_2=\frac{jK}{2b}$. Impulzní odezvu opět určíme užitím rov.
-          \ref{sas:eq_impulzni_odezva}.
-          \begin{equation*}
-            h(t) = \frac{Ke^{-at}}{2b}\left[j\cdot\left(-e^{jbt}+e^{-jbt}\right)\right]
-          \end{equation*}
-          \begin{align}
-            \,  &= \frac{Ke^{-at}}{2b}\left[j\cdot
-            \left(\underline{-\cos(bt)}-j\sin(bt)+
-            \underline{\cos(bt)}-j\sin(bt)\right)\right]                        \nonumber\\
-            \,  &= \frac{K}{b}e^{-at}\sin(bt)                                   \label{tky:eq005}
-          \end{align}
-  \end{itemize}
-  
-  Pro stavební prvky: $R=1k\Omega, L=11.5mH, C=22.5nF$ ukazuje výpis m-file  
-  \texttt{SAS\_exam\_02\_symb\_Hp\_solve.m} symbolický způsob řešení operátorových
-  ob\-vo\-do\-vých rovnic pomocí \texttt{MATLABu}. Jde o typ \textbf{dolní propust}, jehož
-  přenosová funkce má tvar: $$H(p)= \frac{3.9506\cdot10^9}{p^2+8.8889\cdot10^4p+3.9506\cdot10^9}.$$
-  %---------------------------------------------------------------
-    \lstinputlisting[%
-    style=luaMatlabStyle, 
-    caption={TKY\_exam\_02\_symb\_Hp\_solve.m}
-    ]{../src/TKY/matlab/SAS_exam_02_symb_Hp_solve.m}
-  %---------------------------------------------------------------
-  Impulzní charakteristiku obdržíme dosazením do vztahu \ref{tky:eq005}
-  $$h(t)=\frac{K}{b}e^{-at}\sin(bt) 
-  =8.8890\cdot10^4e^{-4.4444\cdot10^4t}\sin(4.4444\cdot10^4t).$$
-  
     {\centering
-    \captionsetup{type=figure}
-     \luafigure[0.9]{ht.pdf}
-     \captionof{figure}{Impulzní charakteristika}
-     \label{SAS:fig_ImpChar}
+      \captionsetup{type=figure}
+      \luafigure[1]{tky_fig008.pdf}
+      \captionof{figure}{Zapojení obvodu RLC.}
+      \label{tky:fig008}
     \par}
-  
-  Z hlediska analýzy obvodů v kmitočtové oblasti je výhodné sestavovat obvodové rovnice (metodami
-  uzlových napětí a smyčkových proudů) přímo v operátorovém tvaru. Kirchhoffovy zákony pro
-  uzavřenou smyčku a proudu do uzlu pak mají tvar $$\sum_{k=1}^{n}U_k(p) = 0, \qquad
-  \sum_{k=1}^{n}I_k(p) = 0.$$ Metodou uzlových napětí pro zapojení na obr. \ref{SAS:fig_RLC}
-  obdržíme rovnice
-  \begin{align}
-    \frac{U_3(p)-U_1(p)}{R}+\frac{U_3(p)-U_2(p)}{pL} &=  0 \\
-    pCU_2(p) + \frac{U_2(p)-U_3(p)}{pL}              &=  0 
-  \end{align}
-  Na rozdíl od \ref{SAS:eq_RLC_basic_rces} jde o algebraické rovnice, ze kterých eliminací
-  uzlového napětí $U_3(p)$ vyplývá přenosová funkce \ref{sas:eq_Hp_RLC} $$H(p) =
-  \frac{U_2(p)}{U_1(p)}=\frac{1}{LC}\frac{1}{p^2+p\frac{R}{L}+\frac{1}{LC}}$$
-  
-   {\centering
-    \captionsetup{type=figure}
-    \luafigure[1]{cir_RLC_response_H_PHA_GD.pdf}
-    \captionof{figure}{Modulová, fázová charakteristika a skupinové zpoždění filtru}
-    \label{SAS:fig_ex01_RLC}
-    \par}    
-  
-  Dosazením za $p=j\omega$ lze z přenosové funkce vyjádřit modulovou charakteristiku $H(j\omega)$ a
-  fázovou charakteristiku $\Phi(\omega)= \texttt{arg} H(j\omega)$. Skupinové zpoždění vyplývá ze
-  vztahu \ref{SAS:eq_skupinove_zpozdeni}. Modulová, fázová charakteristika a skupinové zpoždění jsou
-  na obr. \ref{SAS:fig_ex01_RLC}.
-  
-  Filtr má maximálně plochou modulovou charakteristiku přenosu. Mezní kmitočet propustného pásma
-  je $f_p = 10 kHz$, při kterém je $\abs{H(j\omega_p)}= 0.707$. Tato hodnota odpovídá poklesu
-  modulové charakteristiky o $3 dB$.
-  
-  %---------------------------------------------------------------
-  \lstinputlisting[%
-    style=luaMatlabStyle, 
-    caption={TKY\_exam\_03\_Hp.m}
-    ]{../src/TKY/matlab/SAS_exam_03_Hp.m}
-  %---------------------------------------------------------------  
-\end{example} 
+    \noindent\textbf{Řešení:} Pro zapojení dle obrázku \ref{tky:fig008} získáme metodou uzlových
+    napětí integrodiferenciální rovnice pro uzly \texttt{A} a \texttt{B}:
+    \begin{gather*}
+      \begin{align*} %\label{tky:eq019}
+        \shortintertext{uzel A:}
+        \frac{u_3(t)-u_1(t)}{R}+\frac{1}{L}\int_0^t{[u_3(t)-u_2(t)]}\dd{\tau}+i_L(0_+) &= 0  \\
+        \shortintertext{uzel B:}
+        \frac{1}{L}\int_0^t[(u_2(t)-u_3(t))]\dd{\tau}+C\der{u_2}{t}-i_L(0_+)           &= 0
+      \end{align*}
+    \end{gather*}
+    ve kterých \(i_L(0_+)\) je počáteční podmínka pro proud induktoru. Derivováním a eliminací
+    $u_3(t)$ z původních rovnic dostaneme pro odezvu $u_2(t)$ diferenciální rovnici II. řádu.
+    Začneme derivováním rovnice v uzlu \texttt{B} tj. \(\frac{d}{dt}(B)\):
+    \begin{align*}
+      u_2(t)-u_3(t)+LC\frac{d^2u_2(t)}{dt^2} &=0 \Rightarrow   \\
+      u_2(t)+LC\frac{d^2u_2(t)}{dt^2}        &=u_3(t)
+    \end{align*}
+    Nyní můžeme z rovnice pro uzel \texttt{A} odstranit napětí \(u_3(t)\):
+    \begin{align*}
+      \frac{u_2(t)+LC\dfrac{d^2u_2(t)}{dt^2}-u_1(t)}{R}             &+    \\
+      \frac{1}{L}\int_0^t{(LC\frac{d^2u_2(t)}{dt^2})}\dd{\tau}+i_L(0_+) &=  0 \\
+      \shortintertext{}
+      u_2(t)+LC\frac{d^2u_2(t)}{dt^2}-u_1(t)                        &+    \\
+      RC\left[\frac{du_2(t)}{dt}\right]_0^t+Ri_L(0_+)               &=  0
+    \end{align*}
+    Při nulových počátečních podmínkách: $\left.\frac{du_2(t)}{dt}\right\rvert_{t=0}=0$,
+    $i_L(0_+)=0$ dostaneme:
+    \begin{equation*}
+      \boxed{LC\frac{d^2u_2(t)}{dt^2}+RC\frac{du_2(t)}{dt}+u_2(t)=u_1(t)}
+    \end{equation*}
+    V Laplaceově transformaci platí:
+    \begin{align*}
+      \mathcal{L}\left[\frac{du_2(t)}{dt}\right]     &= pU_2(p)-u_2(0) \\
+      \mathcal{L}\left[\frac{d^2u_2(t)}{dt^2}\right] &= p^2U_2(p)-pu_2(0)-\dot{u}_2(0),
+    \end{align*}
+    kde \(\dot{u}_2(0)=\left.\frac{du_2(t)}{dt}\right\rvert_{t=0}\). Při nulových počátečních
+    podmínkách \(u_2(0) = 0\), \(\dot{u}_2(0) = 0\) a užitím Laplaceovy transformace přejde
+    diferenciální rovnice na algebraickou rovnici:
+    \begin{equation*}
+      p^2LCU_2(p)+pRCU_2(p)+U_2(p)=U_1(p)
+    \end{equation*}
+    Odtud vyplývá \textbf{přenosová funkce} $H(p)=\frac{U_2(p)}{U_1(p)}$
+    \begin{align}
+      H(p) &=\dfrac{1}{p^2LC+pRC+1}                                   \nonumber \\
+           &=\dfrac{1}{LC}\frac{1}{p^2+p\dfrac{R}{L}+\dfrac{1}{LC}}
+            =\frac{Q(p)}{N(p)}                                        \label{tky:eq020}
+    \end{align}
+    K nalezení \textbf{impulsní odezvy} nejprve určíme póly přenosové funkce řešením rovnice
+    $N(p)=0$
+    \begin{align}
+      p_{\infty_{12}} 
+        &=\dfrac{\dfrac{R}{L}\pm\sqrt{\left(\dfrac{R}{L}\right)^2-\dfrac{4}{LC}}}{2}   \nonumber \\
+        &=\frac{R}{2L}\pm\sqrt{\left(\frac{R}{2L}\right)^2-\frac{1}{LC}}          \label{tky:eq021}
+    \end{align}
+    a přenosovou funkci pak upravíme do tvaru
+    \begin{equation*}
+      H(p)=\frac{K}{(p-p_{\infty_1})\cdot(p-p_{\infty_2})}, \quad K=\frac{1}{LC}
+    \end{equation*}
+    kde \(K\) je násobná konstanta a \(p_{\infty_{1,2}}\) jsou její póly. 
+    \begin{itemize}[leftmargin=12pt,noitemsep]
+      \item Uvažujeme-li jednoduché póly a bude-li $R>2\sqrt{\frac{L}{C}}$ , potom z  rov.
+            \ref{tky:eq021} vyplývají dva reálné různé póly. Přenosovou funkci tedy můžeme
+            zapsat obecným tvarem:
+            \begin{equation*}
+              H(p)=\frac{K}{(p+a_1)\cdot(p+a_2)}=\frac{k_1}{p+a_1}+\frac{k_2}{p+a_2}
+            \end{equation*}
+            kde $p_{\infty_1}=-a_1,\, p_{\infty_2}=-a_2$, Rezidua  \(k_1\), \(k_2\) určíme z rov.
+            \ref{tky:eq006}. 
+            \begin{equation*}
+              k_1=\frac{K}{a_2-a_1}, \quad k_2=\frac{K}{a_1-a_2}.
+            \end{equation*}
+            Impulsní odezvu pak vypočteme užitím rov. \ref{tky:eq023}.
+            \begin{align*}
+              h(t)&=\mathcal{L}^{-1}[H(p)]               \\
+                  &=\frac{K}{a_2-a_1}e^{-a_1t}+\frac{K}{a_1-a_2}e^{-a_2t}
+            \end{align*}
+      \item Když bude $R<2\sqrt{\frac{L}{C}}$, obdržíme dvojici komplexně sdružených pólů a
+            přenosovou funkci může obecně zapsat takto:
+            \begin{equation*}
+              H(p)=\frac{K}{(p+a_1)\cdot(p+a_2)}=\frac{k_1}{p+a-jb}+\frac{k_2}{p+a+jb}
+            \end{equation*}
+            kde $p_{\infty_1}=-a+jb$, $p_{\infty_2}=-a-jb$. Rezidua v pólech jsou dány výrazy
+            $k_1=-\frac{jK}{2b}$, $k_2=\frac{jK}{2b}$. Impulzní odezvu opět určíme užitím rov.
+            \ref{sas:eq_impulzni_odezva}.
+            \begin{equation*}
+              h(t) = \frac{Ke^{-at}}{2b}\left[j\cdot\left(-e^{jbt}+e^{-jbt}\right)\right]
+            \end{equation*}
+            \begin{gather*}
+              \begin{align*}
+                \,  &= \frac{Ke^{-at}}{2b}\left[j\cdot
+                \left(\underline{-\cos(bt)}-j\sin(bt)+
+                \underline{\cos(bt)}-j\sin(bt)\right)\right]                        \\
+                \,  &= \frac{K}{b}e^{-at}\sin(bt)                                   
+              \end{align*}
+            \end{gather*}
+    \end{itemize}
+    
+    Na obr. \ref{tky:fig009} je uvedena impulsní charakteristika uvaožovaného obvodu odpovídající
+    hodnotám stavebních prvků: \(R=\SI{1}{\kohm}\), \(L=\SI{11.5}{\milli\henry}\),
+    \(C=\SI{22.5}{\nano\farad}\). Výpis m-file \texttt{SAS\_exam\_02\_symb\_Hp\_solve.m} ukazuje
+    symbolický způsob řešení operátorových obvodových rovnic pomocí \texttt{MATLABu}. Jde o filtr
+    typu \textbf{dolní propust}, jehož přenosová funkce má tvar:
+    $$H(p)= \frac{3.9506\cdot10^9}{p^2+8.8889\cdot10^4p+3.9506\cdot10^9}.$$
+    %---------------------------------------------------------------
+      \lstinputlisting[% style=luaMatlabStyle,
+      caption={TKY\_exam\_02\_symb\_Hp\_solve.m}]{../src/TKY/matlab/SAS_exam_02_symb_Hp_solve.m}
+    %---------------------------------------------------------------
+    Impulzní charakteristiku obdržíme dosazením do vztahu \ref{tky:eq005}
+    $$h(t)=\frac{K}{b}e^{-at}\sin(bt) =8.8890\cdot10^4e^{-4.4444\cdot10^4t}\sin(4.4444\cdot10^4t).$$
+    
+      {\centering
+      \captionsetup{type=figure}
+      \luafigure[1]{tky_fig009.pdf}
+      \captionof{figure}{Impulzní charakteristika}
+      \label{tky:fig009}
+      \par}
+    
+    Z hlediska analýzy obvodů v kmitočtové oblasti je výhodné sestavovat obvodové rovnice (metodami
+    uzlových napětí a smyčkových proudů) přímo v operátorovém tvaru. Kirchhoffovy zákony pro
+    uzavřenou smyčku a proudu do uzlu pak mají tvar $$\sum_{k=1}^{n}U_k(p) = 0, \qquad
+    \sum_{k=1}^{n}I_k(p) = 0.$$ Metodou uzlových napětí pro zapojení na obr. \ref{tky:fig008}
+    obdržíme rovnice
+    \begin{align}
+      \frac{U_3(p)-U_1(p)}{R}+\frac{U_3(p)-U_2(p)}{pL} &=  0 \\
+      pCU_2(p) + \frac{U_2(p)-U_3(p)}{pL}              &=  0 
+    \end{align}
+    Na rozdíl od \ref{tky:eq019} jde o algebraické rovnice, ze kterých eliminací uzlového napětí
+    $U_3(p)$ vyplývá přenosová funkce \ref{tky:eq020} $$H(p) = \frac{U_2(p)}{U_1(p)} =
+    \frac{1}{LC}\frac{1}{p^2+p\frac{R}{L} + \frac{1}{LC}}$$
+    
+    {\centering
+      \captionsetup{type=figure}
+      \luafigure[1]{tky_fig010.pdf}
+      \captionof{figure}{Modulová, fázová charakteristika a skupinové zpoždění filtru}
+      \label{tky:fig010}
+      \par}    
+    
+    Dosazením za $p=j\omega$ lze z přenosové funkce vyjádřit modulovou charakteristiku $H(j\omega)$
+    a fázovou charakteristiku $\Phi(\omega)= \texttt{arg} H(j\omega)$. Skupinové zpoždění vyplývá ze
+    vztahu \ref{SAS:eq_skupinove_zpozdeni}. Modulová, fázová charakteristika a skupinové zpoždění
+    jsou na obr. \ref{tky:fig010}.
+    
+    Filtr má maximálně plochou modulovou charakteristiku přenosu. Mezní kmitočet propustného pásma
+    je $f_p = 10 kHz$, při kterém je $\abs{H(j\omega_p)}= 0.707$. Tato hodnota odpovídá poklesu
+    modulové charakteristiky o $3 dB$.
+    
+    %---------------------------------------------------------------
+    \lstinputlisting[% style=luaMatlabStyle,
+      caption={TKY\_exam\_03\_Hp.m}]{../src/TKY/matlab/SAS_exam_03_Hp.m}
+    %---------------------------------------------------------------  
+  \end{example} 
+\end{mdframed}
