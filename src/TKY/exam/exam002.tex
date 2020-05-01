@@ -93,23 +93,28 @@
             \end{align*}
       \item Když bude $R<2\sqrt{\frac{L}{C}}$, obdržíme dvojici komplexně sdružených pólů a
             přenosovou funkci může obecně zapsat takto:
+            \begin{align*}
+              H(p)&=\frac{K}{(p+a_1)\cdot(p+a_2)}            \\
+                  &=\frac{k_1}{p+a-\jmath b}+\frac{k_2}{p+a+\jmath b}
+            \end{align*}
+            kde $p_{\infty_1}=-a+\jmath b$, $p_{\infty_2}=-a-\jmath b$. Rezidua v pólech jsou dány
+            výrazy $k_1=-\frac{\jmath K}{2b}$, $k_2=\frac{\jmath K}{2b}$. Impulzní odezvu opět
+            určíme užitím rov. \ref{sas:eq_impulzni_odezva}.
             \begin{equation*}
-              H(p)=\frac{K}{(p+a_1)\cdot(p+a_2)}=\frac{k_1}{p+a-jb}+\frac{k_2}{p+a+jb}
+              h(t) = \frac{Ke^{-at}}{b}
+                     \left[\dfrac{\jmath\cdot\left(-e^{\jmath bt}+e^{-\jmath bt}\right)}{2}\right]
             \end{equation*}
-            kde $p_{\infty_1}=-a+jb$, $p_{\infty_2}=-a-jb$. Rezidua v pólech jsou dány výrazy
-            $k_1=-\frac{jK}{2b}$, $k_2=\frac{jK}{2b}$. Impulzní odezvu opět určíme užitím rov.
-            \ref{sas:eq_impulzni_odezva}.
+            Výraz v závorce upravíme
             \begin{equation*}
-              h(t) = \frac{Ke^{-at}}{2b}\left[j\cdot\left(-e^{jbt}+e^{-jbt}\right)\right]
+              \left[\jmath\cdot\left(\underline{-\cos(bt)}-\jmath\sin(bt) + 
+                                     \underline{\cos(bt)} -\jmath\sin(bt)
+                               \right)
+              \right]                                                     
             \end{equation*}
-            \begin{gather*}
-              \begin{align*}
-                \,  &= \frac{Ke^{-at}}{2b}\left[j\cdot
-                \left(\underline{-\cos(bt)}-j\sin(bt)+
-                \underline{\cos(bt)}-j\sin(bt)\right)\right]                        \\
-                \,  &= \frac{K}{b}e^{-at}\sin(bt)                                   
-              \end{align*}
-            \end{gather*}
+            konečně dostáváme hledaný vzah
+            \begin{equation*}              
+              h(t) = \frac{K}{b}e^{-at}\sin(bt)                                   
+            \end{equation*}
     \end{itemize}
     
     Na obr. \ref{tky:fig009} je uvedena impulsní charakteristika uvaožovaného obvodu odpovídající
@@ -118,13 +123,13 @@
     symbolický způsob řešení operátorových obvodových rovnic pomocí \texttt{MATLABu}. Jde o filtr
     typu \textbf{dolní propust}, jehož přenosová funkce má tvar:
     $$H(p)= \frac{3.9506\cdot10^9}{p^2+8.8889\cdot10^4p+3.9506\cdot10^9}.$$
-    %---------------------------------------------------------------
-      \lstinputlisting[% style=luaMatlabStyle,
-      caption={TKY\_exam\_02\_symb\_Hp\_solve.m}]{../src/TKY/matlab/SAS_exam_02_symb_Hp_solve.m}
-    %---------------------------------------------------------------
+
     Impulzní charakteristiku obdržíme dosazením do vztahu \ref{tky:eq005}
-    $$h(t)=\frac{K}{b}e^{-at}\sin(bt) =8.8890\cdot10^4e^{-4.4444\cdot10^4t}\sin(4.4444\cdot10^4t).$$
-    
+    \begin{align*}
+      h(t)&=\frac{K}{b}e^{-at}\sin(bt)                                      \\
+          &=8.8890\cdot10^4e^{-4.4444\cdot10^4t}\sin(4.4444\cdot10^4t).
+    \end{align*}
+        
       {\centering
       \captionsetup{type=figure}
       \luafigure[1]{tky_fig009.pdf}
@@ -152,18 +157,26 @@
       \label{tky:fig010}
       \par}    
     
-    Dosazením za $p=j\omega$ lze z přenosové funkce vyjádřit modulovou charakteristiku $H(j\omega)$
-    a fázovou charakteristiku $\Phi(\omega)= \texttt{arg} H(j\omega)$. Skupinové zpoždění vyplývá ze
-    vztahu \ref{SAS:eq_skupinove_zpozdeni}. Modulová, fázová charakteristika a skupinové zpoždění
-    jsou na obr. \ref{tky:fig010}.
+    Dosazením za $p=\jmath\omega$ lze z přenosové funkce vyjádřit modulovou charakteristiku
+    $H(\jmath\omega)$ a fázovou charakteristiku $\Phi(\omega)= \texttt{arg} H(j\omega)$. Skupinové
+    zpoždění vyplývá ze vztahu \ref{SAS:eq_skupinove_zpozdeni}. Modulová, fázová charakteristika a
+    skupinové zpoždění jsou na obr. \ref{tky:fig010}.
     
     Filtr má maximálně plochou modulovou charakteristiku přenosu. Mezní kmitočet propustného pásma
     je $f_p = 10 kHz$, při kterém je $\abs{H(j\omega_p)}= 0.707$. Tato hodnota odpovídá poklesu
     modulové charakteristiky o $3 dB$.
     
-    %---------------------------------------------------------------
-    \lstinputlisting[% style=luaMatlabStyle,
-      caption={TKY\_exam\_03\_Hp.m}]{../src/TKY/matlab/SAS_exam_03_Hp.m}
-    %---------------------------------------------------------------  
   \end{example} 
+  %---------------------------------------------------------------
+  \lstinputlisting[%
+  style=luaMatlabStyle,
+  caption={Výpis programu TKY\_exam\_03\_Hp.m k příkladu \ref{tky:exam002}.}
+  ]{../src/TKY/matlab/SAS_exam_03_Hp.m}
+  %--------------------------------------------------------------- 
+  %---------------------------------------------------------------
+  \lstinputlisting[%
+  style=luaMatlabStyle,
+  caption={Výpis programu TKY\_exam\_03\_Hp.m k příkladu \ref{tky:exam002}.}
+  ]{../src/TKY/matlab/SAS_exam_02_symb_Hp_solve.m}
+  %--------------------------------------------------------------- 
 \end{mdframed}
