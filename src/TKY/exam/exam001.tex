@@ -2,8 +2,49 @@
 %===================================================================================================
 \begin{mdframed}[style=mdexam]
   \begin{example}\label{tky:exam001}
-    Uvažujme lineární číslicový systém, popsaný svou impulzní odezvou: \(h[n] = \{0.45, 1.72,
-    0.62\}\). Na jeho vstup působí vstupní posloupnost xn = ={2,  0.95}.Úkolem  je  vypočítat
-    vzorky výstupní posloupnosti a provést analýzu výpočetní náročnosti včetně jejího zobecnění.
+    Uvažujme LTI systém, popsaný svou impulzní odezvou: \(h[n] = \{0.45, 1.72, 0.62\}\). Na jeho
+    vstupu působí posloupnost \(x[n] = \{2,  0.95\}\). Úkolem  je vypočítat vzorky výstupní
+    posloupnosti \(y[n]\).
+
+    \textbf{Řešení:} Podle (\ref{tky:eq025}) bude délka výstupní posloupnosti \(N_y = 2 + 3 - 1= 4\)
+    s pořadovými indexy 0 až 3. Pro její výpočet rozepíšeme vztah (\ref{tky:eq024}):
+    \begin{align*}
+      y[0] &= \sum_{k=0}^0 x[0]h[0] = \num{2}\cdot\num{0.45} = \num{0.9}                   \\
+      y[1] &= \sum_{k=0}^1 x[k]h[1-k] = x[0]h[1] + x[1]h[0] =                              \\
+           &=  \num{2}\cdot\num{1.72} + \num{0.95}\cdot\num{0.45} = \num{3.8675}           \\
+      y[2] &= \sum_{k=0}^2 x[k]h[2-k] =                                                    \\
+           &= x[0]h[2] + x[1]h[1] + x[2]h[0] =                                             \\
+           &= \num{2}\cdot\num{0.62} + \num{0.95}\cdot\num{1.72} + \num{0}\cdot\num{0.45}  
+            = \num{2.8740}                                                                 \\
+      y[3] &= \sum_{k=0}^3 x[k]h[3-k] =                                                    \\
+           &= x[0]h[3] + x[1]h[2] + x[2]h[1] +  x[3]h[0] =                                 \\
+           &= \num{2}\cdot\num{0} + \num{0.95}\cdot\num{0.62} + \num{0}\cdot\num{1.72}
+            + \num{0}\cdot\num{0.45} =                                                     \\
+           &= \num{0.589} 
+    \end{align*} 
+    Pro výstupní posloupnost tedy platí:
+    \begin{equation*}
+      y[n] = \{\num{0.9}, \num{3.8675}, \num{2.8740}, \num{0.589}\}
+    \end{equation*}
+    Situaci názorně shrnuje obr. \ref{tky:fig011}
+
+    {\centering
+      \captionsetup{type=figure}
+      \luafigure[1]{tky_fig011.pdf}
+      \captionof{figure}{Odezva lineárního číslicového systému na vstupní posloupnost. 
+                \cite{Zaplatilek2013}}
+      \label{tky:fig011}
+    \par}
+
+    V systému \textsc{MATLAB} je vestavěna vnitřní funkce \lstinline[style=luaMatlabText]!conv! pro
+    snadný výpočet lineární diskrétní konvoluce, jak dokumentuje výpis \ref{tky:lst001}. Vyzkoušejme
+    si, že obrátíme-li pořadí proměnných v příkazu \lstinline[style=luaMatlabText]!conv!, vyjde
+    shodný výsledek (komutace symbolů).
   \end{example} 
+  \begin{lstlisting}[style=luaMatlabText,gobble=4, label={tky:lst001}]
+    h = [0.45, 1.72, 0.62];
+    x = [2,  0.95];
+    y = conv(x,h)
+  \end{lstlisting}
+
 \end{mdframed}

@@ -50,8 +50,11 @@
       \begin{equation}\label{tky:eq008}
         y(t)= y_1(t)+ y_2(t)=S\{x_1(t)+x_2(t)\}
       \end{equation}
-      Jedná-li se o \emph{systém časově invariantní}, jsou události v čase závislé pouze na časovém
-      intervalu (rozdílu časových událostí), nikoliv na každém časovém okamžiku samostatně.
+      Z uvedeného vyplývá významná vlastnost lineárního systému. Výstupní spektrum může obsahovat
+      pouze ty frekvence, které jsou ve spektru vstupního signálu a žádné jiné. 
+
+      Jedná-li se o \textbf{systém časově invariantní}, jsou události v čase závislé pouze na
+      časovém intervalu (rozdílu časových událostí), nikoliv na každém časovém okamžiku samostatně.
       Systém je časově invariantní, jestliže časový posun ve vstupní signálu vede ke stejnému posunu
       výstupního signálu. Odezva diskrétního systému na posunutý vstupní signál $x[n-m]$ je pak
       určen vztahem
@@ -63,8 +66,30 @@
       \begin{equation}\label{tky:eq010}
         y(t-\tau)= \mathcal{S}\{x(t-\tau)\}.
       \end{equation}
-      \textbf{Kauzální, příčinný systém} je systém, u kterého výstupní signál závisí pouze na
-      současných a minulých hodnotách vstupního signálu.
+
+      Takový systém má konstantními parametry a je popsaný \emph{diferenčními rovnicemi s
+      konstantními koeficienty}. 
+      
+      Zcela obecně se LTI systém vyznačuje ještě dalšími vlastnostmi, z nichž jsou pro analýzu
+      významnější kauzalita a stabilita. 
+      \begin{itemize}
+        \item \textbf{Kauzální, příčinný systém} - výstupní signál závisí pouze na současných a
+              minulých hodnotách vstupního signálu \(x[n]\), nikoliv na budoucích hodnotách, nikoliv
+              na budoucích hodnotách. Nicméně existují významné struktury (např. filtry), při
+              jejichž návrhu vycházíme z vlastností nerealizovatelné - ideální struktury, které
+              vhodnou metodou aproximace vyjádříme realizovatelnou strukturou. U LTI systémů může
+              být otázka kauzality převedena na vlastnosti impulzní odezvy - viz. odst.
+              \ref{tky:IchIIsecIssecII}. Při uložení signálu do paměti lze realizovat i nekauzální
+              systém, který ale nepracuje v reálném čase. 
+        \item \textbf{Stabilní systém} - omezený vstup (v hodnotách) produkuje též omezený výstup.
+              Jinak - není-li vstup divergentní, pak ani výstup nebude divergentní. Uvedené bude
+              splněno, jestliže pro hodnoty impulzní odezvy \(h[n]\) bude platit
+              \begin{equation*}
+                \sum_{n=-\infty}^\infty\abs{h[n]} <\infty.
+              \end{equation*}
+              Problém stability se vyskytuje u rekurzivních struktur (struktury se zpětnou vazbou). 
+      \end{itemize}
+      
 
     \subsection{Konvoluce v diskrétních systémech}\label{tky:IchIIsecIssecII}
       Významnou charakteristikou lineárních časově invariantních systémů \emph{LTI} je
@@ -155,12 +180,31 @@
       musíme položit všechny členy impulsní odezvy $h[k]=0$ pro $k<0$. Konvoluční suma pro
       lineární, časově invariantní a kauzální systém má pak tvar
       \begin{equation}\label{tky:eq018}
-        \boxed{y[n]=\sum_{k=0}^{n}h[k]x[n-k].}
+        y[n]=\sum_{k=0}^{\infty}h[k]x[n-k].
       \end{equation}
       Jestliže navíc budeme uvažovat vstupní a výstupní signály, které jsou nulové pro $n<0$ a
       $x[n]\neq0, y[n]\neq0$ pouze pro $n\geq0$, potom platí
-      \begin{equation}\label{SAS:eq_konvolucni_suma4}
-        y[n]=\sum_{k=0}^{n}h[k]x[n-k]=\sum_{k=0}^{n}x[k]h[n-k].
+      \begin{equation}\label{tky:eq019}
+        \boxed{y[n]=\sum_{k=0}^{n}h[k]x[n-k].\,}
+      \end{equation}
+      nebo
+      \begin{equation}\label{tky:eq024}
+        \boxed{y[n]=\sum_{k=0}^{n}x[k]h[n-k].\,}
+      \end{equation}
+      kde \(n\) je pořadový index právě počítaného vzorku výstupní posloupnosti a \(k\) je pořadový
+      index vstupní posloupnosti. Je-li délka vstupní posloupnosti \(N_x\) a délka impulzní odezvy
+      \(N_h\), pak délka výstupní posloupnosti (počet jejich vzorků) je dána vztahem:
+      \begin{equation}\label{tky:eq025}
+        N_y = N_x + N_h - 1.
+      \end{equation}
+      Rovnice \ref{tky:eq019} a \ref{tky:eq024} určují způsob výpočtu výstupního signálu LTI
+      systému. Výstupní signál \(y[n]\) je dán součtem prvků impulsové odezvy a vstupního signálu,
+      přičemž buď vstupní signál \ref{tky:eq019} nebo impulsová odezva \ref{tky:eq024} jsou otočeny
+      v čase \cite[s.~14]{Davidek1996}.
+      
+      Symbolicky se tato operace zapisuje 
+      \begin{equation}\label{tky:eq026}
+        \boxed{y[n] = h[n]*x[n]. \,}
       \end{equation}
       %---------------------------------------------------------------
       \input{../src/TKY/exam/exam001.tex}
@@ -173,52 +217,58 @@
       využívající jednotkový impuls. Průběh obecného spojitého lze podle obr. \ref{tky:fig007}
       aproximovat stupňovitým průběhem, který můžeme vyjádřit jako sumu posunutých (zpožděných)
       impulsů. Výchozí aproximující impuls lze vyjádřit vztahem
-      \begin{equation}\label{SAS:eq_dirac}
-          \delta_\epsilon(t)  =
+      \begin{equation}\label{tky:eq027}
+          \delta_\varepsilon(t)  =
             \begin{cases}
-               \frac{1}{\epsilon} & \text{pro } \abs{t} < \frac{\epsilon}{2},      \\
-               0                  & \text{pro } \abs{t} < \frac{\epsilon}{2} > 0
+               \frac{1}{\varepsilon} & \text{pro } \abs{t} < \frac{\varepsilon}{2},      \\
+               0                  & \text{pro } \abs{t} > \frac{\varepsilon}{2} > 0
             \end{cases}
       \end{equation}
-      a je znázorněn na obr. \ref{tky:fig007}. \emph{Jednotkový (Diracův) impuls} 
-      má jednotkovou plochu. vat výrazem
+      a je znázorněn na obr. \ref{tky:fig007b}. \emph{Jednotkový (Diracův) impuls} 
+      má jednotkovou plochu.
       \begin{figure}[ht!]
         \centering
-        \includegraphics[width=0.7\linewidth]{tky_fig007.pdf}
-        \caption{a) Aproximace spojitého průběhu signálu, b) K odvození jednotkové impulsní funkce}
+          \subcaptionbox{\label{tky:fig007a}}{\luafigure[0.60]{tky_fig007a.pdf}}                                                  
+          \subcaptionbox{\label{tky:fig007b}}{\luafigure[0.27]{tky_fig007b.pdf}}                    
+        \caption{a) Aproximace spojitého průběhu signálu, b) K odvození jednotkové impulsní funkce 
+        (\cite[s.~7]{Bicak2007})}
         \label{tky:fig007}
       \end{figure}
-      \begin{equation}\label{SAS:eq_dirac2}
-        \delta_\epsilon(t) = \lim_{\epsilon\rightarrow0} \delta_\epsilon(t).
+      Matematicky můžeme Diracovův impuls definovat výrazem
+      \begin{equation}\label{tky:eq028}
+        \delta_\varepsilon(t) = \lim_{\varepsilon\rightarrow0} \delta_\varepsilon(t).
       \end{equation}
-      Aproximaci spojitého průběhu $x(t)$ impulsy \ref{SAS:eq_dirac} lze vyjádřit rovnicí
-      \begin{equation}\label{SAS:eq_spojit_aprox}
-        x(t) = \sum_{m = -\infty}^\infty x(m\epsilon)\delta_\epsilon(t - m\epsilon)\epsilon .
+      Aproximaci spojitého průběhu $x(t)$ impulsy \ref{tky:eq027} lze vyjádřit rovnicí
+      \begin{equation}\label{tky:eq029}
+        x(t)=\sum_{m=-\infty}^\infty x(m\varepsilon)\delta_\varepsilon(t-m\varepsilon)\varepsilon.
       \end{equation}
-      Zmenšování šířky impulsů $\epsilon \rightarrow 0$ se chyba aproximace zmenšuje a výraz přejde
+      Zmenšování šířky impulsů $\varepsilon\rightarrow0$ se chyba aproximace zmenšuje a výraz přejde
       v limitu
-      \begin{equation}\label{SAS:eq_spojit_aprox2}
-        x(t) = \lim_{\epsilon\rightarrow0}
-               \sum_{m = -\infty}^\infty x(m\epsilon)\delta_\epsilon(t - m\epsilon)\epsilon .        
+      \begin{equation}\label{tky:eq030}
+        x(t) = \lim_{\varepsilon\rightarrow0}
+               \sum_{m=-\infty}^\infty x(m\varepsilon)\delta_\varepsilon(t-m\varepsilon)\varepsilon.        
       \end{equation}
-      V limitě kdy $\epsilon\rightarrow0$, můžeme sumu nahradit integrálem, dále součin $m\epsilon$ 
-      integrační proměnnou $\tau$ a $\epsilon$ jejím diferenciálem. Obdržíme
-      \begin{equation}\label{SAS:eq_integral_aprox3}
+      V limitě kdy $\varepsilon\rightarrow0$, můžeme sumu nahradit integrálem, dále součin
+      $m\varepsilon$ integrační proměnnou $\tau$ a $\varepsilon$ jejím diferenciálem. Obdržíme
+      \begin{equation}\label{tky:eq031}
         x(t) = \int_{-\infty}^{\infty}x(\tau)\delta(t-\tau)d\tau .
       \end{equation}
-      Vztahem \ref{SAS:eq_integral_aprox3} jsme spojitý průběh signálu vyjádřili jako sumu 
-      nekonečného počtu posunutých jednotkových impulsů váženou jeho okamžitými hodnotami. 
-      Předpokládejme dále, že na vstup lineárního časově invariantního spojitého systému je 
-      převeden jednotkový (Diracův) impuls a systém vytvoří odezvu $h(t)$. V případě obecného 
-      vstupního spojitého signálu $x(t)$ aproximovaného vztahem \ref{SAS:eq_integral_aprox3}, bude 
-      odezva analogového systému
-      \begin{equation}\label{SAS:eq_integral_aprox4}
-        y(t) = \int_{-\infty}^{\infty}x(\tau)h(t-\tau)d\tau 
-             = \int_{-\infty}^{\infty}h(\tau)x(t-\tau)d\tau
+      Vztahem \ref{tky:eq031} jsme spojitý průběh signálu vyjádřili jako sumu
+      nekonečného počtu posunutých jednotkových impulsů váženou jeho okamžitými hodnotami.
+      Předpokládejme dále, že na vstup lineárního časově invariantního spojitého systému je převeden
+      jednotkový (Diracův) impuls a systém vytvoří odezvu $h(t)$. V případě obecného vstupního
+      spojitého signálu $x(t)$ aproximovaného vztahem \ref{tky:eq031}, bude odezva
+      analogového systému
+      \begin{equation}\label{tky:eq032}
+        \boxed{y(t) = \int_{-\infty}^{\infty}x(\tau)h(t-\tau)d\tau, \,}
+      \end{equation}
+      nebo
+      \begin{equation}\label{tky:eq033}
+        \boxed{y(t) = \int_{-\infty}^{\infty}h(\tau)x(t-\tau)d\tau.\,}
       \end{equation}
       Uvedený integrál nazýváme \textbf{konvolucí} a velmi často ho označujeme jako 
-      \begin{equation}\label{SAS:eq_konvoluce}
-        y(t) = h(t)*x(t) .
+      \begin{equation}\label{tky:eq033}
+        \boxed{y(t) = h(t)*x(t).\,}
       \end{equation}
       Funkce $h(t)$ představuje \emph{impulsní odezvu}. Jedná se o výstupní signál systému, na 
       jehož vstupu se uplatní Diracův impuls $x(t)=\delta(t)$. Platí totiž
@@ -231,7 +281,7 @@
         h(t) &\neq  0 \text{   pro } \abs{t} \geq0, \\
         h(t) &  =   0 \text{   pro } \abs{t} < 0. 
       \end{align}    
-      Potom můžeme konvoluční integrál \ref{SAS:eq_integral_aprox4} zapsat ve tvarem
+      Potom můžeme konvoluční integrál \ref{tky:eq032} zapsat ve tvarem
       \begin{equation}\label{SAS:eq_konvolucni_integral}
          y(t) = \int_0^{\infty}h(\tau)x(t-\tau)d\tau .
       \end{equation} 
