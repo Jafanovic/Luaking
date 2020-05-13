@@ -287,7 +287,7 @@
       \end{equation} 
   
   \section{Popis spojitých a diskrétních systémů, přenosová funkce}\label{tky:IchIIsecIII}
-    \subsection{Spojité systémy}
+    \subsection{Spojité systémy}\label{tky:IchIIsecIIIssecI}
       Lineární časově invariantní (LTI) spojitý systém je obecně popsán soustavou
       integrodiferenciálních rovnic s konstantními koeficienty, kterou lze postupným derivováním
       změnit na soustavu diferenciálních rovnic. Předpokládejme budící (nezávislou) veličinu
@@ -334,7 +334,7 @@
              +\cdots+b_0}{a_n(j\omega)^n+b_{n-1}(\jmath\omega)^{n-1}+\cdots+a_0}   \nonumber \\
             &=M(\omega)e^{\jmath\Phi(\omega)},                                     \label{tky:eq003}
       \end{align}
-      kde $M(\omega) = \abs{H{\jmath\omega}}$ je \textbf{modulová charakteristika} a
+      kde $M(\omega) = \abs{H{(\jmath\omega)}}$ je \textbf{modulová charakteristika} a
       $\Phi(\omega)=\texttt{arg}H(j\omega)$ se nazývá \textbf{fázová charakteristika}. Skupinové
       zpoždění je definováno jako záporně vzatá derivace fázové charakteristiky podle kmitočtu
       \begin{equation}\label{tky:eq042}
@@ -371,26 +371,29 @@
              &=\frac{k_1}{p-p_{\infty_1}}+\frac{k_2}{p-p_{\infty_2}}
                +\cdots+\frac{k_n}{p-p_{\infty_n}}                              \label{tky:eq004}
       \end{align}
-      kde $k_\mu$ se nazývají rezidua v pólech $p_{\infty_\mu})$ a platí
+      kde $k_\mu$ se nazývají rezidua v pólech $p_{\infty_\mu}$ a platí
       \begin{align}
         k_\mu &= \lim_{p\to p_{\infty_\mu}}(p-p_{\infty_\mu})\frac{Q(p)}{N(p)}  \nonumber \\
         \,    &= Q(p_{\infty_\mu})\lim_{p\to
                  p_{\infty_\mu}}\frac{1}{\frac{N(p)}{p-p_{\infty_\mu}}}=
-                 Q(p_{\infty_\mu})\frac{1}{N'(p_{\infty_\mu})}                  \label{tky:eq006}
+                 Q(p_{\infty_\mu})\frac{1}{N'(p_{\infty_\mu})}.                 \label{tky:eq006}
       \end{align}
-      impulsní odezva je pak dána vztahem
+      Impulsní odezva je pak dána vztahem
       \begin{equation}\label{tky:eq023}
         h(t)=\mathcal{L}^{-1}[H(p)]=\sum_{\mu=1}^nk_\mu e^{p_{\infty_\mu}t}
       \end{equation}
-      Póly jsou obecně komplexní $p_{\infty_{\mu}}=\alpha_\mu+j\beta_\mu$, nebo reálné
+      Póly jsou obecně komplexní $p_{\infty_{\mu}}=\alpha_\mu+\jmath\beta_\mu$, nebo reálné
       $p_{\infty_{\mu}}=\alpha_\mu$. Jsou to kořeny rovnice $N(p)=0$. Rovnice \ref{tky:eq023} je
       důležitá i proto, že z ní poznáme, zda analogová soustava je stabilní. Je patrné, že soustava
       bude stabilní, jestliže bude $\mathcal{R}\{p_{\infty_{\mu}}\}=\alpha_\mu<0$, tj. leží-li
       kořeny $p_{\infty_{\mu}}$ v otevřené levé polorovině komplexní roviny
-      $p_{\infty_{\mu}}=\sigma+j\omega$. Imaginární osa $j\omega$ je mezí stability, pravá
+      $p_{\infty_{\mu}}=\sigma+\jmath\omega$. Imaginární osa $j\omega$ je mezí stability, pravá
       polorovina je oblastí nestability. Polynom, který má kořeny v levé otevřené polorovině se
       označuje \textbf{Hurwitzův polynom}.
-      
+
       %---------------------------------------------------------------
       \input{../src/TKY/exam/exam002.tex}
       %---------------------------------------------------------------
+    
+    \subsection{Spojité systémy}\label{tky:IchIIsecIIIssecII}
+      Vlastnosti lineárního diskrétního systému s jedním vstupem a jedním výstupem ....
