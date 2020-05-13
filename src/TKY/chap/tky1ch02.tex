@@ -267,54 +267,54 @@
         \boxed{y(t) = \int_{-\infty}^{\infty}h(\tau)x(t-\tau)d\tau.\,}
       \end{equation}
       Uvedený integrál nazýváme \textbf{konvolucí} a velmi často ho označujeme jako 
-      \begin{equation}\label{tky:eq033}
+      \begin{equation}\label{tky:eq034}
         \boxed{y(t) = h(t)*x(t).\,}
       \end{equation}
       Funkce $h(t)$ představuje \emph{impulsní odezvu}. Jedná se o výstupní signál systému, na 
       jehož vstupu se uplatní Diracův impuls $x(t)=\delta(t)$. Platí totiž
-      \begin{equation}\label{SAS:eq_h_plati}
+      \begin{equation}\label{tky:eq035}
         y(t) = \int_{-\infty}^{\infty}h(\tau)\delta(t-\tau)d\tau = h(t) . 
       \end{equation}     
       Z důvodů \emph{kauzality}, která vyjadřuje zachování příčinné posloupnosti událostí při 
       transformaci signálu ze vstupu na výstup, požadujeme
-      \begin{align}\label{SAS:eq_kauzalita_pozadavky}
+      \begin{align}\label{tky:eq036}
         h(t) &\neq  0 \text{   pro } \abs{t} \geq0, \\
         h(t) &  =   0 \text{   pro } \abs{t} < 0. 
       \end{align}    
       Potom můžeme konvoluční integrál \ref{tky:eq032} zapsat ve tvarem
-      \begin{equation}\label{SAS:eq_konvolucni_integral}
-         y(t) = \int_0^{\infty}h(\tau)x(t-\tau)d\tau .
+      \begin{equation}\label{tky:eq037}
+         y(t) = \int_0^{\infty}h(\tau)x(t-\tau)\dd\tau.
       \end{equation} 
   
   \section{Popis spojitých a diskrétních systémů, přenosová funkce}\label{tky:IchIIsecIII}
     \subsection{Spojité systémy}
       Lineární časově invariantní (LTI) spojitý systém je obecně popsán soustavou
       integrodiferenciálních rovnic s konstantními koeficienty, kterou lze postupným derivováním
-      změnit na soustavu diferenciálních rovnic. Předpokládej\-me budící (ne\-zá\-vis\-lou) veličinu
-      $x(t)$ a odezvou (závislou) výstupní veličinu $y(t)$, pak eliminací ostatních proměnných bude 
+      změnit na soustavu diferenciálních rovnic. Předpokládejme budící (nezávislou) veličinu
+      $x(t)$ a odezvou (závislou) výstupní veličinu $y(t)$, pak eliminací ostatních proměnných bude
       soustava popsána jedinou diferenciální rovnicí s konstantními koeficienty tvaru
-      \begin{equation}\label{SAS:eq_lin_dif_rov}
+      \begin{equation}\label{tky:eq038}
           \sum_{i=0}^na_i\frac{d^iy(t)}{dt^i}=\sum_{j=0}^mb_j\frac{d^jx(t)}{dt^j},
       \end{equation}
       kde $a_0, a_1, \cdots ,a_n$ a $b_0, b_1, \cdots ,b_m$ jsou konstanty charakterizující lineární
-      systém. Obecné řešení $y(t)$ rovnice \ref{SAS:eq_lin_dif_rov} se sestává ze dvou částí, z 
+      systém. Obecné řešení $y(t)$ rovnice \ref{tky:eq038} se sestává ze dvou částí, z 
       řešení \emph{homogenní rovnice} a \emph{partikulárního řešení}. K řešení je třeba znát 
       počáteční podmínky pro $y(t)$ a jeho derivace ve výchozím okamžiku.
   
       S použitím \emph{Laplaceovy transformace při nulových počátečních podmínkách} má rovnice
-      (\ref{SAS:eq_lin_dif_rov}) tvar
-      \begin{equation}\label{SAS:eq_L_tran_dif_rce}
+      (\ref{tky:eq038}) tvar
+      \begin{equation}\label{tky:eq039}
         \sum_{i=0}^na_ip^iY(p)=\sum_{j=0}^mb_jp^jX(p),
       \end{equation}
       kde $X(p)=\mathcal{L}\{x(t)\}$ a $Y(p)=\mathcal{L}\{y(t)\}$ jsou Laplaceovy obrazy vstupní a
-      výstupní veličiny, $p$ je Laplaceův operátor derivace a také komplexní kmitočet 
-      $p=\sigma+j\omega$. Přenosová funkce $H(p)$ je definována jako podíl Laplaceova obrazu 
-      výstupní veličiny $Y(p)$ ku obrazu vstupní veličiny $x(p)$, při nulových počátečních 
+      výstupní veličiny, $p$ je Laplaceův operátor derivace a také komplexní kmitočet
+      $p=\sigma+\jmath\omega$. Přenosová funkce $H(p)$ je definována jako podíl Laplaceova obrazu
+      výstupní veličiny $Y(p)$ ku obrazu vstupní veličiny $x(p)$, při nulových počátečních
       podmínkách
-      \begin{equation}\label{SAS:eq_Hp_popis}
+      \begin{equation}\label{tky:eq040}
           H(p)=\frac{Y(p)}{X(p)}.
       \end{equation}
-      Vzhledem k rovnici (\ref{SAS:eq_L_tran_dif_rce}) je $H(p)$ racionálně lomenou funkcí tvaru
+      Vzhledem k rovnici (\ref{tky:eq039}) je $H(p)$ racionálně lomenou funkcí tvaru
       \begin{align}
         H(p)&=\frac{b_mp^m+b_{m-1}p^{m-1}+\cdots+b_0}{a_np^n+b_{n-1}p^{n-1}+\cdots+a_0}  \nonumber\\
             &=\frac{\Pi_{j=1}^m(p-p_{0j})}{\Pi_{i=1}^n(p-p_{\infty i})}            \label{tky:eq002}
@@ -324,41 +324,41 @@
       násobná konstanta.
   
       Kmitočtové charakteristiky získáme z přenosové funkce substitucí
-      \begin{equation}\label{SAS:eq_p_jomega}
-          p = j\omega,
+      \begin{equation}\label{tky:eq041}
+          p = \jmath\omega,
       \end{equation}
       ve které $\omega$ je úhlový kmitočet. Platí tedy
       \begin{align}
-          H(p)\mid_{p = j\omega} 
-            &=\frac{b_m(j\omega)^m+b_{m-1}(j\omega)^{m-1}                     
-             +\cdots+b_0}{a_n(j\omega)^n+b_{n-1}(j\omega)^{n-1}+\cdots+a_0}      \nonumber \\
-            &=M(\omega)e^{j\Phi(\omega)},                                        \label{tky:eq003}
+          H(p)\mid_{p = \jmath\omega} 
+            &=\frac{b_m(\jmath\omega)^m+b_{m-1}(\jmath\omega)^{m-1}                     
+             +\cdots+b_0}{a_n(j\omega)^n+b_{n-1}(\jmath\omega)^{n-1}+\cdots+a_0}   \nonumber \\
+            &=M(\omega)e^{\jmath\Phi(\omega)},                                     \label{tky:eq003}
       \end{align}
-      kde $M(\omega)$ je \textbf{modulová charakteristika} a $\Phi(\omega)=\texttt{arg}H(j\omega)$ 
-      se nazývá \textbf{fázová charakteristika}. Skupinové zpoždění je definováno jako záporně vzatá
-      derivace fázové charakteristiky podle kmitočtu
-      \begin{equation}\label{SAS:eq_skupinove_zpozdeni}
-          \tau(\omega)=-\frac{d\Phi(\omega)}{d\omega}= - \frac{d \texttt{arg} H(j\omega)}{d\omega}.
+      kde $M(\omega) = \abs{H{\jmath\omega}}$ je \textbf{modulová charakteristika} a
+      $\Phi(\omega)=\texttt{arg}H(j\omega)$ se nazývá \textbf{fázová charakteristika}. Skupinové
+      zpoždění je definováno jako záporně vzatá derivace fázové charakteristiky podle kmitočtu
+      \begin{equation}\label{tky:eq042}
+        \tau(\omega)=-\frac{d\Phi(\omega)}{d\omega}= -\der{\texttt{arg} H(\jmath\omega)}{\omega}.
       \end{equation}
       V předchozí kapitole jsme ukázali, že \emph{relace vstup/výstup LTI systému} souvisí
-      pro\-střed\-nic\-tvím \emph{konvoluce}
-      \begin{equation}\label{SAS:eq_popis_konvoluce}
+      prostřednictvím \emph{konvoluce}
+      \begin{equation}\label{tky:eq043}
           y(t)=\int_0^\infty h(\tau)x(t-\tau)d\tau = h(t)*x(t).
       \end{equation}
       Přenosová funkce je Laplaceova transformace impulsní odezvy $h(t)$
-      \begin{equation}\label{SAS:eq_ht_Lap_trans_imp}
+      \begin{equation}\label{tky:eq044}
           H(p)=\mathcal{L}[h(t)]=\int_0^\infty h(t)e^{-pt}dt,
       \end{equation}
       pro kterou je splněn vztah
-      \begin{equation}\label{SAS:eq_Yp}
+      \begin{equation}\label{tky:eq045}
           Y(p)=H(p)X(p).
       \end{equation}
       Přechodová odezva $s(t)$ je definována jako integrál impulsní odezvy
-      \begin{equation}\label{SAS:eq_Prechod_odezva}
+      \begin{equation}\label{tky:eq046}
           s(t)=\int_0^th(\tau)d\tau,
       \end{equation}
       takže platí
-      \begin{equation}\label{SAS:eq_st}
+      \begin{equation}\label{tky:eq047}
           s(t)=\mathcal{L}^{-1}\{\frac{H(p)}{p}\}.
       \end{equation}
       Algoritmus výpočtu impulsní odezvy z přenosové funkce je založen na výpočtu  reziduí a 
@@ -390,6 +390,7 @@
       $p_{\infty_{\mu}}=\sigma+j\omega$. Imaginární osa $j\omega$ je mezí stability, pravá
       polorovina je oblastí nestability. Polynom, který má kořeny v levé otevřené polorovině se
       označuje \textbf{Hurwitzův polynom}.
+      
       %---------------------------------------------------------------
       \input{../src/TKY/exam/exam002.tex}
       %---------------------------------------------------------------

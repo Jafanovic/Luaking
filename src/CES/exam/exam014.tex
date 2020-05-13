@@ -4,24 +4,21 @@
   Generujte signál s lineárně rostoucím kmitočtem "\texttt{chirp signál}", maximální kmitočet
   $f_{max} = 20 Hz$, amplituda $A = 1$, vzorkovaný kmitočtem $f_s = 64 Hz$.
 
-    {\centering
-    \captionsetup{type=figure}
-     \begin{tabular}{c}
-         \includegraphics[width=0.8\linewidth]{ces_fig047a.pdf}  \\
-         \includegraphics[width=0.8\linewidth]{ces_fig047b.pdf} 
-     \end{tabular}  
-     \captionof{figure}{Chirp signál: Signál s lineárně rostoucím kmitočtem s maximální
-              frekvencí 20 Hz vzorkovaný 254 Hz. Grafická reprezentace číslicových signálů bývá
-              buď ve spojité formě (a) nebo v diskrétní formě (b) 
-     \label{ces:fig047}}
-  \par}
-  
-  M-file:
+  {\centering
+  \captionsetup{type=figure}
+   \subcaptionbox{Spojitá forma   \label{mai:fig046a}}{\luafigure[1]{ces_fig047a.pdf}}              \newline
+   \subcaptionbox{Diskrétní forma \label{mai:fig046b}}{\luafigure[1]{ces_fig047b.pdf}}
+   \captionof{figure}{Chirp signál: Signál s lineárně rostoucím kmitočtem s maximální
+    frekvencí 20 Hz vzorkovaný 254 Hz. Grafická reprezentace číslicových signálů bývá buď ve spojité
+    formě (a) nebo v diskrétní formě (b) 
+  \label{ces:fig047}}
+\par}
+\end{example}
+
   %---------------------------------------------------------------
   \lstinputlisting[%
     style=luaMatlabStyle,
     caption={\texttt{gen\_chirp\_signal.m}. Generuje chirp signál}
     ]{../src/CES/matlab/gen_chirp_signal.m}
   %--------------------------------------------------------------- 
-\end{example}
 \end{mdframed}
