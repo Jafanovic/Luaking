@@ -399,7 +399,29 @@
       Vlastnosti lineárního diskrétního systému s jedním vstupem a jedním výstupem můžeme vyjádřit
       diferenční rovnicí s konstantními koeficienty v analogii k diferenciální rovnici
       \ref{tky:eq038}
-      \begin{equation}
-        \sum_{i=0}^N a_iy\[n-i\] = \sum_{j=0}^M b_jy\[n-j\]
+      \begin{equation}\label{tky:eq048}
+        \sum_{i=0}^N a_iy[n-i] = \sum_{j=0}^M b_jy[n-j]
       \end{equation}
-      Postup náhrady derivací diferencemi principiálně vyplývá z obr. 
+      Postup náhrady derivací diferencemi principiálně vyplývá z obr. XY. Jde o levou aproximaci,
+      která vychází z přiblížení první derivace spojité funkce metodou sečen konečnými diferencemi
+      \begin{equation}\label{tky:eq049}
+        \left.\der{y}{t}\right\rvert_{t=nT} \rightarrow \dfrac{y[n] - y[n-1]}{T}, 
+      \end{equation}
+      kde \(T\) je vzorkovací perioda, \(y[m] = y(nT)\) jsou vzorky spojité funksce v bodech \(t =
+      nT\). Pro \(T=1\) bude první diference posloupnosti dána výrazem
+      \begin{equation}\label{tky:eq050}
+        \Delta y[n] = y[n] - y[n-1].
+      \end{equation}
+      Pro druhou diferenci platí
+      \begin{align}\label{tky:eq051}
+        \Delta\Delta y[n] 
+          &= \Delta^2 y[n] = \Delta y[n] - \Delta y[n-1].  \nonumber \\
+          &= y[n] - 2y[n-1] - y[n-2].
+      \end{align}
+      Diference posloupností vyšších řádů plynou z rekurence
+      \begin{equation}\label{tky:eq052}
+        \Delta^m y[n] = \Delta\{\Delta^{m-1}y[n]\} = \cdots,
+      \end{equation}
+      která je definována pro \(m = 1, 2, \cdots \). Rozepsáním diferencí vyšších řádů a úpravou
+      obdržíme diferenční rovnici \ref{tky:eq048}. Metody řešení diferenčních rovnic jsou analogické
+      k řešení diferenciálních rovnic a lze se s nimi seznámit ve speciální literatuře. 
