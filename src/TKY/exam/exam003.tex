@@ -1,0 +1,40 @@
+% !TeX spellcheck = cs_CZ Lineární obvody a systémy - Jan Bičák  - strana 10 Popis spojitých systémů
+%===================================================================================================
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{tky:exam003}
+    Deferenciální rovnice pro napětí \(u_2(t)\) analogového obvodu na obr. \ref{tky:fig008} z
+    příkladu \ref{tky:exam002} má při nulových počátečních podmínkách tvar
+    \begin{equation*}
+      LC\frac{d^2u_2(t)}{dt^2}+RC\frac{du_2(t)}{dt}+u_2(t)=u_1(t)
+    \end{equation*}
+    Proveďme transformaci této diferenciální rovnice na diferenční. Vzorkovací periodu volme \(T =
+    \SI{2}{\us}\). 
+
+    \noindent\textbf{Řešení:}
+    V diferenciální rovnici provedeme náhradu první a druhé derivace odpovídajícími difrencemi s
+    využitím výrazů \ref{tky:eq048} až \ref{tky:eq051}. Spojité funkce \(u_2(t)\) a \(u_1(t)\)
+    nahradíme jejich funkčními hodnotami podle vzoru
+    \begin{equation*}
+      \left.u(t)\right\rvert_{t=nT}  \rightarrow u[n]
+    \end{equation*}
+    a dostaneme následující diferenční rovnici
+    \begin{align*}
+        LC\dfrac{u_2[n] - 2u_2[n-1]    + u_2[n-2]}{T^2} &+      \\
+      + RC\dfrac{u_2[n] - u_2[n-1]}{T}                  &+ u_2[n]=u_1[n]. 
+    \end{align*}
+    Odtud jednoduchou úpravou dospějeme k diferenční rovnici
+    \begin{equation*}
+      a_0u_2[n] + a_1u_2[n-1] + a_2u_2[n-2]=u_1[n].
+    \end{equation*}
+    kde
+    \begin{equation*}
+      a_0 = \frac{LC}{T^2} + \frac{RC}{T} + 1, \, a_1 = -2\frac{LC}{T^2} - \frac{RC}{T}, \,  
+      a_2 = \frac{LC}{T^2}
+    \end{equation*}
+    Nakonec dosadíme numerické hodnoty a dostaneme
+    \begin{align*}
+      \num{75.579367}u_2[n] &+ \num{137.90481}u_2[n-1]                       \\
+                            &+ \num{63.325442}u_2[n-2] = u_1[n].
+    \end{align*}
+  \end{example}
+\end{mdframed}
