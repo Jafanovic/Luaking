@@ -432,3 +432,63 @@
       %---------------------------------------------------------------
       \input{../src/TKY/exam/exam003.tex}
       %---------------------------------------------------------------
+
+      Aplikujeme nyní \(\mathrm{Z}\)-transformaci na diferenční rovnici \ref{tky:eq048}. Připomeňme,
+      že transformace diferencí je aplikací věty o posunutí. Posunutí posloupnosti \(x(n)\) v čase o
+      \(k\)-pozic znamená
+      \begin{alignat*}{2}
+        x[n]   &\rightarrow \mathcal{Z}(x[n])&&= X(z),  \\
+        x[n-k] &\rightarrow \mathcal{Z}(x[n])&&= z^{-k}\left[X(z)+\sum^k_{\nu=1} x[-\nu]z^\nu\right].
+      \end{alignat*}
+      takže pro \(x[-1] = x[-2] = \cdots = x[-k] =0\) můžeme psát
+      \begin{equation}\label{tky:eq053}
+        \sum_{i=0}^N a_iz^{-i}Y(z) = \sum_{j=0}^M b_jz^{-j}X(z). 
+      \end{equation}
+      Přenosová funkce je definována jako podíl obrazu výstupní posloupnosti \(Y(z)\) ku obrazu
+      vstupní posloupnosti \(X(z)\) za předpokladu nulových počátečních podmínek
+      \begin{equation}\label{tky:eq054}
+        H(z) = \dfrac{Y(z)}{X(z)} = \dfrac{\sum_{j=0}^Mb_jz^{-j}}{\sum_{i=0}^Na_iz^{-i}}
+      \end{equation}
+      Výpočet Kmitočtové charakteristiky přenosové funkce získáme dosazením
+      \begin{equation}\label{tky:eq055}
+        z = e^{\jmath\omega T},
+      \end{equation}
+      kde \(T\) je perioda vzorkování. 
+
+      V analogii ke spojitým systémům určíme impulsní charakteristiku za předpokladu nulových
+      počátečních podmínek zpětnou transformací přenosové funkce \(H(z)\). Algoritmus výpočtu
+      impulsní odezvy z přenosové funkce je založen na výpočtu reziduí a rozkladu racionálně lomené
+      funkce \(H(z) = \dfrac{Q(z)}{N(z)}\) na částečné zlomky. Pokud má tato funkce jednoduché póly,
+      potom platí
+      \begin{equation}\label{tky:eq056}
+        N(z) = \prod_{\mu=1}^N\left(1 - z_{\infty\mu}z^{-1}\right)
+      \end{equation}
+      a rozklad racionální lomené funkce na parciální zlomky bude mít tvar
+      \begin{align}
+        \dfrac{Q(z)}{N(z)} 
+          &= \sum_{\mu=1}^N\dfrac{k_\mu}{1 - z_{\infty\mu}z^{-1}}                    \nonumber \\
+          &= \dfrac{k_1}{1 - z_{\infty1}z^{-1}} + \dfrac{k_2}{1 - z_{\infty2}z^{-1}} \nonumber \\
+          &+ \cdots + \dfrac{k_N}{1 - z_{\infty N}z^{-1}}                          \label{tky:eq057}
+      \end{align} 
+      kde
+      \begin{align}
+        k_\mu &= \lim_{z\rightarrow z_{\infty\mu}}
+                 \left(1 - z_{\infty\mu}z^{-1}\right)\dfrac{Q(z)}{N(z)}    \nonumber \\
+              &= Q(z_{\infty\mu})\dfrac{1}{N'(z_{\infty\mu})}.             \label{tky:eq058}
+      \end{align}
+      Protože platí
+      \begin{align}
+        \mathcal{Z}^{-1}\left[\dfrac{1}{1-az^{-1}}\right]  
+          &= \mathcal{Z}^{-1}\left[\sum_{m=0}^\infty a^mz^{-m}\right]     \nonumber \\
+          &= \sum_{m=0}^\infty a^m\delta[n-m]                             \nonumber \\
+          &= a^nu[n] \quad \abs{a}<1                                      \label{tky:eq059}
+      \end{align}
+      dostaneme
+      \begin{align}
+        h[n] &= \mathcal{Z}^{-1}\left[\dfrac{Q(z)}{N(z)}\right]                 \nonumber \\
+             &= \mathcal{Z}^{-1}
+                \left[\sum_{\mu=1}^N\dfrac{k_\mu}{1-z_{\infty\mu}z^{-1}}\right] \nonumber \\
+             &= \sum_{\mu=1}^Nk_\mu z^n_{\infty\mu}u[n]                         \label{tky:eq060}
+      \end{align}
+      Vztah \ref{tky:eq060} je vzorcem pro zpětnou transformaci racionálně lomené funkce s
+      jednoduchými póly.
