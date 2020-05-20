@@ -2,27 +2,37 @@
 %===================================================================================================
 \begin{mdframed}[style=mdexam]
   \begin{example}\label{tky:exam004}
-    V
-
+    Na diferenční rovnici \ref{tky:eq061} vypočítanou v příkladu \ref{tky:exam003} aplikujeme
+    \(\mathcal{Z}\)-transformaci a vyjádříme přenosovou funkci diskrétního systému ve tvaru
+    \begin{equation*}
+      H(z) = \dfrac{U_2(z)}{U_1(z)}.
+    \end{equation*}
+    \noindent\textbf{Řešení:}
+    Na diferenční rovnici \ref{tky:eq061} aplikujeme \(\mathcal{Z}\)-transformaci a dostaneme
+    algebraickou rovnici
+    \begin{align}
+      \num{75.579367}U_2(z) &- \num{137.90481}z^{-1}U_2(z)                       \nonumber \\
+                            &+ \num{63.325442}z^{-2}U_2(z) = U_1(z).             \label{tky:eq062}
+    \end{align}
+    Z rovnice \ref{tky:eq062} můžeme vyjádřit přenosovou funkci \(H(z)\) ve tvaru racionálně lomené
+    funkce
+    \begin{equation}\label{tky:eq063}
+      H(z) = \dfrac{1}{\num{75.579367}-\num{137.90481}z^{-1}+\num{63.325442}z^{-2}}.
+    \end{equation}
+    
     {\centering
       \captionsetup{type=figure}
       \luafigure[1]{tky_fig013.pdf}
-      \captionof{figure}{Zapojení obvodu RLC.}
+      \captionof{figure}{Impulsní charakteristika přenosové funkce \ref{tky:eq063}}
       \label{tky:fig008}
     \par}
-    \noindent\textbf{Řešení:} Pro zapojení dle obrázku \ref{tky:fig008} získáme metodou uzlových
-    napětí integrodiferenciální rovnice pro uzly \texttt{A} a \texttt{B}:
-    \begin{gather*}
-      \begin{align*}
-        \shortintertext{uzel A:}
-        \frac{u_3(t)-u_1(t)}{R}+\frac{1}{L}\int_0^t{[u_3(t)-u_2(t)]}\dd{\tau}+i_L(0_+) &= 0  \\
-        \shortintertext{uzel B:}
-        \frac{1}{L}\int_0^t[(u_2(t)-u_3(t))]\dd{\tau}+C\der{u_2}{t}-i_L(0_+)           &= 0
-      \end{align*}
-    \end{gather*}
-    
-    V Matlabu vypočítáme impulsní charakteristiku 
-    
+    Obrázek \ref{tky:fig008} ukazuje impulsní odezvu diskrétního systému popsaného přenosovou funkcí
+    \ref{tky:eq063} pro \(t\in\langle0,\num{3e-4}\rangle\) vykreslené pomocí matlabovské funkce
+    \lstinline[style=luaMatlabText]!stem(x)!. Vzorkovací periodu zvolme \(T = \SI{2}{\us}\)
+
+    Program využívá funkce \lstinline[style=luaMatlabText]!impz(a,b)!, která vrací impulsní odezvu
+    přenosové funkce s koeficienty čitatele \(b\) a jmenovatelem \(a\). Funkce je součástí balíku 
+    \emph{Signal Processing Toolbox}    
   \end{example} 
 
   %---------------------------------------------------------------
