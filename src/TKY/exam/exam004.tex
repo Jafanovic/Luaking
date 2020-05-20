@@ -1,0 +1,34 @@
+% !TeX spellcheck = cs_CZ Lineární obvody a systémy - Jan Bičák  - strana 10 Popis spojitých systémů
+%===================================================================================================
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{tky:exam004}
+    V
+
+    {\centering
+      \captionsetup{type=figure}
+      \luafigure[1]{tky_fig013.pdf}
+      \captionof{figure}{Zapojení obvodu RLC.}
+      \label{tky:fig008}
+    \par}
+    \noindent\textbf{Řešení:} Pro zapojení dle obrázku \ref{tky:fig008} získáme metodou uzlových
+    napětí integrodiferenciální rovnice pro uzly \texttt{A} a \texttt{B}:
+    \begin{gather*}
+      \begin{align*}
+        \shortintertext{uzel A:}
+        \frac{u_3(t)-u_1(t)}{R}+\frac{1}{L}\int_0^t{[u_3(t)-u_2(t)]}\dd{\tau}+i_L(0_+) &= 0  \\
+        \shortintertext{uzel B:}
+        \frac{1}{L}\int_0^t[(u_2(t)-u_3(t))]\dd{\tau}+C\der{u_2}{t}-i_L(0_+)           &= 0
+      \end{align*}
+    \end{gather*}
+    
+    V Matlabu vypočítáme impulsní charakteristiku 
+    
+  \end{example} 
+
+  %---------------------------------------------------------------
+  \lstinputlisting[%
+  style=luaMatlabStyle,
+  caption={Výpis programu tky012.m k příkladu \ref{tky:exam004}.}
+  ]{../src/TKY/matlab/tky012.m}
+  %--------------------------------------------------------------- 
+\end{mdframed}
