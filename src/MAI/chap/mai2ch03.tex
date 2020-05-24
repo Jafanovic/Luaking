@@ -4,6 +4,65 @@
 %---------------------------------------------------------------------------------------------------
 \setchaptertoc
 \chapter{Linearita v aplikacích aneb lineární algebra do třetice}\label{mai:IIchapIII}
+  Potřetí se vracíme k lineární algebře. Spojíme-li následující poznatky se znalostmi z předchozích
+  dvou kapitol o lineární algebře (\ref{mai:IchapII} a \ref{mai:IIchapI}), budeme moci říci, že jsme
+  sezmámili se základy této matematické disciplíny. Naše setkávání s ní tím však zdaleka nekončí.
+  Každý, kdo se bude zabývat fyzikou, ať již teoretickou nebo experimentální, a zejména pak jejími
+  praktickými aplikacemi v inženýrství, přístrojové technice, medicínských oborech vyžadujících
+  znalost fyziky, apod., bude potřebovat lineární algebru neustále. V této kapitole obohatíme náš
+  dosavadní vektorový prostor o další výbavu - skalární součin, se kterou se ještě jednou vrátíme k
+  problému projekcí, tentokrát v geometricky názornější podobě. A nakonec si všimneme lineárních
+  operátorů, které vůči skalárnímu součinu splňují jisté \uv{zákony zachování}. Tyto speciální
+  vlastnosti, kterými většinou oplývají fyzikální \uv{operátorové} veličiny, zajistí existenci báze
+  tvořené vlastními vektory každého takového operátoru. 
 
+  \section{Skalární součin - nadstandardní výbava vektorového prostoru}\label{mai:IIchapIIIsecI}
+    Se skalárním  součinem vektorů jsem se již setkali. V každém přpadě se o tom můžeme přesvědčit
+    nalistováním odstavce \ref{mai:IchapIIsecIVsubIII}. Situace, již jsme se tehdy zabývali, byla
+    však velmi speciální. Pracovali jsme s vázanými vektory definovanými jako orientované úsečky v
+    trojrozměrném euklidovském prostoru, které jsme sčítali a násobili skalárem pomocí jednoduchých
+    geometrických definic - grafického sčítání orientovaných úseček a jejich násobení číslem, také v
+    podstatě grafického. Volné vektory pak byly množinami ekvivalentních (tj. stejně dlouhých a
+    stejně orientovaných) úseček, operace sčítání a násobení skalárem byly přirozeným způsobem
+    zobecněny i na volné vektory. Prostor takových vektorů samozřejmě splňoval všechny požadavky
+    obecné algebraické definice vektorového prostoru. Obsahoval však i něco navíc - možnost měření
+    délek vektorů a úhlů mezi nimi, vyplývající z použití euklidovského prostoru pro vytvoření
+    konkrétní geometrické představy o vektorech. Pomocí délek vektorů a úhlu mezi nimi jsme pak
+    definovali skalární součin vektorů a zjistili jsme, jaké má tato operace vlastnosti. V tomto
+    odstavci deňnici skalárního součinu vektorů formulujeme algebraicky a zobecníme ji na libovolný
+    vektorový prostor. 
+
+  \section{Skalární součin a jeho reprezentace v bázích}\label{mai:IIchapIIIsecII}
+    Zopakujme si definici \ref{mai:eq038} skalárního součinu vektorů z odstavce
+    \ref{mai:IchapIIsecIVsubIII},  V němž jsme jako s vektory pracovali s množinami orientovaných
+    úseček. Podstatné bylo, že skalární součin přiřazoval uspořádané dvojici vektorů číslo. V
+    daném konkrétním případě bylo toto číslo určeno jako součin velikostí obou vektorů a kosinu
+    úhlu, který svíraly, tj.
+    \begin{equation*}
+      V_3\times V_3\ni[\vec{u},\vec{v}]
+        \rightarrow\vec{u}\vec{v} = \abs{\vec{u}}\abs{\vec{v}}\cos\varphi,
+    \end{equation*} 
+    kde \(\varphi = \sphericalangle(\vec{u},\vec{v})\in\realset\) je velikost minimálního z obou
+    úhlů mezi vektory\(\vec{u},\vec{v}\).
+
+    Základními vlastnostmi takto definovaného skalárního součinu vektorů byly \emph{komutativita},
+    \emph{linearita} a \emph{pozitivní definitnost}: 
+    \begin{subequations}\label{mai:eq095}
+      \begin{align}
+        \vec{u}\vec{v}    &= \vec{v}\vec{u},                                   \label{mai:eq095a} \\
+        k(\vec{u}\vec{v}) &= \vec{u}(k\vec{v}) = \vec{v}(k\vec{u}),            \label{mai:eq095b} \\
+        \vec{u}(\vec{v} + \vec{w}) &= \vec{u}\vec{v} + \vec{u}\vec{w},         \label{mai:eq095c} \\
+        \vec{u}\vec{u}&\geq 0,\;\text{rovnost}\Leftrightarrow\;\vec{u}=\vec{o} \label{mai:eq095d}        
+      \end{align}
+    \end{subequations}
+
+    Pokud jsme zapsali vektory  \(\vec{u}\) a \(\vec{v}\) ve složkách v bázi \((\vec{e}_1,
+    \vec{e}_2, \vec{e}_3)\) navzájem kolmých jednotkových vektorů, tj. v \emph{ortonormalní bázi},
+    zjistili jsme, že skalární součin vektorů  \(\vec{u} = u_1\vec{e}_1 + u_2\vec{e}_2 +
+    u_3\vec{e}_3\) a  \(\vec{v} = v_1\vec{e}_1 + v_2\vec{e}_2 + v_3\vec{e}_3\) (v dílu
+    \ref{part:MAI} ještě s dolními indexy u složek), můžeme vyjádřit ve tvaru (\ref{mai:eq097}), tj.
+    \(\vec{u}\vec{v} = u_1v_1 + u_2v_2 + u_3v_3\). Pokusme se najít různá zobrazení z týmiž
+    vlastnostmi, aniž bychom se omezovali nějakou zcela určitou představou o vektorech jako
+    konkrétních objektech. Nebudeme tedy trvat na tom, že vektory jsou zrovna orientované úsečky. 
 
 %---------------------------------------------------------------------------------------------------

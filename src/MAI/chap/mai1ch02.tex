@@ -1413,8 +1413,45 @@
       %---------------------------------------------------------------
       
       Shrneme nyní vlastnosti skalárního součinu. Dokázat bychom je mohli, i když by to mohlo být i 
-      velmi pracné, užitím znalostí z goniometrie. Zkuste to alespoň pro jednu z nich! Třeba se    
-      vám podaří zvolit si tu nejjednodušší.
+      velmi pracné, užitím znalostí z goniometrie.
+      \begin{subequations}\label{mai:eq096}
+        \begin{align}
+          \vec{u}\vec{v}    &= \vec{v}\vec{u},                                  \label{mai:eq096a}\\
+          k(\vec{u}\vec{v}) &= \vec{u}(k\vec{v}) = \vec{v}(k\vec{u}),           \label{mai:eq096b}\\
+          \vec{u}(\vec{v} + \vec{w}) &= \vec{u}\vec{v} + \vec{u}\vec{w},        \label{mai:eq096c}\\
+          (\vec{v} + \vec{w})\vec{u} &= \vec{v}\vec{u} + \vec{w}\vec{u},        \label{mai:eq096d}\\
+          \vec{u}\vec{u}&\geq 0,\;\text{rovnost}\Leftrightarrow\;\vec{u}=\vec{o}\label{mai:eq096e}        
+        \end{align}
+      \end{subequations}
+      Rovnici (\ref{mai:eq096a}) nazýváme \emph{komutativním zákonem}, rovnice (\ref{mai:eq096b}),
+      (\ref{mai:eq096c}) a (\ref{mai:eq096c}) představují \emph{distributivní zákony} a tedy i
+      \emph{linearitu}. Poslední rovnice \ref{mai:eq096e} je takzvaná \emph{pozitivní definitnost}.
+      Vztahy platí pro libovolné vektory \( \vec{u},\vec{v}\in\realset^3\) a libovolné \(k \in
+      \realset\).
+
+      Použijeme těchto pravidel pro vyjádření skalárního součinu v bázích. Již jsme se naučili
+      sumační symboliku, tak ji při tom procvičíme. Vektory \(\vec{u}\) a \(\vec{v}\) jsou lineární
+      kombinací báze (platí obecně). Tedy
+      \begin{equation*}
+        \vec{u} = \sum_{i=1}^3\vec{u}_i\vec{e}_i, \quad \vec{v} = \sum_{j=1}^3\vec{v}_j\vec{e}_j
+      \end{equation*}
+      \begin{align*}
+        \vec{u}\vec{v}  
+          &=\left(\sum_{i=1}^3\vec{u}_i\vec{e}_i\right)
+            \left(\sum_{j=1}^3\vec{v}_j\vec{e}_j\right)                                           \\
+          &=\sum_{i=1}^3\sum_{j=1}^3(\vec{u}_i\vec{v}_j)(\vec{e}_i\vec{e}_j)                      \\
+          &=(u_1v_1)(\vec{e}_1\vec{e}_1)+(u_1v_2)(\vec{e}_1\vec{e}_2)+(u_1v_3)(\vec{e}_1\vec{e}_3)\\  
+          &+(u_2v_1)(\vec{e}_2\vec{e}_1)+(u_2v_2)(\vec{e}_2\vec{e}_2)+(u_2v_3)(\vec{e}_2\vec{e}_3)\\
+          &+(u_3v_1)(\vec{e}_3\vec{e}_1)+(u_3v_2)(\vec{e}_3\vec{e}_2)+(u_3v_3)(\vec{e}_3\vec{e}_3)
+      \end{align*}
+      Abychom skalární součin určili v obecné bázi, potřebovali bychom znát skalární součiny všech
+      dvojic vektorů báze. Je-li však báze ortonormální, je věc velmi jednoduchá. V příkladu
+      \ref{MAI:exam034} jsme zjistili, že skalární součin dvou stejných vektorů ortonormální báze je
+      1, skalární součin dvou různých vektorů této báze je nulový. V ortonormální bázi tedy
+      vyjádříme skalární součin vektorů \(\vec{u}\) a \(\vec{v}\) pomocí jejich složek takto:
+      \begin{equation}\label{mai:eq097}
+        \vec{u}\vec{v} = u_1v_1 + u_2v_2 + u_3v_3 = \sum_{i=1}^3\vec{u}_i\vec{v}_i.
+      \end{equation}
 
       \todo[inline]{Kapitola: "Součiny vektorů" bílé místo} 
 
