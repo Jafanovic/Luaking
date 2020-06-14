@@ -6,12 +6,271 @@
 %---------------------------------------------------------------------------------------------------
 %=========================== Kapitola: Analogie elektrostatiky =====================================
 \setchaptertoc
-\chapter{Analogie elektrostatiky}\label{fyz:IIchapXII}
-
+\chapter{Analogie elektrostatiky}\label{fyz:IIchapXII}  
   \section{Stejné rovnice mají stejné řešení}\label{fyz:IIchapXIIsecI}
-  \section{Proudění tepla. Bodový zdroj v blízkosti nekonečného rovinného 
-  rozhraní}\label{fyz:IIchapXIIsecII}
+    Celkové množství informací, které se od začátku vědeckého pokroku o fyzikálním světě
+    nashromáždilo, je ohromné a zdá se téměř nemožné, aby si z něj jednodivec dokázal osvojit
+    nějakou dostatečně rozsáhlou část. Ale ve skutečnosti si fyzik spíše dokáže uchovat široké
+    vědomosti o fyzikálním světě, než se stát specialistou v nějaké úzké oblasti. Má to tři příčiny:
+    Zaprvé, existují velké principy, jež platí pro všechny různé druhy jevů - například principy
+    zaphování energie a momentu hybnosti. Důkladné pochopení takových principů umožňuje porozumět
+    mnoha věcem najednou. Za druhé, faktem je, že mnohé složité jevy, např. vlastnosti pevných těles
+    pod tlakem, jsou v podstatě určeny elektrickými a kvantově mechanickými silami; porozumí-li tedy
+    někdo základním zákonům elektřiny a kvantové mechaniky, vyplývá z toho přinejmenším určitá
+    možnost porozumět mnoha jevům, k nimž dochází ve složitých situacích. Nakonec, existuje tato
+    nejpozoruhodnější shoda: \emph{rovnice pro mnohé odlišné fyzikální problémy vypadají přesně
+    stejně}. Pravda, symboly se přitom mohou lišit - jedno písmeno je nahrazeno jiným, ale
+    matematický tvar rovnic je tentýž. Znamená to, že jestliže jsme prozkoumali jednu věc, okamžitě
+    jsme dostali mnoho přesných poznatků i o řešení jiných problémů.
+
+    Nyní jsme skončili s elektrostatikou a brzy budeme pokračovat studiem magnetizmu a
+    elektrodynamiky. Ale ještě předtím bychom rádi ukázali, že při studiu elektrostatiky jsme se
+    současně dozvěděli i o velkém počtu jiných témat. Uvidíme, že rovnice elektrostatiky se
+    vyskytují i na několika jiných místech ve fyzice. Přímým přenesením jejich řešení (samozřejmě,
+    stejné matematické rovnice musí mít stejná řešení) je možné řešit úlohy v jiných oblastech
+    stejně snadno - nebo stejně obtížně -jako v elektrostatice.
+
+    Jak víme, rovnice elektrostatiky vypadají takto:
+    \begin{subequations}
+      \begin{align}
+         \nabla\cdot(\varepsilon_r\vec{E})&=\dfrac{\varrho_{vol}}{\varepsilon_0},\label{fyz:eq756}\\  
+         \nabla\times\vec{E}              &= 0.                                  \label{fyz:eq757}
+      \end{align}
+    \end{subequations}
+    (Uvádíme rovnice elektrostatiky pro dielektrika, abychom měli co nejobecnější situaci.) Tentýž
+    fyzikální obsah je možno vyjádřit v jiném matematickém tvaru:
+    \begin{subequations}
+      \begin{align}
+         \vec{E}  &=-\nabla\varphi,                                      \label{fyz:eq758}\\  
+         \nabla\cdot(\varepsilon_r\nabla\varphi)
+                  &=-\dfrac{\varrho_{vol}}{\varepsilon_0}.               \label{fyz:eq759}
+      \end{align}
+    \end{subequations}
+    Nyní jde o to, že existuje mnoho fyzikálních problémů, jejichž matematické rovnice mají tento
+    tvar. Existuje potenciál (\(\varphi\) jehož gradient vynásobený skalární funkcí
+    (\(\varepsilon_r\)) má divergenci rovnající se jiné skalární funkci
+    (\(-\varrho/\varepsilon_0\)).
+
+    Cokoliv víme o elektrostatice, můžeme ihned transformovat na tentýž problém a naopak (Fun­guje
+    to, samozřejmě, v obou směrech: má-li ten jiný problém nějaké charakteristiky, které známe,
+    můžeme tyto poznatky aplikovat na příslušný elektrostatický problém.) Nyní prozkoumáme řadu
+    příkladů z různých oblastí, které vedou k rovnicím tohoto tvaru.
+
+  \twocolumn[\section{Proudění tepla. Bodový zdroj v blízkosti nekonečného rovinného 
+    rozhraní}\label{fyz:IIchapXIIsecII}]
+    
+    O jednom příkladu - proudění tepla jsme již hovořili dříve (článek \ref{fyz:IIchapIIsecVI}).
+    Představme si nějaké těleso (ne nevyhnutelně homogenní, takže se může na různých místech skládat
+    z různých látek), ve kterém se teplota mění od bodu k bodu. V důsledku těchto teplotních variací
+    probíhá proudění tepla, jež je možno charakterizovat pomocí vektoru hustoty tepelného toku
+    \(\vec{h}\). Tento vektor udává, jaké množství tepelné energie pronikne za jednotku času
+    jednotkovou plochou, kolmou na směr proudění. Divergence vektoru \(\vec{h}\) určuje rychlost,
+    přepočtenou na jednotku objemu, kterou teplo z některé oblasti uniká:
+    \begin{equation*}
+      \nabla\cdot\vec{h} = \text{rychlost úniku tepla jednotkovým objemem.}
+    \end{equation*}
+    (Tuto rovnici bychom mohli samozřejmé napsat v integrálním tvaru, tj. přesně tak, jak jsme to
+    udělali v elektrostatice s Gaussovým zákonem, podle kterého je tok plochou roven rychlosti,
+    kterou se mění tepelná energie uvnitř látky. Nebudeme se zabývat transformováním rovnic z
+    diferenciálního tvaru na integrální a zpět, neboť postup je přesně tentýž jako v
+    elektrostatice.)
+
+    Rychlost, jíž se na různých místech teplo generuje nebo absorbuje, závisí ovšem na podmín­kách
+    dané úlohy. Předpokládejme například, že uvnitř tělesa se nachází zdroj tepla (mohlo by jít o
+    radioaktivní zdroj nebo o rezistor zahřívaný elektrickým proudem). Tepelnou energii uvolněnou za
+    sekundu a přepočtenou na jednotkový objem označme \(s\). V daném objemu může docházet i ke
+    ztrátám (nebo přírůstkům) tepelné energie na úkor jiných forem vnitřní energie. Je-li \(u\)
+    tepelná energie připadající na jednotkový objem, bude \(-\der{u}{t}\) také „zdrojem“ tepelné
+    energie. Pak dostaneme
+    \begin{equation}\label{fyz:eq760}
+      \nabla\cdot\vec{h} = s - \der{u}{t}.
+    \end{equation}
+
+    Nyní nebudeme hovořit o úplné rovnici, v níž se veličiny s časem mění, neboť se zabýváme 
+    analogiemi elektrostatiky, kde na čase nic nezávisí. Budeme uvažovat pouze úlohy se stacionárním
+    prouděním tepla, v nichž konstantní zdroje vytvořily rovnovážný stav. V takových případech
+    \begin{equation}\label{fyz:eq761}
+      \nabla\cdot\vec{h} = s.
+    \end{equation}
+
+    Je nutné mít, samozřejmě, ještě další rovnici, která popisuje, jak teplo proudí na různých
+    místech. V mnohých látkách je hustota tepelného toku přibližně přímo úměrná rychlosti změny
+    teploty s polohou: čím větší je rozdíl teplot, tím větší je hustota toku. Jak víme, vektor
+    hustoty tepelného toku je přímo úměrný gradientu teploty. Součinitel přímé úměrnosti
+    \(\lambda\), který je charakteristickou veličinou látky, se nazývá \emph{tepelná vodivost}:
+    \begin{equation}\label{fyz:eq762}
+      \vec{h} = -\lambda\nabla T.
+    \end{equation}
+
+    Mění-li se vlastnosti látky od místa k místu, je \(\lambda\) funkcí polohy: \(\lambda =
+    \lambda(x,y,z)\). Rovnice (\ref{fyz:eq762}) není natolik fundamentální jako rovnice
+    (\ref{fyz:eq760}), neboť závisí na vlastnostech konkrétní látky Dosadíme-li \(\lambda\) z
+    (\ref{fyz:eq762}) do rovnice (\ref{fyz:eq761}), dostaneme rovnici
+    \begin{equation}\label{fyz:eq763}
+      \nabla\cdot(\lambda\nabla T)= - s,
+    \end{equation}
+    která má přesně tentýž tvar jako rovnice (\ref{fyz:eq759}). \emph{Úlohy o stacionárním proudění
+    tepla a elektrostatické úlohy jsou tedy stejné}. Vektor hustoty tepelného toku \(\vec{h}\)
+    odpovídá vektoru \(\vec{E}\) a teplota \(T\) odpovídá potenciálu \(\varphi\). Již jsme se
+    zmínili, že bodový zdroj tepla vytváří tepelné pole, které se mění se vzdáleností \(r\) jako
+    \(1/r\), a hustotu tepelného toku, která se mění jako \(1/r^2\). To není nic víc než přenesení
+    tvrzení z elektrostatiky o tom, že bodový náboj generuje potenciál, který se mění jako \(1/r\),
+    a elektrické pole, které se mění jako \(1/r^2\). Obecně můžeme úlohy o stacionárním proudění
+    tepla řešit právě tak snadno jako elektrostatické úlohy.
+
+    \begin{figure}[ht!]  %\ref{fyz:fig724}
+      \centering
+        \subcaptionbox{\label{fyz:fig724a}}{\luafigure[0.45]{fyz_fig724a.pdf}}                                                  
+        \subcaptionbox{\label{fyz:fig724b}}{\luafigure[0.45]{fyz_fig724b.pdf}}                    
+      \caption{a) Proudění tepla ve válcové geometrii, b) Odpovídající elektrická úloha. 
+        (\cite[s.~206]{Feynman02})}
+      \label{fyz:fig724}
+    \end{figure}
+
+    Prozkoumejme jednoduchý příklad. Mějme válec s poloměrem \(a\) s teplotou \(T_1\) udržovanou
+    generováním tepla ve válci samém. (Mohlo by jít například o drát, kterým protéká proud, nebo o
+    trubici, uvnitř které kondenzuje pára.) Nechť je válec pokryt koncentrickou vrstvou izolační
+    látky, jejíž tepelná vodivost je \(\lambda\). Vnější poloměr izolační vrstvy nechť je \(b\) a
+    její vnějšek je udržován na teplotě \(T_2\) (obr. \ref{fyz:fig724a}). Chceme určit, jakou
+    rychlostí se bude teplo ztrácet z drátu nebo z trubice nebo z čehokoliv, co se nachází ve středu
+    válce. Označme celkové množství tepelných ztrát z trubice, jejíž délka je \(L\), jako \(G\),
+    což je právě to, co se snažíme určit.
+
+    Jak můžeme tuto úlohu řešit? Máme k dispozici diferenciální rovnice, ale protože jsou tytéž jako
+    v elektrostatice, jejich matematické řešení už vlastně máme. Analogická je úloha o vodiči s
+    poloměrem \(a\) a potenciálem \(\varphi_1\), odděleném koncentrickou vrstvou dielektrické látky
+    od dalšího vodiče s poloměrem \(b\) a potenciálem \(\varphi_2\) (obr. \ref{fyz:fig724b}).
+    Protože hustota tepelného toku \(\vec{h}\) odpovídá elektrickému poli \(\vec{E}\), odpovídá
+    veličina \(G\), kterou chceme určit, toku elektrického pole z jednotkové délky (jinými slovy,
+    elektrickému náboji připadajícímu na jednotku délky a dělenému veličinou \(\varepsilon_0\)).
+    Tuto elektrostatickou úlohu jsme řešili pomocí Gaussova zákona. Stejný postup budeme sledovat i
+    v naší úloze o proudění tepla.
+
+    Ze symetrie úlohy vidíme, že \(h\) závisí pouze na vzdálenosti od osy. Proto naši trubici
+    obklopíme gaussovským válcem s délkou \(L\) a poloměrem \(r\). Z Gaussova zákona víme, že
+    hustota tepelného toku \(h\) vynásobená plošným obsahem povrchu \(2\pi rL\) musí být rovna
+    celkovému množství tepla, jež je generováno uvnitř a jež jsme označili jako \(G\):
+    \begin{equation}\label{fyz:eq764}
+      2\pi rLh= G, \quad \text{neboli}\quad h = \dfrac{G}{ 2\pi rL}.
+    \end{equation}
+    Hustota tepelného toku je přímo úměrná gradientu teploty
+    \begin{equation*}
+      \vec{h} = -\lambda\nabla T
+    \end{equation*}
+    nebo, jako v tomto případě, velikost vektoru \()\vec{h}\) určuje rovnice
+    \begin{equation*}
+      h = -\lambda\der{T}{r}.
+    \end{equation*}
+    Toto vyjádření spolu s (\ref{fyz:eq764}) vede k rovnici
+    \begin{equation}\label{fyz:eq765}
+       \der{T}{r} = -\dfrac{G}{2\pi\lambda rL}.
+    \end{equation}
+    Integrujeme-li ji od \(r=a\) do \(r=b\), dostaneme
+    \begin{equation}\label{fyz:eq766}
+      T_2 - T_1 = -\dfrac{G}{2\pi\lambda L}\ln\dfrac{b}{a}.
+    \end{equation}
+    Vyřešíme-li tuto rovnici vzhledem ke \(G\), dostaneme
+    \begin{equation}\label{fyz:eq767}
+      G = \dfrac{2\pi\lambda L(T_1 - T_2)}{\ln\dfrac{b}{a}}.
+    \end{equation}
+    Tento výsledek přesně odpovídá výrazu pro náboj válcového kondenzátoru
+    \begin{equation}\label{fyz:eq768}
+      Q = \dfrac{2\pi\varepsilon_0 L(\varphi_1 - \varphi_2)}{\ln\dfrac{b}{a}}.
+    \end{equation}
+    Tyto úlohy jsou stejné a mají stejná řešení. Na základě našich vědomostí o elektrostatice také 
+    umíme určit, kolik tepla se ztrácí z izolovaného potrubí.
+
+    Prozkoumejme ještě jeden příklad o vedení tepla. Dejme tomu, že chceme znát hustotu tepelného
+    toku v okolí bodového zdroje tepla nacházejícího se ne hluboko pod povrchem Země nebo v
+    blízkosti povrchu velkého kovového tělesa. Takovýmto lokalizovaným zdrojem tepla by mohla být
+    atomová bomba odpálená v podzemí, představující intenzivní zdroj tepla, nebo by mohlo jít o malý
+    radioaktivní zdroj, nacházející se v železném bloku. Možností je mnoho.
+
+    Budeme řešit idealizovanou úlohu o bodovém tepelném zdroji s výkonem \(G\), nacházejícím se ve
+    vzdálenosti \(a\) pod povrchem nekonečného bloku homogenní látky, jež má tepelnou vodivost
+    \(\lambda\). Tepelnou vodivost vzduchu nad povrchem látky zanedbáme. Chceme určit rozdělení
+    teploty na povrchu bloku. Jaká je teplota přímo nad zdrojem a také v různých místech na povrchu
+    bloku?
+
+    Jak tedy budeme tuto úlohu řešit? Podobá se elektrostatické úloze o dvou látkách s odlišnými
+    permitivitami \(\varepsilon_r\), oddělených rovinným rozhraním. Vypadalo to, že jde o analogii
+    bodového náboje nacházejícího se v blízkosti rozhraní mezi dielektrikem a vodičem nebo o něco
+    podobné­ho. Podívejme se, jaká situace je v blízkosti povrchu. Protože jsme předpokládali, že
+    nedochází k úniku tepla z bloku, platí fyzikální podmínka, že normálová složka vektoru
+    \(\vec{h}\) je na povrchu rovna \emph{nule}. Musíme se tedy zeptat: ve které elektrostatické
+    úloze se uplatňuje podmínka, že normálová složka elektrického pole \(\vec{E}\) (jež je analogií
+    vektoru \(\vec{h}\)) je na povrchu rovna \emph{nule}? V žádné.
+
+    Je to jeden z případů, kdy musíme být obzvlášť opatrní. V matematických podmínkách, které
+    vznikají v každém jednotlivém příkladě, může z fyzikálních důvodů docházet k určitým omezením.
+    Proto když jsme rozebírali diferenciální rovnici pouze pro určitý omezený okruh případů, mohlo
+    se stát, že jsme přehlédli některé druhy řešení, které se mohou objevit v jiných fyzikálních
+    situacích. Například látka s permitivitou rovnou nule neexistuje, zatímco nulovou tepelnou
+    vodi­vost má vakuum. Dokonalý tepelný izolátor tedy nemá elektrostatickou analogii. Ale i tak
+    můžeme použít stejné \emph{metody}. Můžeme se pokusit představit si, co by se stalo, kdyby byla
+    permitivita \emph{rovna nule}. (Přirozeně permitivita v reálném případě nikdy není rovna nule.
+    Ale mohl by nastat případ, v němž by se uplatnila látka s velmi vysokou permitivitou, takže
+    permitivitu vnějšího vzduchu bychom mohli zanedbat.)
+
+    \begin{figure}[ht!] %\ref{fyz:fig725}
+      \centering
+      \includegraphics[width=1\linewidth]{fyz_fig725.pdf}
+      \caption{Proudéní tepla a izotermy v blízkosti bodového zdroje tepla ve vzdálenosti \(a\) pod
+        povrchem dobrého vodiče tepla. Myšlený zrcadlový zdroj se nachází mimo těleso.
+        (\cite[s.~210]{Feynman02})}
+      \label{fyz:fig725}
+    \end{figure}
+
+    Jak tedy najdeme elektrické pole, jež nemá složku kolmou na povrch, tj. takové, které je na
+    povrchu vždy \emph{tangenciální}? Uvědomme si, že máme opačnou úlohu, než je ta o bodovém náboji
+    v blízkosti rovinného vodiče. Tam jsme hledali pole \emph{kolmé} na povrch, neboť celý vodič měl
+    stejný potenciál. V elektrické úloze jsme našli řešení pomocí zrcadlového obrazu bodového náboje
+    za vodivou rovinou. Tutéž myšlenku můžeme použít opět. Budeme se snažit vybrat takový
+    \uv{zrcadlový zdroj}, který automaticky vynuluje normálovou složku pole na povrchu.
+
+    Řešení ukazuje obr.\ref{fyz:fig725}. Zrcadlový zdroj se \emph{stejným znaménkem} s toutéž
+    velikostí, umístěný ve vzdálenosti \(a\) nad povrchem způsobí, že pole na povrchu bude vždy
+    horizontální. Jeho normálové složky od obou zdrojů se vyruší.
+
+    Tím je naše úloha o proudění tepla vyřešena. Z přímé analogie vyplývá, že teplota je všude tatáž
+    jako potenciál dvou stejných bodových nábojů. Teplota \(T\) ve vzdálenosti \(r\) od izolovaného
+    bodového zdroje \(G\) v nekonečném prostředí je
+    \begin{equation}\label{fyz:eq769}
+      T = \dfrac{G}{4\pi\lambda r}.
+    \end{equation}
+    (To je, samozřejmě, úplná analogie s výrazem \(\varphi = \frac{q}{4\pi\varepsilon_0r}\).)
+    Teplotu v případě bodového zdroje spolu s jeho zrcadlovým zdrojem vyjadřuje výraz 
+    \begin{equation}\label{fyz:eq770}
+      T = \dfrac{G}{4\pi\lambda r_1} + \dfrac{G}{4\pi\lambda r_2}.
+    \end{equation}
+    Tento vzorec nám dává teplotu v celém tělese. Několik izotermických ploch je znázorněno na obr.
+    \ref{fyz:fig725}. Ukázány jsou také křivky vektoru \(\vec{h}\), které lze dostat ze vztahu
+    \(\vec{h} = -\lambda\nabla T\).
+    
+    Původně jsme se ptali na rozdělení teploty na povrchu. Pro bod na povrchu ve vzdálenosti
+    \(\varrho\) od osy platí \(r_1= r_2 = \sqrt{\varrho^2 + a^2}\), takže
+    \begin{equation}\label{fyz:eq771}
+      T_{na povrchu} = \dfrac{1}{4\pi\lambda}\dfrac{2G}{\sqrt{\varrho^2 + a^2}}.
+    \end{equation}
+    Tato funkce je na obrázku také zakreslena. Teplota je, přirozeně, vyšší přímo nad zdrojem než 
+    ve větší vzdálenosti. Je to úloha, kterou často potřebují řešit geofyzici. Teď vidíme, že jde o
+    stejné problémy, jaké jsme řešili už v elektřině.
+
   \section{Napnutá membrána}\label{fyz:IIchapXIIsecIII}
+    Nyní přejdeme ke zcela odlišné fyzikální situaci, která však vede k týmž rovnicím. Mějme ten­kou
+    gumovou blánu, membránu, která byla natažena na velký vodorovný rám (jako kůže na bub­nu). Dále
+    předpokládejme, že membrána je v jednom místě vysunuta nahoru a na jiném místě přitlačena dolů
+    {obr. \ref{fyz:fig726}). Dokážeme popsat tvar její plochy? Ukážeme, jak lze tuto úlohu řešit
+    když výchylky membrány nejsou příliš velké.
+    
+    \begin{figure}[ht!] %\ref{fyz:fig726}
+      \centering
+      \includegraphics[width=1\linewidth]{fyz_fig726.pdf}
+      \caption{Tenká gumová blána na válcovém rámu (jako kůže na bubnu). Jaký má tvar, je-li v bodě
+        \(A\) vysunuta nahoru a v bodě \(B\) stlačena dolů? (\cite[s.~211]{Feynman02})}
+      \label{fyz:fig726}
+    \end{figure}
+
   \section{Difúze elektronů. Kulově symetrický zdroj v homogenním 
   prostředí}\label{fyz:IIchapXIIsecIV}
   \section{Bezvírové proudění kapaliny. Obtékání koule}\label{fyz:IIchapXIIsecV}
@@ -20,29 +279,8 @@
   \section{Příklady a cvičení}\label{fyz:IIchapXIIsecVIII}
 
 
-    \begin{figure}[ht!] %\ref{fyz:fig724}
-      \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig724.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
-      \label{fyz:fig724}
-    \end{figure}
 
-    \begin{figure}[ht!] %\ref{fyz:fig725}
-      \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig725.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
-      \label{fyz:fig725}
-    \end{figure}
 
-    \begin{figure}[ht!] %\ref{fyz:fig726}
-      \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig726.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
-      \label{fyz:fig726}
-    \end{figure}
 
     \begin{figure}[ht!] %\ref{fyz:fig727}
       \centering
