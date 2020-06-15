@@ -305,13 +305,94 @@
 
     \begin{figure}[ht!] %\ref{fyz:fig728}
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig728.pdf}
+      \includegraphics[width=1\linewidth]{fyz_fig728.pdf}
       \caption{Průřez vychýlenou blanou (\cite[s.~707]{Feynman02})}
       \label{fyz:fig728}
     \end{figure}
 
-  \section{Difúze elektronů. Kulově symetrický zdroj v homogenním 
-  prostředí}\label{fyz:IIchapXIIsecIV}
+    Naše úvahy omezíme na malé deformace membrány, tj. na \emph{malé sklony}. Pak můžeme
+    \(\sin\vartheta\) nahradit funkcí \(\tan\vartheta\), kterou lze psát jako \(\pder{u}{x}\). Síla
+    potom je
+    \begin{equation*}
+      \Delta F = \left[
+          \tau_2\left(\pder{u}{x}\right)_2 - 
+          \tau_1\left(\pder{u}{x}\right)_1
+        \right]\Delta y.
+    \end{equation*}
+    Veličinu v závorkách můžeme stejně dobře napsat (pro malá \(\Delta x\)) i ve tvaru
+    \begin{equation*}
+      \pder{}{x}\left(\tau\pder{u}{x}\right)\Delta x.
+    \end{equation*}
+    Pak bude platit
+    \begin{equation*}
+      \Delta F = \pder{}{x}\left(\tau\pder{u}{x}\right)\Delta x\Delta y.
+    \end{equation*}
+    Další příspěvek k \(\Delta F\) bude od sil působících na druhých dvou stranách plošky; výsledek
+    je zřejmě
+    \begin{equation}\label{fyz:eq772}
+      \Delta F = \left[
+          \pder{}{x}\left(\tau\pder{u}{x}\right) + 
+          \pder{}{y}\left(\tau\pder{u}{y}\right)
+        \right]\Delta x\Delta y.
+    \end{equation}
+
+    Deformace membrány vyvolávají vnější síly. Nechť \(f\) představuje sílu, která \emph{směřuje
+    nahoru}, připadá na \emph{jednotku plochy} a působí na blánu (nějaký druh \uv{tlaku})
+    \emph{následkem vnějších sil}. Když je membrána v rovnováze (statický případ), musí být tato
+    síla vyvážena vnitřní silou, kterou jsme právě vypočetli (vztah \ref{fyz:eq772}), tj.
+    \begin{equation*}
+      f = -\dfrac{\Delta F}{\Delta x\Delta y}.
+    \end{equation*}
+    Vztah (\ref{fyz:eq772}) pak můžeme psát ve tvaru
+    \begin{equation}\label{fyz:eq773}
+      f = -\nabla\cdot(\tau\nabla u),
+    \end{equation}   
+    kde pod \(\nabla\) nyní samozřejmé rozumíme, operátor dvojrozměrného gradientu (\(\pder{}{x}\),
+    \(\pder{}{y}\)). Máme tedy diferenciální rovnici, která uvádí do vztahu \(u(x, y)\) s vnějšími
+    silami \(f(x, y)\) a s povrchovým napětím \(\tau(x, y)\), které se obecně mohou měnit na bláně
+    od místa k místu. (Podobné rovnice popisují i deformace trojrozměrného pružného tělesa, ale my
+    zůstaneme u dvou rozměrů.) Budeme se zajímat pouze o případ, kdy napětí \(\tau\) je po celé
+    bláně konstantní. Pak můžeme místo rovnice (\ref{fyz:eq773}) napsat
+    \begin{equation}\label{fyz:eq774}
+      \nabla^2u = -\dfrac{f}{\tau},
+    \end{equation}   
+
+    Dostali jsme další rovnici, která je stejná jako v elektrostatice, tentokrát se však omezuje na
+    dva rozměry. Výchylka \(u\) odpovídá potenciálu \(\varphi\) a \(f/\tau\) odpovídá
+    \(\varrho/\varepsilon_0\). Proto všechny výsledky, které jsme získali pro nekonečné nabité
+    roviny, dlouhé rovnoběžné dráty nebo nabité válce, lze přímo použít na napnutou membránu.
+
+    \begin{figure}[ht!] %\ref{fyz:fig729}
+      \centering
+      \includegraphics[width=0.9\linewidth]{fyz_fig729.pdf}
+      \caption{Průřez napnutou gumovou fólií vysunutou nahoru pomocí okrouhlé tyče. Funkce \(u(x,
+        y)\) je stejná jako elektrostatický potenciál \(\varphi(x, y)\) v blízkosti velmi dlouhé
+        nabité tyče. (\cite[s.~707]{Feynman02})}
+      \label{fyz:fig729}
+    \end{figure}
+
+    Předpokládejme, že v některých bodech vytáhneme membránu do určité \emph{výšky}, tj. na
+    některých místech fixujeme hodnotu \(u\). To je analogie s elektrickou situací, ve které je na
+    příslušných místech předepsaný potenciál. Tak například můžeme vyrobit kladný \uv{potenciál},
+    tlačíme-li membránu předmětem, který má průřez tvaru příslušného válcového vodiče. Tlačíme-li na
+    blánu, řekněme, okrouhlou tyčí, její povrch nabude takového tvaru, jaký ukazuje obr.
+    \ref{fyz:fig729}. Výška \(u\) je stejná jako elektrostatický potenciál \(\varphi\) nabité
+    válcové tyče. Klesá jako \(\ln(l/r)\). (\emph{Sklon} který odpovídá elektrickému poli \(E\),
+    klesá jako \(1/r\).)
+
+    Napnutá gumová blána se často používá jako způsob experimentálního řešení elektrických úloh.
+    Analogie se tedy využívá v zpětném směru. Různými tyčemi a pruty se membrány vysouvají do výšek,
+    které odpovídají potenciálům soustavy elektrod. Měřením výšky se pak zjišťuje elektrický
+    potenciál v daných elektrických podmínkách. Analogie se provádí ještě dále. Umístí-li se na
+    membránu malé kuličky, jejich pohyb odpovídá přibližně pohybu elektronů v příslušném elektrickém
+    poli. Tak je opravdu možné pozorovat, jak se \uv{elektrony} pohybují po svých trajektoriích.
+    Tato metoda se využívá při projektování složité geometrie mnohých fotonásobičů (takových, jako
+    ty, které se používají v scintilačních počítačích, nebo jako ten, který se používá k ovládání
+    světelných svazků v reflektoru automobilu Cadillac). Používá se stále, ale její přesnost je
+    ohraničena. Při nej­přesnější práci je lépe určovat pole numerickými metodami.
+
+  \twocolumn[\section{Difúze elektronů. Kulově symetrický zdroj v homogenním 
+  prostředí}\label{fyz:IIchapXIIsecIV}]
   \section{Bezvírové proudění kapaliny. Obtékání koule}\label{fyz:IIchapXIIsecV}
   \section{Osvětlení. Homogenní osvětlení roviny}\label{fyz:IIchapXIIsecVI}
   \section{\uv{Fundamentální jednotka} přírody}\label{fyz:IIchapXIIsecVII}
@@ -324,13 +405,6 @@
 
 
 
-    \begin{figure}[ht!] %\ref{fyz:fig729}
-      \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig729.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
-      \label{fyz:fig729}
-    \end{figure}
 
     \begin{figure}[ht!]
       \centering
