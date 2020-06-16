@@ -391,8 +391,61 @@
     světelných svazků v reflektoru automobilu Cadillac). Používá se stále, ale její přesnost je
     ohraničena. Při nej­přesnější práci je lépe určovat pole numerickými metodami.
 
-  \twocolumn[\section{Difúze elektronů. Kulově symetrický zdroj v homogenním 
-  prostředí}\label{fyz:IIchapXIIsecIV}]
+  \twocolumn[\section{Difúze elektronů. Kulově symetrický zdroj v homogenním
+  prostředí}\label{fyz:IIchapXIIsecIV}] 
+  
+    Uvedeme další příklad, který vede k rovnici téhož druhu, týkající se tentokrát difúze. V
+    ka­pitole \ref{fyz:IchapXLIII} dílu \ref{part:FYZI} jsme se zabývali difuzí jednoho plynu v
+    druhém. Tentokrát vezmeme jiný příklad - difúzi neutronů v takové látce jako grafit. Mluvit o
+    grafitu (čistá forma uhlíku) jsme se rozhodli proto, že uhlík nepohlcuje pomalé neutrony.
+    Neutrony v něm putují volně. Předtím, než jsou jádrem rozptýleny a vychýleny do nového směru,
+    projdou v přímém směru průměrně několik centimetrů. Proto máme-li velký grafitový blok s hranou
+    dlouhou mnoho metrů, budou neutrony nacházející se původně v jednom místě v něm difundovat do
+    jiných míst. Je nutné popsat jejich střední chování, tj. jejich \textbf{střední tok}.
+
+    Nechť \(N(x, y, z)\Delta V\) je počet neutronů v elementu objemu \(\Delta V\) se středem v bodě
+    \((x, y, z)\). V důsledku svého pohybu opustí některé z neutronů \(\Delta V\) a jiné do něj
+    přibudou. Je-li v jedné oblasti víc neutronů než v sousední, odejde víc neutronů z první do
+    druhé, nežli přijde zpět; vznikne výsledný tok neutronů. Na základě stejných úvah jako v
+    kapitole \ref{fyz:IchapXLIII} popíšeme tok pomocí vektoru hustoty toku \(\vec{J}\). Jeho
+    \(x\)-ová složka představuje výsledný počet neutronů procháze­jících za jednotku času
+    jednotkovou plochou kolmou na směr osy \(x\). Zjistili jsme, že
+    \begin{equation}\label{fyz:eq774}
+      J_x = -D\diffp{N}{x},
+    \end{equation} 
+    kde koeficient difúze \(D\) je určen střední rychlostí \(v\) a střední volnou dráhou \(l\) mezi
+    srážkami neutronů způsobujícími jejich rozptyl
+    \begin{equation*}
+      D = \frac{1}{3}lv.
+    \end{equation*}
+    Vektorová rovnice určující \(\vec{J}\) je
+    \begin{equation}\label{fyz:eq775}
+      \vec{J} = -D\nabla\vec{N},
+    \end{equation} 
+
+    Počet neutronů, které projdou za jednotku času nějakým plošným elementem \(\dd{S}\), je roven
+    \(\vec{J}\cdot\vec{n}\dd{S}\), kde, jako obvykle, \(\vec{n}\) je jednotkový vektor ve směru
+    normály k plošnému elementu. Výsledný tok z \emph{objemového elementu} pak (na základě obvyklých
+    gaussovských úvah) bude \(\nabla\cdot\vec{J}\dd{V}\). Tento tok by způsobil pokles počtu
+    neutronů v elementu \(\Delta V\) v čase, pokud by se však v \(\Delta V\) další neutrony
+    nevytvářely (nějakým jademým procesem). Nacházejí-li se v uvažovaném objemu zdroje, generující v
+    jednotce objemu \(s\) neutronů za jednotku času, výsledný tok z \(\Delta V\) bude roven \((s -
+    \diffp{N}{t})\Delta V\). Pak dostaneme
+    \begin{equation}\label{fyz:eq776}
+      \nabla\cdot\vec{J}= s - \diffp{N}{t},
+    \end{equation} 
+    Když do (\ref{fyz:eq776}) dosadíme \(\vec{J}\) podle (\ref{fyz:eq775}), dostaneme \emph{rovnici
+    difúze neutronů}
+    \begin{equation}\label{fyz:eq777}
+      \nabla\cdot(-D\nabla\vec{N})= s - \diffp{N}{t},
+    \end{equation} 
+
+    Ve statickém případě, kdy \(\diffp{N}{t} = 0\), dostáváme opět rovnici (\ref{fyz:eq759}). To, co
+    víme z elektrostati­ky, můžeme využít i k řešení úloh o difúzi neutronů. Řešme tedy nějakou
+    úlohu. (Třeba se podivíme: \uv{Proč řešit další úlohu, když už jsme všechny vyřešili v
+    elektrostatice?} Tentokrát ji však můžeme vyřešit rychleji, neboť už \emph{máme} elektrostatické
+    úlohy vyřešeny.)
+
   \section{Bezvírové proudění kapaliny. Obtékání koule}\label{fyz:IIchapXIIsecV}
   \section{Osvětlení. Homogenní osvětlení roviny}\label{fyz:IIchapXIIsecVI}
   \section{\uv{Fundamentální jednotka} přírody}\label{fyz:IIchapXIIsecVII}
