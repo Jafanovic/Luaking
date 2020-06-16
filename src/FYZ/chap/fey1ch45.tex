@@ -39,6 +39,39 @@
     ostatních funkcích nebudeme mluvit, neboť je lze odvodit z uvedených dvou funkcí. I přes tato
     omezení je termodynamika stále dost obtížný předmět, i když už ne tolik.
 
+    Nejdříve si zopakujeme něco z matematiky. Je-li veličina funkcí dvou proměnných, musíme být
+    opatrnější při jejím derivování než v případě jedné proměnné. Co rozumíme derivací tlaku podle
+    teploty? Změny tlaku provázející teplotní změny částečně závisí na tom, co se děje s objemem,
+    když se mění teplota \(T\). Dříve než pojem derivace podle \(T\) nabude přesný smysl, musíme
+    říci něco o změnách objemu. Například se můžeme ptát, jaká je rychlost změny \(p\) vzhledem k
+    \(T\), je-li \(V\) konstantní. Tato rychlost je právě obyčejnou derivací, kterou jsme zvyklí
+    psát jako \(\diff{p}{T}\). Abychom si připomněli skutečnost, že \(p\) kromě toho, že závisí na
+    \(T\), závisí i na jiné proměnné a tuto proměnnou považujeme za konstantu \(V\), obvykle
+    používáme speciální symbol \(\diffp pT[]\). Na upozornění, že druhá proměnná se nemění,
+    používáme nejen symbol \(\partial\), ale i index označující proměnnou, kterou považujeme za
+    konstantu, tedy píšeme \(\diffp pV[V]\). Máme-li jen dvě proměnné, je takové
+    označení zbytečné, ale pomůže nám lépe se orientovat v džungli parciálních derivací
+    termodynamiky.
+
+    Předpokládejme, že funkce \(f(x, y)\) závisí na dvou nezávislých proměnných \(x\) a \(y\). Pod
+    \(\diffp fx[y]\) rozumíme obyčejnou derivací získanou obvyklým způsobem, považujeme-li \(y\) za
+    konstantu:
+    \begin{align*}
+      \left(\pder{f}{x}\right)_y = \lim_{\Delta x \rightarrow0} 
+                                 = \dfrac{f(x+\Delta x,y) - f(x,y)}{\Delta x}   \\
+      \shortintertext{Podobně definujeme}
+      \left(\pder{f}{y}\right)_x = \lim_{\Delta y \rightarrow0} 
+                                 = \dfrac{f(x,y +\Delta y) - f(x,y)}{\Delta y}  
+    \end{align*}
+
+    Například, je-li \(f(x, y) =x^2 + yx\), pak \(\diffp fx[y] = 2x + y\) a \(\diffp fy[x] = x\).
+    Tuto myšlenku můžeme zobecnit i na vyšší derivace: \(\diffp[2]f/y\) nebo \(\diffp f{x,y}\).
+    Poslední symbol znamená, že nejdříve derivujeme \(f\) podle \(x\) a přitom považujeme \(x\) za
+    konstantu a pak derivujeme výsledek podle \(y\) a považujeme \(x\) za konstantu. Skutečné pořadí
+    derivování není podstatné: \(\diffp f{x,y} = \diffp f{y,x}\).
+
+
+
     \begin{figure}[ht!] %\ref{fyz:fig463}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig463.pdf}
