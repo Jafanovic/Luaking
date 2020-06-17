@@ -58,41 +58,109 @@
     konstantu:
     \begin{align*}
       \left(\pder{f}{x}\right)_y = \lim_{\Delta x \rightarrow0} 
-                                 = \dfrac{f(x+\Delta x,y) - f(x,y)}{\Delta x}   \\
+                                   \dfrac{f(x+\Delta x,y) - f(x,y)}{\Delta x}   \\
       \shortintertext{Podobně definujeme}
       \left(\pder{f}{y}\right)_x = \lim_{\Delta y \rightarrow0} 
-                                 = \dfrac{f(x,y +\Delta y) - f(x,y)}{\Delta y}  
+                                   \dfrac{f(x,y +\Delta y) - f(x,y)}{\Delta y}  
     \end{align*}
 
     Například, je-li \(f(x, y) =x^2 + yx\), pak \(\diffp fx[y] = 2x + y\) a \(\diffp fy[x] = x\).
     Tuto myšlenku můžeme zobecnit i na vyšší derivace: \(\diffp[2]f/y\) nebo \(\diffp f{x,y}\).
-    Poslední symbol znamená, že nejdříve derivujeme \(f\) podle \(x\) a přitom považujeme \(x\) za
+    Poslední symbol znamená, že nejdříve derivujeme \(f\) podle \(x\) a přitom považujeme \(y\) za
     konstantu a pak derivujeme výsledek podle \(y\) a považujeme \(x\) za konstantu. Skutečné pořadí
     derivování není podstatné: \(\diffp f{x,y} = \diffp f{y,x}\).
 
+    Budeme potřebovat vypočítat změnu \(\Delta f\) funkce \(f(x, y)\), když \(x\) se mění na \(x +
+    \Delta x\) a \(y\) se mění na \(y + \Delta y\). Předpokládejme, že \(\Delta x\) a \(\Delta y\)
+    jsou infinitezimálně malé
+    \begin{align}
+      \Delta f &= f(x+\Delta x, y+\Delta y) =                                \nonumber  \\
+               &= \underbrace{f(x+Δx,y+Δy)−f(x,y+Δy)}_{\Delta x\diffp fx[y]} \nonumber  \\
+               &+ \underbrace{f(x,y+Δy)−f(x,y)}_{\Delta y\diffp fy[x]}       \nonumber  \\
+               &= \Delta x\diffp fx[y] + \Delta y\diffp fy[x]                \label{fyz:eq779}
+    \end{align}
+    Poslední rovnice je základním vztahem, jenž vyjadřuje \(\Delta f\) pomocí \(\Delta x\) a
+    \(\Delta y\).
 
+    Jako příklad použití tohoto vztahu vypočítejme změnu vnitřní energie \(U(T, V)\) při změně
+    teploty z \(T\) na \(T + \Delta T\) a změně objemu z \(V\) na \(V+ \Delta V\). Použijeme-li
+    rovnici (\ref{fyz:eq779}), můžeme psát
+    \begin{equation}\label{fyz:eq780}
+      ΔU=ΔT\diffp UT[V]+ΔV\diffp UV[T].
+    \end{equation}
+    V předcházející kapitole jsme našli jiné vyjádření změny \(\Delta U\) vnitřní energie při dodání
+    tepla \(\Delta Q\) plynu
+    \begin{equation}\label{fyz:eq781}
+      ΔU=ΔQ−pΔV.
+    \end{equation}
 
     \begin{figure}[ht!] %\ref{fyz:fig463}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig463.pdf}
-      \caption{p-V diagram Carnotova cyklu. Křivky označené \(T\) a \(\Delta T\) jsou izotermy,
+      \caption{\(p-V\) diagram Carnotova cyklu. Křivky označené \(T\) a \(\Delta T\) jsou izotermy,
                strmější křivky jsou adiabaty. A \(V\) je objemová změna plynu, jemuž bylo při
-               konstantní teplotě dodáno teplo \(\Delta\). \(\Delta p\) je změna tlaku plynu, když
+               konstantní teplotě dodáno teplo \(\Delta Q\). \(\Delta p\) je změna tlaku plynu, když
                se při konstantním objemu změnila teplota z hodnoty \(T\) na hodnotu \(T - \Delta
                T\). (\cite[s.~615]{Feynman01})}
       \label{fyz:fig463}
     \end{figure}
 
+    Porovnání rovnic (\ref{fyz:eq780}) a (\ref{fyz:eq781}) by nás mohlo přivést na myšlenku, že \(p
+    = \diffp UV[T]\), jenže taková představa není správná. Abychom získali správný vztah, nejdříve
+    předpokládejme, že plynu dodáme teplo \(\Delta Q\), zatímco objem zůstane stejný, tedy \(\Delta
+    V= 0\). Když \(\Delta  V = 0\), rovnice (\ref{fyz:eq781}) nám říká, že \(\Delta U=\Delta Q\) a
+    z rovnice (\ref{fyz:eq780}) dostaneme \(ΔU=\diffp UT[V]ΔT\), takže \(\diffp UT[V]=ΔQ/ΔT\). Poměr
+    \(ΔQ/ΔT\) představuje množství tepla, které musíme dodat látce, aby se při konstantním objemu
+    změnila její teplota o jeden stupeň, nazývá se \textbf{měrná tepelná kapacita při konstantním
+    objemu} a označuje se symbolem \(C_V\). Takovým způsobem jsme ukázali, že
+    \begin{equation}\label{fyz:eq783}
+      \diffp UT[V] = C_V.
+    \end{equation}
+
+    Nyní dodejme plynu opět množství tepla \(\Delta Q\), ale při stálé teplotě \(T\) a objem ať se
+    změní o \(\Delta V\). V takovém případě je analýza složitější, ale \(\Delta U\) můžeme počítat s
+    použitím Carnotových argumentů a k tomu nám poslouží Camotův cyklus, o němž jsme mluvili v
+    předcházející kapitole.
+
+    Diagram tlak - objem pro Carnotův cyklus je znázoměn na obr. \ref{fyz:fig463}. Už dříve jsme
+    ukázali, že celkové množství práce konané plynem při vratném cyklu je rovno \(ΔQ(ΔT/T)\), kde
+    \(ΔQ\) je množství tepelné energie dodané plynu při izotermìcké expanzi při teplotě \(T\) z
+    objemu \(V\) na \(V+ΔV\) a \(T−ΔT\) je výsledná teplota, které plyn dosáhne při adiabatické
+    expanzi v druhé části cyklu. Nyní ukážeme, že tato vykonaná práce je rovna vyšrafované ploše na
+    obr. \ref{fyz:fig463}. Práce plynu je rovna ve všech případech \(\int p\dd{V}\) a je kladná,
+    když se plyn rozpíná a záporná, když je stlačován. Nakreslíme-li \(p\) v závislosti na \(V\),
+    pak změny \(p\) a vvystihuje křivka, která každé hodnotě \(V\) přiřazuje určitou hodnotu \(p\).
+    Mění-li se objem z jedné hodnoty na druhou, práce konaná plynem, tedy integrál \(\int p\dd{V}\),
+    je plocha pod křivkou spojující počáteční a konečnou hodnotu \(V\). Aplikujeme-li tuto
+    myšlenku na Camotův cyklus a dáme pozor na znaménko práce plynu, opravdu zjistíme, že čistá
+    práce plynu je právě vyšrafovaná plocha na obr. \ref{fyz:fig463}.
+
     \begin{figure}[ht!] %\ref{fyz:fig464}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig464.pdf}
-      \caption{ 
-               (\cite[s.~616]{Feynman01})}
+      \caption{Vyšrafovaná plocha = plocha ohraničená přerušovanými čárami = plocha pravoúhelníku =
+               \(\Delta p \Delta V\) (\cite[s.~616]{Feynman01})}
       \label{fyz:fig464}
     \end{figure}
 
   \section{Aplikace}\label{fyz:IchapXLVsecII}
   \section{Clasiova-Clapeyronova rovnice}\label{fyz:IchapXLVsecIII}
+  
+    \begin{figure}[ht!] %\ref{fyz:fig465}
+      \centering
+      \includegraphics[width=0.7\linewidth]{fyz_fig465.pdf}
+      \caption{ 
+              (\cite[s.~707]{Feynman01})}
+      \label{fyz:fig465}
+    \end{figure}
+
+    \begin{figure}[ht!] %\ref{fyz:fig466}
+      \centering
+      \includegraphics[width=0.7\linewidth]{fyz_fig466.pdf}
+      \caption{ 
+              (\cite[s.~707]{Feynman01})}
+      \label{fyz:fig466}
+    \end{figure}
   \section{Příklady a cvičení}\label{fyz:IchapXLVsecIV}
     \subsection{Výhřevnost paliva}\label{fyz:IchapXLVsecIVssecI}
       Výhřevnost \(H\) [\si{\joule\per\kg}] je vlastnost paliva, která udává, kolik energie se
@@ -126,22 +194,6 @@
       %-Teplota pece--------------------------------------------------
       \input{../src/FYZ/exam/exam033.tex}
       %---------------------------------------------------------------  
-
-    \begin{figure}[ht!] %\ref{fyz:fig465}
-      \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig465.pdf}
-      \caption{ 
-               (\cite[s.~707]{Feynman01})}
-      \label{fyz:fig465}
-    \end{figure}
-
-    \begin{figure}[ht!] %\ref{fyz:fig466}
-      \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig466.pdf}
-      \caption{ 
-               (\cite[s.~707]{Feynman01})}
-      \label{fyz:fig466}
-    \end{figure}
     
     \todo[inline]{Kapitola fey1ch45 je zcela prázdná, pouze obrázky} 
 %---------------------------------------------------------------------------------------------------
