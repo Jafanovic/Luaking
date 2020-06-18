@@ -124,7 +124,7 @@
 
     Diagram tlak - objem pro Carnotův cyklus je znázoměn na obr. \ref{fyz:fig463}. Už dříve jsme
     ukázali, že celkové množství práce konané plynem při vratném cyklu je rovno \(ΔQ(ΔT/T)\), kde
-    \(ΔQ\) je množství tepelné energie dodané plynu při izotermìcké expanzi při teplotě \(T\) z
+    \(ΔQ\) je množství tepelné energie dodané plynu při izotermické expanzi při teplotě \(T\) z
     objemu \(V\) na \(V+ΔV\) a \(T−ΔT\) je výsledná teplota, které plyn dosáhne při adiabatické
     expanzi v druhé části cyklu. Nyní ukážeme, že tato vykonaná práce je rovna vyšrafované ploše na
     obr. \ref{fyz:fig463}. Práce plynu je rovna ve všech případech \(\int p\dd{V}\) a je kladná,
@@ -183,8 +183,40 @@
     Nyní můžeme přistoupit kvýpočtu \(\diffp UT[V]\). O kolik se změní vnitřní energie \(U\),
     změníme-li objem o \(\Delta  V\) ? Vnitřní energie se mění, protože je dodáváno teplo a protože
     se koná práce. Dodané teplo je podle vztahu (\ref{fyz:def001}) rovna
+    \begin{equation*}
+      ΔQ=T\diffp pT[V] ΔV,
+    \end{equation*}
+    a s látkou konaná práce je rovna \(-p\Delta V\). Proto změna vnitřní energie \(\Delta U\) se
+    skládá ze dvou částí
+    \begin{equation}\label{fyz:eq784}
+      ΔU=T\diffp pT[V]ΔV−PΔV.
+    \end{equation}
+    Dělíme-li obě strany rovnice \(\Delta V\), najdeme rychlost změny \(U\) v závislosti na \(V\)
+    při konstantní teplotě \(T\)
+    \begin{equation}\label{fyz:eq785}
+      \diffp UV[T] = T\diffp pT[V]−P.
+    \end{equation}
+    V naší termodynamice, kde \(T\) a \(V\) jsou jediné proměnné a \(p\) a \(U\) jsou jediné funkce,
+    představují rovnice (\label{fyz:eq781}) a (\ref{fyz:eq785}) základní vztahy, z nichž můžeme
+    získat všechny výsledky.
 
   \section{Aplikace}\label{fyz:IchapXLVsecII}
+    Nyní se zamyslíme nad významem rovnice (\label{fyz:eq785}) a všimneme si, proč dává odpověď na
+    otázky, které jsme položili v předcházející kapitole. Uvažovali jsme následující problém: v
+    kinetické teorii je zřejmé, že růst teploty vede k růstu tlaku v důsledku nárazů atomů na píst.
+    Ze stejného fyzikálního důvodu je při zpětném pohybu pístu z plynu odváděno teplo a abychom
+    udrželi konstantní teplotu, musíme teplo dodat. Při expanzi se plyn ochlazuje a při ohřívání
+    plynu tlak roste. Mezi těmito dvěma jevy musí existovat určitá souvislost a tato souvislost je
+    explicitně dána rovnicí (\ref{fyz:eq785}). Kdybychom zachovali objem a zvýšili teplotu, tlak by
+    vzrostl rychlostí \(\diffp pT[V]\). S touto skutečností souvisí i následující. Zvětšíme-li
+    objem, plyn se ochladí, pokud nedodáme určité teplo k udržování konstantní teploty a veličina
+    \(\diffp UV[T]\) nám říká, kolik tepla je třeba k udržení teploty dodat. Rovnice
+    (\label{fyz:eq785}) vyjadřuje základní vztah mezi těmito dvěma jevy a to je věc, kterou jsme
+    slíbili zjistit, když jsme se dostali až k termodynamickým zákonům. Aniž bychom znali vnitřní
+    mechanismus plynu a za pomoci jediného poznatku, že nelze sestrojit perpetuum mobile druhého
+    druhu, jsme odvodili vztah mezi množstvím tepla potřebným k udržení konstantní teploty při
+    rozpínání plynu a změnou tlaku při ohřátí plynu!
+  
   \section{Clasiova-Clapeyronova rovnice}\label{fyz:IchapXLVsecIII}
   
     \begin{figure}[ht!] %\ref{fyz:fig465}
