@@ -409,9 +409,9 @@
     kapitole \ref{fyz:IchapXLIII} popíšeme tok pomocí vektoru hustoty toku \(\vec{J}\). Jeho
     \(x\)-ová složka představuje výsledný počet neutronů procháze­jících za jednotku času
     jednotkovou plochou kolmou na směr osy \(x\). Zjistili jsme, že
-    \begin{equation}\label{fyz:eq774}
+    \begin{equation*}
       J_x = -D\diffp{N}{x},
-    \end{equation} 
+    \end{equation*} 
     kde koeficient difúze \(D\) je určen střední rychlostí \(v\) a střední volnou dráhou \(l\) mezi
     srážkami neutronů způsobujícími jejich rozptyl
     \begin{equation*}
@@ -468,9 +468,57 @@
     a^3\varrho}{3}\). Tedy
     \begin{equation}\label{fyz:eq778}
       \varphi_{\text{vně}} = \dfrac{\varrho a^3}{3\varepsilon_0r}.
-    \end{equation} 
+    \end{equation}
+    Ve vnitřních bodech je pole vytvářeno pouze nábojem \(Q(r)\) uvnitř koule o poloměru \(r\), tj.
+    \(Q(r)=4πr^3ρ/3\), takže 
+    \begin{equation}\label{fyz:eq782}
+      E=\dfrac{ρr^3}{ϵ_0}.
+    \end{equation}
+    Intenzita pole roste lineárně s \(r\). Integrováním \(E\) dostaneme
+    \begin{equation*}
+      ϕ_{\text{uvnitř}}=−\dfrac{ρr^2}{6ϵ_0} + \text{ konst}.
+    \end{equation*}
+    Při poloměru \(a\) musí být \(ϕ_{\text{uvnitř}}\) stejné jako \(ϕ_{\text{vně}}\), takže
+    konstanta musí být rovna \(ρa^2/2ϵ^0\). (Předpokládejme, že ve velkých vzdálenostech od zdroje
+    je \(\varphi\) rovno nule, což pro neutrony bude odpovídat nulovému \(N\).) Proto
+    \begin{equation}\label{fyz:eq788}
+      ϕ_{\text{uvnitř}}=\dfrac{ρ^3}{ϵ_0}\left(\dfrac{3a^2}{2}−\dfrac{r^2}{2}\right).
+    \end{equation}
+    Hustotu neutronů se v naší úloze dovíme ihned. Výsledek je
+    \begin{align}
+      N_\text{vně}   &=\dfrac{Sa^3}{3Dr},                                        \label{fyz:eq789}\\
+      \shortintertext{a}
+      N_\text{uvnitř}&=\dfrac{S}{3D}\left(\dfrac{3a^2}{2}−\dfrac{r^2}{2})\right).\label{fyz:eq790} 
+    \end{align}
+    Graf \(N\) jako funkce \(r\) je na obr. \ref{fyz:fig730a}.
 
-  \section{Bezvírové proudění kapaliny. Obtékání koule}\label{fyz:IIchapXIIsecV}
+    Jaký je nyní poměr hustoty ve středu k hustotě na okraji? Ve středu (\(r = 0\)) je hustota přímo
+    úměrná veličině \(3a^2/2\). Na kraji (\(r= a\)) je přímo úměrná veličině \(2a^2/2\), tj. poměr
+    obou hustot je roven \(3/2\). Homogenní zdroj tedy negeneruje homogenní hustotu neutronů. Jak
+    vidíte, naše vědomosti z elektrostatiky nám umožňují dobrý start do fyziky jaderných reaktorů.
+
+    Fyzikálních situací, v nichž difúze hraje velkou úlohu, je mnoho. I pohyb iontů v kapalině nebo
+    elektronů v polovodiči probíhá podle téže rovnice. Znovu a znovu docházíme ke stejným rovnicím.
+
+  \section{Bezvírové proudění kapaliny. Obtékání koule}\label{fyz:IIchapXIIsecV} Nyní vezměme
+  příklad, který ve skutečnosti není příliš dobrý, neboť rovnice, které přitom použijeme, nebudou
+  uvažovaný jev popisovat zcela obecně, ale pouze v umělé idealizované situaci. Uvažujme úlohu o
+  \emph{proudění vody}. V případě napnuté membrány představovaly naše rovnice aproximaci platící
+  pouze pro \emph{malé výchylky}. Při zkoumání proudění vody takovou aproximaci nebudeme provádět;
+  musíme udělat taková omezení, která se k proudění reálné vody vůbec nehodí. Budeme se totiž
+  zabývat pouze případem ustáleného proudění \textbf{nestlačitelné}, \textbf {neviskózní} a \textbf
+  {nevírové} kapaliny. Proudění pak budeme charakterizovat udáním rychlosti \(v(r)\) jako funkce
+  polohy \(r\). Je-li ustálené (jediný případ pro který existuje elektrostatická analogie), nezávisí
+  \(v\) na čase. Je-li \(ρ\) hustota kapaliny, pak \(ρv\) znamená hmotnost, jež prochází jednotkovou
+  plochou za jednotku času. Podle principu zachování látky bude divergence vektoru \(ρv\) obecně
+  rovna změně hmotnosti látky v jednotkovém objemu za jednotku času. Budeme předpokládat, že
+  nedochází k procesům nepřetržitého vznikání nebo zanikání hmotnosti. Princip zachování látky pak
+  požaduje, aby \(∇\cdot ρ\vec{v}=0\). (Obecně by na pravé straně této rovnice mělo být \(-\diffp
+  ρt\), ale \(ρ\) se měnit nemůže, neboť naše kapalina je nestlačitelná.) Protože \(ρ\) je všude
+  stejné, můžeme jím krátit a naše rovnice má jednoduchý tvar:
+  \begin{equation*}
+    ∇\cdot\vec{v}=0.
+  \end{equation*}
 
     \begin{figure}[ht!] %\ref{fyz:fig731}
       \centering
