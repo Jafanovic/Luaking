@@ -519,6 +519,22 @@
   \begin{equation*}
     ∇\cdot\vec{v}=0.
   \end{equation*}
+  Výborně! Opět dostáváme elektrostatiku (bez nábojů); je to právě taková rovnice jako
+  \(∇⋅\vec{E}=0\). Ale není to tak jednoduché. Elektrostatika nevyplývá jen z toho, že
+  \(∇⋅\vec{E}=0\). Zakládá se na páru rovnic. Jedna rovnice nám mnoho nepoví; potřebujeme ještě
+  doplňující rovnici. Aby byla shoda s elektrostatikou, mělo by také platit, že rotace vektoru
+  \(\vec{v}\) je rovna nule. Ale pro reálné kapaliny to obecně neplatí. Ve většině kapalin obvykle
+  nějaké víření vzniká, musíme se tedy omezit na situace, V nichž víření kapaliny nenastává. Takové
+  proudění se často nazývá bezvírová. Tak či onak, přijmeme-li všechny naše předpoklady, dokážeme si
+  představit takový případ proudění kapaliny, který je analogický s elektrostatikou. Požadujeme
+  tedy, aby
+  \begin{subequations} \label{fyz:eq791}
+    \begin{align}
+      ∇⋅\vec{v}     &=0      \label{fyz:eq791a} \\
+      \shortintertext{a}
+      ∇\times\vec{v}&=0      \label{fyz:eq791b}
+    \end{align}
+  \end{subequations}
 
     \begin{figure}[ht!] %\ref{fyz:fig731}
       \centering
@@ -527,6 +543,68 @@
               (\cite[s.~217]{Feynman02})}
       \label{fyz:fig731}
     \end{figure}
+
+    Chceme zdůraznit, že i když ty případy, v nichž proudění kapaliny probíhá podle těchto rovnic,
+    nepředstavují ani zdaleka většinu možných případů, několik jich přece existuje. Musí to být
+    takové případy, kdy můžeme zanedbat povrchové napětí, stlačitelnost a viskozitu a kdy můžeme
+    dále předpokládat, že proudění je bezvírové. Pro reálnou vodu platí tyto předpoklady tak zřídka,
+    že matematik John von Neumann řekl, že lidé, kteří analyzují rovnice (\ref{fyz:eq791a}) a
+    (\ref{fyz:eq791b}), zkoumají \uv{suchou vodu}. (Problémem proudění kapaliny se budeme podrobněji
+    zabývat v kapitolách \ref{fyz:IIchapXL} a \ref{fyz:IIchapXLI}.)
+    
+    Protože \(\nabla\times\vec{v} = 0\), rychlost „suché vody“ lze zapsat jako gradient nějakého
+    potenciálu: 
+    \begin{equation}\label{fyz:eq792}
+      \vec{v}=−∇ψ.
+    \end{equation}
+
+    Jaký fyzikální význam má \(ψ\). Žádný zvláštní. Rychlost lze napsat jako gradient potenciálu
+    prostě proto, že proudění je bezvírové. \(ψ\) se nazývá \textbf{potenciál rychlosti} pouze na
+    základě analogie s elektrostatikou, ale s potenciální energií nesouvisí takovým způsobem jako
+    \(\varphi\). Protože divergence vektoru \(\vec{v}\) je rovna nule, dostáváme 
+    \begin{equation}\label{fyz:eq793}
+      ∇⋅(∇ψ)=∇^2ψ=0.
+    \end{equation}
+    Potenciál rychlosti \(ψ\) vyhovuje téže diferenciální rovnici jako elektrostatický potenciál
+    v prázdném prostoru (tj. tam, kde \(ρ=0\)). 
+
+    Vezměme nějakou úlohu o bezvírovém proudění a přesvědčíme se, zda ji dokážeme řešit metodami,
+    které jsme se naučili. Uvažujme kouli padající v kapalině. Bude-li se pohybovat příliš pomalu,
+    budou důležité síly vnitřního tření, které zanedbáváme. Bude-li se pohybovat příliš rychle, v
+    její stopě se objeví malé víry (turbulence) a bude docházet k určitému víření vody. Ale
+    nepohybuje-li se koule příliš rychle, ani příliš pomalu, proudění vody bude více méně vyhovovat
+    našim předpokladům a pohyb vody můžeme popsat našimi jednoduchými rovnicemi.
+    
+    Co se děje, je vhodné popisovat ve vztažné soustavě \emph{spojené s koulí}. V této vztažné
+    soustavě si položme otázku: jak voda proudí okolo nepohyblivé koule, když proudění ve velkých
+    vzdálenostech je homogenní, tj. když daleko od koule je tok všude stejný? Charakter proudění v
+    blízkosti koule je znázorněn na obr. \ref{fyz:fig731} pomocí proudnic. Tyto křivky, které jsou
+    vždy rovnoběžné s \vec{v}, odpovídají siločárám elektrického pole. Chceme dostat kvantitativní
+    popis pole rychlosti, tj. výraz pro rychlost v libovolném bodě \(P\).
+
+    Rychlost můžeme dostat z gradientu \(ψ\) proto nejprve vypočítejme potenciál. Chceme najít
+    potenciál, který všude splňuje rovnici (\ref {fyz:eq793}) a kromě toho vyhovuje dvěma omezením:
+    \begin{enumerate}
+      \item  ve vnitřní oblasti ohraničené povrchem naší koule není proudění,
+      \item  ve velkých vzdálenostech je proudění konstantní.
+    \end{enumerate}
+    Aby bylo vyhověno podmínce 1, musí být složka \(\vec{v}\) kolmá na povrch koule, rovna nule. To
+    znamená, že \(\diffp ψt\)je rovno nule při \(r = a\). Aby se vyhovělo podmínce 2, musí platit,
+    že \(\diffp ψt = v_0\) se všech bodech, pro které \(r≫a\). Přesně vzato, elektrostatický případ,
+    který odpovídá naší úloze, neexistuje. Naše úloha ve skutečnosti odpovídá umístění koule s
+    \emph{nulovou} permitivitou do homogenního elektrického pole. Kdybychom znali řešení úlohy o
+    kouli s relativní permitivitou \(\varepsilon_r\) umístěné v homogenního poli, pak bychom
+    položením \(\varepsilon_r = 0\) ihned dostali řešení naší úlohy. 
+    
+    Tuto konkrétní elektrostatickou úlohu jsme dosud vlastně podrobněji nepočítali. Udělejme to však
+    nyní. (Mohli bychom přímo řešit úlohu o toku s \(\vec{v}\) a \(ψ\) ale budeme používat
+    \(\vec{E}\) a \(\varphi\) neboť jsme na ně zvyklí.)
+
+    Úloha vyžaduje najít takové řešení rovnice \( ∇^2ϕ=0\), aby pro velké hodnoty \(r\) byla řešením
+    rovnice \(E=−∇ϕ\) konstanta, řekněme \(E_0\),a aby při \(r=a\) byla radiální složka vektoru
+    \(\vec{E}\) rovna nule, tj. aby platilo
+
+
 
   \section{Osvětlení. Homogenní osvětlení roviny}\label{fyz:IIchapXIIsecVI}
 
