@@ -169,7 +169,7 @@
       na vodič proto, že se v něm pohybují náboje, závisí jen na celkovém proudu, a ne na množství 
       náboje neseného každou z částic nebo dokonce na jeho znaménku! Magnetická síla, která v 
       blízkosti magnetu působí na vodič, se projeví vychýlením vodiče při zapnutí proudu tak, jak 
-      to bylo popsáno v 1. kapitole (obr. 1.6)
+      to bylo popsáno v kapitole \ref{fyz:IIchapI} (obr. \ref{fyz:fig148})
 
     \subsection{Magnetické pole stacionárních proudů, Ampérův zákon}
       Viděli jsme, že na vodič v magnetickém poli vytvářeném např. magnetem působí síla. Podle 
@@ -186,10 +186,12 @@
       platnost Maxwellových rovnic byla dokázána velkým počtem experimentů. Maxwellovy rovnice 
       budou naším výchozím bodem. Zanedbáme-li v těchto rovnicích členy obsahující derivace podle 
       času, dostaneme rovnice magnetostatiky.
-      \begin{align}
-        \nabla\cdot\vec{B}     &= 0                            \label{fyz:eq_mag011} \\
-        c^2\nabla\times\vec{B} &= \frac{\vec{j}}{\epsilon_0}.  \label{fyz:eq_mag012}
-      \end{align}
+      \begin{subequations}
+        \begin{align}
+          \nabla\cdot\vec{B}     &= 0                            \label{fyz:eq_mag011} \\
+          c^2\nabla\times\vec{B} &= \frac{\vec{j}}{\epsilon_0}.  \label{fyz:eq_mag012}
+        \end{align}
+      \end{subequations}
       Tyto rovnice platí jen tehdy, jsou-li všechny hustoty elektrických nábojů konstantní a 
       všechny proudy stacionární, takže elektrická a magnetická pole se s časem nemění - obě pole 
       jsou \emph{stacionární}
@@ -244,34 +246,49 @@
       svou hranici uzavřenou smyčku). Kdybychom tutéž větu použili v případě vektoru magnetického 
       pole, dostali bychom použitím symbolů z obr. \ref{fyz:fig220}.
       \begin{equation}\label{fyz:eq_mag014} 
-      \limitoint_{\mathclap{\substack{\Gamma}}}\vec{B}\dd{\vec{s}} = \vec{E}\cdot\vec{n}\dd{S} = 0.
-      \end{equation} 
-      
+        \limitoint_{\mathclap{\substack{\Gamma}}}\vec{B}\dd{\vec{s}} = 
+        \limitint_{\mathclap{\substack{S}}}(\nabla\times\vec{B})\cdot\vec{n}\dd{S}.
+      \end{equation}       
+      Vezmeme-li rotaci \(\vec{B}\) rovnice (\ref{fyz:eq_mag012}), dostaneme
+      \begin{equation}\label{fyz:eq801}
+        \limitoint_{\mathclap{\substack{\Gamma}}}\vec{B}\dd{\vec{s}} = 
+        \dfrac{1}{ϵ_0c^2}\limitint_{\mathclap{\substack{S}}}\vec{j}\cdot\vec{n}\dd{S}.
+      \end{equation}
       \begin{figure}[ht!]
         \centering
-        \includegraphics[width=0.5\linewidth]{fyz_fig220.pdf}
+        \includegraphics[width=0.7\linewidth]{fyz_fig220.pdf}
         \caption{Křivkový integrál tangenciální složky \(\vec{B}\) je roven plošnému integrálu 
                  normálové složky \(\nabla\times\vec{B}\).}
         \label{fyz:fig220} 
       \end{figure}
+      Souhlasně se vztahem (\ref{eq_fyz:mag005}) představuje integrál \(j\) celkový proud \(I\)
+      tekoucí plochou \(S\). Protože v případě stacionárních proudů nezávisí proud plochou \(S\) na
+      tvaru této plochy, pokud je ohraničena křivkou \(\Gamma\), hovoříme o \emph{proudu smyčkou}
+      \(\Gamma\). Tak přicházíme k obecnému zákonu: Cirkulace \(\vec{B}\) podél libovolné uzavřené
+      křivky je rovna proudu \(I\) smyčkou \(\Gamma\) dělenému \(ϵ_0c^2\)
+      \begin{equation}\label{fyz:eq802}
+        \limitoint_{\mathclap{\substack{\Gamma}}}\vec{B}\dd{\vec{s}} = 
+        \dfrac{I_{\text{smyčkou }\Gamma}}{ϵ_0c^2}.
+      \end{equation}
+      Tento zákon - zvaný \textbf{Ampérův zákon} - hraje v magnetostatice tutéž úlohu jako Gaussův
+      zákon v elektrostatice. Samotný Ampérův zákon neurčuje \(\vec{B}\) z proudů; obecně musíme
+      použít i vztah \(\nabla\times\vec{B} = 0\). V další části však uvidíme, že jej můžeme použít i
+      pro určení polí v takových speciálních případech, které mají určitou jednoduchou symetrii.
 
-  \section{Elektrický proud. Zachování náboje}\label{fyz:IIchapXIIIsecII}
-  \section{Magnetická síla působící na proud}\label{fyz:IIchapXIIIsecIII}
-  \section{Magnetické pole stacionárních proudů. Ampérův zákon }\label{fyz:IIchapXIIIsecIV}
-  \section{Magnetické pole přímého vodiče a solenoidu. Atomové 
-  proudy}\label{fyz:IIchapXIIIsecV}
-  \section{ Magnetická a elektrická pole v teorii relativity}\label{fyz:IIchapXIIIsecVI}
+  \section{Magnetické pole přímého vodiče a solenoidu. Atomové proudy}\label{fyz:IIchapXIIIsecV}
+    \begin{figure}[ht!] %\ref{fyz:fig683}
+      \centering
+      \includegraphics[width=0.7\linewidth]{fyz_fig683.pdf}
+      \caption{Magnetické pole v okolí dlouhého vodiče, jímž prochází proud \(I\)
+              (\cite[s.~707]{Feynman02})}
+      \label{fyz:fig683}
+    \end{figure}
+  \section{Magnetická a elektrická pole v teorii relativity}\label{fyz:IIchapXIIIsecVI}
   \section{Transformace proudů a nábojů}\label{fyz:IIchapXIIIsecVII}
   \section{Superpozice. Pravidlo pravé ruky}\label{fyz:IIchapXIIIsecVIII}
 
 
-    \begin{figure}[ht!] %\ref{fyz:fig683}
-      \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig683.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
-      \label{fyz:fig683}
-    \end{figure}
+
 
     \begin{figure}[ht!] %\ref{fyz:fig684}
       \centering
