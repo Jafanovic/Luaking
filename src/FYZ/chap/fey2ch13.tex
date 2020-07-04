@@ -282,18 +282,70 @@
     okolo vodiče kružnice. Za takového předpokladu Ampérův zákon, tj. rovnice (\ref{fyz:eq802}),
     určuje sílu pole. V důsledku symetrie úlohy má \(\vec{B}\) stejnou velikost ve všech bodech
     kružnice, jejíž střed je v ose vodiče (obr. \ref{fyz:fig683}). Pak můžeme snadno vypočítat
-    integrál \(\vec{B}\cdot\dd{s}\); je roven právě velikosti \(\vec{B\) násobené délkou kružnice.
+    integrál \(\vec{B}\cdot\dd{s}\); je roven právě velikosti \(\vec{B}\) násobené délkou kružnice.
     Je-li \(r\) poloměr kružnice, máme
     \begin{equation}\label{fyz:eq803}
       \limitoint_{\mathclap{\substack{\Gamma}}}\vec{B}\dd{\vec{s}} = B\cdot2\pi r.
     \end{equation}
-    
+
     \begin{figure}[ht!] %\ref{fyz:fig683}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig683.pdf}
       \caption{Magnetické pole v okolí dlouhého vodiče, jímž prochází proud \(I\)
               (\cite[s.~707]{Feynman02})}
       \label{fyz:fig683}
+    \end{figure}
+
+    Celkový proud smyčkou je prostě proud \(I\) ve vodiči, a proto
+    \begin{equation*}
+      B\cdot2\pi r = \dfrac{I}{\varepsilon_0c^2}.
+    \end{equation*}
+    nebo
+    \begin{equation}\label{fyz:eq804}
+      B = \dfrac{1}{4\pi\varepsilon_0c^2}\dfrac{2I}{r}.
+    \end{equation}  
+    Velikost magnetického pole klesá nepřímo úměrně \(r\) - vzdálenosti od osy vodiče. Chceme-li,
+    můžeme vztah (\ref{fyz:eq804}) zapsat ve vektorovém tvaru. Uvědomíme si, že \(\vec{B}\) je kolmé
+    jak na \(\vec{I}\), tak na \(\vec{r}\) a dostaneme
+    \begin{equation}\label{fyz:eq805}
+      \vec{B} = \dfrac{1}{4\pi\varepsilon_0c^2}\dfrac{2\vec{I}\times\vec{e}_r}{\vec{r}}.
+    \end{equation} 
+    Faktor \(\dfrac{1}{4\pi\varepsilon_0c^2}\) píšeme odděleně proto, že se bude vyskytovat často.
+    Bude dobré, když si zapamatujete, že je roven přesně \num{e-7} (v SI soustavě), neboť rovnicí
+    typu (\ref{fyz:eq805}) je \emph{definována} jednotka proudu - \textbf{ampér}. Ve vzdálenosti
+    jednoho metru od vodiče s proudem jednoho ampéru je magnetické pole \num{2e-7} tesla.
+
+    \begin{figure}[ht!] %\ref{fyz:fig684}
+      \centering
+      \includegraphics[width=0.7\linewidth]{fyz_fig684.pdf}
+      \caption{Magnetické pole dlouhého solenoidu
+               (\cite[s.~707]{Feynman02})}
+      \label{fyz:fig684}
+    \end{figure}
+
+    Protože proud vytváří magnetické pole, bude působitsilou na okolní vodiče, jimiž také protéká
+    proud. V kapitole \ref{fyz:IIchapI} byl popsán jednoduchý pokus na demonstraci síly působící
+    mezi dvěma vodiči proudu. Jsou-li vodiče rovnoběžné, je každý kolmý na pole druhého vodiče;
+    vodiče se proto budou odpuzovat, nebo přitahovat. Tečou-li proudy stejným směrem, vodiče se
+    přitahují; mají-li proudy směr opačný, vodiče se odpuzují.
+
+    Všimněme si jiného příkladu, při jehož analýze nám pomůže Ampérův zákon a určité poznatky o
+    povaze pole. Předpokládejme, že máme dlouhý drát v podobě cívky těsně navinutý na válcové ploše
+    tak, jak je znázorněno v řezu na obr. \ref{fyz:fig684}. Taková cívka se nazývá solenoid. Je-li
+    solenoid vzhledem ke svému průměru velmi dlouhý, lze experimentálně zjistit, že pole v okolí
+    solenoidu je velmi malé v porovnání s polem uvnitř solenoidu. Použitím této skutečnosti a
+    Ampérova zákona můžeme určit velikost pole uvnitř solenoidu.
+
+    Protože pole zůstává uvnitř (a má nulovou divergenci), musí jeho indukční čáry jít rovnoběžně s
+    osou, jak znázorňuje obr. \ref{fyz:fig685}. Je-li to tak, můžeme použít Ampérův zákon na
+    pravoúhlou křivku \(\Gamma\) znázorněnou na obrázku.
+
+    \begin{figure}[ht!] %\ref{fyz:fig685}
+      \centering
+      \includegraphics[width=0.7\linewidth]{fyz_fig685.pdf}
+      \caption{Magnetické pole v okolí solenoidu
+               (\cite[s.~707]{Feynman02})}
+      \label{fyz:fig685}
     \end{figure}
   \section{Magnetická a elektrická pole v teorii relativity}\label{fyz:IIchapXIIIsecVI}
   \section{Transformace proudů a nábojů}\label{fyz:IIchapXIIIsecVII}
@@ -302,21 +354,9 @@
 
 
 
-    \begin{figure}[ht!] %\ref{fyz:fig684}
-      \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig684.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
-      \label{fyz:fig684}
-    \end{figure}
 
-    \begin{figure}[ht!] %\ref{fyz:fig685}
-      \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig685.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
-      \label{fyz:fig685}
-    \end{figure}
+
+
 
     \begin{figure}[ht!] %\ref{fyz:fig686}
       \centering
