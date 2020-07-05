@@ -21,7 +21,16 @@
     pevný směr v prostoru (obr. \ref{fyz:fig061}) a velikost této síly je úměrná složce 
     rychlosti kolmé na tento význačný směr. Všechny tyto vlastnosti lze vystihnout definicí vektoru 
     indukce \(\vec{B}\) magnetického pole, který určuje zmíněný směr v prostoru, i konstantu 
-    úměrnosti. Pomocí tohoto vektoru je magnetická síla vyjádřena jako \(q\vec{v}\times\vec{B}\)    
+    úměrnosti. Pomocí tohoto vektoru je magnetická síla vyjádřena jako \(q\vec{v}\times\vec{B}\).
+    Celkovou elektromagnetickou sílu působící na náboj pak můžeme psát ve tvaru
+    \begin{equation}\label{fyz:eq823}
+      \vec{F} = q(\vec{E} + \vec{v}\times\vec{B})
+    \end{equation} 
+
+    O existenci magnetické síly se snadno přesvědčíme, přiložíme-li tyčový magnet těsně k obrazovce.
+    Vychýlení elektronového paprsku svědčí o tom, že přítomnost magnetuje projevuje silou působící
+    na elektrony, která je kolmá na směr jejich pohybu, jak to bylo popsáno v \ref{fyz:IchapXII}.
+    kapitole \ref{part:FYZI}. dílu této knihy.
 
     \begin{figure}[ht!]  %\ref{fyz:fig061}
       \centering
@@ -83,14 +92,14 @@
       
       Skládá-li se rozdělení nábojů z jednotlivých nábojů, např elektronů, z nichž každý má náboj 
       \(q\) a pohybují se střední rychlostí \(v\), můžeme proudovou hustotu vyjádřit ve tvaru
-      \begin{equation}\label{eq_fyz:mag004}
+      \begin{equation}\label{fyz:eq808}
         \vec{j} = Nq\vec{v}.
       \end{equation}
       
       Celkový náboj procházející za jednotku času nějakou plochou \(S\) se nazývá \emph{elektrický 
       proud} .Je roven integrálu normálové složky toku všemi elementy povrchu (obr. 
       \ref{fyz:fig217}):
-      \begin{equation}\label{eq_fyz:mag005}
+      \begin{equation}\label{fyz:eq807}
         I = \int\vec{j}\cdot\vec{n}\dd{S}.
       \end{equation}
     
@@ -261,7 +270,7 @@
                  normálové složky \(\nabla\times\vec{B}\).}
         \label{fyz:fig220} 
       \end{figure}
-      Souhlasně se vztahem (\ref{eq_fyz:mag005}) představuje integrál \(j\) celkový proud \(I\)
+      Souhlasně se vztahem (\ref{fyz:eq807}) představuje integrál \(j\) celkový proud \(I\)
       tekoucí plochou \(S\). Protože v případě stacionárních proudů nezávisí proud plochou \(S\) na
       tvaru této plochy, pokud je ohraničena křivkou \(\Gamma\), hovoříme o \emph{proudu smyčkou}
       \(\Gamma\). Tak přicházíme k obecnému zákonu: Cirkulace \(\vec{B}\) podél libovolné uzavřené
@@ -317,7 +326,7 @@
 
     \begin{figure}[ht!] %\ref{fyz:fig684}
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig684.pdf}
+      \includegraphics[width=1\linewidth]{fyz_fig684.pdf}
       \caption{Magnetické pole dlouhého solenoidu
                (\cite[s.~707]{Feynman02})}
       \label{fyz:fig684}
@@ -347,40 +356,370 @@
                (\cite[s.~707]{Feynman02})}
       \label{fyz:fig685}
     \end{figure}
+
+    Tato smyčka prochází vzdálenost \(L\) uvnitř solenoidu, kde je pole řekněme \(\vec{B}_0\) potom
+    jde kolmo k poli a vrací se podél solenoidu vnější stranou, kde je pole zanedbatelné. Křivkový
+    integrál \(\vec{B}\) podél této křivky je roven právě \(B_0L\), což musí být rovno celkovému
+    proudu, který obepíná křivka \(\Gamma\) vynásobenému faktorem \(l/\varepsilon_0c^2\). Má-li
+    solenoid \(N\) závitů na délce \(L\), bude obepínaný proud \(NI\). Máme tedy
+    \begin{equation*}
+      B_0L = \dfrac{NI}{\varepsilon_0c^2}.
+    \end{equation*}
+    Označíme-li symbolem \(n\) počet závitů solenoidu na jednotkové délce (tj. \(n = N/L\)),
+    dostaneme
+    \begin{equation}\label{fyz:eq806}
+      B_0 = \dfrac{nI}{\varepsilon_0c^2}.
+    \end{equation}
+
+    Co se stane s indukčními čarami \(\vec{B}\), když se dostanou na konec solenoidu? Zřejmě se
+    nějak rozejdou a vrátí se k solenoidu na opačném konci tak, jak je to nakresleno na obr.
+    \ref{fyz:fig685}.
+
+    Ale právě takové pole pozorujeme i v okolí tyčového magnetu. Co je však vlastně magnet? Naše
+    rovnice říkají, že \(\vec{B}\) je důsledkem přítomnosti proudů. Víme i to, že obyčejné železné
+    tyče (bez baterií a generátorů) také vytvářejí magnetická pole. Možná očekáváme, že na pravé
+    straně rovnic (\ref{fyz:eq_mag011}) a (\ref{fyz:eq_mag011}) by měly být ještě další členy, které
+    by představovaly „hustotu magnetického železa“ nebo nějakou jinou podobnou veličinu. Takové
+    členy tam nejsou. Naše teorie říká, že za magnetické vlastnosti železa jsou odpovědné vnitřní
+    proudy, které jsou už zahrnuty ve členu s \(\vec{j}\).
+
+    Látky jsou velmi složité, zkoumáme-li hlouběji; to jsme viděli, když jsme se snažili pochopit 
+    dielektrika. Abychom nepřerušili tuto naši diskusi, odložíme podrobné zkoumání vnitřního
+    mechanizmu magnetických materiálů typu železa na později. Zatím se budete muset smířit s tím, že
+    všechen magnetizmus je tvořen proudy a že v permanentním magnetu jsou stálé vnitřní proudy. V
+    případě železa tyto proudy pocházejí od elektronů rotujících okolo vlastních os. Každý elektron
+    má spin, který odpovídá maličkému cirkulujícímu proudu. Samozřejmě, jeden elektron nevytvoří
+    znatelné magnetické pole, ale v obyčejném kusu látky jsou miliardy a miliardy elektronů. Obvykle
+    elektrony rotují v těch nejrozmanitějších směrech, a proto se výsledný efekt neprojevuje.
+    Kupodivu v malém počtu látek podobných železu rotuje velká část elektronů tak, že jejich osy
+    rotace mají stejný směr - v železe se takového kolektivního pohybu účastní dva elektrony každého
+    atomu. V tyčovém magnetu rotuje velký počet elektronů ve stejném směru a jak uvidíme později,
+    výsledný jev je rovnocenný proudu cirkulujícímu na povrchu magnetu. (Je to velmi podobné tomu,
+    co jsme zjistili v dielektrikách - že rovnoměrně polarizované dielektrikum je ekvivalentní
+    rozložení nábojů na jeho povrchu.) Není tedy náhoda, že tyčový magnet je ekvivalentní se
+    solenoidem.
+
   \section{Magnetická a elektrická pole v teorii relativity}\label{fyz:IIchapXIIIsecVI}
-  \section{Transformace proudů a nábojů}\label{fyz:IIchapXIIIsecVII}
-  \section{Superpozice. Pravidlo pravé ruky}\label{fyz:IIchapXIIIsecVIII}
-
-
-
-
-
-
-
-
-    \begin{figure}[ht!] %\ref{fyz:fig686}
+    Když jsme říkali, že magnetická síla působící na náboj je úměrná jeho rychlosti, možná, že jsme
+    si položili otázku: \uv{Jaké rychlosti? Vzhledem, ke které vztažné soustavě?} Z definice
+    veličiny \(\vec{B}\), uvedené na začátku této kapitoly, skutečně vyplývá, že tento vektor bude
+    záviset na volbě vztažné soustavy při určování rychlosti nábojů. O tom, kterou soustavu je třeba
+    při určování magnetického pole brát v úvahu, jsme však neřekli nic.
+    
+    \begin{figure}[ht!]  %\ref{fyz:fig686}
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig686.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \subcaptionbox{\label{fyz:fig686a}}{\luafigure[1]{fyz_fig686a.pdf}} \\
+      \subcaptionbox{\label{fyz:fig686b}}{\luafigure[1]{fyz_fig686b.pdf}}
+      \caption{Interakce vodiče, kterým teče proud, a částice s nábojem \(q\) z hlediska dvou
+              souřadnicových soustav. V soustavě \(S\) (část a) je vodič v klidu; v soustavě \(S'\)
+              (část b) je v klidu náboj. (\cite[s.~234]{Feynman02})}
       \label{fyz:fig686}
     \end{figure}
 
-    \begin{figure}[ht!] %\ref{fyz:fig687}
+    Ukazuje se, že je vhodná \emph{libovolná} inerciální soustava. Také uvidíme, že magnetizmus a
+    elektřina nejsou navzájem nezávislé - je třeba je chápat jako součást jednoho úplného
+    elektromagnetického pole. Ačkoliv se ve statickém případě Maxwellovy rovnice rozpadnou na dva
+    samostatné páry, jeden pro elektřinu a druhý pro magnetizmus, a mezi těmito dvěma poli pak není
+    zjevná souvislost, přece v samotné přírodě mezi nimi existuje velmi úzký vztah, který je
+    důsledkem principu relativity. Historicky byl princip relativity objeven později než Maxwellovy
+    rovnice. Bylo to vlastně studium elektřiny a magnetizmu, které nakonec Einsteina přivedlo k
+    objevu principu relativity. Všimněme si, co nám naše poznání principu relativity řekne o
+    magnetických silách, předpokládáme-li, a to zcela správně, že princip relativity lze při
+    zkoumání elektromagnetizmu použít.
+
+    Zamysleme se nad tím, co se stane, bude-li se záporný náboj pohybovat rychlostí \(v_0\)
+    rovnoběžně s vodičem, kterým teče proud (situace je znázorněna na obr. \ref{fyz:fig686}). Budeme
+    se snažit pochopit situaci ve dvou vztažných soustavách: jedné spojené s vodičem tak jako na
+    obr. \ref{fyz:fig686a} a druhé spojené s částicí tak jako na obr. \ref{fyz:fig686b}. První
+    soustavu označíme symbolem \(S\) a druhou symbolem \(S'\).
+
+    V soustavě \(S\) na částici zřejmě působí magnetická síla. Síla směřuje k vodiči, takže kdyby se
+    náboj volně pohyboval, viděli bychom ho stáčet se k vodiči. V soustavě \(S'\) však na částici
+    magnetická síla nepůsobí, neboť částice má nulovou rychlost. Zůstane proto stát na místě?
+    Uvidíme v těch dvou soustavách různé události? Podle principu relativity bychom měli i v
+    soustavě \(S'\) vidět částici přibližující se k vodiči. Musíme vysvětlit, proč by to tak mělo
+    být.
+
+    Vraťme se k našemu atomovému popisu vodiče, který vede proud. V normálním vodiči, jakým je měď,
+    vzniká elektrický proud pohybem určitého počtu záporných elektronů (nazýváme je vodivostní
+    elektrony), zatímco kladné náboje jader a zbytek elektronů jsou v materiálu nepohyblivé. Označme
+    hustotu vodivostních elektronů \( ρ_−\) a jejich rychlost v soustavě \(S\) jako \(v\). Hustota
+    nábojů, které se v \(S\) nepohybují, nechť je \( ρ_+\) a ta musí být rovna \( ρ_−\) s opačným
+    znaménkem, neboť  máme nenabitý vodič. Proto mimo vodič nebude existovat elektrické pole a síla
+    působící na pohybující se částici je rovna
+    \begin{equation*}
+      \vec{F}=q\vec{v}_0\times\vec{B}.
+    \end{equation*}
+    Využijeme-li výsledek, ke kterému jsme přišli v rovnici (\ref{fyz:eq804}) pro magnetické pole ve
+    vzdálenosti \(r\) od osy vodiče, dospějeme k závěru, že síla působící na částici směřuje k
+    vodiči a má velikost
+    \begin{equation*}
+      F=\dfrac{1}{4πϵ_0c^2}\cdot\dfrac{2Iqv_0}{r}.
+    \end{equation*}
+    Pomocí rovnic (\ref{fyz:eq807}) a (\ref{fyz:eq808}) můžeme proud /vyjádřit ve tvaru
+    \(ρ_−vS\), kde \(S\) je plošný obsah průřezu vodiče. Potom
+    \begin{equation}\label{fyz:eq809}
+      F=\dfrac{1}{4πϵ_0c^2}\cdot\dfrac{2qρ_−Svv_0}{r}.
+    \end{equation}
+
+    Mohli bychom pokračovat ve zkoumání obecného případu libovolných rychlostí \(v\) a \(v_0\), ale
+    stejně dobře bude, všimneme-li si speciálního případu, kdy rychlost částice \(v_0\) je stejná
+    jako rychlost vodivostních elektronů \(v\). Potom můžeme psát \(v=v_0\) a rovnice
+    (\ref{fyz:eq809}) se změní na
+    \begin{equation}\label{fyz:eq810}
+      F=\dfrac{q}{2πϵ_0}\cdot\dfrac{ρ_−S}{r}\dfrac{v^2}{c^2}.
+    \end{equation}
+
+    Zajímáme se o to, co se stane v soustavě \(S'\), v níž je částice v klidu a pohybuje se vodič
+    (na  obrázku \ref{fyz:fig686b} doleva) rychlostí \(v\). Kladné náboje pohybující se s vodičem
+    vytvoří určité magnetické pole  \(B'\) v okolí částice. Jenže částice je nyní v klidu, a proto
+    na ni nepůsobí \emph{magnetická} síla! Působí-li na částici přece jen nějaká síla, musí pocházet
+    od elektrického pole. To je však možné pouze tehdy, když je vodič \emph{nabitý} - neutrální
+    vodič, kterým protéká proud se musí stát nabitým, když jej uvedeme do pohybu.
+
+    Tuto otázku musíme prozkoumat. Pomocí toho, co víme o soustavě \(S\), musíme určit hustotu
+    náboje ve vodiči v soustavě \(S'\). Na první pohled vypadá všechno stejně, ale už víme, že při
+    přechodu z \(S\) do \(S'\) se mění délky (\ref{fyz:IchapXV}. kapitola \ref{part:FYZI}. dílu);
+    proto se musí měnit i objemy. Musí se tedy změnit i hustoty, neboť \emph{hustoty} náboje
+    závisejí na objemu, v němž se náboje nacházejí.
+
+    Dřív než určíme hustoty náboje v \(S'\), musíme vědět, co se děje s elektrickým \emph{nábojem}
+    svazku elektronů, když se náboje pohybují. Víme, že hmotnost částice roste v poměru \(1/\sqrt{1
+    - v^2/c^2}\).  Děje se něco podobného i s nábojem? Ne! Náboje jsou vždy stejné bez ohledu na to,
+    zda se pohybují nebo nepohybují. Jinak bychom nepozorovali, že se celkový náboj zachovává.
+
+    Předpokládejme, že máme kousek materiálu, řekněme vodiče, který byl původně nenabitý. 
+    Zahřejeme ho. Protože elektrony mají jiné hmotnosti než protony, změní se rychlosti elektronů a
+    protonů různě. Závisel-li by náboj na rychlosti částice, která ho nese, nebyl by už v ohřátém
+    kousku materiálu náboj elektronů a protonů v rovnováze. Při zahřátí by se materiál nabil. Jak
+    jsme už viděli dříve, velmi malá změna náboje každého z elektronů by vedla v takovém kousku
+    materiálu k obrovským elektrickým polím. Takový jev však nebyl nikdy pozorován.
+
+    Je tu ještě ta skutečnost, že střední rychlost elektronů v látce závisí na jejím chemickém
+    složení. Kdyby se náboj elektronu měnil s rychlostí, výsledný náboj látky by se měnil v chemické
+    reakci. Přímý výpočet by nám opět ukázal, že i velmi malá závislost náboje na rychlosti by vedla
+    v nejjednodušších chemických reakcích k obrovským elektrickým polím. Takové jevy však nebyly
+    pozorovány, a proto můžeme tvrdit, že elektrický náboj jednotlivých částic nezávisí na jejich
+    pohybovém stavu.
+
+    Náboj částice \(q\) je tedy invariantní skalární veličina, nezávislá na vztažné soustavě. To
+    znamená, že v libovolné soustavě je hustota náboje nějakého rozdělení elektronů úměrná počtu
+    elektronů v jednotce objemu. Starosti nám bude dělat jen skutečnost, že objem se múze měnit v
+    důsledku relativistické kontrakce délek.
+
+    Tuto myšlenku použijeme v případě pohybujícího se vodiče. Vezmeme-li vodič délky \(L_0\) v němž
+    je hustota \emph{stacionárních} nábojů \(\varrho_0\), bude obsahovat celkový náboj
+    \(Q=ρ_0L_0S_0\). Pohybují-li se tytéž náboje v druhé soustavě rychlostí \(v\) budou se všechny
+    nacházet v kousku látky, který má kratší délku:
+    \begin{equation}\label{fyz:eq811}
+      L=L_0\sqrt{1−v^2/c^2}.
+    \end{equation}
+    ale tentýž průřez \(S_0\) (protože rozměry v směrech kolmých na pohyb se nemění). Tato situace je
+    znázorněna na obr. \ref{fyz:fig687}.
+
+    \begin{figure}[ht!]  %\ref{fyz:fig686}
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig687.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \subcaptionbox{\label{fyz:fig687a}}{\luafigure[1]{fyz_fig687a.pdf}} \\
+      \subcaptionbox{\label{fyz:fig687b}}{\luafigure[1]{fyz_fig687b.pdf}}
+      \caption{Má-li rozdělení nabitých částic v klidu hustotu \(\varrho_0\), budou mít tytéž náboje
+              hustotu \(ρ=ρ_0\sqrt{1−v^2/c^2}\), budeme-li je pozorovat v soustavě pohybující se
+              rychlostí \(v\) vůči nabitým částicím (\cite[s.~236]{Feynman02})}
       \label{fyz:fig687}
     \end{figure}
+
+    Označíme-li symbolem \(\varrho\) hustotu náboje v soustavě, v níž se náboje pohybují, bude
+    celkový náboj \(Q\) roven \(ρLS_0\). To však musí být rovno \(ρL_0S_0\), neboť náboj je v každé
+    soustavě stejný. Proto \(ρL=ρ_0L_0\), nebo podle \ref{fyz:eq811})
+    \begin{equation}\label{fyz:eq812}
+      ρ=\dfrac{ρ_0}{\sqrt{1−v^2/c^2}}.
+    \end{equation}
+    \emph{Hustota} náboje pohybujícího se souboru nábojů se mění stejným způsobem jako
+    relativistická hmotnost částice.
+
+    Nyní tento obecný výsledek použijeme na hustotu kladného náboje \(varrho?+\) našeho vodiče. Tyto
+    náboje jsou v klidu v soustavě \(S\). V soustavě v níž se vodič pohybuje rychlostí \(v\), bude
+    pro hustotu kladného náboje platit vztah
+    \begin{equation}\label{fyz:eq813}
+      ρ_+'=\dfrac{ρ_+}{\sqrt{1−v^2/c^2}}.
+    \end{equation}
+
+    \emph{Záporné náboje} jsou v klidu v soustavě \(S'\). Jejich \uv{klidová hustota} bude v této
+    soustavě rovna \(\varrho_0\). V rovnici (\ref{fyz:eq812}) \(\varrho_0 = \varrho_-'\), neboť
+    jejich hustota je rovna \(ρ_−\) když je vodič v klidu, tj. v soustavě \(S\), kde je rychlost
+    záporných nábojů \(v\). Pro vodivostní elektrony potom máme
+    \begin{align}
+      ρ_-  &=\dfrac{ρ_-'}{\sqrt{1−v^2/c^2}}. \label{fyz:eq814} \\
+      \shortintertext{nebo}
+      ρ_-' &=ρ_-\sqrt{1−v^2/c^2}.            \label{fyz:eq815}
+    \end{align}
+
+    Teď už je vidět, proč je v soustavě \(S'\) elektrické pole - neboť v této soustavě je výsledná
+    hustota náboje \(\varrho'\) ve vodiči dána vztahem
+    \begin{equation*}
+      ρ′=ρ′_++ρ′_−.
+    \end{equation*}
+    Použijeme-li (\ref{fyz:eq813}) a (\ref{fyz:eq815}), dostaneme
+    \begin{equation*}
+      ρ′=\dfrac{ρ_+}{\sqrt{1−v^2/c^2}}+ ρ_−\sqrt{1−v^2/c^2}.
+    \end{equation*}
+    Protože stacionární vodič je neutrální, platí \(ρ_−=−ρ_+\) a máme
+    \begin{equation}\label{fyz:eq816}
+      ρ′=ρ_+\cdot\dfrac{v^2/c^2}{\sqrt{1−v^2/c^2}}.
+    \end{equation}
+    Náš pohybující se vodič je kladně nabitý a vytvoří elektrické pole \(E'\) v bodě, kde se nachází
+    vnější stacionární částice. Už jsme vyřešili elektrostatický problém homogenně nabitého válce.
+    Elektrické pole ve vzdálenosti \(r\) od osy válce je
+    \begin{equation}\label{fyz:eq817}
+      E′=\dfrac{ρ′S}{2πϵ_0r} = \dfrac{ρ_+Sv^2/c^2}{2πϵ_0r\sqrt{1−v^2/c^2}}.
+    \end{equation}
+    Síla působící na záporně nabitou částici směřuje k vodiči. Máme tedy sílu, která alespoň pokud
+    jde o směr, je stejná v obou soustavách; elektrická síla v \(S'\) má tentýž směr jako magnetická
+    síla v \(S\). Velikost síly v \(S'\) je 
+    \begin{equation}\label{fyz:eq818}
+      F′=\dfrac{q}{2πϵ_0} = \dfrac{ρ_+S}{r}\dfrac{v^2/c^2}{\sqrt{1−v^2/c^2}}.
+    \end{equation}
+    Porovnáním výsledku pro \(F'\) s naším výsledkem pro \(F\) z rovnice (\ref{fyz:eq810}) zjistíme,
+    že velikosti těchto sil jsou téměř stejné. Skutečně,
+    \begin{equation}\label{fyz:eq819}
+      F′=\dfrac{F}{\sqrt{1−v^2/c^2}},
+    \end{equation}
+    a proto při malých rychlostech, které jsme uvažovali, jsou si tyto síly rovny. Lze tedy říci, že
+    alespoň při malých rychlostech můžeme magnetizmus a elektřinu považovat za „dva pohledy na tutéž
+    věc“.
+
+    Situace je však ještě příznivější. Vezmeme-li v úvahu skutečnost, že i síly se transformují při
+    přechodu z jedné soustavy do druhé, zjistíme, že oba způsoby pozorování událostí opravdu dávají
+    tentýž \emph{fyzikální} výsledek při libovolné rychlosti.
+
+    Abychom se o tom přesvědčili, položme si otázku: Jakou příčnou hybnost bude mít částice, na
+    kterou po krátkou dobu působila síla? Z \ref{fyz:IchapXVI}. kapitoly \ref{part:FYZI}. dílu už
+    víme, že příčná hybnost částice musí být stejná v soustavě \(S\) i \(S'\). Označíme-li příčnou
+    souřadnici \(y\) budeme porovnávat \(Δp_y\) a \(Δp'_y\). Použijeme-li relativisticky správnou
+    pohybovou rovnici \(\vec{F}=\diff{\vec{p}}{t}\), pro příčnou hybnost \(Δp_y\), kterou částice
+    získá za dobu \(Δt\) v soustavě \(S\), dostaneme
+    \begin{align}
+      Δp_y &=FΔt.     \label{fyz:eq820} \\
+      \shortintertext{V soustavě \(S'\) bude pro příčnou hybnost platit}
+      Δp'_y &=F'Δt'.  \label{fyz:eq821}
+    \end{align}
+    Veličiny \(Δp_y\) a \(Δp'_y\) musíme samozřejmě porovnávat v odpovídajících časových intervalech
+    \(Δt\) a \(Δt'\). V \ref{fyz:IchapXV}. kapitole \ref{part:FYZI}. dílu jsme viděli, že časové
+    intervaly vztahující se k \emph{pohybující} se částici jsou \emph{delší} než intervaly v
+    soustavě, v níž je částice v klidu. Protože naše částice byla původně v klidu v soustavě \(S'\),
+    můžeme pro malé \(Δt\) psát
+    \begin{equation}\label{fyz:eq822}
+      Δt=\dfrac{Δt'}{\sqrt{1−v^2/c^2}},
+    \end{equation}
+    a vše krásné vychází. Z rovnic (\ref{fyz:eq820}) a (\ref{fyz:eq821}) dostaneme
+    \begin{equation*}
+      \dfrac{Δp′_y}{Δpy}=\dfrac{F′Δt′}{FΔt},
+    \end{equation*}
+    a zkombinováním vztahů (\ref{fyz:eq819}) a (\ref{fyz:eq822}) se můžeme přesvědčit, že tento
+    poměr je roven jedné.
 
     \begin{figure}[ht!] %\ref{fyz:fig688}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig688.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{V soustavě \(S\) je hustota náboje nulová a proudová hustota je rovna \(\vec{j}\). Je
+            tam jen magnetické pole. V \(S'\) je hustota náboje \(\varrho_-\) a jiná proudová
+            hustota \(\vec{j}'\). Magnetické pole \(\vec{B}'\) je jiné a je tam i elektrické pole
+            \(\vec{E}'\). (\cite[s.~238]{Feynman02})}
       \label{fyz:fig688}
     \end{figure}
+
+    Zjistili jsme, že stejný fyzikální výsledek dostaneme při analýze pohybu částice ve vodiči v
+    souřadnicové soustavě spojené s vodičem nebo v soustavě spojené s částicí. V prvním případě je
+    tato síla čistě „magnetická“ a v druhém čistě „elektrická“. Tyto dva pohledy znázorňuje obr.
+    \ref{fyz:fig688}. (I když v druhé soustavě je magnetické pole \(B'\), nepůsobí na stacionární
+    částici silou).
+
+    Kdybychom zvolili další souřadnicovou soustavu, dostali bychom jiná pole \(\vec{E}\) a
+    \(\vec{B}\). Elektrické a magnetické síly jsou částí \emph{jednoho} fyzikálního jevu -
+    elektromagnetické interakce částic. Rozdělení této interakce na elektrickou a magnetickou část
+    závisí na tom, jakou vztažnou soustavu jsme zvolili pro popis situace. Teprve úplný
+    elektromagnetický popis je invariantní; elektřina a magnetizmus chápané jako celek jsou
+    konzistentní s Einsteinovou teorií relativity.
+
+    Protože při změně vztažné soustavy se mění i zastoupení elektrického a magnetického pole, musíme
+    být v našich úvahách o polích \(\vec{E}\) a \(\vec{B}\) opatrní. Hovoříme-li například o
+    \emph{čarách} \(\vec{E}\) a \(\vec{B}\), nesmíme jim připisovat příliš mnoho reality. Tyto čáry
+    se mohou ztratit, chceme-li je pozorovat v jiné souřadnicové soustavě. Například v soustavě
+    \(S'\) máme siločáry elektrického pole, ale nenajdeme je, \uv{pohybujeme-li se rychlostí \(v\) v
+    soustavě \(S\)}. V soustavě \(S\) nejsou vůbec siločáry elektrického pole! Nemá proto smysl
+    vyslovit takovéto nebo podobné tvrzení: Pohybujeme-li magnetem, unáší s sebou své pole, a proto
+    se pohybují indukční čáry \(\vec{B}\). Obecně nemá smysl hovořit o \uv{rychlosti pohybujících se
+    čar pole}. Pole jsou naším způsobem popisu toho, co se děje v daném bodě prostoru. Konkrétně
+    \(\vec{E}\) a \(\vec{B}\) vypovídají o silách, které působí na pohybující se částice. Otázka
+    \uv{Jaká je síla působící na náboj ze strany \emph{pohybujícího} se magnetického pole?} nemá
+    žádný přesný smysl.  Síla je určována hodnotami \(\vec{E}\) a \(\vec{B}\) v místě náboje a vztah
+    (\ref{fyz:eq823}) není třeba měnit, pohybuje-li se zdroj pole \(\vec{E}\) nebo \(\vec{B}\) (v
+    důsledku pohybu se však změní hodnoty \(\vec{E}\) a \(\vec{B}\)). Náš matematický popis se týká
+    pouze polí jako funkcí \(x, y, z, t\) \emph{vzhledem k nějaké inerciální soustavě}.
+
+    Později budeme hovořit o „vlně elektrického a magnetického pole šířící se prostorem“, např. o
+    světelné vlně. To je však totéž, jako hovořit o vlně šířící se podél struny. Tím nemyslíme, že
+    by se nějaká část struny pohybovala ve směru vlny, ale máme na mysli skutečnost, že
+    \emph{posunutí} struny se objevuje nejdříve na jednom a později na jiném místě. Podobně je to i
+    s elektromagnetickou vlnou; vlna se \emph{šíří}, ale velikost pole se mění. Setkáme-li se tedy v
+    budoucnosti s pojmem \uv{pohybujícího se} pole, musíme jej chápat jako stručný a praktický
+    způsob popisu měnícího se pole v určitých podmínkách.
+    
+  \section{Transformace proudů a nábojů}\label{fyz:IIchapXIIIsecVII}
+    Možná, že nás znepokojovalo zjednodušení, které jsme použili, když jsme uvažovali o téže
+    rychlosti \(v\) pro částici i pro vodivostní elektrony ve vodiči. Mohli bychom se vrátit a znovu
+    provést analýzu, ale se dvěma různými rychlostmi; bude však jednodušší si uvědomit, že náboj a
+    proudová hustota jsou složky čtyřvektoru (viz \ref{fyz:IchapXVII}. kapitolu \ref{part:FYZI}.
+    dílu). 
+    
+    Viděli jsme, že v soustavě, v níž mají náboje rychlost \(v\), lze hustotu vyjádřit vztahem
+    \begin{equation*}
+      ρ=\dfrac{ρ_0}{\sqrt{1−v^2/c^2}}.
+    \end{equation*}
+  
+
+  \section{Superpozice. Pravidlo pravé ruky}\label{fyz:IIchapXIIIsecVIII}
+    Tuto kapitolu zakončíme dvěma postřehy z magnetostatiky. Především naše základní rovnice pro
+    magnetické pole
+
+      \begin{align*}
+        \nabla\cdot\vec{B}     &= 0                             \\
+        c^2\nabla\times\vec{B} &= \frac{\vec{j}}{\epsilon_0}.  
+      \end{align*}
+
+    jsou lineární v \(\vec{B}\) i \(\vec{j}\). To znamená, že princip superpozice platí i pro
+    magnetická pole. Pole tvořené dvěma různými ustálenými proudy je součtem polí jednotlivých
+    proudů působících samostatně. Naše druhá poznámka se bude týkat pravidel pravé ruky, o nichž
+    jsme už hovořili (např. pravidlo pravé ruky pro magnetické pole vytvářené proudem). Také jsme už
+    poznali, že magnetizování železného magnetu pochází od elektronových spinů v látce. Směr
+    magnetického pole rotujícího elektronu souvisí s jeho rotační osou a určuje zmíněné pravidlo
+    pravé ruky. Protože \(\vec{B}\) je určeno pravidlem určité ruky (obsahuje vektorový součin nebo
+    rotaci), nazýváme jej \textbf{axiálním} vektorem. Vektory, jejichž směr v prostoru není dán
+    prostřednictvím pravé nebo levé ruky, nazýváme \textbf{polárními} vektory. Příklady polárních
+    vektorů jsou posunutí, rychlost, síla a \(\vec{E}\). \emph{Fyzikálně pozorovatelné} veličiny v
+    elektromagnetizmu se však neurčují pomocí pravé nebo levé ruky. Elektromagnetické interakce jsou
+    symetrické vzhledem k odrazu (\ref{fyz:IchapLII}. kapitola \ref{part:FYZI}. dílu). Výsledek
+    výpočtu magnetických sil mezi dvěma soubory proudů nezávisí na tom, zda pravidlo pravé ruky
+    zaměníme za pravidlo levé ruky nebo ne. Naše rovnice vedou, nezávisle na pojmenování rukou, ke
+    konečnému výsledku, že souhlasně tekoucí proudy se přitahují a opačně tekoucí proudy se
+    odpuzují. (Zkusme vypočítat sílu pomocí „pravidel levé ruky“.) Přitahování a odpuzování jsou
+    polární vektory. K takovéto situaci dochází proto, že při popisu libovolné interakce používáme
+    pravidlo pravé ruky dvakrát - jednou pro určení \(\vec{B}\) z proudů a potom pro určení síly,
+    jíž pole působí na druhý proud. Dvojnásobné použití pravidla pravé ruky je stejné jako
+    dvojnásobné použití pravidla levé ruky. Kdybychom zaměnili naši dohodu a používali bychom
+    pravidla levé ruky, všechna naše pole \(\vec{B}\) by změnila znaménko, ale všechny síly, nebo co
+    je snad podstatnější, pozorovaná zrychlení objektů - by se nezměnila.
+    
+    Ačkoliv fyzici ke svému velkému překvapení nedávno zjistili, že \emph{ne všechny} zákony přírody
+    jsou vždy invariantní při zrcadlovém odrazu, zákony elektromagnetizmu tuto základní symetrii
+    mají.
+        
+
+
+
+
+
+
+
 
 \todo[inline]{Kapitola fey2ch13 je nedodělaná, obsahuje pouze obrázky}
 %} %tikzset
