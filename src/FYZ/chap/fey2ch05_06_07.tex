@@ -483,13 +483,13 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
   \ref{fyz:fig195}). K celkovému toku \(\vec{E}\) přispívá pouze ta strana 
   krabičky, která je mimo vodič. Pole těsně při povrchu vodiče z jeho vnější strany je potom 
   \textbf{vně vodiče}
-  \begin{equation}\label{fyz:eq_fey_elstat_gauss07}
+  \begin{equation}\label{fyz:eq825}
     E = \frac{\sigma}{\varepsilon_0}  \quad\text{\(\sigma\ldots\) lokální plošná hustota 
     náboje}.
   \end{equation}
   
   Proč nabitá vrstva na povrchu náboje vytváří jiné pole než samotná nabitá rovina? Jinými 
-  slovy, proč je (\ref{fyz:eq_fey_elstat_gauss07}) dvakrát větší než 
+  slovy, proč je (\ref{fyz:eq825}) dvakrát větší než 
   (\ref{fyz:eq_fey_elstat_gauss03})? Důvod spočívá, samozřejmě, v tom, že v případě vodiče jsme 
   netvrdili, že se v okolí nenacházejí žádné „jiné“ náboje. Opravdu nějaké ještě musí být, aby 
   ve vodiči bylo \(\vec{E} = 0\). Náboje, nacházející se v bezprostředním sousedství bodu \(P\) 
@@ -1218,7 +1218,7 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
 
 \section{Kondenzátory, rovnoběžné desky}\label{fyz:IIchapVsecXIX}
   Nyní se budeme zabývat jinou úlohou týkající se vodičů. Uvažujme dvě rovnoběžné kovové 
-  desky,jejichž vzájemná vzdálenost je malá ve srovnání s jejich rozměry. Předpokládejme, že jsme
+  desky, jejichž vzájemná vzdálenost je malá ve srovnání s jejich rozměry. Předpokládejme, že jsme
   na desky přivedli stejně velké náboje s opačnými znaménky. Náboje na každé z desek budou 
   přitahovány náboji na druhé desce a rozdělí se rovnoměrně na vnitřním povrchu desek. Plošné
   hustoty nábojů na deskách budou \(+\sigma\), resp. \(-\sigma\) (obr.\ref{fyz:fig165}). Z kapitoly 
@@ -1231,7 +1231,7 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
   
   \begin{figure}[ht!]  %\ref{fyz:fig165}
     \centering
-    \includegraphics[width=0.8\linewidth]{fyz_fig165.pdf}
+    \includegraphics[width=1\linewidth]{fyz_fig165.pdf}
     \caption{Kondenzátor s rovnoběžnými rovinnými elektrodami 
              (\cite[s.~114]{Feynman02}).}
     \label{fyz:fig165}
@@ -1276,8 +1276,53 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
              (\cite[s.~115]{Feynman02}).}
     \label{fyz:fig166}
   \end{figure}
+
+  Celkový náboj není \(σS\), jak jsme předpokládali, ale je třeba provést malou korekci vzhledem k
+  okrajovým jevům. Abychom ji dostali, musíme pole vypočítat přesněji a najít, co se děje na
+  okrajích. To je složitá matematická úloha. Lze ji však řešit technikou, kterou nebudeme nyní
+  popisovat. Výsledky takových výpočtů ukazují, že v blízkosti hran se hustota náboje o něco
+  zvětšuje. To znamená, že kapacita desek je trochu větší, než jsme počítali. (Pro kapacitu
+  dostaneme velmi dobré přiblížení, použijeme-li vzorec (\ref{fyz:eq295}), ale za \(S\) dosadíme
+  plochu, kterou by desky měly, kdybychom jejich rozměry zvětšili o 3/8 vzdálenosti mezi nimi.)
+  
+  Hovořili jsou pouze o kapacitě dvou vodičů. Někdy se mluví o kapacitě jediného tělesa. Například
+  se říká, že kapacita koule s poloměrem \(R\) je \(4πϵ_0R\). Přitom se však rozumí, že druhou
+  Elektrodou je koule s nekonečně velkým poloměrem, tj. že je-li náboj \(+Q\) na naší kouli, je
+  opačný náboj \(-Q\) na nekonečné kouli. O kapacitách můžeme hovořit i tehdy, když existují tři
+  anebo víc vodičů. Diskusi o tom však zatím odložíme.
+
+  Představte si, že chceme mít kondenzátor s velmi velkou kapacitou. Velkou kapacitu bychom mohli
+  dostat, kdybychom vzali velmi velkou plochu a velmi malou vzdálenost. Mohli bychom mezi dvě
+  hliníkové fólie vložit impregnovaný papír a potom to stočit. (Kdybychom to zapustili do
+  plastického pouzdra, dostali bychom typický radiotechnický kondenzátor.) K čemu je to dobré? Hodí
+  se to k hromadění náboje. Shromažďujeme-li náboj například na povrchu koule, vzrůstá při nabíjení
+  tělesa prudce jeho potenciál. Může dokonce dosáhnout takové hodnoty, že náboj začne jiskrovým
+  výbojem unikat do vzduchu. Ale vložíme-li tentýž náboj na kondenzátor s velkou kapacitou, napětí
+  na kondenzátoru bude malé.
+
+  V elektronických obvodech je často užitečné mít něco, co může pohlcovat nebo dodávat velká
+  množství náboje bez větší změny svého potenciálu. Právě k tomu slouží kondenzátor. V mnoha
+  případech se v elektronických přístrojích a v počítačích používá také k tomu, aby na určitou změnu
+  náboje reagoval požadovanou změnou napětí. S podobným použitím jsme se seznámili v
+  \ref{fyz:IchapXXIII}. kapitole \ref{part:FYZI}. dílu při popisu vlastností rezonančních obvodů.
+
+  Z definice kapacity \(C\) vidíme, že její jednotkou je 1 coulomb/volt. Tato jednotka se nazývá
+  \textbf{farad}. Ze vztahu (\ref{fyz:eq295}) dále vidíme, že jednotku veličiny \(\varepsilon_0\) je
+  možno vyjádřit jako farad/metr.
+
+  Typické vlastnosti kondenzátorů jsou v rozmezí od jednoho pikofaradu do milifaradů. Malé
+  kondenzátory s několika pikofarady se používají ve vysokofrekvenčních ladicích obvodech a kapacity
+  až do stovek nebo tisíců mikrofaradů se vyskytují ve vysokonapěťových usměrňovačích. Pár desek s
+  plochou jeden centimetr čtvereční a mezerou jeden milimetr má kapacitu zhruba jeden pikofarad.
   
 \section{Průraz při vysokém napětí}\label{fyz:IIchapVsecXX}
+  Nyní bychom rádi kvalitativně popsali některé charakteristiky polí v okolí vodičů. Nabijeme-li
+  vodič, který nemá tvar koule, ale má hrot nebo ostrou hranu, například těleso nakreslené na obr.
+  \ref{fyz:fig167}, bude pole v okolí tohoto hrotu mnohem větší než v jiných oblastech. Důvod
+  spočívá v tom, kvalitativně řečeno, že náboje mají tendenci se co nejvíc rozestoupit po povrchu
+  vodiče a špička hrotu je od většiny povrchu tak daleko, jak je jen to možné. Část nábojů na vodiči
+  je tedy odpuzována až ke špičce. Poměrně malé množství náboje na špičce může vést k velké plošné
+  hustoty velká hustota náboje znamená silné pole v těsném sousedství.
 
   \begin{figure}[ht!]  %\ref{fyz:fig167}
     \centering
@@ -1286,6 +1331,29 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
              (\cite[s.~116]{Feynman02}).}
     \label{fyz:fig167}
   \end{figure}
+
+  Jeden způsob, jak se přesvědčit, že nejsilnější pole je v těch místech na vodiči, kde je nejmenší
+  poloměr křivosti, spočívá v analýze kombinace dvou koulí, velké a malé, spojených pomocí vodivého
+  drátu (obr. \ref{fyz:fig168}).  
+
+  Jde tak o trochu idealizovanou verzi vodivého tělesa z obr. \ref{fyz:fig167}. Drát bude mít malý
+  vliv na vnější pole; slouží pouze k tomu, aby se koule udržovaly na stejném potenciálu. Která z
+  koulí má na povrchu silnější pole? Má-li koule poloměr \(a\) a nese náboj \(Q\) je její potenciál
+  přibližně
+  \begin{equation*}
+    ϕ_1=\dfrac{1}{4πϵ_0}\dfrac{Q}{a}.
+  \end{equation*}
+  (Samozřejmě, přítomnost náboje na jedné kouli změní rozdělení náboje na druhé kouli, takže 
+  ve skutečnosti ani na jedné z nich nejsou náboje rozděleny s kulovou souměrností. Ale zajímá-li
+  vás jen odhad polí, můžeme použít vzorec pro potenciál kulového náboje.) Když menší koule, jejíž
+  poloměr je \(b\) nese náboj \(q\) je její potenciál přibližně
+  \begin{equation*}
+    ϕ_2=\dfrac{1}{4πϵ_0}\dfrac{q}{b}.
+  \end{equation*}
+  Ale \(ϕ_1=ϕ_2\), takže
+  \begin{equation*}
+    \dfrac{Q}{a}=\dfrac{q}{b}.
+  \end{equation*}
     
   \begin{figure}[ht!]  %\ref{fyz:fig168}
     \centering
@@ -1294,6 +1362,22 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
              (\cite[s.~116]{Feynman02}).}
     \label{fyz:fig168}
   \end{figure}
+
+  Na druhé straně pole při povrchu (viz vztah \ref{fyz:eq825}) je přímo úměrné
+  plošné hustotě náboje, jež je přímo úměrná celkovému náboji dělenému druhou mocninou poloměru.
+  Dostáváme, že
+  \begin{equation}\label{fyz:eq826}
+    \dfrac{E_a}{E_b}=\dfrac{Q/a^2}{q/b^2}=\dfrac{b}{a}.
+  \end{equation}
+  Z toho vyplývá, že poleje silnější při povrchu malé koule. Pole jsou nepřímo úměrná poloměrům.
+
+  Tento výsledek je velmi důležitý z technického hlediska, neboť je-li elektrické pole příliš silné,
+  dojde k průrazu vzduchu. Co se přitom stane? Náboj uvolněný někde ve vzduchu (elektron nebo ion)
+  se polem urychlí a je-li pole velmi silné, může náboj dříve, než narazí na jiný atom, nabýt
+  rychlost postačující k tomu, aby mohl z atomu vyrazit elektron. Tak vzniká více a více iontů.
+  Jejich pohyb vytváří výboj nebo jiskru. Chceme-li těleso nabít na vysoký potenciál a nedopustit
+  přitom jeho vybíjení do vzduchu, musíme zabezpečit, aby mělo hladký povrch a neexistovalo tak
+  místo, kde by bylo pole abnormálně silné.
   
 \section{Emisní mikroskop}\label{fyz:IIchapVsecXXI}
 
@@ -1303,6 +1387,15 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
     \caption{Emisní mikroskop (\cite[s.~118]{Feynman02}).}
     \label{fyz:fig169}
   \end{figure}
+
+  \begin{figure}[ht!]  %\ref{fyz:fig936}
+    \centering
+    \includegraphics[width=0.7\linewidth]{fyz_fig936.png}
+    \caption{Obraz vytvořený emisním mikroskopem (s dovolením Erwina W. Muellera, prof. fyziky na 
+            Pennsylvánské státní univerzitě) (\cite[s.~119]{Feynman02}).}
+    \label{fyz:fig936}
+  \end{figure}
+
   
 \section{Metody určování elektrostatického pole}\label{fyz:IIchapVsecXXII}
 \section{Dvojrozměrné pole jako funkce komplexní proměnné}\label{fyz:IIchapVsecXXIII}
