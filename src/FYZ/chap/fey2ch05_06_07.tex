@@ -1526,7 +1526,43 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
   \end{equation}
   kde \(U(x, y)\) a \(V(x, y)\) jsou reálné funkce. Tímto způsobem můžeme z každé komplexní funkce
   \(F(\mathfrak{z})\) můžeme odvodit dvě nové funkce \(Ux,y)\) a \(V(x,y)\). Například
-  \(F(\mathfrak{z})=\mathfrak{z}^2\) nám dává dvě funkce
+  \(F(\mathfrak{z})=\mathfrak{z}^2\) nám dává dvě 
+  \begin{align}
+    U(x,y)&=x^2−y^2,   \label{fyz:eq831}   \\
+    \shortintertext{a}
+    V(x,y)&=2xy.       \label{fyz:eq833}
+  \end{align} 
+  Nyní přicházíme k podivuhodné matematické větě, která je tak rozkošná, že její důkaz ponecháme na
+  některou z přednášek z matematiky. Je to tato věta: Pro každou „obyčejnou funkci“ (matematici ji
+  budou definovat lépe) funkce \(U\) a \(V\) automaticky splňují vztahy
+  \begin{subequations}\label{fyz:eq834}
+    \begin{align}
+      \diffp{U}{x} &=  \diffp{V}{y},       \label{fyz:eq834a}     \\
+      \diffp{V}{x} &= -\diffp{U}{y}.       \label{fyz:eq834b}     
+    \end{align}
+  \end{subequations}
+  Z toho ihned vyplývá, že každá z funkcí \(U\) a \(V\) splňuje Laplaceovu rovnici:
+  \begin{subequations}\label{fyz:eq835}
+    \begin{align}
+      \diffp[2]{U}{x} + \diffp[2]{U}{y} &=0,       \label{fyz:eq835a}     \\
+      \diffp[2]{V}{x} + \diffp[2]{V}{y} &=0.       \label{fyz:eq835b}     
+    \end{align}
+  \end{subequations}
+  Pro funkce (\ref{fyz:eq831}) a (\ref{fyz:eq833}) tyto rovnice zřejmé platí.
+
+  Vyjdeme-li tedy z jakékoliv obyčejné funkce, můžeme dospět k takovým dvěma funkcím \(U(x, y)\) a
+  \(V(x, y)\), jež jsou obě řešením Laplaceovy rovnice pro dvě proměnné. Každá funkce představuje
+  nějaký možný elektrostatický potenciál. Můžeme tedy vzít jakoukoliv funkci \(F(\mathfrak{z})\) a
+  každá by měla souviset s nějakou úlohou o elektrickém poli (vlastně se dvěma úlohami, protože jak
+  \(U\), tak i \(V\) představují nějaká řešení). Můžeme tedy napsat tolik řešení, kolik chceme -
+  pouze vymýšlením funkcí - pak už jen musíme v každém případě najít tu úlohu, o jejíž řešení jde.
+  Znamená to postup odzadu, ale možný přístup to je.
+
+  Jako příklad se podíváme, k jaké fyzice vede funkce \(F(\mathfrak{z}) = \mathfrak{z}^2 \).
+  Dostáváme z ní dvě potenciálové funkce (\ref{fyz:eq831}) a (\ref{fyz:eq833}. Abychom viděli, k
+  jaké úloze patří funkce \(U\), najdeme ekvipotenciální plochy tím, že položíme \(U=A\), kde \(A\)
+  je konstanta:
+
 
   \begin{figure}[ht!]  %\ref{fyz:fig170}
     \centering
