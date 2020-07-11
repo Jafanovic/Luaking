@@ -1497,7 +1497,7 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
   matematická metoda, zakládající se na jedné větě z teorie funkcí komplexní proměnné, kterou nyní
   popíšeme.
 
-\section{Dvojrozměrné pole jako funkce komplexní proměnné}\label{fyz:IIchapVsecXXIII}
+\twocolumn[\section{Dvojrozměrné pole jako funkce komplexní proměnné}\label{fyz:IIchapVsecXXIII}]
   Komplexní proměnná \(\mathfrak{z}\) je definována takto
   \begin{equation*}
     \mathfrak{z} = x + \imath y.
@@ -1562,59 +1562,176 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
   Dostáváme z ní dvě potenciálové funkce (\ref{fyz:eq831}) a (\ref{fyz:eq833}. Abychom viděli, k
   jaké úloze patří funkce \(U\), najdeme ekvipotenciální plochy tím, že položíme \(U=A\), kde \(A\)
   je konstanta:
-
+  \begin{equation*}
+    x^2 - y^2 = A.
+  \end{equation*}
+  Je to rovnice rovnoosé hyperboly. Pro různé hodnoty \(A\) dostáváme množinu hyperbol narýsovaných
+  na obr. \ref{fyz:fig170}. Je-li \(A = 0\), jde o degenerovaný případ na sebe navzájem kolmých
+  přímek procházejících počátkem souřadnicové soustavy.
 
   \begin{figure}[ht!]  %\ref{fyz:fig170}
     \centering
-    \includegraphics[width=0.7\linewidth]{fyz_fig170.pdf}
+    \includegraphics[width=1\linewidth]{fyz_fig170.pdf}
     \caption{Dvě soustavy ortogonálních křivek, které mohou představovat ekvipotenciální hladiny v 
              dvojrozměrné elektrostatické úloze 
              (\cite[s.~126]{Feynman02}).}
     \label{fyz:fig170}
   \end{figure}
 
+  Taková množina ekvipotenciálních ploch odpovídá několika možným fyzikálním situacím. Zaprvé,
+  představuje jemné detaily pole blízko středu mezi dvěma stejnými náboji. Zadruhé, představuje pole
+  v rohu vytvořeném dvěma na sebe kolmými vodivými rovinami. Máme-li dvě elektrody takového tvaru
+  jako na obr. \ref{fyz:fig171}, jež mají nestejné potenciály, bude pole v blízkosti rohu označeného
+  \(C\) vypadat právě tak jako pole nad počátkem souřadnicové soustavy na obr. \ref{fyz:fig170}.
+
   \begin{figure}[ht!]  %\ref{fyz:fig171}
     \centering
-    \includegraphics[width=0.7\linewidth]{fyz_fig171.pdf}
+    \includegraphics[width=0.9\linewidth]{fyz_fig171.pdf}
     \caption{Pole v blízkosti bodu \(C\) je stejn0 jako pole na obr. \ref{fyz:fig170}
              (\cite[s.~127]{Feynman02}).}
     \label{fyz:fig171}
   \end{figure}
 
+  Souvislé čáry znázorňují ekvipotenciální plochy a na ně kolmé čárkované křivky jsou siločáry pole
+  \(E\). Zatímco u hrotů nebo výčnělků elektrické pole roste, v prohlubních nebo jámách
+  \emph{slábne}.
+
+  Řešení, které jsme našli, odpovídá také poli elektrody hyperbolického tvaru blízko pravoúhlého
+  rohu nebo poli dvou hyperbol s vhodnými potenciály. Všimněme si, že pole na obr. \ref{fyz:fig170}.
+  má zajímavou vlastnost. Jeho \(x\)-ovou složku \(E_x\) vyjadřuje vztah
+  \begin{equation*}
+    E_x = - \diffp{\varphi}{x} = -2x
+  \end{equation*}
+
   \begin{figure}[ht!]  %\ref{fyz:fig172}
     \centering
-    \includegraphics[width=0.7\linewidth]{fyz_fig172.pdf}
+    \includegraphics[width=0.9\linewidth]{fyz_fig172.pdf}
     \caption{Pole kvadrupólové čočky (\cite[s.~127]{Feynman02}).}
     \label{fyz:fig172}
   \end{figure}
 
+  Elektrické pole je přímo úměrné vzdálenosti od osy. Tato skutečnost je využívána na výrobu
+  zařízení (nazvaných kvadrupólové čočky), které se uplatňují při soustřeďování svazků částic do
+  ohniska (viz článek \ref{fyz:IIchapXXIXsecVII}). Potřebné poleje obvykle vytvořeno pomocí čtyř
+  elektrod hyperbolického tvaru tak, jak ukazuje obr. \ref{fyz:fig172}. Co se týče siločar
+  elektrického pole ukázaných na obr. \ref{fyz:fig172}, prostě jsme z obr. \ref{fyz:fig170}
+  okopírovali množinu čárkovaných křivek, jimž přísluší \(V=\text{konst}\). Dostali jsme je docela
+  zadarmo.
+
+  Z rovnic (\ref{fyz:eq835a}) a (\ref{fyz:eq835b}) vyplývá, že křivky pro \(V=\text{konst}\) jsou
+  kolmé na křivky pro \(U= \text{konst}\).
+  
+  Jakmile zvolíme funkci \(F(\mathfrak{z})\), z \(U\) a \(V\) dostaneme jak ekvipotenciální plochy,
+  tak i siločáry. Teď už budeme vědět, že jsme řešili jednu ze dvou úloh, podle toho, jakou množinu
+  křivek vezmeme jako ekvipotenciální plochy.
+
+  Jako druhý příklad uvažujme funkci
+  \begin{equation}\label{fyz:eq836}
+    F(\mathfrak{z}) = \sqrt{\mathfrak{z}}.
+  \end{equation}
+  Píšeme-li \(\mathfrak{z} = x + \imath y = \varrho e^{\imath\vartheta}\) kde \(\varrho = \sqrt{x^2
+  + y^2}\) a \(\tan\vartheta = y/x\), máme
+  \begin{equation*}
+    F(\mathfrak{z}) = ρ^{\frac{1}{2}}e^{\imath\frac{θ}{2}} 
+                    = ρ^\frac{1}{2}\left(\cos\dfrac{θ}{2}+\imath\sin\dfrac{θ}{2}\right),
+  \end{equation*}
+  odkud
+  \begin{equation}\label{fyz:eq837}
+    F(\mathfrak{z})=\left[\dfrac{(x^2 + y^2)^\frac{1}{2} + x}{2}\right]^\frac{1}{2} 
+            + \imath\left[\dfrac{(x^2 + y^2)^\frac{1}{2} − x}{2}\right]^\frac{1}{2}.
+  \end{equation}
+
   \begin{figure}[ht!]  %\ref{fyz:fig173}
     \centering
-    \includegraphics[width=0.7\linewidth]{fyz_fig173.pdf}
+    \includegraphics[width=0.9\linewidth]{fyz_fig173.pdf}
     \caption{Křivky konstantních hodnot \(U(x, y)\) a \(V(x, y)\) ze vztahu **
              (\cite[s.~128]{Feynman02}).}
     \label{fyz:fig173}
   \end{figure}
 
+  Na obr. \ref{fyz:fig173} jsou nakresleny křivky pro \(U(x,y)=A\) a \(V(x,y) = B\), přičemž \(U\)
+  a \(V\) jsou určeny pravou stranou vztahu (\ref{fyz:eq837}). Opět existuje mnoho možných situací,
+  které lze těmito poli popsat. Jednou z nejzajímavějších je pole v blízkosti okraje tenké desky.
+  Představuje-li přímka \(B = 0\), vpravo od osy \(y\), tenkou nabitou desku, siločáry v její
+  blízkosti jsou dány křivkami pro různé hodnoty \(A\). Tuto fyzikální situaci ukazuje obr.
+  \ref{fyz:fig174}.
+
   \begin{figure}[ht!]  %\ref{fyz:fig174}
     \centering
-    \includegraphics[width=0.7\linewidth]{fyz_fig174.pdf}
+    \includegraphics[width=0.8\linewidth]{fyz_fig174.pdf}
     \caption{Elektrické pole při okraji tenké uzemněné desky
              (\cite[s.~128]{Feynman02}).}
     \label{fyz:fig174}
   \end{figure}
-  
-\section{Kmity v plazmatu}\label{fyz:IIchapVsecXXIV}
 
+  Další příklady jsou
+  \begin{equation}\label{fyz:eq838}
+    F(\mathfrak{z}) = \mathfrak{z}^\frac{3}{2},
+  \end{equation}
+  která dává pole na \emph{vnější} straně pravoúhlého rohu,
+  \begin{equation}\label{fyz:eq839}
+    F(\mathfrak{z}) = \log\mathfrak{z},
+  \end{equation}
+  jež dává pole nabité přímky a
+  \begin{equation}\label{fyz:eq840}
+    F(\mathfrak{z}) = \dfrac{1}{\mathfrak{z}},
+  \end{equation}
+  které odpovídá poli dvojrozměrného analogu elektrického dipólu, tj. dvou rovnoběžných opačně
+  nabitých přímek nacházejících se velmi blízko u sebe. Musíme pouze zdůraznit, že ačkoliv je metoda
+  komplexní proměnné velmi často účinná, je omezena pouze na dvojrozměrné úlohy; kromě toho jde o
+  metodu nepřímou.
+  
+\section{Kmity v plazmatu}\label{fyz:IIchapVsecXXIV} 
+  Nyní se budeme zabývat některými fyzikálními situacemi, v nichž pole není určeno ani pevnými
+  náboji, ani náboji na vodivých plochách, ale kombinací obou faktorů. Jinými slovy, pole se bude
+  chovat současně podle dvou soustav rovnic:
+  \begin{enumerate}
+    \item Rovnice elektrostatiky, jež uvádějí do vztahu elektrická pole s rozdělením nábojů.
+    \item Rovnice z jiné části fyziky, určující polohy nebo pohyby nábojů v poli.
+  \end{enumerate}
+
+  První příklad, o kterém budeme hovořit, je dynamický. Pohyb nábojů je v něm řízen Newtonovými
+  zákony. Jednoduchý příklad takové situace se vyskytuje v plazmatu, ionizovaném plynu skládajícím
+  se z iontů a volných elektronů rozložených v nějaké oblasti v prostoru. Příkladem takového
+  plazmatu je vrchní vrstva atmosféry, ionosféra. Ultrafialové záření ze Slunce vyráží z molekul
+  vzduchu elektrony a vytváří volné elektrony a ionty. V takovém plazmatu jsou kladné ionty mnohem
+  těžší než elektrony, takže v porovnání s pohybem elektronů můžeme pohyb iontů zanedbat
+  
   \begin{figure}[ht!]  %\ref{fyz:fig175}
     \centering
-    \includegraphics[width=0.7\linewidth]{fyz_fig175.pdf}
+    \includegraphics[width=0.9\linewidth]{fyz_fig175.pdf}
     \caption{Pohyb při vlnění v plazmatu. Elektrony v rovině \(a\) se posunou do \(a'\) a 
              elektrony v \(b\) do \(b'\)
              (\cite[s.~130]{Feynman02}).}
     \label{fyz:fig175}
   \end{figure}
-  
+
+  Nechť \(n_0\) je hustota elektronů v neporušeném, rovnovážném stavu. Stejná musí být i hustota
+  kladných iontů, neboť plazma je elektricky neutrální (v neporušeném stavu). Nyní předpokládejme,
+  že elektrony se ze svých rovnovážných poloh nějak pohnuly, a zkoumejme, co se stane. Vzroste-li v
+  některé oblasti hustota elektronů, budou se vzájemně odpuzovat se snahou vrátit se do svých
+  rovnovážných poloh. Při pohybu do původních poloh jejich kinetická energie vzrůstá a místo aby se
+  ve své rovnovážné konfiguraci zastavily, budou se pohybovat dál. Budou okolo ní kmitat na jednu i
+  na druhou stranu. Situace je podobná jako u zvukových vln, kde zpětnou silou je tlak plynu. V
+  případě plazmatu je zpětnou silou elektrická síla působící na elektrony.
+
+  Abychom naše úvahy zjednodušili, budeme se zajímat pouze o případ, kdy jsou všechny pohyby
+  orientovány v jednom směru, dejme tomu ve směru osy \(x\). Předpokládejme, že elektrony,
+  nacházející se původně v bodě \(x\) jsou v čase \(t\) posunuté ze svých rovnovážných poloh o malou
+  vzdálenost \(s(x, t)\). Protože elektrony se posunuly, jejich hustota se obecně změnila. Změnu
+  hustoty lze snadno vypočítat. Všimneme-li si obr. \ref{fyz:fig175}, vidíme, že elektrony,
+  nacházející se původně mezi dvěma rovinami \(a\), \(b\), se posunuly a nyní jsou v prostoru mezi
+  rovinami \(a'\), \(b'\). Počet elektronů, které se nacházely mezi \(a\), \(b\) je přímo úměrný
+  hodnotě \(n_0\Delta x\) tentýž počet nyní zabírá úsek, jehož šířka je \(\Delta x + \Delta s\).
+  Hustota se tedy změnila na hodnotu
+  \begin{equation}\label{fyz:eq841}
+    n=\dfrac{n_0Δx}{Δx+Δs}=\dfrac{n_0}{1+(Δs/Δx)}.
+  \end{equation}
+  Je-li změna hustoty malá, můžeme psát (rozvineme-li \((1 + \varepsilon)^{-1}\) do binomické řady)
+  \begin{equation}\label{fyz:eq842}
+    n=n_0\left(1−\dfrac{Δs}{Δx}\right)
+  \end{equation}
+
 \section{Koloidní částice v elektrolytu}\label{fyz:IIchapVsecXXV}
 
   \begin{figure}[ht!]  %\ref{fyz:fig176}
