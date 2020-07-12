@@ -1731,8 +1731,146 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
   \begin{equation}\label{fyz:eq842}
     n=n_0\left(1−\dfrac{Δs}{Δx}\right)
   \end{equation}
+  Předpokládáme, že kladné ionty se významněji nepohnou (v důsledku jejich mnohem větší
+  setrvačnosti), takže jejich hustota zůstává \(n_0\). Každý elektron nese náboj - \(q_e\) takže
+  střední hustotu náboje v kterémkoli bodě vyjadřuje vztah
+  \begin{align}
+    ρ&=−(n−n_0)q_e,        \nonumber\\
+    \shortintertext{resp.}
+    ρ&=n_0q_e\diff{s}{x}   \label{fyz:eq843}
+  \end{align}
+  (kde \(\Delta S/\Delta t\) jsme napsali v diferenciálním tvaru).
+
+  Hustota náboje souvisí s elektrickým polem podle Maxwellových rovnic. Tedy
+  \begin{equation}\label{fyz:eq844}
+    \nabla\cdot\vec{E} = \dfrac{ρ}{\varepsilon_0}
+  \end{equation}
+  Jde-li opravdu o jednorozměrný problém (a nejsou-li žádná jiná pole kromě toho, jež bylo vyvoláno
+  posunem elektronů), elektrické pole \(\vec{E}\) má jedinou složku \(E_x\). Po dosazení
+  (\ref{fyz:eq843}) do rovnice (\ref{fyz:eq844}) pak dostaneme
+  \begin{align}
+    \diffp{E_x}{x} &= \dfrac{n_0q_e}{ϵ_0}\diffp{s}{x}.   \label{fyz:eq845}  \\
+    \shortintertext{Integrováním \ref{fyz:eq845} najdeme}
+    E_x            &=\dfrac{n_0q_e}{ϵ_0}s+K.             \label{fyz:eq846} 
+  \end{align}
+  Je-li \(S = 0\), pak \(E_x =0\) a integrační konstanta \(K\) je tedy rovna nule. 
+  
+  V posunuté poloze působí na elektron síla
+  \begin{equation}\label{fyz:eq847} 
+    F_x=−\dfrac{n_0q^2_e}{ϵ_0}s.
+  \end{equation}
+  Jde tedy o zpětnou sílu přímo úměrnou posunutí s elektronu. To vede k harmonickým kmitům
+  elektronů. Pohybová rovnice posunutého elektronu je
+  \begin{equation}\label{fyz:eq848} 
+    m_e\diff[2]{s}{t} = −\dfrac{n_0q^2_e}{ϵ_0}s.
+  \end{equation}
+  Vidíme, že \(s\) se bude měnit harmonicky. Závislost \(s\) na čase bude udávat funkce \(\cos\omega
+  t\) nebo použijeme-li exponenciální symboliku z \ref{part:FYZI}. dílu, funkce
+  \begin{equation*}
+  e^{\imath ω_pt}.
+  \end{equation*}
+  Úhlovou frekvenci kmitů \(ω_p\) určuje rovnice (\ref{fyz:eq848}), podle níž
+  \begin{equation}\label{fyz:eq849} 
+  ω^2_p=\dfrac{n_0q^2_e}{ϵ_0m_e},
+  \end{equation}
+  Veličina \(ω_p\) se nazývá \textbf{elektronová plazmová úhlováf rekvence}. Jde o charakteristickou
+  hodnotu pro plazma.
+
+  Příslušné veličiny jsou často vyjadřovány pomocí veličiny \(e^2\) definované takto:
+  \begin{equation}\label{fyz:eq850} 
+    e^2=\dfrac{q^2_e}{4πϵ_0}=\SI{2.3068e-28}{\newton\square\m}.
+  \end{equation}
+  V této konvenci bude mít vztah (\ref{fyz:eq849}) tvar
+  \begin{equation}\label{fyz:eq851} 
+    ω^2_p=\dfrac{4πe^2n_0}{m_e},
+  \end{equation}
+
+  Tak jsme zjistili, že porucha plazmatu vyvolá volné kmity elektronů kolem jejich rovnovážných
+  poloh s vlastní úhlovou frekvencí \(ω_p\), která je přímo úměrná odmocnině hustoty elektronů.
+  Elektrony se v plazmatu chovají jako rezonanční soustava podobná soustavám popsaným v
+  \ref{fyz:IchapXXIII}. kapitole \ref{part:FYZI}. dílu.
+
+  Vlastní rezonance plazmatu vede k některým zajímavým efektům. Například při šíření rádiových vln
+  ionosférou se zjišťuje, že mohou procházet pouze tehdy, je-li jejich frekvence vyšší než frekvence
+  plazmová. V opačném případě se signál odrazí zpět. Chceme-li komunikovat s družicí ve vesmíru,
+  musíme použít vysoké frekvence. Ale když chceme komunikovat s radiostanicí za obzorem, musíme
+  použít nižší frekvence kmitů v plazmatu, aby se signál odrazil zpět k zemi. 
+  
+  Jiný zajímavý příklad kmitů v plazmatu se vyskytuje v kovech. Kov obsahuje plazma kladných iontů a
+  volných elektronů. Hustota \(n_0\) je tam velmi velká, a velká je tedy i úhlová frekvence\(ω_p\).
+  Naproti tomu lze kmity elektronů ještě pozorovat. Podle kvantové mechaniky má harmonický oscilátor
+  s vlastní úhlovou frekvencí \(ω_p\) hladiny energie vzdálené od sebe o přírůstek \(ℏω_p\).
+  Ostřeluje-li se tedy elektrony řekněme hliníková fólie a velmi pečlivě se měří energie elektronů
+  za ní, lze čekat, že v důsledku kmitů v plazmatu ztratí některé z elektronů energii \(ℏω_p\). To
+  se skutečně stává. Roku 1936 se poprvé experimentálně pozorovalo, že elektrony s energiemi od
+  několika set do několika tisíců elektronvoltů ztrácejí při rozptylu na tenké kovové fólii nebo při
+  průchodu skrz ní energii skokem. Tento jev byl objasněn až r. 1953, když Bohm a Pines ukázali,
+  že pozorování je možné vysvětlit kvantovým buzením kmitů v plazmatu kovu.
 
 \section{Koloidní částice v elektrolytu}\label{fyz:IIchapVsecXXV}
+  Přikročíme k dalšímu jevu, v němž polohy nábojů určuje potenciál, vytvořený částečně týmiž náboji.
+  Efekty, které z toho vyplývají, důležitým způsobem ovlivňují chování koloidů. Koloid představuje
+  vodní suspenzi malých nabitých částic, jež, ačkoliv jsou mikroskopické, jsou ve srovnání s atomy
+  velmi velké. Kdyby koloidní částice nebyly nabité, jevily by tendenci srážet se do velkých celků;
+  působením svých nábojů se navzájem odpuzují a zůstávají ve formě suspenze.
+
+  Je-li kromě toho ve vodě rozpuštěna ještě nějaká sůl, bude disociována na kladné a záporné ionty.
+  (Takový roztok se nazývá elektrolyt.) Záporné ionty se přitahují ke koloidním částicím (o nichž
+  předpokládáme, že mají kladný náboj) a kladné ionty jsou jim i odpuzovány. Budeme zkoumat, jak
+  jsou ionty obklopující takovou koloidní částici rozděleny v prostoru.
+
+  Pro jednoduchost budeme opět řešit pouze jednorozměrný případ. Představíme-li si koloidní částici
+  jako kouli s velmi velkým poloměrem (v rozměrech atomů!), můžeme malou část jejího povrchu
+  považovat za rovinu. (Vždy, když se někdo snaží pochopit nový jev, je dobré zkoumat snad až trochu
+  přehnaně zjednodušený model jevu; po pochopení problému s tímto modelem je člověk lépe připraven
+  pustit se do exaktnějšího výpočtu.)
+
+  Předpokládáme, že rozdělení iontů generuje hustotu náboje \(ρ(x)\) a elektrický potenciál \(ϕ\),
+  souvisící podle elektrostatického zákona \(∇^2ϕ=−ρ/ϵ_0\), anebo v případě polí, která se mění
+  pouze v jednom rozměru, podle vztahu
+  \begin{equation}\label{fyz:eq852}
+    \diff[2]{ϕ}{x} = −\dfrac{ρ}{ϵ_0}.
+  \end{equation}
+
+  Nyní předpokládejme takový potenciál a ptejme se, jak by se v něm ionty rozdělily. Určit to můžeme
+  na základě principů statistické mechaniky. Náš problém spočívá v určení \(ϕ(x)\) tak, aby výsledná
+  hustota náboje ze statistické mechaniky vyhovovala i vztahu (\ref{fyz:eq852}).
+
+  Podle statistické mechaniky (viz kapitola \ref{fyz:IchapXL}, díl \ref{part:FYZI} jsou částice
+  nacházející se v tepelné rovnováze v silovém poli rozděleny tak, že jejich hustotu \(n\) v poloze
+  \(x\) vyjadřuje vztah
+  \begin{equation}
+    n(x)=n_0e^{−U(x)/kT},
+  \end{equation}
+  kde \(U(x)\) je potenciální energie, \(k\) Boltzmannova konstanta a \(T\) absolutní teplota.
+  
+  Předpokládáme, že ionty nesou po jednom elektronovém náboji \(q_e\), ať už kladném nebo záporném.
+  Ve vzdálenosti \(x\) od povrchu koloidní částice bude mít kladný ion potenciální energii
+  \(q_eϕ(x)\), takže
+  \begin{equation*}
+    U(x)=q_eϕ(x).
+  \end{equation*}
+
+  \begin{equation*}
+    n_+(x)=n_0e^{−q_eϕ(x)/kT}.
+  \end{equation*}
+
+  \begin{equation*}
+    n_−(x)=n_0e^{+q_eϕ(x)/kT}.
+  \end{equation*}
+
+  \begin{equation*}
+    ρ=q_en_+ −qen−,
+  \end{equation*}
+
+  \begin{equation}\label{fyz:eq853}
+    
+  \end{equation}
+
+  \begin{equation}\label{fyz:eq854}
+    
+  \end{equation}
+
 
   \begin{figure}[ht!]  %\ref{fyz:fig176}
     \centering
