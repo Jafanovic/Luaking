@@ -1850,27 +1850,54 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
   \begin{equation*}
     U(x)=q_eϕ(x).
   \end{equation*}
-
+  Hustota kladných iontů \(n_+\) je potom
   \begin{equation*}
     n_+(x)=n_0e^{−q_eϕ(x)/kT}.
   \end{equation*}
-
+  Podobně je vyjádřena hustota záporných iontů
   \begin{equation*}
     n_−(x)=n_0e^{+q_eϕ(x)/kT}.
   \end{equation*}
-
+  Celková hustota náboje je
   \begin{equation*}
     ρ=q_en_+ −qen−,
   \end{equation*}
-
+  resp.
   \begin{equation}\label{fyz:eq853}
-    
+    ρ=q_en_0\left(e^{−q_eϕ/kT}−e^{+q_eϕ/kT}\right).
   \end{equation}
-
+  Dosazením tohoto výrazu do (\ref{fyz:eq852}) dostaneme, že potenciál \(ϕ\) musí splňovat rovnici
   \begin{equation}\label{fyz:eq854}
-    
+    \diff[2]{ϕ}{x} =−\dfrac{q_en_0}{ϵ_0}\left(e^{−q_eϕ/kT}−e^{+q_eϕ/kT}\right).
   \end{equation}
-
+  Tuto rovnici je možné snadno řešit obecně (obě strany vynásobte výrazem \(2(\diff{ϕ}{x})\) a pak
+  integrujte podle \(x\)), ale abychom úlohu co nejvíc zjednodušili, budeme uvažovat pouze limitní
+  případ, v němž jsou potenciály malé, nebo teplota \(T\) je vysoká. Případ malého \(ϕ\) odpovídá
+  zředěnému roztoku. V těchto případech je exponent malý a můžeme provést aproximaci
+  \begin{equation}\label{fyz:eq855}
+    e^{±q_eϕ/kT}=1±\dfrac{q_e}{kT}ϕ.
+  \end{equation}
+  Rovnice (\ref{fyz:eq854}) má potom tvar
+  \begin{equation}\label{fyz:eq856}
+    \diff[2]{ϕ}{x}=+\dfrac{2n_0q^2_e}{ϵ_0kT}ϕ(x).
+  \end{equation}
+  Všimněme si, že pravá strana má tentokrát kladné znaménko. Rovnice tedy nemá oscilující, ale 
+  exponenciální řešení pro \(ϕ\).
+  
+  Obecné řešení rovnice (\ref{fyz:eq856}) má tvar
+  \begin{equation}\label{fyz:eq857}
+    ϕ=Ae^{−x/D}+Be^{+x/D},
+  \end{equation}
+  kde
+  \begin{equation}\label{fyz:eq858}
+    D^2=\dfrac{ϵ_0kT}{2n_0q^2_e}.
+  \end{equation}
+  Konstanty \(A\) a \(B\) je třeba určit z podmínek úlohy. V našem případě \(B\) musí být rovno
+  nule; jinak by pro velké \(x\) potenciál rostl do nekonečna. Bude tedy
+  \begin{equation}\label{fyz:eq859}
+    ϕ=Ae^{−x/D},
+  \end{equation}
+  kde \(A\) je potenciál v poloze \(x = 0\), tj. na povrchu koloidní částice.
 
   \begin{figure}[ht!]  %\ref{fyz:fig176}
     \centering
@@ -1879,6 +1906,17 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
              (\cite[s.~134]{Feynman02}).}
     \label{fyz:fig176}
   \end{figure}
+
+  Při zvětšení vzdálenosti o \(D\) se potenciál zmenší v poměru \(1/e\), jak je vidět z grafu na
+  obr. \ref{fyz:fig176}. Veličina \(D\) se nazývá \textbf{Debyeova délka}. Je mírou tloušťky
+  iontového obalu, jenž obklopuje velkou nabitou částici v elektrolytu. Podle vztahu
+  (\ref{fyz:eq859}) se obal ztenčuje, když koncentrace iontů \(n_0\) vzrůstá nebo teplota klesá.
+
+  Konstantu \(A\) ve vztahu (\ref{fyz:eq859}) snadno určíme, známe-li \(σ\) plošný náboj na povrchu
+  koloidní částice. Víme, že
+  \begin{equation}\label{fyz:eq860}
+    E_n=E_x(0)=\dfrac{σ}{ϵ_0}.
+  \end{equation}
   
 \section{Elektrostatické pole mřížky}\label{fyz:IIchapVsecXXVI}
 
