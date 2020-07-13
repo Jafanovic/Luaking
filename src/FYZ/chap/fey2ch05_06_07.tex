@@ -1917,8 +1917,54 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
   \begin{equation}\label{fyz:eq860}
     E_n=E_x(0)=\dfrac{σ}{ϵ_0}.
   \end{equation}
-  
-\section{Elektrostatické pole mřížky}\label{fyz:IIchapVsecXXVI}
+  Ale \(\vec{E}\) je i gradientem \(ϕ\).
+  \begin{equation}\label{fyz:eq861}
+    E_x(0)=−\left.\diffp{ϕ}{x}\right\rvert_0=+\dfrac{A}{D},
+  \end{equation}
+  z čehož dostáváme, že
+  \begin{equation}\label{fyz:eq862}
+    A=\dfrac{σD}{ϵ_0}.
+  \end{equation}
+  Dosadíme-li tento výsledek do (\ref{fyz:eq859}), najdeme (při \(x=0\)) výraz pro potenciál
+  koloidní částice:
+  \begin{equation}\label{fyz:eq863}
+    ϕ(0)=\dfrac{σD}{ϵ_0}.
+  \end{equation}
+  Všimněme si, že je to stejný vztah jako pro rozdíl potenciálu na deskách rovinného kondenzátoru se
+  vzájemnou vzdáleností desek \(D\) a plošnou hustotou náboje \(σ\).
+ 
+  Řekli jsme, že koloidní částice jsou jedna od druhé separovány v důsledku jejich elektrického
+  odpuzování. Nyní však vidíme, že už v malé vzdálenosti od povrchu částice je pole zeslabeno
+  iontovým obalem, jenž ji obklopuje. Stanou-li se obaly dostatečné tenkými, budou mít částice
+  dobrou šanci se srazit - potom splynou a koloid se z kapaliny vysráží. Z naší analýzy je jasné,
+  proč by přidání dostatečného množství soli do koloidu způsobilo jeho vysrážení. Tento proces se
+  nazývá vysolování koloidu.
+
+  Jiným zajímavým příkladem je účinek, který má roztok soli na proteinové molekuly. Molekula
+  proteinu představuje dlouhý, složitý a ohybný řetězec aminokyselin. Nese různé náboje a někdy se
+  stává, že existuje výsledný, řekněme záporný náboj, který je rozdělen podél řetězce. V důsledku
+  vzájemného odpuzování záporných nábojů zůstane proteinový řetězec napnutý. Kromě toho, nachází-li
+  se v roztoku jiné podobné řetězové molekuly, budou týmiž odpudivými účinky udržovány navzájem
+  odděleny. To umožňuje existenci suspenze řetězových molekul v kapalině. Ale přidáme-li do kapaliny
+  sůl, vlastnosti suspenze změníme. Po přidání soli do roztoku a tím vyvolaném zmenšení Debyeovy
+  délky řetězové molekuly se mohou jedna ke druhé přiblížit a mohou se také svinout. Přidá-li se do
+  roztoku dostatek soli, řetězové molekuly se z roztoku vysrážejí. Existuje mnoho chemických jevů
+  tohoto druhu, které lze pochopit na základě elektrických sil.
+
+\section{Elektrostatické pole mřížky}\label{fyz:IIchapVsecXXVI} 
+  Jako náš poslední příklad bychom rádi vysvětlili ještě jednu zajímavou vlastnost elektrických
+  polí. Je to vlastnost, jež se využívá při návrhu elektrických přístrojů, při konstrukci elektronek
+  a pro jiné účely. Jde o charakter elektrického pole blízko mřížky z nabitých drátů. Abychom úlohu
+  co nejvíc zjednodušili, uvažujme o řadě rovnoběžných drátů ležících v rovině. Dráty, nechť jsou
+  nekonečně dlouhé a jeden od druhého stejně vzdálené.
+
+  Prozkoumáme-li pole ve velké vzdálenosti nad rovinou drátů, zjistíme, že jde o konstantní
+  elektrické pole právě takové, jako kdyby náboj byl v rovině rozdělen rovnoměrně. Při přibližování
+  k mřížce se charakter pole začíná odchylovat od homogennosti, kterou jsme zjistili ve velké
+  vzdálenosti od mřížky. Chtěli bychom vypočítat, v jaké vzdálenosti od mřížky se objeví větší
+  výkyvy potenciálu. Obrázek \ref{fyz:fig177} představuje hrubý náčrt ekvipotenciálních ploch v
+  různých vzdálenostech od mřížky. Čím blíž jsme k mřížce, tím jsou výkyvy větší. Pohybujeme-li se
+  rovnoběžně s mřížkou, pozorujeme, že pole kolísá periodicky.
 
   \begin{figure}[ht!]  %\ref{fyz:fig177}
     \centering
@@ -1928,10 +1974,55 @@ gradientem potenciálu \cite[s.~82]{Feynman02}.
     \label{fyz:fig177}
   \end{figure}
 
+  Viděli jsme (kapitola \ref{fyz:IchapL}, díl \ref{part:FYZI}), že každou periodickou veličinu je
+  možné vyjádřit jako součet sinusových vln (Fourierova věta). Podívejme se, zdaje možno najít
+  vhodnou harmonickou funkci, která splňuje rovnice pole.
+
+  Jsou-li dráty umístěny v rovině \(xy\) rovnoběžně s osou \(y\), mohli bychom zkusit členy tvaru
+  \begin{equation}\label{fyz:eq864}
+    ϕ(x,z)=F_n(z)\cos\dfrac{2πnx}{a},
+  \end{equation}
+  kde \(a\) je mezera mezi dráty a \(n\) je řád harmonické. (Předpokládali jsme dlouhé dráty, takže
+  by se neměla projevit žádná závislost na \(y\).) Úplné řešení lze napsat jako suma takových členů
+  pro \(n= 1,2,3,\ldots\)
+
+  Má-li jít o platný potenciál, musí v oblasti nad dráty (kde nejsou žádné náboje) splňovat
+  Laplaceovu rovnici, tj. musí být
+  \begin{equation}\label{fyz:eq864}
+    \diffp[2]{ϕ}{x} + \diffp[2]{ϕ}{z} = 0. 
+  \end{equation}
+  Když do této rovnice dosadíme výraz (\ref{fyz:eq864}), zjistíme, že
+  \begin{equation}\label{fyz:eq865}
+    −\dfrac{4π^2n^2}{a^2}F_n(z)\cos\dfrac{2πnx}{a}+\diff[2]{F_n}{z}\cos\dfrac{2πnx}{a}=0, 
+  \end{equation}
+  tj. \(F_n(x)\) že musí vyhovovat rovnici
+  \begin{equation}\label{fyz:eq866}
+    \diff[2]{F_n}{z}= \dfrac{4π^2n^2}{a^2}F_n.
+  \end{equation}
+  Musí tedy platit
   \begin{equation}\label{fyz:eq800} 
     F_n=A_ne^{−z/z_0},
   \end{equation}
-
-\todo[inline]{Kapitola fey2ch05\_06\_07 není dokončena}
-%} %tikzset
-%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  kde
+  \begin{equation}\label{fyz:eq867}
+    z_0=\dfrac{a}{2πn}.
+  \end{equation}  
+  Zjistili jsme tedy, že existuje-li Fourierova složka pole s \(n\)-tou harmonickou, bude se s
+  výškou nad mřížkou exponenciálně zmenšovat s charakteristickou vzdáleností \(z_0=a/2πn\).
+  Amplituda první harmonické (\(n=l\)) se zmenší \(e^{−2π}\)-krát při vzrůstu \(z\) o jednu
+  mřížkovou konstantu \(a\) (prudký pokles). Další harmonické klesají při vzdalování od mřížky ještě
+  rychleji. Vidíme, že jsme-li jen několik vzdáleností \(a\) od mřížky, je pole téměř homogenní, tj.
+  oscilující členy jsou malé. Vždy tam, samozřejmě, zůstane pole nulové harmonické
+  \begin{equation*}
+    ϕ_0=−E_0z
+  \end{equation*}
+  které přechází v homogenní pole při velkém \(z\). Úplné řešení dostaneme vypočítáním tohoto členu
+  se sumou členů tvaru (\ref{fyz:eq864}), přičemž \(F_n\) se vezme ze vztahu (\ref{fyz:eq800} ).
+  Koeficienty \(A_n\) jsou zvoleny tak, aby výsledná suma po zderivování dala elektrické pole, které
+  odpovídá hustotě náboje rna drátech tvořících mřížku.
+  
+  Touto námi právě vypracovanou metodou lze vysvětlit, proč elektrostatické stínění pomocí sítě je
+  často stejně dobré jako stínění pomocí souvislého kovového plechu. Pole uvnitř uzavřené sítě bude
+  nulové s výjimkou takových míst, jejichž vzdálenosti od sítě nepřevyšují několik mezer mezi jejími
+  dráty. Nyní vidíme, proč se na ochranu citlivého elektrického zařízení před vnějšími rušivými poli
+  často používá měděná síť - je lehčí a levnější než měděný plech.
