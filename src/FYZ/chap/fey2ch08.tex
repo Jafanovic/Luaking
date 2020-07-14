@@ -202,6 +202,25 @@
     \begin{equation*}
       Q=σS,
     \end{equation*}
+    vztah (\ref{fyz:eq884}) lze přepsat takto:
+    \begin{equation*}
+      F=\dfrac{1}{2}Q\dfrac{σ}{ϵ_0}.
+    \end{equation*}
+    Protože intenzita elektrického pole mezi deskami je
+    \begin{equation*}
+      E_0=\dfrac{σ}{ϵ_0},
+    \end{equation*}
+    máme
+    \begin{equation}\label{fyz:eq885}
+      F=\dfrac{1}{2}QE_0.
+    \end{equation}
+
+    Ihned bylo možné se dovtípit, že síla působící na jednu desku je rovna součinu náboje \(Q\) na
+    desce a intenzity pole působícího na náboj. Dostali jsme však překvapující součinitel \(1/2\).
+    Příčina spočívá v tom, že \(E_0\) není ta intenzita pole, která je v místě, kde jsou náboje.
+    Když si představíme, že náboj zabírá tenkou vrstvu na povrchu desky, jak to znázorňuje obr.
+    \ref{fyz:fig181}, intenzita pole se bude měnit od nuly na vnitřním okraji vrstvy do \(E_0\) v
+    prostoru mimo desku.
     
     \begin{figure}[ht!]  %\ref{fyz:fig181}
       \centering
@@ -211,17 +230,66 @@
               \frac{\sigma}{\varepsilon_0}\) (\cite[s.~145]{Feynman02}).}
       \label{fyz:fig181}
     \end{figure}
-    
-  \section{Elektrostatická energie iontového krystalu}\label{fyz:IIchapVIsecIII}
 
+    Střední intenzita působící na náboje je \(E_0/2\). To je důvod, proč ve vztahu (\ref{fyz:eq885})
+    vystupuje součinitel \(1/2\).
+
+    Je nutné, abychom si všimli, že při výpočtu virtuální práce jsme předpokládali, že náboj na
+    kondenzátoru je stálý, tj. že kondenzátor není elektricky připojen k jiným tělesům, a tak se
+    celkový náboj nemůže měnit. 
+    
+    Předpokládejme, že po dobu virtuálního přemístění by se kondenzátor udržoval na stálém rozdílu
+    potenciálů. V tom případě bychom měli použít vztah
+    \begin{equation*}
+      W = \dfrac{1}{2}CU^2.
+    \end{equation*}
+    a místo (\ref{fyz:eq882}) bychom dostali
+    \begin{equation*}
+      FΔz=\dfrac{1}{2}U^2ΔC,
+    \end{equation*}
+    z čehož vyplývá stejně velká síla jako ze vztahu (\ref{fyz:eq882}) (neboť \(U= Q/C\)), ale s
+    opačným znaménkem. Tím, že jsme kondenzátor odpojili od nabíjecího zdroje, síla mezi jeho
+    elektrodami zajisté nezmění znaménko. Kromě toho víme, že dvě elektrody s opačnými elektrickými
+    náboji se musí přitahovat. V druhém případě však byl princip virtuální práce použit nekorektně -
+    nevzali jsme v úvahu virtuální práci vykonanou nabíjecím zdrojem. Aby se totiž při změně
+    kapacity udržel stejný potenciál \(U\), je nutné, aby zdroj dodal náboj \(U\Delta C\). Tento
+    náboj je však dodáván při potenciálu \(U\), takže práce konaná elektrickým systémem udržujícím
+    neměnný potenciál, je \(U^2\Delta C\). Mechanická práce \(F\Delta z\) \emph{plus} elektrická
+    práce \(U^2\Delta C\) spolu dávají změnu celkové energie kondenzátoru rovnou —
+    \(\frac{1}{}U^2\Delta C\). Proto \(FΔz=−\frac{1}{2}V^2ΔC\) stejně jako předtím.
+    
+  \section{Elektrostatická energie iontového krystalu}\label{fyz:IIchapVIsecIII} 
+  
+    Nyní se zabývejme využitím pojmu elektrostatické energie v atomové fyzice. Síly mezi atomy nelze
+    méřit snadno, ale často nás zajímají rozdíly energie mezi dvěma konfiguracemi atomů, např.
+    energie chemických změn. Protože atomové síly jsou v podstatě elektrickými silami, chemické
+    energie jsou z velké části právě elektrostatickými energiemi.
+    
+    Uvažujme například elektrostatickou energii iontové mřížky. Iontový krystal, tj. takový jako je
+    krystal \ce{NaCl}, se skládá z kladných a záporných iontů, které je možné považovat za tuhé
+    koule. Elektricky se přitahují, dokud se nezačnou vzájemně dotýkat; potom se uplatní odpudivá
+    síla, která velmi prudce vzroste, pokusíme-li s eje přiblížit těsněji.
+    
+    Proto jako naše první přiblížení vezměme soustavu tuhých koulí, představující atomy v krystalu
+    kuchyňské soli. Struktura krystalové mřížky byla určena pomocí ohybu rentgenového záření. Jde o
+    kubickou mřížku (jako trojrozměrná šachovnice). Obr. \ref{fyz:fig182} ukazuje její řez.
+    Vzdálenost mezi sousedními ion tyje \SI{0.281}{\nm} (=\SI{2.81e-10}{\m}).
+    
     \begin{figure}[ht!]  %\ref{fyz:fig182}
       \centering
       \includegraphics[width=0.6\linewidth]{fyz_fig182.pdf}
       \caption{Řez krystalem kuchyňské soli v atomovém měřítku. Šachovnicové uspořádání iontů \ce{Na} 
-              a \ce{Cl} je stené v obou na sebe kolmých řezech krystalem (obr. 1.7 díl I)
-              (\cite[s.~146]{Feynman02}).}
+              a \ce{Cl} je stené v obou na sebe kolmých řezech krystalem (obr. \ref{fyz:fig013} díl
+              \ref{part:FYZI}) (\cite[s.~146]{Feynman02}).}
       \label{fyz:fig182}
     \end{figure}
+
+    Je-li náš obraz této soustavy správný, měli bychom být schopni provéřit jej tím, že si položíme
+    následující otázku: Kolik energie je třeba, aby se všechny tyto ionty od sebe navzájem oddělily,
+    tj. aby se krystal úplně rozbil na jednotlivé ionty? Tato energie bude rovna skupenskému teplu
+    vypařování \ce{NaCl} zvětšená o energii potřebnou na disociaci molekul na ionty. Celková energie
+    potřebná na rozdrobení \ce{NaCl} na ionty byla experimentálně určena jako \num{7.92}
+    elektronvoltů na jednu molekulu. Použijeme-li převod
 
   \section{Elektrostatická energie v atomových jádrech}\label{fyz:IIchapVIsecIV}
 
