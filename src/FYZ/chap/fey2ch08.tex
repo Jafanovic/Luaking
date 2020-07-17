@@ -290,6 +290,43 @@
     vypařování \ce{NaCl} zvětšená o energii potřebnou na disociaci molekul na ionty. Celková energie
     potřebná na rozdrobení \ce{NaCl} na ionty byla experimentálně určena jako \num{7.92}
     elektronvoltů na jednu molekulu. Použijeme-li převod
+    \begin{equation*}
+      \SI{1}{\electronvolt} = \SI{1.602e-19}{\joule}
+    \end{equation*}
+    a Avogadrovu konstantu jako počet molekul v jednom molu, tedy
+    \begin{align*}
+      N_0 &= \SI{6.02e23}{\per\mole},  \\
+      \shortintertext{energii vypařování napíšeme takto:}
+      W   &= \SI{7.64}{\joule\per\mole}.
+    \end{align*}
+
+    Je možné dostat tuto chemickou energii teoreticky vypočítáním množství práce potřebné k
+    roztržení krystalu? Podle naší teorie představuje tato práce součet potenciálních energií všech
+    iontových párů. Nejsnadnější cestou pro výpočet tohoto součtu je vybrat vždy konkrétní ion a
+    počítat jeho potenciální energii vzhledem ke každému z ostatních iontů. Dostaneme tak
+    \emph{dvojnásobek} energie připadající najeden ion, protože počítané energie budou náležet párům
+    iontů. Potřebujeme-li, aby se vypočítaná energie vztahovala k jedinému konkrétnímu iontu, musíme
+    vzít poloviční hodnotu. Ale ve skutečnosti potřebujeme energii připadající na \emph{jednu
+    molekulu}, která obsahuje dva ionty, takže vypočtený součet bude přímo udávat energii
+    připadající na molekulu.
+
+    Energie iontu vzhledem k jednomu z jeho nebližších sousedů je rovna \(e^2/a\), kde
+    \(e^2=q^2e/4πϵ_0\) a \(a\) je vzdálenost mezi středy obou iontů. (Uvažujeme jednovazné ionty.)
+    Tato energie je rovna \SI{5.12}{\electronvolt}, což, jak už vidíme, by nám mělo poskytnout
+    výsledek o řádově správné velikosti. Ale do nekonečné sumy, kterou potřebujeme spočítat, je
+    ještě dlouhá cesta.
+
+    Začněme sčítáním všech členů, které pocházejí od iontů ležících v jedné přímce.
+    Předpokládáme-li, že ion označený \ce{Na} na obr. \ref{fyz:fig182} je naším konkrétním iontem,
+    uvažme nejdříve ty ionty, které s ním leží na jedné vodorovné přímce. Nejbližší jsou dva záporně
+    nabité ionty \ce{Cl}, každý ve vzdálenosti \(a\). Potom jsou dva kladné ionty ve vzdálenosti
+    \(2a\) atd. Označíme-li energii, kterou dá tento součet \(W_1\), bude platit
+    \begin{align*}
+      W &= \dfrac{e^2}{a}\left(−\dfrac{2}{1}+\dfrac{2}{2}−\dfrac{2}{3}+\dfrac{2}{4}∓\cdots\right) \\
+        &= −\dfrac{2e^2}{a}\left(1−\dfrac{1}{2}+\dfrac{1}{3}−\dfrac{1}{4}±\cdots\right).
+    \end{align*}
+
+
 
   \twocolumn[\section{Elektrostatická energie v atomových jádrech}\label{fyz:IIchapVIsecIV}]
     Nyní se budeme věnovat jinému příkladu elektrostatické energie v atomové fyzice - elektrické
