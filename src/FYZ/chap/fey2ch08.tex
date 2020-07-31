@@ -691,9 +691,75 @@
       W=−\dfrac{ϵ_0}{2}∫ϕ∇^2ϕ\dd{V}.
     \end{equation}
     Rozepíšeme-li integrand do složek, uvidíme, že
-    
-  \section{Energie bodového náboje}\label{fyz:IIchapVIsecVI}
+    \begin{gather*}
+      \begin{align*}
+        ϕ∇^2ϕ &=ϕ\left(\diffp[2]{ϕ}{x}+\diffp[2]{ϕ}{y}+\diffp[2]{ϕ}{z}\right)      \\
+              &=\diffp{}{x}\left(ϕ\diffp{ϕ}{x}\right)−\left(\diffp{ϕ}{x}\right)^2  \\
+              &+\diffp{}{y}\left(ϕ\diffp{ϕ}{y}\right)−\left(\diffp{ϕ}{y}\right)^2  \\
+              &+\diffp{}{z}\left(ϕ\diffp{ϕ}{z}\right)−\left(\diffp{ϕ}{z}\right)^2  \\
+              &=∇⋅(ϕ∇ϕ)−(∇ϕ)⋅(∇ϕ).
+      \end{align*}
+    \end{gather*}
+    Náš intergrál je potom
+    \begin{equation*}
+      W = \dfrac{ϵ_0}{2}\int(∇ϕ)⋅(∇ϕ)\dd{V}−\dfrac{ϵ_0}{2}\int∇⋅(ϕ∇ϕ)\dd{V}.
+    \end{equation*}
+    Pomocí Gaussovy věty můžeme druhý integrál transformovat na plošný integrál
+    \begin{equation}\label{fyz:eq903}
+      \int\limits_{\mathclap{objem}}∇⋅(ϕ∇ϕ)\dd{V} = 
+      \int\limits_{\mathclap{povrch}}(ϕ∇ϕ)\cdot\vec{n}\dd{S}.
+    \end{equation}
 
-\todo[inline]{Kapitola fey2ch08 je nedodělaná, obsahuje pouze obrázky}
-%} %tikzset
-%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    Tento plošný integrál vypočteme pro případ, že plocha sahá do nekonečna (takže objemové
+    integrály se stanou integrály přes celý prostor), a za předpokladu, že všechny náboje jsou
+    umístěny v nějaké konečné vzdálenosti. Jednoduchý způsob, jak postupovat, je vzít kulovou plochu
+    s velmi velkým poloměrem \(R\), jejíž střed se nachází v počátku souřadnicové soustavy. Víme, že
+    když jsme velmi daleko od všech nábojů, mění se \(ϕ\) jako \(1/R\) a \(∇ϕ\) jako \(1/R^2\). (Obě
+    veličiny budou klesat s \(R\) ještě rychleji, když sumární náboj rozdělení je roven nule.)
+    Protože plošný obsah povrchu velké koule roste jako \(R^2\), vidíme, že při zvětšování poloměru
+    koule klesá plošný integrál jako \((1/R) (1/R^2)R^2 = 1/R\). Zahrneme-li tedy do našeho
+    integrování celý prostor \((R\rightarrow\infty)\), plošný integrál se bude blížit k nule a
+    dostaneme
+    \begin{equation}\label{fyz:eq904}
+      W=\dfrac{ϵ_0}{2} \int\limits_{\mathclap{\text{celý prostor}}}(∇ϕ)(∇ϕ)\dd{V} = 
+        \dfrac{ϵ_0}{2} \int\limits_{\mathclap{povrch}}\vec{E}\cdot\vec{E}\dd{V}.
+    \end{equation}
+    Vidíme, že energii jakéhokoliv rozdělení nábojů můžeme vyjádřit jako integrál hustoty energie 
+    sídlící v poli.
+
+  \section{Energie bodového náboje}\label{fyz:IIchapVIsecVI}
+    Podle našeho vztahu (\ref{fyz:eq904}) bude i jednotlivý bodový náboj \(q\) mít nějakou
+    elektrostatickou energii. V tomto případě vyjádříme intenzitu elektrického pole takto:
+    \begin{equation*}
+      E=\dfrac{q}{4πϵ_0r^2}.
+    \end{equation*}
+    Hustota energie ve vzdálenosti \(r\) od náboje je tedy
+    \begin{equation*}
+      \dfrac{ϵ_0E^2}{2}=\dfrac{q^2}{32π^2ϵ_0r^4}.
+    \end{equation*}
+    Jako element objemu můžeme vzít kulovou slupku s tloušťkou \(\dd{r}\) plošným obsahem \(4πr^2\).
+    Celková energie je
+    \begin{equation}\label{fyz:eq905}
+      W=\int_{r=0}^∞\dfrac{q^2}{8πϵ_0r^2}\dd{r}=−\left.\dfrac{q^2}{8πϵ_0}\right\rvert^{r=∞}_{r=0}.
+    \end{equation}
+    Horní hranice \(r=∞\) nepředstavuje žádnou obtíž. V případě bodového náboje bychom však měli
+    integrovat až do \(r = 0\), což vede k nekonečně velké hodnotě. Podle vztahu (\ref{fyz:eq904})
+    je v poli bodového náboje nekonečné množství energie, ačkoli jsme vyšli z představy, že energie
+    existuje pouze mezi bodovými náboji. Do našeho původního vzorce (\ref{fyz:eq870}) pro energii
+    soustavy bodových nábojů jsme nezahrnuli žádnou interakční energii náboje se sebou samým. Co se
+    potom stalo? Když jsme přešli ke spojitému rozdělení náboje ve vztahu (\ref{fyz:eq897}),
+    započítali jsme energii interakce každého infinitezimálního náboje se všemi ostatními
+    infinitezimálními náboji. Stejný zápočet byl proveden ve vztahu (\ref{fyz:eq904}), takže když
+    používáme (\ref{fyz:eq904}) pro konečný bodový náboj, zahrnujeme i energii, která je
+    spotřebována na to, aby se daný náboj sestavil z infinitezimálních částí. Skutečně si všimněme,
+    že kdybychom pro energii nabité koule použili náš výraz (\ref{fyz:eq878}) a nechali poloměr
+    blížit se nule, také bychom dostali výsledek (\ref{fyz:eq905})
+
+    Musíme udělat závěr, že představa o tom, že energie sídlí v poli, se neshoduje s předpokladem o
+    existenci bodového náboje. Jedním východiskem z tohoto problému je prohlásit, že elementární
+    částice, takové jako elektron, nejsou body, ale ve skutečnosti malými rozděleními náboje. Mohli
+    bychom však také říct, že něco chybného je v naší teorii elektřiny při velmi malých
+    vzdálenostech anebo v představě o lokálním zachování energie. S každým z těchto hledisek jsou
+    problémy. Tyto problémy nebyly nikdy překonány a existují dodnes. Někdy později, až budeme
+    mluvit o některých dalších pojmech jako např. hybnost v elektromagnetickém poli, podáme úplnější
+    výklad těchto fundamentálních problémů v našem chápání přírody.
