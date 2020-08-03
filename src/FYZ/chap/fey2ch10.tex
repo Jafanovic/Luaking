@@ -7,86 +7,171 @@
 %=========================== Kapitola: Dielektrika =================================================
 \setchaptertoc
 \chapter{Dielektrika}\label{fyz:IIchapX}
-
   \section{Permitivita}\label{fyz:IIchapXsecI}
-  \section{Vektor elektrické polarizace P}\label{fyz:IIchapXsecII}
-  \section{Polarizační náboje}\label{fyz:IIchapXsecIII}
-  \section{Elektrostatické rovnice pro dielektrika}\label{fyz:IIchapXsecIV}
-  \section{Pole a síly v přítomnosti dielektrik}\label{fyz:IIchapXsecV}
-  \section{Příklady a cvičení}\label{fyz:IIchapXsecVI}
+
+    Na tomto místě začneme hovořit o další z charakteristických vlastností látky nacházející se pod
+    vlivem elektrického pole. V jedné z předcházejících kapitol jsme se zabývali vlastnostmi
+    \emph{vodičů}, v nichž se účinkem elektrického pole náboje volně přemisťují do takových míst, že
+    uvnitř vodiče nezůstane žádné pole. Nyní budeme hovořit o \emph{izolantech}, tedy o látkách,
+    které elektřinu nevedou. Na první pohled by se mohlo zdát, že se s nimi v elektrickém poli
+    nestane vůbec nic. Ale Faraday pomocí jednoduchého elektroskopu a deskového kondenzátoru
+    objevil, že tomu tak není. Jeho pokusy ukázaly, že kapacita takového kondenzátoru
+    \emph{vzroste}, když se mezi jeho elektrody vloží izolant. Vyplní-li izolant prostor mezi
+    elektrodami, kapacita se zvětší \(\varepsilon_r\)-krát, přičemž koeficient \(\varepsilon_r\)
+    závisí pouze na vlastnostech izolační látky. Izolační látky se také nazývají \emph{dielektrika};
+    součinitel \(\varepsilon_r\) je tedy vlastností dielektrika a nazývá se \emph{relativní
+    permitivita}. Relativní permitivita vakua je, samozřejmě, rovna jedné.  
+
+    Naší úlohou je nyní vysvětlit, proč vůbec nějaký elektrický efekt nastává, jsou-li izolanty
+    opravdu izolanty a elektřinu nevedou. Vyjdeme z experimentálního faktu, že kapacita vzrůstá a
+    pokusíme se vymyslet, co by se přitom mohlo dít. Uvažujme deskový kondenzátor s nějakými náboji
+    na povrchu vodičů, řekněme se záporným nábojem na horní a s kladným nábojem na dolní elektrodě.
+    Předpokládejme, že vzdálenost mezi elektrodami je \(d\) a plošný obsah každé elektrody je \(S\).
+    Jak jsme viděli už dříve, kapacita kondenzátoru je
+    \begin{equation}\label{fyz:eq907}
+      C = \dfrac{\varepsilon_0S}{d}
+    \end{equation}
+    a náboj souvisí s napětím na kondenzátoru podle vztahu
+    \begin{equation}\label{fyz:eq908}
+      Q = CU.
+    \end{equation}
+
+    Experimentálním faktem je, že vložíme-li mezi desky kus izolantu, například skla nebo plexiskla,
+    zjistíme, že se kapacita zvětší. To ovšem znamená, že při témže náboji se napětí snížilo. Ale
+    napětí je integrálem elektrického pole počítaným napříč kondenzátorem; musíme tedy udělat závěr,
+    že uvnitř kondenzátoru se zeslabilo elektrické pole, i když náboje na deskách zůstávají
+    nezměněny.
 
     \begin{figure}[ht!] %\ref{fyz:fig705}
       \centering
       \includegraphics[width=0.9\linewidth]{fyz_fig705.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Deskový kondenzátor s dielektrikem. Vyznačeny jsou siločáry elektrického pole \(E\).
+               (\cite[s.~175]{Feynman02})}
       \label{fyz:fig705}
     \end{figure}
+
+    Jak je to možné? Máme větu, pocházející od Gausse, která nám říká, že tok elektrického pole
+    uzavřenou plochou je v přímém vztahu s náboji uvnitř plochy. Uvažujme gaussovskou plochu \(S\)
+    vyznačenou na obr. \ref{fyz:fig705} čárkovaně. Protože elektrické pole se v přítomnosti
+    dielektrika zeslabilo, usuzujeme, že celkový náboj uvnitř plochy musí být menší, než byl bez
+    látky. Pak existuje jediný možný závěr a ten je, že na povrchu dielektrika musí sídlit kladné
+    náboje. Protože se sice pole zeslabilo, ale ne na nulu, očekáváme, že tento kladný náboj je
+    menší než záporný náboj na vodiči. Celý úkaz by bylo možné vysvětlit, kdybychom nějak uměli
+    pochopit, proč se při umístění dielektrické látky do elektrického pole na jednom povrchu
+    indukuje kladný a na druhém záporný náboj.
+
+    Něco takového bychom očekávali v případě vodiče. Mějme například kondenzátor se vzdáleností
+    \(d\) mezi elektrodami a vložme mezi ně neutrální vodič, jehož tloušťka je \(b\) (obr.
+    \ref{fyz:fig706}). Elektrické pole indukuje kladný náboj na jeho horním povrchu a záporný náboj
+    na jeho dolním povrchu, takže uvnitř vodiče pole není. Ve zbývajícím prostoru je pole totéž,
+    jako by bylo bez vodiče, neboť je rovno plošné hustotě náboje dělené \(\varepsilon_0\) ale
+    vzdálenost, přes kterou musíme integrovat, abychom dostali napětí (rozdíl potenciálů), se
+    zmenšila.
+
+    Napětí je
+    \begin{equation*}
+      U = \dfrac{U}{\varepsilon_0}(d-b).
+    \end{equation*}
+    Výsledný výraz pro kapacitu je stejný jako (\ref{fyz:eq907}), ale \(d\) je nahrazeno rozdílem
+    \((d - b)\)
+    \begin{equation}\label{fyz:eq909}
+      C = \dfrac{\varepsilon_0S}{d\left[1 - (b/d)\right]}
+    \end{equation}
+    Kapacita se zvětšila v poměru, jenž závisí na \((b/d)\), tj. na poměrné části objemu, kterou
+    zaujal vodič.
 
     \begin{figure}[ht!] %\ref{fyz:fig706}
       \centering
       \includegraphics[width=0.9\linewidth]{fyz_fig706.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Vložíme-li mezi elektrody deskového kondenzátoru vodivou desku, indukované náboje
+               zeslabí pole uvnitř vodiče na nulovou hodnotu. (\cite[s.~175]{Feynman02})}
       \label{fyz:fig706}
     \end{figure}
+
+    To nám však poskytuje zřejmý model toho, co se děje s dielektriky - uvnitř látky se nachází
+    množství tenkých vodivých vrstev. S takovým modelem je však spojena jedna obtíž - má významnou
+    osu, normálu k vrstvám, zatímco většina dielektrik takovou osu nemá. Ale tuto obtíž je možno
+    vyloučit, uděláme-li předpoklad, že všechny izolační látky obsahují malé navzájem izolované
+    vodivé koule, jak ukazuje obr. \ref{fyz:fig707}. Permitivita je vysvětlována působením nábojů,
+    které by byly indukovány na každé kuličce. Je to jeden z prvních fyzikálních modelů dielektrika,
+    použitých na vysvětlení jevu pozorovaného Faradayem. Konkrétněji řečeno, předpokládalo se, že
+    každý z atomů látky je dokonalým vodičem, ale izolovaným od jiných atomů. Relativní permitivita
+    \(\varepsilon_0\) bude záviset na tom, jakou část objemu zabírají vodivé koule. Dnes však tento
+    model nepoužíváme.
 
     \begin{figure}[ht!] %\ref{fyz:fig707}
       \centering
       \includegraphics[width=0.9\linewidth]{fyz_fig707.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Model dielektrika: malé vodivé kuličky zapuštěné do idealizovaného izolátoru
+               (\cite[s.~176]{Feynman02})}
       \label{fyz:fig707}
     \end{figure}
+
+  \section{Vektor elektrické polarizace P}\label{fyz:IIchapXsecII} 
+    Pokračujeme-li v naší analýze, přijdeme na to, že představa o oblastech s dokonalou vodivostí a
+    izolací mezi nimi není podstatná. Každá z malých kuliček se chová jako dipól, jehož moment je
+    indukován vnějším polem. Jediná věc, jež je pro pochopení dielektrik podstatná je ta, že v
+    dielektrické látce je indukováno mnoho malých dipólů. To, zda se dipóly indukují proto, že
+    existují vodivé malé kuličky, nebo z nějakého jiného důvodu, je bezvýznamné.
 
     \begin{figure}[ht!]
       \centering
       \subcaptionbox{\label{fyz:fig708a}}{\luafigure[0.45]{fyz_fig708a.pdf}}
       \subcaptionbox{\label{fyz:fig708b}}{\luafigure[0.45]{fyz_fig708b.pdf}}
       \label{fyz:fig708}
-      \caption{
-               (\cite[s.~748]{Feynman02})}
+      \caption{Rozdělení elektronů v atomu nacházejícím se v elektrickém poli se vzhledem k jádru
+              posune. (\cite[s.~177]{Feynman02})}
     \end{figure}
+
+  \section{Polarizační náboje}\label{fyz:IIchapXsecIII}
 
     \begin{figure}[ht!] %\ref{fyz:fig709}
       \centering
       \includegraphics[width=0.5\linewidth]{fyz_fig709.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Dielektrická vrstva v homogenním poli. Kladné náboje jsou posunuty do vzdálenosti ó
+              vzhledem k záporným. (\cite[s.~177]{Feynman02})}
       \label{fyz:fig709}
     \end{figure}
 
     \begin{figure}[ht!] %\ref{fyz:fig710}
       \centering
       \includegraphics[width=0.5\linewidth]{fyz_fig710.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Náboj, který prošel v dielektriku elementární myšlenou ploškou, je přímo úměrný
+               složce vektoru \(\vec{P}\) ve směru normály k ploše. (\cite[s.~179]{Feynman02})}
       \label{fyz:fig710}
     \end{figure}
 
     \begin{figure}[ht!] %\ref{fyz:fig711}
       \centering
       \includegraphics[width=0.5\linewidth]{fyz_fig711.pdf}
-      \caption{
+      \caption{Nehomogenní polarizace \(\vec{P}\) může vést ke vzniku náboje v objemu dielektrika.
                (\cite[s.~707]{Feynman02})}
       \label{fyz:fig711}
     \end{figure}
 
+  \section{Elektrostatické rovnice pro dielektrika}\label{fyz:IIchapXsecIV}
+  
+  \section{Pole a síly v přítomnosti dielektrik}\label{fyz:IIchapXsecV}
+
     \begin{figure}[ht!] %\ref{fyz:fig712}
       \centering
       \includegraphics[width=0.5\linewidth]{fyz_fig712.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{V nehomogenním poli působí na dielektrické těleso síla směřující do prostoru s vyšší
+              intenzitou pole. (\cite[s.~184]{Feynman02})}
       \label{fyz:fig712}
     \end{figure}
 
     \begin{figure}[ht!] %\ref{fyz:fig713}
       \centering
       \includegraphics[width=0.5\linewidth]{fyz_fig713.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Sílu působící v deskovém kondenzátoru na dielektrickou destičku můžeme vypočítat
+               použitím principu zachování energie. (\cite[s.~707]{Feynman02})}
       \label{fyz:fig713}
     \end{figure}
+
+  \section{Příklady a cvičení}\label{fyz:IIchapXsecVI}
+
+
 
 \todo[inline]{Kapitola fey2ch10 je nedodělaná, obsahuje pouze obrázky}
 %} %tikzset
