@@ -8,7 +8,6 @@
 \setchaptertoc
 \chapter{Dielektrika}\label{fyz:IIchapX}
   \section{Permitivita}\label{fyz:IIchapXsecI}
-
     Na tomto místě začneme hovořit o další z charakteristických vlastností látky nacházející se pod
     vlivem elektrického pole. V jedné z předcházejících kapitol jsme se zabývali vlastnostmi
     \emph{vodičů}, v nichž se účinkem elektrického pole náboje volně přemisťují do takových míst, že
@@ -438,6 +437,51 @@
     vyplývá, že kapacita kondenzátoru se všude homogenním dielektrikem vzroste
     \(\varepsilon_r\)-krát.
 
+    Nyní se zeptejme, jaká síla působí mezi dvěma nabitými vodiči v dielektriku. Uvažujme tekuté
+    dielektrikum, které je všude homogenní. Už jsme viděli, že jeden způsob, jak dostat sílu, je
+    derivovat energii podle vhodné vzdálenosti. Mají-li vodiče stejně velké opačné náboje, je
+    energie \(W= q^2/2C\), kde \(C\) je jejich kapacita. Podle principu virtuální práce je každá
+    složka síly dána derivací, například
+    \begin{equation}\label{fyz:eq934}
+      F_x=-\diffp{U}{x}=-\frac{Q^2}{2}\diffp{}{x}\left(\dfrac{1}{C}\right).
+    \end{equation}
+    Protože dielektrikum zvětšuje kapacitu \(\varepsilon_r\)-krát, musíme všechny síly
+    \emph{zmenšit} ve stejném poměru.
+
+    Je třeba zdůraznit jednu věc. Co jsme řekli platí pouze tehdy, když je dielektrikum tekutina.
+    Každý pohyb vodičů zapuštěných v pevném dielektriku mění podmínky pro vznik mechanických napětí
+    v dielektriku, jeho elektrické vlastnosti a vyvolává i změnu mechanické energie dielektrika.
+    Pohyb vodičů v tekutině nemění tekutinu. Tekutina se sice přemístí na nové místo, ale její
+    elektrické charakteristiky se nezmění.
+      
+    Mnohé starší knihy o elektřině vycházejí ze „základního“ zákona, že síla působící mezi dvěma
+    náboji je
+    \begin{equation}\label{fyz:eq935}
+      F=\dfrac{q_1q_2}{4\pi\varepsilon_0\varepsilon_r r^2},
+    \end{equation}
+    Toto hledisko je naprosto neuspokojivé. Zaprvé, tento zákon neplatí obecně; platí pouze ve světě
+    zaplněném tekutinou. Za druhé, závisí na skutečnosti, že \(\varepsilon_r\) je konstanta, což pro
+    většinu reálných látek platí pouze přibližně. Je mnohem lepší začít Coulombovým zákonem pro
+    náboje ve vakuu, který je správný vždy (pro nepohybující se náboje).
+
+    Co se stane v pevné látce? To je velmi obtížný problém, který není vyřešen, neboť je v určitém
+    smyslu neurčitý. Vkládáme-li náboje dovnitř pevného dielektrika, vznikají mnohé tlaky a napětí.
+    Nemůžete tedy pracovat s virtuální prací, aniž bychom zahrnuli i mechanickou energii potřebnou
+    na stlačení pevné látky. Obecně je však těžké jednoznačně rozlišit elektrické síly od
+    mechanických sil vyvolaných samotnou pevnou látkou. Naštěstí, ve skutečnosti nikdo nikdy
+    nepotřebuje znát odpověď na námi položenou otázku. Někdy je snad třeba znát velikost napětí
+    vznikajících v pevné látce a to lze spočítat. Je to však mnohem složitější než jednoduchý
+    výsledek, který jsme dostali pro tekutiny.
+
+    V teorii dielektrik je překvapivě složitý následující problém: Proč nabité těleso přitahuje malé
+    kousky dielektrika? Když si v suchý den pročešeme vlasy, hřeben ihned přitáhne malé útržky
+    papíru. Pokud jsme o tom přemýšleli povrchně, pravděpodobně nás napadlo, že na hřebeni je náboj
+    jednoho druhu, zatímco papír má náboj opačný. Ale papír byl původně elektricky neutrální. Nemá
+    žádný zbytkový náboj, ale i tak je přitahován. Je pravda, že někdy papírek přiskočí k hřebenu a
+    potom odskočí, odpuzen okamžitě, jakmile se hřebene dotkl. Příčina je, samozřejmě, v tom, že
+    když se papírek dotkne hřebene, přibere nějaké záporné náboje a stejné náboje se pak odpuzují.
+    Ale to není odpověď na původní otázku. Proč papírek přiskočí k hřebeni poprvé?
+
     \begin{figure}[ht!] %\ref{fyz:fig712}
       \centering
       \includegraphics[width=0.8\linewidth]{fyz_fig712.pdf}
@@ -445,6 +489,21 @@
               intenzitou pole. (\cite[s.~184]{Feynman02})}
       \label{fyz:fig712}
     \end{figure}
+
+    Můžeme to vysvětlit polarizací dielektrika, nacházejícího se v elektrickém poli. Vznikají
+    polarizační náboje obou znamének, které jsou hřebenem přitahovány, resp. odpuzovány. Výsledkem
+    však bude přitahování, protože blíže k hřebenu je pole silnější než dál od něj - hřeben není
+    nekonečnou rovinou. Jeho náboj je lokalizovaný. Neutrální kousíček papíru se nepřitáhne ani k
+    jedné z elektrod rovinného kondenzátoru. Nehomogenita pole představuje podstatnou část
+    mechanizmu přitahování.
+
+    Jak ukazuje obr. \ref{fyz:fig712}, je dielektrikum vždy přitahováno z oblasti se slabým polem do
+    oblasti se silnějším polem. Je možné dokázat, že pro malá tělesa je síla přímo úměrná gradientu
+    druhé mocniny intenzity elektrického pole. Proč závisí na druhé mocnině intenzity pole? Protože
+    indukované polarizační náboje jsou přímo úměrné polím a pro dané náboje jsou síly přímo úměrné
+    poli. Ale jak jsme právě naznačili, bude výsledná síla nenulová pouze tehdy, když se druhá
+    mocnina pole od bodu k bodu mění. Součinitel úměrnosti obsahuje mezi jiným permitivitu tělesa a
+    závisí i na velikosti a tvaru tělesa.
 
     \begin{figure}[ht!] %\ref{fyz:fig713}
       \centering
