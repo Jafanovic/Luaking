@@ -207,7 +207,8 @@
 
     Nyní můžeme na gaussovskou plochu \(S\), znázorněnou na obr. \ref{fyz:fig705}, použít Gaussův
     zákon. Elektrické pole \(\vec{E}\) v dielektriku je rovno celkové plošné hustotě náboje dělené
-    \(ϵ_0\). Je zřejmé, že \(σ_{\text{pol}}\) a \(σ_{\text{free}}\) mají opačná znaménka, takže
+    \(\varepsilon_0\). Je zřejmé, že \(σ_{\text{pol}}\) a \(σ_{\text{free}}\) mají opačná znaménka,
+    takže
     \begin{equation}\label{fyz:eq912}
       E = \dfrac{σ_{\text{free}} - σ_{\text{pol}}}{\varepsilon_0}.
     \end{equation}
@@ -224,13 +225,13 @@
     předpokládáme, že \(P\) závisí na \(E\), konkrétně, že je přímo úměrné \(E\). Tato přímá
     úměrnost se obvykle zapisuje takto:
     \begin{equation}\label{fyz:eq914}
-      \vec{P}=χϵ_0\vec{E}.
+      \vec{P}=χ\varepsilon_0\vec{E}.
     \end{equation}
     Konstanta \(χ\) (řecké „chí“) se nazývá \textbf{elektrická susceptibilita dielektrika}.
 
     Potom vztah (\ref{fyz:eq913}) nabude tvaru
     \begin{equation}\label{fyz:eq915}
-      E=\dfrac{σ_{\text{free}}}{ϵ_0}\dfrac{1}{(1+χ)},
+      E=\dfrac{σ_{\text{free}}}{\varepsilon_0}\dfrac{1}{(1+χ)},
     \end{equation}
     podle kterého se pole zmenšilo v poměru \(1/(1+χ)\).
 
@@ -238,19 +239,19 @@
     integrál je redukován na součin intenzity pole \(E\) a vzdálenosti \(d\) mezi elektrodami.
     Dostáváme
     \begin{equation*}
-      U = Ed = \dfrac{σ_{\text{free}}d}{ϵ_0(1+χ)}
+      U = Ed = \dfrac{σ_{\text{free}}d}{\varepsilon_0(1+χ)}
     \end{equation*}
 
     Celkový náboj na kondenzátoru je \(C = σ_{\text{free}}S\) takže pro kapacitu definovanou vztahem
     (\ref{fyz:eq908}) dostaneme vyjádření
     \begin{equation}\label{fyz:eq916}
-      C=\dfrac{ϵ_0S(1+χ)}{d} = \dfrac{ϵ_rϵ_0S}{d}.
+      C=\dfrac{\varepsilon_0S(1+χ)}{d} = \dfrac{\varepsilon_r\varepsilon_0S}{d}.
     \end{equation}
 
     Vysvětlili jsme pozorovaná fakta. Vyplníme-li rovinný deskový kondenzátor dielektrikem, vzroste
-    jeho kapacita \(ϵ_r\)-krát, přičemž
+    jeho kapacita \(\varepsilon_r\)-krát, přičemž
     \begin{equation}\label{fyz:eq917}
-      ϵ_r = 1+χ
+      \varepsilon_r = 1+χ
     \end{equation}
     charakterizuje vlastnosti látky. Je pravda, že naše vysvětlení nebude úplné, dokud nevysvětlíme
     (uděláme to později), jak dochází k polarizaci atomů.
@@ -339,18 +340,103 @@
     představuje \(ρ_{\text{free}}\) náboj, který jsme přivedli na vodiče, nebo náboj, který je v
     prostoru rozdělen známým způsobem. Rovnice (\ref{fyz:eq923}) pak získá tvar
     \begin{equation*}
-      ∇⋅\vec{E}=\dfrac{ρ_{\text{free}}+ρ_{\text{pol}}}{ϵ_0}=\dfrac{ρ_{\text{free}}−∇⋅\vec{P}}{ϵ_0}
+      ∇⋅\vec{E}=\dfrac{ρ_{\text{free}}+ρ_{\text{pol}}}{\varepsilon_0}
+               =\dfrac{ρ_{\text{free}}−∇⋅\vec{P}}{\varepsilon_0}
     \end{equation*}
     resp. 
     \begin{equation}\label{fyz:eq923}
-      ∇\cdot\left(\vec{E}+\dfrac{\vec{P}}{ϵ_0}\right)=\dfrac{ρ_{\text{free}}}{ϵ_0}.
+      ∇\cdot\left(\vec{E}+\dfrac{\vec{P}}{\varepsilon_0}\right)
+        =\dfrac{ρ_{\text{free}}}{\varepsilon_0}.
     \end{equation}
     Rovnice pro \(\rot{E}\) se, přirozeně, nemění, tj.
     \begin{equation}\label{fyz:eq924}
       ∇×\vec{E}=0.
     \end{equation}
 
-    \section{Pole a síly v přítomnosti dielektrik}\label{fyz:IIchapXsecV}
+    Dosadíme-li \(\vec{P}\) ze vztahu (\ref{fyz:eq914}), dostaneme jednodušší rovnici
+    \begin{equation}\label{fyz:eq925}
+      ∇\cdot[(1+χ)\vec{E}]=∇⋅(\varepsilon_0\vec{E})=\dfrac{ρ_{\text{free}}}{\varepsilon_0}.
+    \end{equation}
+    To jsou rovnice elektrostatiky pro dielektrika. Přirozeně, neříkají nic nového, jsou pouze v
+    takovém tvaru, který je vhodnější pro výpočet v případech, kdy \(ρ_{\text{free}}\) je známé a
+    vektor polarizace \(\vec{P}\) je přímo úměrný poli \(\vec{E}\).
+
+    Všimněme si, že relativní permitivitu \(\varepsilon_r\) jsme nevytkli před symbol divergence. Je
+    to proto, že nemusí být všude stejná. Má-li všude stejnou hodnotu, může být vytknuta jako
+    součinitel a naše rovnice budou přesně takové, jaké jsme měli v elektrostatice, pouze hustota
+    náboje bude vydělena hodnotou \(\varepsilon_r\). Ve tvaru, ve kterém jsme je uvedli, se hodí pro
+    obecný případ, kdy se na různých místech v poli mohou nacházet různá dielektrika. Může se však
+    stát, že tyto rovnice potom budou jen obtížně řešitelné.
+
+    Je třeba se zde zmínit o jedné okolnosti důležité z historického hlediska. V prvním období nauky
+    o elektřině nebyl znám atomový mechanizmus polarizace a o existenci \(ρ_{\text{free}}\) se
+    nevědělo. Náboj \(ρ_{\text{free}}\) byl pokládán za celkovou hustotu nábojů. Aby se Maxwellovy
+    rovnice mohly psát v jednoduchém tvaru, byl definován nový vektor \(\vec{D}\) rovnající se
+    lineární kombinaci vektorů \(\vec{E}\) a \(\vec{P}\).
+    \begin{equation}\label{fyz:eq926}
+      \vec{D}=\varepsilon_0\vec{E}+\vec{P}.
+    \end{equation}
+    V důsledku toho se rovnice (\ref{fyz:eq923}) a (\ref{fyz:eq924}) psaly ve zdánlivě jednoduchém
+    tvaru:
+    \begin{equation}\label{fyz:eq927}
+      ∇\cdot\vec{D}=ρ_{\text{free}},\qquad ∇×\vec{E}=0.
+    \end{equation}
+    Lze je řešit? Pouze je-li udána i třetí rovnice, vyjadřující vztah mezi \(\vec{D}\) a
+    \(\vec{E}\). Platí-li (\ref{fyz:eq923}), je tento vztah
+    \begin{equation}\label{fyz:eq928}
+      \vec{D}=\varepsilon_0(1+χ)\vec{E}=\varepsilon_r\varepsilon_0\vec{E}.
+    \end{equation}
+    Tato rovnice byla obvykle psána ve tvaru
+    \begin{equation}\label{fyz:eq929}
+      \vec{D}=\varepsilon\vec{E},
+    \end{equation}
+    kde \(\varepsilon\) představuje další konstantu popisující elektrické vlastnosti látek. Nazývá
+    se \textbf{permitivita}. (Nyní vidíme, proč v našich rovnicích vystupuje \(\varepsilon_0\) -
+    jako permitivita vakua). Zřejmě
+    \begin{equation}\label{fyz:eq930}
+      \varepsilon=\varepsilon_r\varepsilon_0=(1+χ)\varepsilon_0.
+    \end{equation}
+    
+    Dnes se na tyto záležitosti díváme z jiného hlediska. Pro vakuum totiž bereme jednodušší
+    rovnice, a započteme-li v každém případě všechny náboje bez ohledu na jejich původ, budou tyto
+    rovnice platit vždy. Oddělíme-li některé z nábojů ať už pro pohodlnost nebo proto, že nehodláme
+    detailně zkoumat, co se děje, můžeme, chceme-li, psát naše rovnice v jakémkoliv jiném tvaru.
+
+    Ještě jednu věc je třeba zdůraznit. Rovnice typu \(\vec{D}=\varepsilon_0\vec{E}\) představuje
+    pokus popsat vlastnosti látky. Ale látka je krajně složitá a takováto rovnice ve skutečnosti
+    není správná. Například, bude-li \(\vec{E}\) příliš velké, přestane být \(\vec{D}\) přímo úměrné
+    \(\vec{E}\). Pro některé látky přestává přímá úměrnost už při poměrně malých polích. Kromě toho
+    „konstanta“ úměrnosti může záviset na tom jak rychle se \(\vec{E}\) mění v čase. Proto rovnice
+    takového typu představuje jakousi aproximaci podobně jako Hookův zákon. Nemůže to být hluboká a
+    fundamentální rovnice. Naproti tomu naše základní rovnice pro \(\vec{E}\) (\ref{fyz:eq923}) a
+    (\ref{fyz:eq924}) vyjadřují naše nejhlubší a nejúplnější pochopení elektrostatiky.
+    
+  \section{Pole a síly v přítomnosti dielektrik}\label{fyz:IIchapXsecV}       
+    Nyní dokážeme některé dost obecné věty elektrostatiky pro takové situace, v nichž se vyskytují i
+    dielektrika. Viděli jsme, že když se prostor mezi elektrodami deskového kondenzátoru vyplní
+    dielektrikem, kapacita kondenzátoru se v určitém poměru zvětší. Lze ukázat, že to platí pro
+    kondenzátor \emph{každého} tvaru za předpokladu, že celý prostor v okolí obou vodičů je vyplněn
+    homogenním lineárním dielektrikem. V případě bez dielektrika je třeba řešit tyto rovnice
+    \begin{align}
+      ∇\cdot\vec{E}_0             &=\dfrac{ρ_{\text{free}}}{\varepsilon_0}, \quad
+      ∇\times\vec{E}_0=0. \label{fyz:eq931} \\
+      \shortintertext{V přítomnosti dielektrika se první z těchto rovnic změní, a budeme tedy mít 
+      rovnice}
+      ∇\cdot(\varepsilon_r\vec{E})&=\dfrac{ρ_{\text{free}}}{\varepsilon_0}, \quad
+      ∇\times\vec{E}=0.  \label{fyz:eq932}   \\
+      \shortintertext{Protože \(\varepsilon_r\) považujeme všude za stejné, je možné je zapsat
+      takto:}
+      ∇\cdot(\varepsilon_r\vec{E})&=\dfrac{ρ_{\text{free}}}{\varepsilon_0}, \quad 
+      ∇\times(\varepsilon_r\vec{E})=0.  \label{fyz:eq933}
+    \end{align}
+
+    Pro veličinu \(\varepsilon_r\vec{E}\) máme proto stejné rovnice jako pro \(\vec{E}_0\), jejich
+    řešením je tedy \(\varepsilon_r\vec{E}=\vec{E}_0\). Jinými slovy, pole bude všude slabší v
+    poměru \(1/\varepsilon_r\) vzhledem k tomu, jaké by bylo bez dielektrika. Jelikož rozdíl
+    potenciálů je křivkovým integrálem intenzity pole, v tomtéž poměru se zmenší i napětí. Protože
+    náboj na elektrodách kondenzátoru se bral v obou případech stejný, ze vztahu (\ref{fyz:eq908})
+    vyplývá, že kapacita kondenzátoru se všude homogenním dielektrikem vzroste
+    \(\varepsilon_r\)-krát.
 
     \begin{figure}[ht!] %\ref{fyz:fig712}
       \centering
