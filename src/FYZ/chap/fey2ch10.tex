@@ -237,9 +237,23 @@
     Napětí mezi elektrodami vyjadřuje integrál elektrického pole. Protože jde o homogenní pole,
     integrál je redukován na součin intenzity pole \(E\) a vzdálenosti \(d\) mezi elektrodami.
     Dostáváme
-    \begin{equation}
-      U = Ed = \dfrac{σ_{\text{free}}dϵ0(1+χ)
+    \begin{equation*}
+      U = Ed = \dfrac{σ_{\text{free}}d}{ϵ_0(1+χ)}
+    \end{equation*}
+
+    Celkový náboj na kondenzátoru je \(C = σ_{\text{free}}S\) takže pro kapacitu definovanou vztahem
+    (\ref{fyz:eq908}) dostaneme vyjádření
+    \begin{equation}\label{fyz:eq916}
+      C=\dfrac{ϵ_0S(1+χ)}{d} = \dfrac{ϵ_rϵ_0S}{d}.
     \end{equation}
+
+    Vysvětlili jsme pozorovaná fakta. Vyplníme-li rovinný deskový kondenzátor dielektrikem, vzroste
+    jeho kapacita \(ϵ_r\)-krát, přičemž
+    \begin{equation}\label{fyz:eq917}
+      ϵ_r = 1+χ
+    \end{equation}
+    charakterizuje vlastnosti látky. Je pravda, že naše vysvětlení nebude úplné, dokud nevysvětlíme
+    (uděláme to později), jak dochází k polarizaci atomů.
 
     \begin{figure}[ht!] %\ref{fyz:fig710}
       \centering
@@ -249,6 +263,27 @@
       \label{fyz:fig710}
     \end{figure}
 
+    Zabývejme se nyní něčím trochu složitějším - případem, kdy elektrická polarizace \(\vec{P}\)
+    není všude stejná. Jak jsme již řekli, není-li polarizace konstantní, je možné obecně očekávat
+    nenulovou objemovou hustotu náboje, protože z jedné strany může do malého objemového elementu
+    vejít více náboje, než z něj může na druhé straně vyjít. Jak zjistíme, kolik náboje do malého
+    objemu přibylo nebo se z něj ztratilo? Nejdříve vypočtěme, jaký náboj projde myšlenou plochou
+    při polarizaci látky. V případě, že polarizace má směr normály k ploše, množství náboje
+    procházející plochou je rovno součinu P a obsahu plochy. Samozřejmě, když má polarizace směr
+    tečny k ploše, neprochází plochou žádný náboj.
+
+    Týmiž úvahami, které jsme již provedli, se snadno přesvědčíme, že náboj, jenž projde libovolným
+    plošným elementem, je přímo úměrný \emph{složce vektoru \(\vec{P}\) kolmé na plochu}. Porovnejme
+    obr. \ref{fyz:fig710} s obr. \ref{fyz:fig709}. Vidíme, že vztah (\ref{fyz:eq911}) je nutné
+    obecně psát takto:
+    \begin{equation}\label{fyz:eq918}
+      σ_{\text{pol}}=\vec{P}\cdot\vec{n}.
+    \end{equation}
+
+    Máme-li na mysli plošný element uvnitř dielektrika, udává vztah (\ref{fyz:eq918}) náboj, který
+    prošel plochou, ale nevede k vzniku plošného náboje, neboť příspěvky od dielektrika jsou po obou
+    stranách plochy stejné a mají opačná znaménka.
+
     \begin{figure}[ht!] %\ref{fyz:fig711}
       \centering
       \includegraphics[width=0.9\linewidth]{fyz_fig711.pdf}
@@ -257,13 +292,69 @@
       \label{fyz:fig711}
     \end{figure}
 
+    Posunutí nábojů však mohou vést ke vzniku objemové hustoty náboje. Celkový náboj vysunutý
+    polarizací ven z néjakého objemu \(V\) je roven integrálu normálové složky vektoru \(\vec{P}\)
+    plochou \(S\), která ohraničuje \(V\) (obr. \ref{fyz:fig711}). Stejně velký přebytek náboje
+    opačného znaménka zůstane uvnitř. Označíme-li jej \(ΔQ_{\text{pol}}\), bude platit
+    \begin{equation}\label{fyz:eq919}
+      \Delta Q_{\text{pol}}=-\int_S\vec{P}\cdot\vec{n}\dd{S}.
+    \end{equation}
+    \(\Delta Q_{\text{pol}}\) můžeme vyjádřit pomocí objemového rozdělení náboje s hustotou
+    \(ρ_{\text{pol}}\)
+    \begin{equation}\label{fyz:eq920}
+      \Delta Q_{\text{pol}}=\int_V\rho_{\text{pol}}\dd{V}.
+    \end{equation}
+    Z rovnosti pravých stran obou těchto výrazů vyplývá
+    \begin{equation}\label{fyz:eq921}
+      \int_V\rho_{\text{pol}}\dd{V}=-\int_S\vec{P}\cdot\vec{n}\dd{S}.
+    \end{equation}
+    Dostali jsme něco jako Gaussovu větu, která uvádí do souvislosti hustotu náboje v polarizovaných
+    látkách a vektor elektrické polarizace \(vec{P}\). Můžeme se přesvědčit, že souhlasí s
+    výsledkem, který jsme dostali pro povrchový polarizační náboj nebo pro dielektrikum v deskovém
+    kondenzátoru. Aplikujeme-li rovnici (\ref{fyz:eq921}) na gaussovskou plochu z obr.
+    \ref{fyz:fig705}, bude plošný itegrál roven \(PΔS\) a náboj uvnitř plochy bude
+    \(\sigma_{\text{pol}}\,\Delta S\), takže opět dostáváme \(σ_{\text{pol}}=P\).
+    
+    Stejně jako v případě elektrostatického Gaussova zákona můžeme i rovnici (\ref{fyz:eq921})
+    transformovat na diferenciální tvar použitím Gaussovy věty z matematiky:
+    \begin{equation*}
+      \int_S\vec{P}\cdot\vec{n}\dd{S}=\int_V∇\cdot\vec{P}\dd{V}.
+    \end{equation*}
+    Dostaneme
+    \begin{equation}\label{fyz:eq922}
+      ρ_{\text{pol}}=−∇⋅\vec{P}.
+    \end{equation}
+    Je-li polarizace nehomogenní, dává její divergence výslednou hustotu náboje vznikající v látce.
+    Zdůrazňujeme, že jde o naprosto \emph{reálnou} hustotu náboje; „polarizačním nábojem“ jej
+    nazýváme proto, abychom připomněli, odkud se vzal.
+
   \section{Elektrostatické rovnice pro dielektrika}\label{fyz:IIchapXsecIV}
-  
-  \section{Pole a síly v přítomnosti dielektrik}\label{fyz:IIchapXsecV}
+    Nyní už spojme uvedený výsledek s naší elektrostatickou teorií. Základní rovnice je
+    \begin{equation}\label{fyz:eq923}
+      ∇\cdot\vec{E}=\dfrac{\varrho}{\varepsilon_0}.
+    \end{equation}
+    kde \(ρ\) je hustota všech elektrických nábojů. Protože není snadné sledovat polarizační náboje,
+    je vhodné rozdělit \(ρ\) na dvě části. Opět budeme jako \(ρ_{\text{pol}}\), označovat náboje
+    vyvolané nehomogenní polarizací a jako \(ρ_{\text{free}}\) všechny ostatní náboje. Obvykle
+    představuje \(ρ_{\text{free}}\) náboj, který jsme přivedli na vodiče, nebo náboj, který je v
+    prostoru rozdělen známým způsobem. Rovnice (\ref{fyz:eq923}) pak získá tvar
+    \begin{equation*}
+      ∇⋅\vec{E}=\dfrac{ρ_{\text{free}}+ρ_{\text{pol}}}{ϵ_0}=\dfrac{ρ_{\text{free}}−∇⋅\vec{P}}{ϵ_0}
+    \end{equation*}
+    resp. 
+    \begin{equation}\label{fyz:eq923}
+      ∇\cdot\left(\vec{E}+\dfrac{\vec{P}}{ϵ_0}\right)=\dfrac{ρ_{\text{free}}}{ϵ_0}.
+    \end{equation}
+    Rovnice pro \(\rot{E}\) se, přirozeně, nemění, tj.
+    \begin{equation}\label{fyz:eq924}
+      ∇×\vec{E}=0.
+    \end{equation}
+
+    \section{Pole a síly v přítomnosti dielektrik}\label{fyz:IIchapXsecV}
 
     \begin{figure}[ht!] %\ref{fyz:fig712}
       \centering
-      \includegraphics[width=0.5\linewidth]{fyz_fig712.pdf}
+      \includegraphics[width=0.8\linewidth]{fyz_fig712.pdf}
       \caption{V nehomogenním poli působí na dielektrické těleso síla směřující do prostoru s vyšší
               intenzitou pole. (\cite[s.~184]{Feynman02})}
       \label{fyz:fig712}
@@ -271,7 +362,7 @@
 
     \begin{figure}[ht!] %\ref{fyz:fig713}
       \centering
-      \includegraphics[width=0.5\linewidth]{fyz_fig713.pdf}
+      \includegraphics[width=0.9\linewidth]{fyz_fig713.pdf}
       \caption{Sílu působící v deskovém kondenzátoru na dielektrickou destičku můžeme vypočítat
                použitím principu zachování energie. (\cite[s.~707]{Feynman02})}
       \label{fyz:fig713}
