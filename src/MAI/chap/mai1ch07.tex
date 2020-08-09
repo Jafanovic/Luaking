@@ -193,14 +193,11 @@
       \begin{equation}\label{ma:eq_perpartes}
         \int u'(x)v(x)\dx = u(x)v(x) - \int u(x)v'(x)\dx 
       \end{equation}
-      \begin{example}
-        Máme za úkol najít primitivní funkci k funkci \(f(x) = x\sin x\). Představíme-li si ji jako 
-        součin \(f(x) = u'(x)v(x)\), kde \(u'(x) = \sin x\), tj. \(u(x) = -\cos x\), a \(v(x)= x\), 
-        tj. \(v'(x) = 1\), dostaneme
-        \begin{equation*}
-          \int x\sin x\dx = -x\cos x + \int\cos x\dx = -x\cos x + \sin x + C.
-        \end{equation*}          
-      \end{example}
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam109.tex}
+      %-------------------------------------
+
       Není vždy jednoduché rozpoznat, jak máme rozložit funkci \(f(x)\) na součin funkcí \(u'(x)\) 
       a \(v(x)\). Takový rozklad není určen jednoznačně a požadavek na něj bychom mohli (dosti 
       nepřesně) formulovat tak, aby funkce \(v'(x)\) byla jednodušší než v \(v(x)\) (například 
@@ -208,16 +205,10 @@
       „stejně složité“ (například \(u'(x) =e^x\), \(u(x) = e^x\), nebo \(u'(x) = \cos x\), \(u(x) = 
       \sin x\), apod.). Spolehlivě používat metodu per partes se však můžeme naučit pouze studiem 
       vyřešených příkladů z literatury a praktickým procvičováním \cite[p.~138]{Musilova2009MA1}.
-      
-      \begin{example}
-        (\emph{Umělý rozklad na součin}): Někdy zadaná funkce \(f(x)\) jako součin vůbec nevypadá, 
-        a přesto je použití metody per partes vhodné. Například pro elementární funkci \(f(x) = \ln 
-        x\) sice najdeme primitivní funkci \ref{MA:baseInt06} v tabulce základních neurčitých 
-        integrálů z odstavce \ref{MA:chap_tabINT}, ale je možné postupovat i jinak. Představme si 
-        \(f(x)\) jako součin \(f(x) = 1\cdot\ln x\) a zvolme \[u'(x) = 1 ⇒ u(x) = x, \qquad v(x) = 
-        lnx ⇒ v'(x) = \frac{1}{x}\] Pak \[\int \ln\dx = x\ln x - \int x\cdot\frac{1}{x}\dx = x\ln 
-        x - x.\]
-      \end{example}
+  
+      %-------------------------------------
+      \input{../src/MAI/exam/exam109.tex}
+      %-------------------------------------
   
     %--------------------------- Substituční metoda ----------------------------------------------
     \subsection{Substituční metoda I}
@@ -249,18 +240,10 @@
       Základem úspěchu při aplikací věty je správný výběr funkce $\varphi(x)$. Praxe je totiž
       taková, že výpočet konkrétních příkladů je schématicky veden od rov. \ref{ma:eq_subst2} ke
       vzorci rov. \ref{ma:eq_subst1}.
-      
-      \begin{example} Jak poznat kandidáta na substituční metodu I.\newline
-        Počítejme neurčitý integrál \[\int \frac{x}{\sqrt{x^2+1}}.\]
-        Vidíme, že čitatel funkce za integrálem je až na násobení konstantou derivací výrazu pod 
-        odmocninou. Při označení \(u=\varphi(x) = x^2 + 1\) dostáváme \(\varphi'(x) = x\):
-        \begin{equation*}
-          \int\frac{x}{\sqrt{x^2+1}}\dx 
-            = \frac{1}{2}\int\frac{2x}{\sqrt{x^2+1}}\dx 
-            = \frac{1}{2}\int\frac{1}{\sqrt{u}}\dd{u}         
-            = \sqrt{u} + c = \sqrt{x^2 + 1} + c  
-        \end{equation*}
-      \end{example}
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam110.tex}
+      %-------------------------------------
       
       \begin{example}\label{ma:ex_sub_metoda}$\displaystyle\int{e^{x^{x^2}}dx}$
         \begin{equation*}
