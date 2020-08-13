@@ -457,7 +457,7 @@
 
 
       Hledání pracovního bodu si vysvětlíme na příkladu \emph{Colpittsova oscilátoru} z obr.
-      \ref{aes:fig_fig020a}. První krok spočívá v odstranění setrvačných prvků z obvodu, protože ty
+      \ref{aes:fig020a}. První krok spočívá v odstranění setrvačných prvků z obvodu, protože ty
       nemají na stejnosměrný pracovní bod vliv. Induktory jsou nahrazeny zkratem a kapacitory jsou
       jednoduše vypuštěny. Po odstranění setrvačných prvků zmizí z obvodových rovnic čas. Standardní
       stejnosměrná analýza proto nemůže poskytnout informaci o stabilitě či nestabilitě pracovního
@@ -468,8 +468,8 @@
 
       \begin{figure}[ht!]
         \centering  
-        \subcaptionbox{\label{aes:fig_fig020a}}{\luafigure[0.9]{aes_fig020a.png}}          \newline
-        \subcaptionbox{\label{aes:fig_fig020b}}{\luafigure[0.5]{aes_fig020b.png}}               
+        \subcaptionbox{\label{aes:fig020a}}{\luafigure[0.9]{aes_fig020a.png}}          \newline
+        \subcaptionbox{\label{aes:fig020b}}{\luafigure[0.5]{aes_fig020b.png}}               
         \caption{Úprava obvodu pro výpočet pracovního bodu. (\cite[s.~59]{KolkaBiolek2011})}
         \label{aes:fig020}
       \end{figure}
@@ -477,22 +477,22 @@
       Pracovní bod je charakterizován stejným napětím na kolektoru a bázi bipolárního tranzistoru,
       protože tyto svorky jsou stejnosměrně propojené přes indukčnost \(L\). Rozpojme nyní tyto
       svorky. Napětí báze je označeno jako \(U_1\), napětí kolektoru pak jako \(U_2\). Na obr.
-      \ref{aes:fig_fig021a} je znázorněna závislost \(U_2=f(U_1)\). Jedná se vlastně o zesilovač v
+      \ref{aes:fig021a} je znázorněna závislost \(U_2=f(U_1)\). Jedná se vlastně o zesilovač v
       zapojení \texttt{SE}. Pracovní bod se nachází tam, kde platí \(U_1 = U_2\). Na druhém grafu je
       vynesena závislost \(U_1-U_2\). V pracovním bodu tedy musí platit \(U_1 - U_2 = 0\). Hledáme
       průsečík zobrazené křivky s nulou.
 
       \begin{figure}[ht!]
         \centering  
-        \subcaptionbox{\label{aes:fig_fig021a}}{\luafigure[0.40]{aes_fig021a.png}}    \hspace{1em}
-        \subcaptionbox{\label{aes:fig_fig021b}}{\luafigure[0.45]{aes_fig021b.png}}               
+        \subcaptionbox{\label{aes:fig021a}}{\luafigure[0.40]{aes_fig021a.png}}    \hspace{1em}
+        \subcaptionbox{\label{aes:fig021b}}{\luafigure[0.45]{aes_fig021b.png}}               
         \caption{Princip výpočtu pracovního bodu. (\cite[s.~60]{KolkaBiolek2011})}
         \label{aes:fig021}
       \end{figure}
       
       U všech programů třídy \texttt{SPICE} je výpočet pracovního bodu prakticky shodný. Používá se
       \textbf{Newton-Raphsonova metoda tečen}. Její princip si můžeme představit podle obr.
-      \ref{aes:fig_fig021b}. Metoda hledá kořen algebraické rovnice, tj. \emph{průsečík nějaké
+      \ref{aes:fig021b}. Metoda hledá kořen algebraické rovnice, tj. \emph{průsečík nějaké
       funkce s osou \(x\)}. Výpočet probíhá vždy iteračně. Na počátku je nutné zvolit výchozí bod
       \(U_1^{(0)}\), ve kterém se určí tečna. Její průsečík s osou \(x\) dává nový bod (odhad
       kořene) \(U_1^{(1)}\), pak \(U_1^{(2)}\), atd.. Celý proces se iteračně opakuje. V dalších
@@ -603,22 +603,22 @@
         vyhodnocuje zobrazením součinu \(\Delta t\lambda\) (\(\Delta\) je \emph{časový krok}) do
         komplexní roviny. Protože časový krok je vždy kladný, \(\Delta t>0\), tak bychom u ideální
         metody čekali, že bude poskytovat stabilní \emph{numerické} řešení pro všechna
-        \(\Delta t\lambda\) ležící v levé polorovině, viz obr. \ref{aes:fig_fig018a}. Tuto vlastnost
+        \(\Delta t\lambda\) ležící v levé polorovině, viz obr. \ref{aes:fig018a}. Tuto vlastnost
         splňuje pouze tzv. \textbf{lichoběžníková metoda}, u které se však projevují parazitní
         zákmity při analýze impulzních obvodů. Z toho důvodu se více používají metody, které tuto
         vlastnost nemají.
 
         \begin{figure}[ht!]
           \centering  
-            \subcaptionbox{\label{aes:fig_fig018a}}{\luafigure[0.45]{aes_fig018a.png}}  \hspace{1em}            
-            \subcaptionbox{\label{aes:fig_fig018b}}{\luafigure[0.45]{aes_fig018b.png}}  \newline            
-            \subcaptionbox{\label{aes:fig_fig018c}}{\luafigure[0.45]{aes_fig018c.png}}  
+            \subcaptionbox{\label{aes:fig018a}}{\luafigure[0.45]{aes_fig018a.png}}  \hspace{1em}            
+            \subcaptionbox{\label{aes:fig018b}}{\luafigure[0.45]{aes_fig018b.png}}  \newline            
+            \subcaptionbox{\label{aes:fig018c}}{\luafigure[0.45]{aes_fig018c.png}}  
           \caption{Oblast absolutní stability a) lichoběžníková metoda; b), c) Gearova metoda}
-          \label{aes:fig_fig018}
+          \label{aes:fig018}
         \end{figure}
 
         Jedna z nejrozšířenějších metod, která je využita i v \texttt{PSpice}, je tzv.
-        \textbf{Gearova metoda}. Na obr. \ref{aes:fig_fig018b} a \ref{aes:fig_fig018c} jsou
+        \textbf{Gearova metoda}. Na obr. \ref{aes:fig018b} a \ref{aes:fig018c} jsou
         vyznačené oblasti její stability. Řád metody (tj. stupeň polynomu, který lokálně aproximuje
         řešení) se automaticky mění podobným způsobem jako časový krok. Při zkracování kroku se
         používá nižší řád a naopak.
