@@ -1,13 +1,10 @@
 % !TeX spellcheck = cs_CZ
-%{\tikzset{external/prefix={tikz/MAI/}}
-% \tikzset{external/figure name/.add={ch06_}{}}
 %---------------------------------------------------------------------------------------------------
-% file: chap_PrimitiveFce.tex
+% file: mai1ch07.tex
 %---------------------------------------------------------------------------------------------------
 %============================ Primitivní funkce ====================================================
 \setchaptertoc
-\chapter{Primitivní funkce}
-
+\chapter{Poznáváme funkci z její derivace — neurčitý integrál}
   %----------------------------Neurčitý integrál----------------------------------------------------
   \section{Motivace}
     Problém \emph{neurčitého integrálu}, neboli \textbf{primitivní funkce}, lze vyložit velmi 
@@ -27,18 +24,23 @@
     primitivních funkcí. Množinu všech primitivních funkcí se často nazývá \textbf{neurčitým 
     integrálem}. Po tomto názorném uvedení do problému přejděme k přesné formulaci základních pojmů.
     
-    \begin{definition} 
-      Funkce $F: J\rightarrow \realset$, kde $J\subset \realset$ je interval, se nazývá primitivní 
-      funkce k funkci \(f\) na intervalu \(J\) právě když, pro všechna $x\in J$ je $F'(x) = f(x)$ 
-      (v krajních bodech intervalu \(J\), pokud k němu patří, jde o derivace jednostranné).
-    \end{definition}
-    
-    \begin{example} 
-      K funkci $\sin x$ je primitivní funkcí na libovolném intervalu $J\subset(-\infty,+\infty)$ 
-      funkce $-\cos x$, protože $(-\cos x)' = \sin x$. Ale též funkce $3-\cos x$ je primitivní 
-      funkcí k funkci $\sin x$, protože $(3 - \cos x)' = \sin x$ pro všechna $x\in(-\infty, 
-      \infty)$.
-    \end{example}
+    \begin{mdframed}[style=mdmathdef] 
+      Funkci \(F(x): J\rightarrow \realset\), kde \(J\subset \realset\) je interval, nazveme
+      \textbf{primitivní} funkcí k funkci \(f(x)\) na intervalu \(J\) právě když, pro všechna \(x\in
+      J\) je \(F'(x) = f(x)\). 
+      
+      V případě uzavřeného intervalu \(J=[a,b]\) požadujeme ještě, aby obě jednostranné derivace
+      splňovali \(F_+'(a)=f(a)\) a \(F_-'(b)=f(b)\). 
+      
+      Množina všech primitivních funkcí k funkci \(f(x)\) na \(J\) se nazývá \textbf{neurčitý
+      integrál} z funkce \(f(x)\) a značí se \(\int f(x)\dd{x}\). Tedy
+      \begin{equation}\label{mai:eq101}
+        \int f(x)\dd{x} = \{F(x): \text{\(F(x)\) je primitivní funkcí k \(f(x)\) na \(J\)}\}
+      \end{equation}
+    \end{mdframed}
+    %-------------------------------------
+    \input{../src/MAI/exam/exam118.tex}
+    %-------------------------------------
     
     Je vidět, že rozdíl dvou primitivních funkcí k téže funkci je konstanta. To není náhoda, jak 
     potvrzuje následující věta:
@@ -69,7 +71,7 @@
     postupovat. Nejprve však uvedeme dvě základní pravidla pro primitivní funkce, která plynou z
     pravidel pro derivování:
     \begin{align}
-      \int[f(x)\pm g(x)]\dd{x} &= \int[f(x)\pm g(x)]\dd{x} + \int[f(x)\pm g(x)]\dd{x} \label{MA1:eq_int10} \\
+      \int[f(x)\pm g(x)]\dd{x} &= \int f(x)\dd{x} + \int g(x)\dd{x} \label{MA1:eq_int10} \\
       \int cf(x)\dd{x}         &= c \int f(x)\dd{x}, \qquad \text{\(c\) je konstanta.} \label{MA1:eq_int11}
     \end{align}
   
