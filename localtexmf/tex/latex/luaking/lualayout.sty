@@ -16,16 +16,24 @@
 %       * System fonts in your system font directory (the fonts visible to other programs) 
 %         can only be called by the font name (like "TeX Gyre Termes"). 
 %       * Fonts installed in the TeX directories can only be called by their file names.
+% https://tex.stackexchange.com/questions/338781
 \RequirePackage{fontspec} 
   % \setmainfont{Cambria}  
   % \setmainfont{Latin Modern Roman}
   % \setmainfont{XCharter} % https://tex.stackexchange.com/questions/349113/ 
   % \setmainfont[Script=Greek]{Cambria}
   % \setmainfont{TeX Gyre Pagella}
-    \setmainfont{TeX Gyre Termes}
+  \setmainfont{TeX Gyre Termes}
 \RequirePackage[style=british]{csquotes}
 % https://www.semipol.de/2018/06/12/latex-best-practices.html#put-each-sentence-on-a-single-line
-\RequirePackage[activate={true,nocompatibility},final,tracking=true,kerning=false,factor=1100,stretch=10,shrink=10]{microtype}  % mi­cro-ty­po­graphic ex­ten­sions
+\RequirePackage[
+  activate={true,nocompatibility},
+  final,
+  tracking=true,
+  kerning=false,
+  factor=1100,
+  stretch=10,
+  shrink=10]{microtype}  % mi­cro-ty­po­graphic ex­ten­sions
 
 % ~~~~~~~~ Title Page ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \newcommand{\LuaPartTitle}[3]{
@@ -72,7 +80,7 @@
 \RequirePackage{layouts}
 % ~~~~~~~~ ‘Floating’ figures ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \RequirePackage{float}      % \Load {float} before {hyperref}
-\RequirePackage{amsmath}    % \Load {amsmath} before {hyperref}:
+\RequirePackage[fleqn]{amsmath}    % \Load {amsmath} before {hyperref}:
                             % https://tex.stackexchange.com/questions/975/
                             % https://tex.stackexchange.com/questions/65926/
 % ~~~~~~~~ Hyperref ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

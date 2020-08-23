@@ -24,132 +24,160 @@
     primitivních funkcí. Množinu všech primitivních funkcí se často nazývá \textbf{neurčitým 
     integrálem}. Po tomto názorném uvedení do problému přejděme k přesné formulaci základních pojmů.
     
+  \section{Definice primitivní funkce}  
     \begin{mdframed}[style=mdmathdef] 
-      Funkci \(F(x): J\rightarrow \realset\), kde \(J\subset \realset\) je interval, nazveme
-      \textbf{primitivní} funkcí k funkci \(f(x)\) na intervalu \(J\) právě když, pro všechna \(x\in
-      J\) je \(F'(x) = f(x)\). 
-      
-      V případě uzavřeného intervalu \(J=[a,b]\) požadujeme ještě, aby obě jednostranné derivace
-      splňovali \(F_+'(a)=f(a)\) a \(F_-'(b)=f(b)\). 
-      
-      Množina všech primitivních funkcí k funkci \(f(x)\) na \(J\) se nazývá \textbf{neurčitý
-      integrál} z funkce \(f(x)\) a značí se \(\int f(x)\dd{x}\). Tedy
-      \begin{equation}\label{mai:eq101}
-        \int f(x)\dd{x} = \{F(x): \text{\(F(x)\) je primitivní funkcí k \(f(x)\) na \(J\)}\}
-      \end{equation}
+      \begin{definition}\label{mai:def002}
+        Funkci \(F(x): J\rightarrow \realset\), kde \(J\subset \realset\) je interval, nazveme
+        \textbf{primitivní} funkcí k funkci \(f(x)\) na intervalu \(J\) právě když, pro všechna
+        \(x\in J\) je \(F'(x) = f(x)\). 
+        
+        V případě uzavřeného intervalu \(J=[a,b]\) požadujeme ještě, aby obě jednostranné derivace
+        splňovali \(F_+'(a)=f(a)\) a \(F_-'(b)=f(b)\). 
+        
+        Množina všech primitivních funkcí k funkci \(f(x)\) na \(J\) se nazývá \textbf{neurčitý
+        integrál} z funkce \(f(x)\) a značí se \(\int f(x)\dd{x}\). Tedy
+        \begin{equation}\label{mai:eq101}
+          \int f(x)\dd{x} = \{F(x): \text{\(F(x)\) je primitivní funkcí k \(f(x)\) na \(J\)}\}
+        \end{equation}
+      \end{definition}
     \end{mdframed}
     %-------------------------------------
     \input{../src/MAI/exam/exam118.tex}
     %-------------------------------------
     
-    Je vidět, že rozdíl dvou primitivních funkcí k téže funkci je konstanta. To není náhoda, jak 
-    potvrzuje následující věta:
+    Z uvedených příkladů je vidět, že rozdíl dvou primitivních funkcí k téže funkci je konstanta. To
+    není náhoda, jak potvrzuje následující věta:
+
+    \begin{mdframed}[style=mdmathlemma] 
+      \begin{lemma}\label{mai:lemma008}(Věta o rozdílu dvou primitivních funkcí)
+        \begin{enumerate}[noitemsep]
+          \item Je-li funkce $F$ primitivní funkcí k funkci \(f\) na intervalu \(J\) a \(c\) reálná  
+                konstanta, pak i funkce $G = F + c$ je primitivní funkcí k funkci \(f\) na intervalu 
+                \(J\).
+          \item Jsou-li funkce $F$ a $G$ primitivní funkce k funkci \(f\) na intervalu \(J\), pak 
+          funkce
+                $F-G$ je na intervalu \(J\) konstantní.
+        \end{enumerate} 
+        \begin{proof}
+          Tvrzení a) plyne z definice protože $G'(x) = [F(x) + c] = F'(x) = f(x)$ pro všechna $x\in
+          J$. Tvrzení b) je důsledkem věty \ref{MA1:lem_diff01}.
+        \end{proof}
+      \end{lemma}
+    \end{mdframed}
+
+    \subsection{Poznámky k definici}  
+      Z definice \ref{mai:def002} vyplývá, že primitivní funkce je spojitou funkcí, neboť má
+      derivaci a věta \ref{mai:lemma008} nám říká, že pokud k dané funkci existuje funkce
+      primitivní, existuje jich nekonečně mnoho. Je-li např. \(F\) primitivn9 funkce k funkci \(f\)
+      na intervalu \(J\), pak množina všech primitivních funkcí je množina \(\{F + c;
+      c\in\realset\}\). Tuto množinu označujeme symbolem \(\int f(x)\dd{x}\) a čteme \uv{integrál
+      \(f(x)\dd{x})\)} Symbolu \(\int f(x)\dd{x}\) říkáme \textbf{neurčitý integrál}. Zpravidla
+      píšeme
+      \begin{mdframed}[style=mdmathlemma]  
+        \begin{equation}\label{mai:eq102}
+          \int f(x)\dd{x} = F(x) + c
+        \end{equation}
+      \end{mdframed}
+      nebo jen \(\int f(x)\dd{x} = F(x)\) (tj. aditivní konstantu vynecháváme) a máme tím na mysli
+      že \(F(x) \in \int f(x)\dd{x}\). Rovnost \ref{mai:eq102} je tedy rovnost mezi množinami,
+      nikoliv rovnost funkcí. 
     
-    \begin{lemma}
-      \begin{enumerate}[noitemsep]
-        \item Je-li funkce $F$ primitivní funkcí k funkci \(f\) na intervalu \(J\) a \(c\) reálná  
-              konstanta, pak i funkce $G = F + c$ je primitivní funkcí k funkci \(f\) na intervalu 
-              \(J\).
-        \item Jsou-li funkce $F$ a $G$ primitivní funkce k funkci \(f\) na intervalu \(J\), pak 
-        funkce
-              $F-G$ je na intervalu \(J\) konstantní.
-      \end{enumerate} 
-      \begin{proof}
-        Tvrzení a) plyne z definice protože $G'(x) = [F(x) + c] = F'(x) = f(x)$ pro všechna $x\in
-        J$. Tvrzení b) je důsledkem věty \ref{MA1:lem_diff01}.
-      \end{proof}
-    \end{lemma}
-    Neurčitost vyplývá právě z toho, že primitivní funkce není dána jednoznačně, je určena až na 
-    konstantu. Značíme
-    \begin{equation*}
-      \boxed{F(x) = \int f(x)\dd{x} + C}
-    \end{equation*}
-        
+    \subsection{Některé vlastnosti integrálů}  
+      Platnost několika následujících vztahů lze prověřit přímo užitím deﬁnic derivace a neurčitého
+      integrálu. Tyto vztahy jsou při výpočtech často používány. Nejprve však uvedeme základní
+      pravidla pro primitivní funkce, která plynou z pravidel pro derivování:
+      \begin{subequations}
+        \begin{flalign}
+          \int\dd{f(x)} &= f(x) + c,                                          &\label{mai:eq134} \\
+          \dxd\left[\int f(x)\dd{x}\right] &= f(x)\dd{x},                     &\label{mai:eq135} \\
+          \int[f(x)\pm g(x)]\dd{x}&= \int f(x)\dd{x} + \int g(x)\dd{x},       &\label{mai:eq103} \\
+          \int kf(x)\dd{x}      &=k\int f(x)\dd{x},\quad\text{\(k=\) konst.}, &\label{mai:eq104} \\
+          \left[\int f(x)\dd{x}\right]' &= f(x),                              &\label{mai:eq136}
+        \end{flalign}
+      \end{subequations}
+  
+  \section{Tabulka neurčitých integrálů}\label{MA:chap_tabINT}
     Jak ale primitivní funkce hledat? V jednoduchých příkladech poslouží tabulka derivací, již čteme
     „zprava doleva“. (Je dobré si ji uložit do paměti.) Tabulka však pokryje jen velmi málo případů,
     pouze elementární funkce. Je tedy třeba najít metody, jak při hledání primitivních funkcí
-    postupovat. Nejprve však uvedeme dvě základní pravidla pro primitivní funkce, která plynou z
-    pravidel pro derivování:
-    \begin{align}
-      \int[f(x)\pm g(x)]\dd{x} &= \int f(x)\dd{x} + \int g(x)\dd{x} \label{MA1:eq_int10} \\
-      \int cf(x)\dd{x}         &= c \int f(x)\dd{x}, \qquad \text{\(c\) je konstanta.} \label{MA1:eq_int11}
-    \end{align}
-  
-  \section{Tabulka neurčitých integrálů}\label{MA:chap_tabINT}
-    Pokud není nic uvedeno, platí vzorce pro všechna \(x\) a pro všechny hodnoty uvedených
-    konstant. Místo platí pro \(x\) z intervalu \((-\infty,0),(0,+\infty)\) píšeme stručně
-    \(x\neq0\) apod. Literatura: \cite[p.~396]{Rektorys1963}.
+    postupovat.
+
+    Uveďme nyní některé základní integrály. Poznamenejme, že touto tabulkou nejsou zdaleka vyčerpány
+    všechny funkce, ke kterým umíme primitivní funkce najít. Existují celé knihy obsahující tabulky
+    integrálů a programy výrazně ulehčující hledání primitivních funkcí. Literatura:
+    \cite{Rektorys1963}, \cite{Brabec1989}, \cite{diblik2002}. 
+
+    Pokud není nic uvedeno, platí vzorce pro všechna \(x\) a pro všechny hodnoty uvedených konstant.
+    Místo platí pro \(x\) z intervalu \((-\infty,0),(0,+\infty)\) píšeme stručně \(x\neq0\) apod.
+    Obory platnosti uvádíme jen tam, kde nejsou evidentní.  
+
     \begin{flalign}
-      \hline
-      & \int 0\dd{x} = c                                        &      \label{MA:baseInt01}     \\
-      & \int a\dd{x} = ax+c                                     &      \label{MA:baseInt02}     \\
-      & \int x^n\dd{x} = \frac{x^{n+1}}{n+1}+c, \,                             
-        \qquad\text{kde}\begin{cases}
+      \midrule
+      & \int 0\dd{x} = c                                        &      \label{mai:eq105}     \\
+      & \int a\dd{x} = ax+c                                     &      \label{mai:eq106}     \\
+      & \int x^n\dd{x} = \frac{x^{n+1}}{n+1}+c,                 &      \label{mai:eq107}     \\              
+        \shortintertext{\hspace{2em} kde \(\begin{cases}
           \forall x\in\realset,\,n\in\naturalset, n>0,         \\
           \forall x\in\realset-\{0\},\,n\in\naturalset, n<-1,  \\
-          \forall x>0,\,n\in\realset\,\,n\notin\naturalset
-        \end{cases}                                            &       \label{MA:baseInt03}    \\
+          \forall x>0,\,n\in\realset\,\,n\neq-1
+        \end{cases}\)}                                          
       & \int\frac{1}{x}\dd{x} = 
-            \ln\abs{x}+c \hspace{1ex}\forall x\neq0            &       \label{MA:baseInt04}    \\
-      & \int e^x \dd{x}       = e^x+c                          &       \label{MA:baseInt05}    \\
+            \ln\abs{x}+c \hspace{1ex}\forall x\neq0            &       \label{mai:eq108}    \\
+      & \int e^x \dd{x}       = e^x+c                          &       \label{mai:eq109}    \\
       & \int\ln x\dd{x}       = 
-          x\ln x - x + c \hspace{1ex}\forall x>0               &       \label{MA:baseInt06}    \\
+          x\ln x - x + c \hspace{1ex}\forall x>0               &       \label{mai:eq110}    \\
       & \int a^x \dd{x}     =
         \frac{a^x}{\ln a}+c 
-        \hspace{1ex}\forall a>0,\,a\neq1                       &       \label{MA:baseInt07}    \\
-      & \int \sin x \dd{x}  = -\cos x                          &       \label{MA:baseInt08}    \\
-      & \int \cos x \dd{x}  =  \sin x                          &       \label{MA:baseInt09}    \\
-      & \int\frac{1}{\cos^2x}\dd{x} =  \tan x+c 
-          \hspace{1ex}\forall x\neq(2k+1)\pi,\,k\in\naturalset &       \label{MA:baseInt10}    \\ 
-    \end{flalign}
-
-    \begin{flalign}          
-      & \int\frac{1}{\sin^2x}\dd{x}     =  -\cotg x+c
-         \hspace{1ex}\forall x\neq k\pi,\,k\in\naturalset      &       \label{MA:baseInt11}    \\
+        \hspace{1ex}\forall a>0,\,a\neq1                       &       \label{mai:eq111}    \\
+      & \int \sin x \dd{x}  = -\cos x                          &       \label{mai:eq112}    \\
+      & \int \cos x \dd{x}  =  \sin x                          &       \label{mai:eq113}    \\
+      & \int\frac{1}{\cos^2x}\dd{x} =  \tan x + c              &       \label{mai:eq114}    \\
+        \shortintertext{\(\hspace{2em}\forall x\neq\frac{1}{2}\pi+k\pi,\,k\in\naturalset\)}\nonumber\\       
+      & \int\frac{1}{\sin^2x}\dd{x}     =  -\cotg x+c         &        \label{mai:eq115}    \\
+        \shortintertext{\(\hspace{1em}\forall x\neq k\pi,\,k\in\naturalset\)}
       & \int\frac{1}{\sqrt{1-x^2}}\dd{x} =
-        \begin{cases}
-          +\arcsin x + c         \\
-          -\arccos x + c
-        \end{cases} 
-        \forall x\in(-1,1)                                     &       \label{MA:baseInt12}    \\
-     & \int\cosh\dd{x} = \sinh x + c                           &       \label{MA:baseInt13}    \\
-     & \int\sinh\dd{x} = \cosh x + c                           &       \label{MA:baseInt14}    \\
-     & \int\frac{1}{1+x^2}\dd{x} = \arctan x + c               &       \label{MA:baseInt15}    \\
-     & \int \frac{1}{\sqrt{x^2 + 1}}\dd{x} =
+          \begin{cases}
+            +\arcsin x + c         \\
+            -\arccos x + c
+          \end{cases}                                          &       \label{mai:eq116}    \\
+        \shortintertext{\(\hspace{2em}\forall x\in(-1,1) \)}  
+     & \int\sinh x\dd{x} = \cosh x + c                         &       \label{mai:eq117}    \\
+     & \int\dfrac{1}{\sinh x}\dd{x} = -\cotgh x + c            &       \label{mai:eq118}    \\
+     & \int\cosh x\dd{x} = \sinh x + c                         &       \label{mai:eq119}    \\
+     & \int\dfrac{1}{\cosh x}\dd{x} = -\tanh x + c             &       \label{mai:eq120}    \\
+     & \int\frac{1}{1+x^2}\dd{x} = \arctan x + c               &       \label{mai:eq121}    \\
+     & \int\frac{1}{\sqrt{x^2 + 1}}\dd{x} =
          \begin{cases}
-           \ln(x + \sqrt{x^2+1}) + c         \\
-           \sinh^{-1}x + c 
-         \end{cases}                                           &       \label{MA:baseInt16}     \\ 
+            \ln(x + \sqrt{x^2+1}) + c         \\
+            \arcsinh x            + c 
+         \end{cases}                                           &       \label{mai:eq122}    \\ 
      & \int \frac{1}{\sqrt{x^2 - 1}}\dd{x} =
          \begin{cases}
-           \ln(x + \sqrt{x^2-1}) + c         \\
-           \cosh^{-1}x + c \hspace{4ex}x\in(1,+\infty) 
-         \end{cases}                                           &       \label{MA:baseInt17}       
-    \end{flalign}
-
-    \begin{flalign}
-      & \int\frac{1}{\sqrt{x^2+a^2}}\dd{x} 
-        = \sinh^{-1} \frac{x}{a} = \ln (x+\sqrt{x^2+a^2})      &       \label{MA:baseInt18}    \\
-      & \int \frac{1}{\sqrt{x^2-a^2}}\dd{x} 
-        = \cosh^{-1} \frac{x}{a} = \ln (x+\sqrt{x^2-a^2})      &       \label{MA:baseInt19}    \\
-      & \int\frac{1}{\sqrt{x^2-1}}\dd{x} 
-        = \left\{ 
-          \begin{array}{l l}
-            \ln\abs{x+\sqrt{x^2-1}}+c      &  \abs{x}>1  \\
-            \cosh^{-1}x+c                  &  \abs{x}<1
-          \end{array} 
-          \right.                                               &      \label{MA:baseInt20}    \\
-      & \int\tan x \dd{x}   = \ln\abs{\sec x} + c               &      \label{MA:baseInt21}    \\
-      & \int\sec x \dd{x}   = \ln\abs{\sec x + \tan x} + c      &      \label{MA:baseInt22}    \\
-      & \int\sec^2 x \dd{x} = \tan x + c                        &      \label{MA:baseInt23}    \\
-      & \int\sec x\tan x \dd{x} = \sec x + c                    &      \label{MA:baseInt24}    \\
-      & \int\frac{a}{a^2+x^2}\dd{x} = \tan^{-1}\frac{x}{a}      &      \label{MA:baseInt25}    \\
-      & \int\frac{a}{a^2-x^2}\dd{x} = 
-        \frac{1}{2}\ln\left\lvert\frac{x+a}{x-a}\right\rvert    &      \label{MA:baseInt26}    \\
-      & \int\frac{1}{\sqrt{a^2-x^2}} \dd{x} = 
-          \sin^{-1} \frac{x}{a}                                 &      \label{MA:baseInt27}    \\
-      & \int\frac{a}{x\sqrt{x^2-a^2}}\dd{x} = 
-          \sec^{-1} \frac{x}{a}                                 &      \label{MA:baseInt28}    
+            \ln(x + \sqrt{x^2-1}) + c         \\
+            \arccosh x            + c  
+         \end{cases}                                           &       \label{mai:eq123}    \\   
+       \shortintertext{\hspace{2em}\(x\in(1,+\infty)\)}  
+     & \int\frac{1}{\sqrt{x^2+a^2}}\dd{x} 
+         = \begin{cases}
+              \arcsinh\frac{x}{a}   + c  \\ 
+              \ln(x+\sqrt{x^2+a^2}) + c     
+           \end{cases}                                          &      \label{mai:eq124}    \\
+     & \int \frac{1}{\sqrt{x^2-a^2}}\dd{x} 
+         = \begin{cases}
+              \arccosh\frac{x}{a}   + c   \\
+              \ln(x+\sqrt{x^2-a^2}) + c
+           \end{cases}                                          &      \label{mai:eq125}    \\
+     & \int\tan x \dd{x}   = \ln\abs{\sec x} + c                &      \label{mai:eq126}    \\
+     & \int\sec x \dd{x}   = \ln\abs{\sec x + \tan x} + c       &      \label{mai:eq127}    \\
+     & \int\sec^2 x \dd{x} = \tan x + c                         &      \label{mai:eq128}    \\
+     & \int\sec x\tan x \dd{x} = \sec x + c                     &      \label{mai:eq129}    \\
+     & \int\frac{a}{a^2+x^2}\dd{x} = \tan^{-1}\frac{x}{a} + c   &      \label{mai:eq130}    \\
+     & \int\frac{a}{a^2-x^2}\dd{x} = 
+       \frac{1}{2}\ln\left\lvert\frac{x+a}{x-a}\right\rvert     &      \label{mai:eq131}    \\
+     & \int\frac{1}{\sqrt{a^2-x^2}} \dd{x} = 
+       \sin^{-1} \frac{x}{a}                                    &      \label{mai:eq132}    \\
+     & \int\frac{a}{x\sqrt{x^2-a^2}}\dd{x} = 
+       \sec^{-1} \frac{x}{a}                                    &      \label{mai:eq133}    
     \end{flalign}
 
   \section{Metody určení primitivní funkce}
@@ -166,11 +194,13 @@
       Metoda integrace \emph{per partes} neboli \emph{po částech} využívá vzorce pro derivaci 
       součinu funkcí. Připomeňme si jej: Pro derivaci součinu dvou funkcí \(u(x)\) a \(u(x)\) platí
       \cite[p.~137]{Musilova2009MA1}.
-      \begin{align}
-        [u(x)v(x)]' &= u(x)'v(x) + u(x)v'(x).  \label{MA:eq_Int29} \\
-        \shortintertext{Primitivní funkcí levé strany je \(F(x) = u(x)v(x)\), a tedy}
-        u(x)v(x)    &=  \int u'(x)v(x)\dd{x} + \int u(x)v'(x)\dd{x} \nonumber
-      \end{align}  
+      \begin{equation}\label{MA:eq_Int29}
+        [u(x)v(x)]' = u(x)'v(x) + u(x)v'(x).
+      \end{equation} 
+      Primitivní funkcí levé strany je \(F(x) = u(x)v(x)\), a tedy
+      \begin{equation*}
+        u(x)v(x) =  \int u'(x)v(x)\dd{x} + \int u(x)v'(x)\dd{x}
+      \end{equation*}  
       za předpokladu, že existují obě primitivní funkce na pravé straně. K čemu může tento
       samozřejmý vzorec sloužit při hledání primitivní funkce? Dejme tomu, že zadaná funkce
       \(f(x)\), k níž máme hledat funkci primitivní, je tvaru \(f(x) = u'(x)v(x)\), a my si s ní

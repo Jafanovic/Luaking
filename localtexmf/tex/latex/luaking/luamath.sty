@@ -72,6 +72,13 @@
     roundcorner     =  10pt,
     linecolor       =  red!50
     }
+  \mdfdefinestyle{mdmathlemma}{
+    % usetwoside      =  false,
+    % outermargin     =  1cm,
+    backgroundcolor =  blue!10,
+    roundcorner     =  10pt,
+    linecolor       =  red!50
+    }  
   \mdfdefinestyle{mdmsdos}{
     % usetwoside      =  false,
     % outermargin     =  1cm,
@@ -92,7 +99,8 @@
 %                                     MATH environment 
 % ==================================================================================================
 \RequirePackage{xparse}
-\RequirePackage{amsmath, amssymb, amsthm, amsbsy}
+\RequirePackage[fleqn]{amsmath}
+\RequirePackage{amssymb, amsthm, amsbsy}
 \RequirePackage{diffcoeff}              % writing of differential coefficients in all their variety
 \RequirePackage{commath}
 \RequirePackage{empheq}                 % EMPHasizing EQuations
@@ -140,11 +148,19 @@
 \DeclareMathOperator\arctg{arctg}
 \DeclareMathOperator\sgn{sgn}
 \DeclareMathOperator{\ppm}{ppm}
+% https://tex.stackexchange.com/questions/97245/
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\cotgh}{cotgh}
 
 % \newcommand\abs[1]{\ensuremath{\lvert#1\rvert}} % https://tex.stackexchange.com/questions/97631/
                                                   % replaced by commath package
 \newcommand{\dx}{\hspace{2pt}dx}
-\newcommand{\dd}[1]{\mathop{}\!\mathrm{d}#1}      % https://tex.stackexchange.com/questions/84302/
+% https://tex.stackexchange.com/questions/84302/
+\newcommand{\dd}[1]{\mathop{}\!\mathrm{d}#1}    
+% https://tex.stackexchange.com/questions/368212/  
+\newcommand*{\dxd}{\mathop{\kern0pt\mathrm{d}}\!{}} 
 \newcommand{\limitint}{\mathop{\int}}
 \newcommand{\limitoint}{\mathop{\oint}}
 
@@ -180,7 +196,6 @@
         \item[\hskip\labelsep\textbf#1\@addpunct{.}]\ignorespaces}%
         {\popQED\endtrivlist\@endpefalse}
     \makeatother
-
 % ==================================================================================================
 %                                     PHYSICS environment 
 % ==================================================================================================
