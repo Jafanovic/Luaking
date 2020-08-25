@@ -297,26 +297,9 @@
   
     % ---------Integrování součtu, úprava integrandu a integrování rozkladem------------------------
     \twocolumn[\subsection{Integrování součtu, úprava integrandu a integrování rozkladem}]
-      \begin{example}
-        Zdroj \cite[s.~29]{Knichal}.
-        \begin{equation}\label{MA:int_ex_01}
-          \int{\frac{x^4+3x^3-3x^2+3x}{x^2+1}\dd{x}}
-        \end{equation}
-        Dělením čitatele integrandu jmenovatelem  dostaneme rozklad integrandu na součet funkcí,
-        jejich integrály najdeme snadno:
-         \begin{equation*} 
-           \polylongdiv[style=C,div=:]{x^4+3x^3-3x^2+3x}{x^2+1}
-         \end{equation*}
-         Tedy
-         \begin{equation*}
-           \frac{x^4+3x^3-3x^2+3x}{x^2+1} = x^2+3x-4+\frac{4}{x^2+1}  
-         \end{equation*}
-         Pro uvedený integrál dostaneme
-         \begin{align*}
-           \int{x^2}\dd{x} &+\int{3x}\dd{x}-4\int\dd{x}+\int{\frac{4}{x^2+1}\dd{x}} \\
-                           &= \frac{x^3}{3}+\frac{3x^2}{2}-4x+4\arctan x + c.
-         \end{align*}
-      \end{example}
+      %-------------------------------------
+      \input{../src/MAI/exam/exam121.tex}
+      %-------------------------------------
       
       \begin{example}
         Zdroj \cite[s.~29]{Knichal}.
@@ -412,6 +395,7 @@
       \end{example}
   
     %--------------------------- Integrace racionální funkce--------------------------------------
+    \newpage
     \subsection{Integrace racionální funkce}
       Některé příklady v předchozím odstavci, (viz např. \ref{MA:int_ex_01} a 
       \ref{MA:int_ex_02}) jsme dělením čitatele integrandu jmenovatelem dostali rozklad
@@ -420,7 +404,7 @@
       $k$ je celé nezáporné číslo. Omezíme se tedy na integrování \emph{ryze lomené racionální
       funkce},  tj. funkce ve tvaru $P(x)/Q(x)$, kde $P(x), Q(x)$ jsou polynomy, přičemž stupeň
       polynomu $P(x)$ je menší než stupeň polynomu $Q(x)$. Taková funkce může vzniknout součtem
-      několika jednoduchých zlomků.
+      několika jednoduchých zlomků (viz. následující příklad \ref{MAI:exam116}).
       
       %-------------------------------------
       \input{../src/MAI/exam/exam116.tex}
@@ -429,20 +413,10 @@
       Jsme tedy vedeni myšlenkou, zda naopak každá ryze lomená racionální funkce se dá rozložit
       na součet jednoduchých zlomků určitého tvaru - budeme jim říkat \textbf{parciální zlomky},
       které umíme integrovat. Tím se budeme zabývat v dalších odstavcích. 
-            
-      \begin{example}
-        \begin{equation}
-          \int\frac{1}{x^2 - x + 1}\dd{x}, \qquad x\in R
-        \end{equation}
-        Kvadratický polynom ve jmenovateli upravíme na čtverec $f(x) = (x + m)^2 + n$:
-        \begin{align*}
-          \int\dfrac{1}{\left(x-\dfrac{1}{2}\right)^2+\dfrac{3}{4}}\dd{x}   &=
-            \dfrac{1}{\sqrt{1-\left(\dfrac{1}{2}\right)^2}}\arctan
-            \dfrac{x-\dfrac{1}{2}}{\sqrt{1-\left(\dfrac{1}{2}\right)^2}}                       \\
-          \dfrac{2}{\sqrt{3}}\arctan\dfrac{2x-1}{\sqrt{3}}               &=
-            \dfrac{2\sqrt{3}}{3}\arctan\dfrac{\sqrt{3}(2x-1)}{3} + C
-        \end{align*}
-      \end{example}     
+    
+      %-------------------------------------
+      \input{../src/MAI/exam/exam120.tex}
+      %-------------------------------------
       
       \begin{definition} Parciální (částečným) zlomkem, budeme nazývat zlomek tvaru
          \begin{equation}
