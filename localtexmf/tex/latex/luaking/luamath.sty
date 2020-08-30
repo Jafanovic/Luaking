@@ -37,7 +37,10 @@
 \usetikzlibrary{tikzmark,arrows.meta}
 % https://tex.stackexchange.com/questions/41066/margins-of-mdframed-without-any-effect
 % https://tex.stackexchange.com/questions/151532/could-not-get-round-corner-working-in-mdframed
-\RequirePackage[framemethod=TikZ]{mdframed} % auto-split frame environment
+\RequirePackage[
+  framemethod=TikZ,
+  innertopmargin  =  -2mm     % default=.4\baselineskip
+]{mdframed} % auto-split frame environment
 % The package should be loaded after amsthm if you need the package.
   \mdfdefinestyle{mdexam}{
     % font              =  \small,
@@ -60,7 +63,7 @@
     linecolor       =  gray!50
     }
   \mdfdefinestyle{mdeq}{
-    outermargin     =  1cm,
+    % outermargin     =  1cm,
     backgroundcolor =  blue!10,
     roundcorner     =  10pt,
     linecolor       =  red!50
@@ -99,7 +102,7 @@
 %                                     MATH environment 
 % ==================================================================================================
 \RequirePackage{xparse}
-\RequirePackage[fleqn]{amsmath}
+\RequirePackage{amsmath}
 \RequirePackage{amssymb, amsthm, amsbsy}
 \RequirePackage{diffcoeff}              % writing of differential coefficients in all their variety
 \RequirePackage{commath}
