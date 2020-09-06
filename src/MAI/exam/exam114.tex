@@ -3,32 +3,36 @@
 \begin{mdframed}[style=mdexam]
   \begin{example}\label{mai:exam114}
     \begin{equation}\label{mai:exam016_003}
-      \int{\sqrt{x^2+a}\dd{x}}, \text{kde} a\neq0, x^2+a>0
+      \boxed{\int\sqrt{x^2+a}\dd{x}}
     \end{equation}  
-    \begin{align*}
-      \int{\sqrt{x^2+a}\dd{x}}                           &=
-        \left[
-          \begin{array}{cc} 
-             u =\sqrt{x^2+a}              & dv = 1 \\ 
-            du =\displaystyle
-                  \frac{x}{\sqrt{x^2+a}}  &  v = x
-          \end{array}
-        \right]                                                                                   \\
-      x\sqrt{x^2+a}-\int{\frac{x^2}{\sqrt{x^2+a}}\dd{x}} &= 
-        \displaystyle{x\sqrt{x^2+a}-\int{\frac{x^2+a-a}{\sqrt{x^2+a}}\dd{x}}}                        
-    \end{align*}\vspace*{-1em}
-    \begin{align*}
-      \int{\sqrt{x^2+a}\dd{x}}                           &= 
-        \displaystyle{x\sqrt{x^2+a}-\int{\sqrt{x^2+a}\dd{x}} + \int{\frac{a}{\sqrt{x^2+a}}\dd{x}}}      \\
-      \int{\sqrt{x^2+a}\dd{x}}                           &= 
-        \frac{1}{2}\left[x\sqrt{x^2+a}+a\int{\frac{1}{\sqrt{x^2+a}}}\dd{x}\right]
-    \end{align*}
-    
-    Integrál \(\int\frac{1}{\sqrt{x^2+a}}\dd{x}\) na pravé straně vyjádříme podle příkladu 
-    \ref{ma:ex_sub_metoda1} a výsledek do\-sta\-ne\-me ve tvaru
+    Použijeme metodu per partes
     \begin{equation*}
-      \int\displaystyle{{\sqrt{x^2+a}\dd{x}}
-          =\frac{1}{2}\left[x\sqrt{x^2+a}+a\ln{\abs{x + \sqrt{x^2+a}}}\right]}
+      \left[
+        \begin{array}{cc} 
+           u =\sqrt{x^2+a}              & dv = 1 \\ 
+          du =\displaystyle
+                \frac{x}{\sqrt{x^2+a}}  &  v = x
+        \end{array}
+      \right]   
     \end{equation*}
+    Dostáváme
+    \begin{equation*}
+      \int{\sqrt{x^2+a}\dd{x}} = x\sqrt{x^2+a}-\int{\frac{x^2}{\sqrt{x^2+a}}\dd{x}}
+    \end{equation*}
+    Integrand rozšíříme, abychom dostali zadaný integrál 
+    \begin{equation*}
+        \int\frac{x^2+a-a}{\sqrt{x^2+a}}\dd{x} 
+          = \int{\sqrt{x^2+a}\dd{x}} - \int{\frac{a}{\sqrt{x^2+a}}\dd{x}}                   
+    \end{equation*}
+    \begin{align*}
+      2\!\int{\sqrt{x^2+a}\dd{x}} 
+        = x\sqrt{x^2+a}+a\underbrace{\int{\frac{1}{\sqrt{x^2+a}}}\dd{x}}_{J_1}
+    \end{align*}    
+    Integrál \(J_1\) na pravé straně vyjádříme podle příkladu \ref{ma:ex_sub_metoda1} a výsledek
+    do\-sta\-ne\-me ve tvaru
+    \begin{gather*}
+      \sqrt{x^2+a}\dd{x}
+          =\frac{1}{2}\left[x\sqrt{x^2+a}+a\ln{\abs{x + \sqrt{x^2+a}}}\right]
+    \end{gather*}
   \end{example}
 \end{mdframed}

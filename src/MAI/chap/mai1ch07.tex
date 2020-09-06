@@ -36,9 +36,9 @@
         
         Množina všech primitivních funkcí k funkci \(f(x)\) na \(J\) se nazývá \textbf{neurčitý
         integrál} z funkce \(f(x)\) a značí se \(\int f(x)\dd{x}\). Tedy
-        \begin{equation}\label{mai:eq101}
+        \begin{gather}\label{mai:eq101}
           \int f(x)\dd{x} = \{F(x): \text{\(F(x)\) je primitivní funkcí k \(f(x)\) na \(J\)}\}
-        \end{equation}
+        \end{gather}
       \end{definition}
     \end{mdframed}
     %-------------------------------------
@@ -139,46 +139,68 @@
           \begin{cases}
             +\arcsin x + c         \\
             -\arccos x + c
-          \end{cases}                                          &       \label{mai:eq116}    \\
+          \end{cases}                                          &      \label{mai:eq116}    \\
         \shortintertext{\(\hspace{2em}\forall x\in(-1,1) \)}  
-     & \int\sinh x\dd{x} = \cosh x + c                         &       \label{mai:eq117}    \\
-     & \int\dfrac{1}{\sinh x}\dd{x} = -\cotgh x + c            &       \label{mai:eq118}    \\
-     & \int\cosh x\dd{x} = \sinh x + c                         &       \label{mai:eq119}    \\
-     & \int\dfrac{1}{\cosh x}\dd{x} = -\tanh x + c             &       \label{mai:eq120}    \\
-     & \int\frac{1}{1+x^2}\dd{x} = \arctan x + c               &       \label{mai:eq121}    \\
-     & \int\frac{1}{\sqrt{x^2 + 1}}\dd{x} =
-         \begin{cases}
+    & \int\sinh x\dd{x} = \cosh x + c                         &       \label{mai:eq117}    \\
+    & \int\dfrac{1}{\sinh x}\dd{x} = -\cotgh x + c            &       \label{mai:eq118}    \\
+    & \int\cosh x\dd{x} = \sinh x + c                         &       \label{mai:eq119}    \\
+    & \int\dfrac{1}{\cosh x}\dd{x} = -\tanh x + c             &       \label{mai:eq120}    \\
+    & \int\frac{1}{1+x^2}\dd{x} = \arctan x + c               &       \label{mai:eq121}    \\
+    & \int\frac{1}{\sqrt{x^2 + 1}}\dd{x} =
+        \begin{cases}
             \ln(x + \sqrt{x^2+1}) + c         \\
             \arcsinh x            + c 
-         \end{cases}                                           &       \label{mai:eq122}    \\ 
-     & \int \frac{1}{\sqrt{x^2 - 1}}\dd{x} =
-         \begin{cases}
+        \end{cases}                                           &       \label{mai:eq122}    \\ 
+    & \int \frac{1}{\sqrt{x^2 - 1}}\dd{x} =
+        \begin{cases}
             \ln(x + \sqrt{x^2-1}) + c         \\
             \arccosh x            + c  
-         \end{cases}                                           &       \label{mai:eq123}    \\   
-       \shortintertext{\hspace{2em}\(x\in(1,+\infty)\)}  
-     & \int\frac{1}{\sqrt{x^2+a^2}}\dd{x} 
-         = \begin{cases}
+        \end{cases}                                           &       \label{mai:eq123}    \\   
+      \shortintertext{\hspace{2em}\(x\in(1,+\infty)\)}  
+    & \int\frac{1}{\sqrt{x^2+a^2}}\dd{x} 
+        = \begin{cases}
               \arcsinh\frac{x}{a}   + c  \\ 
               \ln(x+\sqrt{x^2+a^2}) + c     
-           \end{cases}                                          &      \label{mai:eq124}    \\
-     & \int \frac{1}{\sqrt{x^2-a^2}}\dd{x} 
-         = \begin{cases}
+          \end{cases}                                          &      \label{mai:eq124}    \\
+    & \int \frac{1}{\sqrt{x^2-a^2}}\dd{x} 
+        = \begin{cases}
               \arccosh\frac{x}{a}   + c   \\
               \ln(x+\sqrt{x^2-a^2}) + c
-           \end{cases}                                          &      \label{mai:eq125}    \\
-     & \int\tan x \dd{x}   = \ln\abs{\sec x} + c                &      \label{mai:eq126}    \\
-     & \int\sec x \dd{x}   = \ln\abs{\sec x + \tan x} + c       &      \label{mai:eq127}    \\
-     & \int\sec^2 x \dd{x} = \tan x + c                         &      \label{mai:eq128}    \\
-     & \int\sec x\tan x \dd{x} = \sec x + c                     &      \label{mai:eq129}    \\
-     & \int\frac{a}{a^2+x^2}\dd{x} = \tan^{-1}\frac{x}{a} + c   &      \label{mai:eq130}    \\
-     & \int\frac{a}{a^2-x^2}\dd{x} = 
-       \frac{1}{2}\ln\left\lvert\frac{x+a}{x-a}\right\rvert     &      \label{mai:eq131}    \\
-     & \int\frac{1}{\sqrt{a^2-x^2}} \dd{x} = 
-       \sin^{-1} \frac{x}{a}                                    &      \label{mai:eq132}    \\
-     & \int\frac{a}{x\sqrt{x^2-a^2}}\dd{x} = 
-       \sec^{-1} \frac{x}{a}                                    &      \label{mai:eq133}    
+          \end{cases}                                          &      \label{mai:eq125}    \\
+    & \int\tan x \dd{x}   = \ln\abs{\sec x} + c                &      \label{mai:eq126}    \\
+    & \int\sec x \dd{x}   = \ln\abs{\sec x + \tan x} + c       &      \label{mai:eq127}    \\
+    & \int\sec^2 x \dd{x} = \tan x + c                         &      \label{mai:eq128}    \\
+    & \int\sec x\tan x \dd{x} = \sec x + c                     &      \label{mai:eq129}    \\
+    & \int\frac{a}{a^2+x^2}\dd{x} = \tan^{-1}\frac{x}{a} + c   &      \label{mai:eq130}    \\
+    & \int\frac{a}{a^2-x^2}\dd{x} = 
+      \frac{1}{2}\ln\left\lvert\frac{x+a}{x-a}\right\rvert     &      \label{mai:eq131}    \\
+    & \int\frac{1}{\sqrt{a^2-x^2}} \dd{x} = 
+      \sin^{-1} \frac{x}{a}                                    &      \label{mai:eq132}    \\
+    & \int\frac{a}{x\sqrt{x^2-a^2}}\dd{x} = 
+      \sec^{-1} \frac{x}{a}                                    &      \label{mai:eq133}    \\
+      \midrule  
     \end{flalign}
+
+    \begin{mdframed}[style=mdmathlemma]  
+      \(\argsinh x\), \(\argcosh x\), \(\argtanh x\), \(\argcoth x\) jsou funkce inverzní k
+      hyperbolickým funkcím. Značení těchto funkcí není jednotné. Správné zkratky jsou ty, které
+      specifikuje norma \texttt{ISO 80000-2}. Skládají se z \uv{ar} následovaných zkratkou
+      odpovídající hyperbolické funkce (např. arsinh, arcosh).
+
+      Nicméně, předpona \uv{arc} - následovaný odpovídající hyperbolickou funkcí (např. arcsinh,
+      arccosh) je také běžně vidět, analogicky s nomenklaturou pro inverzní trigonometrické funkce.
+      Není to však správné pojmenování, protože prefix \uv{arc} je zkratka pro \textbf{arcus},
+      zatímco prefix \uv{ar} znamená \textbf{area}. 
+
+      Autoři jako prof. K. Rektorys upřednostňují použití označení \(\argsinh\), \(\argcosh\),
+      \(\argtanh\) atd., kde předpona \uv{arg} je zkratkou latinského \textbf{argumentu}. V
+      počítačové vědě se to často zkracuje na asinh.
+
+      Používá se také zápis \(\sinh^{-1}(x)\), \(\cosh^{-1}(x)\) atd., a to navzdory skutečnosti, že
+      je třeba dbát na to, aby nedošlo k nesprávným interpretacím horního indexu \(-1\) jako
+      mocniny, na rozdíl od zkratky pro označení inverzní funkce (např.\(\cosh^{-1}(x)\) versus
+      \(\cosh(x)^{-1}\)).
+    \end{mdframed}
 
   \twocolumn[\section{Metody určení primitivní funkce}]
     Procesu hledání primitivní funkce se často říká integrování nebo integrace (od slova“integrál”),
@@ -242,17 +264,19 @@
       \begin{equation*}
         \int \varphi'(x) g\left[\varphi(x)\right]\dd{x} =  G\left[\varphi(x)\right]. 
       \end{equation*}      
-      Na základě těchto úvah formulujeme následující větu:
-      \begin{lemma}
-        Jestliže
-        \begin{equation}\label{ma:eq_subst1}
-          \int{f(u)du}=F(u)+c
-        \end{equation}
-        a $u=\varphi(x)$, pak
-        \begin{equation}\label{ma:eq_subst2}
-            \int{f[\varphi(x)]\varphi'(x)du}=F(\varphi(x))+c
-        \end{equation}
-      \end{lemma}
+      Na základě těchto úvah formulujeme následující větu (viz. \cite[p.~142]{diblik2002}):
+      \begin{mdframed}[style=mdmathlemma]
+        \begin{lemma}\label{mai:lemma009}
+          Jestliže
+          \begin{equation}\label{ma:eq_subst1}
+            \int{f(u)\dd{u}}=F(u)+c
+          \end{equation}
+          a $u=\varphi(x)$, pak
+          \begin{equation}\label{ma:eq_subst2}
+              \int{f[\varphi(x)]\varphi'(x)\dd{u}}=F(\varphi(x))+c
+          \end{equation}
+        \end{lemma}
+      \end{mdframed}
   
       Základem úspěchu při aplikací věty je správný výběr funkce $\varphi(x)$. Praxe je totiž
       taková, že výpočet konkrétních příkladů je schématicky veden od rov. \ref{ma:eq_subst2} ke
@@ -261,11 +285,38 @@
       %-------------------------------------
       \input{../src/MAI/exam/exam110.tex}
       %-------------------------------------
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam124.tex}
+      %-------------------------------------
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam125.tex}
+      %-------------------------------------      
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam126.tex}
+      %------------------------------------- 
+
       %-------------------------------------
       \input{../src/MAI/exam/exam119.tex}
       %-------------------------------------
 
+      Ukažme, že platí 
+      \begin{equation}\label{mai:eq139}
+        \boxed{\int{\dfrac{f'(x)}{f(x)}}\dd{x} = \ln\abs{f(x)} + c.}
+      \end{equation}
+      Zavedeme substituci \(f(x) =t\), pak \(f'(x)\dd{x} = \dd{t}\) a 
+      \begin{equation*}
+        \int{\dfrac{\dd{t}}{t}} = \ln\abs{t} + c = \ln\abs{f(x)} + c
+      \end{equation*}
+      na každém intervalu, v němž \(f(x)\neq 0\) a existuje \(f'\). Připomeňme, že výraz
+      \(\dfrac{f'(x)}{f(x)}\) se nazývá \emph{logaritmická derivace funkce} \(f\). Viz příklad
+      \ref{mai:exam123}.
+   
+
     % -------------------Substituční metoda II------------------------------------------------------
+    \newpage
     \subsection{Substituční metoda II}
       Druhý typ substituční metody spočívá naopak v tom, že na místo původní proměnné \(x\) 
       dosadíme vhodnou funkci \(x = \psi(t)\). Místo primitivní funkce k funkci \(f(x)\) pak 
@@ -274,24 +325,11 @@
       \begin{equation*}
        G'(t) = F'[\psi(t)]\psi'(t) = f[\psi(t)]\psi'(t) = g(t).
       \end{equation*}
-      
-      \begin{example} Náhrada proměnně \(x\) funkcí
-        Typické jsou neurčité integrály, které vedou na goniometrické substituce, například
-        \[\int\sqrt{1-x^2}\dd{x}\]
-        
-        Označme \(x=\psi(t)=\sin(t)  \Rightarrow \psi'(t)=\cos(t)\) a můžeme psát
-        \begin{align*}
-          \int\sqrt{1-x^2}\dd{x} 
-            &= \int\sqrt{1-\sin^2t}\cos t\dd{t}                      \\
-            &= \int\cos^2 t \dd{t} = \int\frac{1+\cos2t}{2}\dd{t}    \\
-          = \frac{1}{2}t+\frac{\sin2t}{4}+C
-            &= \frac{1}{2}\arcsin x + \frac{2\sin t\cos t}{4}        \\
-            &= \frac{1}{2}\arcsin x + \frac{x\sqrt{1-x^2}}{2} + c.
-        \end{align*}
-        Správně bychom měli místo \(\sqrt{1 - \sin^2x}\) psát \(\abs{\cos x}\). Vzhledem k tomu, že 
-        jde o neurčitý integrál, je možné hledat primitivní funkci na intervalu, kde platí \(\cos x 
-        = \abs{\cos x}\).
-      \end{example}
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam122.tex}
+      %-------------------------------------
+
       Jistě nám neuniklo, že princip substitučních metod I a II je stejný. Jsou totiž obě založeny 
       na použití pravidla pro derivaci složené funkce.
   
@@ -418,40 +456,52 @@
       \input{../src/MAI/exam/exam120.tex}
       %-------------------------------------
       
-      \begin{definition} Parciální (částečným) zlomkem, budeme nazývat zlomek tvaru
-         \begin{equation}
-            \frac{A}{(x-\alpha)^k} \qquad\text{nebo}\qquad\frac{Mx + N}{x^2 + px +q}
-         \end{equation}  
-         $A,\ M,\ N,\ \alpha\ , p,\ q$ reálné $p^2-4q < 0$, $k$ celé nezáporné.         
-      \end{definition}
+      \begin{mdframed}[style=mdmathdef] 
+        \begin{definition} Parciální (částečným) zlomkem, budeme nazývat zlomek tvaru
+          \begin{equation}
+              \frac{A}{(x-\alpha)^k} \qquad\text{nebo}\qquad\frac{Mx + N}{x^2 + px +q}
+          \end{equation}  
+          $A,\ M,\ N,\ \alpha\ , p,\ q$ reálné $p^2-4q < 0$, $k$ celé nezáporné.         
+        \end{definition}
+      \end{mdframed}    
       
-      Integrál prvního zlomku, tj. $\displaystyle{\int\frac{A}{(x-\alpha)^k}\dd{x}}$, vypočteme 
-      substitucí $x-\alpha=t$, odtud plyne $dx = dt$,
+      Integrál prvního zlomku, vypočteme substitucí $x-\alpha=t$, odtud plyne \(\dd{x} = \dd{t}\),
       \begin{equation}\label{MA:int_ex_14}
-        \int\frac{A}{(x-\alpha)^k}dx = \int\frac{A}{t^k}dt.
+        \boxed{\int\frac{A}{(x-\alpha)^k}dx = \int\frac{A}{t^k}dt.}
       \end{equation}
       Tento integrál se rovná
       \begin{equation}\label{MA:int_ex_16}
-        -\frac{A}{k-1}\frac{1}{(x-\alpha)^{k-1}} + C.
-      \end{equation}        
-      je-li $k>1$, a rovná se $A\ln\abs{x-\alpha} + C$, je-li $k = 1$. Výsledek platí na každém
-      intervalu neobsahujícím bod $\alpha$.
+        -\frac{A}{k-1}\frac{1}{(x-\alpha)^{k-1}} + C, \quad k\neq1.
+      \end{equation}  
+      a 
+      \begin{equation}
+        A\ln\abs{x-\alpha} + C, \quad k = 1
+      \end{equation}      
+      Výsledek platí na každém intervalu neobsahujícím bod \(\alpha\).
       
-       U integrál druhého zlomku uvedeme postup výpočtu pro $k = 1$. 
+       U integrálu druhého zlomku 
+       \begin{equation}\label{mai:eq137}
+        \boxed{\int{\frac{Mx + N}{x^2+px+q}dx}}
+      \end{equation} 
+       uvedeme postup výpočtu pro $k = 1$. Předpokládáme samozřejmě, že kvadratický trojčlen
+       \(x^2+px+q\) nemá kořeny v reálném oboru, takže jej nelze rozložit do tvaru \((x - \alpha)(x
+       - \beta)\) s reálnými \(\alpha\), \(\beta\) (\cite[p.~140]{Musilova2009MA1}). Platí 
+      \begin{equation*}
+        \frac{Mx}{x^2+px+q} 
+          = \frac{M}{2}\frac{2x +b}{x^2+px+q} + \left(b - \frac{MN}{2}\right)\frac{1}{x^2+px+q}
+      \end{equation*} 
       \begin{align*}
-         \intertext{\(\displaystyle\int{\frac{Mx + N}{x^2+px+q}dx}\)}
-           \quad &=  \int{\frac{Mx}{x^2+px+q}dx} + \int{\frac{N}{x^2+px+q}dx}                     
-           \\  
-           \quad &=  \frac{M}{2}\int{\frac{(2x + p) - p}{x^2+px+q}dx} + 
-                     N\int{\frac{1}{x^2+px+q}dx}                                                   \\ 
-           \quad &=  \frac{M}{2}\int{\frac{2x + p}{x^2+px+q}dx} + 
-                      \left(N-\frac{Mp}{2}\right)\int{\frac{1}{x^2+px+q}dx.}                   
+        \quad &=   \int{\frac{Mx}{x^2+px+q}dx} + \int{\frac{N}{x^2+px+q}dx}     \\  
+        \quad &=   \frac{M}{2}\int{\frac{(2x + p) - p}{x^2+px+q}dx} + 
+                  N\int{\frac{1}{x^2+px+q}dx}                                   \\ 
+        \quad &=   \frac{M}{2}\int{\frac{2x + p}{x^2+px+q}dx} + 
+                  \left(N-\frac{Mp}{2}\right)\int{\frac{1}{x^2+px+q}dx.}                   
       \end{align*}  
       
-      Z naznačeného postupu je vidět hlavní myšlenka: upravit integrál na lineární kombinaci dvou 
-      integrálů, z nichž první má v čitateli integrandu derivaci jmenovatele a je podle příkladu 
-      *** roven $\ln\abs{x^2+px+q}$ kde $x^2+px+q >0$ pro $x\in R$ a integrand druhého integrálu má 
-      čitatel konstantní.
+      Z naznačeného postupu je vidět hlavní myšlenka: upravit integrál na lineární kombinaci dvou
+      integrálů, z nichž první má v čitateli integrandu derivaci jmenovatele stává kandidátem na
+      použití substituční metody I. Je tedy roven $\ln\abs{x^2+px+q}$ kde $x^2+px+q >0$ pro $x\in R$
+      a integrand druhého integrálu má čitatel konstantní.
       
       Výpočet druhého integrálu probíhá takto: 
       \begin{equation}\label{MA:int_ex_10}
@@ -556,7 +606,16 @@
   % ---------------- Sbírka řešených příkladů ------------------------------------------------------
   \section{Sbírka řešených příkladů}
     Hledejme primitivní funkce \(F(x)\) k následujícím funkcím
+    \begin{enumerate}
+      \item \(\int{xe^x\dd{x}}, \quad x\in\realset\),
+      \item \(\int\frac{x}{x^2+1}\dd{x}\)
+      \item \(\int{\arctan x\dd{x}}, \quad x\in\realset\),
+      \item \(\int{\sqrt{x^2+a}\dd{x}}, \quad a\neq0, x^2+a>0\),
+      \item \(\int{\frac{2x^4-5x^2+14x+13}{x^2-x-2}\dd{x}} \quad x\in\realset - \{1,2\}\)
+    \end{enumerate}
+
     \input{../src/MAI/exam/exam112.tex}
+    \input{../src/MAI/exam/exam123.tex}
     \input{../src/MAI/exam/exam113.tex}
     \input{../src/MAI/exam/exam114.tex}
     \input{../src/MAI/exam/exam016.tex}

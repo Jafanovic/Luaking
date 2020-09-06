@@ -1,0 +1,23 @@
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{MAI:exam122} 
+    Náhrada proměnně \(x\) funkcí. Typické jsou neurčité integrály, které vedou na goniometrické
+    substituce, například
+    \[\int\sqrt{1-x^2}\dd{x}\]
+    
+    Označme \(x=\psi(t)=\sin(t)  \Rightarrow \psi'(t)=\cos(t)\). Budeme potřebovat také základní
+    goniometrické vzorce (\ref{MA1:eq_sincos},\ref{MA1:eq_cos2x} a \ref{MA1:eq_sin2x}). Můžeme psát
+    \begin{gather*}
+      \int\sqrt{1-\sin^2t}\cos t\dd{t} 
+        = \int\cos^2 t \dd{t}  = \int\frac{1+\cos2t}{2}\dd{t}                         
+    \end{gather*}
+    Dostáváme
+    \begin{align*}
+        &= \frac{1}{2}t+\frac{\sin2t}{4}+c                       \\
+        &= \frac{1}{2}\arcsin x + \frac{2\sin t\cos t}{4}        \\
+        &= \frac{1}{2}\arcsin x + \frac{x\sqrt{1-x^2}}{2} + c.
+    \end{align*}
+    Správně bychom měli místo \(\sqrt{1 - \sin^2x}\) psát \(\abs{\cos x}\). Vzhledem k tomu, že 
+    jde o neurčitý integrál, je možné hledat primitivní funkci na intervalu, kde platí \(\cos x 
+    = \abs{\cos x}\).
+  \end{example}
+\end{mdframed}
