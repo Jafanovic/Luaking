@@ -149,22 +149,22 @@
     & \int\frac{1}{\sqrt{x^2 + 1}}\dd{x} =
         \begin{cases}
             \ln(x + \sqrt{x^2+1}) + c         \\
-            \arcsinh x            + c 
+            \argsinh x            + c 
         \end{cases}                                           &       \label{mai:eq122}    \\ 
     & \int \frac{1}{\sqrt{x^2 - 1}}\dd{x} =
         \begin{cases}
             \ln(x + \sqrt{x^2-1}) + c         \\
-            \arccosh x            + c  
+            \argcosh x            + c  
         \end{cases}                                           &       \label{mai:eq123}    \\   
       \shortintertext{\hspace{2em}\(x\in(1,+\infty)\)}  
     & \int\frac{1}{\sqrt{x^2+a^2}}\dd{x} 
         = \begin{cases}
-              \arcsinh\frac{x}{a}   + c  \\ 
+              \argsinh\frac{x}{a}   + c  \\ 
               \ln(x+\sqrt{x^2+a^2}) + c     
           \end{cases}                                          &      \label{mai:eq124}    \\
     & \int \frac{1}{\sqrt{x^2-a^2}}\dd{x} 
         = \begin{cases}
-              \arccosh\frac{x}{a}   + c   \\
+              \argcosh\frac{x}{a}   + c   \\
               \ln(x+\sqrt{x^2-a^2}) + c
           \end{cases}                                          &      \label{mai:eq125}    \\
     & \int\tan x \dd{x}   = \ln\abs{\sec x} + c                &      \label{mai:eq126}    \\
@@ -177,29 +177,50 @@
     & \int\frac{1}{\sqrt{a^2-x^2}} \dd{x} = 
       \sin^{-1} \frac{x}{a}                                    &      \label{mai:eq132}    \\
     & \int\frac{a}{x\sqrt{x^2-a^2}}\dd{x} = 
-      \sec^{-1} \frac{x}{a}                                    &      \label{mai:eq133}    \\
-      \midrule  
+      \sec^{-1} \frac{x}{a}                                    &      \label{mai:eq133}     
     \end{flalign}
 
-    \begin{mdframed}[style=mdmathlemma]  
-      \(\argsinh x\), \(\argcosh x\), \(\argtanh x\), \(\argcoth x\) jsou funkce inverzní k
-      hyperbolickým funkcím. Značení těchto funkcí není jednotné. Správné zkratky jsou ty, které
-      specifikuje norma \texttt{ISO 80000-2}. Skládají se z \uv{ar} následovaných zkratkou
-      odpovídající hyperbolické funkce (např. arsinh, arcosh).
+    \begin{mdframed}[style=mdnote]
+      \begin{note}  
+        \(\argsinh x\), \(\argcosh x\), \(\argtanh x\), \(\argcoth x\) jsou funkce inverzní k
+        hyperbolickým funkcím. Značení těchto funkcí není jednotné. Správné zkratky jsou ty, které
+        specifikuje norma \texttt{ISO 80000-2}. Skládají se z \uv{ar} následovaných zkratkou
+        odpovídající hyperbolické funkce (např. arsinh, arcosh).
 
-      Nicméně, předpona \uv{arc} - následovaný odpovídající hyperbolickou funkcí (např. arcsinh,
-      arccosh) je také běžně vidět, analogicky s nomenklaturou pro inverzní trigonometrické funkce.
-      Není to však správné pojmenování, protože prefix \uv{arc} je zkratka pro \textbf{arcus},
-      zatímco prefix \uv{ar} znamená \textbf{area}. 
+        Nicméně, předpona \uv{arc} - následovaná odpovídající hyperbolickou funkcí (např. arcsinh,
+        arccosh) je také běžně vidět, analogicky s nomenklaturou pro inverzní trigonometrické
+        funkce. Není to však správné pojmenování, protože prefix \uv{arc} je zkratka pro
+        \textbf{arcus}, zatímco prefix \uv{ar} znamená \textbf{area}. 
 
-      Autoři jako prof. K. Rektorys upřednostňují použití označení \(\argsinh\), \(\argcosh\),
-      \(\argtanh\) atd., kde předpona \uv{arg} je zkratkou latinského \textbf{argumentu}. V
-      počítačové vědě se to často zkracuje na asinh.
+        Autoři jako prof. K. Rektorys upřednostňují použití označení \(\argsinh\), \(\argcosh\),
+        \(\argtanh\) atd., kde předpona \uv{arg} je zkratkou latinského \textbf{argumentu}. V
+        počítačové vědě se to často zkracuje na asinh.
 
-      Používá se také zápis \(\sinh^{-1}(x)\), \(\cosh^{-1}(x)\) atd., a to navzdory skutečnosti, že
-      je třeba dbát na to, aby nedošlo k nesprávným interpretacím horního indexu \(-1\) jako
-      mocniny, na rozdíl od zkratky pro označení inverzní funkce (např.\(\cosh^{-1}(x)\) versus
-      \(\cosh(x)^{-1}\)).
+        Používá se také zápis \(\sinh^{-1}(x)\), \(\cosh^{-1}(x)\) atd., a to navzdory skutečnosti,
+        že je třeba dbát na to, aby nedošlo k nesprávným interpretacím horního indexu \(-1\) jako
+        mocniny, na rozdíl od zkratky pro označení inverzní funkce (např.\(\cosh^{-1}(x)\) versus
+        \(\cosh(x)^{-1}\)).
+      \end{note}
+    \end{mdframed}
+
+    \begin{mdframed}[style=mdnote]
+      \begin{note}  
+        Třebaže ke každé spojité funkci existuje primitivní funkce, nelze v mnoha případech tuto
+        primitivní funkci vyjádřit pomocí elementárních funkcí. Příkladem takové funkce je funkce
+        \(e^{x^2}\). integrálem
+        \begin{equation*}
+          \int e^{x^2}\dd{x}
+        \end{equation*}
+        je tedy definována nová transendentní funkce. Podobně jsou nové transendentní funkce
+        definovány integrály
+        \begin{align*}
+          \text{Si }x &= \int_0^x     \frac{\sin t}{t}\dd{t},&&\ldots\text{integrálsinus}     \\
+          \text{Ci }x &=-\int_x^\infty\frac{\cos t}{t}\dd{t},&&\ldots\text{integrálcosinus}   \\
+          \text{Li }x &= \int_0^x     \frac{\dd{t}}{\ln t},  &&\ldots\text{logaritmusintegrál}\\
+          \text{Ei }x &= \int_{-\infty}^x \frac{e^t}{t}\dd{t}&&   
+        \end{align*}
+
+      \end{note}
     \end{mdframed}
 
   \twocolumn[\section{Metody určení primitivní funkce}]
@@ -392,20 +413,9 @@
         \end{align*}          
       \end{example}
       
-      \begin{example}
-        Zdroj \cite[s.~30]{Knichal}.
-        \begin{equation}\label{MA:int_ex_06}
-          \int{\tan^2x}\dd{x}
-        \end{equation}
-        funkci napíšeme ve tvaru 
-        \begin{align*}
-          \tan^2x &= \frac{\sin^2x}{\cos^2x}=\frac{1-\cos^2x}{\cos^2x} = \frac{1}{\cos^2x}-1   \\
-          \shortintertext{takže}
-          \int{\tan^2x}dx &= \int{\left(\frac{1}{\cos^2x}-1\right)}\dd{x} = \tan x - x + c.  
-          \intertext{$\forall x\in\left(-\frac{\pi}{2}+k\pi, \frac{\pi}{2}+k\pi\right)$,
-                     $k\in\naturalset$.}
-        \end{align*}        
-      \end{example}
+      %-------------------------------------
+      \input{../src/MAI/exam/exam127.tex}
+      %-------------------------------------
       
       \begin{example}
         \begin{equation}\label{MA:int_ex_07} 
@@ -509,13 +519,13 @@
           \int\dfrac{1}{\left(x+\dfrac{p}{2}\right)^2 + q - \dfrac{p^2}{4}}\dd{x};
       \end{equation}
       substitucí $x+\dfrac{p}{2} = t\sqrt{q - \dfrac{p^2}{4}}$ dostáváme dále
-      \begin{equation*}\label{MA:int_ex_11}
+      \begin{gather*}\label{MA:int_ex_11}
         \bigints{\frac{1}{\displaystyle{\left(x+\frac{p}{2}\right)^2 + q - \frac{p^2}{4}}}}dx 
           =\displaystyle{
             \bigints{
               \frac{\sqrt{q-\frac{p^2}{4}}}{\left(q-\frac{p^2}{4}\right)(t^2+1)}}dt
             }   
-      \end{equation*}
+      \end{gather*}
       po úpravě dostaneme tabulkový integrál
       \begin{equation}\label{MA:int_ex_12}
         \frac{1}{\sqrt{q-\frac{p^2}{4}}}\int{\frac{dt}{t^2+1}},
