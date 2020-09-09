@@ -493,53 +493,63 @@
        \begin{equation}\label{mai:eq137}
         \boxed{\int{\frac{Mx + N}{x^2+px+q}dx}}
       \end{equation} 
-       uvedeme postup výpočtu pro $k = 1$. Předpokládáme samozřejmě, že kvadratický trojčlen
-       \(x^2+px+q\) nemá kořeny v reálném oboru, takže jej nelze rozložit do tvaru \((x - \alpha)(x
-       - \beta)\) s reálnými \(\alpha\), \(\beta\) (\cite[p.~140]{Musilova2009MA1}). Platí 
+       předpokládáme samozřejmě, že kvadratický trojčlen \(x^2+px+q\) nemá kořeny v reálném oboru,
+       takže jej nelze rozložit do tvaru \((x - \alpha)(x - \beta)\) s reálnými \(\alpha\),
+       \(\beta\) (\cite[p.~140]{Musilova2009MA1}). Platí 
+      \begin{gather*}
+        \frac{M}{2}\frac{2x + p}{(x^2+px+q)^k} + \left(b - \frac{MN}{2}\right)\frac{1}{(x^2+px+q)^k}
+      \end{gather*} 
+      K čemu byla předchozí úprava dobrá? Původní parciální zlomek jsme napsali jako součet dvou
+      zlomků, z nich je v čitateli derivace funkce \(u(x)=x^2+px+q\). První zlomek se tak stává
+      kandidátem na použití substituční metody I.
       \begin{equation*}
-        \frac{Mx}{x^2+px+q} 
-          = \frac{M}{2}\frac{2x +b}{x^2+px+q} + \left(b - \frac{MN}{2}\right)\frac{1}{x^2+px+q}
-      \end{equation*} 
-      \begin{align*}
-        \quad &=   \int{\frac{Mx}{x^2+px+q}dx} + \int{\frac{N}{x^2+px+q}dx}     \\  
-        \quad &=   \frac{M}{2}\int{\frac{(2x + p) - p}{x^2+px+q}dx} + 
-                  N\int{\frac{1}{x^2+px+q}dx}                                   \\ 
-        \quad &=   \frac{M}{2}\int{\frac{2x + p}{x^2+px+q}dx} + 
-                  \left(N-\frac{Mp}{2}\right)\int{\frac{1}{x^2+px+q}dx.}                   
-      \end{align*}  
-      
-      Z naznačeného postupu je vidět hlavní myšlenka: upravit integrál na lineární kombinaci dvou
-      integrálů, z nichž první má v čitateli integrandu derivaci jmenovatele stává kandidátem na
-      použití substituční metody I. Je tedy roven $\ln\abs{x^2+px+q}$ kde $x^2+px+q >0$ pro $x\in R$
-      a integrand druhého integrálu má čitatel konstantní.
-      
-      Výpočet druhého integrálu probíhá takto: 
+        I_1 = \frac{M}{2}\int{\frac{(2x + p)}{(x^2+px+q)^k}dx} = \frac{M}{2}\int\frac{1}{u^k}\dd{u},                   
+      \end{equation*}  
+      pro \(k\neq1\) dostaneme
+      \begin{equation*}
+        I_1 = \dfrac{M}{2(1-k)}\dfrac{1}{(x^2+px+q)^{k-1}} + c
+      \end{equation*}
+      a konečně pro \(k=1\)
+      \begin{equation*}
+        I_1 = \frac{M}{2}\ln\abs{x^2+px+q} + c
+      \end{equation*}
+      Při výpočtu durhého integrálu použijeme procedury \uv{doplnění na čtverec}
+      (\cite[p.~407]{Rektorys1963}, \cite[s.~264]{Brabec1989}):
       \begin{equation}\label{MA:int_ex_10}
-        \int\dfrac{1}{x^2+px+q}\dd{x} = 
-          \int\dfrac{1}{\left(x+\dfrac{p}{2}\right)^2 + q - \dfrac{p^2}{4}}\dd{x};
+        I_2 =\bigintss{%
+                \dfrac{\dd{x}}
+                  {\left[\left(x+\frac{p}{2}\right)^2 + q - \left(\frac{p}{2}\right)^2\right]^k}
+             }
       \end{equation}
-      substitucí $x+\dfrac{p}{2} = t\sqrt{q - \dfrac{p^2}{4}}$ dostáváme dále
+      substitucí $x + p/2 = t\sqrt{q - (p/2)^2}$, \(\dd{x} = \sqrt{q - (p/2)^2}\dd{t}\)
+      dostáváme dále
       \begin{gather*}\label{MA:int_ex_11}
-        \bigints{\frac{1}{\displaystyle{\left(x+\frac{p}{2}\right)^2 + q - \frac{p^2}{4}}}}dx 
-          =\displaystyle{
-            \bigints{
-              \frac{\sqrt{q-\frac{p^2}{4}}}{\left(q-\frac{p^2}{4}\right)(t^2+1)}}dt
-            }   
+        I_2 = \bigintss{%
+                \frac{\sqrt{q-\left(\frac{p}{2}\right)^2}}
+                    {\left[\left(q-\left(\frac{p}{2}\right)^2\right)(t^2+1)\right]^k}\dd{t}   
+        }  
       \end{gather*}
-      po úpravě dostaneme tabulkový integrál
-      \begin{equation}\label{MA:int_ex_12}
-        \frac{1}{\sqrt{q-\frac{p^2}{4}}}\int{\frac{dt}{t^2+1}},
-      \end{equation}
-      jehož řešení je  
+      po úpravě dostaneme integrál 
+      \begin{equation*}
+        I_2 = 
+          \frac{1}{\left(q-\left(\frac{p}{2}\right)^2\right)^{k-\frac{1}{2}}}
+          \int{\frac{dt}{\left(t^2+1\right)^k}},
+      \end{equation*}
+
+      Zbývá vyřešit nejpracnější problém, určit primitivní funkci ke zlomku \((t^2+1)^{-k}\). Pro
+      \(k=1\) je to velmi jednoduché, neboť podle tabulkového integrálu \ref{mai:eq121} dostaneme
       \begin{equation*}\label{MA:int_ex_13}
-        \frac{1}{\sqrt{q-\frac{p^2}{4}}}\arctan{t} 
-          = \sqrt{q-\frac{p^2}{4}}\arctan\frac{x+\frac{p}{2}}{\sqrt{q-\frac{p^2}{4}}}.     
+        \frac{1}{\sqrt{q-\left(\frac{p}{2}\right)^2}}
+            \arctan\frac{x+\frac{p}{2}}{\sqrt{q-\left(\frac{p}{2}\right)^2}}.     
       \end{equation*}   
-      Z postupu je opět vidět hlavní myšlenka: úprava integrandu na tvar $\frac{1}{t^2+1}$.
-      Jmenovatel $x^2+px+q$ jsme doplnili na úplný čtverec a užili uvedenou substituci (uvažme,
-      že $q-\frac{p^2}{4}>0$, protože diskriminant $\frac{p^2}{4}-q$ trojčlenu $x^2+px+q$ je
-      podle předpokladu záporný). Výsledek platí u obou integrálu v intervalu \((-\infty,
-      +\infty)\).
+      
+      V případě \(k = 2\) vyjádříme integrál
+      \begin{equation*}
+        \bigintsss{1\cdot\dfrac{1}{(t^2 + 1)^{2}}\dd{t}}
+      \end{equation*}
+      nikoli jako arkustangentu, ale pomocí metody per partes, pro kterou zvolíme
+      \(u'(t)=1\rightarrow u(t)=t\), \(v(t) = \dfrac{1}{t^2+1}\rightarrow v'(t) =
+      \dfrac{2t}{(t^2+1)^2}\),
       
       % -----------------------Funkce typu {f(x)=\sqrt{ax+b}} ------------------------------------
       \subsubsection*{Funkce typu $\boxed{f(x)=\sqrt{ax+b}}$ :}
@@ -623,6 +633,12 @@
       \item \(\int{\sqrt{x^2+a}\dd{x}}, \quad a\neq0, x^2+a>0\),
       \item \(\int{\frac{2x^4-5x^2+14x+13}{x^2-x-2}\dd{x}} \quad x\in\realset - \{1,2\}\)
     \end{enumerate}
+
+    I když jsme již zdůraznili, že hbitému hledání a nalézání primitivních funkcí se lze naučit 
+    jedině praxí, tj. tak, že budeme „počítat, počítat, počítat“, přece jen si ještě ukážeme
+    složitější příklady, v nichž se kombinují substituční metody s metodou per partes. Uvidíme však,
+    že triky“, které při výpočtu nejvíce pomohou, nespočívají často v těchto metodách samotných, ale
+    jsou spíše založeny na představivosti počtáře při úpravě obyčejných středoškolských vzorců.
 
     \input{../src/MAI/exam/exam112.tex}
     \input{../src/MAI/exam/exam123.tex}
