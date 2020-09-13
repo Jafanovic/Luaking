@@ -39,11 +39,11 @@
 % https://tex.stackexchange.com/questions/151532/could-not-get-round-corner-working-in-mdframed
 \RequirePackage[
   framemethod=TikZ,
-  innertopmargin  =  -2mm     % default=.4\baselineskip
 ]{mdframed} % auto-split frame environment
 % The package should be loaded after amsthm if you need the package.
   \mdfdefinestyle{mdexam}{
-    % font              =  \small,
+    % font            =  \small,
+    innertopmargin    =  -2mm     % default=.4\baselineskip
     usetwoside        =  true,
     backgroundcolor   =  gray!10,
     roundcorner       =  10pt,
@@ -86,6 +86,14 @@
     roundcorner     =  10pt,
     linecolor       =  red!50
     }  
+  \mdfdefinestyle{mdmathsolution}{
+    % usetwoside      =  false,
+    % outermargin     =  1cm,
+    font             =  \small,
+    backgroundcolor =  Apricot!10,
+    roundcorner     =  10pt,
+    linecolor       =  red!50
+    } 
   \mdfdefinestyle{mdmsdos}{
     % usetwoside      =  false,
     % outermargin     =  1cm,
@@ -139,6 +147,7 @@
 \newtheorem{definition}{Definice}[chapter]
 \newtheorem{lemma}{Věta}[chapter]
 \newtheorem{note}{Pozn.}[chapter]
+\newtheorem{excercise}{Cvičení}[section]
 % Set of Numbers:
 \newcommand{\realset}{\mathbb{R}}
 \newcommand{\naturalset}{\mathbb{N}}

@@ -1,26 +1,12 @@
 % !TeX spellcheck = cs_CZ
 %====================== Sbírka řešených příkladů ==================================================
-\begin{mdframed}[style=mdexam]
-  \begin{example}\label{mai:exam113}
-%--------------------------------------------------------------------------------------------------
-    \begin{equation}\label{mai:exam016_002}
-      \int{\arctan x\dd{x}}\qquad x\in R
-    \end{equation}
-    Užijeme metodu per partes 
-    \begin{equation*}
-      \left[
-        \begin{array}{cc} 
-           u =\arctan x                     &  dv= 1  \\ 
-          du =\displaystyle\frac{1}{x^2+1}  &   v= x
-        \end{array}
-      \right]    
-    \end{equation*}       
-    \begin{equation*}
-       \int{\arctan xdx} = x\arctan x-\int\frac{x}{x^2+1}\dd{x}
-    \end{equation*}
-    Tento integrál jsme již řešili v příkladu \ref{mai:exam123}, 
-    \begin{equation*}
-      \int{\arctan x\dd{x}} = x\arctan x-\frac{1}{2}\ln\abs{1+x^2}+ c                                 \\
-    \end{equation*}
-  \end{example}
+% \int{\arctan x\dd{x}}\qquad x\in R
+\begin{mdframed}[style=mdmathsolution] 
+  [\ref{mai:eq142}]: Metodu per partes \(u(x) =\arctan x \rightarrow u'(x) =\frac{1}{x^2+1}\),
+  \(v(x)= x \rightarrow v'(x) = 1\)      
+  \begin{gather*}
+    x\arctan x-\underbrace{\int\frac{x}{x^2+1}\dd{x}}_{I_1} =
+    x\arctan x-\frac{1}{2}\ln\abs{1+x^2}+ c 
+  \end{gather*}
+  Integrál \(I_1\) jsme již řešili v příkladu \ref{mai:eq141}.
 \end{mdframed}

@@ -353,48 +353,90 @@
 
       Jistě nám neuniklo, že princip substitučních metod I a II je stejný. Jsou totiž obě založeny 
       na použití pravidla pro derivaci složené funkce.
-  
-    % ---------Integrování součtu, úprava integrandu a integrování rozkladem------------------------
-    \twocolumn[\subsection{Integrování součtu, úprava integrandu a integrování rozkladem}]
-      %-------------------------------------
-      \input{../src/MAI/exam/exam121.tex}
-      %-------------------------------------
-
-      %-------------------------------------
-      \input{../src/MAI/exam/exam130.tex}
-      %-------------------------------------
-
-      %-------------------------------------
-      \input{../src/MAI/exam/exam131.tex}
-      %-------------------------------------      
-
-      %-------------------------------------
-      \input{../src/MAI/exam/exam132.tex}
-      %-------------------------------------  
-     
-      %-------------------------------------
-      \input{../src/MAI/exam/exam127.tex}
-      %-------------------------------------
-
-      %-------------------------------------
-      \input{../src/MAI/exam/exam133.tex}
-      %-------------------------------------  
-
-      %-------------------------------------
-      \input{../src/MAI/exam/exam134.tex}
-      %------------------------------------- 
-  
+       
     %--------------------------- Integrace racionální funkce--------------------------------------
     \newpage
     \subsection{Integrace racionální funkce}
-      Některé příklady v předchozím odstavci, (viz např. \ref{MA:int_ex_01} a 
-      \ref{MA:int_ex_02}) jsme dělením čitatele integrandu jmenovatelem dostali rozklad
-      integrandu na součet racionální funkce (polynomu) a ryze lomené racionální funkce.
-      Integrování polynomu je snadné, neboť jde o součet integrálů tvaru $\int c_kx^k dx$, kde
-      $k$ je celé nezáporné číslo. Omezíme se tedy na integrování \emph{ryze lomené racionální
-      funkce},  tj. funkce ve tvaru $P(x)/Q(x)$, kde $P(x), Q(x)$ jsou polynomy, přičemž stupeň
-      polynomu $P(x)$ je menší než stupeň polynomu $Q(x)$. Taková funkce může vzniknout součtem
-      několika jednoduchých zlomků (viz. následující příklad \ref{MAI:exam116}).
+      Jde o integrály 
+      \begin{equation}\label{mai:eq157}
+        \int\dfrac{P(x)}{Q(x)}\dd{x}
+      \end{equation}
+      kde \(P(x)\) a \(Q(x)\) jsou mnohočleny (budeme všude předpokládat, že \(P(x))\) a \(Q(x)\)
+      mají \emph{reálné koeficienty}. Základní myšlenka: Funkci za znakem integrálu rozložíme v
+      součet jednoduchých funkcí, které dovedeme integrovat:
+      
+      Je-li stupeň \(m\) mnohočlenu \(P(x)\) větší nebo roven stupni \(n\) mnohočlenu \(Q(x)\), pak
+      dělením převedeme výraz \(P(x):Q(x)\) na součet mnohočlenu (stupně \(m-n\)) a \textbf{ryze}
+      lomené funkce
+      \begin{equation}\label{mai:eq158}
+        \dfrac{R(x)}{Q(x)},
+      \end{equation}
+      kde stupeň \(r\) mnohočlenu \(R(x)\) je menší než stupeň \(n\) mnohočlenu \(Q(x)\).
+      Mechanismus dělení:
+      \begin{equation*}
+        \rotatebox{90}{$
+          {\polylongdiv[style=C,div=:]{x^3+4x^2-x+2}{x^2+x-3}}
+        $}
+      \end{equation*}
+
+      \begin{mdframed}[style=mdmathlemma] 
+        \begin{lemma}\label{mai:lemma010}
+          Každý mnohočlen
+          \begin{equation*}
+            Q(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_1x + a_0
+          \end{equation*}
+          s reálnými koeficienty lze (až na pořadí faktorů jednoznačně) rozložit takto (srov.
+          příklad \ref{MAI:exam135}):
+          \begin{equation}\label{mai:eq159}
+            Q(x) = a_n(x-\alpha_1)^{k_1}(x-\alpha_2)^{k_2}\ldots                   \nonumber \\
+            \ldots(x-\alpha_i)^{k_i}(x^2+p_1x+q_1)^{l_1}(x^2+p_2x+q_2)^{l_2}\ldots \nonumber \\ 
+            \ldots(x^2+p_jx+q_j)^{l_j}.
+          \end{equation}
+          Přitom čísla \(\alpha_1, \alpha_2, \ldots \alpha_i\), \(p_1, q_1, p_2, q_2, \ldots \) jsou
+          reálná a kvadratické výrazy v \ref{mai:eq157} nejsou rozložitelné v reálné lineární
+          činitele - mají tedy záporný diskriminant tj. platí
+          \begin{equation}\label{mai:eq160}
+            \frac{p^2}{4}-q<0.
+          \end{equation} 
+        \end{lemma}
+      \end{mdframed}
+
+      Tvar rozkladu \ref{mai:eq160} vznikne ze známého rozkladu polynomu \(Q(x)\) v součin
+      kořenových činitelů takto: Pokud \(\alpha\) je reálný kořen, zůstává činitel \(x-\alpha\) v
+      rozkladu nezměněn. Je-li \(\beta\) komplexní kořen \(\beta = \beta_1-\imath\beta_2\), pak má
+      \(Q(x)\) také komplexně sdružený kořen \(\bar{\beta} = \beta_1-\imath\beta_2\). Součin
+      příslušných kořenových činitelů
+      \begin{equation*}
+        \left[-(\beta_1+\imath\beta_2)\right]\left[x-(\beta_1-(\beta_1-\imath\beta_2))\right] \\
+        = (x-\beta_1)^2+\beta^2_2 = x^2-2\beta_1x + \beta^2_1+\beta^2_2. 
+      \end{equation*}
+      dává kvadratický výraz s reálnými koeficienty. Je-li \(l\) násobnost kořene \(\beta\), pak
+      touž násobnost má i kořen \(\bar{\beta}\) a v (\ref{mai:eq159}) dostaneme výraz tvaru
+      \begin{equation*}
+        (x^2+px+q)^l.
+      \end{equation*}
+
+      Uvedené příklady byly jednoduché, polynomy nízkého stupně a vzláštního tvaru, takže rozklad
+      jsme mohli provést jednoduchými úpravami. Často se podaří zjistit kořen \(\alpha\) daného
+      mnohočlenu zkusmo, zejména má-li tento mnohočlen celočíselné koeficienty. V aplikacích se však
+      vyskytují mnohem složitější případy. Otázky nalézt kořeny polynomu a řešit soustavy lineárních
+      rovnic v obecném případě patří do speciálních partií algebry a matematické analýzy, zejména
+      numerických metod. 
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam135.tex}
+      %-------------------------------------    
+    %--------------------------- Integrace ryze racionální funkce--------------------------------------
+    \newpage
+    \subsection{Integrace ryze racionální funkce}
+      Některé příklady v předchozím odstavci, (viz např. \ref{MA:int_ex_01}) jsme dělením čitatele
+      integrandu jmenovatelem dostali rozklad integrandu na součet racionální funkce (polynomu) a
+      ryze lomené racionální funkce. Integrování polynomu je snadné, neboť jde o součet integrálů
+      tvaru $\int c_kx^k dx$, kde $k$ je celé nezáporné číslo. Omezíme se tedy na integrování
+      \emph{ryze lomené racionální funkce},  tj. funkce ve tvaru $P(x)/Q(x)$, kde $P(x), Q(x)$ jsou
+      polynomy, přičemž stupeň polynomu $P(x)$ je menší než stupeň polynomu $Q(x)$. Taková funkce
+      může vzniknout součtem několika jednoduchých zlomků (viz. následující příklad
+      \ref{MAI:exam116}).
       
       %-------------------------------------
       \input{../src/MAI/exam/exam116.tex}
@@ -423,11 +465,11 @@
       \end{equation}
       Tento integrál se rovná
       \begin{equation}\label{MA:int_ex_16}
-        -\frac{A}{k-1}\frac{1}{(x-\alpha)^{k-1}} + C, \quad k\neq1.
+        -\frac{A}{k-1}\frac{1}{(x-\alpha)^{k-1}} + c, \quad k\neq1.
       \end{equation}  
       a 
       \begin{equation}
-        A\ln\abs{x-\alpha} + C, \quad k = 1
+        A\ln\abs{x-\alpha} + c, \quad k = 1
       \end{equation}      
       Výsledek platí na každém intervalu neobsahujícím bod \(\alpha\).
       
@@ -513,10 +555,7 @@
                                            =\ln\left\lvert x+\sqrt{x^2+a}\right\rvert+C
            \end{equation*}
          \end{example}
-  
-    % --------------------------Integrály goniometrických funkcí------------------------------------
-    \subsubsection{Integrace goniometrických funkcí}
-      
+
     % ---------------- Rozklad ryze lomené funkce v parciální zlomky -------------------------------
     \subsubsection{Rozklad ryze lomené funkce v parciální zlomky}
       Nechť je dána racionální funkce $R = \frac{P}{Q}$ s reálnými koeficienty. Můžeme
@@ -536,18 +575,25 @@
       \input{../src/MAI/exam/exam115.tex}
       %-------------------------------------
 
+  % --------------------------Integrály goniometrických funkcí------------------------------------
+  \newpage
+  \subsection{Integrace goniometrických funkcí}
+    \subsubsection{Integrály tvaru \(\int R(\cos x, \sin x)\dd{x}\) kde \(R(u, v)\) je racionální
+    funkce}
   % ---------------- Sbírka řešených příkladů ------------------------------------------------------
   \section{Sbírka řešených příkladů}
-    Hledejme primitivní funkce \(F(x)\) k následujícím funkcím
-    \begin{enumerate}
-      \item \(\int{xe^x\dd{x}}, \quad x\in\realset\),
-      \item \(\int\frac{x}{x^2+1}\dd{x}\)
-      \item \(\int{\arctan x\dd{x}}, \quad x\in\realset\),
-      \item \(\int{\sqrt{x^2+a}\dd{x}}, \quad a\neq0, x^2+a>0\),
-      \item \(\int{\frac{2x^4-5x^2+14x+13}{x^2-x-2}\dd{x}} \quad x\in\realset - \{1,2\}\)
-    \end{enumerate}
+    \begin{excercise}\label{mai:cviko001}
+      Hledejme primitivní funkce \(F(x)\) k následujícím funkcím
+      \begin{flalign}
+        &\int{xe^x\dd{x}},                                                      &\label{mai:eq140}\\
+        &\int\frac{x}{x^2+1}\dd{x}                                              &\label{mai:eq141}\\
+        &\int{\arctan x\dd{x}},                                                 &\label{mai:eq142}\\
+        &\int{\frac{2x^4-5x^2+14x+13}{x^2-x-2}\dd{x}}                           &\label{mai:eq144}\\
+        &\int{\sqrt{x^2+a}\dd{x}}, \quad a\neq0, x^2+a>0,                       &\label{mai:eq143}
+      \end{flalign}
+    \end{excercise}
 
-    I když jsme již zdůraznili, že hbitému hledání a nalézání primitivních funkcí se lze naučit 
+    I když jsme již zdůraznili, že hbitému hledání a nalézání primitivních funkcí se lze naučit
     jedině praxí, tj. tak, že budeme „počítat, počítat, počítat“, přece jen si ještě ukážeme
     složitější příklady, v nichž se kombinují substituční metody s metodou per partes. Uvidíme však,
     že triky“, které při výpočtu nejvíce pomohou, nespočívají často v těchto metodách samotných, ale
@@ -556,6 +602,52 @@
     \input{../src/MAI/exam/exam112.tex}
     \input{../src/MAI/exam/exam123.tex}
     \input{../src/MAI/exam/exam113.tex}
-    \input{../src/MAI/exam/exam114.tex}
     \input{../src/MAI/exam/exam016.tex}
+    \input{../src/MAI/exam/exam114.tex}
+    %-------------------------------------
+    \newpage
+    \begin{excercise}\label{mai:cviko002}
+      Hledejme primitivní funkce \(F(x)\) k následujícím funkcím
+      \begin{flalign}
+        &\int\frac{3}{(1+x^2)x^2}\dd{x}                                         &\label{mai:eq146}\\
+        &\int\cos^2\frac{x}{2}\dd{x}                                            &\label{mai:eq148}\\
+        &\int\frac{\cos2x}{\cos^2x\cdot\sin^2x}\dd{x}                           &\label{mai:eq150}\\
+        &\int{\frac{x^4+3x^3-3x^2+3x}{x^2+1}\dd{x}}                             &\label{mai:eq145}\\
+        &\int{\sqrt{1+\cos2x}\dd{x}}                                            &\label{mai:eq147}\\
+        &\int{\tan^2x}\dd{x}                                                    &\label{mai:eq149}\\
+        &\int\frac{1}{\cos x\cdot\sin x}\dd{x}                                  &\label{mai:eq151}
+      \end{flalign}
+    \end{excercise}
+
+    \input{../src/MAI/exam/exam130.tex}
+    \input{../src/MAI/exam/exam132.tex}
+    \input{../src/MAI/exam/exam133.tex}
+    \input{../src/MAI/exam/exam121.tex}
+    \input{../src/MAI/exam/exam131.tex}
+    \input{../src/MAI/exam/exam127.tex}
+    \input{../src/MAI/exam/exam134.tex}
+
+    %-------------------------------------
+    \newpage
+    \begin{excercise}\label{mai:cviko003}
+      Z toho, co jsme uvedli, vyplývá, jak postupujeme při rozkladu racionální lomené funkce na
+      parciální zlomky:
+      \begin{enumerate}[label=\roman*]
+        \item Není-li funkce ryze lomená, převedeme ji dělením čitatele jmenovatelem na součet
+              polynomu a ryze lomené racionální funkce. Dále upravujeme ryze lomenou racionální
+              funkci.
+        \item Rozložíme jmenovatele v reálném oboru.
+        \item Napíšeme rozklad na parciální zlomky podle věty o rozkladu.
+        \item Najdeme koeficienty parciálních zlomků metodou neurčitých součinitelů.
+      \end{enumerate}
+      Příklady integrace racionálních funkcí. Čerpáno z \cite[p.~271]{Brabec1989}
+      \begin{flalign}
+        &\int\dfrac{x+2}{x^3-x}\dd{x},                                          &\label{mai:eq152}\\
+        &\int\dfrac{2x^3 + x + 2}{x^4 + x^3 + x^2}\dd{x}                        &\label{mai:eq153}\\
+        &\int\dfrac{x^2 + x}{x^2 + x}\dd{x},                                    &\label{mai:eq154}\\
+        &\int\dfrac{2x - 1}{x^2 - 5x - 6}\dd{x}                                 &\label{mai:eq155}\\
+        &\int\sqrt{x^2+a}\dd{x}, \quad a\neq0, x^2+a>0,                         &\label{mai:eq156}
+      \end{flalign}
+    \end{excercise}
+    
 %---------------------------------------------------------------------------------------------------

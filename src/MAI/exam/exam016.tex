@@ -1,23 +1,20 @@
 % !TeX spellcheck = cs_CZ
 %====================== Sbírka řešených příkladů ==================================================
-\begin{mdframed}[style=mdexam]
-  \begin{example}\label{mai:exam016}
-    \begin{equation}\label{mai:int_ex_02}
-      \int{\frac{2x^4-5x^2+14x+13}{x^2-x-2}\dd{x}}
-    \end{equation}
-    Dělením čitatele integrandu jmenovatelem dostaneme rozklad integrandu na součet funkcí, jejich 
-    integrály najdeme snadno:
+% \int{\frac{2x^4-5x^2+14x+13}{x^2-x-2}\dd{x}}
+\begin{mdframed}[style=mdmathsolution]
+    [\ref{mai:eq144}]: Zřejmně \(x\in\realset - \{1,2\}\). Dělením čitatele integrandu jmenovatelem
+    dostaneme rozklad integrandu na součet funkcí:
     \begin{equation*}
       \rotatebox{90}{$
         {\polylongdiv[style=C,div=:]{2x^4-5x^2+14x+13}{x^2-x-2}}
       $}
     \end{equation*}
 
-    Zbytek po dělení představuje integrál, jež je počítán v příkladu \ref{MA:eq_ex1} a proto ho 
+    Zbytek po dělení představuje integrál, jež je počítán v příkladu \ref{MAI:exam128} a proto ho 
     vynecháme. 
-    \begin{align*}
-      &= 2\int x^2\dd{x} + 2\int x\dd{x} + \int\dd{x} + \int\frac{19x+15}{x^2-x-2}\dd{x}     \\
-      &= \frac{2}{3}x^3 + x^2 + x + \frac{4}{3}\ln\abs{x+1} - \frac{53}{3}\ln\abs{x-2} + C 
-    \end{align*}     
-  \end{example}
+    \begin{flalign*}
+      &2\int x^2\dd{x} + 2\int x\dd{x} +
+        \int\dd{x}+\underbrace{\int\frac{19x+15}{x^2-x-2}\dd{x}}_{I_1}                     & \\
+      & \frac{2}{3}x^3 + x^2 + x + \frac{4}{3}\ln\abs{x+1} - \frac{53}{3}\ln\abs{x-2} + c  &
+    \end{flalign*}     
 \end{mdframed}

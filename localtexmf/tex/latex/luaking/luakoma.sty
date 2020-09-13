@@ -171,7 +171,7 @@
   }
   \xapptocmd\addtocentrydefault{        % patch the KOMA-Script's generic toc entry generator
     \ifusechaptertoc                    % if chapter toc entries should be generated
-      \ifstr{#1}{chapter}{}
+      \Ifstr{#1}{chapter}{}
         {\expandafter\tocbasic@addxcontentsline\expandafter{\ext@chaptoc}{#1}{#2}{#3}}% do it
     \fi
   }{}{}
@@ -182,7 +182,7 @@
 \makeatother
 
 \newcommand\setchaptertoc[1][]{%
-  \ifstr{#1}{}
+  \Ifstr{#1}{}
     {\AddtoOneTimeDoHook{heading/preinit/chapter}{\chaptertoc}}
     {\AddtoOneTimeDoHook{heading/preinit/chapter}{\chaptertoc[#1]}}%
 }

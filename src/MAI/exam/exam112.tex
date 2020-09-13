@@ -1,22 +1,11 @@
 % !TeX spellcheck = cs_CZ
 %====================== Sbírka řešených příkladů ==================================================
-\begin{mdframed}[style=mdexam]
-  \begin{example}\label{mai:exam112}
-    \begin{equation}\label{mai:exam016_001}
-      \int{xe^x\dd{x}}
-    \end{equation}
-    Užijeme metodu per partes 
-    \begin{equation*}
-      \left[
-        \begin{array}{cc}
-          u=x   & dv=e^x \\
-          du=dx & v=e^x
-        \end{array}
-      \right] 
-    \end{equation*}
-
-    \begin{equation*}
-      \int{xe^xdx} = xe^x-\int{e^x\dd{x}} = xe^x - e^x+ c
-    \end{equation*}
-  \end{example}
+% \int{xe^x\dd{x}}, \quad x\in\realset,
+\begin{mdframed}[style=mdmathsolution]
+  [\ref{mai:eq140}]: Užijeme metodu per partes: \(u(x)=x \rightarrow u'(x)=1\) a \(v(x)=e^x
+  \rightarrow v'(x)=e^x\). Tedy
+  \begin{flalign*}
+    &\int u'(x)v(x)\dd{x} = u(x)v(x) - \int u(x)v'(x)\dd{x}        &\\
+    &\int{xe^xdx}         = xe^x-\int{e^x\dd{x}} = xe^x - e^x+ c   &
+  \end{flalign*}
 \end{mdframed}
