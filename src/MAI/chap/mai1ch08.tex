@@ -139,18 +139,18 @@
   \end{equation*}
   Nejprve je potřeba nadefinovat funkci, kterou chceme integrovat (\(y=x\cdot\sin{x}\)), pomocí
   funkce Matlabu. Nazveme tuto funkci |int\_xsinus| a uložíme ji do zvláštního souboru 
-  \begin{lstlisting}[style=luaMatlabStyle] 
+  \begin{lstlisting}[gobble=8, style=luaMatlabStyle] 
         function [y] = int_xsinus(x)
         y = x.*sin(x);
   \end{lstlisting} 
   Výpočet integrálu pak provedeme pomocí funkce |quad(@int\_xsinus, 0, pi)|, kde první parametr je
   odkaz na funkci |int\_xsinus| a druhé dva parametry jsou meze integrace.
-  \begin{lstlisting}[style=luaMatlabStyle] 
+  \begin{lstlisting}[gobble=8, style=luaMatlabStyle] 
         >> quad(@int_xsinus, 0 , pi)
         ans = 3.1416
   \end{lstlisting}  
   Funkci je možné také definovat jako anonymní funkci, zápis se zkrátí a zpřehlední
-  \begin{lstlisting}[style=luaMatlabStyle]  
+  \begin{lstlisting}[gobble=8, style=luaMatlabStyle]  
         >> xsinus = @(x) x.*sin(x); % anonymni funkce
         >> quad(xsinus, 0, pi)      % vypocet integralu
         ans = 3.1416
