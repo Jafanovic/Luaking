@@ -438,11 +438,13 @@
 
       V tomto jednoduchém případě jsme našli rozklad velmi snadno. Je otázka, lze-li vždy racionální
       funkci rozložit na takové jednoduché funkce, které dovedeme integrovat. V této kapitole
-      uvidíme, že odpověď je kladná a že nakonec půjde vždy jen o integrování mnohočlenů a o 
+      uvidíme, že odpověď je kladná a že nakonec půjde vždy jen o integrování mnohočlenů a o
+      integrování několika typů racionálních funkcí (tzv. \emph{parciálních zlomků}). 
 
       %-------------------------------------
       \input{../src/MAI/exam/exam135.tex}
-      %-------------------------------------    
+      %-------------------------------------
+      
     %--------------------------- Integrace ryze lomené racionální funkce----------------------------
     \newpage
     \twocolumn[\subsection{Integrace ryze lomené racionální funkce rozkladem na parciální zlomky}]
@@ -468,55 +470,84 @@
       %-------------------------------------
       
       \begin{mdframed}[style=mdmathdef] 
-        \begin{definition} Parciální (částečným) zlomkem, budeme nazývat zlomek tvaru
-          \begin{equation}
-              \frac{A}{(x-\alpha)^k} \qquad\text{nebo}\qquad\frac{Mx + N}{x^2 + px +q}
+        \begin{definition}\label{mai:def003}
+          Parciální (částečným) zlomkem, budeme nazývat zlomek tvaru
+          \begin{equation}\label{mai:eq168}
+            \frac{A}{(x-\alpha)^k} \qquad\text{nebo}\qquad\frac{Bx + D}{(x^2 + px + q)^k}
           \end{equation}  
-          $A,\ M,\ N,\ \alpha\ , p,\ q$ reálné $p^2-4q < 0$, $k$ celé nezáporné.         
+          $A,\ B,\ D,\ \alpha\ , p,\ q$ reálné konstanty, trojčlen \(x^2 + px + q\) nemá reálné
+          kořeny (tj. má záporný diskriminant $p^2-4q < 0$), $k$ celé nezáporné číslo.         
         \end{definition}
       \end{mdframed}    
       
-      Integrál prvního zlomku, vypočteme substitucí $x-\alpha=t$, odtud plyne \(\dd{x} = \dd{t}\),
-      \begin{equation}\label{MA:int_ex_14}
-        \boxed{\int\frac{A}{(x-\alpha)^k}dx = \int\frac{A}{t^k}dt.}
+      Jak ukazuje definice \ref{mai:def003}, jsou to funkce těchto čtyř typů:
+      \begin{equation}\label{mai:eq166}
+        \boxed{f_1(x) = \dfrac{A}{x -\alpha}.} \quad k = 1
+      \end{equation}
+      Ten již dovedeme snadno integrovat
+      \begin{equation}
+        \int\dfrac{A}{x -\alpha} = A\ln\abs{x-\alpha} + c, 
+      \end{equation}
+      
+      Druhý typ zlomku dostáváme pro případ \( k\neq1\)
+      \begin{equation}\label{mai:eq167}
+        \boxed{f_2(x) = \dfrac{A}{(x -\alpha)^k}.} \quad k \neq1
+      \end{equation}
+      Integrál druhého zlomku, vypočteme substitucí $x-\alpha=t$ a \(\dd{x} = \dd{t}\), čímž snadno
+      dostaneme 
+      \begin{equation}\label{mai:eq169}
+        \int\frac{A}{(x-\alpha)^k}\dd{x} = \int\frac{A}{t^k}\dd{t}.
       \end{equation}
       Tento integrál se rovná
-      \begin{equation}\label{MA:int_ex_16}
-        -\frac{A}{k-1}\frac{1}{(x-\alpha)^{k-1}} + c, \quad k\neq1.
-      \end{equation}  
-      a 
-      \begin{equation}
-        A\ln\abs{x-\alpha} + c, \quad k = 1
-      \end{equation}      
+      % https://tex.stackexchange.com/questions/299407/does-raisetag-actually-do-anything
+      \begin{flalign}\label{mai:eq170}
+        \boxed{\int\frac{A}{(x-\alpha)^k}\dd{x} = -\frac{A}{k-1}\frac{1}{(x-\alpha)^{k-1}} + c.} &&
+        \raisetag{20pt}
+      \end{flalign}    
       Výsledek platí na každém intervalu neobsahujícím bod \(\alpha\).
       
-       U integrálu druhého zlomku 
-       \begin{equation}\label{mai:eq137}
-        \boxed{\int{\frac{Mx + N}{x^2+px+q}dx}}
+      %-------------------------------------
+      \input{../src/MAI/exam/exam138.tex}
+      %-------------------------------------
+      %-------------------------------------
+      \input{../src/MAI/exam/exam139.tex}
+      %-------------------------------------
+
+      U integrálu třetího zlomku se trochu zapotíme
+      \begin{equation}\label{mai:eq137}
+        \boxed{f_3(x) = \frac{Bx + D}{x^2+px+q}}
       \end{equation} 
        předpokládáme samozřejmě, že kvadratický trojčlen \(x^2+px+q\) nemá kořeny v reálném oboru,
        takže jej nelze rozložit do tvaru \((x - \alpha)(x - \beta)\) s reálnými \(\alpha\),
        \(\beta\) (\cite[p.~140]{Musilova2009MA1}). Platí 
       \begin{gather*}
-        \frac{M}{2}\underbrace{\frac{2x + p}{(x^2+px+q)^k}}_{I_1} + 
-        \left(b - \frac{MN}{2}\right)\underbrace{\frac{1}{(x^2+px+q)^k}}_{I_2}
+        \frac{B}{2}\underbrace{\frac{2x + p}{x^2+px+q}}_{I_1} + 
+        \left(b - \frac{Bp}{2}\right)\underbrace{\frac{1}{x^2+px+q}}_{I_2}
       \end{gather*} 
       K čemu byla předchozí úprava dobrá? Původní parciální zlomek jsme napsali jako součet dvou
       zlomků, z nich je v čitateli derivace funkce \(u(x)=x^2+px+q\). První zlomek se tak stává
       kandidátem na použití substituční metody I.
       \begin{equation*}
-        \boxed{I_1=\int{\frac{(2x+p)}{(x^2+px+q)^k}\dd{x}}=\int\frac{1}{u^k}\dd{u}}\, ,                   
+        I_1=\frac{B}{2}\int{\frac{(2x+p)}{x^2+px+q}\dd{x}}=\frac{B}{2}\int\frac{1}{u^k}\dd{u} ,                   
       \end{equation*}  
-      pro \(k\neq1\) dostaneme
       \begin{equation*}
-        I_1 = \dfrac{M}{2(1-k)}\dfrac{1}{(x^2+px+q)^{k-1}} + c
+        \boxed{\frac{B}{2}\int{\frac{(2x+p)}{x^2+px+q}\dd{x}} = \frac{B}{2}\ln(x^2+px+q) + c}
       \end{equation*}
-      a konečně pro \(k=1\)
-      \begin{equation*}
-        I_1 = \frac{M}{2}\ln\abs{x^2+px+q} + c
-      \end{equation*}
+
+      Nemuseli jsme zde psát \(\abs{x^2+px+q}\), neboť kvadratický mnohočlen se záporným
+      diskriminantem nabývá pro všechna \(x\) hodnot téhož znaménka, rovného znaménku koeficientu u
+      \(x^2\). V našem případě je tento koeficient rovný jedné, takže výraz \(x^2+px+q\) je pro
+      všechna \(x\) kladný.   
+
+
       Při výpočtu durhého integrálu použijeme procedury \uv{doplnění na čtverec}
-      (\cite[p.~407]{Rektorys1963}, \cite[s.~264]{Brabec1989}):
+      (\cite[p.~407]{Rektorys1963}, \cite[s.~264]{Brabec1989}) takto:
+      \begin{equation*}
+        x^2 + px + q = \left(x + \dfrac{p}{2}\right)^2 + q -  \left(\dfrac{p}{2}\right)^2.
+      \end{equation*}
+      Výraz \(q-(p/2)^2\) je jistě kladný, neboť diskriminant \(p^2-4q\) trojčlenu \(x^2+px+q\) je
+      podle předpokladu záporný. Položíme-li tedy \(a = \sqrt{q-(p/2)^2}\), můžeme psát 
+
       \begin{equation}\label{MA:int_ex_10}
         I_2 =\bigintss{%
                 \dfrac{\dd{x}}
