@@ -333,7 +333,7 @@
       \end{equation*}
       na každém intervalu, v němž \(f(x)\neq 0\) a existuje \(f'\). Připomeňme, že výraz
       \(\dfrac{f'(x)}{f(x)}\) se nazývá \emph{logaritmická derivace funkce} \(f\). Viz příklad
-      \ref{mai:exam123}.
+      \ref{mai:eq141}.
    
 
     % -------------------Substituční metoda II------------------------------------------------------
@@ -361,8 +361,8 @@
       \begin{equation}\label{mai:eq157}
         \int\dfrac{P(x)}{Q(x)}\dd{x}
       \end{equation}
-      kde \(P(x)\) a \(Q(x)\) jsou mnohočleny (budeme všude předpokládat, že \(P(x))\) a \(Q(x)\)
-      mají \emph{reálné koeficienty}. Základní myšlenka: Funkci za znakem integrálu rozložíme v
+      kde \(P(x)\) a \(Q(x)\) jsou mnohočleny (budeme všude předpokládat, že \(P(x)\) a \(Q(x)\)
+      mají \emph{reálné koeficienty}). Základní myšlenka: Funkci za znakem integrálu rozložíme v
       součet jednoduchých funkcí, které dovedeme integrovat:
       
       Je-li stupeň \(m\) mnohočlenu \(P(x)\) větší nebo roven stupni \(n\) mnohočlenu \(Q(x)\), pak
@@ -407,8 +407,8 @@
       \(Q(x)\) také komplexně sdružený kořen \(\bar{\beta} = \beta_1-\imath\beta_2\). Součin
       příslušných kořenových činitelů
       \begin{equation}\label{mai:eq161}
-        \left[-(\beta_1+\imath\beta_2)\right]  
-        \left[x-(\beta_1-(\beta_1-\imath\beta_2))\right]                             \nonumber \\
+        \left[x-(\beta_1+\imath\beta_2)\right]  
+        \left[x-(\beta_1-\imath\beta_2)\right]                             \nonumber \\
         = (x-\beta_1)^2+\beta^2_2 = x^2-2\beta_1x + \beta^2_1+\beta^2_2. 
       \end{equation}
       dává kvadratický výraz s reálnými koeficienty. Je-li \(l\) násobnost kořene \(\beta\), pak
@@ -422,14 +422,30 @@
       mnohočlenu zkusmo, zejména má-li tento mnohočlen celočíselné koeficienty. V aplikacích se však
       vyskytují mnohem složitější případy. Otázky nalézt kořeny polynomu a řešit soustavy lineárních
       rovnic v obecném případě patří do speciálních partií algebry a matematické analýzy, zejména
-      numerických metod. 
+      numerických metod.
+      
+      Například funkci \(\frac{1}{x^2-4}\) integrujeme takto: Zřejmě v každém intervalu, který
+      neobsahuje body \(x=2\), \(x=-2\), platí
+      \begin{equation*}
+        \dfrac{1}{x^2-4} = \dfrac{1}{4}\left(\dfrac{1}{x-2} - \dfrac{1}{x+2}\right)
+      \end{equation*}
+      takže v každém takovém intervalu jedině
+      \begin{align*}
+        \int\dfrac{1}{x^2-4}\dd{x}  
+          &= \dfrac{1}{4}\int\left(\dfrac{1}{x-2} - \dfrac{1}{x+2}\right)\dd{x}             \\
+          &= \dfrac{1}{4}\left(\ln\abs{x-2} - \ln\abs{x+2}\right) + c.        
+      \end{align*}
+
+      V tomto jednoduchém případě jsme našli rozklad velmi snadno. Je otázka, lze-li vždy racionální
+      funkci rozložit na takové jednoduché funkce, které dovedeme integrovat. V této kapitole
+      uvidíme, že odpověď je kladná a že nakonec půjde vždy jen o integrování mnohočlenů a o 
 
       %-------------------------------------
       \input{../src/MAI/exam/exam135.tex}
       %-------------------------------------    
-    %--------------------------- Integrace ryze racionální funkce--------------------------------------
+    %--------------------------- Integrace ryze lomené racionální funkce----------------------------
     \newpage
-    \subsection{Integrace ryze racionální funkce}
+    \twocolumn[\subsection{Integrace ryze lomené racionální funkce rozkladem na parciální zlomky}]
       Některé příklady v předchozím odstavci, (viz např. \ref{MA:int_ex_01}) jsme dělením čitatele
       integrandu jmenovatelem dostali rozklad integrandu na součet racionální funkce (polynomu) a
       ryze lomené racionální funkce. Integrování polynomu je snadné, neboť jde o součet integrálů
@@ -482,13 +498,14 @@
        takže jej nelze rozložit do tvaru \((x - \alpha)(x - \beta)\) s reálnými \(\alpha\),
        \(\beta\) (\cite[p.~140]{Musilova2009MA1}). Platí 
       \begin{gather*}
-        \frac{M}{2}\frac{2x + p}{(x^2+px+q)^k} + \left(b - \frac{MN}{2}\right)\frac{1}{(x^2+px+q)^k}
+        \frac{M}{2}\underbrace{\frac{2x + p}{(x^2+px+q)^k}}_{I_1} + 
+        \left(b - \frac{MN}{2}\right)\underbrace{\frac{1}{(x^2+px+q)^k}}_{I_2}
       \end{gather*} 
       K čemu byla předchozí úprava dobrá? Původní parciální zlomek jsme napsali jako součet dvou
       zlomků, z nich je v čitateli derivace funkce \(u(x)=x^2+px+q\). První zlomek se tak stává
       kandidátem na použití substituční metody I.
       \begin{equation*}
-        I_1 = \frac{M}{2}\int{\frac{(2x + p)}{(x^2+px+q)^k}dx} = \frac{M}{2}\int\frac{1}{u^k}\dd{u},                   
+        \boxed{I_1=\int{\frac{(2x+p)}{(x^2+px+q)^k}\dd{x}}=\int\frac{1}{u^k}\dd{u}}\, ,                   
       \end{equation*}  
       pro \(k\neq1\) dostaneme
       \begin{equation*}
@@ -521,66 +538,116 @@
           \int{\frac{dt}{\left(t^2+1\right)^k}},
       \end{equation*}
 
-      Zbývá vyřešit nejpracnější problém, určit primitivní funkci ke zlomku \((t^2+1)^{-k}\). Pro
-      \(k=1\) je to velmi jednoduché, neboť podle tabulkového integrálu \ref{mai:eq121} dostaneme
+      Zbývá vyřešit nejpracnější problém, určit primitivní funkci ke zlomku \((t^2+1)^{-k}\). 
+      
+      Pro \(k=1\) je to velmi jednoduché, neboť podle tabulkového integrálu \ref{mai:eq121}
+      dostaneme
       \begin{equation*}\label{MA:int_ex_13}
         \frac{1}{\sqrt{q-\left(\frac{p}{2}\right)^2}}
             \arctan\frac{x+\frac{p}{2}}{\sqrt{q-\left(\frac{p}{2}\right)^2}}.     
       \end{equation*}   
       
-      V případě \(k = 2\) vyjádříme integrál
+      V případě \(k = 2\) \cite[p.~141]{Musilova2009MA1}. vyjádříme integrál 
       \begin{equation*}
-        \bigintsss{1\cdot\dfrac{1}{(t^2 + 1)^{2}}\dd{t}}
+        \int{1\cdot\dfrac{1}{(t^2 + 1)^{2}}\dd{t}}
       \end{equation*}
       nikoli jako arkustangentu, ale pomocí metody per partes, pro kterou zvolíme
       \(u'(t)=1\rightarrow u(t)=t\), \(v(t) = \dfrac{1}{t^2+1}\rightarrow v'(t) =
       \dfrac{2t}{(t^2+1)^2}\),
-      
-      % -----------------------Funkce typu {f(x)=\sqrt{ax+b}} ------------------------------------
-      \subsubsection*{Funkce typu $\boxed{f(x)=\sqrt{ax+b}}$ :}
-         Funkci, jež je dána rovnicí, jež obsahuje polynomy proměnné x  ve výrazu $\sqrt{ax+b}$,
-         v němž $ax+b>0$, $a>0$, integrujeme pomocí substituce:
-         \begin{equation}\label{ma:eq_sub_fce1}
-             u=\sqrt{ax+b},\quad du=\frac{1}{2}\frac{a}{u}dx,\quad dx=2\frac{u}{a}du
-         \end{equation}
-         Je-li potřeba dosadit do integrované funkce také za $x$, vyjádříme ze substituční
-         rovnice $x=\frac{u^2-b}{a}$.
-      % ----------------------Funkce typuf(x)=\frac{1}{\sqrt{x^2+a}}, a\neq0 -------------------- 
-      \subsubsection*{Funkce typu $\boxed{f(x)=\frac{1}{\sqrt{x^2+a}}}, a\neq0$ :}
-         \begin{example}\label{ma:ex_sub_metoda1}
-           \(\int\frac{1}{\sqrt{x^2+a}}\dd{x}\):\vskip0.5mm
-           Užijeme \textbf{Eulerovu substituci}: \(u=x+\sqrt{x^2+a}\), a dostáváme
-           \(du=\frac{u}{\sqrt{x^2+a}}dx\), \(\frac{du}{u}=\frac{dx}{\sqrt{x^2+a}}\).
-           \begin{equation*}
-             \int{\frac{1}{\sqrt{x^2+a}}dx}=\int{\frac{du}{u}}=\ln\abs{u}
-                                           =\ln\left\lvert x+\sqrt{x^2+a}\right\rvert+C
-           \end{equation*}
-         \end{example}
+      \begin{gather*} 
+        \begin{align*}
+          \arctan u &=  \int{1\cdot\dfrac{1}{(t^2 + 1)^{2}}\dd{t}}              \\
+                    &=  \dfrac{u}{1+u^2} + \int\dfrac{2u^2}{(1+u^2)^2}\dd{u},   \\
+                    &=  \dfrac{u}{1+u^2} + \int\dfrac{2(1+u^2)}{(1+u^2)^2}\dd{u}
+                                        - \int\dfrac{2\dd{u}}{(1+u^2)^2}      \\
+          \arctan u &=  \dfrac{u}{1+u^2} + 2\arctan u - 2\int\dfrac{\dd{u}}{(1+u^2)^2}  
+        \end{align*}
+      \end{gather*}  
+      Odtud již můžeme požadovaný integrál vyjádřit jako
+      \begin{equation*}
+        \int\dfrac{1}{(1+u^2)^2}\dd{u} = \dfrac{1}{2}\left(\dfrac{u}{1+u^2} + \arctan u\right) + c. 
+      \end{equation*}
 
+      Integrál pro \(k=2\) jsme vyjádřili pomocí arkustangenty, tj. pomocí integrálu pro \(k=1\).
+      Metodou per partes aplikovanou na integrál
+      \begin{equation*}
+        I_{k-1} = \int1\cdot\dfrac{1}{(1+u^2)^{k-1}}\dd{u}
+      \end{equation*}
+      můžeme vyjádřit integrál \(I_k\) pomocí \(I_{k-1}\) a získat \emph{rekurentní vzorec}
+      \begin{equation}\label{mai:eq165}
+        I_k = \int\dfrac{1}{(1+u^2)^k}\dd{u} 
+            = \dfrac{1}{2(k-1)}\left[\dfrac{u}{(1+u^2)^{k-1}} + (2k-3)I_{k-1}\right]
+      \end{equation}
+
+
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam136.tex}
+      %-------------------------------------
+
+      Soustavu rovnic v příkladu \ref{MAI:exam136} pro výpočet koeficientů \(A\), \(B\), \(C\)
+      dostaneme též dosazením tří libovolných čísel do rovnice \ref{mai:eq162} (polynomy jsou si
+      rovné, tedy mají stejné hodnoty pro libovolné \(x\)), aniž na pravé straně uspořádáme podle
+      mocnin \(x\). Dosadíme-li postupně \(x=0\), \(x=-1\), \(x=1\) (tedy právě kořeny jmenovatele),
+      dostaneme ihned \(2=-A\), \(1=2B\), \(3=2C\) a odtud už snadno hledané koeficienty. Rovnost
+      \ref{mai:eq163} platí ovšem pro všechna \(x\) s výjimkou právě kořenů  \(x=0\), \(x=-1\) a
+      \(x=1\).
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam137.tex}
+      %-------------------------------------
+
+      Obdobný postup při určování koeficientů \(A\), \(B\), \(C\) a \(D\) zde není tak výhodný jako
+      v příkladu \ref{MAI:exam136}, protože jmenovatel nemá reálné různé kořeny. 
+
+      
     % ---------------- Rozklad ryze lomené funkce v parciální zlomky -------------------------------
     \subsubsection{Rozklad ryze lomené funkce v parciální zlomky}
-      Nechť je dána racionální funkce $R = \frac{P}{Q}$ s reálnými koeficienty. Můžeme
-      předpokládat, že je \emph{ryze lomená}\footnote{tj. stupeň polynomu $P$ je menší než
-      stupeň polynomu $Q$}. Pokud by tomu tak nebylo, dostaneme dělením čitatele jmenovatelem
-      zlomku součet polynomu a ryze lomené racionální funkce.
+    Nechť je dána racionální funkce $R = \frac{P}{Q}$ s reálnými koeficienty. Můžeme
+    předpokládat, že je \emph{ryze lomená}\footnote{tj. stupeň polynomu $P$ je menší než
+    stupeň polynomu $Q$}. Pokud by tomu tak nebylo, dostaneme dělením čitatele jmenovatelem
+    zlomku součet polynomu a ryze lomené racionální funkce.
 
-      %-------------------------------------
-      \input{../src/MAI/exam/exam128.tex}
-      %-------------------------------------
+    %-------------------------------------
+    \input{../src/MAI/exam/exam128.tex}
+    %-------------------------------------
 
-      %-------------------------------------
-      \input{../src/MAI/exam/exam129.tex}
-      %-------------------------------------
+    %-------------------------------------
+    \input{../src/MAI/exam/exam129.tex}
+    %-------------------------------------
+    
+    %-------------------------------------
+    \input{../src/MAI/exam/exam115.tex}
+    %-------------------------------------
       
-      %-------------------------------------
-      \input{../src/MAI/exam/exam115.tex}
-      %-------------------------------------
-
+  % -----------------------Funkce typu {f(x)=\sqrt{ax+b}} ------------------------------------
+  \twocolumn[\subsection{Integrály iracionálních funkcí}]
+    \subsubsection*{Funkce typu $\boxed{f(x)=\sqrt{ax+b}}$ :}
+      Funkci, jež je dána rovnicí, jež obsahuje polynomy proměnné x  ve výrazu $\sqrt{ax+b}$,
+      v němž $ax+b>0$, $a>0$, integrujeme pomocí substituce:
+      \begin{equation}\label{ma:eq_sub_fce1}
+          u=\sqrt{ax+b},\quad du=\frac{1}{2}\frac{a}{u}dx,\quad dx=2\frac{u}{a}du
+      \end{equation}
+      Je-li potřeba dosadit do integrované funkce také za $x$, vyjádříme ze substituční
+      rovnice $x=\frac{u^2-b}{a}$.
+    % ----------------------Funkce typuf(x)=\frac{1}{\sqrt{x^2+a}}, a\neq0 -------------------- 
+    \subsubsection*{Integrál typu $\boxed{\int\frac{1}{\sqrt{x^2+a}}\dd{x}}, a\neq0$ :}
+      \(\int\frac{1}{\sqrt{x^2+a}}\dd{x}\):\vskip0.5mm
+      Užijeme \textbf{Eulerovu substituci}: \(u=x+\sqrt{x^2+a}\), a dostáváme
+      \(\dd{u}=\dfrac{u}{\sqrt{x^2+a}}\dd{x}\), \(\dfrac{\dd{u}}{u}=\dfrac{1}{\sqrt{x^2+a}}\dd{x}\).
+      \begin{equation}
+        \int{\frac{\dd{u}}{u}}=\ln\abs{u} =\ln\left\lvert x+\sqrt{x^2+a}\right\rvert+c
+      \end{equation}
   % --------------------------Integrály goniometrických funkcí------------------------------------
   \newpage
   \subsection{Integrace goniometrických funkcí}
     \subsubsection{Integrály tvaru \(\int R(\cos x, \sin x)\dd{x}\) kde \(R(u, v)\) je racionální
     funkce}
+      Zavedeme substituci \(\tan(x/2)\). Užitím základních vztahů mezi goniometrickými funkcemi
+      dostáváme 
+      \begin{equation}\label{mai:eq164}
+        \cos^2\dfrac{x}{2} = \dfrac{1}{1+ \tan^2\dfrac{x}{2}} = \dfrac{1}{1+t^2},
+      \end{equation}
   % ---------------- Sbírka řešených příkladů ------------------------------------------------------
   \section{Sbírka řešených příkladů}
     \begin{excercise}\label{mai:cviko001}
@@ -604,6 +671,7 @@
     \input{../src/MAI/exam/exam123.tex}
     \input{../src/MAI/exam/exam113.tex}
     \input{../src/MAI/exam/exam016.tex}
+    \newpage
     \input{../src/MAI/exam/exam114.tex}
     %-------------------------------------
     \newpage
@@ -627,7 +695,6 @@
     \input{../src/MAI/exam/exam131.tex}
     \input{../src/MAI/exam/exam127.tex}
     \input{../src/MAI/exam/exam134.tex}
-
     %-------------------------------------
     \newpage
     \begin{excercise}\label{mai:cviko003}
