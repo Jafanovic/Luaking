@@ -489,9 +489,9 @@
         \int\dfrac{A}{x -\alpha} = A\ln\abs{x-\alpha} + c, 
       \end{equation}
       
-      Druhý typ zlomku dostáváme pro případ \( k\neq1\)
+      Druhý typ zlomku dostáváme pro případ \( k>1\)
       \begin{equation}\label{mai:eq167}
-        \boxed{f_2(x) = \dfrac{A}{(x -\alpha)^k}.} \quad k \neq1
+        \boxed{f_2(x) = \dfrac{A}{(x -\alpha)^k}.} \quad k>1
       \end{equation}
       Integrál druhého zlomku, vypočteme substitucí $x-\alpha=t$ a \(\dd{x} = \dd{t}\), čímž snadno
       dostaneme 
@@ -548,35 +548,34 @@
       Výraz \(q-(p/2)^2\) je jistě kladný, neboť diskriminant \(p^2-4q\) trojčlenu \(x^2+px+q\) je
       podle předpokladu záporný. Položíme-li tedy \(a = \sqrt{q-(p/2)^2}\), můžeme psát 
 
-      \begin{equation}\label{MA:int_ex_10}
-        I_2 =\bigintss{%
-                \dfrac{\dd{x}}
-                  {\left[\left(x+\frac{p}{2}\right)^2 + q - \left(\frac{p}{2}\right)^2\right]^k}
-             }
+      \begin{equation}
+        I_2 =\int\dfrac{1}{x^2+px+q}\dd{x} 
+            =\int{\dfrac{1}{\left(x+\frac{p}{2}\right)^2 + a^2}}\dd{x}
       \end{equation}
-      substitucí $x + p/2 = t\sqrt{q - (p/2)^2}$, \(\dd{x} = \sqrt{q - (p/2)^2}\dd{t}\)
-      dostáváme dále
-      \begin{gather*}\label{MA:int_ex_11}
-        I_2 = \bigintss{%
-                \frac{\sqrt{q-\left(\frac{p}{2}\right)^2}}
-                    {\left[\left(q-\left(\frac{p}{2}\right)^2\right)(t^2+1)\right]^k}\dd{t}   
-        }  
+      substitucí \(x + \frac{p}{2} = t\), \(\dd{x} = \dd{t}\) dostaneme 
+      \begin{gather*}
+        \int{\dfrac{1}{\left(x+\frac{p}{2}\right)^2 + a^2}}\dd{x} = 
+        \int{\dfrac{1}{t^2+a^2}}\dd{t}
       \end{gather*}
-      po úpravě dostaneme integrál 
+      takže
       \begin{equation*}
-        I_2 = 
-          \frac{1}{\left(q-\left(\frac{p}{2}\right)^2\right)^{k-\frac{1}{2}}}
-          \int{\frac{dt}{\left(t^2+1\right)^k}},
+        \dfrac{1}{a}\arctan\dfrac{t}{a} + c = \dfrac{1}{a}\arctan\dfrac{x + \frac{p}{2}}{a} + c 
       \end{equation*}
+      Je tedy
+      \begin{align}
+          &\int\dfrac{1}{x^2+px+q}\dd{x} = \frac{B}{2}\ln(x^2+px+q) +              \nonumber     \\ 
+        + &\frac{1}{\sqrt{q-\left(\frac{p}{2}\right)^2}}
+                \arctan\frac{x+\frac{p}{2}}{\sqrt{q-\left(\frac{p}{2}\right)^2}}.  \label{mai:eq171}
+      \end{align}
+     
+      %-------------------------------------
+      \input{../src/MAI/exam/exam140.tex}
+      %------------------------------------- 
 
-      Zbývá vyřešit nejpracnější problém, určit primitivní funkci ke zlomku \((t^2+1)^{-k}\). 
-      
-      Pro \(k=1\) je to velmi jednoduché, neboť podle tabulkového integrálu \ref{mai:eq121}
-      dostaneme
-      \begin{equation*}\label{MA:int_ex_13}
-        \frac{1}{\sqrt{q-\left(\frac{p}{2}\right)^2}}
-            \arctan\frac{x+\frac{p}{2}}{\sqrt{q-\left(\frac{p}{2}\right)^2}}.     
-      \end{equation*}   
+      Zbývá vyřešit nejpracnější problém, určit primitivní funkci ke zlomku 4. typu
+      \begin{equation}\label{mai:eq172}
+        \boxed{f_4(x) = \frac{Bx + D}{(x^2+px+q)^k}} \qquad k>1
+      \end{equation}      
       
       V případě \(k = 2\) \cite[p.~141]{Musilova2009MA1}. vyjádříme integrál 
       \begin{equation*}
@@ -605,10 +604,10 @@
         I_{k-1} = \int1\cdot\dfrac{1}{(1+u^2)^{k-1}}\dd{u}
       \end{equation*}
       můžeme vyjádřit integrál \(I_k\) pomocí \(I_{k-1}\) a získat \emph{rekurentní vzorec}
-      \begin{equation}\label{mai:eq165}
-        I_k = \int\dfrac{1}{(1+u^2)^k}\dd{u} 
-            = \dfrac{1}{2(k-1)}\left[\dfrac{u}{(1+u^2)^{k-1}} + (2k-3)I_{k-1}\right]
-      \end{equation}
+      \begin{align}
+        I_k &= \int\dfrac{1}{(1+u^2)^k}\dd{u}                                   \label{mai:eq165} \\
+            &= \dfrac{1}{2(k-1)}\left[\dfrac{u}{(1+u^2)^{k-1}}+(2k-3)I_{k-1}\right]  \nonumber
+      \end{align}
 
 
 

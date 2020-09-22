@@ -1,0 +1,34 @@
+\begin{mdframed}[style=mdexam]
+  \begin{example}\label{mai:exam140}
+    Vypočtěme 
+    \begin{equation*}
+      \int\dfrac{5x+8}{x62+4x+7}\dd{x}
+    \end{equation*}
+    Čerpáno z \cite[s.~73]{Knichal}.  Kvadratický trojčlen ve jmenovateli má záporný diskriminatn,
+    \(16-4\cdot7 = -12<0\), a proto jde skutečně o integrál typu 3.
+    
+    Postup, který jsme ukázali obecně, provedeme nyní na speciálním případě. Nejdříve rozložíme
+    integrand na dva zlomky tak, aby první měl v čitateli derivaci jmenovatele: 
+    \begin{equation*}
+      \frac{5}{2}\frac{2x+4}{x^2+4x+7} + \left(8-\frac{5}{2}\cdot4\right)\frac{1}{x^2+4x+7}.
+    \end{equation*}
+    Tedy
+    \begin{align*}
+      & \int\dfrac{5x+8}{x^2+4x+7}\dd{x}  = \dfrac{5}{2}\int\frac{2x+4}{x^2+4x+7}\dd{x}  \\
+      &-2\int\frac{1}{x^2+4x+7}\dd{x}     = \dfrac{5}{2}\ln(x^2+4x+7) - 2I
+    \end{align*}
+    Abychom určili \(I\) budeme postupovat takto:
+    \begin{equation*}
+      I = \int\dfrac{1}{x^2+4x+7}\dd{x} = \int\dfrac{1}{(x+2)^2+3}\dd{x} 
+    \end{equation*}
+    Nyní položíme \(x+2=t\), takže \(\dd{x}= \dd{t}\). Dostaneme
+    \begin{align*}
+      I &= \int\dfrac{1}{t^2+3}\dd{t} = \dfrac{1}{\sqrt{3}}\arctan\dfrac{t}{\sqrt{3}} + c \\
+        &= \dfrac{1}{\sqrt{3}}\arctan\dfrac{x+2}{\sqrt{3}} + c
+    \end{align*}
+    Výsledek integrálu \(\int\dfrac{5x+8}{x62+4x+7}\dd{x}\) tedy je 
+    \begin{equation*}
+      \dfrac{5}{2}\ln(x^2+4x+7) - \dfrac{2}{\sqrt{3}}\arctan\dfrac{x+2}{\sqrt{3}} + c
+    \end{equation*}
+  \end{example}
+\end{mdframed}
