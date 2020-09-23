@@ -668,7 +668,7 @@
         \shortintertext{a dostaneme}
         u' &= 1, \quad v  &&= - \dfrac{1}{2(k-1)}\dfrac{1}{(t^2+a^2)^{k-1}}.
       \end{alignat*}
-      budeme
+      Bude
       \begin{align}
         I_5 &=\int\dfrac{t^2}{(t^2+a^2)^k}\dd{t} 
              = \int\dfrac{t\cdot t}{(t^2+a^2)^k}\dd{t}                  \nonumber \\
@@ -679,11 +679,29 @@
       \begin{gather*}
         I_k = \dfrac{1}{a^2}I_{k-1} - \dfrac{1}{a^2}
               \left[
-                \dfrac{1}{2(k-1)}\dfrac{1}{(t^2+a^2)^{k-1}} + \dfrac{1}{2(k-1)}I_{k-1}                
+                -\dfrac{1}{2(k-1)}\dfrac{1}{(t^2+a^2)^{k-1}} + \dfrac{1}{2(k-1)}I_{k-1}                
               \right]
       \end{gather*}
       čili 
+      \begin{gather*}
+        I_k = \dfrac{t}{2(k-1)a^2(t^2+a^2)^{k-1}} + 
+              \dfrac{1}{a^2}\left(1-\dfrac{1}{2(k-1)}\right)I_{k-1}                
+      \end{gather*}
+      a konečně
+      \begin{equation}\label{mai:eq175}
+        I_k = \dfrac{t}{2(k-1)a^2(t^2+a^2)^{k-1}} + \dfrac{2k-3}{2k-2}\dfrac{1}{a^2}I_{k-1}                
+      \end{equation}
 
+      Pomocí vzorce \ref{mai:eq175} se redukuje výpočet integrálu \(I_k\) na výpočet integrálu
+      \(I_{k-1}\) je tabulkový. Přejdeme-li zpět k proměnné \(x\) a uvážíme \ref{mai:eq173},
+      dostaneme hledaný integrál funkce
+      \begin{equation*}
+        \dfrac{Bx + D}{(x^2+px+q)^k}
+      \end{equation*}
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam141.tex}
+      %-------------------------------------  
       %-------------------------------------
       \input{../src/MAI/exam/exam136.tex}
       %-------------------------------------
