@@ -522,7 +522,7 @@
        \(\beta\) (\cite[p.~140]{Musilova2009MA1}). Platí 
       \begin{gather*}
         \frac{B}{2}\underbrace{\frac{2x + p}{x^2+px+q}}_{I_1} + 
-        \left(b - \frac{Bp}{2}\right)\underbrace{\frac{1}{x^2+px+q}}_{I_2}
+        \left(D - \frac{Bp}{2}\right)\underbrace{\frac{1}{x^2+px+q}}_{I_2}
       \end{gather*} 
       K čemu byla předchozí úprava dobrá? Původní parciální zlomek jsme napsali jako součet dvou
       zlomků, z nich je v čitateli derivace funkce \(u(x)=x^2+px+q\). První zlomek se tak stává
@@ -577,11 +577,12 @@
         \boxed{f_4(x) = \frac{Bx + D}{(x^2+px+q)^k}} \qquad k>1
       \end{equation}      
       
-      V případě \(k = 2\) \cite[p.~141]{Musilova2009MA1}. vyjádříme integrál 
+      Nejdříve prozkoumáme integrál, se kterým jsme se setkali v předchozím příkladu pro případ
+      \(k = 2\) (viz \cite[p.~141]{Musilova2009MA1}). Jedná se o integrál typu 
       \begin{equation*}
-        \int{1\cdot\dfrac{1}{(t^2 + 1)^{2}}\dd{t}}
+        \int{1\cdot\dfrac{1}{(t^2 + 1)^{2}}\dd{t}}.
       \end{equation*}
-      nikoli jako arkustangentu, ale pomocí metody per partes, pro kterou zvolíme
+      Integrál vyjádříme nikoli jako arkustangentu, ale pomocí metody per partes, pro kterou zvolíme
       \(u'(t)=1\rightarrow u(t)=t\), \(v(t) = \dfrac{1}{t^2+1}\rightarrow v'(t) =
       \dfrac{2t}{(t^2+1)^2}\),
       \begin{gather*} 
@@ -609,7 +610,79 @@
             &= \dfrac{1}{2(k-1)}\left[\dfrac{u}{(1+u^2)^{k-1}}+(2k-3)I_{k-1}\right]  \nonumber
       \end{align}
 
+      Nyní jsme připraveni řešit \ref{mai:eq172} obecně. I zde, dříve než přistoupíme k integrování,
+      rozložíme zlomek obdobným způsobem jako v předcházejícím případě:
+      \begin{gather*}
+        \frac{B}{2}\underbrace{\frac{2x + p}{(x^2+px+q)^k}}_{I_3} + 
+        \left(D - \frac{Bp}{2}\right)\underbrace{\frac{1}{(x^2+px+q)^k}}_{I_4}
+      \end{gather*} 
+      Integrál \(I_3\) určíme snadno substitucí \(x^2+px+q = z\), \((2x+p)\dd{x} = \dd{z}\),
+      \begin{align}
+        I_3 &= \frac{B}{2}\int\dfrac{1}{(x^2+px+q)^k}\dd{x} 
+             = \frac{B}{2}\int\dfrac{\dd{z}}{z^k} =                                \nonumber   \\
+            &=-\frac{B}{2}\dfrac{1}{k-1}\dfrac{1}{z^{k-1}} + c                     \nonumber   \\
+            &=-\frac{B}{2(k-1)}\dfrac{1}{(x^2+px+q)^{k-1}} + c                     \label{mai:eq173} 
+      \end{align}      
 
+      Druhý integrál \(I_4\) převedeme opět úpravami obdobnými těm, kterých jsme použili u zlomku
+      \ref{mai:eq137} na tvar \(1/(t^2+a^2)^k\):
+      \begin{align*}
+        I_3 &= \left(D - \frac{Bp}{2}\right)\int\dfrac{1}{(x^2+px+q)^k}\dd{x}      \nonumber   \\  
+            &= \left(D - \frac{Bp}{2}\right)\int\dfrac{1}{
+                  \left[
+                    \left(
+                      x+\frac{p}{2}
+                    \right)^2+q-
+                    \left(
+                      \frac{p}{2}
+                    \right)^2
+                  \right]^k
+                }\dd{x}.
+      \end{align*}    
+
+      V integrálu na pravé straně provedeme substituci \(X + \frac{p}{2} = t\), \(\dd{x} = \dd{t}\),
+      a položíme 
+      \begin{equation*}
+        \sqrt{q - \left(\dfrac{p}{2}\right)^2} = a.
+      \end{equation*}
+      dostaneme
+      \begin{equation*}
+        \left(D - \frac{Bp}{2}\right)\int\dfrac{1}{(t^2+a^2)^k}\dd{t}.
+      \end{equation*}
+      Pro integrál na pravé straně zavedeme označení
+      \begin{equation*}
+        \int\dfrac{1}{(t^2+a^2)^k}\dd{t} = I_k
+      \end{equation*}
+      a odvodíme pro jeho výpočet rekurentní vzorec. Integrál \(I_k\) nejprve upravíme:
+      \begin{align*}
+        I_k &= \int\dfrac{1}{(t^2+a^2)^k}\dd{t} 
+             = \dfrac{1}{a^2}\int\dfrac{t^2+a^2-t^2}{(t^2+a^2)^k}\dd{t}                       \\
+            &= \dfrac{1}{a^2}\underbrace{\int\dfrac{1}{(t^2+a^2)^{k-1}}\dd{t}}_{I_{k-1}}          
+             - \dfrac{1}{a^2}\underbrace{\int\dfrac{t^2}{(t^2+a^2)^k}\dd{t}}_{I_5}                
+      \end{align*}
+
+      První integrál na pravé straně, jsme ve shodě se zvoleným označením pro \(I_k\), označili
+      \(I_{k-1}\). Na druhý integrál použijeme metody integrování per partes. Položíme 
+      \begin{alignat*}{2}
+        u  &= t, \quad v' &&=   \dfrac{t}{(t^2+a^2)^k} = \dfrac{1}{2}\dfrac{2t}{(t^2+a^2)^k}   \\
+        \shortintertext{a dostaneme}
+        u' &= 1, \quad v  &&= - \dfrac{1}{2(k-1)}\dfrac{1}{(t^2+a^2)^{k-1}}.
+      \end{alignat*}
+      budeme
+      \begin{align}
+        I_5 &=\int\dfrac{t^2}{(t^2+a^2)^k}\dd{t} 
+             = \int\dfrac{t\cdot t}{(t^2+a^2)^k}\dd{t}                  \nonumber \\
+            &= -\dfrac{1}{2(k-1)}\cdot\dfrac{t}{(t^2+a^2)^{k-1}} +      \nonumber \\
+            &{}+\dfrac{1}{2(k-1)}\int\dfrac{1}{(t^2+a^2)^{k-1}}\dd{t}.  \label{mai:eq174}
+      \end{align}
+      Dosadíme-li tento výsledek do rovnice pro \(I_k\), dostaneme
+      \begin{gather*}
+        I_k = \dfrac{1}{a^2}I_{k-1} - \dfrac{1}{a^2}
+              \left[
+                \dfrac{1}{2(k-1)}\dfrac{1}{(t^2+a^2)^{k-1}} + \dfrac{1}{2(k-1)}I_{k-1}                
+              \right]
+      \end{gather*}
+      čili 
 
       %-------------------------------------
       \input{../src/MAI/exam/exam136.tex}
