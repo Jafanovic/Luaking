@@ -68,7 +68,7 @@
     \subsection{Poznámky k definici}  
       Z definice \ref{mai:def002} vyplývá, že primitivní funkce je spojitou funkcí, neboť má
       derivaci a věta \ref{mai:lemma008} nám říká, že pokud k dané funkci existuje funkce
-      primitivní, existuje jich nekonečně mnoho. Je-li např. \(F\) primitivn9 funkce k funkci \(f\)
+      primitivní, existuje jich nekonečně mnoho. Je-li např. \(F\) primitivní funkce k funkci \(f\)
       na intervalu \(J\), pak množina všech primitivních funkcí je množina \(\{F + c;
       c\in\realset\}\). Tuto množinu označujeme symbolem \(\int f(x)\dd{x}\) a čteme \uv{integrál
       \(f(x)\dd{x})\)} Symbolu \(\int f(x)\dd{x}\) říkáme \textbf{neurčitý integrál}. Zpravidla
@@ -271,7 +271,7 @@
       %-------------------------------------
   
     %--------------------------- Substituční metoda ----------------------------------------------
-    \subsection{Substituční metoda I}
+    \twocolumn[\subsection{Substituční metoda typu \(\varphi(x) = t\)}]
       Tato metoda \emph{substituce} neboli \emph{náhrady} spočívá v tom, že vhodně zvolenou funkci
       obsaženou v předpisu \(f(x)\) označíme jako novou jednoduchou proměnnou. Čeho tím dosáhneme?
       Předpokládejme například, že \[f(x)=\varphi'(x)g[\varphi(x)]\] a označme jako novou proměnnou
@@ -287,21 +287,31 @@
       \end{equation*}      
       Na základě těchto úvah formulujeme následující větu (viz. \cite[p.~142]{diblik2002}):
       \begin{mdframed}[style=mdmathlemma]
-        \begin{lemma}\label{mai:lemma009}
-          Jestliže
-          \begin{equation}\label{ma:eq_subst1}
-            \int{f(u)\dd{u}}=F(u)+c
+        \begin{lemma}\label{mai:lemma009}          
+          (\textbf{o substituci}). Nechť funkce \(F(t)\) je primitivní funkcí k funkci \(f(t)\) v
+          intervalu \(\alpha, \beta\). Nechť funkce \(t = \varphi(x)\) v intervalu \((a,b)\).
+          [Intervaly \(\alpha, \beta\) a \((a,b)\) mohou být popřípadě nekonečné.] Pro každé
+          \(x\in(a,b)\) nechť číslo \(\varphi(x)\) patří do intervalu \(\alpha, \beta\). Pak v
+          intervalu \((a,b)\) je funkce \(F(\varphi(x))\) primitivní funkcí k funkci
+          \(f(\varphi(x))\varphi'(x)\), tj. 
+          \begin{equation}\label{mai:eq176}
+            \int{f(\varphi(x))\varphi'(x)\dd{x}} = F(\varphi(x)) + c.
           \end{equation}
-          a $u=\varphi(x)$, pak
-          \begin{equation}\label{ma:eq_subst2}
-              \int{f[\varphi(x)]\varphi'(x)\dd{u}}=F(\varphi(x))+c
+          Tento výsledek je zvykem zapisovat v integrálním počtu takto:
+          \begin{equation}\label{mai:eq177}
+            \int{f[\varphi(x)]\varphi'(x)\dd{x}}= \int f(t)\dd{t}= F(t)+c
           \end{equation}
+          kde \(t=\varphi(x)\).
         \end{lemma}
       \end{mdframed}
   
       Základem úspěchu při aplikací věty je správný výběr funkce $\varphi(x)$. Praxe je totiž
-      taková, že výpočet konkrétních příkladů je schématicky veden od rov. \ref{ma:eq_subst2} ke
-      vzorci rov. \ref{ma:eq_subst1}.
+      taková, že výpočet konkrétních příkladů je schématicky veden od rov. \ref{mai:eq177} ke
+      vzorci rov. \ref{mai:eq176}.
+
+      Vzorec \ref{mai:eq177} se sandno pamatuje. Dosadíme-li v integrálu \(\int f(t)\dd{t}\)
+      formálně \(t=\varphi(x)\) a (diferencování tohoto vztahu) \(\dd{t} = \varphi'(x)\), dostaneme
+      integrál \(\int{f[\varphi(x)]\varphi'(x)\dd{x}}\).
 
       %-------------------------------------
       \input{../src/MAI/exam/exam110.tex}
@@ -573,9 +583,11 @@
       %------------------------------------- 
 
       Zbývá vyřešit nejpracnější problém, určit primitivní funkci ke zlomku 4. typu
-      \begin{equation}\label{mai:eq172}
-        \boxed{f_4(x) = \frac{Bx + D}{(x^2+px+q)^k}} \qquad k>1
-      \end{equation}      
+      \begin{mdframed}[style=mdeq] 
+        \begin{equation}\label{mai:eq172}
+          f_4(x) = \frac{Bx + D}{(x^2+px+q)^k} \qquad k>1
+        \end{equation}      
+      \end{mdframed}
       
       Nejdříve prozkoumáme integrál, se kterým jsme se setkali v předchozím příkladu pro případ
       \(k = 2\) (viz \cite[p.~141]{Musilova2009MA1}). Jedná se o integrál typu 
@@ -640,7 +652,7 @@
                 }\dd{x}.
       \end{align*}    
 
-      V integrálu na pravé straně provedeme substituci \(X + \frac{p}{2} = t\), \(\dd{x} = \dd{t}\),
+      V integrálu na pravé straně provedeme substituci \(x + \frac{p}{2} = t\), \(\dd{x} = \dd{t}\),
       a položíme 
       \begin{equation*}
         \sqrt{q - \left(\dfrac{p}{2}\right)^2} = a.
@@ -669,12 +681,12 @@
         u' &= 1, \quad v  &&= - \dfrac{1}{2(k-1)}\dfrac{1}{(t^2+a^2)^{k-1}}.
       \end{alignat*}
       Bude
-      \begin{align}
-        I_5 &=\int\dfrac{t^2}{(t^2+a^2)^k}\dd{t} 
-             = \int\dfrac{t\cdot t}{(t^2+a^2)^k}\dd{t}                  \nonumber \\
-            &= -\dfrac{1}{2(k-1)}\cdot\dfrac{t}{(t^2+a^2)^{k-1}} +      \nonumber \\
-            &{}+\dfrac{1}{2(k-1)}\int\dfrac{1}{(t^2+a^2)^{k-1}}\dd{t}.  \label{mai:eq174}
-      \end{align}
+      \begin{alignat}{2}
+        I_5 &=  &&{} \int\dfrac{t^2}{(t^2+a^2)^k}\dd{t} =
+                     \int\dfrac{t\cdot t}{(t^2+a^2)^k}\dd{t}                 \nonumber \\
+            &=  &&-  \dfrac{1}{2(k-1)}\cdot\dfrac{t}{(t^2+a^2)^{k-1}} +      \nonumber \\
+            &{} &&+  \dfrac{1}{2(k-1)}\int\dfrac{1}{(t^2+a^2)^{k-1}}\dd{t}.  \label{mai:eq174}
+      \end{alignat}
       Dosadíme-li tento výsledek do rovnice pro \(I_k\), dostaneme
       \begin{gather*}
         I_k = \dfrac{1}{a^2}I_{k-1} - \dfrac{1}{a^2}
@@ -702,25 +714,6 @@
       %-------------------------------------
       \input{../src/MAI/exam/exam141.tex}
       %-------------------------------------  
-      %-------------------------------------
-      \input{../src/MAI/exam/exam136.tex}
-      %-------------------------------------
-
-      Soustavu rovnic v příkladu \ref{MAI:exam136} pro výpočet koeficientů \(A\), \(B\), \(C\)
-      dostaneme též dosazením tří libovolných čísel do rovnice \ref{mai:eq162} (polynomy jsou si
-      rovné, tedy mají stejné hodnoty pro libovolné \(x\)), aniž na pravé straně uspořádáme podle
-      mocnin \(x\). Dosadíme-li postupně \(x=0\), \(x=-1\), \(x=1\) (tedy právě kořeny jmenovatele),
-      dostaneme ihned \(2=-A\), \(1=2B\), \(3=2C\) a odtud už snadno hledané koeficienty. Rovnost
-      \ref{mai:eq163} platí ovšem pro všechna \(x\) s výjimkou právě kořenů  \(x=0\), \(x=-1\) a
-      \(x=1\).
-
-      %-------------------------------------
-      \input{../src/MAI/exam/exam137.tex}
-      %-------------------------------------
-
-      Obdobný postup při určování koeficientů \(A\), \(B\), \(C\) a \(D\) zde není tak výhodný jako
-      v příkladu \ref{MAI:exam136}, protože jmenovatel nemá reálné různé kořeny. 
-
       
     % ---------------- Rozklad ryze lomené funkce v parciální zlomky -------------------------------
     \subsubsection{Rozklad ryze lomené funkce v parciální zlomky}
@@ -728,6 +721,25 @@
     předpokládat, že je \emph{ryze lomená}\footnote{tj. stupeň polynomu $P$ je menší než
     stupeň polynomu $Q$}. Pokud by tomu tak nebylo, dostaneme dělením čitatele jmenovatelem
     zlomku součet polynomu a ryze lomené racionální funkce.
+
+    %-------------------------------------
+    \input{../src/MAI/exam/exam136.tex}
+    %-------------------------------------
+
+    Soustavu rovnic v příkladu \ref{MAI:exam136} pro výpočet koeficientů \(A\), \(B\), \(C\)
+    dostaneme též dosazením tří libovolných čísel do rovnice \ref{mai:eq162} (polynomy jsou si
+    rovné, tedy mají stejné hodnoty pro libovolné \(x\)), aniž na pravé straně uspořádáme podle
+    mocnin \(x\). Dosadíme-li postupně \(x=0\), \(x=-1\), \(x=1\) (tedy právě kořeny jmenovatele),
+    dostaneme ihned \(2=-A\), \(1=2B\), \(3=2C\) a odtud už snadno hledané koeficienty. Rovnost
+    \ref{mai:eq163} platí ovšem pro všechna \(x\) s výjimkou právě kořenů  \(x=0\), \(x=-1\) a
+    \(x=1\).
+
+    %-------------------------------------
+    \input{../src/MAI/exam/exam137.tex}
+    %-------------------------------------
+
+    Obdobný postup při určování koeficientů \(A\), \(B\), \(C\) a \(D\) zde není tak výhodný jako
+    v příkladu \ref{MAI:exam136}, protože jmenovatel nemá reálné různé kořeny. 
 
     %-------------------------------------
     \input{../src/MAI/exam/exam128.tex}
