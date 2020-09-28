@@ -4,7 +4,7 @@
 %---------------------------------------------------------------------------------------------------
 %============================ Primitivní funkce ====================================================
 \setchaptertoc
-\chapter{Poznáváme funkci z její derivace - neurčitý integrál}
+\chapter{Poznáváme funkci z její derivace - neurčitý integrál}\label{mai:IchapVII}
   %----------------------------Neurčitý integrál----------------------------------------------------
   \section{Motivace}
     Problém \emph{neurčitého integrálu}, neboli \textbf{primitivní funkce}, lze vyložit velmi 
@@ -24,7 +24,7 @@
     primitivních funkcí. Množinu všech primitivních funkcí se často nazývá \textbf{neurčitým 
     integrálem}. Po tomto názorném uvedení do problému přejděme k přesné formulaci základních pojmů.
     
-  \section{Definice primitivní funkce}  
+  \section{Definice primitivní funkce}\label{mai:IchapVIIsecI}  
     \begin{mdframed}[style=mdmathdef] 
       \begin{definition}\label{mai:def002}
         Funkci \(F(x): J\rightarrow \realset\), kde \(J\subset \realset\) je interval, nazveme
@@ -95,133 +95,266 @@
           \left[\int f(x)\dd{x}\right]' &= f(x),                              &\label{mai:eq136}
         \end{flalign}
       \end{subequations}
+      
+  \section{Základní integrály}\label{mai:IchapVIIsecII} 
+    Neurčitý integrál k některým elementárním funkcím najdeme velmi snadno na základě známých
+    výsledků z diferenciálního počtu.
+    
+    \begin{enumerate}
+      \item Je-li \(n\neq-1\) a \(x\in(0,+\infty)\), platí \(\left(\dfrac{x^{n+1}}{n+1}\right)'=
+            x^n\) proto
+            \begin{equation}\label{mai:eq178}
+              \int x^n\dd{x} = \dfrac{x^{n+1}}{n+1}, \quad x\in(0,+\infty) 
+            \end{equation}
+            Pro některá \(n\) je možno platnost vztahu \ref{mai:eq178} rozšířit. Například pro
+            přirozená \(n\) platí vztah \ref{mai:eq178} v celém intervalu \((-\infty,+\infty)\).
+            Například: 
+            \begin{gather*}
+              \begin{flalign*}
+                & \int x^6\dd{x}          
+                  =  \frac{1}{7}x^7 + c, \, x\in(-\infty,+\infty)                            &   \\
+                & \int\frac{1}{x^4}\dd{x} 
+                  =  \int x^{-4}\dd{x} = -\frac{1}{3}x^{-3} + c 
+                  = -\frac{1}{3x^3} + c,\, x\neq0                                            &   \\
+                & \int\sqrt[3]{x^2}\dd{x} 
+                  =  \int x^{\frac{2}{3}}\dd{x} 
+                  = \frac{3}{5}\sqrt[3]{x^5} + c, \, x\in(-\infty,+\infty)                   &   \\
+                & \int\frac{1}{\sqrt{t^7}}\dd{x} 
+                  =  \int t^{-\frac{7}{2}}\dd{x} 
+                  = -\frac{2}{5}\frac{1}{\sqrt{t^5}} + c,\, t\in(0,+\infty)                  & 
+              \end{flalign*}
+            \end{gather*}
+      \item Je-li \(F(x)=C\), kde \(C\) je konstanta, platí \(F'(x)=0\) pro všechna \(x\), a tedy
+            \begin{equation*}
+              \int 0\cdot\dd{x} = c, \quad x\in(-\infty,+\infty).
+            \end{equation*}
+      \item Je-li \(F(x)=x\), kde \(x\in(-\infty,+\infty)\), platí \(F'(x)=1\) pro všechna \(x\), a
+            proto
+            \begin{equation*}
+              \int 1\cdot\dd{x} = \int\dd{x} = x + c, \quad x\in(-\infty,+\infty).
+            \end{equation*}
+            (speciální případ integrálu \ref{mai:eq178} pro \(n=1\)).
+      \item Funkce \(F(x)=\ln x\), \(x\in(0,+\infty)\) má derivaci \(F'(x) = \frac{1}{x}\), a proto
+            \begin{equation*}
+              \int\frac{1}{x}\dd{x} = \ln x + c, \quad x\in(0,+\infty).
+            \end{equation*} 
+            Funkce \(G(x) = \ln(-x)\), \(x\in(-\infty,0)\) má derivaci \(G'(x) = \frac{-1}{-x} =
+            \frac{1}{x}\), a platí tedy
+            \begin{equation*}
+              \int\frac{1}{x}\dd{x} = \ln(-x) + c, \quad x\in(-\infty,0).
+            \end{equation*}
+            Oba vzorce můžeme spojit zápisem
+            \begin{equation*}
+              \int\frac{1}{x}\dd{x} = \ln\abs{x} + c
+            \end{equation*}
+            pro \(x\) z intervalu \((-\infty,0)\) nebo pro \(x\) z intervalu \((0,+\infty)\).
+            Protože také
+            \begin{equation*}
+              (\ln kx)' = \frac{k}{kx} = \frac{1}{x} \quad (kx>0),
+            \end{equation*}
+            můžeme psát
+            \begin{equation*}
+              \int\frac{1}{x}\dd{x} = \ln kx \quad (kx>0).
+            \end{equation*}
+            Přitom je tedy \(k\) libovolná kladná konstanta, uvažujeme-li \(x\) z intervalu
+            \((0,+\infty)\), nebo libovolná záporná konstanta, uvažujeme-li \(x\) z intervalu
+            \((-\infty,0)\) (aby bylo vždy \(kx>0\)). Integrační konstanta je již v tomto zápisu
+            obsažena. Například pro kladná \(x\) je \(\ln kx = \ln k + \ln x = \ln x + c\).
+            
+            Podobně pro \(y=\ln\abs{x+a}\), \(x\neq-a\) dostaneme \(y'=1/(x+a)\), a proto
+            \begin{equation*}
+              \int\frac{1}{x+a}\dd{x} = \ln\abs{x+a} + c
+            \end{equation*}
+            v každém otevřeném intervalu, který neobsahuje bod \(x=-a\), resp. 
+            \begin{equation*}
+              \int\frac{1}{x+a}\dd{x} = \ln k(x+a), \quad k(x+a)>0.
+            \end{equation*}
+      \item Derivace funkce \(y=\dfrac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}}\), \(a\neq0\), \(x\neq a\),
+            \(x\neq -a\) je
+            \begin{equation*}
+              y'=\frac{1}{2a}\cdot\frac{x+a}{x-a}\cdot\frac{x+a-(x-a)}{(x+a)^2} = \frac{1}{x^2-a^2}.
+            \end{equation*}
+            Tedy pro \(a\neq0\) je
+            \begin{equation*}
+              \int\frac{1}{x^2-a^2}\dd{x} = \frac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}} + c
+            \end{equation*}
+            v každém otevřeném intervalu, kerý neobsahuje bod \(x\neq a\) nebo \(x\neq -a\), resp. 
+            \begin{equation*}
+              \int\frac{1}{x^2-a^2}\dd{x} = \frac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}} + c,
+              \, \left(k\dfrac{x-a}{x+a}>0\right).
+            \end{equation*}
+      \item Pro všechna reálná \(x\) platí
+            \begin{equation*}
+              (e^x)' = e^x, \, \left(\frac{1}{k}e^{kx}\right)' = e^{kx}, \,
+              \left(a^x\frac{1}{\ln a}\right) = a^x
+            \end{equation*}
+            kde \(a>0, a\neq1\). Proto je
+            \begin{flalign*}
+              & \int{e^x}\dd{x} = e^x +c, \quad \int{e^{kx}}\dd{x} = \frac{1}{k}e^{kx} + c      & \\
+              & \int{a^x}\dd{x} \frac{a^x}{\ln{a}} + c \, a>0, a\neq1, x\in(-\infty,+\infty)    & 
+            \end{flalign*}
+      \item Pro funkce \(F(x) = \sin x\), \(F(x) = -\cos x\) platí v celém intervalu
+            \(x\in(-\infty,+\infty)\) \(F'(x)=\cos x\) a \(G'(x) = \sin x\). Odtud plyne
+            \begin{align*}
+              \int\cos x\dd{x} &=  \sin x + c, \\
+              \int\sin x\dd{x} &= -\cos x + c,
+            \end{align*}           
+            (Všimněme si rozdílu ve znaménkách při derivování a integrování funkcí \(\sin x)\) a
+            \(\cos x\).) 
+      \item Pro funkci \(F(x) = \tan x\), \(x\neq\pm\frac{\pi}{2}, \pm\frac{3\pi}{2}, \ldots\),
+            platí \(F'(x)=\frac{1}{cos^2x}\). Platí proto v každém otevřeném intervalu, který
+            neobsahuje liché násobky čísla \(\frac{\pi}{2}\),
+            \begin{equation*}
+              \int\dfrac{1}{\cos^2x}\dd{x} = \tan x + c.
+            \end{equation*}
+            Obdobně v každém otevřeném intervalu, který neobsahuje celé násobky čísla \(\pi\), platí
+            \begin{equation*}
+              \int\dfrac{1}{\sin^2x}\dd{x} = -\cotg x + c.
+            \end{equation*}
+      \item Pro funkce \(F(x) = \arcsin x\), \(G(x) = -\arccos x\) platí v intervalu \((-1,1)\)
+            \begin{equation*}
+              F'(x) = \dfrac{1}{\sqrt{1-x^2}}, \quad G'(x) = \dfrac{1}{\sqrt{1-x^2}},
+            \end{equation*} 
+            tedy
+            \begin{equation*}
+              \left.
+                \begin{array}{r}
+                  \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} =  \arcsin x + c \\
+                  \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} = -\arccos x + c
+                \end{array}
+              \right\}x\in(-1,1).
+            \end{equation*}
+    \end{enumerate}
   
-  \section{Tabulka neurčitých integrálů}\label{MA:chap_tabINT}
-    Jak ale primitivní funkce hledat? V jednoduchých příkladech poslouží tabulka derivací, již čteme
-    „zprava doleva“. (Je dobré si ji uložit do paměti.) Tabulka však pokryje jen velmi málo případů,
-    pouze elementární funkce. Je tedy třeba najít metody, jak při hledání primitivních funkcí
-    postupovat.
+    \subsection{Tabulka základních integrálů}\label{MA:chap_tabINT}
+      Jak ale primitivní funkce hledat? V jednoduchých příkladech poslouží tabulka derivací, již
+      čteme „zprava doleva“. (Je dobré si ji uložit do paměti.) Tabulka však pokryje jen velmi málo
+      případů, pouze elementární funkce. Je tedy třeba najít metody, jak při hledání primitivních
+      funkcí postupovat.
 
-    Uveďme nyní některé základní integrály. Poznamenejme, že touto tabulkou nejsou zdaleka vyčerpány
-    všechny funkce, ke kterým umíme primitivní funkce najít. Existují celé knihy obsahující tabulky
-    integrálů a programy výrazně ulehčující hledání primitivních funkcí. Literatura:
-    \cite{Rektorys1963}, \cite{Brabec1989}, \cite{diblik2002}. 
+      Uveďme nyní některé základní integrály. Poznamenejme, že touto tabulkou nejsou zdaleka
+      vyčerpány všechny funkce, ke kterým umíme primitivní funkce najít. Existují celé knihy
+      obsahující tabulky integrálů a programy výrazně ulehčující hledání primitivních funkcí.
+      Literatura: \cite{Rektorys1963}, \cite{Brabec1989}, \cite{diblik2002}. 
 
-    Pokud není nic uvedeno, platí vzorce pro všechna \(x\) a pro všechny hodnoty uvedených konstant.
-    Místo platí pro \(x\) z intervalu \((-\infty,0),(0,+\infty)\) píšeme stručně \(x\neq0\) apod.
-    Obory platnosti uvádíme jen tam, kde nejsou evidentní.  
+      Pokud není nic uvedeno, platí vzorce pro všechna \(x\) a pro všechny hodnoty uvedených
+      konstant. Místo platí pro \(x\) z intervalu \((-\infty,0),(0,+\infty)\) píšeme stručně
+      \(x\neq0\) apod. Obory platnosti uvádíme jen tam, kde nejsou evidentní.  
 
-    \begin{flalign}
-      \midrule
-      & \int 0\dd{x} = c                                        &      \label{mai:eq105}     \\
-      & \int a\dd{x} = ax+c                                     &      \label{mai:eq106}     \\
-      & \int x^n\dd{x} = \frac{x^{n+1}}{n+1}+c,                 &      \label{mai:eq107}     \\              
-        \shortintertext{\hspace{2em} kde \(\begin{cases}
-          \forall x\in\realset,\,n\in\naturalset, n>0,         \\
-          \forall x\in\realset-\{0\},\,n\in\naturalset, n<-1,  \\
-          \forall x>0,\,n\in\realset\,\,n\neq-1
-        \end{cases}\)}                                          
-      & \int\frac{1}{x}\dd{x} = 
-            \ln\abs{x}+c \hspace{1ex}\forall x\neq0            &       \label{mai:eq108}    \\
-      & \int e^x \dd{x}       = e^x+c                          &       \label{mai:eq109}    \\
-      & \int\ln x\dd{x}       = 
-          x\ln x - x + c \hspace{1ex}\forall x>0               &       \label{mai:eq110}    \\
-      & \int a^x \dd{x}     =
-        \frac{a^x}{\ln a}+c 
-        \hspace{1ex}\forall a>0,\,a\neq1                       &       \label{mai:eq111}    \\
-      & \int \sin x \dd{x}  = -\cos x                          &       \label{mai:eq112}    \\
-      & \int \cos x \dd{x}  =  \sin x                          &       \label{mai:eq113}    \\
-      & \int\frac{1}{\cos^2x}\dd{x} =  \tan x + c              &       \label{mai:eq114}    \\
-        \shortintertext{\(\hspace{2em}\forall x\neq\frac{1}{2}\pi+k\pi,\,k\in\naturalset\)}\nonumber\\       
-      & \int\frac{1}{\sin^2x}\dd{x}     =  -\cotg x+c         &        \label{mai:eq115}    \\
-        \shortintertext{\(\hspace{1em}\forall x\neq k\pi,\,k\in\naturalset\)}
-      & \int\frac{1}{\sqrt{1-x^2}}\dd{x} =
-          \begin{cases}
-            +\arcsin x + c         \\
-            -\arccos x + c
-          \end{cases}                                          &      \label{mai:eq116}    \\
-        \shortintertext{\(\hspace{2em}\forall x\in(-1,1) \)}  
-    & \int\sinh x\dd{x} = \cosh x + c                         &       \label{mai:eq117}    \\
-    & \int\dfrac{1}{\sinh x}\dd{x} = -\cotgh x + c            &       \label{mai:eq118}    \\
-    & \int\cosh x\dd{x} = \sinh x + c                         &       \label{mai:eq119}    \\
-    & \int\dfrac{1}{\cosh x}\dd{x} = -\tanh x + c             &       \label{mai:eq120}    \\
-    & \int\frac{1}{1+x^2}\dd{x} = \arctan x + c               &       \label{mai:eq121}    \\
-    & \int\frac{1}{\sqrt{x^2 + 1}}\dd{x} =
-        \begin{cases}
-            \ln(x + \sqrt{x^2+1}) + c         \\
-            \argsinh x            + c 
-        \end{cases}                                           &       \label{mai:eq122}    \\ 
-    & \int \frac{1}{\sqrt{x^2 - 1}}\dd{x} =
-        \begin{cases}
-            \ln(x + \sqrt{x^2-1}) + c         \\
-            \argcosh x            + c  
-        \end{cases}                                           &       \label{mai:eq123}    \\   
-      \shortintertext{\hspace{2em}\(x\in(1,+\infty)\)}  
-    & \int\frac{1}{\sqrt{x^2+a^2}}\dd{x} 
-        = \begin{cases}
-              \argsinh\frac{x}{a}   + c  \\ 
-              \ln(x+\sqrt{x^2+a^2}) + c     
-          \end{cases}                                          &      \label{mai:eq124}    \\
-    & \int \frac{1}{\sqrt{x^2-a^2}}\dd{x} 
-        = \begin{cases}
-              \argcosh\frac{x}{a}   + c   \\
-              \ln(x+\sqrt{x^2-a^2}) + c
-          \end{cases}                                          &      \label{mai:eq125}    \\
-    & \int\tan x \dd{x}   = \ln\abs{\sec x} + c                &      \label{mai:eq126}    \\
-    & \int\sec x \dd{x}   = \ln\abs{\sec x + \tan x} + c       &      \label{mai:eq127}    \\
-    & \int\sec^2 x \dd{x} = \tan x + c                         &      \label{mai:eq128}    \\
-    & \int\sec x\tan x \dd{x} = \sec x + c                     &      \label{mai:eq129}    \\
-    & \int\frac{a}{a^2+x^2}\dd{x} = \tan^{-1}\frac{x}{a} + c   &      \label{mai:eq130}    \\
-    & \int\frac{a}{a^2-x^2}\dd{x} = 
-      \frac{1}{2}\ln\left\lvert\frac{x+a}{x-a}\right\rvert     &      \label{mai:eq131}    \\
-    & \int\frac{1}{\sqrt{a^2-x^2}} \dd{x} = 
-      \sin^{-1} \frac{x}{a}                                    &      \label{mai:eq132}    \\
-    & \int\frac{a}{x\sqrt{x^2-a^2}}\dd{x} = 
-      \sec^{-1} \frac{x}{a}                                    &      \label{mai:eq133}     
-    \end{flalign}
+      \begin{flalign}
+        \midrule
+        & \int 0\dd{x} = c                                        &      \label{mai:eq105}   \\
+        & \int a\dd{x} = ax+c                                     &      \label{mai:eq106}   \\
+        & \int x^n\dd{x} = \frac{x^{n+1}}{n+1}+c,                 &      \label{mai:eq107}   \\              
+          \shortintertext{\hspace{2em} kde \(\begin{cases}
+            \forall x\in\realset,\,n\in\naturalset, n>0,         \\
+            \forall x\in\realset-\{0\},\,n\in\naturalset, n<-1,  \\
+            \forall x>0,\,n\in\realset\,\,n\neq-1
+          \end{cases}\)}                                          
+        & \int\frac{1}{x}\dd{x} = 
+              \ln\abs{x}+c \hspace{1ex}\forall x\neq0            &       \label{mai:eq108}   \\
+        & \int e^x \dd{x}       = e^x+c                          &       \label{mai:eq109}   \\
+        & \int\ln x\dd{x}       = 
+            x\ln x - x + c \hspace{1ex}\forall x>0               &       \label{mai:eq110}   \\
+        & \int a^x \dd{x}     =
+          \frac{a^x}{\ln a}+c 
+          \hspace{1ex}\forall a>0,\,a\neq1                       &       \label{mai:eq111}   \\
+        & \int \sin x \dd{x}  = -\cos x                          &       \label{mai:eq112}   \\
+        & \int \cos x \dd{x}  =  \sin x                          &       \label{mai:eq113}   \\
+        & \int\frac{1}{\cos^2x}\dd{x} =  \tan x + c              &       \label{mai:eq114}   \\
+          \shortintertext{\(\hspace{2em}\forall          % 
+            x\neq\frac{1}{2}\pi+k\pi,\,k\in\naturalset\)}                       \nonumber    \\       
+        & \int\frac{1}{\sin^2x}\dd{x}     =  -\cotg x+c         &        \label{mai:eq115}   \\
+          \shortintertext{\(\hspace{1em}\forall x\neq k\pi,\,k\in\naturalset\)}
+        & \int\frac{1}{\sqrt{1-x^2}}\dd{x} =
+            \begin{cases}
+              +\arcsin x + c         \\
+              -\arccos x + c
+            \end{cases}                                          &      \label{mai:eq116}    \\
+          \shortintertext{\(\hspace{2em}\forall x\in(-1,1) \)}  
+        & \int\sinh x\dd{x} = \cosh x + c                         &       \label{mai:eq117}  \\
+        & \int\dfrac{1}{\sinh x}\dd{x} = -\cotgh x + c            &       \label{mai:eq118}  \\
+        & \int\cosh x\dd{x} = \sinh x + c                         &       \label{mai:eq119}  \\
+        & \int\dfrac{1}{\cosh x}\dd{x} = -\tanh x + c             &       \label{mai:eq120}  \\
+        & \int\frac{1}{1+x^2}\dd{x} = \arctan x + c               &       \label{mai:eq121}  \\
+        & \int\frac{1}{\sqrt{x^2 + 1}}\dd{x} =
+            \begin{cases}
+                \ln(x + \sqrt{x^2+1}) + c         \\
+                \argsinh x            + c 
+            \end{cases}                                           &       \label{mai:eq122}  \\ 
+        & \int \frac{1}{\sqrt{x^2 - 1}}\dd{x} =
+            \begin{cases}
+                \ln(x + \sqrt{x^2-1}) + c         \\
+                \argcosh x            + c  
+            \end{cases}                                           &       \label{mai:eq123}  \\   
+          \shortintertext{\hspace{2em}\(x\in(1,+\infty)\)}  
+        & \int\frac{1}{\sqrt{x^2+a^2}}\dd{x} 
+            = \begin{cases}
+                  \argsinh\frac{x}{a}   + c  \\ 
+                  \ln(x+\sqrt{x^2+a^2}) + c     
+              \end{cases}                                          &      \label{mai:eq124}  \\
+        & \int \frac{1}{\sqrt{x^2-a^2}}\dd{x} 
+            = \begin{cases}
+                  \argcosh\frac{x}{a}   + c   \\
+                  \ln(x+\sqrt{x^2-a^2}) + c
+              \end{cases}                                          &      \label{mai:eq125}  \\
+        & \int\tan x \dd{x}   = \ln\abs{\sec x} + c                &      \label{mai:eq126}  \\
+        & \int\sec x \dd{x}   = \ln\abs{\sec x + \tan x} + c       &      \label{mai:eq127}  \\
+        & \int\sec^2 x \dd{x} = \tan x + c                         &      \label{mai:eq128}  \\
+        & \int\sec x\tan x \dd{x} = \sec x + c                     &      \label{mai:eq129}  \\
+        & \int\frac{a}{a^2+x^2}\dd{x} = \tan^{-1}\frac{x}{a} + c   &      \label{mai:eq130}  \\
+        & \int\frac{a}{a^2-x^2}\dd{x} = 
+          \frac{1}{2}\ln\left\lvert\frac{x+a}{x-a}\right\rvert     &      \label{mai:eq131}  \\
+        & \int\frac{1}{\sqrt{a^2-x^2}} \dd{x} = 
+          \sin^{-1} \frac{x}{a}                                    &      \label{mai:eq132}  \\
+        & \int\frac{a}{x\sqrt{x^2-a^2}}\dd{x} = 
+          \sec^{-1} \frac{x}{a}                                    &      \label{mai:eq133}     
+      \end{flalign}
+    
+      \begin{mdframed}[style=mdnote]
+        \begin{note}  
+          \(\argsinh x\), \(\argcosh x\), \(\argtanh x\), \(\argcoth x\) jsou funkce inverzní k
+          hyperbolickým funkcím. Značení těchto funkcí není jednotné. Správné zkratky jsou ty, které
+          specifikuje norma \texttt{ISO 80000-2}. Skládají se z \uv{ar} následovaných zkratkou
+          odpovídající hyperbolické funkce (např. arsinh, arcosh).
 
-    \begin{mdframed}[style=mdnote]
-      \begin{note}  
-        \(\argsinh x\), \(\argcosh x\), \(\argtanh x\), \(\argcoth x\) jsou funkce inverzní k
-        hyperbolickým funkcím. Značení těchto funkcí není jednotné. Správné zkratky jsou ty, které
-        specifikuje norma \texttt{ISO 80000-2}. Skládají se z \uv{ar} následovaných zkratkou
-        odpovídající hyperbolické funkce (např. arsinh, arcosh).
+          Nicméně, předpona \uv{arc} - následovaná odpovídající hyperbolickou funkcí (např. arcsinh,
+          arccosh) je také běžně vidět, analogicky s nomenklaturou pro inverzní trigonometrické
+          funkce. Není to však správné pojmenování, protože prefix \uv{arc} je zkratka pro
+          \textbf{arcus}, zatímco prefix \uv{ar} znamená \textbf{area}. 
 
-        Nicméně, předpona \uv{arc} - následovaná odpovídající hyperbolickou funkcí (např. arcsinh,
-        arccosh) je také běžně vidět, analogicky s nomenklaturou pro inverzní trigonometrické
-        funkce. Není to však správné pojmenování, protože prefix \uv{arc} je zkratka pro
-        \textbf{arcus}, zatímco prefix \uv{ar} znamená \textbf{area}. 
+          Autoři jako prof. K. Rektorys upřednostňují použití označení \(\argsinh\), \(\argcosh\),
+          \(\argtanh\) atd., kde předpona \uv{arg} je zkratkou latinského \textbf{argumentu}. V
+          počítačové vědě se to často zkracuje na asinh.
 
-        Autoři jako prof. K. Rektorys upřednostňují použití označení \(\argsinh\), \(\argcosh\),
-        \(\argtanh\) atd., kde předpona \uv{arg} je zkratkou latinského \textbf{argumentu}. V
-        počítačové vědě se to často zkracuje na asinh.
+          Používá se také zápis \(\sinh^{-1}(x)\), \(\cosh^{-1}(x)\) atd., a to navzdory
+          skutečnosti, že je třeba dbát na to, aby nedošlo k nesprávným interpretacím horního indexu
+          \(-1\) jako mocniny, na rozdíl od zkratky pro označení inverzní funkce
+          (např.\(\cosh^{-1}(x)\) versus \(\cosh(x)^{-1}\)).
+        \end{note}
+      \end{mdframed}
 
-        Používá se také zápis \(\sinh^{-1}(x)\), \(\cosh^{-1}(x)\) atd., a to navzdory skutečnosti,
-        že je třeba dbát na to, aby nedošlo k nesprávným interpretacím horního indexu \(-1\) jako
-        mocniny, na rozdíl od zkratky pro označení inverzní funkce (např.\(\cosh^{-1}(x)\) versus
-        \(\cosh(x)^{-1}\)).
-      \end{note}
-    \end{mdframed}
+    \subsection{Elementárnost primitivních funkcí}   
+      Třebaže ke každé spojité funkci existuje primitivní funkce, nelze v mnoha případech tuto
+      primitivní funkci vyjádřit pomocí elementárních funkcí. Jinými slovy, nedovedeme použitím
+      uvedených tří metod (metody integrování úpravou a rozkladem, metody integrování per partes a
+      metody substituční) vypočítat daný integrál v tom smyslu, že jej převedeme na jeden nebo více
+      tabulkových integrálů, čímž je zároveň zaručeno, že také primitivní funkce je elementární
+      funkcí. Příkladem takové funkce je funkce
+      \(e^{x^2}\). Integrálem
+      \begin{equation*}
+        \int e^{x^2}\dd{x}
+      \end{equation*}
+      je tedy definována nová transendentní funkce. Podobně jsou nové transendentní funkce
+      definovány integrály
+      \begin{align*}
+        \text{Si }x &= \int_0^x     \frac{\sin t}{t}\dd{t},&&\ldots\,\text{integrálsinus}       \\
+        \text{Ci }x &=-\int_x^\infty\frac{\cos t}{t}\dd{t},&&\ldots\,\text{integrálcosinus}     \\
+        \text{Li }x &= \int_0^x     \frac{\dd{t}}{\ln t},  &&\ldots\,\text{logaritmusintegrál}  \\
+        \text{Ei }x &= \int_{-\infty}^x \frac{e^t}{t}\dd{t}&&   
+      \end{align*}
 
-    \begin{mdframed}[style=mdnote]
-      \begin{note}  
-        Třebaže ke každé spojité funkci existuje primitivní funkce, nelze v mnoha případech tuto
-        primitivní funkci vyjádřit pomocí elementárních funkcí. Příkladem takové funkce je funkce
-        \(e^{x^2}\). integrálem
-        \begin{equation*}
-          \int e^{x^2}\dd{x}
-        \end{equation*}
-        je tedy definována nová transendentní funkce. Podobně jsou nové transendentní funkce
-        definovány integrály
-        \begin{align*}
-          \text{Si }x &= \int_0^x     \frac{\sin t}{t}\dd{t},&&\ldots\text{integrálsinus}     \\
-          \text{Ci }x &=-\int_x^\infty\frac{\cos t}{t}\dd{t},&&\ldots\text{integrálcosinus}   \\
-          \text{Li }x &= \int_0^x     \frac{\dd{t}}{\ln t},  &&\ldots\text{logaritmusintegrál}\\
-          \text{Ei }x &= \int_{-\infty}^x \frac{e^t}{t}\dd{t}&&   
-        \end{align*}
-
-      \end{note}
-    \end{mdframed}
+      V některých případech může být příčinou nezdaru nevhodnost použitého početního postupu. 
 
   \twocolumn[\section{Metody určení primitivní funkce}]
     Procesu hledání primitivní funkce se často říká integrování nebo integrace (od slova“integrál”),
@@ -231,7 +364,12 @@
     funkcí se využívá např. \emph{linearita, metoda per partes, substituční metoda}, popř. některé
     další speciální metody. Řešitel v mnoha případech musí projevit důvtip a intuici, která mu
     pomůže nalézt primitivní funkci k dané funkci.
-  
+
+    % --------------------------Integrování součtu, úprava integrandu-------------------------------
+    \subsection{Integrování součtu, úprava integrandu}  
+      %-------------------------------------
+      \input{../src/MAI/exam/exam142.tex}
+      %-------------------------------------     
     % --------------------------Integrace po částech - per partes-----------------------------------
     \subsection{Integrace po částech - per partes}
       Metoda integrace \emph{per partes} neboli \emph{po částech} využívá vzorce pro derivaci 
@@ -271,7 +409,7 @@
       %-------------------------------------
   
     %--------------------------- Substituční metoda ----------------------------------------------
-    \twocolumn[\subsection{Substituční metoda typu \(\varphi(x) = t\)}]
+    \subsection{Substituční metoda typu \(\varphi(x) = t\)}
       Tato metoda \emph{substituce} neboli \emph{náhrady} spočívá v tom, že vhodně zvolenou funkci
       obsaženou v předpisu \(f(x)\) označíme jako novou jednoduchou proměnnou. Čeho tím dosáhneme?
       Předpokládejme například, že \[f(x)=\varphi'(x)g[\varphi(x)]\] a označme jako novou proměnnou
@@ -688,21 +826,20 @@
             &{} &&+  \dfrac{1}{2(k-1)}\int\dfrac{1}{(t^2+a^2)^{k-1}}\dd{t}.  \label{mai:eq174}
       \end{alignat}
       Dosadíme-li tento výsledek do rovnice pro \(I_k\), dostaneme
-      \begin{gather*}
-        I_k = \dfrac{1}{a^2}I_{k-1} - \dfrac{1}{a^2}
+      \begin{gather}
+        \begin{aligned}
+        I_k &= \dfrac{1}{a^2}I_{k-1} - \dfrac{1}{a^2}
               \left[
                 -\dfrac{1}{2(k-1)}\dfrac{1}{(t^2+a^2)^{k-1}} + \dfrac{1}{2(k-1)}I_{k-1}                
-              \right]
-      \end{gather*}
-      čili 
-      \begin{gather*}
-        I_k = \dfrac{t}{2(k-1)a^2(t^2+a^2)^{k-1}} + 
-              \dfrac{1}{a^2}\left(1-\dfrac{1}{2(k-1)}\right)I_{k-1}                
-      \end{gather*}
-      a konečně
-      \begin{equation}\label{mai:eq175}
-        I_k = \dfrac{t}{2(k-1)a^2(t^2+a^2)^{k-1}} + \dfrac{2k-3}{2k-2}\dfrac{1}{a^2}I_{k-1}                
-      \end{equation}
+              \right]                                                                            \\
+        \shortintertext{čili}     
+        I_k &= \dfrac{t}{2(k-1)a^2(t^2+a^2)^{k-1}} + 
+               \dfrac{1}{a^2}\left(1-\dfrac{1}{2(k-1)}\right)I_{k-1}                    \nonumber \\               
+        \shortintertext{a konečně}
+        I_k &= \dfrac{t}{2(k-1)a^2(t^2+a^2)^{k-1}} + 
+              \dfrac{2k-3}{2k-2}\dfrac{1}{a^2}I_{k-1}                              \label{mai:eq175}
+      \end{aligned}  
+    \end{gather}
 
       Pomocí vzorce \ref{mai:eq175} se redukuje výpočet integrálu \(I_k\) na výpočet integrálu
       \(I_{k-1}\) je tabulkový. Přejdeme-li zpět k proměnné \(x\) a uvážíme \ref{mai:eq173},
