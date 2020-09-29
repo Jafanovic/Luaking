@@ -1,12 +1,11 @@
 % !TeX program = lualatex
 % !TeX encoding = UTF-8
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\hbadness=99999
-\makeatletter
-\renewcommand{\PackageInfo}[2]{}% Remove package information
-\renewcommand{\@font@info}[1]{}% Remove font information
-\renewcommand{\@latex@info}[1]{}% Remove LaTeX information
-\makeatother
+% \makeatletter
+% \renewcommand{\PackageInfo}[2]{}% Remove package information
+% \renewcommand{\@font@info}[1]{}% Remove font information
+% \renewcommand{\@latex@info}[1]{}% Remove LaTeX information
+% \makeatother
 
 \input{ebook}
 \documentclass{scrbook}
@@ -14,8 +13,8 @@
 \usepackage{lualayout}
 \usepackage{luamath} 
 \usepackage{wikiWWWrefs}
-\allowdisplaybreaks
 
+\allowdisplaybreaks
 \providecommand\DebugMode{true}
 \providecommand\eBookMode{true}
 %============================= L * U * A * K * I* N * G ============================================
@@ -24,6 +23,9 @@
 \begin{document}
 \ifthenelse{\equal{\DebugMode}{true}}{
   \overfullrule=1cm                       % Obviously Visible Bad Box Warnings
+  Textwidth:      \uselengthunit{mm}\printlength{\textwidth}
+
+  % Pagenumberwidth \uselengthunit{mm}\printlength{\pagenumberwidth}
   % Debug mode ON
   \input{../src/MAI/MAT}
   % \input{../src/FYZ/FYZ}
@@ -39,6 +41,7 @@
   % \listoftodos
 }
 { % DEBUG was off
+  \hbadness=99999
   \frontmatter
     \input{booktitle}
     \tableofcontents

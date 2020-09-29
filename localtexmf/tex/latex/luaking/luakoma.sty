@@ -1,4 +1,6 @@
 % package: lualayout
+% Reference Sheet for a Thesis with LATEX2e and KOMA -Script
+% http://ftp.cvut.cz/tex-archive/info/latex-refsheet/LaTeX_RefSheet.pdf
 % ==================================================================================================
 %                                     Luaking KOMA settig 
 % ==================================================================================================
@@ -9,8 +11,8 @@
 \RequirePackage{scrwfile}                   % avoid trouble with the limited number of write handles
                                             % No room for new \write” message!
 \RequirePackage{LuaMyColor} 
-\RequirePackage{ifluatex}                   % provides the switch \ifluatex. 
-\RequirePackage{xpatch}
+% \RequirePackage{ifluatex}                   % provides the switch \ifluatex. 
+% \RequirePackage{xpatch}
 \RequirePackage{blindtext}
 % \RequirePackage{ifthen}
 % \RequirePackage{scrextend}                % It should never be used with a KOMA-Script class
@@ -38,9 +40,11 @@
   \setkomafont{part}{\fontsize{60}{72}\selectfont}
   \addtokomafont{part}{\color{luapartclr}}
   \setkomafont{chapter}{\fontsize{18}{22}\selectfont}
+
   \setkomafont{section}{\fontsize{13}{15}\selectfont}
     % https://tex.stackexchange.com/questions/194585/
   \addtokomafont{section}{\newpage}
+
   \setkomafont{subsection}{\fontsize{11}{13}\selectfont}
   \setkomafont{subsubsection}{\fontsize{10}{12}\selectfont}
   \setkomafont{paragraph}{\normalsize\mdseries}
@@ -74,8 +78,12 @@
 % °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 % °°°°°                           TABLE OF CONTENT -TOC                                       °°°°°°
 % °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+% The KOMA -Script classes provide a wide range of options for modifying sectioning levels and
+% their corresponding headings. See table 21.1 (page 469)
+
+% Table 15.1.: Attributes of the TOC-entry styles
 \RedeclareSectionCommand[
-  tocdynnumwidth=true,  %
+  tocentryformat=\bfseries,
   tocbeforeskip=1em,
   tocindent=1.5em
 ]{part}
@@ -84,49 +92,39 @@
   beforeskip=0pt,
   afterindent=false,
   afterskip=2\baselineskip,
-  tocdynnumwidth,
   tocbeforeskip=1em plus 1pt minus 1pt,   % add some glue
   toclinefill=\TOCLineLeaderFill
 ]{chapter}
 
 \RedeclareSectionCommand[
-  beforeskip=\baselineskip,
-  afterindent=false,
-  afterskip=.5\baselineskip,
-  tocindent=1.5em,
-  tocnumwidth=3.5em
+  tocentryformat=\bfseries,
+  tocentrynumberformat=\bfseries,         % scrguien page 379
+  tocindent=0.5em
 ]{section}
 
 \RedeclareSectionCommand[
-  beforeskip=.75\baselineskip,
-  afterindent=false,
-  afterskip=.5\baselineskip,
-  tocindent=3.8em,
-  tocnumwidth=4em
+  tocindent=1em
 ]{subsection}
 
 \RedeclareSectionCommand[
-  beforeskip=.5\baselineskip,
-  afterindent=false,
-  afterskip=.25\baselineskip,
-  tocindent=7em,
-  tocnumwidth=4.1em
+  tocindent=1.5em
 ]{subsubsection}
 
-\RedeclareSectionCommand[
-  tocindent=10em,
-  tocnumwidth=5em
-]{paragraph}
+% https://www.komascript.de/wie_tocdynnumwidthindent
+% /koma-script-scrbook-width-of-chapter-and-section-number#_=_
+%   https://tex.stackexchange.com/questions/119849 
+%     Starting with KOMA-Script version 3.27 there is also option pagenumberwidth for
+%     \DeclareTOCStyleEntry to adjust the space for the page number. With prefix toc it can be used
+%     for \RecdeclareSectionCommand too.
 
-\RedeclareSectionCommand[
-  tocindent=12em,
-  tocnumwidth=6em
-]{subparagraph}
+% \makeatletter\newcommand{\pagenumberwidth}{3em}\makeatother
 
 \RedeclareSectionCommands[
-    tocpagenumberwidth=3em
+    tocpagenumberwidth=2.5em,
+    toclinefill=\TOCLineLeaderFill,
+    tocdynnumwidth=true
+    % tocdynindent=true
 ]{part,chapter,section,subsection,paragraph,subparagraph}
-
 
 % https://tex.stackexchange.com/a/359758
 % https://tex.stackexchange.com/a/502077
@@ -193,6 +191,6 @@
 % https://tex.stackexchange.com/questions/336617/
 % http://www.macfreek.nl/memory/LaTeX_package_conflicts#TOCLoft_and_Subfig
 % https://tex.stackexchange.com/questions/7415/roman-numerals-become-too-wide-in-table-of-contents
-% If I use KOMA classes, such as the mentioned scrreprt, I don't like tocloft to redefine class macros
-% nepouzivej tocloft - konflikt s knihovnou komascript !!!
+% If I use KOMA classes, such as the mentioned scrreprt, I don't like tocloft to redefine class
+% macros nepouzivej tocloft - konflikt s knihovnou komascript !!!
 % \RequirePackage[titles,subfigure]{tocloft}  
