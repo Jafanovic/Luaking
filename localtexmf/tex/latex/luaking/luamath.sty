@@ -121,6 +121,7 @@
 % ==================================================================================================
 \RequirePackage{xparse}
 \RequirePackage{amsmath}
+\RequirePackage{nccmath}
 \RequirePackage{amssymb, amsthm, amsbsy}
 \RequirePackage{diffcoeff}              % writing of differential coefficients in all their variety
 \RequirePackage{commath}
@@ -228,9 +229,16 @@
         \item[\hskip\labelsep\textbf#1\@addpunct{.}]\ignorespaces}%
         {\popQED\endtrivlist\@endpefalse}
     \makeatother
+ % ~~~~~~~~ Equation environment ~~~~~~~~~~~~~~~~~~~~~~~~~~
+ \newenvironment{luaequ}{\useshortskip\equation}{\endequation}
+ \AtBeginEnvironment{equation}{\color{red}}
+
 % ==================================================================================================
 %                                     PHYSICS environment 
 % ==================================================================================================
+\RequirePackage{datetime2}             % Formats for dates, times and time zones 
+                                       % load: first nccmath than datetime2 (\nr macro clash)
+                                       % https://tex.stackexchange.com/questions/512850/
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{cancel}                % \cancel command
 \RequirePackage{siunitx}

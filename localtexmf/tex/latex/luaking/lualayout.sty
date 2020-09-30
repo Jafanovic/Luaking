@@ -63,6 +63,8 @@
 % \addtolength{\evensidemargin}{-.875in}
 % \addtolength{\topmargin}{-.875in}
 
+\RequirePackage{nccmath}    % load: first nccmath than background (\nr macro clash)
+
 \RequirePackage[pages=some,placement=top]{background}
 
 \newcommand{\LuaPartBckgrnd}[1]{
@@ -77,6 +79,7 @@
     anchor=below left,
   }
 }
+
 \RequirePackage{tikzpagenodes}
 \RequirePackage{layouts}
 % ~~~~~~~~ ‘Floating’ figures ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -231,8 +234,7 @@
   ]{}{StrobeMediaPlayback.swf}            % VPlayer.swf StrobeMediaPlayback.swf
   }
  
-% ~~~~~~~~ Date and time formats ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\RequirePackage{datetime2}
+
 % ~~~~~~~~ ToDo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Incompatibility between mdframed and todonotes - problem: Float losts!
 % https://tex.stackexchange.com/questions/126948/incompatibility-between-mdframed-and-todonotes
