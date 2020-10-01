@@ -250,8 +250,75 @@
                   \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} =  \arcsin\frac{x}{a} + c \\
                   \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} = -\arccos\frac{x}{a} + k
                 \end{array}
-              \right\}a>0, x\in(-a,a).
+              \right\}
+              \begin{array}{c}
+                a>0,      \\
+                x\in(-a,a).
+              \end{array}
             \end{equation*}
+            \begin{equation*}
+              \int\dfrac{1}{\sqrt{16-x^2}} = \arcsin\dfrac{x}{4} + c \, x\in(-4,4).
+            \end{equation*}
+      \item Derivace funkcí \(F(x) = \arctan x\) a \(G(x) = \arccotg x\), \(x\in(-\infty, \infty)\)
+            jsou 
+            \begin{equation*}
+              F'(x) = \dfrac{1}{1+x^2} \quad\text{a}\quad G'(x) = \dfrac{1}{1+x^2}
+            \end{equation*}
+            proto
+            \begin{equation*}
+              \begin{rcases}
+                \int\dfrac{1}{1+x^2}\dd{x} = \arctan x + c  \\
+                \int\dfrac{1}{1+x^2}\dd{x} = \arccotg x + k
+              \end{rcases}
+              x\in(-\infty, \infty).
+            \end{equation*}
+            Zde se také primitivní funkce \(\arctan x\), \(-\arccotg x\) liší jen o konstantu, neboť
+            \(\arctan x - (-\arccotg x) = \frac{\pi}{2}\), ve shodě s větou
+            \ref{mai:lemma008}. Derivování funkcí 
+            \begin{equation*}
+              F(x) = \dfrac{1}{a}\arctan\dfrac{x}{a} \quad\text{a}\quad 
+              G(x) = \dfrac{1}{a}\arccotg\dfrac{x}{a}
+            \end{equation*}
+            dostaneme
+            \begin{equation*}
+              F'(x) = G'(x) = \frac{1}{a}\cdot\dfrac{1}{1+\frac{x^2}{a^2}}\cdot\frac{1}{a} 
+                    = \dfrac{1}{a^2+x^2}
+            \end{equation*}
+            Proto
+            \begin{equation*}
+              \begin{rcases}
+                \int\dfrac{1}{a^2+x^2}\dd{x} = \dfrac{1}{a}\arctan\dfrac{x}{a}  + c  \\
+                \int\dfrac{1}{a^2+x^2}\dd{x} = \dfrac{1}{a}\arccotg\dfrac{x}{a} + k
+              \end{rcases}
+              x\in(-\infty, \infty).
+            \end{equation*}
+            \begin{equation*}
+              \int\dfrac{1}{5+x^2}\dd{x} = \dfrac{1}{\sqrt{5}}\arctan\dfrac{x}{\sqrt{5}}  + c,
+              \quad x\in(-\infty, \infty)
+            \end{equation*}
+      \item Funkce \(F(x)=\ln k(x+\sqrt{x^2+a})\) má pro taková \(x, k, a\), pro která \(x^2+a>0\),
+            \(k(x+\sqrt{x^2+a})>0\), derivaci
+            \begin{equation*}
+              F'(x) = \dfrac{k\left(1+\dfrac{2x}{2\sqrt{x^2+a}}\right)}{k(x+\sqrt{x^2+a})}
+                    = \dfrac{\dfrac{\sqrt{x^2+a}+x}{\sqrt{x^2+a}}}{x+\sqrt{x^2+a}}
+            \end{equation*}
+            Tedy
+            \begin{equation*}
+              \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln k(x+\sqrt{x^2+a}),
+            \end{equation*}
+            kde \(x^2+a>0\), \(k(x+\sqrt{x^2+a})>0\). Popřípadě podobně jako v bodě 4:
+            \begin{equation*}
+              \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln\abs{(x+\sqrt{x^2+a})} + c,
+            \end{equation*}
+            v každém otevřeném intervalu, v němž je \(x^2+a>0\), \(k(x+\sqrt{x^2+a})\neq0\). Je-li
+            \(a>0\), je pro všechna \(x\) (kladná, záporná i nulu) \(x^2+a>0\),
+            \(x+\sqrt{x^2+a}>0\), a tedy
+            \begin{equation*}
+              \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln (x+\sqrt{x^2+a}) + c,
+            \end{equation*}
+            kde \(a>0\), \(x\in(-\infty, \infty)\). Znak absolutní hodnoty je zde zbytečný.
+            Integrály, které jsme v tomto článku odvodili, se nazývají \emph{základní} a jsou
+            přehledně sestaveny v následující tabulce.
     \end{enumerate}
   
     \subsection{Tabulka základních integrálů}\label{MA:chap_tabINT}
