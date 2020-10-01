@@ -35,6 +35,19 @@
 % ~~~~~~~~ Boxes, frames ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \RequirePackage{tikz} 
 \usetikzlibrary{tikzmark,arrows.meta}
+\RequirePackage[most]{tcolorbox}
+  \newtcolorbox{luaexambox}[1]{
+    enhanced jigsaw,
+    breakable,
+    colback=red!5!white,
+    colframe=red!75!black,
+    fonttitle=\bfseries,
+    left=1pt,
+    right=1pt,
+    title=#1
+  }
+
+
 % https://tex.stackexchange.com/questions/41066/margins-of-mdframed-without-any-effect
 % https://tex.stackexchange.com/questions/151532/could-not-get-round-corner-working-in-mdframed
 \RequirePackage[

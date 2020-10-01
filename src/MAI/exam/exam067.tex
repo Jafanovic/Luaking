@@ -1,10 +1,16 @@
 % !TeX spellcheck = cs_CZ
-\begin{mdframed}[style=mdexam]
-  \begin{example}\label{mai:exam067}
-    \textbf{Ještě střelba}\newline
-    Problém s definici \(P\)-kvantilu u veličiny s diskrétním rozdělením snadno vidíme na příkladu
-    střelby (příklad \ref{mai:exam064}). Pro \(s\) postupně 1, 2, 3, 4 nabývá součet na levé straně
-    rovnice (\ref{mai:eq064}) hodnot
+% \begin{mdframed}[style=mdexam]
+  % \begin{tcolorbox}[
+  %     enhanced jigsaw,
+  %     breakable,
+  %     pad at break*=1mm,
+  %     colback=blue!5!white,
+  %     colframe=blue!75!black
+  % ]
+  \begin{luaexambox}{Ještě střelba}
+  \begin{example}\label{mai:exam067} Problém s definici \(P\)-kvantilu u veličiny s diskrétním
+    rozdělením snadno vidíme na příkladu střelby (příklad \ref{mai:exam064}). Pro \(s\) postupně 1,
+    2, 3, 4 nabývá součet na levé straně rovnice (\ref{mai:eq064}) hodnot
     
     \begin{equation*}
       p_1 = \num{0.003},\; p_1 + p_2 = \num{0.31},\; p_1 + p_2 + p_3 = \num{0.83}, 
@@ -35,11 +41,14 @@
     \(X\), kterou jsme definovali jako počet dosažených bodů při jednom výstřelu:
     \begin{align*}
       \langle x \rangle 
-          &= \sum_{j=1}^{4}x_jp_j                                                                \\
-          &= 0\cdot\num{0.03} + 1\cdot\num{0.28}+ 2\cdot\num{0.52} + 3\cdot\num{0.17} = \num{1.83}, 
-    \end{align*}
-    \begin{align*}
-      D(X)  &= \sum_{j=1}^{4}\left(x_j - \langle x \rangle \right)^2p_j                          \\
+          &=  \sum_{j=1}^{4}x_jp_j =                                                              
+              \left(
+                \begin{array}{@{}l}
+                  0\cdot\num{0.03} + 1\cdot\num{0.28} + \\
+                  2\cdot\num{0.52} + 3\cdot\num{0.17}
+                \end{array}
+              \right) = \num{1.83},                                                              \\
+      D(X)  &= \sum_{j=1}^{4}\left(x_j - \langle x \rangle \right)^2p_j =                        \\
             &= (0-\num{1.83})^2\cdot\num{0.03}+(1-\num{1.83})^2\cdot\num{0.28}                   \\
             &+ (2-\num{1.83})^2\cdot\num{0.52}+(3-\num{1.83})^2\cdot\num{0.17}                   \\
                 &\simeq\num{0.541},                                                              \\
@@ -83,4 +92,5 @@
     naše vyjadřování „málo přesné“. Vzhledem k pravděpodobnostnímu charakteru posuzovaných jevů
     však, bohužel, přesnější být nemůže.
   \end{example}
-\end{mdframed}
+\end{luaexambox}
+% \end{mdframed}
