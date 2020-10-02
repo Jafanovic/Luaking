@@ -105,9 +105,12 @@
     \begin{enumerate}
       \item Je-li \(n\neq-1\) a \(x\in(0,+\infty)\), platí \(\left(\dfrac{x^{n+1}}{n+1}\right)'=
             x^n\) proto
-            \begin{equation}\label{mai:eq178}
-              \int x^n\dd{x} = \dfrac{x^{n+1}}{n+1}, \quad x\in(0,+\infty) 
-            \end{equation}
+            % https://tex.stackexchange.com/questions/145657/align-equation-left
+            \begin{fleqn}[\parindent]
+              \begin{equation}\label{mai:eq178}
+                \int x^n\dd{x} = \dfrac{x^{n+1}}{n+1}, \quad x\in(0,+\infty) 
+              \end{equation}
+            \end{fleqn}  
             Pro některá \(n\) je možno platnost vztahu \ref{mai:eq178} rozšířit. Například pro
             přirozená \(n\) platí vztah \ref{mai:eq178} v celém intervalu \((-\infty,+\infty)\).
             Například: 
@@ -127,69 +130,96 @@
               \end{flalign*}
             \end{gather*}
       \item Je-li \(F(x)=C\), kde \(C\) je konstanta, platí \(F'(x)=0\) pro všechna \(x\), a tedy
-            \begin{equation*}
-              \int 0\cdot\dd{x} = c, \quad x\in(-\infty,+\infty).
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int 0\cdot\dd{x} = c, \quad x\in(-\infty,+\infty).
+              \end{equation*}
+            \end{fleqn}
       \item Je-li \(F(x)=x\), kde \(x\in(-\infty,+\infty)\), platí \(F'(x)=1\) pro všechna \(x\), a
             proto
-            \begin{equation*}
-              \int 1\cdot\dd{x} = \int\dd{x} = x + c, \quad x\in(-\infty,+\infty).
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int 1\cdot\dd{x} = \int\dd{x} = x + c, \quad x\in(-\infty,+\infty).
+              \end{equation*}
+            \end{fleqn}
             (speciální případ integrálu \ref{mai:eq178} pro \(n=1\)).
       \item Funkce \(F(x)=\ln x\), \(x\in(0,+\infty)\) má derivaci \(F'(x) = \frac{1}{x}\), a proto
-            \begin{equation*}
-              \int\frac{1}{x}\dd{x} = \ln x + c, \quad x\in(0,+\infty).
-            \end{equation*} 
+            \begin{fleqn}[\parindent]  
+              \begin{equation*}
+                \int\frac{1}{x}\dd{x} = \ln x + c, \quad x\in(0,+\infty).
+              \end{equation*} 
+            \end{fleqn}
             Funkce \(G(x) = \ln(-x)\), \(x\in(-\infty,0)\) má derivaci \(G'(x) = \frac{-1}{-x} =
             \frac{1}{x}\), a platí tedy
-            \begin{equation*}
-              \int\frac{1}{x}\dd{x} = \ln(-x) + c, \quad x\in(-\infty,0).
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\frac{1}{x}\dd{x} = \ln(-x) + c, \quad x\in(-\infty,0).
+              \end{equation*}
+            \end{fleqn}
             Oba vzorce můžeme spojit zápisem
-            \begin{equation*}
-              \int\frac{1}{x}\dd{x} = \ln\abs{x} + c
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\frac{1}{x}\dd{x} = \ln\abs{x} + c
+              \end{equation*}
+            \end{fleqn}
             pro \(x\) z intervalu \((-\infty,0)\) nebo pro \(x\) z intervalu \((0,+\infty)\).
             Protože také
-            \begin{equation*}
-              (\ln kx)' = \frac{k}{kx} = \frac{1}{x} \quad (kx>0),
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                (\ln kx)' = \frac{k}{kx} = \frac{1}{x} \quad (kx>0),
+              \end{equation*}
+            \end{fleqn}  
             můžeme psát
-            \begin{equation*}
-              \int\frac{1}{x}\dd{x} = \ln kx \quad (kx>0).
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\frac{1}{x}\dd{x} = \ln kx \quad (kx>0).
+              \end{equation*}
+            \end{fleqn}  
             Přitom je tedy \(k\) libovolná kladná konstanta, uvažujeme-li \(x\) z intervalu
             \((0,+\infty)\), nebo libovolná záporná konstanta, uvažujeme-li \(x\) z intervalu
             \((-\infty,0)\) (aby bylo vždy \(kx>0\)). Integrační konstanta je již v tomto zápisu
             obsažena. Například pro kladná \(x\) je \(\ln kx = \ln k + \ln x = \ln x + c\).
             
             Podobně pro \(y=\ln\abs{x+a}\), \(x\neq-a\) dostaneme \(y'=1/(x+a)\), a proto
-            \begin{equation*}
-              \int\frac{1}{x+a}\dd{x} = \ln\abs{x+a} + c
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\frac{1}{x+a}\dd{x} = \ln\abs{x+a} + c
+              \end{equation*}
+            \end{fleqn} 
             v každém otevřeném intervalu, který neobsahuje bod \(x=-a\), resp. 
-            \begin{equation*}
-              \int\frac{1}{x+a}\dd{x} = \ln k(x+a), \quad k(x+a)>0.
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\frac{1}{x+a}\dd{x} = \ln k(x+a), \quad k(x+a)>0.
+              \end{equation*}
+            \end{fleqn} 
       \item Derivace funkce \(y=\dfrac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}}\), \(a\neq0\), \(x\neq a\),
             \(x\neq -a\) je
-            \begin{equation*}
-              y'=\frac{1}{2a}\cdot\frac{x+a}{x-a}\cdot\frac{x+a-(x-a)}{(x+a)^2} = \frac{1}{x^2-a^2}.
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                y'=\frac{1}{2a}\cdot\frac{x+a}{x-a}\cdot\frac{x+a-(x-a)}{(x+a)^2} 
+                  = \frac{1}{x^2-a^2}.
+              \end{equation*}
+            \end{fleqn} 
             Tedy pro \(a\neq0\) je
-            \begin{equation*}
-              \int\frac{1}{x^2-a^2}\dd{x} = \frac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}} + c
-            \end{equation*}
-            v každém otevřeném intervalu, kerý neobsahuje bod \(x\neq a\) nebo \(x\neq -a\), resp. 
-            \begin{equation*}
-              \int\frac{1}{x^2-a^2}\dd{x} = \frac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}} + c,
-              \, \left(k\dfrac{x-a}{x+a}>0\right).
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\frac{1}{x^2-a^2}\dd{x} = \frac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}} + c
+              \end{equation*}
+            \end{fleqn} 
+            v každém otevřeném intervalu, kerý neobsahuje bod \(x\neq a\) nebo \(x\neq -a\), resp.
+            \begin{fleqn}[\parindent] 
+              \begin{equation*}
+                \int\frac{1}{x^2-a^2}\dd{x} = \frac{1}{2a}\ln\abs{\dfrac{x-a}{x+a}} + c,
+                \, \left(k\dfrac{x-a}{x+a}>0\right).
+              \end{equation*}
+            \end{fleqn} 
       \item Pro všechna reálná \(x\) platí
-            \begin{equation*}
-              (e^x)' = e^x, \, \left(\frac{1}{k}e^{kx}\right)' = e^{kx}, \,
-              \left(a^x\frac{1}{\ln a}\right) = a^x
-            \end{equation*}
+            \begin{fleqn}[\parindent]      
+              \begin{equation*}
+                (e^x)' = e^x, \, \left(\frac{1}{k}e^{kx}\right)' = e^{kx}, \,
+                \left(a^x\frac{1}{\ln a}\right) = a^x
+              \end{equation*}
+            \end{fleqn} 
             kde \(a>0, a\neq1\). Proto je
             \begin{flalign*}
               & \int{e^x}\dd{x} = e^x +c, \quad \int{e^{kx}}\dd{x} = \frac{1}{k}e^{kx} + c      & \\
@@ -197,35 +227,43 @@
             \end{flalign*}
       \item Pro funkce \(F(x) = \sin x\), \(F(x) = -\cos x\) platí v celém intervalu
             \(x\in(-\infty,+\infty)\) \(F'(x)=\cos x\) a \(G'(x) = \sin x\). Odtud plyne
-            \begin{align*}
-              \int\cos x\dd{x} &=  \sin x + c, \\
-              \int\sin x\dd{x} &= -\cos x + c,
-            \end{align*}           
+            \begin{flalign*}
+              &\int\cos x\dd{x} =  \sin x + c, & \\
+              &\int\sin x\dd{x} = -\cos x + c, &  
+            \end{flalign*}           
             (Všimněme si rozdílu ve znaménkách při derivování a integrování funkcí \(\sin x)\) a
             \(\cos x\).) 
       \item Pro funkci \(F(x) = \tan x\), \(x\neq\pm\frac{\pi}{2}, \pm\frac{3\pi}{2}, \ldots\),
             platí \(F'(x)=\frac{1}{cos^2x}\). Platí proto v každém otevřeném intervalu, který
             neobsahuje liché násobky čísla \(\frac{\pi}{2}\),
-            \begin{equation*}
-              \int\dfrac{1}{\cos^2x}\dd{x} = \tan x + c.
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\dfrac{1}{\cos^2x}\dd{x} = \tan x + c.
+              \end{equation*}
+            \end{fleqn}
             Obdobně v každém otevřeném intervalu, který neobsahuje celé násobky čísla \(\pi\), platí
-            \begin{equation*}
-              \int\dfrac{1}{\sin^2x}\dd{x} = -\cotg x + c.
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\dfrac{1}{\sin^2x}\dd{x} = -\cotg x + c.
+              \end{equation*}
+            \end{fleqn}
       \item Pro funkce \(F(x) = \arcsin x\), \(G(x) = -\arccos x\) platí v intervalu \((-1,1)\)
-            \begin{equation*}
-              F'(x) = \dfrac{1}{\sqrt{1-x^2}}, \quad G'(x) = \dfrac{1}{\sqrt{1-x^2}},
-            \end{equation*} 
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                F'(x) = \dfrac{1}{\sqrt{1-x^2}}, \quad G'(x) = \dfrac{1}{\sqrt{1-x^2}},
+              \end{equation*} 
+            \end{fleqn}
             tedy
-            \begin{equation*}
-              \left.
-                \begin{array}{r}
-                  \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} =  \arcsin x + c \\
-                  \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} = -\arccos x + k
-                \end{array}
-              \right\}x\in(-1,1).
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \left.
+                  \begin{array}{r}
+                    \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} =  \arcsin x + c \\
+                    \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} = -\arccos x + k
+                  \end{array}
+                \right\}x\in(-1,1).
+              \end{equation*}
+            \end{fleqn}
             Podle právě uvedených vzorců existují k funkci \(f(x)=1/\sqrt{1-x^2}\) dvě různé
             primitivní funkce. Výsledek však není ve sporu s větou \ref{mai:lemma008}, neboť platí
             \(\arcsin x - (-\arccos x) = \arcsin x + \arccos x = \frac{\pi}{2}\). Z této rovnice je
@@ -233,89 +271,115 @@
             zvolíme za \(c\) určité číslo, dostaneme z druhého vzorce touž funkci pro \(k = c
             +\frac{\pi}{2}\).
       \item Funkce
-            \begin{equation*}
-              F(x) = \arcsin\frac{\pi}{2}\,\text{a}\, G(x) = \arcsin\frac{\pi}{2}\, a>0
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                F(x) = \arcsin\frac{\pi}{2}\,\text{a}\, G(x) = \arcsin\frac{\pi}{2}\, a>0
+              \end{equation*}
+            \end{fleqn}  
             mají v intervalu \((-a,a)\) derivace
-            \begin{align*}
-              F'(x) &= \frac{1}{\sqrt{1-\frac{x^2}{a^2}}}\cdot\frac{1}{a}
-                     = \dfrac{1}{\sqrt{a^2-x^2}},                                        \\
-              G'(x) &= \frac{1}{\sqrt{1-\frac{x^2}{a^2}}}\cdot\frac{1}{a}
-                     = \dfrac{1}{\sqrt{a^2-x^2}}.
-            \end{align*}
+            \begin{flalign*}
+              & F'(x) = \frac{1}{\sqrt{1-\frac{x^2}{a^2}}}\cdot\frac{1}{a}
+                      = \dfrac{1}{\sqrt{a^2-x^2}},                           &               \\
+              & G'(x) = \frac{1}{\sqrt{1-\frac{x^2}{a^2}}}\cdot\frac{1}{a}
+                      = \dfrac{1}{\sqrt{a^2-x^2}}.                           &
+            \end{flalign*}
             Proto je 
-            \begin{equation*}
-              \left.
-                \begin{array}{r}
-                  \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} =  \arcsin\frac{x}{a} + c \\
-                  \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} = -\arccos\frac{x}{a} + k
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \left.
+                  \begin{array}{r}
+                    \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} =  \arcsin\frac{x}{a} + c \\
+                    \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} = -\arccos\frac{x}{a} + k
+                  \end{array}
+                \right\}
+                \begin{array}{c}
+                  a>0,      \\
+                  x\in(-a,a).
                 \end{array}
-              \right\}
-              \begin{array}{c}
-                a>0,      \\
-                x\in(-a,a).
-              \end{array}
-            \end{equation*}
-            \begin{equation*}
-              \int\dfrac{1}{\sqrt{16-x^2}} = \arcsin\dfrac{x}{4} + c \, x\in(-4,4).
-            \end{equation*}
+              \end{equation*}
+            \end{fleqn} 
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\dfrac{1}{\sqrt{16-x^2}} = \arcsin\dfrac{x}{4} + c \, x\in(-4,4).
+              \end{equation*}
+            \end{fleqn} 
       \item Derivace funkcí \(F(x) = \arctan x\) a \(G(x) = \arccotg x\), \(x\in(-\infty, \infty)\)
             jsou 
-            \begin{equation*}
-              F'(x) = \dfrac{1}{1+x^2} \quad\text{a}\quad G'(x) = \dfrac{1}{1+x^2}
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                F'(x) = \dfrac{1}{1+x^2} \quad\text{a}\quad G'(x) = \dfrac{1}{1+x^2}
+              \end{equation*}
+            \end{fleqn} 
             proto
-            \begin{equation*}
-              \begin{rcases}
-                \int\dfrac{1}{1+x^2}\dd{x} = \arctan x + c  \\
-                \int\dfrac{1}{1+x^2}\dd{x} = \arccotg x + k
-              \end{rcases}
-              x\in(-\infty, \infty).
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \begin{rcases}
+                  \int\dfrac{1}{1+x^2}\dd{x} = \arctan x + c  \\
+                  \int\dfrac{1}{1+x^2}\dd{x} = \arccotg x + k
+                \end{rcases}
+                x\in(-\infty, \infty).
+              \end{equation*}
+            \end{fleqn} 
             Zde se také primitivní funkce \(\arctan x\), \(-\arccotg x\) liší jen o konstantu, neboť
             \(\arctan x - (-\arccotg x) = \frac{\pi}{2}\), ve shodě s větou
             \ref{mai:lemma008}. Derivování funkcí 
-            \begin{equation*}
-              F(x) = \dfrac{1}{a}\arctan\dfrac{x}{a} \quad\text{a}\quad 
-              G(x) = \dfrac{1}{a}\arccotg\dfrac{x}{a}
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                F(x) = \dfrac{1}{a}\arctan\dfrac{x}{a} \quad\text{a}\quad 
+                G(x) = \dfrac{1}{a}\arccotg\dfrac{x}{a}
+              \end{equation*}
+            \end{fleqn} 
             dostaneme
-            \begin{equation*}
-              F'(x) = G'(x) = \frac{1}{a}\cdot\dfrac{1}{1+\frac{x^2}{a^2}}\cdot\frac{1}{a} 
-                    = \dfrac{1}{a^2+x^2}
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                F'(x) = G'(x) = \frac{1}{a}\cdot\dfrac{1}{1+\frac{x^2}{a^2}}\cdot\frac{1}{a} 
+                      = \dfrac{1}{a^2+x^2}
+              \end{equation*}
+            \end{fleqn} 
             Proto
-            \begin{equation*}
-              \begin{rcases}
-                \int\dfrac{1}{a^2+x^2}\dd{x} = \dfrac{1}{a}\arctan\dfrac{x}{a}  + c  \\
-                \int\dfrac{1}{a^2+x^2}\dd{x} = \dfrac{1}{a}\arccotg\dfrac{x}{a} + k
-              \end{rcases}
-              x\in(-\infty, \infty).
-            \end{equation*}
-            \begin{equation*}
-              \int\dfrac{1}{5+x^2}\dd{x} = \dfrac{1}{\sqrt{5}}\arctan\dfrac{x}{\sqrt{5}}  + c,
-              \quad x\in(-\infty, \infty)
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \begin{rcases}
+                  \int\dfrac{1}{a^2+x^2}\dd{x} = \dfrac{1}{a}\arctan\dfrac{x}{a}  + c  \\
+                  \int\dfrac{1}{a^2+x^2}\dd{x} = \dfrac{1}{a}\arccotg\dfrac{x}{a} + k
+                \end{rcases}
+                x\in(-\infty, \infty).
+              \end{equation*}
+            \end{fleqn} 
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\dfrac{1}{5+x^2}\dd{x} = \dfrac{1}{\sqrt{5}}\arctan\dfrac{x}{\sqrt{5}}  + c,
+                \quad x\in(-\infty, \infty)
+              \end{equation*}
+            \end{fleqn}
       \item Funkce \(F(x)=\ln k(x+\sqrt{x^2+a})\) má pro taková \(x, k, a\), pro která \(x^2+a>0\),
             \(k(x+\sqrt{x^2+a})>0\), derivaci
-            \begin{equation*}
-              F'(x) = \dfrac{k\left(1+\dfrac{2x}{2\sqrt{x^2+a}}\right)}{k(x+\sqrt{x^2+a})}
-                    = \dfrac{\dfrac{\sqrt{x^2+a}+x}{\sqrt{x^2+a}}}{x+\sqrt{x^2+a}}
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                F'(x) = \dfrac{k\left(1+\dfrac{2x}{2\sqrt{x^2+a}}\right)}{k(x+\sqrt{x^2+a})}
+                      = \dfrac{\dfrac{\sqrt{x^2+a}+x}{\sqrt{x^2+a}}}{x+\sqrt{x^2+a}}
+              \end{equation*}
+            \end{fleqn}
             Tedy
-            \begin{equation*}
-              \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln k(x+\sqrt{x^2+a}),
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln k(x+\sqrt{x^2+a}),
+              \end{equation*}
+            \end{fleqn}
             kde \(x^2+a>0\), \(k(x+\sqrt{x^2+a})>0\). Popřípadě podobně jako v bodě 4:
-            \begin{equation*}
-              \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln\abs{(x+\sqrt{x^2+a})} + c,
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln\abs{(x+\sqrt{x^2+a})} + c,
+              \end{equation*}
+            \end{fleqn}
             v každém otevřeném intervalu, v němž je \(x^2+a>0\), \(k(x+\sqrt{x^2+a})\neq0\). Je-li
             \(a>0\), je pro všechna \(x\) (kladná, záporná i nulu) \(x^2+a>0\),
             \(x+\sqrt{x^2+a}>0\), a tedy
-            \begin{equation*}
-              \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln (x+\sqrt{x^2+a}) + c,
-            \end{equation*}
+            \begin{fleqn}[\parindent]
+              \begin{equation*}
+                \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln (x+\sqrt{x^2+a}) + c,
+              \end{equation*}
+            \end{fleqn}
             kde \(a>0\), \(x\in(-\infty, \infty)\). Znak absolutní hodnoty je zde zbytečný.
             Integrály, které jsme v tomto článku odvodili, se nazývají \emph{základní} a jsou
             přehledně sestaveny v následující tabulce.
