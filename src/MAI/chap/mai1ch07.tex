@@ -31,24 +31,62 @@
       \begin{definition}\label{mai:def002}
         Funkci \(F(x): J\rightarrow \realset\), kde \(J\subset \realset\) je interval, nazveme
         \textbf{primitivní} funkcí k funkci \(f(x)\) na intervalu \(J\) právě když, pro všechna
-        \(x\in J\) je \(F'(x) = f(x)\). 
+        \(x\in J\) je \(F'(x) = f(x)\). Nebo což je totéž, je-li \(f(x)\dd{x}\) pro každé \(x\in J\)
+        diferenciálem funkce \(F(x)\),
+        \begin{equation*}
+          \dd{F}(x) = f(x)\dd{x}.
+        \end{equation*}
         
         V případě uzavřeného intervalu \(J=[a,b]\) požadujeme ještě, aby obě jednostranné derivace
-        splňovali \(F_+'(a)=f(a)\) a \(F_-'(b)=f(b)\). 
+        splňovaly \(F_+'(a)=f(a)\) a \(F_-'(b)=f(b)\). 
         
         Množina všech primitivních funkcí k funkci \(f(x)\) na \(J\) se nazývá \textbf{neurčitý
         integrál} z funkce \(f(x)\) a značí se \(\int f(x)\dd{x}\). Tedy
-        \begin{gather}\label{mai:eq101}
+        \begin{gather*}
           \int f(x)\dd{x} = \{F(x): \text{\(F(x)\) je primitivní funkcí k \(f(x)\) na \(J\)}\}
-        \end{gather}
+        \end{gather*}
       \end{definition}
     \end{mdframed}
+
+    Zřejmě, je-li \(F(x)\) primitivní funkcí k \(f(x)\) v intervalu \(a,b\) (kde může být popřípadě
+    \(a=-\infty\), \(b=+\infty)\), je také primitivní funkcí k \(f(x)\) v každém intervalu \(\alpha,
+    \beta\), tj. pro nejž platí \(a\leq\alpha<\beta\leq b\). 
+
+    V dalším textu poznáme, že primitivní funkce mají velmi důležitou úlohu v matematice a v jejich
+    aplikacích. Řešení mnoha úloh z integrálního počtu a příbuzných partií vede k určení primitvní
+    funkce. Uvidíme například, že najdeme-li k funkci \(f(x)= x^2\) primitivní funkci \(F(x) =
+    x^3\), vypočítáme velmi snadno obsah \(P\) obrazce, který je vyšrafován na obr.
+    \ref{mai:fig099}.
+    \begin{equation*}
+      P = F(2) - F(0) = \frac{2^3}{3} = \frac{8}{3}.
+    \end{equation*}
+    Užitečnost získání primitivní funkce vysvitne zejména v kapitole \ref{mai:IchapVII}. Metodám
+    hledání funkce je věnován následující text. Uvidíme, že určení primitivní funkce k dané
+    elementární funkci je v obecnémpřípadě úloha podstatně obtíšžnější než určení derivace.  
+    
+    \begin{figure}[ht!]
+      \centering
+      \animategraphics[controls,autoplay,loop]{2}{mai_fig022}{}{}
+      \caption{Graf primitivní funkce \(F(x) = x^3\)}
+      \label{mai:fig099}
+    \end{figure}
+
+    Uvedeme nyní některé jednoduché příklady.
     %-------------------------------------
     \input{../src/MAI/exam/exam118.tex}
     %-------------------------------------
+
+    Často používáme pro nezávisle proměnnou jiného oznčení než \(x\). Funkcí primitivní k funkci
+    \(f(u)\) rozumíme pak ovšem funkci \(F(u)\), pro kterou Platí
+    \begin{equation*}
+      F'(u) = \diff{F}{u} = f(u),
+    \end{equation*}
+    a podobně při jiném označení. Například funkce \(F(u) = \tan u + 3\) je pro \(u\in(-\pi/2,
+    \pi/2)\) primitivní funkcí k funkci \(f(u)=\frac{1}{\cos^2u}\), neboť pro každé \(u\in(-\pi/2,
+    \pi/2)\) platí \(F'(u)=(\tan u + 3)' = \frac{1}{\cos^2u}\).
     
-    Z uvedených příkladů je vidět, že rozdíl dvou primitivních funkcí k téže funkci je konstanta. To
-    není náhoda, jak potvrzuje následující věta:
+    Je vidět, že rozdíl dvou primitivních funkcí k téže funkci je konstanta. To není náhoda, jak
+    potvrzuje následující věta:
 
     \begin{mdframed}[style=mdmathlemma] 
       \begin{lemma}\label{mai:lemma008}(Věta o rozdílu dvou primitivních funkcí)
@@ -428,8 +466,8 @@
         & \int\frac{1}{\sqrt{1-x^2}}\dd{x} =
             \begin{cases}
               +\arcsin x + c         \\
-              -\arccos x + c
-            \end{cases}                                          &      \label{mai:eq116}    \\
+              -\arccos x + c 
+            \end{cases}                                          &       \label{mai:eq116}   \\
           \shortintertext{\(\hspace{2em}\forall x\in(-1,1) \)}  
         & \int\sinh x\dd{x} = \cosh x + c                         &       \label{mai:eq117}  \\
         & \int\dfrac{1}{\sinh x}\dd{x} = -\cotgh x + c            &       \label{mai:eq118}  \\
@@ -515,7 +553,7 @@
 
       V některých případech může být příčinou nezdaru nevhodnost použitého početního postupu. 
 
-  \twocolumn[\section{Metody určení primitivní funkce}]
+  \twocolumn[\section{Metody určení primitivní funkce}\label{mai:IchapVIIsecIII}]
     Procesu hledání primitivní funkce se často říká integrování nebo integrace (od slova“integrál”),
     což z matematického hlediska znamená provést inverzní operaci k operaci derivování. Smutnou
     zprávou je, že na rozdíl od derivování neexistuje obecný vzorec pro integrování součinu či
@@ -534,7 +572,7 @@
       Metoda integrace \emph{per partes} neboli \emph{po částech} využívá vzorce pro derivaci 
       součinu funkcí. Připomeňme si jej: Pro derivaci součinu dvou funkcí \(u(x)\) a \(u(x)\) platí
       \cite[p.~137]{Musilova2009MA1}.
-      \begin{equation}\label{MA:eq_Int29}
+      \begin{equation}\label{mai:eq101}
         [u(x)v(x)]' = u(x)'v(x) + u(x)v'(x).
       \end{equation} 
       Primitivní funkcí levé strany je \(F(x) = u(x)v(x)\), a tedy
