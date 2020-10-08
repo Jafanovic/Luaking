@@ -84,9 +84,25 @@
     a podobně při jiném označení. Například funkce \(F(u) = \tan u + 3\) je pro \(u\in(-\pi/2,
     \pi/2)\) primitivní funkcí k funkci \(f(u)=\frac{1}{\cos^2u}\), neboť pro každé \(u\in(-\pi/2,
     \pi/2)\) platí \(F'(u)=(\tan u + 3)' = \frac{1}{\cos^2u}\).
-    
-    Je vidět, že rozdíl dvou primitivních funkcí k téže funkci je konstanta. To není náhoda, jak
-    potvrzuje následující věta:
+
+    Primitivní funkce k funkci \(f(x)=3x^2\), \(x\in(-\infty, \infty)\) je funkce \(F(x)=x^3\),
+    neboť pro všechna \(x\) platí \((x^3)'=3x^2\). Avšak také funkce \(G(x) = x^3+5\) nebo funkce
+    \(H(x)=x^3-2\pi\sqrt{3}\) a vůbec každá funkce \(R(x)=x^3+C\), kde \(C\) je libovolná (reálná)
+    konstanta, je v intervalu \((-\infty, +\infty)\) primitivní funkcí k funkci \(f(x)=3x^2\), neboť
+    \(G'(x)=H'(x)=R'(x)=3x^2\) pro každé \(x\in(-\infty, +\infty)\). 
+
+    Z posledních příkladů je zřejmé, že známe-li (v uvažovaném intervalu) k dané funkci \(f(x)\)
+    jednu primitivní funkci, známe jich nekonečně mnoho; je-li totiž \(F(x)\) jedna z nich, pak
+    rovněž každá funkce tvaru \(F(x)+c\), kde \(c\) je libovolné reálné číslo, je primitivní funkcí
+    k dané funkci \(f(x)\), neboť
+    \begin{equation*}
+      \bigl[F(x) + c\bigl] = F'(x) = f(x).
+    \end{equation*}
+    Vzniká nyní otázka: Najdeme-li k dané funkci \(f(x)\) primitivní funkci \(F(x)\), neexistují pak
+    kromě funkcí tvaru \(F(x) + c\) ještě jiné primitivní funkce? Nebo jinak řečeno: Neexistují k
+    dané funkci dvě různé primitvní funkce, lišící se jinak než o konstantu? Odpověď je záporná:
+    Výrazem \(F(x) + c\) jsou vyčerpány všechny primitivní funkce k dané funkci \(f(x)\). Platí
+    věta: 
 
     \begin{mdframed}[style=mdmathlemma] 
       \begin{lemma}\label{mai:lemma008}(Věta o rozdílu dvou primitivních funkcí)
