@@ -105,21 +105,56 @@
     věta: 
 
     \begin{mdframed}[style=mdmathlemma] 
-      \begin{lemma}\label{mai:lemma008}(Věta o rozdílu dvou primitivních funkcí)
-        \begin{enumerate}[noitemsep]
-          \item Je-li funkce $F$ primitivní funkcí k funkci \(f\) na intervalu \(J\) a \(c\) reálná  
-                konstanta, pak i funkce $G = F + c$ je primitivní funkcí k funkci \(f\) na intervalu 
-                \(J\).
-          \item Jsou-li funkce $F$ a $G$ primitivní funkce k funkci \(f\) na intervalu \(J\), pak 
-          funkce
-                $F-G$ je na intervalu \(J\) konstantní.
-        \end{enumerate} 
+      \begin{lemma}\label{mai:lemma008}(Věta o rozdílu dvou primitivních funkcí) Je-li \(F(x)\) v
+        intervalu \(J\) primitivní funkcí k funkci \(f(x)\), pak \textbf{každá} primitivní funkce k
+        funkci \(f(x)\) v intervalu \(J\) je tvaru 
+        \begin{equation*}
+          F(x) + c,
+        \end{equation*}
+        kde \(c\) je (reálná) konstanta.
         \begin{proof}
-          Tvrzení a) plyne z definice protože $G'(x) = [F(x) + c] = F'(x) = f(x)$ pro všechna $x\in
-          J$. Tvrzení b) je důsledkem věty \ref{MA1:lem_diff01}.
+          Tvrzení a) Nechť \(F(x)\) a \(G(x)\) jsou dvě libovolné primitivní funkce k funkci
+          \(f(x)\) v intervalu \(J\). Máme dokázat, že se liší nejvýše o konstantu, tj. že platí 
+          \begin{equation*}
+            G(x) - F(x) = c,  \qquad x\in J. 
+          \end{equation*}
+          Podle definice primitivní funkce platí:
+          \begin{equation*}
+            F'(x) = f(x), \qquad G'(x) = f(x)
+          \end{equation*}
+          Funkce \(F(x)\) a \(G(x)\) mají tedy pro všechna \( x\in J\) stejná derivace, a tedy
+          funkce
+          \begin{equation*}
+            R(x) = G(x) - F(x), \qquad x\in J.
+          \end{equation*}
+          má derivea rovnou nule. 
+          \begin{equation*}
+            R'(x) = G'(x) - F'(x) = f(x) - f(x) = 0
+          \end{equation*}
+          pro všechna \( x\in J\). Je-li však \(R'(x)=0\) pro všechna \(x\) z daného intervalu je
+          \(R(x)=c\) v \(J\). Tedy \(R(x) = G(x) - F(x)=c\).
         \end{proof}
       \end{lemma}
     \end{mdframed}
+
+    Geometrická interpretace věty \ref{mai:lemma008}: Grafy dvou libovolných primitivních funkcí k
+    funkci \(f(x)\) (v uvažovaném intervalu \(J\)) lze ztotožnit posunutím ve směru osy \(y\) (obr.
+    \ref{mai:fig100})
+
+    \begin{figure}[ht!]
+      \centering
+      \includegraphics[height=5cm]{example-image-b} 
+      \caption{Geometrická interpretace primitivní funkce \(F(x) +c\)}
+      \label{mai:fig100}
+    \end{figure}
+
+    Všechny primitivní funkce k funkci \(f(x)\) se tedy liší navzájem jen o konstanu. Je-li známá
+    jedna primitivní funkce \(F(x)\) k funkci \(f(x)\), lze všechny ostatnůí vyjádřit ve tvaru
+    \(F(x) + c\), kde \(c\) je libovolné reálné číslo. Množina funkcí tvaru \(F(x) + c\) zahrnuje
+    tedy všechny funkce, které mají derivaci \(f(x)\) (a tedy diferenciál \(f(x)\dd{x}\)). Pro tuto
+    množinu funkcí, s níž se budeme v daším textu neustále setkávat, je vhodné zavést zvláštní
+    název:  
+
 
     \subsection{Poznámky k definici}  
       Z definice \ref{mai:def002} vyplývá, že primitivní funkce je spojitou funkcí, neboť má
