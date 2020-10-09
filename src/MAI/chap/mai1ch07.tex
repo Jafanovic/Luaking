@@ -27,6 +27,7 @@
     integrálem}. Po tomto názorném uvedení do problému přejděme k přesné formulaci základních pojmů.
     
   \section{Definice primitivní funkce}\label{mai:IchapVIIsecI}  
+  
     \begin{mdframed}[style=mdmathdef] 
       \begin{definition}\label{mai:def002}
         Funkci \(F(x): J\rightarrow \realset\), kde \(J\subset \realset\) je interval, nazveme
@@ -39,12 +40,6 @@
         
         V případě uzavřeného intervalu \(J=[a,b]\) požadujeme ještě, aby obě jednostranné derivace
         splňovaly \(F_+'(a)=f(a)\) a \(F_-'(b)=f(b)\). 
-        
-        Množina všech primitivních funkcí k funkci \(f(x)\) na \(J\) se nazývá \textbf{neurčitý
-        integrál} z funkce \(f(x)\) a značí se \(\int f(x)\dd{x}\). Tedy
-        \begin{gather*}
-          \int f(x)\dd{x} = \{F(x): \text{\(F(x)\) je primitivní funkcí k \(f(x)\) na \(J\)}\}
-        \end{gather*}
       \end{definition}
     \end{mdframed}
 
@@ -155,12 +150,41 @@
     množinu funkcí, s níž se budeme v daším textu neustále setkávat, je vhodné zavést zvláštní
     název:  
 
+    \begin{mdframed}[style=mdmathdef] 
+      \begin{definition}\label{mai:def004}
+        Množinu všech primitivních funkcí k funkci \(f(x)\) v intervalu \(J\) nazýváme
+        \textbf{neručitým integrálem} k funkci \(f(x)\)  a označujeme ji \(\int f(x)\dd{x}\). Píšeme 
+        \begin{equation*}
+          \boxed{\int f(x)\dd{x} = F(x) + c \qquad x\in J}
+        \end{equation*}
+      \end{definition}
+    \end{mdframed}
+
+    Funkci \(f(x)\) nazveme \emph{integrandem}, symbol \(\int\) (který vznikl protažením písmena S)
+    \emph{integračním znakem}. Výkon, kterým určujeme neurčitý integrál \(F(x) + c\) k dané
+    primitivní funkci \(f(x)\), resp. k diferenciálu \(f(x)\dd{x}\), nazýváme \emph{integrováním}
+    funkce \(f(x)\). Udůvodněný názvu integrál a jeho označení vysvitne později, až poznáme vztah
+    mezi primitivní funkcí a tzv. určitým integrálem v kapitole \ref{mai:IchapVIII}. Slovem
+    \uv{neurčitý} vyznačujeme, že uvažujeme všechny funkce tvaru \(F(x)+ c\), nikoli jednu
+    primitivní funkci. Místo \[\int\dfrac{1}{x}\dd{x}\] je zvykem psát \[\int\dfrac{\dd{x}}{x}\]
+    apod. 
+
+    Ukázali jsme, že všechny primitivní funkce k dané funkci se mohou lišit navzájem až na
+    konstatnu. Důležitá je taky otázka, kdy vůbec \emph{existuje} k dané funkci funkce primitivní.
+    Postačující podmínku pro to dává věta 
+    
+    \begin{mdframed}[style=mdmathlemma] 
+      \begin{lemma}\label{mai:lemma011}
+        Ke každé funkci, spojité v otevřeném intervalu \(J\) existuje v tomto intervalu primitivní
+        funkce. 
+      \end{lemma}
+    \end{mdframed}
 
     \subsection{Poznámky k definici}  
       Z definice \ref{mai:def002} vyplývá, že primitivní funkce je spojitou funkcí, neboť má
       derivaci a věta \ref{mai:lemma008} nám říká, že pokud k dané funkci existuje funkce
-      primitivní, existuje jich nekonečně mnoho. Je-li např. \(F\) primitivní funkce k funkci \(f\)
-      na intervalu \(J\), pak množina všech primitivních funkcí je množina \(\{F + c;
+      primitivní, existuje jich nekonečně mnoho. Je-li např. \(F(x)\) primitivní funkce k funkci
+      \(f(x)\) na intervalu \(J\), pak množina všech primitivních funkcí je množina \(\{F(x) + c;
       c\in\realset\}\). Tuto množinu označujeme symbolem \(\int f(x)\dd{x}\) a čteme \uv{integrál
       \(f(x)\dd{x})\)} Symbolu \(\int f(x)\dd{x}\) říkáme \textbf{neurčitý integrál}. Zpravidla
       píšeme
@@ -172,6 +196,36 @@
       nebo jen \(\int f(x)\dd{x} = F(x)\) (tj. aditivní konstantu vynecháváme) a máme tím na mysli
       že \(F(x) \in \int f(x)\dd{x}\). Rovnost \ref{mai:eq102} je tedy rovnost mezi množinami,
       nikoliv rovnost funkcí. 
+      
+      V tomto smyslu tedy \(\int f(x)\dd{x}\) znamená, že \[\diff{}{x}\int f(x)\dd{x} = f(x)\], a
+      teprve ve výsledku výpočtu připsat integrační konstantu \(c\), abychom vyznačili, že jde o
+      množinu funkcí.
+
+      Jedna z primitivní funkcí k funkci \(f(x)=x^3\), \(x\in(-\infty, +\infty)\) je \(F(x)=
+      \frac{1}{4}x^4\). Je proto
+      \begin{fleqn}[\parindent]
+        \begin{equation*}
+          \int x^3\dd{x} = \frac{x^4}{4} + c \qquad x\in(-\infty, +\infty)
+        \end{equation*}
+      \end{fleqn} 
+
+      Jedna z funkcí, jejichž diferenciál je \(f(x) = \frac{1}{1+x^2}\dd{x}\), \(x\in(-\infty,
+      +\infty)\) je \(F(x) = \arctan x\), neboť v tomto intervalu je \(\dd{(\arctan x)} =
+      \frac{1}{1+x^2}\dd{x}\). Je proto
+      \begin{fleqn}[\parindent]
+        \begin{equation*}
+          \int\frac{1}{1+x^2}\dd{x} = \arctan x + c \qquad x\in(-\infty, +\infty).
+        \end{equation*}
+      \end{fleqn}
+      Často používáme pro argument jiného označení než \(x\).
+
+      Nechť \(f(z) = \frac{1}{z+3}\), \(x\in(-3, +\infty)\). Pak jedna z primitivních funkcí je
+      \(F(z) = \ln(z+3)\), a tedy
+      \begin{fleqn}[\parindent]
+        \begin{equation*}
+          \int\frac{1}{z+3}\dd{x} = \ln(z+3) + c \qquad x\in(-3, +\infty).
+        \end{equation*}
+      \end{fleqn}
     
     \subsection{Některé vlastnosti integrálů}  
       Platnost několika následujících vztahů lze prověřit přímo užitím deﬁnic derivace a neurčitého
