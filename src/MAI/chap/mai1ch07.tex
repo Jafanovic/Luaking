@@ -36,8 +36,7 @@
         diferenciálem funkce \(F(x)\),
         \begin{equation*}
           \dd{F}(x) = f(x)\dd{x}.
-        \end{equation*}
-        
+        \end{equation*}        
         V případě uzavřeného intervalu \(J=[a,b]\) požadujeme ještě, aby obě jednostranné derivace
         splňovaly \(F_+'(a)=f(a)\) a \(F_-'(b)=f(b)\). 
       \end{definition}
@@ -233,11 +232,11 @@
       pravidla pro primitivní funkce, která plynou z pravidel pro derivování:
       \begin{subequations}
         \begin{flalign}
-          \int\dd{f(x)} &= f(x) + c,                                          &\label{mai:eq134} \\
+          \int\dd{f(x)}                    &= f(x) + c,                       &\label{mai:eq134} \\
           \dxd\left[\int f(x)\dd{x}\right] &= f(x)\dd{x},                     &\label{mai:eq135} \\
           \int[f(x)\pm g(x)]\dd{x}&= \int f(x)\dd{x} + \int g(x)\dd{x},       &\label{mai:eq103} \\
-          \int kf(x)\dd{x}      &=k\int f(x)\dd{x},\quad\text{\(k=\) konst.}, &\label{mai:eq104} \\
-          \left[\int f(x)\dd{x}\right]' &= f(x),                              &\label{mai:eq136}
+          \int kf(x)\dd{x}      &=k\int f(x)\dd{x},\,\text{\(k=\) konst.},    &\label{mai:eq104}\raisetag{14pt} \\
+          \left[\int f(x)\dd{x}\right]'    &= f(x),                           &\label{mai:eq136}
         \end{flalign}
       \end{subequations}
       
@@ -374,7 +373,7 @@
               &\int\cos x\dd{x} =  \sin x + c, & \\
               &\int\sin x\dd{x} = -\cos x + c, &  
             \end{flalign*}           
-            (Všimněme si rozdílu ve znaménkách při derivování a integrování funkcí \(\sin x)\) a
+            (Všimněme si rozdílu ve znaménkách při derivování a integrování funkcí \(\sin x\) a
             \(\cos x\).) 
       \item Pro funkci \(F(x) = \tan x\), \(x\neq\pm\frac{\pi}{2}, \pm\frac{3\pi}{2}, \ldots\),
             platí \(F'(x)=\frac{1}{cos^2x}\). Platí proto v každém otevřeném intervalu, který
@@ -399,12 +398,10 @@
             tedy
             \begin{fleqn}[\parindent]
               \begin{equation*}
-                \left.
-                  \begin{array}{r}
-                    \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} =  \arcsin x + c \\
-                    \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} = -\arccos x + k
-                  \end{array}
-                \right\}x\in(-1,1).
+                \begin{rcases}
+                  \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} &=  \arcsin x + c \\
+                  \int\dfrac{1}{\sqrt{1-x^2}}\dd{x} &= -\arccos x + k
+                \end{rcases}x\in(-1,1).
               \end{equation*}
             \end{fleqn}
             Podle právě uvedených vzorců existují k funkci \(f(x)=1/\sqrt{1-x^2}\) dvě různé
@@ -429,12 +426,10 @@
             Proto je 
             \begin{fleqn}[\parindent]
               \begin{equation*}
-                \left.
-                  \begin{array}{r}
-                    \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} =  \arcsin\frac{x}{a} + c \\
-                    \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} = -\arccos\frac{x}{a} + k
-                  \end{array}
-                \right\}
+                \begin{rcases}
+                  \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} &=  \arcsin\frac{x}{a} + c \\
+                  \int\dfrac{1}{\sqrt{a^2-x^2}}\dd{x} &= -\arccos\frac{x}{a} + k
+                \end{rcases}
                 \begin{array}{c}
                   a>0,      \\
                   x\in(-a,a).
@@ -443,7 +438,7 @@
             \end{fleqn} 
             \begin{fleqn}[\parindent]
               \begin{equation*}
-                \int\dfrac{1}{\sqrt{16-x^2}} = \arcsin\dfrac{x}{4} + c \, x\in(-4,4).
+                \int\dfrac{1}{\sqrt{16-x^2}} = \arcsin\dfrac{x}{4} + c \quad x\in(-4,4).
               \end{equation*}
             \end{fleqn} 
       \item Derivace funkcí \(F(x) = \arctan x\) a \(G(x) = \arccotg x\), \(x\in(-\infty, \infty)\)
@@ -457,8 +452,8 @@
             \begin{fleqn}[\parindent]
               \begin{equation*}
                 \begin{rcases}
-                  \int\dfrac{1}{1+x^2}\dd{x} = \arctan x + c  \\
-                  \int\dfrac{1}{1+x^2}\dd{x} = \arccotg x + k
+                  \int\dfrac{1}{1+x^2}\dd{x} &= \arctan x + c  \\
+                  \int\dfrac{1}{1+x^2}\dd{x} &= \arccotg x + k
                 \end{rcases}
                 x\in(-\infty, \infty).
               \end{equation*}
@@ -483,8 +478,8 @@
             \begin{fleqn}[\parindent]
               \begin{equation*}
                 \begin{rcases}
-                  \int\dfrac{1}{a^2+x^2}\dd{x} = \dfrac{1}{a}\arctan\dfrac{x}{a}  + c  \\
-                  \int\dfrac{1}{a^2+x^2}\dd{x} = \dfrac{1}{a}\arccotg\dfrac{x}{a} + k
+                  \int\dfrac{1}{a^2+x^2}\dd{x} &= \dfrac{1}{a}\arctan\dfrac{x}{a}  + c  \\
+                  \int\dfrac{1}{a^2+x^2}\dd{x} &= \dfrac{1}{a}\arccotg\dfrac{x}{a} + k
                 \end{rcases}
                 x\in(-\infty, \infty).
               \end{equation*}
@@ -512,7 +507,7 @@
             kde \(x^2+a>0\), \(k(x+\sqrt{x^2+a})>0\). Popřípadě podobně jako v bodě 4:
             \begin{fleqn}[\parindent]
               \begin{equation*}
-                \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln\abs{(x+\sqrt{x^2+a})} + c,
+                \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln\abs{x+\sqrt{x^2+a}} + c,
               \end{equation*}
             \end{fleqn}
             v každém otevřeném intervalu, v němž je \(x^2+a>0\), \(k(x+\sqrt{x^2+a})\neq0\). Je-li
@@ -520,7 +515,7 @@
             \(x+\sqrt{x^2+a}>0\), a tedy
             \begin{fleqn}[\parindent]
               \begin{equation*}
-                \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln (x+\sqrt{x^2+a}) + c,
+                \int\dfrac{1}{\sqrt{x^2+a}}\dd{x} = \ln \bigl(x+\sqrt{x^2+a}\bigr) + c,
               \end{equation*}
             \end{fleqn}
             kde \(a>0\), \(x\in(-\infty, \infty)\). Znak absolutní hodnoty je zde zbytečný.
@@ -658,7 +653,7 @@
 
       V některých případech může být příčinou nezdaru nevhodnost použitého početního postupu. 
 
-  \twocolumn[\section{Metody určení primitivní funkce}\label{mai:IchapVIIsecIII}]
+  \section{Metody určení primitivní funkce}\label{mai:IchapVIIsecIII}
     Procesu hledání primitivní funkce se často říká integrování nebo integrace (od slova“integrál”),
     což z matematického hlediska znamená provést inverzní operaci k operaci derivování. Smutnou
     zprávou je, že na rozdíl od derivování neexistuje obecný vzorec pro integrování součinu či
@@ -690,6 +685,7 @@
       nevíme rady. Je však možné, že bychom si docela dobře poradili s primitivní funkcí k funkci
       \(g(x) = u(x)v(x)\). A předchozí vzorec umožňuje nahradit výpočet neurčitého integrálu z
       funkce \(f(x)\) výpočtem neurčitého integrálu z funkce \(g(x)\), tedy
+
       \begin{equation}\label{ma:eq_perpartes}
         \int u'(x)v(x)\dd{x} = u(x)v(x) - \int u(x)v'(x)\dd{x} 
       \end{equation}
@@ -734,20 +730,25 @@
           \(x\in(a,b)\) nechť číslo \(\varphi(x)\) patří do intervalu \(\alpha, \beta\). Pak v
           intervalu \((a,b)\) je funkce \(F(\varphi(x))\) primitivní funkcí k funkci
           \(f(\varphi(x))\varphi'(x)\), tj. 
-          \begin{equation}\label{mai:eq176}
-            \int{f(\varphi(x))\varphi'(x)\dd{x}} = F(\varphi(x)) + c.
-          \end{equation}
+          \begin{fleqn}[0pt]
+            \begin{equation}\label{mai:eq176}
+              \int{f(\varphi(x))\varphi'(x)\dd{x}} = F(\varphi(x)) + c.
+            \end{equation}
+          \end{fleqn}
           Tento výsledek je zvykem zapisovat v integrálním počtu takto:
-          \begin{equation}\label{mai:eq177}
-            \int{f[\varphi(x)]\varphi'(x)\dd{x}}= \int f(t)\dd{t}= F(t)+c
-          \end{equation}
+          \begin{fleqn}[0pt]
+            \begin{equation}\label{mai:eq177}
+              \int{f[\varphi(x)]\varphi'(x)\dd{x}}= \int f(t)\dd{t}= F(t)+c
+              \raisetag{14pt}
+            \end{equation}
+          \end{fleqn}
           kde \(t=\varphi(x)\).
         \end{lemma}
       \end{mdframed}
   
       Základem úspěchu při aplikací věty je správný výběr funkce $\varphi(x)$. Praxe je totiž
-      taková, že výpočet konkrétních příkladů je schématicky veden od rov. \ref{mai:eq177} ke
-      vzorci rov. \ref{mai:eq176}.
+      taková, že výpočet konkrétních příkladů je schématicky veden od rov. \eqref{mai:eq177} ke
+      vzorci rov. \eqref{mai:eq176}.
 
       Vzorec \ref{mai:eq177} se sandno pamatuje. Dosadíme-li v integrálu \(\int f(t)\dd{t}\)
       formálně \(t=\varphi(x)\) a (diferencování tohoto vztahu) \(\dd{t} = \varphi'(x)\), dostaneme
@@ -925,8 +926,8 @@
           \begin{equation}\label{mai:eq168}
             \frac{A}{(x-\alpha)^k} \qquad\text{nebo}\qquad\frac{Bx + D}{(x^2 + px + q)^k}
           \end{equation}  
-          $A,\ B,\ D,\ \alpha\ , p,\ q$ reálné konstanty, trojčlen \(x^2 + px + q\) nemá reálné
-          kořeny (tj. má záporný diskriminant $p^2-4q < 0$), $k$ celé nezáporné číslo.         
+          kde \(A,\ B,\ D,\ \alpha,\ p,\ q\) jsou reálné konstanty, trojčlen \(x^2 + px + q\) nemá
+          reálné kořeny (tj. má záporný diskriminant $p^2-4q < 0$), $k$ celé nezáporné číslo.          
         \end{definition}
       \end{mdframed}    
       
@@ -935,9 +936,9 @@
         \boxed{f_1(x) = \dfrac{A}{x -\alpha}.} \quad k = 1
       \end{equation}
       Ten již dovedeme snadno integrovat
-      \begin{equation}
+      \begin{equation*}
         \int\dfrac{A}{x -\alpha} = A\ln\abs{x-\alpha} + c, 
-      \end{equation}
+      \end{equation*}
       
       Druhý typ zlomku dostáváme pro případ \( k>1\)
       \begin{equation}\label{mai:eq167}
