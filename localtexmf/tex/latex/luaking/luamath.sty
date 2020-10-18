@@ -35,12 +35,23 @@
 % ~~~~~~~~ Boxes, frames ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \RequirePackage{tikz} 
 \usetikzlibrary{tikzmark,arrows.meta}
+
 \RequirePackage[most]{tcolorbox}
-\newtcbtheorem{mathexam}{Příklad}{%
-    colback=purple!5,
-    colframe=blue!100!,
-    fonttitle=\bfseries,
-    breakable,
+  % https://texblog.org/2013/02/27/on-paragraphs-in-texlatex/
+  % https://tex.stackexchange.com/questions/566094/
+  \makeatletter
+  \xpatchcmd\tcb@theo@title
+    {\hangindent\wd\z@\hangafter=1}
+    {}
+    {}{\fail}
+  \makeatother
+
+\newtcbtheorem[auto counter,number within=chapter]{mathexam}{Příklad}{%
+    % colback=purple!5,
+    % colframe=blue!100!,
+    fonttitle=\itshape,        % \bfseries,
+    enforce breakable,         % breakable,
+    compress page,
     enhanced,
     arc=1pt,
     left=0pt,
