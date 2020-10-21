@@ -4,19 +4,20 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build PDF lualatex",
+      "label": "task: Build PDF lualatex",
       "type": "shell",
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "command": "wiki lualatex",
+      "command": "lualatex",
       "args": [
-        // "'\\providecommand{\\DebugMode}{false}\\input{./tex/luaking.tex}'",
+        "\\providecommand{\\DebugMode}{false}\\input{./tex/luaking.tex}",
         "--interaction=nonstopmode",
         "--halt-on-error",
         "--enable-write18",
         "--shell-escape",
+        "--input-directory=${fileDirname}",
         "--output-directory=${fileDirname}",
         "${file}"
       ]

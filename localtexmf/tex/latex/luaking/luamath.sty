@@ -58,6 +58,18 @@
     right=0pt
   }{mai}
 
+  \newtcbtheorem[auto counter,number within=chapter]{mathlemma}{Věta}{%
+    colback=red!5!white,
+    colframe=red!75!black,
+    fonttitle=\itshape,        % \bfseries,
+    enforce breakable,         % breakable,
+    compress page,
+    enhanced,
+    arc=1pt,
+    left=0pt,
+    right=0pt
+  }{mai}
+
   \newtcolorbox{luaexambox}[1]{
     enhanced jigsaw,
     breakable,
@@ -252,19 +264,22 @@
 \newcommand\Mycomb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}} % Combination
 \newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}         % \overline outside of math mode
  % ~~~~~~~~ Proof environment ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  \renewcommand{\qedsymbol}{$\blacksquare$} % \heartsuit
-  % examples:
-  %     \renewenvironment{proof}[1][Důkaz]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}} 
-  %     \renewenvironment{proof}[1][Důkaz]{\noindent\textbf{#1.} }{}
-  %     \newenvironment{myproof}[1][\proofname]{%
-  %       \proof[\ttfamily \scshape \large #1 (yes, ``#1'')]% 
-  %     }{\endproof}
-    \makeatletter 
-      \renewenvironment{proof}[1][Důkaz]{%
-        \par\pushQED{\qed}\normalfont\topsep6\p@\@plus6\p@\relax\trivlist
-        \item[\hskip\labelsep\textbf#1\@addpunct{.}]\ignorespaces}%
-        {\popQED\endtrivlist\@endpefalse}
-    \makeatother
+  % \renewcommand{\qedsymbol}{$\blacksquare$} % \heartsuit
+
+  % https://tex.stackexchange.com/questions/62020/
+  \renewcommand*{\proofname}{Důkaz}
+  % https://tex.stackexchange.com/questions/8089/changing-style-of-proof
+  \makeatletter
+    \renewenvironment{proof}[1][\proofname]{\par
+      \pushQED{\qed}%
+      \normalfont\topsep6\p@\@plus6\p@\relax
+      \trivlist
+      \item[\hskip\labelsep\bfseries
+      #1\@addpunct{:}]\ignorespaces
+    }{
+      \popQED\endtrivlist\@endpefalse
+    }
+  \makeatother
  % ~~~~~~~~ Equation environment ~~~~~~~~~~~~~~~~~~~~~~~~~~
  \newenvironment{luaequ}{\useshortskip\equation}{\endequation}
  \AtBeginEnvironment{equation}{\color{red}}

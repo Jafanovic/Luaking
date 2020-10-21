@@ -1,9 +1,4 @@
-REM https://stackoverflow.com/questions/673523/
-echo WIKING LuaTEX compile
-
 @echo off
-SETLOCAL
-set root_file=luaking
 
 set starttime=%TIME%
 set startcsec=%STARTTIME:~9,2%
@@ -13,8 +8,7 @@ set starthour=%STARTTIME:~0,2%
 set /a starttime=(%starthour%*60*60*100)+(%startmins%*60*100)+(%startsecs%*100)+(%startcsec%)
 
 :TimeThis
-lualatex.exe \providecommand{\DebugMode}{true}\input{%root_file%.tex} %
-  -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=%root_file% 
+ping localhost 
 
 set endtime=%time%
 set endcsec=%endTIME:~9,2%

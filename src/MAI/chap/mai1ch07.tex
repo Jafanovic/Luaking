@@ -710,64 +710,57 @@
       důsledkem známých vět z diferenciálního počtu o derivování součtu a součinu funkcí a o
       derivování složené funkce. 
 
-      \begin{mdframed}[style=mdmathlemma]
-        \begin{lemma}\label{mai:lemma012}        
-          Existují-li k funkcím
-          \begin{equation}\label{mai:eq183}
-            f_1(x), f_2(x), \ldots f_n(x) 
-          \end{equation}
-          v otevřeném intervalu \(J\) primitivní funkce
-          \begin{equation}\label{mai:eq184}
-            F_1(x), F_2(x), \ldots F_n(x) 
-          \end{equation}
-          pak funkce 
+      \begin{mathlemma}{}{lemma012}        
+        Existují-li k funkcím \(f_1(x)\), \(f_2(x)\), \(\ldots\), \(f_n(x)\) v otevřeném
+        intervalu \(J\) primitivní funkce \[F_1(x), F_2(x), \ldots, F_n(x)\] pak funkce \(F(x)\)
+        se rovná
+        \begin{fleqn}[0pt]
           \begin{equation}\label{mai:eq185}
-            F(x) = c_1F_1(x) + c_2F_2(x) + \ldots + c_nF_n(x),
+            c_1F_1(x) + c_2F_2(x) + \ldots + c_nF_n(x),
           \end{equation}
+        \end{fleqn}
           kde \(c_1, c_2, \ldots, c_n\) jsou libovolné (reálné) konstanty, je v intervalu \(J\)
           primitivní funkci k funkci 
-          \begin{equation}\label{mai:eq186}
-            f(x) = c_1f_1(x) + c_2f_2(x) + \ldots + c_nf_n(x),
-          \end{equation}
-        \end{lemma}
+          \begin{fleqn}[0pt]
+            \begin{equation}\label{mai:eq186}
+              f(x) = c_1f_1(x) + c_2f_2(x) + \ldots + c_nf_n(x),
+            \end{equation}
+          \end{fleqn}
+        \useshortskip
+        \tcblower
         \begin{proof}
-          Protože podle předpokladu \(F'_1(x) = f_1(x)\), \(F'_2(x) = f_2(x),\ldots, F'_n(x) =
-          f_n(x)\), je funkce \eqref{mai:eq186} v \(J\) derivací funkce \eqref{mai:eq185}.
+          Protože podle předpokladu \(F'_1(x) = f_1(x)\), \(F'_2(x) = f_2(x)\), \(\ldots\),
+          \(F'_n(x) = f_n(x)\), je funkce \eqref{mai:eq186} v \(J\) derivací funkce
+          \eqref{mai:eq185}.
         \end{proof}
-      \end{mdframed}
+      \end{mathlemma}
 
       Věta \eqref{mai:lemma012} se vyslovuje obvykle v tomto tvaru, který je pro účely integrálního
       počtu vhodnější:
-      \begin{mdframed}[style=mdmathlemma]
-        \begin{lemma}\label{mai:lemma013}        
-          Existují-li v otevřeném intervalu \(J\) neurčité integrály funkcí
-          \begin{equation}\label{mai:eq191}
-            f_1(x), f_2(x), \ldots f_n(x) 
-          \end{equation}
-          a jsou-li \(c_1, c_2, \ldots, c_n\) libovolné konstanty, existuje  neurčitý integrál
-          funkce  
+      \begin{mathlemma}{}{lemma013}       
+        Existují-li v otevřeném intervalu \(J\) neurčité integrály funkcí \(f_1(x)\), \(f_2(x)\),
+        \(\ldots\) \(f_n(x)\) a jsou-li \(c_1, c_2, \ldots, c_n\) libovolné konstanty, existuje
+        neurčitý integrál funkce  
+        \begin{fleqn}[0pt]
           \begin{equation}\label{mai:eq188}
             f(x) = c_1f_1(x) + c_2f_2(x) + \ldots + c_nf_n(x),
           \end{equation}
-          a platí
-          \begin{equation}\label{mai:eq189}
-            \begin{multlined}
-              \int[c_1f_1(x) + c_2f_2(x) + \ldots + c_nf_n(x)]\dd{x}  =    \\   
-              \int{c_1f_1(x)}\dd{x} + \int{c_2f_2(x)}\dd{x} + \ldots + \int{c_nf_n(x)}\dd{x}.
-            \end{multlined}
-          \end{equation}
-        \end{lemma}
-      \end{mdframed}
+        \end{fleqn}
+        a platí
+        \begin{multline}\label{mai:eq189}
+          \int[c_1f_1(x) + c_2f_2(x) + \ldots + c_nf_n(x)]\dd{x}  =    \\   
+          \int{c_1f_1(x)}\dd{x} + \int{c_2f_2(x)}\dd{x} +              \\
+          + \ldots + \int{c_nf_n(x)}\dd{x}.
+        \end{multline}
+      \end{mathlemma}
       Přitom rovnici \eqref{mai:eq189} rozumíme takto: Na její pravé straně jsou součty funkcí tvaru
-      \begin{equation*}
-        c_1[F_1(x) + C_1], c_2[F_2(x) + C_2], \ldots, c_n[F_n(x) + C_n]
-      \end{equation*}
-      na její levé straně je funkce tvaru \(F(x)+C\), kde \(F(x)\) je dána rovnicí
-      \eqref{mai:eq186}. Zvolíme-li konstanty \(C_1, C_2, \ldots C_n\) libovolně, pak v obecném
-      případě rovnice 
-      \begin{equation}\label{mai:eq190}
-        F(x) + c = c_1[F_1(x) + C_1] + c_2[F_2(x) + C_2] + \ldots + c_n[F_n(x) + C_n]
-      \end{equation}     
+      \(c_1[F_1(x) + C_1]\), \(c_2[F_2(x) + C_2]\), \(\ldots\), \(c_n[F_n(x) + C_n]\). Na její levé
+      straně je funkce tvaru \(F(x)+C\), kde \(F(x)\) je dána rovnicí \eqref{mai:eq186}. Zvolíme-li
+      konstanty \(C_1, C_2, \ldots C_n\) libovolně, pak v obecném případě rovnice 
+      \begin{multline}\label{mai:eq190}
+        F(x) + c = c_1[F_1(x) + C_1] + c_2[F_2(x) + C_2] +\\ 
+             + \ldots + c_n[F_n(x) + C_n]
+      \end{multline}
       neplatí. Zvolíme-li \(C_1, C_2, \ldots C_n\) libovolně, lze konstantu \(c\) určit tak, aby
       \eqref{mai:eq190} bylo splněno v celém intervalu \(J\), a naopak, zvolíme-li \(c\) libovolně,
       je možno konstanty \(C_1, C_2, \ldots C_n\) zvolit tak, aby byl splněn vztah
@@ -914,20 +907,12 @@
       %-------------------------------------
       \input{../src/MAI/exam/exam110.tex}
       %-------------------------------------
-
-      %-------------------------------------
       \input{../src/MAI/exam/exam124.tex}
-      %-------------------------------------
-
       %-------------------------------------
       \input{../src/MAI/exam/exam125.tex}
       %-------------------------------------      
-
-      %-------------------------------------
       \input{../src/MAI/exam/exam126.tex}
       %------------------------------------- 
-
-      %-------------------------------------
       \input{../src/MAI/exam/exam119.tex}
       %-------------------------------------
 
