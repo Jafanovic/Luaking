@@ -44,6 +44,12 @@
       popřípadě \(a=-\infty\), \(b=+\infty)\), je také primitivní funkcí k \(f(x)\) v každém
       intervalu \(\alpha, \beta\), tj. pro nejž platí \(a\leq\alpha<\beta\leq b\). 
 
+      \begin{figure}[ht!]
+        \centering
+        \animategraphics[controls,autoplay,loop]{2}{mai_fig022}{}{}
+        \caption{Graf primitivní funkce \(F(x) = x^3\)}
+        \label{mai:fig099}
+      \end{figure}
       V dalším textu poznáme, že primitivní funkce mají velmi důležitou úlohu v matematice a v
       jejich aplikacích. Řešení mnoha úloh z integrálního počtu a příbuzných partií vede k určení
       primitvní funkce. Uvidíme například, že najdeme-li k funkci \(f(x)= x^2\) primitivní funkci
@@ -56,12 +62,7 @@
       hledání funkce je věnován následující text. Uvidíme, že určení primitivní funkce k dané
       elementární funkci je v obecnémpřípadě úloha podstatně obtíšžnější než určení derivace.  
       
-      \begin{figure}[ht!]
-        \centering
-        \animategraphics[controls,autoplay,loop]{2}{mai_fig022}{}{}
-        \caption{Graf primitivní funkce \(F(x) = x^3\)}
-        \label{mai:fig099}
-      \end{figure}
+
 
       Uvedeme nyní některé jednoduché příklady.
       %-------------------------------------
@@ -96,38 +97,27 @@
       je záporná: Výrazem \(F(x) + c\) jsou vyčerpány všechny primitivní funkce k dané funkci
       \(f(x)\). Platí věta: 
 
-      \begin{mdframed}[style=mdmathlemma] 
-        \begin{lemma}\label{mai:lemma008}(Věta o rozdílu dvou primitivních funkcí) Je-li \(F(x)\) v
-          intervalu \(J\) primitivní funkcí k funkci \(f(x)\), pak \textbf{každá} primitivní funkce
-          k funkci \(f(x)\) v intervalu \(J\) je tvaru 
-          \begin{equation*}
-            F(x) + c,
-          \end{equation*}
-          kde \(c\) je (reálná) konstanta.
-          \begin{proof}
-            Tvrzení a) Nechť \(F(x)\) a \(G(x)\) jsou dvě libovolné primitivní funkce k funkci
-            \(f(x)\) v intervalu \(J\). Máme dokázat, že se liší nejvýše o konstantu, tj. že platí 
-            \begin{equation*}
-              G(x) - F(x) = c,  \qquad x\in J. 
-            \end{equation*}
-            Podle definice primitivní funkce platí:
-            \begin{equation*}
-              F'(x) = f(x), \qquad G'(x) = f(x)
-            \end{equation*}
-            Funkce \(F(x)\) a \(G(x)\) mají tedy pro všechna \( x\in J\) stejná derivace, a tedy
-            funkce
-            \begin{equation*}
-              R(x) = G(x) - F(x), \qquad x\in J.
-            \end{equation*}
-            má derivea rovnou nule. 
-            \begin{equation*}
-              R'(x) = G'(x) - F'(x) = f(x) - f(x) = 0
-            \end{equation*}
-            pro všechna \( x\in J\). Je-li však \(R'(x)=0\) pro všechna \(x\) z daného intervalu je
-            \(R(x)=c\) v \(J\). Tedy \(R(x) = G(x) - F(x)=c\).
-          \end{proof}
-        \end{lemma}
-      \end{mdframed}
+      \begin{mathlemma}{(Věta o množině všech primitivních funkcí)}{lemma008}
+        Je-li \(F(x)\) v intervalu \(J\) primitivní funkcí k funkci \(f(x)\), pak \textbf{každá}
+        primitivní funkce k funkci \(f(x)\) v intervalu \(J\) je tvaru \[F(x) + c,\] kde \(c\) je
+        (reálná) konstanta.
+        \tcblower
+        \begin{proof}
+          Tvrzení a) Nechť \(F(x)\) a \(G(x)\) jsou dvě libovolné primitivní funkce k funkci
+          \(f(x)\) v intervalu \(J\). Máme dokázat, že se liší nejvýše o konstantu, tj. že platí 
+          \[G(x) - F(x) = c,  \qquad x\in J.\] Podle definice primitivní funkce platí:
+          \begin{align*}
+            F'(x) &= f(x), \qquad G'(x) = f(x)   \\
+            \intertext{Funkce \(F(x)\) a \(G(x)\) mají tedy pro všechna \( x\in J\) stejná derivace, 
+              a tedy funkce}
+            R(x)  &= G(x) - F(x), \qquad x\in J.  \\
+            \shortintertext{má derivea rovnou nule.}
+            R'(x) &= G'(x) - F'(x) = f(x) - f(x) = 0
+          \end{align*}
+          pro všechna \( x\in J\). Je-li však \(R'(x)=0\) pro všechna \(x\) z daného intervalu je
+          \(R(x)=c\) v \(J\). Tedy \(R(x) = G(x) - F(x)=c\).
+        \end{proof}
+      \end{mathlemma}
 
       Geometrická interpretace věty \ref{mai:lemma008}: Grafy dvou libovolných primitivních funkcí k
       funkci \(f(x)\) (v uvažovaném intervalu \(J\)) lze ztotožnit posunutím ve směru osy \(y\)
@@ -147,15 +137,13 @@
       tuto množinu funkcí, s níž se budeme v daším textu neustále setkávat, je vhodné zavést
       zvláštní název:  
 
-      \begin{mdframed}[style=mdmathdef] 
-        \begin{definition}\label{mai:def004} Množinu všech primitivních funkcí k funkci \(f(x)\) v
-          intervalu \(J\) nazýváme \textbf{neručitým integrálem} k funkci \(f(x)\)  a označujeme ji
-          \(\int f(x)\dd{x}\). Píšeme 
-          \begin{equation*}
-            \boxed{\int f(x)\dd{x} = F(x) + c \qquad x\in J}
-          \end{equation*}
-        \end{definition}
-      \end{mdframed}
+      \begin{mathdef}{Neručitý integrál}\label{def004} 
+        Množinu všech primitivních funkcí k funkci \(f(x)\) v intervalu \(J\) nazýváme
+        \textbf{neručitým integrálem} k funkci \(f(x)\) a označujeme ji \(\int f(x)\dd{x}\). Píšeme 
+        \begin{equation*}
+          \boxed{\int f(x)\dd{x} = F(x) + c \qquad x\in J}
+        \end{equation*}
+      \end{mathdef}
 
       Funkci \(f(x)\) nazveme \emph{integrandem}, symbol \(\int\) (který vznikl protažením písmena
       S) \emph{integračním znakem}. Výkon, kterým určujeme neurčitý integrál \(F(x) + c\) k dané
@@ -170,11 +158,10 @@
       konstatnu. Důležitá je taky otázka, kdy vůbec \emph{existuje} k dané funkci funkce primitivní.
       Postačující podmínku pro to dává věta 
       
-      \begin{mdframed}[style=mdmathlemma] 
-        \begin{lemma}\label{mai:lemma011} Ke každé funkci, spojité v otevřeném intervalu \(J\)
-          existuje v tomto intervalu primitivní funkce. 
-        \end{lemma}
-      \end{mdframed}
+      \begin{mathdef}{Věta o existenci primitivní funkce}{lemma011}
+        Ke každé funkci, spojité v otevřeném intervalu \(J\) existuje v tomto intervalu primitivní
+        funkce. 
+      \end{mathdef}
 
     \subsection{Poznámky k definici}  
       Z definice \ref{mai:def002} vyplývá, že primitivní funkce je spojitou funkcí, neboť má
