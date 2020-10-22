@@ -97,7 +97,7 @@
       je záporná: Výrazem \(F(x) + c\) jsou vyčerpány všechny primitivní funkce k dané funkci
       \(f(x)\). Platí věta: 
 
-      \begin{mathlemma}{(Věta o množině všech primitivních funkcí)}{lemma008}
+      \begin{mathlemma}{Věta o množině všech primitivních funkcí}{lemma008}
         Je-li \(F(x)\) v intervalu \(J\) primitivní funkcí k funkci \(f(x)\), pak \textbf{každá}
         primitivní funkce k funkci \(f(x)\) v intervalu \(J\) je tvaru \[F(x) + c,\] kde \(c\) je
         (reálná) konstanta.
@@ -137,11 +137,11 @@
       tuto množinu funkcí, s níž se budeme v daším textu neustále setkávat, je vhodné zavést
       zvláštní název:  
 
-      \begin{mathdef}{Neručitý integrál}\label{def004} 
+      \begin{mathdef}{Neručitý integrál}{def004} 
         Množinu všech primitivních funkcí k funkci \(f(x)\) v intervalu \(J\) nazýváme
         \textbf{neručitým integrálem} k funkci \(f(x)\) a označujeme ji \(\int f(x)\dd{x}\). Píšeme 
         \begin{equation*}
-          \boxed{\int f(x)\dd{x} = F(x) + c \qquad x\in J}
+          \int f(x)\dd{x} = F(x) + c \qquad x\in J
         \end{equation*}
       \end{mathdef}
 
@@ -158,12 +158,13 @@
       konstatnu. Důležitá je taky otázka, kdy vůbec \emph{existuje} k dané funkci funkce primitivní.
       Postačující podmínku pro to dává věta 
       
-      \begin{mathdef}{Věta o existenci primitivní funkce}{lemma011}
-        Ke každé funkci, spojité v otevřeném intervalu \(J\) existuje v tomto intervalu primitivní
-        funkce. 
-      \end{mathdef}
+      \begin{mathlem}{Vztah mezi spojitostí funkce \(f(x)\) a primitivní funkcí k \(F(x)\)}{lemma011}
+        Je-li funkce \(f(x)\) \emph{spojitá} na intervalu, pak k ní existuje primitivní funkce na
+        tomto intervalu.
+      \end{mathlem}
+      Větu nebudeme dokazovat, protože k tomu nemáme potřebné nástroje.
 
-    \subsection{Poznámky k definici}  
+    \subsubsection{Poznámky k definici}  
       Z definice \ref{mai:def002} vyplývá, že primitivní funkce je spojitou funkcí, neboť má
       derivaci a věta \ref{mai:lemma008} nám říká, že pokud k dané funkci existuje funkce
       primitivní, existuje jich nekonečně mnoho. Je-li např. \(F(x)\) primitivní funkce k funkci
@@ -171,11 +172,10 @@
       c\in\realset\}\). Tuto množinu označujeme symbolem \(\int f(x)\dd{x}\) a čteme \uv{integrál
       \(f(x)\dd{x})\)} Symbolu \(\int f(x)\dd{x}\) říkáme \textbf{neurčitý integrál}. Zpravidla
       píšeme
-      \begin{mdframed}[style=mdeq]
-        \begin{luaequ}\label{mai:eq102}
-          \boxed{\int f(x)\dd{x} = F(x) + c}
-        \end{luaequ}
-      \end{mdframed}
+
+      \begin{equation}\label{mai:eq102}
+        \int f(x)\dd{x} = F(x) + c
+      \end{equation}
       nebo jen \(\int f(x)\dd{x} = F(x)\) (tj. aditivní konstantu vynecháváme) a máme tím na mysli
       že \(F(x) \in \int f(x)\dd{x}\). Rovnost \ref{mai:eq102} je tedy rovnost mezi množinami,
       nikoliv rovnost funkcí. 
