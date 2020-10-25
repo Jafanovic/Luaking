@@ -29,7 +29,13 @@
 \begin{document}
 \ifthenelse{\equal{\DebugMode}{true}}{
   \overfullrule=1cm                       % Obviously Visible Bad Box Warnings
-  Textwidth:      \uselengthunit{mm}\printlength{\textwidth}
+  \begin{itemize}
+    \item Textwidth [mm]:      \uselengthunit{mm}\printlength{\textwidth}
+    \item Textwidth [pt]:      \uselengthunit{pt}\printlength{\textwidth}
+    \item Textheight [mm]:     \uselengthunit{mm}\printlength{\textheight}
+    \item Textheight [pt]:     \uselengthunit{pt}\printlength{\textheight}
+  \end{itemize}
+
 
   % Pagenumberwidth \uselengthunit{mm}\printlength{\pagenumberwidth}
   % Debug mode ON

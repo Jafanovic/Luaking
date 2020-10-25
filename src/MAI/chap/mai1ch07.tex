@@ -75,8 +75,8 @@
         F'(u) = \diff{F}{u} = f(u),
       \end{equation*}
       a podobně při jiném označení. Například funkce \(F(u) = \tan u + 3\) je pro \(u\in(-\pi/2,
-      \pi/2)\) primitivní funkcí k funkci \(f(u)=\frac{1}{\cos^2u}\), neboť pro každé \(u\in(-\pi/2,
-      \pi/2)\) platí \(F'(u)=(\tan u + 3)' = \frac{1}{\cos^2u}\).
+      \pi/2)\) primitivní funkcí k funkci \(f(u)=\dfrac{1}{\cos^2u}\), neboť pro každé \(u\in(-\pi/2,
+      \pi/2)\) platí \(F'(u)=(\tan u + 3)' = \dfrac{1}{\cos^2u}\).
 
       Primitivní funkce k funkci \(f(x)=3x^2\), \(x\in(-\infty, \infty)\) je funkce \(F(x)=x^3\),
       neboť pro všechna \(x\) platí \((x^3)'=3x^2\). Avšak také funkce \(G(x) = x^3+5\) nebo funkce
@@ -119,19 +119,26 @@
         \end{proof}
       \end{mathlemma}
 
+      I když všechny primitivní funkce k funkci \(f(x)\) mají až na konstantu stejný tvar, může se
+      stát že použijeme-li k hledání primitivní funkce různých Integračních metod, dostaneme pokaždé
+      \uv{trochu jiný} výsledek. V tom případě je vždy možné \uv{převést} jeden na druhý
+      \cite[p.~58]{rektorys2011}. Dostaneme-li například jednou metodou \(1/\cos^2x\) a druhou nám
+      vyjde \(1+\tan^2x\), jsou oba výsledky správné, neboť \[1+\tan^2x = 1+\dfrac{\sin^2x}{\cos^2x}
+      = \dfrac{\sin^2x + \cos^2x}{\cos^2x} = \dfrac{1}{\cos^2x}\].
+
       Geometrická interpretace věty \ref{mai:lemma008}: Grafy dvou libovolných primitivních funkcí k
       funkci \(f(x)\) (v uvažovaném intervalu \(J\)) lze ztotožnit posunutím ve směru osy \(y\)
       (obr. \ref{mai:fig100})
 
       \begin{figure}[ht!]
         \centering
-        \includegraphics[height=5cm]{example-image-b} 
+        \luafigure[1]{mai_fig078.pdf}
         \caption{Geometrická interpretace primitivní funkce \(F(x) +c\)}
         \label{mai:fig100}
       \end{figure}
 
       Všechny primitivní funkce k funkci \(f(x)\) se tedy liší navzájem jen o konstanu. Je-li známá
-      jedna primitivní funkce \(F(x)\) k funkci \(f(x)\), lze všechny ostatnůí vyjádřit ve tvaru
+      jedna primitivní funkce \(F(x)\) k funkci \(f(x)\), lze všechny ostatní vyjádřit ve tvaru
       \(F(x) + c\), kde \(c\) je libovolné reálné číslo. Množina funkcí tvaru \(F(x) + c\) zahrnuje
       tedy všechny funkce, které mají derivaci \(f(x)\) (a tedy diferenciál \(f(x)\dd{x}\)). Pro
       tuto množinu funkcí, s níž se budeme v daším textu neustále setkávat, je vhodné zavést
@@ -140,15 +147,13 @@
       \begin{mathdef}{Neručitý integrál}{def004} 
         Množinu všech primitivních funkcí k funkci \(f(x)\) v intervalu \(J\) nazýváme
         \textbf{neručitým integrálem} k funkci \(f(x)\) a označujeme ji \(\int f(x)\dd{x}\). Píšeme 
-        \begin{equation*}
-          \int f(x)\dd{x} = F(x) + c \qquad x\in J
-        \end{equation*}
+        \[\int f(x)\dd{x} = F(x) + c \qquad x\in J.\]
       \end{mathdef}
 
       Funkci \(f(x)\) nazveme \emph{integrandem}, symbol \(\int\) (který vznikl protažením písmena
       S) \emph{integračním znakem}. Výkon, kterým určujeme neurčitý integrál \(F(x) + c\) k dané
       primitivní funkci \(f(x)\), resp. k diferenciálu \(f(x)\dd{x}\), nazýváme \emph{integrováním}
-      funkce \(f(x)\). Udůvodněný názvu integrál a jeho označení vysvitne později, až poznáme vztah
+      funkce \(f(x)\). Odůvodnění názvu integrál a jeho označení vysvitne později, až poznáme vztah
       mezi primitivní funkcí a tzv. určitým integrálem v kapitole \ref{mai:IchapVIII}. Slovem
       \uv{neurčitý} vyznačujeme, že uvažujeme všechny funkce tvaru \(F(x)+ c\), nikoli jednu
       primitivní funkci. Místo \[\int\dfrac{1}{x}\dd{x}\] je zvykem psát \[\int\dfrac{\dd{x}}{x}\]
@@ -158,10 +163,11 @@
       konstatnu. Důležitá je taky otázka, kdy vůbec \emph{existuje} k dané funkci funkce primitivní.
       Postačující podmínku pro to dává věta 
       
-      \begin{mathlem}{Vztah mezi spojitostí funkce \(f(x)\) a primitivní funkcí k \(F(x)\)}{lemma011}
+      \begin{mathlemma}{Vztah mezi spojitostí funkce \(f(x)\) a primitivní funkcí k
+        \(F(x)\)}{lemma011}         
         Je-li funkce \(f(x)\) \emph{spojitá} na intervalu, pak k ní existuje primitivní funkce na
         tomto intervalu.
-      \end{mathlem}
+      \end{mathlemma}
       Větu nebudeme dokazovat, protože k tomu nemáme potřebné nástroje.
 
     \subsubsection{Poznámky k definici}  
@@ -1028,10 +1034,10 @@
       Některé příklady v předchozím odstavci, (viz např. \ref{MAI:exam135}) jsme dělením čitatele
       integrandu jmenovatelem dostali rozklad integrandu na součet racionální funkce (polynomu) a
       ryze lomené racionální funkce. Integrování polynomu je snadné, neboť jde o součet integrálů
-      tvaru $\int c_kx^k dx$, kde $k$ je celé nezáporné číslo. Omezíme se tedy na integrování
-      \emph{ryze lomené racionální funkce},  tj. funkce ve tvaru $P(x)/Q(x)$, kde $P(x), Q(x)$ jsou
-      polynomy, přičemž stupeň polynomu $P(x)$ je menší než stupeň polynomu $Q(x)$. Taková funkce
-      může vzniknout součtem několika jednoduchých zlomků (viz. následující příklad
+      tvaru \(\int c_kx^k dx\), kde \(k\) je celé nezáporné číslo. Omezíme se tedy na integrování
+      \emph{ryze lomené racionální funkce},  tj. funkce ve tvaru \(P(x)/Q(x)\), kde \(P(x)\),
+      \(Q(x)\) jsou polynomy, přičemž stupeň polynomu \(P(x)\) je menší než stupeň polynomu \(Q(x)\).
+      Taková funkce může vzniknout součtem několika jednoduchých zlomků (viz. následující příklad
       \ref{MAI:exam116}).
       
       %-------------------------------------
@@ -1046,16 +1052,14 @@
       \input{../src/MAI/exam/exam120.tex}
       %-------------------------------------
       
-      \begin{mdframed}[style=mdmathdef] 
-        \begin{definition}\label{mai:def003}
-          Parciální (částečným) zlomkem, budeme nazývat zlomek tvaru
-          \begin{equation}\label{mai:eq168}
-            \frac{A}{(x-\alpha)^k} \qquad\text{nebo}\qquad\frac{Bx + D}{(x^2 + px + q)^k}
-          \end{equation}  
-          kde \(A,\ B,\ D,\ \alpha,\ p,\ q\) jsou reálné konstanty, trojčlen \(x^2 + px + q\) nemá
-          reálné kořeny (tj. má záporný diskriminant $p^2-4q < 0$), $k$ celé nezáporné číslo.          
-        \end{definition}
-      \end{mdframed}    
+      \begin{mathdef}{Parciální (částečný) zlomek}{def003}
+        Parciálním (částečným) zlomkem, budeme nazývat zlomek tvaru
+        \begin{equation}\label{mai:eq168}
+          \frac{A}{(x-\alpha)^k} \qquad\text{nebo}\qquad\frac{Bx + D}{(x^2 + px + q)^k}
+        \end{equation}  
+        kde \(A,\ B,\ D,\ \alpha,\ p,\ q\) jsou reálné konstanty, trojčlen \(x^2 + px + q\) nemá
+        reálné kořeny (tj. má záporný diskriminant $p^2-4q < 0$), $k$ celé nezáporné číslo.          
+      \end{mathdef}    
       
       Jak ukazuje definice \ref{mai:def003}, jsou to funkce těchto čtyř typů:
       \begin{equation}\label{mai:eq166}

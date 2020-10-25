@@ -1,54 +1,47 @@
-\begin{mdframed}[style=mdexam]
-  \begin{example}\label{MAI:exam141}
-    Vypočtěme
-    \begin{equation*}
-      \int\dfrac{4x + 1}{(x^2 + 9)^3}\dd{x}.
-    \end{equation*}
-    \noindent\textbf{Řešení:}
-
-    Převzato z \cite[s.~76]{Knichal}. Diskriminant kvadratického výrazu \(x^2+9\) je zřejmě záporný,
-    takže jde o integrál typu 4. Nejprve rozložíme integrand na součet,
-
-    \begin{align*}
-      \dfrac{4x+1}{(x^2+9)^3} 
-        &= 2\cdot\dfrac{2x}{(x^2+9)^3} + \dfrac{1}{(x^2+9)^3},             \\
-      \shortintertext{takže}
-      \int\dfrac{4x+1}{(x^2+9)^3}\dd{x} 
-        &= 2\int\dfrac{2x}{(x^2+9)^3}\dd{x} + \underbrace{\int\dfrac{1}{(x^2+9)^3}\dd{x}}_{I_3},
-    \end{align*}
-    V prvním integrálu na pravé straně použijeme substituce \(x^2+9=z\), \(2x\dd{x} = \dd{z}\), z
-    čehož 
-    \begin{align*}
-      2\int\dfrac{2x}{(x^2+9)^3}\dd{x} 
-        &= 2\int z^{-3}\dd{z} = -z^{-2} + c  \\
-        &= -\dfrac{1}{(x^2+9)^2} + c.
-    \end{align*}  
-    Pro druhý integrál zavedeme označení \(I_3\) a použijeme rekurentní vztah \ref{mai:eq175}
-    \begin{align*}
-      I_3 &= \dfrac{x}{2\cdot(3-1)\cdot9\cdot(x^2+9)^2}+\dfrac{6-3}{6-2}\cdot\dfrac{1}{9}\cdot I_2\\
-      I_2 &= \dfrac{x}{2\cdot(2-1)\cdot9\cdot(x^2+9)  }+\dfrac{4-3}{4-2}\cdot\dfrac{1}{9}\cdot I_1\\
-      \shortintertext{\(I_1\) je však tabulkový integrál}
-      I_1 &= \int\dfrac{1}{x^2+9}\dd{x} = \dfrac{1}{3}\arctan\dfrac{x}{3} + c
-    \end{align*}
-    takže
-    \begin{multline*}
-      I_3 = 
-        \dfrac{x}{36(x^2+9)^2} +        \\
-          \left(
-            \dfrac{3}{4}\cdot\dfrac{1}{9}\dfrac{x}{18(x^2+9)^2} + 
-            \dfrac{1}{2}\cdot\dfrac{1}{9}\cdot\dfrac{1}{3}\arctan\dfrac{x}{3}
-          \right) + c
-    \end{multline*}
-    Je tedy
-    \begin{multline*}
-      \int\dfrac{4x + 1}{(x^2 + 9)^3}\dd{x} = -\dfrac{1}{(x^2+9)^2} + \dfrac{x}{36(x^2+9)^2} +  \\
-      + \dfrac{3}{4}\cdot\dfrac{1}{9}\cdot\dfrac{x}{18(x^2+9)^2}
-      + \dfrac{3}{4}\cdot\dfrac{1}{9}\cdot\dfrac{1}{2}\cdot
-        \dfrac{1}{9}\cdot\dfrac{1}{3}\arctan\dfrac{x}{3} + c
-    \end{multline*}
-    Po úpravě dostaneme výsledek
-    \begin{equation*}
-      \dfrac{x^3+15x-216}{216(x^2+9)^2} + \dfrac{1}{648}\arctan\dfrac{x}{3} + c.
-    \end{equation*}
-  \end{example}
-\end{mdframed}
+\begin{mathexam}{\(\scalerel{\int}{\dfrac{4x + 1}{(x^2 + 9)^3}\dd{x}}.\)
+  \hfill\cite[s.~76]{Knichal}}{exam141} 
+  Diskriminant kvadratického výrazu \(x^2+9\) je zřejmě záporný, takže jde o integrál typu 4.
+  Nejprve rozložíme integrand na součet,
+  \begin{align*}
+    \dfrac{4x+1}{(x^2+9)^3} 
+      &= 2\cdot\dfrac{2x}{(x^2+9)^3} + \dfrac{1}{(x^2+9)^3},             \\
+    \shortintertext{takže}
+    \int\dfrac{4x+1}{(x^2+9)^3}\dd{x} 
+      &= 2\int\dfrac{2x}{(x^2+9)^3}\dd{x} + \underbrace{\int\dfrac{1}{(x^2+9)^3}\dd{x}}_{I_3},
+  \end{align*}
+  V prvním integrálu na pravé straně použijeme substituce \(x^2+9=z\), \(2x\dd{x} = \dd{z}\), z
+  čehož 
+  \begin{align*}
+    2\int\dfrac{2x}{(x^2+9)^3}\dd{x} 
+      &= 2\int z^{-3}\dd{z} = -z^{-2} + c  \\
+      &= -\dfrac{1}{(x^2+9)^2} + c.
+  \end{align*}  
+  Pro druhý integrál zavedeme označení \(I_3\) a použijeme rekurentní vztah \ref{mai:eq175}
+  \begin{align*}
+    I_3 &= \dfrac{x}{2\cdot(3-1)\cdot9\cdot(x^2+9)^2}+\dfrac{6-3}{6-2}\cdot\dfrac{1}{9}\cdot I_2\\
+    I_2 &= \dfrac{x}{2\cdot(2-1)\cdot9\cdot(x^2+9)  }+\dfrac{4-3}{4-2}\cdot\dfrac{1}{9}\cdot I_1\\
+    \shortintertext{\(I_1\) je však tabulkový integrál}
+    I_1 &= \scalerel{\int}{\dfrac{1}{x^2+9}\dd{x}} = \dfrac{1}{3}\arctan\dfrac{x}{3} + c
+  \end{align*}
+  takže
+  \begin{multline*}
+    I_3 = 
+      \dfrac{x}{36(x^2+9)^2} +        \\
+        \left(
+          \dfrac{3}{4}\cdot\dfrac{1}{9}\dfrac{x}{18(x^2+9)^2} + 
+          \dfrac{1}{2}\cdot\dfrac{1}{9}\cdot\dfrac{1}{3}\arctan\dfrac{x}{3}
+        \right) + c
+  \end{multline*}
+  Je tedy
+  \begin{multline*}
+    \scalerel{\int}{\dfrac{4x + 1}{(x^2 + 9)^3}\dd{x}} 
+      = - \dfrac{1}{(x^2+9)^2} + \dfrac{x}{36(x^2+9)^2} +            \\
+        + \dfrac{3}{4}\cdot\dfrac{1}{9}\cdot\dfrac{x}{18(x^2+9)^2}
+        + \dfrac{3}{4}\cdot\dfrac{1}{9}\cdot\dfrac{1}{2}\cdot
+          \dfrac{1}{9}\cdot\dfrac{1}{3}\arctan\dfrac{x}{3} + c
+  \end{multline*}
+  Po úpravě dostaneme výsledek
+  \begin{equation*}
+    \dfrac{x^3+15x-216}{216(x^2+9)^2} + \dfrac{1}{648}\arctan\dfrac{x}{3} + c.
+  \end{equation*}
+\end{mathexam}
