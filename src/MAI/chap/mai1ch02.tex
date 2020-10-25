@@ -629,27 +629,26 @@
     \subsection{Základní operace s maticemi a hodnost matic}\label{mai:IchapIIsecIIIsubI}
       Víme již, že maticí typu \(m/n\) (též obdélníková matice) rozumíme soubor reálných,       
       popřípadě i komplexních čísel uspořádaných do \(m\) řádků a \(n\) sloupců:
-      \begin{mdframed}[style=mdmathdef]
-        \begin{definition}\label{def_matice}
-          Nechť \(m, n\) jsou přirozená čísla. Jestliže každé uspořádané dvojici \((m,n)\in 
-          \{1,2,\ldots,m\}\times \{1,2,\ldots,n\}\) přiřadíme prvek \(a_{i,j}\in\mathbb{R}\) 
-          obdržíme reálnou \href{http://cs.wikipedia.org/wiki/Matice}{matici} typu \(m,n\) nad 
-          \(\mathbb{R}\). 
-          
-          Matici zapisujeme jako
-          \begin{equation}\label{matice_zapis}
-            \matr{A} = \left(a_{ij}\right) =\left(
-                                          \begin{array}{ccc}
-                                            a_{11} & \ldots & a_{1n} \\
-                                            \vdots & \ddots & \vdots \\
-                                            a_{m1} & \ldots & a_{mn}
-                                          \end{array}
-                                     \right)
-          \end{equation}
-          která má právě \(mn\) prvků \((a_{ij})\) uspořádaných do \(m\) řádků a \(n\) sloupců. 
-          Stručně píšeme \(\matr{A} = (a_{ij})\)
-        \end{definition}
-      \end{mdframed}
+
+      \begin{mathdef}{Matice}{def006}
+        Nechť \(m, n\) jsou přirozená čísla. Jestliže každé uspořádané dvojici \((m,n)\in
+        \{1,2,\ldots,m\}\times \{1,2,\ldots,n\}\) přiřadíme prvek \(a_{i,j}\in\mathbb{R}\) obdržíme
+        reálnou \href{http://cs.wikipedia.org/wiki/Matice}{matici} typu \(m,n\) nad \(\mathbb{R}\). 
+        
+        Matici zapisujeme jako
+        \begin{equation}\label{matice_zapis}
+          \matr{A} = \left(a_{ij}\right) 
+            = \left(
+                \begin{array}{ccc}
+                  a_{11} & \ldots & a_{1n} \\
+                  \vdots & \ddots & \vdots \\
+                  a_{m1} & \ldots & a_{mn}
+                \end{array}
+              \right)
+        \end{equation}
+        která má právě \(mn\) prvků \((a_{ij})\) uspořádaných do \(m\) řádků a \(n\) sloupců.
+        Stručně píšeme \(\matr{A} = (a_{ij})\)
+      \end{mathdef}
 
       Defince nám říká, že prvky matice jsou označeny indexy udávajícími \textbf{řádek} a
       \textbf{sloupec}, v nichž se prvek nalézá. Prvek v \(i\)-tém řádku a \(j\)-tém sloupci matice
@@ -738,23 +737,21 @@
       
       První operací, která nás napadne je \textbf{sčítání matic}, což je operace kterou vznikne nová 
       matice pouhým sečtením odpovídajících prvků sčítaných matic. 
-      \begin{mdframed}[style=mdmathdef]
-        \begin{definition} 
-          \textbf{Součtem matice} \(\matr{A} \in \mathbb{R}_{mn}\) a matice \(\matr{B} \in 
-          \mathbb{R}_{mn}\), je matice \(\matr{C} \in \mathbb{R}_{mn}\) pro kterou platí:
-          \begin{gather*}
-            \begin{aligned}
-              \matr{C}  &=  \matr{A} + \matr{B} = (c_{ij}) = (a_{ij} + b_{ij}) \\
-                        &=  \begin{pmatrix}[0.9]
-                              a_{11} + b_{11}  & a_{12} + a_{12} & \ldots &  a_{1n} + b_{1n}\\
-                              a_{21} + b_{21}  & a_{22} + b_{22} & \ldots &  a_{2n} + b_{2n}\\
-                                  \vdots       &     \vdots      & \ddots &      \vdots     \\
-                              a_{m1} + b_{m1}  & a_{m2} + b_{m2} & \ldots &  a_{mn} + b_{mn}
-                            \end{pmatrix}.
-            \end{aligned}
-          \end{gather*} 
-        \end{definition}
-      \end{mdframed}
+      \begin{mathdef}{Součet matic}{def007}
+        \textbf{Součtem matice} \(\matr{A} \in \mathbb{R}_{mn}\) a matice \(\matr{B} \in 
+        \mathbb{R}_{mn}\), je matice \(\matr{C} \in \mathbb{R}_{mn}\) pro kterou platí:
+        \begin{gather*}
+          \begin{aligned}
+            \matr{C}  &=  \matr{A} + \matr{B} = (c_{ij}) = (a_{ij} + b_{ij}) \\
+                      &=  \begin{pmatrix}[0.9]
+                            a_{11} + b_{11}  & a_{12} + a_{12} & \ldots &  a_{1n} + b_{1n}\\
+                            a_{21} + b_{21}  & a_{22} + b_{22} & \ldots &  a_{2n} + b_{2n}\\
+                                \vdots       &     \vdots      & \ddots &      \vdots     \\
+                            a_{m1} + b_{m1}  & a_{m2} + b_{m2} & \ldots &  a_{mn} + b_{mn}
+                          \end{pmatrix}.
+          \end{aligned}
+        \end{gather*} 
+      \end{mathdef}
       Je-li \(k\) reálné (popřípadě i komplexní) číslo, rozumíme \(k\)-násobkem matice \(\matr{A}\) 
       matici \(\matr{F} = k\matr{A} = (f_{ij})\in \mathcal{M}(m/n)\)
       \begin{equation*}

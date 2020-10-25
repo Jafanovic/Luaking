@@ -97,15 +97,13 @@
     
     Výsledek pravděpodobností v tomto schématu je znám již dlouho. Jeho zobecnění přineslo první
     deﬁnici pravděpodobnosti:
-    \begin{mdframed}[style=mdmathdef]
-      \begin{definition}\label{mai:def001}
-        Klasická definice pravděpodobnosti: Může-li určitý jev vykázat \(n\) (\(n\) je konečné
-        číslo) různých, vzájemně se vylučujících výsledků, které jsou stejně možné (např. na základě
-        symetrie   a homogenity), a jestliže \(m\) z těchto výsledků má nevyhnutelně za následek
-        realizaci jevu \(A\) a zbylých \(n – m\) výsledků tuto realizaci vylučuje potom
-        pravděpodobnost jevu \(A\) (píšeme \(P(A)\)) položíme rovnu \(\frac{m}{n}\)
-      \end{definition}
-    \end{mdframed}
+    \begin{mathdef}{Klasická definice pravděpodobnosti}{mai:def001}
+      Může-li určitý jev vykázat \(n\) (\(n\) je konečné číslo) různých, vzájemně se vylučujících
+      výsledků, které jsou stejně možné (např. na základě symetrie a homogenity), a jestliže \(m\) z
+      těchto výsledků má nevyhnutelně za následek realizaci jevu \(A\) a zbylých \(n – m\) výsledků
+      tuto realizaci vylučuje potom pravděpodobnost jevu \(A\) (píšeme \(P(A)\)) položíme rovnu
+      \(\frac{m}{n}\)
+    \end{mathdef}
 
     Tato „deﬁnice“ pochází od francouzského matematika Pierra Simona de Laplace (1749- 1829) a celé
     století sloužila za základ pro výpočet pravděpodobností. Přesto vzbuzuje značné pochyby:
@@ -169,17 +167,15 @@
       třemi“} je \(M(B) = 2\) (počet ok \num{3} nebo \num{6}). Můžeme také definovat jev \(O\) 
       \emph{„nepadne žádné číslo“} (\(M(0) = 0\)) nebo jev \(J\) \emph{„padne jakékoli číslo“} 
       (\(M(J) = 6\)).      
-      \begin{mdframed}[style=mdmathdef]
-    `   \begin{definition}
-          Pravděpodobností jevu rozumíme podíl
-          \begin{equation}\label{mai:eq011}
-            p = \frac{M}{N} = \frac{\text{počet případů příznivých}}{\text{počet případů možných}}.
-          \end{equation}  
-          Počtem případů možných jsme zkráceně nazvali počet všech možných výsledků náhodného 
-          pokusu, počtem případů příznivých pak počet všech takových výsledků pokusu, při nichž daný 
-          jev nastal.
-        \end{definition}
-      \end{mdframed}
+      \begin{mathdef}{Klasická definice pravděpodobnosti}{def005}
+        Pravděpodobností jevu rozumíme podíl
+        \begin{equation}\label{mai:eq011}
+          p = \frac{M}{N} = \frac{\text{počet případů příznivých}}{\text{počet případů možných}}.
+        \end{equation}  
+        Počtem případů možných jsme zkráceně nazvali počet všech možných výsledků náhodného 
+        pokusu, počtem případů příznivých pak počet všech takových výsledků pokusu, při nichž daný 
+        jev nastal.
+      \end{mathdef}
 
       Je zřejmé, že hodnota pravděpodobnosti jakéhokoli jevu je nezáporná a může nabývat hodnoty 
       nejvýše \num{1}, tj. \(0 <p< 1\). Jev s \emph{nulovou pravděpodobností} se nazývá 
@@ -323,16 +319,14 @@
       %---------------------------------------------------------------
       
       Z příkladu intuitivně chápeme, co jsou to nezávislé jevy, a usuzujeme, že obecně platí
-      \begin{mdframed}[style=mdmathdef]
-        \begin{lemma}\label{mai:lemma003}
-          \textbf{(Násobení pravděpodobností)}: Pravděpodobnost současného výskytu dvou nezávislých 
-          jevů \(A\) a \(B\) (jev \(C\)) je rovna součinu jejich pravděpodobností, tj.
-          \begin{equation}\label{mai:eq052}
-            p(A \text{ a } B)= p(A)p(B) 
-          \end{equation}
-          pro \(A\) a \(B\) neslučitelné.
-        \end{lemma}
-      \end{mdframed}
+      \begin{mathlemma}{Násobení pravděpodobností}{mai:lemma003}
+        Pravděpodobnost současného výskytu dvou nezávislých jevů \(A\) a \(B\) (jev \(C\)) je rovna
+        součinu jejich pravděpodobností, tj.
+        \begin{equation}\label{mai:eq052}
+          p(A \text{ a } B)= p(A)p(B) 
+        \end{equation}
+        pro \(A\) a \(B\) neslučitelné.
+      \end{mathlemma}
       
       Pokusme se o přesnější definici nezávislých jevů a o odvození vztahu (\ref{mai:eq052}). 
       Označme jako \(N_A\) množinu všech možných výsledků pokusu, při němž může nastat jev \(A\), a 
@@ -364,24 +358,22 @@
       %--------------------------------------------------------------
       
       Je vidět, že opět směřujeme k obecnému tvrzení:
-      \begin{mdframed}[style=mdmathdef]
-        \begin{lemma}\label{mai:lemma004}
-          \textbf{(Sčítání pravděpodobností)}: Pravděpodobnost jevů \(A\) nebo \(B\),
-          (jev \(C\)) pro neslučitelné (vylučující se) jevy \(A\) a \(B\) rovna součtu
-          pravděpodobností jevů \(A\) nebo \(B\).
-          \begin{equation}\label{mai:eq053}
-            p(A \text{ nebo } B)= p(A) + p(B)
-          \end{equation}
-          pro \(A\) a \(B\) nezávislé.
-        \end{lemma}
-      \end{mdframed}
+      \begin{mathlemma}{Sčítání pravděpodobností)}{lemma004}
+        \textbf{(}: Pravděpodobnost jevů \(A\) nebo \(B\),
+        (jev \(C\)) pro neslučitelné (vylučující se) jevy \(A\) a \(B\) rovna součtu
+        pravděpodobností jevů \(A\) nebo \(B\).
+        \begin{equation}\label{mai:eq053}
+          p(A \text{ nebo } B)= p(A) + p(B)
+        \end{equation}
+        pro \(A\) a \(B\) nezávislé.
+      \end{mathlemma}
       
-      Opět se pokusme o přesnější definici neslučitelných jevů a o odvození vztahu 
-      (\ref{mai:eq053}). Označme, obdobně jako v předchozí úvaze o nezávislých jevech, množiny 
-      \(N_A\), \(N_B\), \(N_D\) možných výsledků, při nichž mohou nastat jevy \(A\), \(B\), \(D\). 
-      Předpokládejme, že \(N_A = N_B\). Pak \(N_A = N_B = N_D\), a tedy \(N(A) = N(B) = N(D) = N\). 
-      Jako \(M_A\), resp. \(M_B\), resp. \(M_D\) označme podmnožiny výsledků, při nichž nastane jev 
-      \(A\), resp. \(B\), resp. \(D\). Zřejmě \(M_D = M_A \cup M_B\). Pro počet prvků množiny 
+      Opět se pokusme o přesnější definici neslučitelných jevů a o odvození vztahu
+      (\ref{mai:eq053}). Označme, obdobně jako v předchozí úvaze o nezávislých jevech, množiny
+      \(N_A\), \(N_B\), \(N_D\) možných výsledků, při nichž mohou nastat jevy \(A\), \(B\), \(D\).
+      Předpokládejme, že \(N_A = N_B\). Pak \(N_A = N_B = N_D\), a tedy \(N(A) = N(B) = N(D) = N\).
+      Jako \(M_A\), resp. \(M_B\), resp. \(M_D\) označme podmnožiny výsledků, při nichž nastane jev
+      \(A\), resp. \(B\), resp. \(D\). Zřejmě \(M_D = M_A \cup M_B\). Pro počet prvků množiny
       \(M_D\) platí 
       \begin{align*}
         M(D) &= M(A) + M(B) - M(A\text{ a }B).                                    \\
@@ -620,15 +612,12 @@
       \end{equation*}
       Pomocí dvou předchozích vztahů dostáváme:
       
-      \begin{mdframed}[style=mdmathdef]
-        \begin{lemma}\label{mai:lemma005}
-          \textbf{(Bayesova formule):}
+      \begin{lemma}{Bayesova formule}{lemma005}
           \begin{equation}\label{mai:eq058}
             p_B(A_j) = \dfrac{p(A_j\text{ a }B)}{\sum_{i=1}^{k}p(A_i)\cdot p_{A_i}(B)} 
                      = \dfrac{p(A_j)\cdot p_{A_j}(B)}{\sum_{i=1}^{k}p(A_i)\cdot p_{A_i}(B)} .
           \end{equation}
-        \end{lemma}
-      \end{mdframed}
+      \end{lemma}
       
       Bayesova formule pro výpočet podmíněné pravděpodobnosti má řadu užitečných aplikací
       

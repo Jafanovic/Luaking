@@ -389,26 +389,24 @@
   V závěru odstavce ještě shrneme a doplníme obecnou terminologii týkající se diferenciálních
   rovnic, kterou jsme postupně zaváděli v komentářích k jednotlivým příkladům. 
   
-  \begin{mdframed}[style=mdmathdef]
-    \begin{definition}\label{mai:eq080}
-      Obyčejnou diferenciální rovnicí \(n\)-tého řádu nazýváme rovnici tvaru 
-      \begin{equation}\label{mai:eq091}
-        F(t, x, \dot{x}, \ddot{x}, \ldots,x^{(n)}) = 0
-      \end{equation}
-      kde \(F(p_1, p_2, \ldots, p_{n+2})\) je funkce definovaná na jisté otevřené souvislé
-      podmnožině \(\mathcal{D}\) \((n+2)\)-rozměrného euklidovského prostoru \(\realset^{n+2}\),
-      \(\mathcal{D}\subset \realset^{n+2}\). Každá funkce \(x = x(t)\), která je definována na
-      jistém intervalu \(\mathcal{I} \subset\realset\) i se svými derivacemi až do řádu \(n\)
-      včetně, pro všechna  splňuje \(t\in\mathcal{I}\) podmínku \((t, x(t), \dot{x}(t), \ddot{x}(t),
-      \ldots x^{(n)}) \in\mathbb{D}\) a vyhovuje rovnici (\ref{mai:eq080}), se nazývá
-      \textbf{řešením rovnice}. Její graf na intervalu \(\mathcal{I}\) je \textbf{integrální
-      křivka}. Jestliže jsou \(x_1(t)\), resp. \(x_2(t)\) dvě řešení rovnice definovaná na
-      intervalech \(\mathcal{I}_1\), resp. \(\mathcal{I}_2 \subset \mathcal{I}_1\), která na
-      intervalu \(\mathcal{I}_2\) splývají, nazývá se \(x_1(t)\) \textbf{prodloužením řešení}
-      \(x_2(t)\) na interval \(\mathcal{I}_1\), a \(x_2(t)\) je \textbf{zúžením} neboli
-      \textbf{restrikcí řešení} \(x_1(t)\) na interval \(\mathcal{I}_2\).
-    \end{definition}
-  \end{mdframed}
+  \begin{mathdef}{Obyčejná diferenciální rovnice \(n\)-tého řádu}{def004}
+    Obyčejnou diferenciální rovnicí \(n\)-tého řádu nazýváme rovnici tvaru 
+    \begin{equation}\label{mai:eq091}
+      F(t, x, \dot{x}, \ddot{x}, \ldots,x^{(n)}) = 0
+    \end{equation}
+    kde \(F(p_1, p_2, \ldots, p_{n+2})\) je funkce definovaná na jisté otevřené souvislé podmnožině
+    \(\mathcal{D}\) \((n+2)\)-rozměrného euklidovského prostoru \(\realset^{n+2}\),
+    \(\mathcal{D}\subset \realset^{n+2}\). Každá funkce \(x = x(t)\), která je definována na jistém
+    intervalu \(\mathcal{I} \subset\realset\) i se svými derivacemi až do řádu \(n\) včetně, pro
+    všechna  splňuje \(t\in\mathcal{I}\) podmínku \((t, x(t), \dot{x}(t), \ddot{x}(t), \ldots
+    x^{(n)}) \in\mathbb{D}\) a vyhovuje rovnici (\ref{mai:eq091}), se nazývá \textbf{řešením
+    rovnice}. Její graf na intervalu \(\mathcal{I}\) je \textbf{integrální křivka}. Jestliže jsou
+    \(x_1(t)\), resp. \(x_2(t)\) dvě řešení rovnice definovaná na intervalech \(\mathcal{I}_1\),
+    resp. \(\mathcal{I}_2 \subset \mathcal{I}_1\), která na intervalu \(\mathcal{I}_2\) splývají,
+    nazývá se \(x_1(t)\) \textbf{prodloužením řešení} \(x_2(t)\) na interval \(\mathcal{I}_1\), a
+    \(x_2(t)\) je \textbf{zúžením} neboli \textbf{restrikcí řešení} \(x_1(t)\) na interval
+    \(\mathcal{I}_2\).
+  \end{mathdef}
   
   \begin{mdframed}[style=mdnote]     
     Pojem \emph{otevřené souvislé podmnožiny}, tzv. oblasti, jsme sice přesně nezavedli, ale
@@ -519,34 +517,26 @@
 
 
 
-
-
-
-      \begin{mdframed}[style=mdmathdef]
-        \begin{lemma}\label{mai:lemma006}
-          \textbf{(Peanova)}: Předpokládejme, že funkce \(f(t, x)\) je spojitá na otevřené souvislé
-          množině \(\mathcal{D} \subset \mathcal{R}^2\). Pak každým bodem \((t_0, x_0) \in
-          \mathcal{D}\) prochází alespoň jedno řešení rovnice \(\dot{x} = f(t, x)\).
-        \end{lemma}
-      \end{mdframed} 
+      \begin{mathlemma}{Peanova věta}{lemma006}
+        Předpokládejme, že funkce \(f(t, x)\) je spojitá na otevřené souvislé množině \(\mathcal{D}
+        \subset \mathcal{R}^2\). Pak každým bodem \((t_0, x_0) \in \mathcal{D}\) prochází alespoň
+        jedno řešení rovnice \(\dot{x} = f(t, x)\).
+      \end{mathlemma} 
 
 
 
 
-      \begin{mdframed}[style=mdmathdef]
-        \begin{lemma}\label{mai:lemma007}
-          \textbf{(Picardova - existence a jednoznačnost řešení počáteční úlohy)}: Předpokládejme,
-          že funkce \(f(t, x)\) je spojitá na otevřené souvislé množině \(\mathcal{D}\) a že v
-          každém bodě této množiny splňuje Lipschitzovu podmínku. Pak pro každý bod \((t_0, x_0) \in
-          \mathcal{D}\) má počáteční úloha \(\dot{x} = f(t, x)\), \(x(t_0) = x_0\), právě jedno
-          řešení.
-        \end{lemma}
-      \end{mdframed} 
+      \begin{mathlemma}{(Picardova - existence a jednoznačnost řešení počáteční úlohy)}{lemma007}
+        Předpokládejme, že funkce \(f(t, x)\) je spojitá na otevřené souvislé množině
+        \(\mathcal{D}\) a že v každém bodě této množiny splňuje Lipschitzovu podmínku. Pak pro každý
+        bod \((t_0, x_0) \in \mathcal{D}\) má počáteční úloha \(\dot{x} = f(t, x)\), \(x(t_0) =
+        x_0\), právě jedno řešení.
+      \end{mathlemma} 
 
 
       
-      \subsection{Rovnice se separovatelnými proměnnými a 
-                  rovnice na ně převoditelné}\label{mai:IIchapIVsecIIIssecI}
+      \subsection{Rovnice se separovatelnými proměnnými a rovnice na ně
+                  převoditelné}\label{mai:IIchapIVsecIIIssecI}
         
     
       
