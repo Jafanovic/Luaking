@@ -47,7 +47,7 @@
       \begin{figure}[ht!]
         \centering
         \animategraphics[controls,autoplay,loop]{2}{mai_fig022}{}{}
-        \caption{Graf primitivní funkce \(F(x) = x^3\)}
+        \caption{Graf funkce \(f(x) = x^2\)}
         \label{mai:fig099}
       \end{figure}
       V dalším textu poznáme, že primitivní funkce mají velmi důležitou úlohu v matematice a v
@@ -58,12 +58,10 @@
       \begin{equation*}
         P = F(2) - F(0) = \frac{2^3}{3} = \frac{8}{3}.
       \end{equation*}
-      Užitečnost získání primitivní funkce vysvitne zejména v kapitole \ref{mai:IchapVII}. Metodám
+      Užitečnost získání primitivní funkce vysvitne zejména v kapitole \ref{mai:IchapVIII}. Metodám
       hledání funkce je věnován následující text. Uvidíme, že určení primitivní funkce k dané
       elementární funkci je v obecnémpřípadě úloha podstatně obtíšžnější než určení derivace.  
-      
-
-
+ 
       Uvedeme nyní některé jednoduché příklady.
       %-------------------------------------
       \input{../src/MAI/exam/exam118.tex}
@@ -144,7 +142,7 @@
       tuto množinu funkcí, s níž se budeme v daším textu neustále setkávat, je vhodné zavést
       zvláštní název:  
 
-      \begin{mathdef}{Neručitý integrál}{def004} 
+      \begin{mathdef}{Neurčitý integrál}{def004} 
         Množinu všech primitivních funkcí k funkci \(f(x)\) v intervalu \(J\) nazýváme
         \textbf{neručitým integrálem} k funkci \(f(x)\) a označujeme ji \(\int f(x)\dd{x}\). Píšeme 
         \[\int f(x)\dd{x} = F(x) + c \qquad x\in J.\]
@@ -159,63 +157,111 @@
       primitivní funkci. Místo \[\int\dfrac{1}{x}\dd{x}\] je zvykem psát \[\int\dfrac{\dd{x}}{x}\]
       apod. 
 
+      \subsubsection{Poznámky k definici}  
+        Z definice \ref{mai:def002} vyplývá, že primitivní funkce je spojitou funkcí, neboť má
+        derivaci a věta \ref{mai:lemma008} nám říká, že pokud k dané funkci existuje funkce
+        primitivní, existuje jich nekonečně mnoho. Je-li např. \(F(x)\) primitivní funkce k funkci
+        \(f(x)\) na intervalu \(J\), pak množina všech primitivních funkcí je množina \(\{F(x) + c;
+        c\in\realset\}\). Tuto množinu označujeme symbolem \(\int f(x)\dd{x}\) a čteme \uv{integrál
+        \(f(x)\dd{x})\)} Symbolu \(\int f(x)\dd{x}\) říkáme \textbf{neurčitý integrál}. Zpravidla
+        píšeme
+
+        \begin{equation}\label{mai:eq102}
+          \int f(x)\dd{x} = F(x) + c
+        \end{equation}
+        nebo jen \(\int f(x)\dd{x} = F(x)\) (tj. aditivní konstantu vynecháváme) a máme tím na mysli
+        že \(F(x) \in \int f(x)\dd{x}\). Rovnost \ref{mai:eq102} je tedy rovnost mezi množinami,
+        nikoliv rovnost funkcí. 
+        
+        V tomto smyslu tedy \(\int f(x)\dd{x}\) znamená, že \[\diff{}{x}\int f(x)\dd{x} = f(x)\], a
+        teprve ve výsledku výpočtu připsat integrační konstantu \(c\), abychom vyznačili, že jde o
+        množinu funkcí.
+
+        Jedna z primitivní funkcí k funkci \(f(x)=x^3\), \(x\in(-\infty, +\infty)\) je \(F(x)=
+        \frac{1}{4}x^4\). Je proto
+        \begin{fleqn}[\parindent]
+          \begin{equation*}
+            \int x^3\dd{x} = \frac{x^4}{4} + c \qquad x\in(-\infty, +\infty)
+          \end{equation*}
+        \end{fleqn} 
+
+        Jedna z funkcí, jejichž diferenciál je \(f(x) = \frac{1}{1+x^2}\dd{x}\), \(x\in(-\infty,
+        +\infty)\) je \(F(x) = \arctan x\), neboť v tomto intervalu je \(\dd{(\arctan x)} =
+        \frac{1}{1+x^2}\dd{x}\). Je proto
+        \begin{fleqn}[\parindent]
+          \begin{equation*}
+            \int\frac{1}{1+x^2}\dd{x} = \arctan x + c \qquad x\in(-\infty, +\infty).
+          \end{equation*}
+        \end{fleqn}
+        Často používáme pro argument jiného označení než \(x\).
+
+        Nechť \(f(z) = \frac{1}{z+3}\), \(x\in(-3, +\infty)\). Pak jedna z primitivních funkcí je
+        \(F(z) = \ln(z+3)\), a tedy
+        \begin{fleqn}[\parindent]
+          \begin{equation*}
+            \int\frac{1}{z+3}\dd{x} = \ln(z+3) + c \qquad x\in(-3, +\infty).
+          \end{equation*}
+        \end{fleqn}
+    
+    \subsection{Existuje k dané funkci vždy funkce primitivní?}  
       Ukázali jsme, že všechny primitivní funkce k dané funkci se mohou lišit navzájem až na
-      konstatnu. Důležitá je taky otázka, kdy vůbec \emph{existuje} k dané funkci funkce primitivní.
-      Postačující podmínku pro to dává věta 
-      
+      konstatnu. Nyní si všimneme otázky, zda k dané funkci \(f\) vůbec nějaká primitivní funkce
+      \emph{existuje}. Následující příklad ukazuje, že primitivní funkce nemusí existovat vždy.
+      %-------------------------------------  
+      \input{../src/MAI/exam/exam154.tex}
+      %-------------------------------------      
+      Viděli jsme, že nemusí existovat primitivní funkce k funkci na intervalu obsahujícím
+      „problematický“ bod. Pro „dostatečně rozumné“ funkce však máme existenci zaručenou následující
+      větou
       \begin{mathlemma}{Vztah mezi spojitostí funkce \(f(x)\) a primitivní funkcí k
         \(F(x)\)}{lemma011}         
-        Je-li funkce \(f(x)\) \emph{spojitá} na intervalu, pak k ní existuje primitivní funkce na
-        tomto intervalu.
+        Je-li funkce \(f(x)\) \emph{spojitá} na intervalu \(J\), pak k ní existuje primitivní funkce
+        na tomto intervalu.
       \end{mathlemma}
-      Větu nebudeme dokazovat, protože k tomu nemáme potřebné nástroje.
-
-    \subsubsection{Poznámky k definici}  
-      Z definice \ref{mai:def002} vyplývá, že primitivní funkce je spojitou funkcí, neboť má
-      derivaci a věta \ref{mai:lemma008} nám říká, že pokud k dané funkci existuje funkce
-      primitivní, existuje jich nekonečně mnoho. Je-li např. \(F(x)\) primitivní funkce k funkci
-      \(f(x)\) na intervalu \(J\), pak množina všech primitivních funkcí je množina \(\{F(x) + c;
-      c\in\realset\}\). Tuto množinu označujeme symbolem \(\int f(x)\dd{x}\) a čteme \uv{integrál
-      \(f(x)\dd{x})\)} Symbolu \(\int f(x)\dd{x}\) říkáme \textbf{neurčitý integrál}. Zpravidla
-      píšeme
-
-      \begin{equation}\label{mai:eq102}
-        \int f(x)\dd{x} = F(x) + c
-      \end{equation}
-      nebo jen \(\int f(x)\dd{x} = F(x)\) (tj. aditivní konstantu vynecháváme) a máme tím na mysli
-      že \(F(x) \in \int f(x)\dd{x}\). Rovnost \ref{mai:eq102} je tedy rovnost mezi množinami,
-      nikoliv rovnost funkcí. 
+      Věta \eqref{mai:lemma011} je typickým příkladem tzv. \emph{existenční věty}. Říká, že něco
+      existuje, ale neříká, jak se to najde. Větu nebudeme dokazovat, protože k tomu zatím nemáme
+      potřebné nástroje, což nevadí, protože samotný důkaz není v tomto smyslu konstruktivní.
       
-      V tomto smyslu tedy \(\int f(x)\dd{x}\) znamená, že \[\diff{}{x}\int f(x)\dd{x} = f(x)\], a
-      teprve ve výsledku výpočtu připsat integrační konstantu \(c\), abychom vyznačili, že jde o
-      množinu funkcí.
+      Mohlo by se zdát, že spojitost je i nutnou podmínkou pro existenci primitivní funkce. Tak tomu
+      však není, jak ukazuje následující příklad:
+      %-------------------------------------  
+      \input{../src/MAI/exam/exam155.tex}
+      %-------------------------------------       
+      Všimněme si, že zatímco poměrně „příjemná“ nespojitost v příkladu \eqref{mai:exam154}
+      znemožnila existenci primitivní funkce, tak o dost „nepříjemnější“ nespojitost ve druhém
+      příkladu \ref{mai:exam155} existenci připouští. V následujícím příkladu je zastoupen další
+      typ nespojitosti.
+      %-------------------------------------  
+      \input{../src/MAI/exam/exam156.tex}
+      %-------------------------------------       
 
-      Jedna z primitivní funkcí k funkci \(f(x)=x^3\), \(x\in(-\infty, +\infty)\) je \(F(x)=
-      \frac{1}{4}x^4\). Je proto
-      \begin{fleqn}[\parindent]
-        \begin{equation*}
-          \int x^3\dd{x} = \frac{x^4}{4} + c \qquad x\in(-\infty, +\infty)
-        \end{equation*}
-      \end{fleqn} 
+      Uvedli jsme příklady se třemi typy nespojitosti, ve dvou z nich neexistovala primitivní
+      funkce. Nabízí se tedy přirozená otázka, jak vlastně musí vypadat funkce, k níž existuje
+      funkce primitivní. Zde nám pomůže pojem tzv. \textbf{darbouxovské funkce} \(f(x)\) na
+      intervalu \(J\), tj. takové funkce \(f(x)\), že pro každé \(x_1, x_2 ∈ J\) takové, že \(f(x_1)
+      < f(x_2)\), a každé \(y_0 ∈ \realset\) takové, že \(f(x_1) < y_0 < f(x_2)\) existuje \(x_0 ∈
+      \langle x_1, x_2\rangle\) i tak, že \(f(x_0) = y_0\). Z diferenciálního počtu je známo, že
+      má-li \(F(x)\) derivaci na intervalu \(J\), pak \(F'(x)\) je darbouxovská; důležitou roli v
+      důkazu hraje Weierstrassova věta. Odtud již snadno plyne následující nutná podmínka existence
+      primitivní funkce.
+      \begin{mathlemma}{o darbouxovské funkci}{lemma015}         
+        Existuje-li k funkci \(f(x)\) na intervalu \(J\) funkce primitivní, pak je \(f(x)\)
+        darbouxovská na \(J\).
+      \end{mathlemma}
 
-      Jedna z funkcí, jejichž diferenciál je \(f(x) = \frac{1}{1+x^2}\dd{x}\), \(x\in(-\infty,
-      +\infty)\) je \(F(x) = \arctan x\), neboť v tomto intervalu je \(\dd{(\arctan x)} =
-      \frac{1}{1+x^2}\dd{x}\). Je proto
-      \begin{fleqn}[\parindent]
-        \begin{equation*}
-          \int\frac{1}{1+x^2}\dd{x} = \arctan x + c \qquad x\in(-\infty, +\infty).
-        \end{equation*}
-      \end{fleqn}
-      Často používáme pro argument jiného označení než \(x\).
+      Má-li darbouxovská funkce bod nespojitosti, pak nutně alespoň jedna z jednostranných limit v
+      tomto bodě neexistuje. Je evidentní, že jak funkce z příkladu \ref{mai:exam154}, tak i funkce
+      signum nejsou darbouxovské na žádném intervalu obsahujícím \(0\) — vadí nám totiž „skok“ ve
+      funkčních hodnotách. Funkce z příkladu \ref{mai:exam155} je nespojitá, avšak darbouxovská na
+      \(\realset\). Mohlo by se zdát, že každá darbouxovská funkce je derivací nějaké funkce. Tak
+      tomu však není; příklady takových funkcí jdou ovšem za rámec této kapitoly. Darbouxovské
+      funkce však tvoří velmi velkou třídu funkcí, např. se ví, že libovolnou funkci lze vyjádřit
+      jako součet dvou darbouxovských funkcí. To však mimo jiné implikuje, že třída darbouxovských
+      funkcí není uzavřená vzhledem ke sčítání. 
+      
+      Výše jsme tedy uvedli jednoduchou postačující (avšak nikoli nutnou) podmínku a jednoduchou
+      nutnou (avšak nikoliv postačující) podmínku pro existenci primitivní funkce.
 
-      Nechť \(f(z) = \frac{1}{z+3}\), \(x\in(-3, +\infty)\). Pak jedna z primitivních funkcí je
-      \(F(z) = \ln(z+3)\), a tedy
-      \begin{fleqn}[\parindent]
-        \begin{equation*}
-          \int\frac{1}{z+3}\dd{x} = \ln(z+3) + c \qquad x\in(-3, +\infty).
-        \end{equation*}
-      \end{fleqn}
-    
     \subsection{Některé vlastnosti integrálů}  
       Platnost několika následujících vztahů lze prověřit přímo užitím deﬁnic derivace a neurčitého
       integrálu. Tyto vztahy jsou při výpočtech často používány. Nejprve však uvedeme základní
@@ -795,6 +841,11 @@
       %-------------------------------------
       \input{../src/MAI/exam/exam153.tex}
       %-------------------------------------  
+      \input{../src/MAI/exam/exam131.tex}
+      %-------------------------------------  
+      \input{../src/MAI/exam/exam127.tex}
+      %------------------------------------- 
+      \input{../src/MAI/exam/exam134.tex}
     % --------------------------Integrace po částech - per partes-----------------------------------
     \newpage
     \subsection{Integrace po částech - per partes}\label{mai:IchapVIIsecIIIssecII} V kapitole
@@ -807,11 +858,28 @@
       ovšem podaří jen ve velmi speciálních případech. Jednou z nejúčinějších metod pro integrování
       součinu je tzv. \emph{metoda intergrování per partes (po částech)}, jejímž použitím můžeme
       často integrál z daného součinu funkcí převést na integrál z jednodušších funkcí, který již
-      dovedeme snadno integrovat. 
+      dovedeme snadno integrovat. Literatura: \cite[p.~137]{Musilova2009MA1}, \cite[s.~33]{Knichal},
+      \cite[s.~20]{Hoskova}.
       
-      Metoda integrace \emph{per partes} neboli využívá vzorce pro derivaci součinu funkcí.
-      Připomeňme si jej: Pro derivaci součinu dvou funkcí \(u(x)\) a \(u(x)\) platí
-      \cite[p.~137]{Musilova2009MA1}.
+      Metoda integrování per partes je založena na této větě:
+      \begin{mathlemma}{o metodě integrování per partes}{lemma014}       
+        Nechť funkce \(u(x)\) a \(v(x)\) mají derivaci na intervalu \(I\). Pak platí 
+        \begin{equation}\label{mai:eq147}
+          \int u(x)v'(x)\dd{x} = u(x)v(x) - \int u'(x)v(x)\dd{x} 
+        \end{equation}
+        pokud alespoň jeden z integrálů v předchozím vztahu existuje. 
+        \tcblower
+        \begin{proof}
+          Pro funkce \(u(x)\) a \(v(x)\) mající derivaci platí vztah \((u(x)v(x))' = u(x)'v(x) +
+          u(x)v'(x)\). Jeho integrací dostaneme
+          \begin{equation*}
+            \int(u(x)v(x))'\dd{x} = u(x)v(x) + c  = \int\left(u'(x)v(x)+u(x)v'(x)\right)\dd{x}.
+          \end{equation*}
+          Integrál \(\int(uv'+u'v)\dd{x}\) tedy existuje. Pokud existuje aspoň jeden z integrálů 
+          \(\int uv'\dd{x}\), \(\int u'v\dd{x}\), musí podle věty \eq{}
+        \end{proof}
+      \end{mathlemma}
+
       \begin{equation}\label{mai:eq101}
         [u(x)v(x)]' = u(x)'v(x) + u(x)v'(x).
       \end{equation} 
@@ -826,9 +894,7 @@
       \(g(x) = u(x)v(x)\). A předchozí vzorec umožňuje nahradit výpočet neurčitého integrálu z
       funkce \(f(x)\) výpočtem neurčitého integrálu z funkce \(g(x)\), tedy
 
-      \begin{equation}\label{ma:eq_perpartes}
-        \int u'(x)v(x)\dd{x} = u(x)v(x) - \int u(x)v'(x)\dd{x} 
-      \end{equation}
+
 
       %-------------------------------------
       \input{../src/MAI/exam/exam111.tex}
@@ -847,6 +913,7 @@
       %-------------------------------------
   
     %--------------------------- Substituční metoda ----------------------------------------------
+    \newpage
     \subsection{Substituční metoda typu \(\varphi(x) = t\)}\label{mai:IchapVIIsecIIIssecIII}
       Tato metoda \emph{substituce} neboli \emph{náhrady} spočívá v tom, že vhodně zvolenou funkci
       obsaženou v předpisu \(f(x)\) označíme jako novou jednoduchou proměnnou. Čeho tím dosáhneme?
@@ -1372,22 +1439,6 @@
     %-------------------------------------
     \newpage
     \begin{excercise}\label{mai:cviko002}
-      Hledejme primitivní funkce \(F(x)\) k následujícím funkcím
-      \begin{flalign}
-        &\int\frac{3}{(1+x^2)x^2}\dd{x}                                         &\label{mai:eq146}\\
-        &\int{\sqrt{1+\cos2x}\dd{x}}                                            &\label{mai:eq147}\\
-        &\int{\tan^2x}\dd{x}                                                    &\label{mai:eq149}\\
-        &\int\frac{1}{\cos x\cdot\sin x}\dd{x}                                  &\label{mai:eq151}
-      \end{flalign}
-    \end{excercise}
-
-    \input{../src/MAI/exam/exam130.tex}
-    \input{../src/MAI/exam/exam131.tex}
-    \input{../src/MAI/exam/exam127.tex}
-    \input{../src/MAI/exam/exam134.tex}
-    %-------------------------------------
-    \newpage
-    \begin{excercise}\label{mai:cviko003}
       Z toho, co jsme uvedli, vyplývá, jak postupujeme při rozkladu racionální lomené funkce na
       parciální zlomky:
       \begin{enumerate}[label=\roman*]
