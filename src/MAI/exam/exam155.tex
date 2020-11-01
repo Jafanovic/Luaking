@@ -12,16 +12,24 @@
 
   {\centering
     \captionsetup{type=figure} 
-    \luafigure[0.7]{example-image-a}
-    \captionof{figure}{Chaotický průběh funkce \(f(x)\) v okolí \(0\).}
+  % \luafigure[0.7]{example-image-a}
+    \luafigure[1]{mai_fig081}
+    \captionof{figure}{Chaotický průběh funkce \(f(x)\) v okolí \(0\) 
+                       a její primitivní funkce \(F(x)\).}
     \label{mai:fig102}
   \par}
   
-  Funkce \(f(x)\) má primitivní funkci:
+  Pomocí symbolického toolboxu \texttt{Matlabu} a následujícího skriptu
+  \begin{lstlisting}[style=luaMatlabText,gobble=4]
+    syms x;
+    expr = 2*x*sin(1/x)-cos(1/x);
+    F = int(expr)
+  \end{lstlisting}
+  snadno získáme hledanou primitvní funkci: 
   \begin{equation*}
-    f(x) = 
+    F(x) = 
       \begin{cases}
-        x62\sin\frac{1}{x} & \text{pro} x\neq0, \\
+        x^2\sin\frac{1}{x} & \text{pro} x\neq0, \\
         0                  & \text{pro} x=0.
       \end{cases}
   \end{equation*}

@@ -205,7 +205,7 @@
     
     \subsection{Existuje k dané funkci vždy funkce primitivní?}  
       Ukázali jsme, že všechny primitivní funkce k dané funkci se mohou lišit navzájem až na
-      konstatnu. Nyní si všimneme otázky, zda k dané funkci \(f\) vůbec nějaká primitivní funkce
+      konstantu. Nyní si všimneme otázky, zda k dané funkci \(f\) vůbec nějaká primitivní funkce
       \emph{existuje}. Následující příklad ukazuje, že primitivní funkce nemusí existovat vždy.
       %-------------------------------------  
       \input{../src/MAI/exam/exam154.tex}
@@ -213,7 +213,7 @@
       Viděli jsme, že nemusí existovat primitivní funkce k funkci na intervalu obsahujícím
       „problematický“ bod. Pro „dostatečně rozumné“ funkce však máme existenci zaručenou následující
       větou
-      \begin{mathlemma}{Vztah mezi spojitostí funkce \(f(x)\) a primitivní funkcí k
+      \begin{mathlemma}{o vztahu mezi spojitostí funkce \(f(x)\) a primitivní funkcí k
         \(F(x)\)}{lemma011}         
         Je-li funkce \(f(x)\) \emph{spojitá} na intervalu \(J\), pak k ní existuje primitivní funkce
         na tomto intervalu.
@@ -718,17 +718,27 @@
       je tedy definována nová transendentní funkce. Podobně jsou nové transendentní funkce
       definovány integrály
       \begin{align*}
-        \text{Si }x 
-          &= \int\limits_0^x     \frac{\sin t}{t}\dd{t},&&\ldots\,\text{integrálsinus}       \\
-        \text{Ci }x 
-          &=-\int\limits_x^\infty\frac{\cos t}{t}\dd{t},&&\ldots\,\text{integrálcosinus}     \\
+        \text{Si}(x) 
+          &= \int\limits_0^x     \frac{\sin t}{t}\dd{t},&&\ldots\,\text{Integrálsinus}           \\
+        \text{Ci}(x) 
+          &=-\int\limits_x^\infty\frac{\cos t}{t}\dd{t},&&\ldots\,\text{Integrálcosinus}         \\
         \text{Li }x 
-          &= \int\limits_0^x     \frac{\dd{t}}{\ln t},  &&\ldots\,\text{logaritmusintegrál}  \\
-        \text{Ei }x 
-          &= \int\limits_{-\infty}^x \frac{e^t}{t}\dd{t}&&   
+          &= \int\limits_0^x     \frac{\dd{t}}{\ln t},  &&\ldots\,\text{Logaritmusintegrál}      \\
+        \text{Ei}(x) 
+          &= \int\limits_{-\infty}^x \frac{e^t}{t}\dd{t}&&\ldots\,\text{Exponenciální integrál}  \\
+        \Gamma(x) 
+          &= \int\limits^\infty_0 t^{x-1}{e^{-t}}\dd{t}&&\ldots\,\text{Gamma funkce}             \\
+        Y
+          &= \int\limits^\infty_{-\infty}{e^{-x^2}}\dd{x}&&\ldots\,\text{Gausův inegrál}     
       \end{align*}
 
-      V některých případech může být příčinou nezdaru nevhodnost použitého početního postupu. 
+      Vidíme, že se jedná na první pohled o velmi jednoduché funkce. Tedy odhadnout podle
+      \uv{složitosti} zadané funkce, zda je její primitivní funkce elementární nebo ne, je nemožné.
+      Například \(\int\cos^2x\dd{x}\) lehce spočítáme, ale \(\int\cos x^2\dd{x}\), už není
+      elementární funkce. Přitom v obou případech jde o složenou funkci se složkami \uv{druhá
+      mocnina} a \uv{kosinus}. Liší se jen pořadím složek. Jedná se totiž o: 
+      \[\int\sin{x^2}\dd{x},\quad\int\sin{x^2}\dd{x}\quad\ldots\text{Fresnelovy integrály}\]
+
 
   \section{Metody určení primitivní funkce}\label{mai:IchapVIIsecIII}
     Procesu hledání primitivní funkce se často říká integrování nebo integrace (od slova“integrál”),
