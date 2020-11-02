@@ -213,8 +213,7 @@
       Viděli jsme, že nemusí existovat primitivní funkce k funkci na intervalu obsahujícím
       „problematický“ bod. Pro „dostatečně rozumné“ funkce však máme existenci zaručenou následující
       větou
-      \begin{mathlemma}{o vztahu mezi spojitostí funkce \(f(x)\) a primitivní funkcí k
-        \(F(x)\)}{lemma011}         
+      \begin{mathlemma}{o existenci primitivní funkce \(F(x)\)}{lemma011}         
         Je-li funkce \(f(x)\) \emph{spojitá} na intervalu \(J\), pak k ní existuje primitivní funkce
         na tomto intervalu.
       \end{mathlemma}
@@ -858,22 +857,22 @@
       \input{../src/MAI/exam/exam134.tex}
     % --------------------------Integrace po částech - per partes-----------------------------------
     \newpage
-    \subsection{Integrace po částech - per partes}\label{mai:IchapVIIsecIIIssecII} V kapitole
-      \ref{mai:IchapVIIsecIIIssecI} jsme ukázali, jak integrujeme součet konečného počtu funkcí.
-      Příklady jsme řešili podle věty \ref{mai:lemma013}, která, zhruba řečeno, říká že integrál ze
-      součtu je roven součtu integrálů. Analogická věta pro součin neplatí. (Proč?) Tato skutečnost
-      značně komplikuje praktický výpočet inegrálů i tehdy, jde-li o součin poměrně jednoduchých
-      funkcí. V některých případech (příklady \ref{mai:exam132}, \ref{mai:exam151}) je možno
-      jednoduchou formální úpravou převést součin na součet funkcí, které dovedme integrovat. To se
-      ovšem podaří jen ve velmi speciálních případech. Jednou z nejúčinějších metod pro integrování
-      součinu je tzv. \emph{metoda intergrování per partes (po částech)}, jejímž použitím můžeme
-      často integrál z daného součinu funkcí převést na integrál z jednodušších funkcí, který již
-      dovedeme snadno integrovat. Literatura: \cite[p.~137]{Musilova2009MA1}, \cite[s.~33]{Knichal},
-      \cite[s.~20]{Hoskova}.
+    \subsection{Integrace po částech - per partes}\label{mai:IchapVIIsecIIIssecII} 
+      V kapitole \ref{mai:IchapVIIsecIIIssecI} jsme ukázali, jak integrujeme součet konečného počtu
+      funkcí. Příklady jsme řešili podle věty \ref{mai:lemma013}, která, zhruba řečeno, říká že
+      integrál ze součtu je roven součtu integrálů. Analogická věta pro součin neplatí. (Proč?) Tato
+      skutečnost značně komplikuje praktický výpočet inegrálů i tehdy, jde-li o součin poměrně
+      jednoduchých funkcí. V některých případech (příklady \ref{mai:exam132}, \ref{mai:exam151}) je
+      možno jednoduchou formální úpravou převést součin na součet funkcí, které dovedme integrovat.
+      To se ovšem podaří jen ve velmi speciálních případech. Jednou z nejúčinějších metod pro
+      integrování součinu je tzv. \emph{metoda intergrování per partes (po částech)}, jejímž
+      použitím můžeme často integrál z daného součinu funkcí převést na integrál z jednodušších
+      funkcí, který již dovedeme snadno integrovat. Literatura: \cite[p.~137]{Musilova2009MA1},
+      \cite[s.~33]{Knichal}, \cite[s.~20]{Hoskova}.
       
       Metoda integrování per partes je založena na této větě:
       \begin{mathlemma}{o metodě integrování per partes}{lemma014}       
-        Nechť funkce \(u(x)\) a \(v(x)\) mají derivaci na intervalu \(I\). Pak platí 
+        Nechť funkce \(u(x)\) a \(v(x)\) mají derivaci na intervalu \(J\). Pak platí 
         \begin{equation}\label{mai:eq147}
           \int u(x)v'(x)\dd{x} = u(x)v(x) - \int u'(x)v(x)\dd{x} 
         \end{equation}
@@ -883,32 +882,25 @@
           Pro funkce \(u(x)\) a \(v(x)\) mající derivaci platí vztah \((u(x)v(x))' = u(x)'v(x) +
           u(x)v'(x)\). Jeho integrací dostaneme
           \begin{equation*}
-            \int(u(x)v(x))'\dd{x} = u(x)v(x) + c  = \int\left(u'(x)v(x)+u(x)v'(x)\right)\dd{x}.
+            \begin{multlined}
+              \int(u(x)v(x))'\dd{x} = u(x)v(x) + c  =  \\
+              = \int\left(u'(x)v(x)+u(x)v'(x)\right)\dd{x}.
+            \end{multlined}
           \end{equation*}
-          Integrál \(\int(uv'+u'v)\dd{x}\) tedy existuje. Pokud existuje aspoň jeden z integrálů 
-          \(\int uv'\dd{x}\), \(\int u'v\dd{x}\), musí podle věty \eq{}
+          Integrál \(\int(u(x)v'(x) + u'(x)v(x))\dd{x}\) tedy existuje. Pokud existuje aspoň jeden z
+          integrálů \(\int u(x)v'(x)\dd{x}\), \(\int u'(x)v(x)\dd{x}\), nechť je to např. \(\int
+          u(x)v'(x)\dd{x}\) musí podle vzorce \eqref{mai:eq103} existovat i integrál z rozdílu
+          \(\int[(u(x)v'(x) + u'(x)v(x)) - u(x)v'(x)]\dd{x} = \int u'(x)v(x)\dd{x}\), což je druhý
+          uvažovaný integrál, takže \[u(x)v(x) + c  = \int\left(u'(x)v(x)+u(x)v'(x)\right)\dd{x}\]
+          a odtud již dostáváme vztah \eqref{mai:eq147}.
         \end{proof}
       \end{mathlemma}
 
-      \begin{equation}\label{mai:eq101}
-        [u(x)v(x)]' = u(x)'v(x) + u(x)v'(x).
-      \end{equation} 
-      Primitivní funkcí levé strany je \(F(x) = u(x)v(x)\), a tedy
-      \begin{equation*}
-        u(x)v(x) =  \int u'(x)v(x)\dd{x} + \int u(x)v'(x)\dd{x}
-      \end{equation*}  
-      za předpokladu, že existují obě primitivní funkce na pravé straně. K čemu může tento
-      samozřejmý vzorec sloužit při hledání primitivní funkce? Dejme tomu, že zadaná funkce
-      \(f(x)\), k níž máme hledat funkci primitivní, je tvaru \(f(x) = u'(x)v(x)\), a my si s ní
-      nevíme rady. Je však možné, že bychom si docela dobře poradili s primitivní funkcí k funkci
-      \(g(x) = u(x)v(x)\). A předchozí vzorec umožňuje nahradit výpočet neurčitého integrálu z
-      funkce \(f(x)\) výpočtem neurčitého integrálu z funkce \(g(x)\), tedy
-
-
-
-      %-------------------------------------
-      \input{../src/MAI/exam/exam111.tex}
-      %-------------------------------------
+      V příkladech, které budeme řešit, mají funkce spojité derivace, takže existence integrálů bude
+      zaručena větou \eqref{mai:lemma011}. Stručně ji zapisujeme
+      \begin{equation}\label{mai:eq149}
+        \int uv'\dd{x} = uv - \int u'v\dd{x}.
+      \end{equation}
 
       Není vždy jednoduché rozpoznat, jak máme rozložit funkci \(f(x)\) na součin funkcí \(u'(x)\) 
       a \(v(x)\). Takový rozklad není určen jednoznačně a požadavek na něj bychom mohli (dosti 
@@ -917,7 +909,9 @@
       „stejně složité“ (například \(u'(x) =e^x\), \(u(x) = e^x\), nebo \(u'(x) = \cos x\), \(u(x) = 
       \sin x\), apod.). Spolehlivě používat metodu per partes se však můžeme naučit pouze studiem 
       vyřešených příkladů z literatury a praktickým procvičováním \cite[p.~138]{Musilova2009MA1}.
-  
+
+      %-------------------------------------
+      \input{../src/MAI/exam/exam111.tex}
       %-------------------------------------
       \input{../src/MAI/exam/exam109.tex}
       %-------------------------------------

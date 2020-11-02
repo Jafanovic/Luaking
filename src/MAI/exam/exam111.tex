@@ -1,8 +1,26 @@
-\begin{mathexam}{Najďete primitivní funkci k funkci \(f(x) = x\sin x\).}{exam111}
-  Představíme-li si ji jako součin \(f(x) = u'(x)v(x)\), kde \(u'(x) = \sin x\), tj. \(u(x) = -\cos
-  x\), a \(v(x)= x\), tj. \(v'(x) = 1\), dostaneme
+\begin{mathexam}{\(\int x\sin x\dd{x}\)}{exam111} 
+  
+  Součin v zadání je zřejmý. Můžeme si zvolit buď \(u=x\) a \(v'=\sin x\), nebo naopak \(u=\sin x\)
+  a \(v'= x\).
+  
+  Zkusíme nejprve první volbu. Je-li \(u=x\) bude \(u=1\). Dále \(v'=\sin x\), tedy \(v=\int\sin
+  x\dd{x} = -\cos x\) (integrační konstantu volíme rovnou nule, stačí nám jedna konkrétní primitivní
+  funkce). Ze vzorce \eqref{mai:eq147} dostaneme
   \begin{align*}
-    \int x\sin x\dd{x} &= -x\cos x + \int\cos x\dd{x} \\
-                       &= -x\cos x + \sin x + C.
-  \end{align*}    
+    \int x\sin x\dd{x} &= x(-\cos x) - \int1\cdot(-\cos x)\dd{x} \\
+                       &= -x\cos x + \sin x + c.
+  \end{align*}  
+  Tato volba tedy vedla k cíli. Výpočet obvykle zapisujeme do jakési tabulky, takže zápis vypadá
+  následovně:
+  \begin{align*}
+    \int x\sin x\dd{x} &= %
+      \left\lvert
+        \begin{matrix} 
+          u = x     & u' =1        \\
+          v'=\sin x & v  = -\cos x 
+        \end{matrix}  
+      \right\rvert =                                              \\
+                       & = x(-\cos x) - \int1\cdot(-\cos x)\dd{x} \\
+                       &= -x\cos x + \sin x + c.
+  \end{align*}  
 \end{mathexam}
