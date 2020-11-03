@@ -873,9 +873,11 @@
       Metoda integrování per partes je založena na této větě:
       \begin{mathlemma}{o metodě integrování per partes}{lemma014}       
         Nechť funkce \(u(x)\) a \(v(x)\) mají derivaci na intervalu \(J\). Pak platí 
-        \begin{equation}\label{mai:eq147}
-          \int u(x)v'(x)\dd{x} = u(x)v(x) - \int u'(x)v(x)\dd{x} 
-        \end{equation}
+        \begin{fleqn}[0pt]
+          \begin{equation}\label{mai:eq147}
+            \int u(x)v'(x)\dd{x} = u(x)v(x) - \int u'(x)v(x)\dd{x} 
+          \end{equation}
+        \end{fleqn}
         pokud alespoň jeden z integrálů v předchozím vztahu existuje. 
         \tcblower
         \begin{proof}
@@ -915,47 +917,38 @@
       %-------------------------------------
       \input{../src/MAI/exam/exam109.tex}
       %-------------------------------------
-  
+      \input{../src/MAI/exam/exam157.tex}
+      %-------------------------------------  
     %--------------------------- Substituční metoda ----------------------------------------------
     \newpage
-    \subsection{Substituční metoda typu \(\varphi(x) = t\)}\label{mai:IchapVIIsecIIIssecIII}
+    \subsection{Substituční metoda typu \(\varphi(x) = t\)}\label{mai:IchapVIIsecIIIssecIII} 
+      
       Tato metoda \emph{substituce} neboli \emph{náhrady} spočívá v tom, že vhodně zvolenou funkci
       obsaženou v předpisu \(f(x)\) označíme jako novou jednoduchou proměnnou. Čeho tím dosáhneme?
-      Předpokládejme například, že \[f(x)=\varphi'(x)g[\varphi(x)]\] a označme jako novou proměnnou
-      \(u = f(x)\). Že to vypadá, jako bychom se chystali použít vzorec pro derivaci složené funkce?
-      Správně! Dejme tomu, že známe primitivní funkci \(G(u)\) k funkci \(g(u)\). Pak platí
-      \begin{equation*}
-        \left[G\left(\varphi(x)\right)\right]' = G'\left[\varphi(x)\right]\cdot\varphi'(x) 
-        = g\left[\varphi(x)\right]\cdot\varphi'(x),     
-      \end{equation*}
-      a tedy
-      \begin{equation*}
-        \int \varphi'(x) g\left[\varphi(x)\right]\dd{x} =  G\left[\varphi(x)\right]. 
-      \end{equation*}      
-      Na základě těchto úvah formulujeme následující větu (viz. \cite[p.~142]{diblik2002}):
-      \begin{mdframed}[style=mdmathlemma]
-        \begin{lemma}\label{mai:lemma009}          
-          (\textbf{o substituci}). Nechť funkce \(F(t)\) je primitivní funkcí k funkci \(f(t)\) v
-          intervalu \(\alpha, \beta\). Nechť funkce \(t = \varphi(x)\) v intervalu \((a,b)\).
-          [Intervaly \(\alpha, \beta\) a \((a,b)\) mohou být popřípadě nekonečné.] Pro každé
-          \(x\in(a,b)\) nechť číslo \(\varphi(x)\) patří do intervalu \(\alpha, \beta\). Pak v
-          intervalu \((a,b)\) je funkce \(F(\varphi(x))\) primitivní funkcí k funkci
-          \(f(\varphi(x))\varphi'(x)\), tj. 
-          \begin{fleqn}[0pt]
-            \begin{equation}\label{mai:eq176}
-              \int{f(\varphi(x))\varphi'(x)\dd{x}} = F(\varphi(x)) + c.
-            \end{equation}
-          \end{fleqn}
-          Tento výsledek je zvykem zapisovat v integrálním počtu takto:
-          \begin{fleqn}[0pt]
-            \begin{equation}\label{mai:eq177}
-              \int{f[\varphi(x)]\varphi'(x)\dd{x}}= \int f(t)\dd{t}= F(t)+c
-              \raisetag{14pt}
-            \end{equation}
-          \end{fleqn}
-          kde \(t=\varphi(x)\).
-        \end{lemma}
-      \end{mdframed}
+      Připomeňme že platí\[\left(F[\varphi(x)]\right)'=F'[\varphi(x)]\varphi'(x) =
+      f[\varphi(x)]\varphi'(x),\] kde jsme označili \(F'(u) = f(u)\) a \(u=\varphi(x)\). Na základě
+      těchto úvah formulujeme následující větu (viz. \cite[p.~142]{diblik2002}):
+
+      \begin{mathlemma}{o první substituční metodě}{lemma009}          
+        Nechť funkce \(F(t)\) je primitivní funkcí k funkci \(f(t)\) v intervalu \(\alpha, \beta\).
+        Nechť funkce \(t = \varphi(x)\) v intervalu \((a,b)\). [Intervaly \(\alpha, \beta\) a
+        \((a,b)\) mohou být popřípadě nekonečné.] Pro každé \(x\in(a,b)\) nechť číslo \(\varphi(x)\)
+        patří do intervalu \(\alpha, \beta\). Pak v intervalu \((a,b)\) je funkce \(F(\varphi(x))\)
+        primitivní funkcí k funkci \(f(\varphi(x))\varphi'(x)\), tj. 
+        \begin{fleqn}[0pt]
+          \begin{equation}\label{mai:eq176}
+            \int{f(\varphi(x))\varphi'(x)\dd{x}} = F(\varphi(x)) + c.
+          \end{equation}
+        \end{fleqn}
+        Tento výsledek je zvykem zapisovat v integrálním počtu takto:
+        \begin{fleqn}[0pt]
+          \begin{equation}\label{mai:eq177}
+            \int{f[\varphi(x)]\varphi'(x)\dd{x}}= \int f(t)\dd{t}= F(t)+c
+            \raisetag{14pt}
+          \end{equation}
+        \end{fleqn}
+        kde \(t=\varphi(x)\).
+      \end{mathlemma}
   
       Základem úspěchu při aplikací věty je správný výběr funkce $\varphi(x)$. Praxe je totiž
       taková, že výpočet konkrétních příkladů je schématicky veden od rov. \eqref{mai:eq177} ke
@@ -1420,7 +1413,6 @@
     \begin{excercise}\label{mai:cviko001}
       Hledejme primitivní funkce \(F(x)\) k následujícím funkcím
       \begin{flalign}
-        &\int{xe^x\dd{x}},                                                      &\label{mai:eq140}\\
         &\int\frac{x}{x^2+1}\dd{x}                                              &\label{mai:eq141}\\
         &\int{\arctan x\dd{x}},                                                 &\label{mai:eq142}\\
         &\int{\frac{2x^4-5x^2+14x+13}{x^2-x-2}\dd{x}}                           &\label{mai:eq144}\\
@@ -1434,7 +1426,6 @@
     že triky“, které při výpočtu nejvíce pomohou, nespočívají často v těchto metodách samotných, ale
     jsou spíše založeny na představivosti počtáře při úpravě obyčejných středoškolských vzorců.
 
-    \input{../src/MAI/exam/exam112.tex}
     \input{../src/MAI/exam/exam123.tex}
     \input{../src/MAI/exam/exam113.tex}
     \input{../src/MAI/exam/exam016.tex}
