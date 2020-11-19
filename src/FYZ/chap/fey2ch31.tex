@@ -219,7 +219,7 @@
     pole (kapitola \ref{fyz:IIchapXXVI}).
 
     \luagraphic[0.8]{fyz_fig875.pdf}{Množina koncových bodů vektoru \(\vec{E} = (E_x, E_y)\), který
-    odpovídá konstantní energii polarizace (\cite[s.~707]{Feynman02})}{fyz:fig875}
+    odpovídá konstantní energii polarizace (\cite[s.~577]{Feynman02})}{fyz:fig875}
 
     Tenzor polarizovatelnosti \(\alpha_{ij}\) má tu zajímavou vlastnost, že je symetrický, to
     znamená, že \(\alpha_{xy} = \alpha_{yx}\), a totéž platí pro libovolnou dvojici indexů. (To je
@@ -260,7 +260,7 @@
     „vypadá“ polarizační tenzor.
 
     \luagraphic[0.7]{fyz_fig876.pdf}{Elipsoid energie tenzoru polarizovatelnosti
-    (\cite[s.~707]{Feynman02})}{fyz:fig876}
+    (\cite[s.~577]{Feynman02})}{fyz:fig876}
     
     Vezmeme-li nyní v úvahu všechny tři složky vektoru \(\vec{E}\) libovolného směru, který vede k
     jednotkové hustotě energie, budou jeho koncové body ležet na povrchu \textbf{elipsoidu}, jak je
@@ -296,71 +296,247 @@
 
     Pro hlavní osy \(a\), \(b\), \(c\) jsou jen diagonální členy různé od nuly. Říkáme, že tenzor je
     diagonální a jeho tvar je
+    \begin{equation}\label{fyz:eq834}
+      \begin{bmatrix}
+        \alpha_{aa}&      0      &      0      \\
+             0     & \alpha_{bb} &      0      \\
+             0     &      0      & \alpha_{cc}
+      \end{bmatrix}.
+    \end{equation}
+    Důležitým faktorem je, že libovolný tenzor polarizovatelnosti (ve skutečnosti libovolný
+    symetrický tenzor druhého stupně pro libovolný počet rozměrů) se může v tomto tvaru psát při
+    vhodném výběru souřadnicových os.
+    
+    Jsou-li si tři prvky polarizačního vektoru v diagonálním tvaru rovny,
+    \begin{equation}\label{fyz:eq835}
+        \alpha_{aa} = \alpha_{bb} = \alpha_{cc} = \alpha,
+    \end{equation}
+    stává se \emph{elipsoid energie kulovou plochou} a polarizovatelnost je stejná ve všech směrech.
+    Látka je \emph{izotropní}. V tenzorovém označení
+    \begin{equation}\label{fyz:eq836}
+      \alpha_{ij} = \alpha\delta_{ij},
+    \end{equation}
+    kde \(\delta_{ij}\) je \textbf{jednotkový tenzor}
+    \begin{equation}\label{fyz:eq837}
+      \delta_{ij} = 
+      \begin{bmatrix}
+             1 & 0 & 0 \\
+             0 & 1 & 0 \\
+             0 & 0 & 1  
+      \end{bmatrix}.
+    \end{equation}
+    To samozřejmě znamená, že
+    \begin{equation}\label{fyz:eq838}
+      \delta_{ij} = 
+      \begin{cases} 
+         1  & \text{pro } i = j     \\
+         0  & \text{pro } i \neq j.
+      \end{cases}
+    \end{equation}
 
-  \section{Jiné tenzory. Tenzor setrvačnosti}\label{fyz:IIchapXXXIsecIV}
-    \begin{figure}[ht!] %\ref{fyz:fig877}
-      \centering
-      \includegraphics[width=0.5\linewidth]{fyz_fig877.pdf}
-      \caption{
-              (\cite[s.~707]{Feynman02})}
-      \label{fyz:fig877}
-    \end{figure}
+    Tenzor \(\delta_{ij}\) se často nazývá \textbf{Kroneckerovo delta}. Můžeme se pobavit tím, že
+    dokážeme, že tenzor \eqref{fyz:eq837} bude mít po záměně jedné pravoúhlé soustavy za druhou
+    přesně tutéž formu. Tenzor polarizovatelnosti typu \eqref{fyz:eq836} nám dává
+    \begin{equation*}
+      P_i = \alpha\sum_j\delta_{ij}E_j = \alpha E_i,
+    \end{equation*}
+    což je totéž jako náš starý výsledek pro izotropní dielektrika
+    \begin{equation*}
+      \vec{P} = \alpha\vec{E},
+    \end{equation*}
 
-  \section{Vektorový součin}\label{fyz:IIchapXXXIsecV}
-  \section{Tenzor napětí}\label{fyz:IIchapXXXIsecVI}
-  \section{Tenzory vyššího řádu}\label{fyz:IIchapXXXIsecVII}
-  \section{Čtyřtenzor elektromagnetické energie a hybnosti}\label{fyz:IIchapXXXIsecVIII}
-  \section{Příklady a cvičení}\label{fyz:IIchapXXXIsecIX}
+    Tvar a orientace elipsoidu polarizovatelnosti může někdy souviset s vlastnosti symetrie
+    krystalu. V kapitole \ref{{fyz:IIchapXXX}} jsme řekli, že existuje 230 různých možných symetrií
+    trojrozměrné mřížky a pro různé účely je vhodné je rozdělit na sedm tříd podle tvaru základní
+    buňky. Elipsoid polarizovatelnosti musí odrážet vnitřní symetrii krystalu. Například trojklonný
+    krystal má nízkou symetrii - elipsoid polarizovatelnosti bude mít nestejné osy a jejich
+    orientace nebude obecně souhlasit se směrem os krystalu. Na druhé straně má jednoklonná mřížka
+    tu vlastnost, že při rotaci o \ang{180} kolem jedné osy se její vlastnosti nemění. Proto
+    polarizační tenzor musí při takové rotaci zůstávat nezměněn. Z toho vyplývá, že tenzor
+    polarizovatelnosti se po rotaci o \ang{180} musí transformovat sám v sebe. To je možné jen v tom
+    případě, kdy jedna z os elipsoidu má tentýž směr jako osa symetrie krystalu. Žádná další omezení
+    na orientaci a rozměry elipsoidu nejsou.
+    
+    Pro kosočtverečný krystal však musí osy elipsoidu souhlasit s osami krystalu, neboť při rotaci o
+    \ang{180} kolem libovolné ze tří os dostáváme tutéž mřížku. Vezmeme-li čtverečný krystal, musí
+    mít elipsoid stejnou symetrii, tj. musí mít dva průměry stejné. Nakonec, pro krychlový krystal
+    musí být všechny tři průměry elipsoidu stejné. Elipsoid se stává kulovou plochou a
+    polarizovatelnost krystalu je ve všech směrech stejná.
+    
+    Existuje celá věda o určování druhů tenzorů pro všechny možné symetrie krystalu. Je to analýza
+    založená na teorii grup. Ale pro jednoduché případy tenzoru polarizovatelnosti je poměrně snadno
+    vidět, jaké musí příslušné vztahy být.
 
+  \section{Tenzor setrvačnosti}\label{fyz:IIchapXXXIsecIV} 
+  
+    Ve fyzice najdeme mnohé další příklady tenzorů. Například v kovu nebo v libovolném vodiči bývá
+    často proudová hustota \(\vec{j}\) přibližně úměrná elektrickému poli \(\vec{E}\). Konstanta
+    úměrnosti a se nazývá měrná \emph{vodivost} (konduktivita):
+    \begin{equation*}
+      \vec{j} = \sigma\vec{E}.
+    \end{equation*}
+    Pro krystaly je však vztah mezi \(\vec{j}\) a \(\vec{E}\) mnohem komplikovanější, vodivost není
+    stejná ve všech směrech. Konduktivita je tenzorem, proto píšeme
+    \begin{equation*}
+      j_i = \sum_j\sigma_{ij}E_j
+    \end{equation*}
 
+    Dalším příkladem fyzikálního tenzoru je moment setrvačnosti. V \ref{fyz:IchapXVIII}. kapitole
+    \ref{part:FYZI}. dílu jsme viděli, že při rotaci tuhého tělesa kolem fixované osy jejeho moment
+    hybnosti \(L\) úměrný úhlové rychlosti \(ω\) a koeficient úměrnosti \(L\) jsme nazvali
+    \emph{momentem setrvačnosti} \[L=I\omega\].
 
+    Moment setrvačnosti libovolně tvarovaného tělesa závisí na jeho orientaci vzhledem k ose
+    otáčení. Například kvádr bude mít různé momenty vzhledem ke každé z jeho tří navzájem kolmých
+    os. Úhlové rychlosti \(\vec{ω}\) i moment hybnosti \(\vec{L}\) jsou vektory. Při rotaci kolem
+    jedné z os symetrie jsou tyto vektory rovnoběžné. Avšak jsou-li momenty setrvačnosti vzhledem ke
+    třem hlavním osám různé, nemusí být \(\vec{ω}\) a \(\vec{L}\) vždy rovnoběžné (obr.
+    \ref{fyz:fig877}). Jejich vzájemný vztah je podobný jako vztah mezi \(\vec{E}\) a \(\vec{P}\).
+    Obecně musíme psát
+    \begin{align}
+      Lx&=I_{xx}=I_{xx}ω_x+I_{xy}ω_y+I_{xz}ω_z,  \nonumber         \\
+      Ly&=I_{yx}=I_{yx}ω_x+I_{yy}ω_y+I_{yz}ω_z,  \label{fyz:eq839} \\
+      Lz&=I_{zx}=I_{zx}ω_x+I_{zy}ω_y+I_{zz}ω_z.  \nonumber 
+    \end{align}
+    Devět koeficientů \(I_{ij}\). je nazýváno \textbf{tenzor setrvačnosti}. Podobně jako v případě
+    polarizace musí být kinetická energie pro libovolný moment hybnosti kvadratickou formou vzhledem
+    k \(ω_x\), \(ω_y\) a \(ω_z\):
+    \begin{equation}\label{fyz:eq840}
+      E_k = \frac{1}{2}\sum_{ij}L_{ij}ω_iω_j.
+    \end{equation}
+    Energii můžeme využít k definování \textbf{elipsoidu setrvačnosti}. Opět můžeme pomocí úvah o
+    energii dokázat, že tenzor setrvačnosti je \emph{symetrický}, tj. že \(I_{ij} = I_{ji}\)
 
+    Tenzor setrvačnosti tuhého tělesa můžeme určit, zname-li jeho tvar. Potřebujeme jen napsat
+    kinetickou energii všech částic tělesa. Částice, která má hmotnost \(m\) a rychlost \(\vec{v}\),
+    má kinetickou energii \(\sfrac{1}{2}mv^2\) a celková kinetická energie je součtem výrazů
+    \[\sum\frac{1}{2}mv^2\] pocházejících od všech částic tělesa. Rychlost \(\vec{v}\) každé částice
+    souvisí s úhlovou rychlostí \(\vec{ω}\) tuhého tělesa. Předpokládejme, že těleso se otáčí kolem
+    svého těžiště, které je v klidu. Je-li \(\vec{r}\) polohový vektor částice vzhledem k těžišti,
+    rychlost částice \(\vec{v}\) je dána výrazem \(\vec{ω}\times\vec{r}\). Celková kinetická energie
+    je
+    \begin{equation}\label{fyz:eq841}
+      E_k = \sum\frac{1}{2}m\left(\vec{ω}\times\vec{r}\right)^2.
+    \end{equation}
 
+    \luagraphic[0.7]{fyz_fig877.pdf}{Moment hybnosti \(\vec{L}\) tuhého tělesa obecně není
+    rovnoběžný s úhlovou rychlostí \(\vec{ω}\) (\cite[s.~580]{Feynman02})}{fyz:fig877}
+    
+    Nyní už jen stačí rozepsat \(\vec{ω}\times\vec{r}\) pomocí složek \(ω_x\), \(ω_y\) a \(ω_z\) a
+    \(x\), \(y\), \(z\) a porovnat výsledek s rovnicí \eqref{fyz:eq840}. \(I_{ij}\) najdeme
+    porovnáním jednotlivých členů. Provedeme algebraické úpravy
+    \begin{equation*}
+      (\vec{ω}×\vec{r})^2=(\vec{ω}×\vec{r})^2_x+(\vec{ω}×\vec{r})^2_y+(\vec{ω}×\vec{r})^2_z
+    \end{equation*}
+    čili
+    \begin{equation*}
+      (ω_yz−ω_zy)^2+(ω_zx−ω_xz)^2+(ω_xy−ω_yx)^2
+    \end{equation*}
+    a konečně
+    \begin{align*}
+      = &+ω_y^2z − 2ω_yω_z zy + ω_z^2y^2 \\
+        &+ω_z^2x − 2ω_zω_x xz + ω_x^2z^2 \\
+        &+ω_x^2y − 2ω_xω_y yx + ω_y^2x^2.
+    \end{align*}
+    Vynásobřme-li tuto rovnici veličinou \(\sfrac{m}{2}\) sečteme přes všechny částice a porovnáme s
+    rovnicí \eqref{fyz:eq840}, zjistíme, že například \(I_{xx}\) je rovno
+    \begin{equation*}
+      I_{xx}=∑m(y^2+z^2).
+    \end{equation*}
+    Je to tentýž vzorec, který jsme dostali v \ref{fyz:IchapXIX}. kapitole \ref{part:FYZI}. dílu pro
+    moment setrvačnosti tělesa vzhledem k ose \(x\). Jelikož \(r^2 = x^2 + y^2 + z^2\) můžeme tento
+    vzorec psát i jako
+    \begin{equation*}
+      I_{xx}=∑m(r^2-x^2).
+    \end{equation*}
+    Vypíšeme-li všechny ostatní členy tenzoru setrvačnosti \(I_{ij}\), dostaneme
+    \begin{equation*}
+      \begin{bmatrix}
+        \sum m(r^2-x^2) &    -\sum mxy     &   -\sum mxz     \\
+          -\sum myx     &  \sum m(r^2-y^2) &   -\sum myz     \\
+          -\sum mzx     &    -\sum mzy     & \sum m(r^2-z^2)
+      \end{bmatrix}.
+    \end{equation*}
+    Chceme-li, můžete si to zapsat v tenzorovém označení jako
+    \begin{equation}\label{fyz:eq843}
+      I_{ij}=\sum m(r^2\delta_{ij}-r_ir_j),
+    \end{equation}
+    kde \(r_i\) jsou složky \((x, y, z)\) polohového vektoru částice a \(\sum\) označuje sumu přes
+    všechny částice. \emph{Moment setrvačnosti je tedy tenzorem druhého řádu}. Jeho členy jsou
+    určeny vlastnostmi tělesa a vztah mezi \(\vv{L}\) a \(\vv{\omega}\) je vyjádřen pomocí tohoto
+    tenzoru jako
+    \begin{equation}\label{fyz:eq844}
+      L_i=\sum_jI_{ij}\omega_j.
+    \end{equation}
+    Pro těleso libovolného tvaru lze najít elipsoid setrvačnosti, a tedy i tři hlavní osy. Vzhledem
+    k těmto osám bude tenzor diagonální, tj. pro libovolný objekt existují vždy tři navzájem kolmé
+    osy, pro něž jsou úhlová rychlost a moment hybnosti paralelní. Nazývají se \textbf{hlavní osy
+    setrvačnosti}.
 
+  \section{Vektorový součin}\label{fyz:IIchapXXXIsecV}   
+    Vzpomeňme si, že tenzory druhého řádu jsme používali už od \ref{fyz:IchapXX}. kapitoly
+    \ref{part:FYZI}. dílu. Tehdy jsme definovali \emph{moment síly v rovině}, například složku
+    \(N_{xy}\) vztahem 
+    \begin{equation*}
+      N_{xy} = xF_y-yF_x.
+    \end{equation*}
+    Po zobecnění na tři rozměry lze psát
+    \begin{equation}\label{fyz:eq842}
+      N_{ij} = r_iF_j-r_jF_i.
+    \end{equation}
+    Veličina \(N_{ij}\) je \emph{tenzor druhého řádu}. Lze to ukázat například tak, že zkombinujeme
+    \(N_{ij}\) s nějakým vektorem, řekněme s jednotkovým vektorem \(\vec{e}\), tímto způsobem:
+    \begin{equation*}
+      \sum_jN_{ij}e_j.
+    \end{equation*}
+    Je-li takováto veličina \emph{vektor}; musí se \(N_{ij}\) transformovat jako tenzor - to je naše
+    definice tenzoru. Dosadíme za \(N_{ij}\) a dostaneme
 
-
+  \section{Tenzor napětí}\label{fyz:IIchapXXXIsecVI} 
 
     \begin{figure}[ht!] %\ref{fyz:fig878}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig878.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Látka nalevo od roviny \(\sigma\) působí přes plošku \(\Delta x\Delta y\) silou
+              \(\Delta F_1\), na látku napravo (\cite[s.~583]{Feynman02})}
       \label{fyz:fig878}
     \end{figure}
 
     \begin{figure}[ht!] %\ref{fyz:fig879}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig879.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{\(\Delta F_1\) působící na plošný element \(\Delta y\Delta z\) kolmý na osu \(x\) se
+              rozkládá na tři složky \(\Delta F_{x1}\), \(\Delta F_{y1}\) a \(\Delta F_{z1}\)
+              (\cite[s.~584]{Feynman02})}
       \label{fyz:fig879}
     \end{figure}
 
     \begin{figure}[ht!] %\ref{fyz:fig880}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig880.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Síla působící na plošný element kolmý na \(y\) se rozkládá na tři navzájem kolmé
+               složky (\cite[s.~584]{Feynman02})}
       \label{fyz:fig880}
     \end{figure}
 
     \begin{figure}[ht!] %\ref{fyz:fig881}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig881.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Síla\(\Delta F_n\) působící na plochu \(N\) (s jednotkovým vektorem \(\vec{n}\)) se
+               rozkládá na tři složky (\cite[s.~585]{Feynman02})}
       \label{fyz:fig881}
     \end{figure}
 
     \begin{figure}[ht!] %\ref{fyz:fig882}
       \centering
       \includegraphics[width=0.7\linewidth]{fyz_fig882.pdf}
-      \caption{
-               (\cite[s.~707]{Feynman02})}
+      \caption{Složky sil \(x\) a \(y\) působících na čtyři stěny malé jednotkové krychle
+               (\cite[s.~586]{Feynman02})}
       \label{fyz:fig882}
     \end{figure}
-
-
-    \todo[inline]{Kapitola fey2ch31 je nedodělaná, obsahuje pouze obrázky}
-%} %tikzset
-%---------------------------------------------------------------------------------------------------
+ 
+  \section{Tenzory vyššího  řádu}\label{fyz:IIchapXXXIsecVII} 
+  
+  \section{Čtyřtenzor elektromagnetické energie a hybnosti}\label{fyz:IIchapXXXIsecVIII} 
+  
+  \section{Příklady a cvičení}\label{fyz:IIchapXXXIsecIX}
