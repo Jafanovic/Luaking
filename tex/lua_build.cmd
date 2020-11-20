@@ -33,7 +33,7 @@ gswin64 -o %root_file%_gray.pdf^
 COPY ".\%root_file%_gray.pdf" "..\build\%root_file%_%date:~-4,4%_%date:~-7,2%_%date:~-10,2%_gray.pdf"
 DEL luaking*.pdf
 
-START cleaner.cmd
+rem START cleaner.cmd
 
 echo COMPILATION STOP: %time%
 ENDLOCAL
