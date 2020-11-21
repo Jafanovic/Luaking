@@ -46,7 +46,7 @@
     \(P=\varepsilon_0\chi E\) a \(\chi\) („chí") jsme nazývali \emph{susceptibilita}. Nyni bude
     pohodlnější používat jedno písmeno, proto namísto \(\varepsilon_0\chi\) budeme psát \(\alpha\).
     Pro izotropní dielektrika platí \(\alpha = (\varepsilon_r - 1)\varepsilon_0\), kde
-    \(\varepsilon_r\) je relativn( permitivita (článek \ref{fyz:IIchapXsecIV})}. Budeme uvažovat
+    \(\varepsilon_r\) je relativní permitivita (článek \ref{fyz:IIchapXsecIV})}. Budeme uvažovat
     látky, v nichž \(\alpha\) závisí na směru pole, jako například v krystalech podobných vápenci,
     který má tu vlastnost, že při průhledu vidíme obraz dvojitě. 
 
@@ -491,41 +491,191 @@
     \end{equation*}
     Je-li takováto veličina \emph{vektor}; musí se \(N_{ij}\) transformovat jako tenzor - to je naše
     definice tenzoru. Dosadíme za \(N_{ij}\) a dostaneme
+    \begin{align*}
+      \sum_jN_{ij}e_j
+        &=\sum_jr_iF_je_j-\sum_jr_je_jF_i           \\[1ex]
+        &=r_i(\vec{F}\cdot\vec{e})-(\vec{r}\cdot\vec{e})F_i.
+    \end{align*}
+    Jelikož skalární součin je skalár, jsou dva členy na pravé straně rovnice vektory a vektorem je
+    i jejich rozdíl. \(N_{ij}\) je tedy tenzor.
+
+    Ale \(N_{ij}\) je speciálním druhem tenzoru - je to \textbf{antisymetrický tenzor}, pro nějž
+    platí
+    \begin{equation*}
+      N_{ij}=-N_{ji},
+    \end{equation*}
+    tj. má jen tři nenulové členy \(-N_{xy}\), \(N_{yz}\) a \(N_{zx}\). V \ref{fyz:IchapXX}.
+    kapitole \ref{part:FYZI}. dílu se nám podařilo ukázat, že tyto tři členy se téměř \uv{náhodou}
+    transformují jako tři složky vektoru, takže jsme mohli \emph{definovat}
+    \begin{equation*}
+      N = N_{ij}=-N_{ji},
+    \end{equation*}
+    
+    Říkáme „náhodou“, neboť toto platí jen v trojrozměrném případě. Pro čtyři rozměry má například
+    antisymetrický tenzor druhého řádu šest nenulových složek a, samozřejmě, nemůže být nahrazen
+    vektorem se čtyřmi složkami.
+    \begin{equation*}
+      \vec{N}=(N_x,N_y,N_z)=(N_{yz},N_{zx},N_{xy})
+      \end{equation*}
+    Stejně jako axiální vektor \(\vec{N}=\vec{r}\times\vec{F}\) je tenzorem, i každý vektorový
+    součin dvou polárních vektorů je tenzorem. Lze použít stejné argumenty. Naštěstí je možné je
+    psát jako vektory (přesněji pseudovektory), což nám zjednodušuje naši matematiku.
+    
+    Matematicky, jsou-li \(\vec{a}\) a \(\vec{b}\) libovolné dva vektory, tvoří devět veličin
+    \(a_ib_j\) tenzor (ačkoliv nemusí mít žádný fyzikální význam). Tak dostáváme z polohového
+    vektoru \(r_i\). tenzor \(r_ir_j\) a jelikož \(\delta_{ij}\) je také tenzor, je pravá strana
+    rovnice \eqref{fyz:eq949} tenzor. Podobně rovnice \eqref{fyz:eq947} je tenzor, jelikož oba členy
+    na pravé straně jsou tenzory.
 
   \section{Tenzor napětí}\label{fyz:IIchapXXXIsecVI} 
 
+    Symetrické tenzory, s nimiž jsme se dosud setkali, vznikly z koeficientů, které dávaly do
+    vzájemného vztahu dva vektory. Nyní se seznámíme s tenzorem, který má jiný fyzikální význam - s
+    \textbf{tenzorem napětí}. Předpokládejme, že máme pevné těleso, na nějž působí různé síly.
+    Říkáme, že uvnitř působí různá „napětí“, čímž rozumíme, že mezi sousedními částicemi látky
+    působí vnitřní síly. O takových napětích jsme se zmínili už v článku \ref{fyz:IIchapXIIsecIII},
+    když jsme uvažovali dvojrozměrný případ povrchového napětí napnuté membrány. Nyní si ukážeme, že
+    vnitřní síly působící v látce trojrozměrného tělesa mohou být popsány pomocí tenzoru.
+
     \begin{figure}[ht!] %\ref{fyz:fig878}
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig878.pdf}
+      \subcaptionbox{\label{fyz:fig298a}}{\luafigure[0.45]{fyz_fig878a.pdf}}
+      \subcaptionbox{\label{fyz:fig298b}}{\luafigure[0.45]{fyz_fig878b.pdf}}
       \caption{Látka nalevo od roviny \(\sigma\) působí přes plošku \(\Delta x\Delta y\) silou
               \(\Delta F_1\), na látku napravo (\cite[s.~583]{Feynman02})}
       \label{fyz:fig878}
     \end{figure}
 
+    Uvažujme těleso z nějakého pružného materiálu, například kostku želatiny. Když je rozřízneme,
+    látka se na obou stranách řezu působením vnitřních sil posune. Předtím, než jsme řez provedli,
+    musely mezi oběma částmi kostky existovat síly, které udržovaly látku pohromadě: napětí můžeme
+    definovat pomocí těchto sil. Představme si rovinu kolmou na osu \(x\) (jako je rovina \(\sigma\)
+    na obr. \ref{fyz:fig879}) a ptáme se na síly působící na malou plošku \(\Delta y\Delta z\) této
+    roviny. Látka nalevo od plošky působí silou \(Δ\vec{F_1}\) na látku napravo tak, jak je
+    znázorněno na obrázku \ref{fyz:fig878b}. Na látku nalevo od plochy působí, samozřejmě, opačná síly
+    reakce \(-Δ\vec{F_1}\). Je-li ploška dostatečně malá, očekáváme, že síla \(Δ\vec{F_1}\)? je
+    úměrná velikosti plochy \(\Delta y\Delta z\).
+
     \begin{figure}[ht!] %\ref{fyz:fig879}
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig879.pdf}
+      \includegraphics[width=0.8\linewidth]{fyz_fig879.pdf}
       \caption{\(\Delta F_1\) působící na plošný element \(\Delta y\Delta z\) kolmý na osu \(x\) se
               rozkládá na tři složky \(\Delta F_{x1}\), \(\Delta F_{y1}\) a \(\Delta F_{z1}\)
               (\cite[s.~584]{Feynman02})}
       \label{fyz:fig879}
     \end{figure}
 
+    Jeden druh napětí už známe, a to statický tlak v kapalině. V tom případě je síla kolmá na
+    povrchový element a je rovna tlaku vynásobenému povrchem. Pro pevné látky (jakož i pro
+    pohybující se viskózní kapaliny) nemusí být síla kolmá na povrch, působí tu kromě tlaků
+    (kladných nebo záporných) i \textbf{smykové síly}. (Smykovou silou rozumíme \emph{tangenciální}
+    složku síly působící na povrch.) Všechny tři složky síly je třeba vzít v úvahu. Všimněme si, že
+    bude-li mít náš řez rovinou jinou orientaci, budou síly jiné. K úplnému popisu vnitřního napětí
+    potřebujeme tenzor.
+    
+    \emph{Tenzor napětí} definujeme takovýmto způsobem: Představme si nejdříve řez kolmý na osu
+    \(x\) a rozložme sílu \(Δ\vec{F_1}\) působící v řezu na složky \(ΔF_{x1}\), \(ΔF_{y1}\),
+    \(ΔF_{z1}\){ (obr. \ref{fyz:fig879}). Podíl těchto sil a plošky \(\Delta y\Delta z\) označujeme
+    \(S_{xx}\), \(S_{yx}\) a \(S_{zx}\). Například
+    \begin{equation*}
+      S_{yx}=\frac{\Delta F_{y1}}{\Delta y\,\Delta z}.
+    \end{equation*}
+    První index \(y\) se vztahuje ke směru silové složky a druhý index \(x\) ke směru, který má
+    kolmice na plochu. Chceme-li, můžeme psát plochu \(\Delta y\Delta z\) jako \(\Delta a_x\), čímž
+    myslíme plošný element kolmý na \(x\). Pak
+    \begin{equation*}
+      S_{yx}=\frac{\Delta F_{y1}}{\Delta a_x}.
+    \end{equation*}
+
     \begin{figure}[ht!] %\ref{fyz:fig880}
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig880.pdf}
+      \includegraphics[width=0.8\linewidth]{fyz_fig880.pdf}
       \caption{Síla působící na plošný element kolmý na \(y\) se rozkládá na tři navzájem kolmé
                složky (\cite[s.~584]{Feynman02})}
       \label{fyz:fig880}
     \end{figure}
 
+    Dále si představíme řez kolmý na osu \(y\). Na malou plošku \(\Delta x \Delta z\) působí síla
+    \(Δ\vec{F_2}\). Opět rozložíme tuto sílu na tři složky tak, jak je to na obr. \ref{fyz:fig880}.
+    Z a definujeme tři složky napětí \(S_{xy}\), \(S_{yy}\), \(S_{zy}\) jako sílu působící na
+    jednotkovou plochu ve třech směrech. Nakonec provedeme řez kolmo na \(z\) a definujeme tři
+    složky \(S_{xz}\), \(S_{yz}\) a \(S_{zz}\). Máme tedy devět čísel:
+    \begin{equation}\label{fyz:eq951}
+      S_{ij}=
+        \begin{bmatrix}
+          S_{xx} & S_{xy} & S_{xz}  \\
+          S_{yx} & S_{yy} & S_{yz}  \\
+          S_{zx} & S_{zy} & S_{zz}  \\
+        \end{bmatrix}.
+    \end{equation}
+
+    Nyní chceme ukázat, že těchto devět čísel stačí k úplnému popisu stavu vnitřního napětí a že
+    \(S_{ij}\) je skutečně tenzorem. Předpokládejme, že chceme najít sílu působící na povrch pod
+    nějakým libovolným úhlem. Můžeme ji určit z \(S_{ij}\)? Ano, můžeme, a to takovýmto způsobem:
+    představme si malý, pevný hranol, jehož jedna stěna \(N\) je šikmá a ostatní dvě jsou rovnoběžné
+    se souřadnicovými osami. Je-li stěna \(N\) rovnoběžná s osou \(z\), máme trojhranný útvar
+    znázorněný na obr. \ref{fyz:fig881}. (Je to trochu speciální případ, ale dostatečně ilustruje
+    obecnou metodu.) Síly napětí působící na hranolek na obr. \ref{fyz:fig881} jsou v rovnováze
+    (přinejmenším v limitě nekonečně malých rozměrů), proto výsledná síla musí být rovna nule. Síly
+    působící na stěny rovnoběžné se souřadnicovými osami zjistíme přímo z \(S_{ij}\). Jejich
+    vektorový součet musí být roven síle působící na stěnu \(N\) takže tuto sílu umíme určit pomocí
+    \(S_{ij}\).
+
     \begin{figure}[ht!] %\ref{fyz:fig881}
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig881.pdf}
+      \includegraphics[width=0.8\linewidth]{fyz_fig881.pdf}
       \caption{Síla\(\Delta F_n\) působící na plochu \(N\) (s jednotkovým vektorem \(\vec{n}\)) se
                rozkládá na tři složky (\cite[s.~585]{Feynman02})}
       \label{fyz:fig881}
     \end{figure}
+
+    Za našeho předpokladu, že \emph{plošné} síly působící na malý objem jsou v rovnováze,
+    zanedbáváme všechny jiné \emph{objemové} síly, které by mohly být přítomny, například gravitaci
+    nebo pseudosíly v případě, že naše souřadnicová soustava není inerciální soustavou. Všimněme si
+    však, že takové objemové síly budou úměrné objemu hranolku, a tedy úměrné \(ΔxΔyΔz\), zatímco
+    plošné síly jsou úměrné ploškám \(ΔxΔy\), \(ΔyΔz\) atd. Proto zvolíme-li si hranolek dostatečně
+    malých rozměrů, budou objemové síly vždy zanedbatelné ve srovnání s plošnými silami.
+    
+    Nyní sečteme všechny síly působící na náš hranolek. Nejdříve vezměme složku \(x\), která je
+    sumou pěti částí - po jedné z každé stěny. Je-li však \(Δz\) dostatečně malé, budou síly
+    působící na trojúhelníkové stěny (kolmé na osu \(z\)) stejně velké a opačné, můžeme na ně tedy
+    zapomenout. Složka \(x\) síly působící na spodní obdélník je
+    \begin{equation*}
+      \Delta F_{x2}=S_{xy}\,\Delta x\,\Delta z.
+    \end{equation*}
+    a \(x\)-ová složka síly působící na svislý obdélník je
+    \begin{equation*}
+      \Delta F_{x1}=S_{xx}\,\Delta y\,\Delta z.
+    \end{equation*}
+    Součet těchto dvou sil musí být roven \(x\)-ové složce síly působící na plochu \(N\) a směřující
+    \emph{ven}. Nechť \(\vec{n}\) je jednotkový vektor kolmý na plochu \(N\) a \(\vec{F_n}\) nechť
+    je síla působící na \(N\). Pak máme
+    \begin{equation*}
+      \Delta F_{xn}=S_{xx}\,\Delta y\,\Delta z+S_{xy}\,\Delta x\,\Delta z.
+    \end{equation*}
+    Složka \(S_{xn}\) napětí působícího na tuto plochu je rovna \(\Delta F_{xn}\) dělenému velikostí
+    plochy \(\Delta z\sqrt{\Delta x^2+\Delta y^2}\), tj.
+    \begin{equation*}
+      S_{xn}=S_{xx}\,\frac{\Delta y}{\sqrt{\Delta x^2+\Delta y^2}}+
+      S_{xy}\,\frac{\Delta x}{\sqrt{\Delta x^2+\Delta y^2}}.
+    \end{equation*}
+    Výraz \(\Delta x/\sqrt{\Delta x^2+\Delta y^2}\) je však kosinem úhlu \(\theta\) jenž svírají
+    vektor \(\vec{n}\) a osa \(y\), jak to vidíme na obr. \ref{fyz:fig881} - lze jej proto psát jako
+    složkuy vektoru \(\vec{n}\), tj. jako \(n_y\). Podobně pro \(\Delta y/\sqrt{\Delta x^2+\Delta
+    y^2}\) platí \(\sin\theta=n_x\). Můžeme psát
+    \begin{equation*}
+      S_{xn}=S_{xx}n_x+S_{xy}n_y.
+    \end{equation*}
+    Zobecníme-li to nyní na libovolný elementární povrch, dostaneme
+    \begin{equation*}
+      S_{xn}=S_{xx}n_x+S_{xy}n_y+S_{xz}n_z
+    \end{equation*}
+    nebo obecně
+    \begin{equation}\label{fyz:eq952}
+      S_{in}=\sum_jS_{ij}n_j.
+    \end{equation} 
+    Je tedy možné vyjádřit sílu působící na libovolnou elementární plochu pomocí koeficientů
+    \(S_{ij}\), které tak úplně popisují vnitřní napětí v látce.
 
     \begin{figure}[ht!] %\ref{fyz:fig882}
       \centering
@@ -534,9 +684,192 @@
                (\cite[s.~586]{Feynman02})}
       \label{fyz:fig882}
     \end{figure}
+
+    Rovnice \eqref{fyz:eq952} nám říká, že tenzor \(S_{ij}\) dává do vztahu sílu \(\vec{S_n}\) a
+    jednotkový vektor \(\vec{n}\) právě tak, jako \(\alpha_{ij}\), dává do vztahu \(\vec{P}\) a
+    \(\vec{E}\). Jelikož \(\vec{n}\) a \(\vec{S_n}\) jsou vektory, musí se složky \(S_{ij}\)
+    transformovat při změně souřadnic jako tenzor. \(S_{ij}\) je tedy skutečně tenzorem.
+
+    Jelikož \(S_{ij}\) je symetrickým tenzorem, může být popsán elipsoidem se třemi hlavními osami.
+    Pro plochy kolmé na tyto osy jsou napětí obzvlášť jednoduchá - odpovídají tlaku nebo tahu
+    kolmému na danou plochu. Podél těchto ploch nepůsobí žádné smykové síly. Pro \emph{libovolné}
+    napětí můžeme vždy zvolit naše osy tak, aby byla smyková složka síly rovna nule. Je-li
+    elipsoidem koule, působí v \emph{libovolném} směru jen kolmé složky. To odpovídá hydrostatickému
+    tlaku (kladnému nebo zápornému). Pro hydrostatický tlak je tedy tenzor diagonální a všechny tři
+    složky jsou navzájem rovny. Ve skutečnosti jsou rovny právě tlaku \(p\). Můžeme psát
+    \begin{equation}\label{fyz:eq953}
+      S_{ij}=p\delta_{ij}.
+    \end{equation}
+
+    Tenzor napětí, jakož i jeho elipsoid, se budou obecně měnit v dané látce od bodu k bodu.
+    Chceme-li popsat daný kus látky, musíme udat hodnotu každé složky \(S_{ij}\) jako funkci polohy.
+    Tenzor napětí je tedy \textbf{polem}. Poznali jsme už skalární pole, jako například teplotu
+    \(T(x,y,z)\), v nichž je každému bodu v prostoru přiděleno jedno číslo, a vektorová pole jako
+    \(\vec{E(x,y,z)}\), v nichž se každému bodu přiřazuje trojice čísel. Nyní máme tenzorové pole,
+    kde je každému bodu prostoru přiřazeno devět čísel, nebo vlastně šest, protože \(S_{ij}\), je
+    symetrický tenzor. Pro úplný popis vnitřních sil působících v libovolně deformované látce
+    potřebujeme šest funkcí proměnných \(x, y, z\).
  
-  \section{Tenzory vyššího  řádu}\label{fyz:IIchapXXXIsecVII} 
-  
+  \section{Tenzory vyššího řádu}\label{fyz:IIchapXXXIsecVII}
+    
+    Tenzor napětí \(S_{ij}\) popisuje \emph{vnitřní síly} v látce. Je-li látka elastická, je výhodné
+    popisovat vnitřní \textbf{deformace} pomocí jiného tenzoru \(T_{ij}\), která se nazývá tenzor
+    \emph{deformace}. Pro jednoduchý objekt, jako je například kovová tyč, umíme určit změnu délky
+    \(ΔL\) podle \emph{Hookova zákona}, který říká, že prodloužení je přibližně úměrné síle:
+    \begin{equation*}
+      \Delta L=\gamma F.
+    \end{equation*}
+    
+    Pro libovolné deformace pružného tuhého tělesa je vztah mezi deformací \(T_{ij}\) a napětím
+    \(S_{ij}\) určen systémem lineárních rovnic 
+    \begin{equation}\label{fyz:eq954}
+      T_{ij}=\sum_{k,l}\gamma_{ijkl}S_{kl}.
+    \end{equation}
+    Také víme, že potenciální energie pružiny (nebo tyče) je rovna
+    \begin{equation*}
+      \dfrac{1}{2}F\,\Delta L=\dfrac{1}{2}\gamma F^2.
+    \end{equation*}    
+    Obecný výraz pro hustotu elastické energie pevného tělesa je
+    \begin{equation}\label{fyz:eq955}
+      U_{\text{elastic}}=\sum_{ijkl}\dfrac{1}{2}\gamma_{ijkl}S_{ij}S_{kl}.
+    \end{equation}
+    
+    Úplný popis elastických vlastností krystalu je určen koeficienty \(\gamma_{ijkl}\). Tímto
+    představujeme novou „obludu“ - \textbf{tenzor čtvrtého řádu}. Jelikož každý index může nabývat
+    libovolnou ze tří hodnot \(x\), \(y\) nebo \(z\), dostáváme dohromady \(3^4 = 81\) koeficientů.
+    Jenže ve skutečnosti je to jen 21 různých čísel. Zaprvé, jelikož tenzor \(S_{ij}\) je
+    symetrický, obsahuje jen šest různých hodnot a v rovnici \eqref{fyz:eq955} potřebujeme jen 36
+    \emph{různých} koeficientů. Zároveň však můžeme zaměnit \(S_{IJ}\) za \(S_{kl}\), aniž bychom
+    změnili energii, proto \(\gamma_{ijkl}\) musí být symetrický při záměně \(ij\) za \(KL\). Tím se
+    snižuje počet různých koeficientů na 21. Proto K popisu elastických vlastností krystalu s
+    nejnižší možnou symetrií je třeba 21 elastických konstant! Tento počet je, samozřejmě, nižší pro
+    krystaly s vyšší symetrií. Například krychlový krystal má jen tři pružné konstanty a izotropní
+    látka má jen dvě.
+    
+    O správnosti předcházejícího tvrzení se můžeme přesvědčit. Jak mohou být složky tenzoru
+    \(\gamma_{ijkl}\) nezávislé na směru os tak, jak to vyžadujeme pro izotropní látky? Odpověď je
+    následující. Mohou být nezávislé \emph{jen} tehdy, když je lze vyjádřit pomocí tenzoru
+    \(\delta_{ij}\). Existují dva možné výrazy \(\delta_{ij}\delta_{kl}\) a
+    \(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}\) které mají požadovanou symetrii, proto
+    \(\gamma_{ijkl}\) musí být jejich lineární kombinací. Proto pro izotropní látky platí
+    \begin{equation*}
+      \gamma_{ijkl}=a(\delta_{ij}\delta_{kl})+b(\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}),
+    \end{equation*}
+    a potřebujeme dvě konstanty \(a\) a \(b\) k popisu elastických vlastností látky. Důkaz, že
+    krychlový krystal potřebuje tři konstanty, přeskočíme.
+    
+    Jako poslední příklad, tentokrát na tenzor třetího řádu, uvádíme piezoelektrický efekt.
+    Působením napětí se v krystalu vytváří elektrické pole úměrné napětí. Obecný zákon má tvar
+    \begin{equation*}
+      E_i=\sum_{j,k}P_{ijk}S_{jk},
+    \end{equation*}
+    kde \(E_i\) je elektrické pole a \(P_{ijk}\) jsou piezoelektrické koeficienty nebo
+    piezoelektrický tenzor. Uměli bychom dokázat, že má-li krystal střed inverze (invariance při
+    záměně \(x,y,z\to-x,-y,-z\) všechny piezoelektrické koeficienty jsou rovny nule?
+
   \section{Čtyřtenzor elektromagnetické energie a hybnosti}\label{fyz:IIchapXXXIsecVIII} 
-  
-  \section{Příklady a cvičení}\label{fyz:IIchapXXXIsecIX}
+    Všechny tenzory, které jsme v této kapitole dosud probírali, se vztahují k trojrozměrnému
+    prostoru. Jsou definovány jako veličiny, které mají určité transformační vlastnosti při
+    trojrozměrných rotacích. V kapitole \ref{fyz:IIchapXXVI} jsme měli možnost pracovat s tenzorem
+    ve \emph{čtyřrozměrném relativistickém časoprostoru}, a to s tenzorem elektromagnetického pole
+    \(F_{\mu\nu}\). Složky takového čtyřtenzoru se při Lorentzově transformaci souřadnic
+    transformují určitým způsobem, který jsme odvodili. (Ačkoli jsme to tak nedělali, mohli jsme
+    Lorentzovy transformace považovat za „rotace“ ve čtyřrozměrném „prostoru“, který se nazývá
+    \emph{Minkowského prostor}. Pak by i analogie s tím, co nyní děláme, byla jasnější.)
+    
+    Jako náš poslední příklad zmíníme ještě jeden čtyřrozměrný tenzor z teorie relativity. Když jsme
+    hovořili o tenzoru napětí, definovali jsme \(S_{ij}\) jako složky sil působících na jednotlivé
+    plochy. Ale síla je rovna časové změně hybnosti. Proto místo výroku „\(S_{xy}\) je složkou \(x\)
+    síly působící na jednotkovou plochu kolmou na \(y\)“ bychom stejně správně mohli říci
+    „\(S_{xy}\) je rychlost změny toku složky \(x\) hybnosti jednotkovou plochou kolmou na \(y\).
+    Jinými slovy, každá složka \(S_{ij}\) představuje i hustotu toku \(i\)-té složky hybnosti
+    jednotkovou plochou kolmou na směr \(j\). Tyto čistě prostorové složky jsou však součástí
+    „většího“ tenzoru \(S_{\mu\nu}\) ve čtyřech rozměrech (\(\mu\) a \(v= t, x,y,z\), který obsahuje
+    navíc složky typu \(S_{xx}\), \(S_{xy}\), a \(S_{xz}\) atd. Nyní se pokusíme najít fyzikální
+    význam těchto dodatečných složek.
+    
+    Víme, že prostorové složky představují hustotu toku hybnosti. Klíč k interpretaci časové složky
+    nám poskytne jiný druh „toku“ - tok elektrického náboje. Rychlosti toku \emph{skalární}
+    veličiny, náboje (jednotkovou plochou kolmou na tok), přiřazujeme prostorový vektor - vektor
+    proudové hustoty \(\vec{j}\). Viděli jsme, že časová složka tohoto vektoru toku představuje
+    hustotu toho, co teče. Například \(\vec{j}\) můžeme kombinovat s hustotou náboje \(\varrho\) a
+    dostaneme čtyřvektor \(j_\mu=(\varrho,\vec{j})\) tj. index \(\mu\) v \(i_\mu\) nabývá hodnoty
+    \(t\), \(x\), \(y\), \(z\), což postupně označuje hustotu, hustotu toku ve směru \(x\), hustotu
+    toku ve směru \(y\) hustotu toku ve směru \(z\) skalárního náboje.
+    
+    Nyní, v analogii s naším tvrzením o časové složce toku skalární veličiny, bychom mohli očekávat,
+    že vedle \(S_{xx}\), \(S_{xy}\), a \(S_{xz}\), které popisují tok \(x\)-ové složky hybnosti,
+    existuje i časová složky \(S_{xt}\), která představuje hustotu toho, co teče, tj. \(S_{xt}\) by
+    měla být hustotou \(x\)-ové složky hybnosti. Náš tenzor tak můžeme horizontálně rozšířit o
+    složku \(t\). Dostaneme:
+    \begin{itemize}[noitemsep]
+      \item \(S_{xt}\ldots\) hustota \(x\)-ové složky hybnosti,
+      \item \(S_{xx}\ldots\) hustota toku \(x\)-ové složky hybnosti ve směru \(x\),
+      \item \(S_{xy}\ldots\) hustota toku \(x\)-ové složky hybnosti ve směru \(y\),
+      \item \(S_{xz}\ldots\) hustota toku \(x\)-ové složky hybnosti ve směru \(z\).
+    \end{itemize}
+    Podobně pro \(y\)-ovou složku hybnosti máme tři složky hustoty toku \(S_{yx}\), \(S_{yy}\),
+    \(S_{yz}\), k nimž přidáme čtvrtou složku
+    
+    \begin{center}
+      \(S_{yt}\) = hustota \(y\)-ové složky hybnosti.
+    \end{center}
+
+    A samozřejmě, k \(S_{zz}\) bychom měli přidat
+    \begin{center}
+      \(S_{zt}\) = hustota \(z\)-ové složky hybnosti.
+    \end{center}
+    
+    Ve čtyřech rozměrech existuje i složka \(t\) hybnosti, a to je, jak víme, energie. Proto by
+    tenzor \(S_{ij}\) měl být rozšířen i vertikálně o složky \(S_{tx}\), \(S_{ty}\), a \(S_{tz}\)
+    kde
+    \begin{itemize}[noitemsep]
+      \item \(S_{tx}\ldots\) hustota toku energie ve směru \(x\),
+      \item \(S_{ty}\ldots\) hustota toku energie ve směru \(y\),
+      \item \(S_{tz}\ldots\) hustota toku energie ve směru \(z\).
+    \end{itemize}
+    tj. \(S_{tx}\) je tok energie jednotkovou plochou kolmou k ose \(x\) na jednotku času atd.
+    Nakonec, abychom zkompletovali náš tenzor, potřebujeme \(S_{tt}\) a to by měla být
+    \textbf{hustota energie}. Náš trojrozměrný tenzor napětí \(S_{ij}\) jsme tak rozšířili na
+    \textbf{čtyřrozměrný tenzor energie a hybnosti} \(S_{\mu\nu}\). Index \(\mu\) může nabývat čtyř
+    hodnot \(t\), \(x\), \(y\), \(z\), které postupně označují hustotu, hustotu toku ve směru \(x\)
+    hustotu toku ve směru \(y\) a hustotu toku ve směru \(z\). Podobně \(\nu\) nabývá čtyř hodnot
+    \(t\), \(x\), \(y\), \(z\), které označují to, \emph{co} teče: energii, hybnost ve směru \(x\)
+    hybnost ve směru \(y\) a hybnost ve směru \(z\).
+    
+    Jako příklad budeme tento tenzor uvažovat ne v látce, ale v nějaké oblasti volného prostoru, kde
+    působí elektromagnetické pole. Víme, že hustota toku energie je určena \emph{Poyntingovým
+    vektorem} \(\vec{S}=\epsilon_0c^2\vec{E}\times\vec{B}\). Z relativistického hlediska jsou složky
+    \(x\), \(y\), \(z\) vektoru \(\vec{S}\) složkami \(S_{tx}\), \(S_{ty}\), a \(S_{tz}\) našeho
+    čtyřrozměrného tenzoru energie a hybnosti. Symetrie tenzoru \(S_{ij}\) platí stejně i pro časové
+    složky, proto je čtyřrozměrný tenzor \(S_{\mu\nu}\) symetrický
+    \begin{equation}\label{fyz:eq956}
+      S_{\mu\nu}=S_{\nu\mu}.
+    \end{equation}
+    Jinými slovy, složky \(S_{xt}\), \(S_{yt}\), \(S_{zt}\), které představují hustoty složek \(x\),
+    \(y\) a \(z\) hybnosti, jsou zároveň složkami \(x\), \(y\) a \(z\) Poyntingova vektoru
+    \(\vec{S}\), který představuje hustotu toku energie, jak jsme už ukázali v jedné z
+    předcházejících kapitol.
+    
+    Zbývající složky elektromagnetického tenzoru energie a hybnosti \(S_{\mu\nu}\) lze také vyjádřit
+    pomocí elektrického a magnetického pole \(\vec{E}\) a \(\vec{B}\). Musíme tedy připustit
+    existenci napětí nebo, aby to neznělo tak záhadně, existenci toku hybnosti v elektromagnetickém
+    poli. Mluvili jsme o tom v kapitole \ref{fyz:IIchapXXVII} v souvislosti s rovnicí
+    \eqref{fyz:eq957}, ale tehdy jsme nešli do detailů.
+    
+    Chceme-li si vyzkoušet svou zručnost v zacházení s tenzory ve čtyřech rozměrech, je dobré
+    vědět, jak \(S_{\mu\nu}\) vyjádřit pomocí polí:
+    \begin{equation*}
+      S_{\mu\nu}=-\varepsilon_0\biggl(
+      \sum_\alpha F_{\mu\alpha}F_{\nu\alpha}-\dfrac{1}{4}\delta_{\mu\nu}
+      \sum_{\alpha,\beta}F_{\beta\alpha}F_{\beta\alpha}
+      \biggr),
+    \end{equation*}
+    kde sčítání přes \(\alpha\), \(\beta\) znamená sčítání přes \(t\), \(x\), \(y\), \(z\), ale (jak
+    to bývá zvykem v teorii relativity) sumační znak \(\sum\) a symbol \(\delta\) mají speciální
+    význam. Při sumaci se členy s \(x\), \(y\), \(z\) odčítají a \(δ_{tt}=+1\), zatímco \(δ_{xx} =
+    δ_{yy} = δ_{zz}= −1\) a \(δ_{μ\nu}=0\) pro \(μ≠ν\) (\(c=1\)). Uměli bychom ověřit, že toto
+    vyjádření vede k hustotě energie \(S_{tt}=(\varepsilon_0/2)\,(E^2+B^2)\) a k Poyntingovu vektoru
+    \(\varepsilon_0\vec{E}\times\vec{B}\)? Uměli bychom ukázat, že v elektrostatickém poli, kde
+    \(\vec{B}= 0\), mají hlavní osy napětí směr elektrického pole a že ve směru pole vzniká napětí
+    \((\varepsilon_0/2)E^2\), zatímco ve směru kolmém na pole vzniká stejně velký \emph{tlak}?
