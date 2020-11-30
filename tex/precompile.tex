@@ -1,0 +1,22 @@
+% static preamble
+\include{preamble_static}
+\csname endofdump\endcsname
+
+
+% dynamic preamble
+% note: not really needed because the sole purpose of this file is to compile the static preamble.
+\include{preamble_dynamic}
+\usepackage{verbatim}
+
+
+% document
+\begin{document}
+
+\noindent
+To generate a pre-compile format ``preamble.fmt'' out of the static preamble, you need to run the following command:
+
+\begin{verbatim}
+pdftex -ini -jobname="preamble" "&pdflatex" mylatexformat.ltx precompile
+\end{verbatim}
+
+\end{document}

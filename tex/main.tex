@@ -1,0 +1,18 @@
+%&preamble
+
+% pdftex -ini -jobname="preamble" "&pdflatex" mylatexformat.ltx precompile
+% lualatex -ini -jobname="preamble" "&lualatex" mylatexformat.ltx precompile
+% lualatex -fmt preamble "./main.tex" 
+
+% https://tex.stackexchange.com/questions/114742/speeding-up-compilation-using-precompiled-preamble-with-luatex
+% luatex -interaction=nonstopmode -ini -jobname="preamble" "&lualatex" mylatexformat.ltx "./precompile.tex"
+% lualatex -fmt lua_pream "./lua_nopream.tex"
+\include{preamble_dynamic}
+
+\begin{document}
+  % \input{../src/FYZ/chap/fey1ch01_02_03.tex}
+\chapter{Základy fyziky} %\label{fyz:IchapI}
+% \epigraph{\emph{Fyzika je jako sex, může přinést praktické výsledky, ale to není důvod, proč to 
+%   děláme.}}{Richard P. Feynmann}
+
+\end{document}

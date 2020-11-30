@@ -1,0 +1,361 @@
+% ==================================================================================================
+%                                     MATH environment 
+% ==================================================================================================
+\NeedsTeXFormat{LaTeX2e}
+
+\RequirePackage{graphicx}  % interface for optional arguments to the \includegraphics command.
+% % luafigure:
+% % #1: optional -> "shrink" value (default value to 0.8)
+% % #2: mandatory -> image
+% % https://tex.stackexchange.com/questions/91616/
+% \newcommand{\luafigure}[2][0.8]{\includegraphics[width=#1\linewidth,height=#1\textheight,keepaspectratio]{#2}}
+% \newcommand{\luagraphic}[4][0.8]{%
+%   \begin{figure}[ht!]
+%     \centering
+%     \includegraphics[width=#1\linewidth,height=#1\textheight,keepaspectratio]{#2}
+%     \caption{#3}
+%     \label{#4}
+%   \end{figure}  
+% }
+% % ~~~~~~~~ Color ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+% \RequirePackage{LuaMyColor} 
+%   % https://tex.stackexchange.com/questions/21598/how-to-color-math-symbols
+%   \makeatletter
+%     \def\mathcolor#1#{\@mathcolor{#1}}
+%     \def\@mathcolor#1#2#3{%
+%       \protect\leavevmode
+%       \begingroup
+%         \color#1{#2}#3%
+%       \endgroup
+%     }
+%   \makeatother
+
+% % ~~~~~~~~ Additional Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+% \RequirePackage{pifont}            % Using Dingbats font
+% % ~~~~~~~~ Boxes, frames ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% \RequirePackage{tikz} 
+% \usetikzlibrary{tikzmark,arrows.meta}
+
+% \RequirePackage[most]{tcolorbox}
+%   % https://texblog.org/2013/02/27/on-paragraphs-in-texlatex/
+%   % https://tex.stackexchange.com/questions/566094/
+%   % Twoline title with the description starting below “Theorem #”
+%   \makeatletter
+%   \xpatchcmd\tcb@theo@title
+%     {\hangindent\wd\z@\hangafter=1}
+%     {}
+%     {}{\fail}
+%   \makeatother
+
+% \newtcbtheorem[auto counter,number within=chapter]{mathexam}{Příklad}{%
+%   % colback=purple!5,
+%   % colframe=blue!100!,
+%   fonttitle=\itshape,        % \bfseries,
+%   enforce breakable,         % breakable,
+%   compress page,
+%   enhanced,
+%   arc=1pt,
+%   left=0pt,
+%   right=0pt
+% }{mai}
+
+% \newtcbtheorem[auto counter,number within=chapter]{mathlemma}{Věta}{%
+%   colback=red!5!white,
+%   colframe=red!75!black,
+%   fonttitle=\itshape,        % \bfseries,
+%   enforce breakable,         % breakable,
+%   compress page,
+%   enhanced,
+%   arc=1pt,
+%   left=0pt,
+%   right=0pt
+% }{mai}
+
+% \newtcbtheorem[auto counter,number within=chapter]{mathdef}{Definice}{%
+%   colback=green!5!white,
+%   colframe=green!75!black,
+%   fonttitle=\itshape,        % \bfseries,
+%   enforce breakable,         % breakable,
+%   compress page,
+%   enhanced,
+%   arc=1pt,
+%   left=0pt,
+%   right=0pt
+% }{mai}
+
+% \newtcolorbox{luaexambox}[1]{
+%   enhanced jigsaw,
+%   breakable,
+%   colback=red!5!white,
+%   colframe=red!75!black,
+%   fonttitle=\bfseries,
+%   left=1pt,
+%   right=1pt,
+%   title=#1
+% }
+
+% \newtcolorbox{bigequbox}{
+%   enhanced jigsaw,
+%   colback=red!5!white,
+%   colframe=red!75!black,
+%   left=1pt,
+%   right=1pt,
+% }
+
+% %----------------Physics environment---------------------------------------------------------------
+% \newtcbtheorem[auto counter,number within=chapter]{fyzexam}{Příklad}{%
+%   % colback=purple!5,
+%   % colframe=blue!100!,
+%   fonttitle=\itshape,        % \bfseries,
+%   enforce breakable,         % breakable,
+%   compress page,
+%   enhanced,
+%   arc=1pt,
+%   left=0pt,
+%   right=0pt
+% }{fyz}
+
+% \newtcbtheorem[auto counter,number within=chapter]{fyzdef}{Definice}{%
+%   colback=green!5!white,
+%   colframe=green!75!black,
+%   fonttitle=\itshape,        % \bfseries,
+%   enforce breakable,         % breakable,
+%   compress page,
+%   enhanced,
+%   arc=1pt,
+%   left=0pt,
+%   right=0pt
+% }{fyz}  
+
+
+% % https://tex.stackexchange.com/questions/41066/margins-of-mdframed-without-any-effect
+% % https://tex.stackexchange.com/questions/151532/could-not-get-round-corner-working-in-mdframed
+% \RequirePackage[
+%   framemethod=TikZ,
+% ]{mdframed} % auto-split frame environment
+% % The package should be loaded after amsthm if you need the package.
+%   \mdfdefinestyle{mdexam}{
+%     % font            =  \small,
+%     innertopmargin    =  -2mm     % default=.4\baselineskip
+%     usetwoside        =  true,
+%     backgroundcolor   =  gray!10,
+%     roundcorner       =  10pt,
+%     linecolor         =  black!90
+%     }
+%   \mdfdefinestyle{highlight}{  % nahrada \adjustbox
+%     % outermargin       =  1cm,
+%     backgroundcolor   =  yellow!30,
+%     roundcorner       =  10pt,
+%     % linecolor         =  red!50,
+%     hidealllines     = true
+%     }
+%   % https://tex.stackexchange.com/questions/69603/  
+%   \mdfdefinestyle{mdnote}{
+%     % outermargin    =  1cm,
+%     font             =  \small,
+%     innerleftmargin  =  4pt,
+%     innerrightmargin =  4pt,
+%     backgroundcolor  =  gray!10,
+%     roundcorner      =  8pt,
+%     linecolor        =  gray!50
+%     }
+
+%   \mdfdefinestyle{mdmathsolution}{
+%     % usetwoside      =  false,
+%     % outermargin     =  1cm,
+%     font            =  \small,
+%     backgroundcolor =  Apricot!10,
+%     roundcorner     =  10pt,
+%     linecolor       =  red!50
+%     } 
+%   \mdfdefinestyle{mdmsdos}{
+%     % usetwoside      =  false,
+%     % outermargin     =  1cm,
+%     backgroundcolor =  black,
+%     linecolor       =  gray,
+%     linewidth       =  3pt,
+%     fontcolor       =  white,
+%     font            =  \ttfamily\bfseries, %  \scriptsize
+%     roundcorner     =  8pt,
+%     userdefinedwidth=  7cm,
+%     align           =  center 
+%     }
+% \RequirePackage{adjustbox}
+%   \adjustboxset{bgcolor=yellow}
+%   % \adjustboxset{minipage=[c][16pt][c]{406pt}}  %\textwidth
+%   \adjustboxset{vspace=4pt}  
+% ==================================================================================================
+%                                     MATH environment 
+% ==================================================================================================
+\RequirePackage{xparse}
+\RequirePackage{amsmath}
+\RequirePackage{nccmath}
+\RequirePackage{amssymb, amsthm, amsbsy}
+\RequirePackage{diffcoeff}              % writing of differential coefficients in all their variety
+\RequirePackage{commath}
+\RequirePackage{empheq}                 % EMPHasizing EQuations
+% \newcommand*\widefbox[1]{\fbox{\hspace{1em}#1\hspace{1em}}}
+\RequirePackage{epigraph}               % \epigraph style
+% % package bm doesn't works with unicode-math package !! 
+% % \RequirePackage{bm}                   % bold symbols in maths mode
+% \newcommand*{\bm}[1]{\symbf{#1}}        % bold symbols
+% \RequirePackage{mathtools}              % extension package to amsmath 
+% \RequirePackage{cuted}                  % temporarily leave two columns mode
+% \RequirePackage{bigints}                % write big integrals  
+% \RequirePackage{xfrac}                  % typeset fractions in the form ‘n/d’
+% \RequirePackage{polynom}                % implements macros for manipulating
+%                                         % polynomials - command \polylongdiv
+\RequirePackage{scalerel}
+\RequirePackage{relsize}    % https://tex.stackexchange.com/questions/39181/big-integral-sign
+% https://tex.stackexchange.com/questions/237046
+% https://tex.stackexchange.com/questions/237046
+\RequirePackage{resizegather}    
+% A warning is given if the equation is too large by 10 percent. Otherwise the exceed is recorded
+% in the .log file only.
+\resizegathersetup{warningthreshold=0.1}
+% Experimental Unicode mathematical typesetting: The unicode-math package
+\RequirePackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math} 
+% \setmathfont{Cambria Math}
+% \setmathfont{Tex Gyre Termes}
+% \setmathfont{Tex Gyre Math}
+
+% https://tex.stackexchange.com/questions/504856/
+% http://www.gust.org.pl/projects/e-foundry/math/misfortunes02.pdf
+% \setmathfont{texgyrebonum-math.otf}
+\setmathfont{texgyrepagella-math.otf}
+% \setmathfontface\mathrm{Tex Gyre Termes}
+% \setmathfontface\mathrm{Latin Modern Math}
+
+% % Run METAFONT on *.mf ﬁle to generate *.tfm ﬁles. For example:
+% % mf \mode=localfont; input vect5.mf
+% % Put vect5.tfm, ..., vect10.tfm on the right place.
+% \RequirePackage[e]{esvect}    % Typesetting vectors with beautiful arrow
+%   \DeclareRobustCommand{\vec}{\vv}
+
+% % https://tex.stackexchange.com/questions/45817/
+% \newtheorem{example}{Příklad}[chapter]
+% \AtBeginEnvironment{example}{\small}    % https://tex.stackexchange.com/questions/123528
+% \AtEndEnvironment{figure}{\centering}
+% \newtheorem{definition}{Definice}[chapter]
+% \newtheorem{lemma}{Věta}[chapter]
+% \newtheorem{note}{Pozn.}[chapter]
+% \newtheorem{excercise}{Cvičení}[section]
+% % Set of Numbers:
+% \newcommand{\realset}{\mathbb{R}}
+% \newcommand{\naturalset}{\mathbb{N}}
+% \newcommand{\cmplxset}{\mathbb{C}}
+% \newcommand{\intset}{\mathbb{Z}}
+% \newcommand{\ratioset}{\mathbb{Q}}
+% % Matrix
+% \newcommand{\matr}[1]{\mathbf{#1}}
+% % Math symbols
+
+
+% \DeclareMathOperator\erf{erf}
+% \DeclareMathOperator\cotg{cotg}
+% \DeclareMathOperator\arctg{arctg}
+% \DeclareMathOperator\arccotg{arccotg}
+% \DeclareMathOperator\sgn{sgn}
+% \DeclareMathOperator{\ppm}{ppm}
+% % https://tex.stackexchange.com/questions/97245/
+% \DeclareMathOperator{\arcsinh}{arcsinh}
+% \DeclareMathOperator{\arccosh}{arccosh}
+% \DeclareMathOperator{\arctanh}{arctanh}
+% \DeclareMathOperator{\arccotgh}{arccotgh}
+% \DeclareMathOperator{\argsinh}{argsinh}
+% \DeclareMathOperator{\argcosh}{argcosh}
+% \DeclareMathOperator{\argtanh}{argtanh}
+% \DeclareMathOperator{\argcoth}{argcoth}
+% \DeclareMathOperator{\cotgh}{cotgh}
+
+% % \newcommand\abs[1]{\ensuremath{\lvert#1\rvert}} % https://tex.stackexchange.com/questions/97631/
+%                                                   % replaced by commath package
+% \newcommand{\dx}{\hspace{2pt}dx}
+% % https://tex.stackexchange.com/questions/84302/
+% \newcommand{\dd}[1]{\mathop{}\!\mathrm{d}#1}    
+% % https://tex.stackexchange.com/questions/368212/  
+% \newcommand*{\dxd}{\mathop{\kern0pt\mathrm{d}}\!{}} 
+% \newcommand{\limitint}{\mathop{\int}}
+% \newcommand{\limitoint}{\mathop{\oint}}
+
+
+% % https://tex.stackexchange.com/questions/34830/when-not-to-use-ensuremath-for-math-macro
+% \newcommand{\vect}[1]{\boldsymbol{#1}}                        % new variant of vectors
+% \newcommand{\vr}[1]{\mathbf{#1}}                              % vectors
+% \newcommand{\der}[2]{\dfrac{d #1}{d #2}}                      % derivatives
+% \newcommand{\dder}[2]{\dfrac{d^2 #1}{d #2^2}}                 % double derivatives
+% \newcommand{\pder}[2]{\dfrac{\partial #1}{\partial #2}}       % partial derivatives
+% \newcommand{\ppder}[2]{\dfrac{\partial^2 #1}{\partial #2^2}}  % double partial derivatives
+% \newcommand{\grad}[1]{\mathrm{grad\;}#1}                      % gradient
+% \newcommand{\diver}[1]{\mathrm{div}\;\vec{#1}}                % divergence
+% \newcommand{\rot}[1]{\mathrm{rot}\;\vec{#1}}                  % rotace
+% \newcommand{\ngrad}[1]{\nabla\;#1}                            % nabla gradient
+% \newcommand{\ndiver}[1]{\nabla\cdot\vec{#1}}                  % nabla divergence
+% \newcommand{\nrot}[1]{\nabla\times\vec{#1}}                   % nabla rotace
+% \DeclareRobustCommand{\ammaG}{\text{\reflectbox{\(\Gamma\)}}}
+% \newcommand\Myperm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}} % Permutation
+% \newcommand\Mycomb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}} % Combination
+% \newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}         % \overline outside of math mode
+%  % ~~~~~~~~ Proof environment ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%   % \renewcommand{\qedsymbol}{$\blacksquare$} % \heartsuit
+
+%   % https://tex.stackexchange.com/questions/62020/
+%   \renewcommand*{\proofname}{Důkaz}
+%   % https://tex.stackexchange.com/questions/8089/changing-style-of-proof
+%   \makeatletter
+%     \renewenvironment{proof}[1][\proofname]{\par
+%       \pushQED{\qed}%
+%       \normalfont\topsep6\p@\@plus6\p@\relax
+%       \trivlist
+%       \item[\hskip\labelsep\bfseries
+%       #1\@addpunct{:}]\ignorespaces
+%     }{
+%       \popQED\endtrivlist\@endpefalse
+%     }
+%   \makeatother
+%  % ~~~~~~~~ Equation environment ~~~~~~~~~~~~~~~~~~~~~~~~~~
+%  \newenvironment{luaequ}{\useshortskip\equation}{\endequation}
+% %  \AtBeginEnvironment{equation}{\color{red}}
+% %  \AtBeginEnvironment{equation*}{\color{red}}
+% %  \AtBeginEnvironment{equation}{\useshortskip}
+
+% % ==================================================================================================
+% %                                     PHYSICS environment 
+% % ==================================================================================================
+% \RequirePackage{datetime2}             % Formats for dates, times and time zones 
+%                                        % load: first nccmath than datetime2 (\nr macro clash)
+%                                        % https://tex.stackexchange.com/questions/512850/
+% \RequirePackage[version=4]{mhchem}
+% \RequirePackage{cancel}                % \cancel command
+% \RequirePackage{siunitx}
+%  \sisetup{
+%     output-decimal-marker = {,},       % set the comma as decimal point 
+%     fraction-function =   \dfrac,      % \sfrac, \dfrac, \tfrac, fraction
+%     separate-uncertainty = true,
+%     multi-part-units=single,
+%     input-complex-roots = i, 
+%     output-complex-root = \ensuremath{\imath},
+%     % output-complex-root = \ensuremath{\mathrm{j}},
+%     exponent-product = {\cdot},        % exponent-product option example: \times, \ldots
+%     math-micro=\text{µ},text-micro=µ,  % http://tex.stackexchange.com/questions/33965
+%     range-phrase=%                     % https://tex.stackexchange.com/questions/13493
+%       \ifmmode\mathbin{\text{\;až\;}}  % https://tex.stackexchange.com/questions/133704
+%       \else
+%         \;{až}\;                       % https://tex.stackexchange.com/questions/74353/
+%       \fi,                             %
+%     separate-uncertainty
+%  }
+
+% % Astronomy
+% \DeclareSIUnit\parsec{pc}
+% \DeclareSIUnit\lightyear{ly}
+% \DeclareSIUnit\AU{AU}
+
+% % Electro
+% \DeclareSIUnit\nF{nF}
+
+% \let\DeclareUSUnit\DeclareSIUnit
+% \let\US\SI
+% \DeclareUSUnit\inch{in}
+% \DeclareUSUnit\ft{ft}
+% \DeclareUSUnit\oz{oz}

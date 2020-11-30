@@ -1,0 +1,13 @@
+% luafigure:
+% #1: optional -> "shrink" value (default value to 0.8)
+% #2: mandatory -> image
+% https://tex.stackexchange.com/questions/91616/
+\newcommand{\luafigure}[2][0.8]{\includegraphics[width=#1\linewidth,height=#1\textheight,keepaspectratio]{#2}}
+\newcommand{\luagraphic}[4][0.8]{%
+  \begin{figure}[ht!]
+    \centering
+    \includegraphics[width=#1\linewidth,height=#1\textheight,keepaspectratio]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure}  
+}
