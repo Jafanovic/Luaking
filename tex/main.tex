@@ -9,10 +9,31 @@
 % lualatex -fmt lua_pream "./lua_nopream.tex"
 \include{preamble_dynamic}
 
+
 \begin{document}
-  % \input{../src/FYZ/chap/fey1ch01_02_03.tex}
-\chapter{Základy fyziky} %\label{fyz:IchapI}
+\graphicspath{{../src/FYZ/img/}}
+
+\begin{itemize}
+  \item Textwidth [mm]:      \uselengthunit{mm}\printlength{\textwidth}
+  \item Textwidth [pt]:      \uselengthunit{pt}\printlength{\textwidth}
+  \item Textheight [mm]:     \uselengthunit{mm}\printlength{\textheight}
+  \item Textheight [pt]:     \uselengthunit{pt}\printlength{\textheight}
+\end{itemize}
+
+\chapter{Základy fyziky}\label{fyz:IchapI}
 % \epigraph{\emph{Fyzika je jako sex, může přinést praktické výsledky, ale to není důvod, proč to 
 %   děláme.}}{Richard P. Feynmann}
+
+kapitola \ref{fyz:IchapI}
+
+\begin{figure}[ht!]  % \ref{fyz:fig067}
+  \centering
+  \includegraphics[width=0.5\textwidth]{fyz_fig067.jpg}
+  \caption{\textasteriskcentered 11. května 1918 - \textdagger 15. února 1988, 
+           americký fyzik, který patřil k největším fyzikům 20. století}
+  \label{fyz:fig067}
+\end{figure} 
+  % \input{../src/FYZ/chap/fey1ch01_02_03.tex}
+
 
 \end{document}
