@@ -22,12 +22,12 @@
     časový interval potřebný k průchodu celé dráhy, dostaneš číslo, které je větší než číslo
     odpovídající skutečnému pohybu.
 
-    \begin{figure}[ht!]  
+    \begin{figure}[ht!]
       \centering
-      \begin{tabular}{cc}
-        \includegraphics[width=0.450\linewidth]{fyz_fig651.jpg}              &                                                       
-        \includegraphics[width=0.465\linewidth]{fyz_fig652.jpg}
-      \end{tabular}
+      \subcaptionbox{  \label{fyz:fig651a}}{\luafigure[0.48]{fyz_fig651a.jpg}} \hfill
+      \subcaptionbox{  \label{fyz:fig651b}}{\luafigure[0.48]{fyz_fig651b.jpg}}
+      \caption{Náčrtek na tabuly I}
+      \label{fyz:fig651}
     \end{figure}
 
     Jinak řečeno: Newtonovy zákony mohou být formulovány ne ve tvaru \(F=ma\), ale ve tvaru, který
@@ -37,36 +37,36 @@
     Vysvětlíme si blíže, co to vlastně znamená. Budeme-li se zajímat o pohyb v gravitačním poli, pak
     při pohybu částice po dráze \(x(t)\) (nejdříve budeme uvažovat jednorozměrný problém a budeme
     předpokládat, že částice se pohybuje jen nahoru a dolů, a ne do strany), kde \(x\) je výška nad
-    zemí, bude kinetická energie rovna \(1/2 m(\frac{dx}{dt})^2\) a potenciální energie bude v
-    každém okamžiku rovna \(mgx\). Nyní vezměme rozdíl kinetické a potenciální energie v každém
-    okamžiku pohybu a tento výraz integrujeme podle času od počátečního do konečného okamžiku.
-    Předpokládejme, že v počátečním čase \(t_1\), tento pohyb začínal v určité výšce a v konečném
-    čase \(t_2\), pohyb skončil v nějakém jiném místě. 
+    zemí, bude kinetická energie rovna \(\frac{1}{2}m\left(\diff{x}{t}\right)^2\) a potenciální
+    energie bude v každém okamžiku rovna \(mgx\). Nyní vezměme rozdíl kinetické a potenciální
+    energie v každém okamžiku pohybu a tento výraz integrujeme podle času od počátečního do
+    konečného okamžiku. Předpokládejme, že v počátečním čase \(t_1\), tento pohyb začínal v určité
+    výšce a v konečném čase \(t_2\), pohyb skončil v nějakém jiném místě. 
 
     Pak máme integrál
     \begin{equation*}
-      \bigint_{t_1}^{t_2}\left[\frac{1}{2}m\left(\der{x}{t}\right)^2 - mgx\right]\dd{t}
+      \scalerel{\int_{t_1}^{t_2}}{\left[\frac{1}{2}m\left(\der{x}{t}\right)^2 - mgx\right]}\dd{t}
     \end{equation*}
 
     Skutečný pohyb se děje po určité křivce (vyjadřujeme-li závislost na čase, jde o parabolu) a pro
     ni dostáváme určitou hodnotu uvedeného integrálu. Můžeme si však představit nějaký jiný pohyb,
     kdy by se částice pohybovala nahoru a dolů nějakým neobvyklým způsobem.
-    
-    \begin{figure}[ht!]  
-      \centering
-      \begin{tabular}{cc}
-        \includegraphics[width=0.47\linewidth]{fyz_fig653.jpg}             &                                                        
-        \includegraphics[width=0.41\linewidth]{fyz_fig654.jpg}
-      \end{tabular}
-    \end{figure}
 
+    \begin{figure}[ht!]
+      \centering
+      \subcaptionbox{  \label{fyz:fig653a}}{\luafigure[0.48]{fyz_fig653a.jpg}}  \hfill
+      \subcaptionbox{  \label{fyz:fig653b}}{\luafigure[0.48]{fyz_fig653b.jpg}}
+      \caption{Náčrtek na tabuly II}
+      \label{fyz:fig653}
+    \end{figure}
+    
     Pro takový pohyb pak můžeme vypočítat rozdíl kinetické a potenciální energie a tento rozdíl
     integrovat po znázorněné křivce... nebo po jakékoliv jiné křivce. Podstatné je, že tou pravou
     křivkou je ta, pro níž má tento integrál \textbf{nejmenší hodnotu}.
 
     Vyzkoušejme to. Nejdříve si všimněme pohybu volné částice, která nemá žádnou potenciální
     energii. Pravidlo pak říká, že při pohybu z jednoho místa na druhé v dané době musí být integrál
-    kinetické energie nejmenší, takže pohyb se musí dít konstantní rychlostí. (My už víme, že
+    kinetické energie nejmenší, takže pohyb se musí dít \emph{konstantní} rychlostí. (My už víme, že
     správnou odpovědí je pohyb konstantní rychlostí.) Proč je tomu tak? Proto, že při jiném pohybu
     částice by byly rychlosti někdy větší a někdy menší než průměr. Jenže průměrná rychlost je vždy
     stejná, neboť všechny pohyby z jednoho místa na druhé se uskutečňují ve stejném čase.
@@ -85,8 +85,8 @@
     \begin{figure}[ht!]  
       \centering
       \begin{tabular}{cc}
-        \includegraphics[width=0.455\linewidth]{fyz_fig655.jpg}             &                                                        
-        \includegraphics[width=0.440\linewidth]{fyz_fig656.jpg}
+        \includegraphics[width=0.48\linewidth]{fyz_fig655.jpg}             &                                                        
+        \includegraphics[width=0.48\linewidth]{fyz_fig656.jpg}
       \end{tabular}
     \end{figure}
 
