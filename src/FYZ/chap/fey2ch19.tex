@@ -45,7 +45,7 @@
 
     Pak máme integrál
     \begin{equation*}
-      \scalerel{\int_{t_1}^{t_2}}{\left[\frac{1}{2}m\left(\der{x}{t}\right)^2 - mgx\right]}\dd{t}
+      \scalerel{\int_{t_1}^{t_2}}{\left[\frac{1}{2}m\left(\diff{x}{t}\right)^2 - mgx\right]}\dd{t}
     \end{equation*}
 
     Skutečný pohyb se děje po určité křivce (vyjadřujeme-li závislost na čase, jde o parabolu) a pro
@@ -149,7 +149,7 @@
 
     
     Budeme tedy počítat křivku, podle níž se těleso bude pohybovat. Uděláme to následujícím
-    způsobem. Představíme si, že existuje ta pravá křivka (\uv{true path})a všechny ostatní křivky
+    způsobem. Představíme si, že existuje ta pravá křivka (\uv{true path}) a všechny ostatní křivky
     jsou nepravé (\uv{fake path}) (obr. \ref{fyz:fig657a}). Budeme-li počítat akci pro nepravou
     křivku, dostaneme větší hodnotu než při výpočtu akce pro pravou křivku.
 
@@ -186,7 +186,7 @@
     křivku, tu, kterou se snažíme najít. Vezmeme nějakou zkušební křivku \(x(t)\), která se od té
     pravé liší o malou hodnotu, a tu označíme \(\eta(t)\).
 
-    \luagraphic[1]{fyz_fig659.jpg}{Tabule s náčrty (\cite[s.~336]{Feynman02})}{fyz:fig659}
+    \luagraphic[0.9]{fyz_fig659.jpg}{Tabule s náčrty (\cite[s.~336]{Feynman02})}{fyz:fig659}
 
     Základní myšlenka spočívá v tom, že rozdíl mezi akcí \(\underline{S}\) podél křivky
     \(\underline{x(t)}\) a akcí \(S\) podél pravé křivky \(x(t)\) musí být v prvním přiblížení
@@ -207,26 +207,26 @@
 
     Podstata našeho postupu bude spočívat v tom, že do výrazu pro akci
     \begin{equation*}
-      S = \bigint\left[\frac{m}{2}\left(\der{x}{t}\right)^2 - V(x) \right]\dd{t}
+      S = \scalerel{\int}{\left[\frac{m}{2}\left(\diff{x}{t}\right)^2 - V(x) \right]}\dd{t}
     \end{equation*}
     v němž \(V(x)\) představuje \emph{potenciální energii}, zavedeme substituci \(x(t) =
     \underline{x(t)}+\eta(t)\). Derivace \(dx/dt\) je, samozřejmě, derivace \(\underline{x(t)}\)
     plus derivace \(\eta(t)\), takže pro akci dostaneme vyjádření
     \begin{equation*}
-      S = \bigint\left[\frac{m}{2}\left(\der{\underline{x}}{t}+\der{\eta}{t}\right)^2 
-          - V(\underline{x}+\eta)\right]\dd{t}
+      S = \scalerel{\int}{\left[\frac{m}{2}\left(\diff{\underline{x}}{t}+\diff{\eta}{t}\right)^2 
+          - V(\underline{x}+\eta)\right]}\dd{t}
     \end{equation*}
     Nyní tento výraz rozepíšeme podrobněji. Pro člen s druhou mocninou dostaneme
     \begin{equation*}
-      \left(\der{\underline{x}}{t}\right)^2 + 2\der{\underline{x}}{t}\der{\eta}{t} 
-      + \left(\der{\eta}{t}\right)^2.
+      \left(\diff{\underline{x}}{t}\right)^2 + 2\diff{\underline{x}}{t}\diff{\eta}{t} 
+      + \left(\diff{\eta}{t}\right)^2.
     \end{equation*}
     Ale pozor! Nás nezajímají členy, které jsou vyššího řádu než prvního, a proto členy obsahující
     \(\eta^2\) a vyšší mocniny zasuneme do škatulky zvané „druhý řád a řády vyšší“. Z tohoto výrazu
     se nám sem dostane pouze druhá mocnina, ale z jiných výrazů se sem mohou dostat i vyšší mocniny.
     Část odpovídající kinetické energii pak vypadá takto:
     \begin{equation*}
-      \dfrac{m}{2}\left(\der{\underline{x}}{t}\right)^2 + m\der{\underline{x}}{t}\der{\eta}{t} + 
+      \dfrac{m}{2}\left(\diff{\underline{x}}{t}\right)^2 + m\diff{\underline{x}}{t}\diff{\eta}{t} + 
       (\text{druhý řád a vyšší řády})
     \end{equation*}
 
@@ -240,23 +240,26 @@
     \end{equation*}
     Pro stručnost jsme psali \(V'\) namísto derivace \(V\) podle \(\underline{x}\). Člen s
     \(\eta^2\) a vyšší členy spadnou do škatulky „druhý a vyšší řády“ a s těmi si nemusíme dělat
-    starosti. Dáme-li nyní všechno dohromady, dostaneme
-    \begin{equation*}
-      S = \bigint_{t_1}^{t_2}
+    starosti. Dáme-li nyní všechno dohromady, dostaneme pro akci \(S\) integrál
+    \begin{multline*}
+      \scalerel{\int_{t_1}^{t_2}}{
         \left[
-            \frac{m}{2}\left(\der{\underline{x}}{t}\right)^2-V(\underline{x}) 
-            + m\der{x}{t}\der{\eta}{t} - \eta V'(\underline{x}) 
+            \frac{m}{2}\left(\diff{\underline{x}}{t}\right)^2-V(\underline{x}) 
+            + m\diff{x}{t}\diff{\eta}{t} - \eta V'(\underline{x}) 
+        \right.}        \\
             + (\text{druhý řád a vyšší řády})
-        \right]\dd{t}.
-    \end{equation*}
+        \Bigg]
+      \dd{t}.
+    \end{multline*}
     Když si to pozorně prohlédneme, zjistíme, že první dva členy odpovídají akci \(S\), kterou
     bychom dostali v případě první křivky \(\underline{x}\). To, na co se soustředíme, je změna
     \(S\) (tj. rozdíl mezi \(S\) a \(\underline{S}\), kterou bychom dostali v případě pravé křivky).
     Tento rozdíl označíme jako \(\delta S\) a nazveme jej variací podle \(S\). Vynecháme-li členy
     odpovídající druhému řádu a vyšším řádům, dostaneme
     \begin{equation*}
-      \delta S  = \bigint_{t_1}^{t_2}
-                    \left[m\der{x}{t}\der{\eta}{t} - \eta V'(\underline{x})\right]\dd{t}.
+      \delta S  = \scalerel{\int_{t_1}^{t_2}}{
+                    \left[m\diff{x}{t}\diff{\eta}{t} - \eta V'(\underline{x})\right]
+        }\dd{t}.
     \end{equation*}  
     
     Nyní si povězme, jakou máme vlastně úlohu. Máme určitý integrál. Zatím nevíme, jaké je
@@ -285,19 +288,19 @@
     Vzpomeňme si na obecný princip integrování per partes. Máme-li libovolnou funkci \(f\) násobenou
     \(d\eta/dt\) a integrovanou podle \(t\), napíšeme derivaci součinu \(\eta f\).
     \begin{equation*}
-      \der{}{t}(\eta f) = \eta\der{f}{t} + f\der{\eta}{t}.
+      \diff{}{t}(\eta f) = \eta\diff{f}{t} + f\diff{\eta}{t}.
     \end{equation*}  
     V integrálu, který máte počítat, vystupuje poslední člen, takže
     \begin{equation*}
-      \int f\der{\eta}{t}\dd{t} = \eta f - \int\eta\der{f}{t}\dd{t}.
+      \int f\diff{\eta}{t}\dd{t} = \eta f - \int\eta\diff{f}{t}\dd{t}.
     \end{equation*}  
     V našem vztahu pro \(\delta S\) představuje funkce \(f\) součin \(m\cdot dx/dt\), a proto můžeme
     psát
-    \begin{equation*}
-      \delta S = \left.m\der{x}{t}\eta(t)\right\rvert^{t_2}_{t_1} 
-               - \int^{t_2}_{t_1}\der{}{t}\left(m\der{x}{t}\right)\eta(t)\dd{t}
-               - \int^{t_2}_{t_1} V'(\underline{x})\eta(t)\dd{t}.
-    \end{equation*} 
+    \begin{align*}
+      \delta S = \left.m\diff{x}{t}\eta(t)\right\rvert^{t_2}_{t_1} 
+               &- \int^{t_2}_{t_1}\diff{}{t}\left(m\diff{x}{t}\right)\eta(t)\dd{t}   \\
+               &- \int^{t_2}_{t_1} V'(\underline{x})\eta(t)\dd{t}.
+    \end{align*} 
     První člen musíme vypočítat pro dvě meze \(t_1\) a \(t_2\). Pak tam máme integrál ze zbytku
     integrace per partes. Poslední člen tam vystupuje beze změny.
 
@@ -308,7 +311,9 @@
     =0\), jakož i \(\eta(t_2) = 0\). Zintegrovaný člen je proto nulový. Spojíme-li zbývající členy,
     dostaneme
     \begin{equation*}
-      \delta S = \int^{t_2}_{t_1}\left[-m\dder{x}{t} -V'(\underline{x})\right]\eta(t)\dd{t}.
+      \delta S = \scalerel{\int^{t_2}_{t_1}}{
+        \left[-m\dder{x}{t} -V'(\underline{x})\right]\eta(t)
+      }\dd{t}.
     \end{equation*} 
     Variace \(\delta S\) má už nyní požadovaný tvar - máme něco v závorkách, řekněme \(F\), vše je
     násobeno \(\eta(t)\) a integrováno od \(t_1\) a \(t_2\).
@@ -734,7 +739,7 @@
     kde \(\alpha\) je nějaká konstanta. Tento výraz je už trochu složitější. Kromě lineárního členu
     obsahuje i druhou mocninu. Z tohoto výrazu se však pole určí snadno. Dostáváme pro něj vyjádření
     \begin{equation*}
-      E = -\der{\varphi}{r} = - \dfrac{\alpha U}{b-a} + 2(1 - \alpha)\dfrac{(r-a)U}{(b-a)^2}
+      E = -\diff{\varphi}{r} = - \dfrac{\alpha U}{b-a} + 2(1 - \alpha)\dfrac{(r-a)U}{(b-a)^2}
     \end{equation*}
     Nyní to musíme umocnit a integrovat přes objem. Ale okamžik! Co je třeba brát jako \(\alpha\)?
     Za \(\varphi\) můžeme vzít parabolu; jenže jakou parabolu? A víme co uděláme? Vypočítáme
