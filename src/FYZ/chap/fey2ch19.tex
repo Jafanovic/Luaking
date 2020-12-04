@@ -207,14 +207,18 @@
 
     Podstata našeho postupu bude spočívat v tom, že do výrazu pro akci
     \begin{equation*}
-      S = \scalerel{\int}{\left[\frac{m}{2}\left(\diff{x}{t}\right)^2 - V(x) \right]}\dd{t}
+      S = \scalerel{\int_{t_1}^{t_2}}{
+            \left[\frac{m}{2}\left(\diff{x}{t}\right)^2 - V(x) \right]
+          }\dd{t}
     \end{equation*}
     v němž \(V(x)\) představuje \emph{potenciální energii}, zavedeme substituci \(x(t) =
     \underline{x(t)}+\eta(t)\). Derivace \(dx/dt\) je, samozřejmě, derivace \(\underline{x(t)}\)
     plus derivace \(\eta(t)\), takže pro akci dostaneme vyjádření
     \begin{equation*}
-      S = \scalerel{\int}{\left[\frac{m}{2}\left(\diff{\underline{x}}{t}+\diff{\eta}{t}\right)^2 
-          - V(\underline{x}+\eta)\right]}\dd{t}
+      S = \scalerel{\int_{t_1}^{t_2}}{
+            \left[\frac{m}{2}\left(\diff{\underline{x}}{t}+\diff{\eta}{t}\right)^2 
+            - V(\underline{x}+\eta)\right]
+          }\dd{t}
     \end{equation*}
     Nyní tento výraz rozepíšeme podrobněji. Pro člen s druhou mocninou dostaneme
     \begin{equation*}
@@ -245,7 +249,7 @@
       \scalerel{\int_{t_1}^{t_2}}{
         \left[
             \frac{m}{2}\left(\diff{\underline{x}}{t}\right)^2-V(\underline{x}) 
-            + m\diff{x}{t}\diff{\eta}{t} - \eta V'(\underline{x}) 
+            + m\diff{\underline{x}}{t}\diff{\eta}{t} - \eta V'(\underline{x}) 
         \right.}        \\
             + (\text{druhý řád a vyšší řády})
         \Bigg]
@@ -258,8 +262,8 @@
     odpovídající druhému řádu a vyšším řádům, dostaneme
     \begin{equation*}
       \delta S  = \scalerel{\int_{t_1}^{t_2}}{
-                    \left[m\diff{x}{t}\diff{\eta}{t} - \eta V'(\underline{x})\right]
-        }\dd{t}.
+                    \left[m\diff{\underline{x}}{t}\diff{\eta}{t} - \eta V'(\underline{x})\right]
+        }\dd{t} \stackrel{?}{=} = 0.
     \end{equation*}  
     
     Nyní si povězme, jakou máme vlastně úlohu. Máme určitý integrál. Zatím nevíme, jaké je
@@ -288,17 +292,19 @@
     Vzpomeňme si na obecný princip integrování per partes. Máme-li libovolnou funkci \(f\) násobenou
     \(d\eta/dt\) a integrovanou podle \(t\), napíšeme derivaci součinu \(\eta f\).
     \begin{equation*}
-      \diff{}{t}(\eta f) = \eta\diff{f}{t} + f\diff{\eta}{t}.
+      \diff{}{t}(\eta\,f) = \eta\diff{f}{t} + f\,\diff{\eta}{t}.
     \end{equation*}  
     V integrálu, který máte počítat, vystupuje poslední člen, takže
     \begin{equation*}
-      \int f\diff{\eta}{t}\dd{t} = \eta f - \int\eta\diff{f}{t}\dd{t}.
+      \scalerel{\int}{f\,\diff{\eta}{t}}\dd{t} = \eta f - \scalerel{\int}{\eta\diff{f}{t}}\dd{t}.
     \end{equation*}  
     V našem vztahu pro \(\delta S\) představuje funkce \(f\) součin \(m\cdot dx/dt\), a proto můžeme
     psát
     \begin{align*}
-      \delta S = \left.m\diff{x}{t}\eta(t)\right\rvert^{t_2}_{t_1} 
-               &- \int^{t_2}_{t_1}\diff{}{t}\left(m\diff{x}{t}\right)\eta(t)\dd{t}   \\
+      \delta S = \left.m\diff{\underline{x}}{t}\eta(t)\right\rvert^{t_2}_{t_1} 
+               &- \scalerel{\int^{t_2}_{t_1}}{\diff{}{t}
+                    \left(m\diff{\underline{x}}{t}\right)\eta(t)
+                  }\dd{t}   \\
                &- \int^{t_2}_{t_1} V'(\underline{x})\eta(t)\dd{t}.
     \end{align*} 
     První člen musíme vypočítat pro dvě meze \(t_1\) a \(t_2\). Pak tam máme integrál ze zbytku
@@ -312,13 +318,13 @@
     dostaneme
     \begin{equation*}
       \delta S = \scalerel{\int^{t_2}_{t_1}}{
-        \left[-m\dder{x}{t} -V'(\underline{x})\right]\eta(t)
+        \left[-m\diff{\underline{x}}{t} -V'(\underline{x})\right]\eta(t)
       }\dd{t}.
     \end{equation*} 
     Variace \(\delta S\) má už nyní požadovaný tvar - máme něco v závorkách, řekněme \(F\), vše je
     násobeno \(\eta(t)\) a integrováno od \(t_1\) a \(t_2\).
 
-    Vyšlo nám, že integrál z čehosi násobenélio \(\eta(t)\) je vždy nulový:
+    Vyšlo nám, že integrál z čehosi násobeno \(\eta(t)\) je vždy nulový:
     \begin{equation*}
       \int F(t)\eta(t)\dd{t} = 0.
     \end{equation*} 
@@ -339,7 +345,7 @@
     Je-li náš integrál nulový pro libovolné \(\eta\), koeficient u \(\eta\) musí být nulový. Akční
     integrál bude nejmenší pro křivku, která vyhovuje této složité diferenciální rovnici. 
     \begin{equation*}
-      \left[-m\dder{x}{t} -V'(\underline{x})\right] = 0.
+      \left[-m\diff{\underline{x}}{t} -V'(\underline{x})\right] = 0.
     \end{equation*}  
     
     Ve skutečnosti to však není tak složitá rovnice a určitě jsme se s ní již setkali. Je to prostě
@@ -357,12 +363,12 @@
     nulová; je to tedy stejná historie. „Nejmenším“ vlastně rozumíme to, že v prvním řádu je při
     změně křivky změna veličiny \(S\) nulová. Nemusí to však být nevyhnutelně „minimum".
     
-    Dále bych chtěl zmínit některá zobecnění. Především to, že by se to dalo dělat i v trojrozměrném
-    případě. Místo \(x\) bychom měli \(x\), \(y\), \(z\) jako funkce \(t\), akce by však byla
-    složitější. Při trojrozměrném pohybu musíme vzít úplnou kinetickou energii: \((m/2)\) násobené
-    druhou mocninou celkové rychlosti, tj.
+    Dále bychom měli zmínit některá zobecnění. Především to, že by se to dalo dělat i v
+    trojrozměrném případě. Místo \(x\) bychom měli \(x\), \(y\), \(z\) jako funkce \(t\), akce by
+    však byla složitější. Při trojrozměrném pohybu musíme vzít úplnou kinetickou energii: \((m/2)\)
+    násobené druhou mocninou celkové rychlosti, tj.
     \begin{equation*}
-      KE = \dfrac{m}{2}\left[\dder{x}{t} +\dder{y}{t} + \dder{z}{t}\right].
+      KE = \dfrac{m}{2}\left[\diff{x}{t} +\diff{y}{t} + \diff{z}{t}\right].
     \end{equation*}
     I potenciální energie je funkcí \(x\), \(y\), \(z\). Jak vypadá naše křivka? Je to nějaká obecná
     křivka v prostoru, kterou nebude snadné nakreslit, ale myšlenka zůstává stejná. Co lze říci o
@@ -398,7 +404,7 @@
     v relativistickém případě?“} Existuje! V relativistickém případě platí takovýto vztah:
     \begin{multline}
       S = -m_0c^2\int_{t_1}^{t_2}\sqrt{1-{v^2}/{c^2}}\dd{t} \\
-          -q\int_{t_1}^{t_2}[\varphi(x,y,z,t)-\vec{v}\cdot\vec{A}(x,y,z,t)]\dd{t}.
+          -q\int_{t_1}^{t_2}\left[\varphi(x,y,z,t)-\vec{v}\cdot\vec{A}(x,y,z,t)\right]\dd{t}.
     \end{multline}
     První část akčního integrálu je součin klidové hmotnosti \(m_0\) druhé mocniny rychlosti světla
     \(c^2\) a integrálu funkce rychlosti \(\sqrt{1 - v^2/c^2}\). Pak máme místo potenciální energie
