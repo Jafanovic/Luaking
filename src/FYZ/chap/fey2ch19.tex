@@ -1,6 +1,9 @@
 % !TeX spellcheck = cs_CZ
 %{\tikzset{external/prefix={tikz/FYZII/}}
 % \tikzset{external/figure name/.add={ch19_}{}}
+% Zajímavé odkazy:
+% https://www2.karlin.mff.cuni.cz/~rokyta/vyuka/
+% https://www2.karlin.mff.cuni.cz/~rokyta/vyuka/1011/zs/Pdr1/cviceni.htm
 %---------------------------------------------------------------------------------------------------
 % file fey2ch19.tex
 %---------------------------------------------------------------------------------------------------
@@ -108,10 +111,10 @@
     veličinou nazývanou \text{akce (účinek)} \(S\). Je to rozdíl kinetické a potenciální energie
     integrovaný podle času.
     \begin{equation*}
-      \text{akce} = S = \int_{t_1}^{t_2}\left(KE - PE\right)\dd{t}
+      \text{akce} = S = \int_{t_1}^{t_2}\left(E_K - E_P\right)\dd{t}
     \end{equation*}
 
-    Musíme si uvědomit, že \(PE\) a \(KE\) jsou funkce. Pro různé možné křivky bude akce nabývat
+    Musíme si uvědomit, že \(E_P\) a \(E_K\) jsou funkce. Pro různé možné křivky bude akce nabývat
     různých hodnot. Naší matematickou úlohou je najít, pro kterou křivku je toto číslo nejmenší.
 
     Možná že si řekneme: „Je to obyčejný výpočet maxima a minima. Je třeba vypočítat akci a
@@ -263,7 +266,7 @@
     \begin{equation*}
       \delta S  = \scalerel{\int_{t_1}^{t_2}}{
                     \left[m\diff{\underline{x}}{t}\diff{\eta}{t} - \eta V'(\underline{x})\right]
-        }\dd{t} \stackrel{?}{=} = 0.
+        }\dd{t} \stackrel{?}{=} 0.
     \end{equation*}  
     
     Nyní si povězme, jakou máme vlastně úlohu. Máme určitý integrál. Zatím nevíme, jaké je
@@ -294,7 +297,7 @@
     \begin{equation*}
       \diff{}{t}(\eta\,f) = \eta\diff{f}{t} + f\,\diff{\eta}{t}.
     \end{equation*}  
-    V integrálu, který máte počítat, vystupuje poslední člen, takže
+    V integrálu, který máme počítat, vystupuje poslední člen, takže
     \begin{equation*}
       \scalerel{\int}{f\,\diff{\eta}{t}}\dd{t} = \eta f - \scalerel{\int}{\eta\diff{f}{t}}\dd{t}.
     \end{equation*}  
@@ -318,7 +321,7 @@
     dostaneme
     \begin{equation*}
       \delta S = \scalerel{\int^{t_2}_{t_1}}{
-        \left[-m\diff{\underline{x}}{t} -V'(\underline{x})\right]\eta(t)
+        \left[-m\diff[2]{\underline{x}}{t} -V'(\underline{x})\right]\eta(t)
       }\dd{t}.
     \end{equation*} 
     Variace \(\delta S\) má už nyní požadovaný tvar - máme něco v závorkách, řekněme \(F\), vše je
@@ -345,7 +348,7 @@
     Je-li náš integrál nulový pro libovolné \(\eta\), koeficient u \(\eta\) musí být nulový. Akční
     integrál bude nejmenší pro křivku, která vyhovuje této složité diferenciální rovnici. 
     \begin{equation*}
-      \left[-m\diff{\underline{x}}{t} -V'(\underline{x})\right] = 0.
+      \left[-m\diff[2]{\underline{x}}{t} -V'(\underline{x})\right] = 0.
     \end{equation*}  
     
     Ve skutečnosti to však není tak složitá rovnice a určitě jsme se s ní již setkali. Je to prostě
@@ -368,7 +371,11 @@
     však byla složitější. Při trojrozměrném pohybu musíme vzít úplnou kinetickou energii: \((m/2)\)
     násobené druhou mocninou celkové rychlosti, tj.
     \begin{equation*}
-      KE = \dfrac{m}{2}\left[\diff{x}{t} +\diff{y}{t} + \diff{z}{t}\right].
+      E_K =  \dfrac{m}{2}\left[
+              \left(\diff{x}{t}\right)^2 +
+              \left(\diff{y}{t}\right)^2 + 
+              \left(\diff{z}{t}\right)^2
+            \right].
     \end{equation*}
     I potenciální energie je funkcí \(x\), \(y\), \(z\). Jak vypadá naše křivka? Je to nějaká obecná
     křivka v prostoru, kterou nebude snadné nakreslit, ale myšlenka zůstává stejná. Co lze říci o
@@ -433,16 +440,16 @@
     známými rovnicemi a snažit se je vyjádřit prostřednictvím nejmenší akce.
 
     Ještě jedna terminologická poznámka. Funkci, kterou integrujeme v čase, abychom dostali akci
-    \(S\), nazýváme \textbf{Lagrangeova funkce} nebo \emph{lagranžián} \(L\) a ten závisí pouze na
-    rychlostech a polohách částic. Princip nejmenší akce lze tedy zapsat i ve tvaru
+    \(S\), nazýváme \textbf{Lagrangeova funkce} nebo \emph{lagranžián} \(\mathcal{L}\) a ten závisí
+    pouze na rychlostech a polohách částic. Princip nejmenší akce lze tedy zapsat i ve tvaru
     \begin{equation*}
       S = \int_{t_1}^{t_2}L(x_i,v_i)\dd{t},
     \end{equation*}
-    kde pod \(x_i\) a \(v_i\) rozumíme všechny složky poloh a rychlostí. Uslišíme-li někdy o
+    kde pod \(x_i\) a \(v_i\) rozumíme všechny složky poloh a rychlostí. Uslyšíme-li někdy o
     lagranžiánu, už budeme vědět, že jde o funkci, pomocí které se hledá akce. Při relativistickém
     pohybu v elektromagnetickém poli platí
     \begin{equation*}
-      L = - m_0c^2\sqrt{1 - {v^2}/{c^2}} - q(\varphi + \vec{v}\cdot\vec{A}),
+      \mathcal{L} = - m_0c^2\sqrt{1 - {v^2}/{c^2}} - q(\varphi + \vec{v}\cdot\vec{A}),
     \end{equation*}
 
     Nejpedantičtější fyzici vlastně nenazývají veličinu \(S\) akcí, ale \textbf{první hlavní
@@ -506,13 +513,13 @@
     bychom značnou hodnotu celkové amplitudy pro příchod částice do daného bodu. Důležitou cestou se
     stane ta, pro kterou existuje mnoho sousedních cest dávajících tutéž fázi. 
     
-    Právě to se stává v kvantové mechanice. Úplná kvantová mechanika (nereladvisdeká a zanedbávající
-    spin) pracuje takto: Pravděpodobnost, že částice vycházející z bodu \(1\) v čase \(t_1\) dojde
-    do bodu \(2\) v čase \(t_2\), je rovna druhé mocnině amplitudy pravděpodobnosti. Celkovou
-    amplitudu lze vyjádřit jako součet amplitud všech možných cest - pro každý způsob příchodu. Pro
-    každé \(x(t)\), které bychom mohli mít (pro každou myslitelnou trajektorii), musíme vypočítat
-    amplitudu. Pak všechny sečteme. Co máme považovat za amplitudu pravděpodobnosti nějaké
-    trajektorie? Náš akční integrál nám řekne, jaká má být amplituda jednotlivé trajektorie.
+    Právě to se stává v kvantové mechanice. Úplná kvantová mechanika (nerelativistická a
+    zanedbávající spin) pracuje takto: Pravděpodobnost, že částice vycházející z bodu \(1\) v čase
+    \(t_1\) dojde do bodu \(2\) v čase \(t_2\), je rovna druhé mocnině amplitudy pravděpodobnosti.
+    Celkovou amplitudu lze vyjádřit jako součet amplitud všech možných cest - pro každý způsob
+    příchodu. Pro každé \(x(t)\), které bychom mohli mít (pro každou myslitelnou trajektorii),
+    musíme vypočítat amplitudu. Pak všechny sečteme. Co máme považovat za amplitudu pravděpodobnosti
+    nějaké trajektorie? Náš akční integrál nám řekne, jaká má být amplituda jednotlivé trajektorie.
     Amplituda je úměrná součinu nějaké konstanty a výrazu \(e^{iS/\hslash}\), kde \(S\) je akce
     trajektorie. Vyjádříme-li tedy fázi amplitudy ve tvaru komplexního čísla, bude fázový úhel
     \(S/\hslash\). Akce \(S\) má rozměr energie krát čas a Planckova konstanta \(\hslash\) má tentýž
@@ -539,13 +546,13 @@
     zadáním diferenciální rovnice pro pole, ale požadováním maxima nebo minima určitého integrálu.
     Nejdříve budeme uvažovat případ, kdy známe všude hustotu náboje a chceme najít potenciál
     \(\varphi\) v libovolném místě prostoru. Už víme, že odpověď na tuto otázku dostaneme řešením
-    rovnice
+    Poissonovy rovnice
     \begin{equation*}
       \nabla^2\varphi = -\dfrac{\varrho}{\varepsilon_0}.
     \end{equation*}
     Totéž však lze vyjádřit i jiným způsobem: Je třeba vypočítat integrál \(W^*\), který má tvar
     \begin{equation*}
-      W^* = \dfrac{\varepsilon}{2}\int(\nabla\varphi)^2\dd{V} - \int\varphi\varrho\dd{V}
+      W^* = \dfrac{\varepsilon_0}{2}\int(\nabla\varphi)^2\dd{V} - \int\varphi\varrho\dd{V}
     \end{equation*}
     a který představuje objemový integrál přes celý prostor. Tento výraz je minimální při správném
     rozložení potenciálu \(\varphi(x, y, z)\).
@@ -570,11 +577,11 @@
     \end{equation*}
     V druhém členu veličiny \(W^*\) má podintegrální výraz tvar
     \begin{equation*}
-      \varrho\varphi = \varrho\underline{\varphi} + \varrho f.
+      \varrho\varphi = \varrho\underline{\varphi} + \varrho\,f.
     \end{equation*}
-    a jeho proměnnou částí je \(\varrho f\). Ponecháme-li jen proměnné části, budeme mít integrál
+    a jeho proměnnou částí je \(\varrho\,f\). Ponecháme-li jen proměnné části, budeme mít integrál
     \begin{equation*}
-      \Delta W^* = \int(\varepsilon_0\nabla\underline{\varphi}\cdot\nabla f - \varrho f)\dd{V}.
+      \Delta W^* = \int(\varepsilon_0\nabla\underline{\varphi}\cdot\nabla f - \varrho\'f)\dd{V}.
     \end{equation*}
     Dále podle starého obecného pravidla musíme zbavit tu zapeklitou věc všech derivací \(f\).
     Podívejme se, jaké jsou to derivace. Skalární součin je roven
@@ -587,8 +594,8 @@
     \(\underline\varphi\). Je to tatáž myšlenka, jaké jsme využívali, když jsme se chtěli zbavit
     derivací podle \(t\). Využijeme rovnosti
     \begin{equation*}
-      \int\pder{\underline{\varphi}}{x}\pder{f}{x}\dd{x} = f\pder{\underline{\varphi}}{x} -
-      \int f\ppder{\underline{\varphi}}{x}\dd{x}.
+      \scalerel{\int}{\pder{\underline{\varphi}}{x}\pder{f}{x}}\dd{x} 
+        = f\pder{\underline{\varphi}}{x} - \scalerel{\int}{f\ppder{\underline{\varphi}}{x}}\dd{x}.
     \end{equation*}
     Integrovaný člen bude nulový, neboť v nekonečnu musí být \(f\) nulové. (To odpovídá nulovému
     \(\eta\) v \(t_1\) a \(t_2\). Proto by měl být náš princip přesněji formulován takto: \(W^*\) je
@@ -646,7 +653,7 @@
     
     Existuje zajímavý případ, kdy náboje jsou rozloženy pouze na vodičích. Potom
     \begin{equation*}
-      \Delta W^* = \dfrac{\varepsilon_0}{2}\int(\nabla\underline{\varphi})^2\dd{V}.
+      \Delta W^* = \dfrac{\varepsilon_0}{2}\int(\nabla\varphi)^2\dd{V}.
     \end{equation*}
     Náš princip minima říká, že pro vodiče s pevně danými potenciály se potenciál mezi nimi ustálí
     tak, aby integrál \(W^*\) byl minimální. Co představuje tento integrál? Protože výraz
@@ -733,14 +740,14 @@
     můžeme použít i pro jiné nepravidelné tvary, kdy správnou odpověď neznáme.) Dalším krokem bude
     hledání lepšího přiblížení k neznámému správnému potenciálu \(\varphi\). Můžeme např. zkoušet
     součet konstanty a exponenciály \(\varphi\) atd. Jak ale poznáme, že máme lepší přiblížení,
-    neznáme-li správné \(\varphi\)? Odpověďje následující: Vypočteme \(C\) a nejmenší hodnota \(C\)
+    neznáme-li správné \(\varphi\)? Odpověď je následující: Vypočteme \(C\) a nejmenší hodnota \(C\)
     je tou hodnotou, která je nejblíže k pravdě. Vyzkoušejme tuto myšlenku. Předpokládejme, že
     potenciál není lineární, ale kvadratický v \(r\), tj. že elektrické pole není konstantní, ale
     lineární. Neobecnější kvadratickou formou, která vyhovuje podmínkám \(\varphi = 0\) pro \(r=b\)
     a \(\varphi=U\) pro \(r=a\) je
     \begin{equation*}
       \varphi = U\left[1 + \alpha \left(\dfrac{r-a}{b-a}\right) 
-                    - (1 - \alpha)\left(\dfrac{r-a}{b-a}\right)^2\right].
+                    - (1 + \alpha)\left(\dfrac{r-a}{b-a}\right)^2\right].
     \end{equation*}
     kde \(\alpha\) je nějaká konstanta. Tento výraz je už trochu složitější. Kromě lineárního členu
     obsahuje i druhou mocninu. Z tohoto výrazu se však pole určí snadno. Dostáváme pro něj vyjádření
