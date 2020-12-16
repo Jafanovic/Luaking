@@ -25,7 +25,7 @@
 
       \textbf{Pracovní uzemnění} se ve výkonových zařízeních střídavého proudu, zejména u
       normalizované soustavy 3 x \num{220}/\SI{380}{\V}, zřizuje 
-      \begin{enumerate}
+      \begin{enumerate}[noitemsep]
         \item na ustálení napětí soustaVy proti zemi, 
         \item na ochranu před vniknutím napětí u sítě nad \SI{1000}{\V} do sítě s napětím do
               \SI{1000}{\V},
@@ -100,6 +100,60 @@
       signály se šíří po vodivých strukturách, které v obvodových schématech nejsou zakresleny.
       Proto je výhodné pro EMC analýzu a určení účinnosti koncepce opatření, například zemnění,
       vycházet ze skutečné geometrické struktury nebo z jejího modelu na topologickém prostoru,
-      vhodně zobrazujícím podstatné lysy geometrické struktmy. 
+      vhodně zobrazujícím podstatné rysy geometrické struktury. 
       
+      Z fyzikálního názoru výplývá, že ideální zemnící plocha musí mít velkou kapacitu a velmi malé
+      připojovací indukčnosti dílčích funkčních segmentů. Kapacita plochy musí být taková, aby
+      absorbovala všechny signály bez ztráty schopnosti další absorpce. Zemnicí plocha (mechanická
+      konstrukce) musí být zhotovena z nízkoimpedančního materiálu dostatečných rozměrů ve všech
+      směrech (délka, šířka, výška) a měla by představovat velkou funkční kapacitu vůči skutečné
+      ekvipotenciální \uv{zemi}. Používají se tři způsoby zemnění (obr. ??)
+      \begin{enumerate}[noitemsep]
+        \item systém s plovoucí zemí,
+        \item jednobodový zemnící systém,
+        \item mnohabodový zemnící systém.      
+      \end{enumerate}
+      Při návrhu spojovacích vodičů v zemnící vf soustavě musí být brány v úvahu zejména tyto
+      skutečnosti, které se neuvažovali v zemnicích nf soustavách:
+      \begin{enumerate}[leftmargin=20pt,rightmargin=10pt, label=\emph{\alph*})]
+        \item Každý vodič má konečnou induktanci; pro zabezpečení nízké impedance zemnicích spojů se
+              vyžaduje, aby byly \emph{široké} a \emph{krátké} a aby byly spolehlivě spojeny se
+              zemnící plochou. Spoje by neměly být na okraji zemnící plochy a prostorově by měly být
+              v místech s minimálními hodnotami rozdílů potenciálů generovaných svodovými proudy;
+              někdy je proto výhodné vést delší zemnící vodič, aby bylo možno využít místa s nízkým
+              potenciálem na zemnící ploše
+        \item Proud procházející přes vodič indukuje magnetický tok kolem vodiče; proto zemnění
+              stíněných číst musí být provedeno tak, že \emph{stínění nesmí být použito jako zpětný
+              vodič} - zemnící systém musí být izolován od stínění s výjimkou zemnícího bodu. Tento
+              jediný zemní bod je zemním spojením pro stíněnou aparaturu - příklad viz obr. ??.
+
+              K zamezení vazeb při realizaci zemních propojení je nutno minimalizovat nejen
+              indukčnosti a tím indukční vzay spojovacích vodičů, ale dodržovat i zásady větvení
+              (viz obr. ?? a obr. ??).
+        \item Jednobodové zemnění je třeba aplikovat z hlediska zásad EMC i pro \emph{stínění
+              kabelů}. Protože však při \emph{zvýšení pracovního kmitočtu} roste \emph{indukční
+              reaktance vodiče}, je třeba zabezpečit, aby délka spojovacího vodiče stínění se zemí
+              \(L\) byla menší než jedna šestina vlnové délky \(h_{mmin}\) odpovídající nejvyššímu
+              pracovnímu kmitočtu \(f_{max}\) \si{\Hz}. tedy
+              \begin{equation*}
+                h_{min} = \dfrac{c}{f_{max}}, \quad [\si{\m}, \si{\m\per\s}, \si{\Hz}]
+              \end{equation*}
+              kde \(c = \SI{3e8}{\m\per\s}\), \(L<h_{min}/6 = l_{min}\). 
+
+              Když tento požadavek nelze realizovat, použije se vícebodové zemnění stínění kabelů v
+              intervalech menších než \(l_{min}\). Vyjímečně, pokud nelze uvedené zásady z vážných
+              důvodů dodržet, lze zemnit stínění kabelů na každém konci\footnote{Samozřejmě stínění
+              nidky nesmí být zpětným vodičem}.
+
+              Pro minimalizaci vlivu induktance spojovacích vodičů a dosažení maximálních stínících
+              a oddělovacích účinků by měly být stíněné části desky s plošnými spoji zemněny přímo k
+              základnímu šasi. Na obr. ?? je tento přístup principiálně znázorněn.
+                      
+      \end{enumerate}
+
+  \section{Stínění}\label{emc:IchapIIIsecII}
+    \subsection{Vztah mechanického krytí a elektromagnetického stínění}\label{emc:IchapIIIsecIIssecI}
+    \subsection{Fyzikální principy stínění kovovými materiály}\label{emc:IchapIIIsecIIssecII}
+    \subsection{Kovové stínění konečných rozměrů přibližně krychlového tvaru}\label{emc:IchapIIIsecIIssecIII}
+
 %---------------------------------------------------------------------------------------------------
