@@ -102,6 +102,7 @@
   right=1pt,
 }
 
+% https://tex.stackexchange.com/questions/200632/indentation-in-tcolorbox-package
 \newtcolorbox{tcnote}[1][]{%
   enhanced jigsaw, % better frame drawing
   breakable,
@@ -112,6 +113,11 @@
   coltitle={black},  % Black colour for title
   title={Pozn.:\ },  % Fixed title
   attach title to upper, % Move the title into the box
+  right=1em,
+  fontupper=\normalsize, 
+  fontlower=\small,
+  before upper={\parindent15pt\noindent},
+  before lower={\parindent15pt\noindent},
   #1
 }
 
