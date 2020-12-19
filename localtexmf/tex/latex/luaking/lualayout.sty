@@ -95,22 +95,26 @@
   ]{bookmark}
     
 % Package hyperref needs to be loaded before !
-\RequirePackage{caption}         % Captions
+\RequirePackage{caption}       % Captions
   \captionsetup{
-    font={small},               % 
-    labelfont={bf},             % make all caption labels small and bold or:
+    font={footnotesize},       % 
+    % font={it},
+    labelfont={bf},            % make all caption labels small and bold or:
     justification={justified},
-    textfont={it},
+    figurename={Obr.},
     labelfont={color=Sepia,bf},
-    textfont={color=black!90},
+    textfont={color=black!80},
     singlelinecheck=false,
     format={plain},            % plain >> Typesets the captions as a normal 
                                % paragraph. {options: plain, hang}
-    belowskip={3pt},           % sets the skip below caption
-    indention={1em},           % setup an extra indention starting at the second 
+    belowskip={10pt},           % sets the skip below caption
+%   indention={1em},           % setup an extra indention starting at the second 
                                % line of the caption.
-    parindent={-1em}            % sets the paragraph indention
+%   parindent={-1em}           % sets the paragraph indention
     }
+    % https://tex.stackexchange.com/questions/60477/remove-space-after-figure-and-before-text
+    \setlength{\textfloatsep}{1\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
+  \setlength{\intextsep}{5pt}
 
 \RequirePackage[labelfont=bf,list=true]{subcaption}    % typesetting of sub-captions     
 % \RequirePackage{subfig}        % Multipart figures 
