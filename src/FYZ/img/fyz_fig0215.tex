@@ -1,0 +1,101 @@
+%Tok povrchem krychle. Gaussova věta
+%xelatex -enable-write18 -shell-escape fyz_fig0215.tex
+
+\documentclass{standalone}
+\usepackage{xltxtra}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{tikz-3dplot}
+\begin{document}
+  \tdplotsetmaincoords{60}{150}
+
+  \definecolor{myred}{RGB}{255,54,18}
+  \definecolor{mybrown}{RGB}{174,54,18}
+  \definecolor{mygrey}{RGB}{172,157,147}
+  
+  \begin{tikzpicture}[scale=1,tdplot_main_coords,
+     grid/.style={very thin,gray},
+     axis/.style={->,blue,thick},
+     cube/.style={very thick},
+     cube hidden/.style={very thick,dashed}]
+          
+     %draw the axes
+     \draw[axis] (0,0,0) -- (5,0,0) node[anchor=east]{$x$};
+     \draw[axis] (0,0,0) -- (0,5,0) node[anchor=west]{$y$};
+     \draw[axis] (0,0,0) -- (0,0,5) node[anchor=east]{$z$};
+     \coordinate (O)   at (0,0,0);
+     \coordinate (xyz) at (3,3,3);
+         \coordinate (yz)  at (0,3,3);
+     \coordinate (xz)  at (3,0,3);
+     \coordinate (xy)  at (3,3,0);
+        
+     \fill[color=mybrown] (0,0,0) -- (3,0,0) -- (3,0,3) -- (0,0,3) -- cycle;
+     \fill[color=myred]  (0,0,0) -- (0,3,0) -- (0,3,3) -- (0,0,3) -- cycle;
+     \fill[color=mygrey]  (0,0,0) -- (0,3,0) -- (3,3,0) -- (3,0,0) -- cycle;
+     %draw the front-right of the cube
+     \draw[cube] (3,0,0) node[below=1mm]{$(x+\Delta x, y, z)$} coordinate (X)
+                 -- (3,3,0) -- (3,3,3) 
+             -- (3,0,3) -- cycle;
+  
+     %draw the front-left of the cube
+     \draw[name path=cube, cube] (0,3,0) node[right=1mm]{$(x, y+\Delta y, z)$} coordinate (Y)
+                 -- (3,3,0) -- (3,3,3) 
+             -- (0,3,3) -- cycle;
+  
+     %draw the top of the cube
+     \draw[cube] (0,0,3) node[right]{$(x, y, z+\Delta z)$} coordinate (Z)
+                 -- (0,3,3) -- (3,3,3)
+             -- (3,0,3) -- cycle;
+        
+    %corns
+        \draw[fill, color=black] (3,0,0) circle(2pt);
+        \draw[fill, color=black] (0,3,0) circle(2pt);             
+    \draw[fill, color=black] (0,0,3) circle(2pt);     
+    \draw[fill, color=black] (0,0,0) circle(2pt);
+        
+    %draw dashed lines to represent hidden edges
+    \draw[cube hidden] (0,0,0) -- (3,0,0);
+    \draw[cube hidden] (0,0,0) -- (0,3,0);
+    \draw[cube hidden] (0,0,0) -- (0,0,3);
+  
+    %text dx, dy, dz, xyz
+        \node[anchor=north east] at ($ (O)!0.5!(X) $) {$\Delta x$};
+       \node[left] at ($ (O)!0.5!(Y) $) {$\Delta y$};  
+    \node[anchor=south west] at ($ (O)!0.5!(Z) $) {$\Delta z$};
+    \node[right=1mm] at (O) {$(xyz)$};
+        
+    \tdplotsetcoord{C}{1.5}{60}{0}
+    %vector plane 1      
+    \draw[->, very thick] ($ (yz)!0.5!(O) $) coordinate (A)  
+           -- ++(C) node[left] {$\vec{C}$} coordinate (P); 
+        %draw projection on xy plane, and a connecting line
+    \draw[->, thick] (A) -- +(Cxy) node[left] {$C_x$};
+    \draw[dashed, thick]  (A) ++ (Cxy) -- (P);
+        
+    %vector plane 2  
+    \draw[->, very thick] ($ (xyz)!0.5!(X) $) -- ++(C) node[left] {$\vec{C}$};
+    
+    %vector n
+      \path [name path=vec] ($ (yz)!0.5!(O) $) -- +(-1.5,0,0);
+      \path [name intersections={of=cube and vec, name=cross}];
+    \coordinate (hidden) at (cross-1);
+    \draw[dashed, very thick] ($ (yz)!0.5!(O) $) -- (hidden);             % vector n: dashed line - 
+    %part one
+        \draw[->, very thick] (hidden) -- ++(-1,0,0) node[right] {$\vec{n}$}; % vector n: solid 
+        %line - part two        
+         
+        %vector n'
+        \draw[->, very thick] ($ (xyz)!0.5!(X) $) 
+                -- ++(1.5,0,0) node[left] {$\vec{n}'$};    
+        
+    %1,2,3,4,5,6
+        \draw[fill, color=black]   ($ (yz)!0.5!(O) $)  node[above, black] {$1$} circle(1pt); 
+        \draw[fill, color=myred]   ($ (xyz)!0.5!(X) $) node[above, myred] {$2$} circle(1pt); 
+                
+       \draw[fill, color=mygrey]  ($ (xyz)!0.5!(Z) $) node[left, mygrey] {$5$} circle(1pt);
+       \draw[fill, color=mybrown] ($ (xyz)!0.5!(Y) $) node[left, mybrown] {$3$} circle(1pt);
+       \draw[fill, color=black]   ($ (xz)!0.5!(O) $)  node[above] {$4$} circle(1pt);
+       \draw[fill, color=black]   ($ (xy)!0.5!(O) $)  node[below] {$6$} circle(1pt);
+          
+  \end{tikzpicture}
+\end{document}

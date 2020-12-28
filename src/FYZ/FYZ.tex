@@ -5,10 +5,10 @@
 %===================================================================================================
 % notes:
 %~~~~~~~~~
-% \label{fyz:eq950}
+% \label{fyz:eq988}
 % \label{fyz:def001}
-% \label{fyz:fig938}
-% volný číslo/obrázek: fyz_fig652,fyz_fig654.jpg
+% \label{fyz:fig0938}
+% volný číslo/obrázek: fyz_fig0652,fyz_fig0654.jpg, fyz_fig0645.pdf
 % \label{fyz:exam024}
 % \label{fyz:tab012}
 %---------------------------------------------------------------------------------------------------
@@ -25,17 +25,16 @@
 %---------------------------------------------------------------------------------------------------
 \ifthenelse{ \equal{\DebugMode}{true} }{ % Debug mode ON
   \input{../src/FYZ/chap/fey1ch01.tex}
-  \input{../src/FYZ/chap/fey1ch05.tex}
-  % \input{../src/FYZ/chap/fey1ch15.tex}
-  % \input{../src/FYZ/chap/fey1ch22.tex}
-  % \input{../src/FYZ/chap/fey1ch45.tex}
-  % \input{../src/FYZ/chap/fey1ch52.tex}
+  \input{../src/FYZ/chap/fey1ch02.tex}
+% \input{../src/FYZ/chap/fey1ch15.tex}
 }{ % DEBUG was off
   \LuaPartBckgrnd{fyz_title02.jpg}
   \LuaPartTitle{FYZ I}{Fyzika I}{FYZI}
   \parttoc
 %==== Kapitola: Hlavní etapy vývoje fyziky =========================================================
 \input{../src/FYZ/chap/fey1ch01.tex}
+%==== Kapitola: Dějiny fyziky ======================================================================
+\input{../src/FYZ/chap/fey1ch02.tex}
 %==== Kapitola: Zachování energie ==================================================================
 \input{../src/FYZ/chap/fey1ch04.tex} 
 %==== Kapitola: Čas a vzdálenost ===================================================================
@@ -134,9 +133,10 @@
 \input{../src/FYZ/chap/fey1ch52.tex} 
 %==== Kapitola: Kinematika částice =================================================================
 \input{../src/FYZ/chap/kinematika.tex}
-%=== Seznam literatury =================================================================
+%==== Seznam literatury ============================================================================
 \printbibliography[title={Seznam literatury}, heading=bibliography]
 }    % DEBUG was off
+
 %---------------------------------------------------------------------------------------------------
 %           ####### #     # ####### ### #    #    #       ### ### 
 %           #        #   #       #   #  #   #    # #       #   #
@@ -147,7 +147,7 @@
 %           #          #    ####### ### #    # #     #    ### ###
 %---------------------------------------------------------------------------------------------------
 \ifthenelse{ \equal{\DebugMode}{true} }{% Debug mode ON
-  % \input{../src/FYZ/chap/fey2ch19.tex}
+  \input{../src/FYZ/chap/fey2ch20.tex}
   % \input{../src/FYZ/chap/fey2ch31.tex}  
   % \input{../src/FYZ/chap/fey2ch10.tex}
   % \input{../src/FYZ/chap/fey2ch42.tex}
@@ -155,16 +155,55 @@
   \LuaPartBckgrnd{titleBG_fractal1.png}
   \LuaPartTitle{FYZ II}{Fyzika II}{FYZII}
   \parttoc
+%==== Kapitola Princip nejmenší akce ===============================================================
+\input{../src/FYZ/chap/fey2ch19.tex}
+%==== Kapitola Tenzory =============================================================================
+\input{../src/FYZ/chap/fey2ch31.tex}
+%==== Kapitola Vnitřní geometrie krystalů ==========================================================
+\input{../src/FYZ/chap/fey2ch30.tex}
+%==== Kapitola Pružnost ============================================================================
+\input{../src/FYZ/chap/fey2ch38.tex}
+%==== Kapitola Pružné látky ========================================================================
+\input{../src/FYZ/chap/fey2ch39.tex}
+%==== Kapitola Proudění "suché vody" ===============================================================
+\input{../src/FYZ/chap/fey2ch40.tex}
+%==== Kapitola Proudění "mokré vody" ===============================================================
+\input{../src/FYZ/chap/fey2ch41.tex}
+%=== Seznam literatury ============================================================================= 
+\printbibliography[title={Seznam literatury}, heading=bibliography]
+}
+
+%---------------------------------------------------------------------------------------------------
+%           ####### #     # ####### ### #    #    #       ### ### ###
+%           #        #   #       #   #  #   #    # #       #   #   #
+%           #         # #       #    #  #  #    #   #      #   #   #
+%           #####      #       #     #  ###    #     #     #   #   #
+%           #          #      #      #  #  #   #######     #   #   #
+%           #          #     #       #  #   #  #     #     #   #   #
+%           #          #    ####### ### #    # #     #    ### ### ###
+%---------------------------------------------------------------------------------------------------
+\ifthenelse{ \equal{\DebugMode}{true} }{%  DEBUG was on
+% \input{../src/FYZ/chap/fey2ch01.tex}
+% \input{../src/FYZ/chap/fey2ch02.tex}   
+% \input{../src/FYZ/chap/fey2ch03.tex}   
+}{ % DEBUG was off
+  \LuaPartBckgrnd{titleBG_fractal1.png}
+  \LuaPartTitle{FYZ III}{Elektřina a magnetizmus}{FYZIII}
+  \parttoc
 %==== Kapitola: Elektromagnetizmus==================================================================
-% \input{../src/FYZ/chap/fey2ch01.tex}   % přesunuto do FYZ3
+\input{../src/FYZ/chap/fey2ch01.tex}
 %==== Kapitola: Diferenciální počet vektorových polí ===============================================
-% \input{../src/FYZ/chap/fey2ch02.tex}   % přesunuto do FYZ3
+\input{../src/FYZ/chap/fey2ch02.tex}   
 %==== Kapitola: Integrální počet vektorových polí ==================================================
-% \input{../src/FYZ/chap/fey2ch03.tex}   % přesunuto do FYZ3
+\input{../src/FYZ/chap/fey2ch03.tex}   
+%==== Kapitola: Spojité matematické modely jednotlivých polí =======================================
+\input{../src/TEO/chap/spojity_model_elmag_p.tex}
+%==== Kapitola: Základní zákony elektromagnetismu ==================================================
+\input{../src/TEO/chap/magn1ch01.tex}
 %==== Kapitola: Elektrostatika =====================================================================
-% \input{../src/FYZ/chap/fey2ch04.tex}    % přesunuto do FYZ3
-%==== Kapitola: Elektrostatika v různých případech =================================================
-% \input{../src/FYZ/chap/fey2ch05_06_07.tex}  % přesunuto do FYZ3
+\input{../src/FYZ/chap/fyz3ch01.tex}
+\input{../src/FYZ/chap/fey2ch04.tex}   
+\input{../src/FYZ/chap/fey2ch05_06_07.tex}
 %==== Kapitola: Elektrostatická energie ============================================================
 \input{../src/FYZ/chap/fey2ch08.tex}
 %==== Kapitola: Elektřina v atmosféře ==============================================================
@@ -187,8 +226,8 @@
 \input{../src/FYZ/chap/fey2ch17.tex}
 %==== Kapitola Maxwellovy rovnice ==================================================================
 \input{../src/FYZ/chap/fey2ch18.tex}
-%==== Kapitola Princip nejmenší akce ===============================================================
-\input{../src/FYZ/chap/fey2ch19.tex}
+%==== Kapitola: Silové působení mezi pohybujícími se náboji ========================================
+\input{../src/FYZ/chap/fyz3ch02.tex}  
 %==== Kapitola: Řešení Maxwellových rovnic ve volném prostoru  =====================================
 \input{../src/FYZ/chap/fey2ch20.tex}
 %==== Kapitola: Řešení Maxwellových rovnic s proudy a náboji =======================================
@@ -209,10 +248,6 @@
 \input{../src/FYZ/chap/fey2ch28.tex}
 %==== Kapitola Pohyb nábojů v elektrickém a magnetickém poli =======================================
 \input{../src/FYZ/chap/fey2ch29.tex}
-%==== Kapitola Vnitřní geometrie krystalů ==========================================================
-\input{../src/FYZ/chap/fey2ch30.tex}
-%==== Kapitola Tenzory =============================================================================
-\input{../src/FYZ/chap/fey2ch31.tex}
 %==== Kapitola Index lomu opticky hustých látek ====================================================
 \input{../src/FYZ/chap/fey2ch32.tex}
 %==== Kapitola Odraz od povrchů ====================================================================
@@ -225,65 +260,6 @@
 \input{../src/FYZ/chap/fey2ch36.tex}
 %==== Kapitola Magnetické látky ====================================================================
 \input{../src/FYZ/chap/fey2ch37.tex}
-%==== Kapitola Pružnost ============================================================================
-\input{../src/FYZ/chap/fey2ch38.tex}
-%==== Kapitola Pružné látky ========================================================================
-\input{../src/FYZ/chap/fey2ch39.tex}
-%==== Kapitola Proudění "suché vody" ===============================================================
-\input{../src/FYZ/chap/fey2ch40.tex}
-%==== Kapitola Proudění "mokré vody" ===============================================================
-\input{../src/FYZ/chap/fey2ch41.tex}
-%==== Kapitola Zakřivený prostor ===================================================================
-\input{../src/FYZ/chap/fey2ch42.tex}    
-%=== Seznam literatury ============================================================================= 
-\printbibliography[title={Seznam literatury}, heading=bibliography]
-}
-%---------------------------------------------------------------------------------------------------
-%           ####### #     # ####### ### #    #    #       ### ### ###
-%           #        #   #       #   #  #   #    # #       #   #   #
-%           #         # #       #    #  #  #    #   #      #   #   #
-%           #####      #       #     #  ###    #     #     #   #   #
-%           #          #      #      #  #  #   #######     #   #   #
-%           #          #     #       #  #   #  #     #     #   #   #
-%           #          #    ####### ### #    # #     #    ### ### ###
-%---------------------------------------------------------------------------------------------------
-\ifthenelse{ \equal{\DebugMode}{true} }{%  DEBUG was on
-% \input{../src/FYZ/chap/fey2ch01.tex}
-% \input{../src/FYZ/chap/fey2ch02.tex}   
-% \input{../src/FYZ/chap/fey2ch03.tex}   
-% \input{../src/TEO/chap/spojity_model_elmag_p.tex}
-% \input{../src/TEO/chap/magn1ch01.tex}
-% \input{../src/FYZ/chap/fyz3ch01.tex}
-% \input{../src/FYZ/chap/fey2ch04.tex}   
-% \input{../src/FYZ/chap/fey2ch05_06_07.tex}
-% \input{../src/FYZ/chap/fyz3ch02.tex}  
-% \input{../src/FYZ/chap/fyz3ch03.tex}  
-% \input{../src/FYZ/chap/fyz3ch04.tex}   
-% \input{../src/FYZ/chap/fyz3ch05.tex}   
-% \input{../src/FYZ/chap/fyz3ch06.tex}  
-% \input{../src/FYZ/chap/fyz3ch07.tex}  
-% \input{../src/TEO/chap/magn1ch02.tex}
-% \input{../src/TEO/chap/magn1ch03.tex}
-}{ % DEBUG was off
-  \LuaPartBckgrnd{titleBG_fractal1.png}
-  \LuaPartTitle{FYZ III}{Elektřina a magnetizmus}{FYZIII}
-  \parttoc
-%==== Kapitola: Elektromagnetizmus==================================================================
-\input{../src/FYZ/chap/fey2ch01.tex}
-%==== Kapitola: Diferenciální počet vektorových polí ===============================================
-\input{../src/FYZ/chap/fey2ch02.tex}   
-%==== Kapitola: Integrální počet vektorových polí ==================================================
-\input{../src/FYZ/chap/fey2ch03.tex}   
-%==== Kapitola: Spojité matematické modely jednotlivých polí =======================================
-\input{../src/TEO/chap/spojity_model_elmag_p.tex}
-%==== Kapitola: Základní zákony elektromagnetismu ==================================================
-\input{../src/TEO/chap/magn1ch01.tex}
-%==== Kapitola: Elektrostatika =====================================================================
-\input{../src/FYZ/chap/fyz3ch01.tex}
-\input{../src/FYZ/chap/fey2ch04.tex}   
-\input{../src/FYZ/chap/fey2ch05_06_07.tex}
-%==== Kapitola: Silové působení mezi pohybujícími se náboji ========================================
-\input{../src/FYZ/chap/fyz3ch02.tex}  
 %==== Kapitola: Stacionární pole ===================================================================
 \input{../src/FYZ/chap/fyz3ch03.tex}  
 %==== Kapitola: Kvazistacionární elektrické a magnetické pole ======================================
@@ -298,9 +274,10 @@
 \input{../src/TEO/chap/magn1ch02.tex}
 %==== Kapitola: Elektromagnetického pole ===========================================================
 \input{../src/TEO/chap/magn1ch03.tex}
-%==== Seznam literatury ===========================================+======== 
+%==== Seznam literatury ============================================================================ 
 \printbibliography[title={Seznam literatury}, heading=bibliography]
 }
+
 %---------------------------------------------------------------------------------------------------
 %           ####### #     # ####### ### #    #    #       ### #     # 
 %           #        #   #       #   #  #   #    # #       #  #     # 
@@ -322,6 +299,7 @@
 %=== Seznam literatury =======================================================================-===== 
 \printbibliography[title={Seznam literatury}, heading=bibliography]
 } % DEBUG was off
+
 %---------------------------------------------------------------------------------------------------
 %           ####### #     # ####### ### #    #    #       #     # 
 %           #        #   #       #   #  #   #    # #      #     # 
@@ -346,6 +324,8 @@
 \input{../src/FYZ/chap/fey1ch16.tex} 
 %==== Kapitola: Prostoročas ========================================================================
 \input{../src/FYZ/chap/fey1ch17.tex}
-%=== Seznam literatury =======================================================================-===== 
+%==== Kapitola Zakřivený prostor ===================================================================
+\input{../src/FYZ/chap/fey2ch42.tex}    
+%=== Seznam literatury ============================================================================= 
 \printbibliography[title={Seznam literatury}, heading=bibliography]
 } % DEBUG was off

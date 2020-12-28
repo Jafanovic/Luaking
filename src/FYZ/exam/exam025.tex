@@ -1,9 +1,7 @@
 % !TeX spellcheck = cs_CZ
-\begin{mdframed}[style=mdexam]
-  \begin{example}\label{fyz:exam025}
-    Nalezněte takové kombinace konstant \(c\), \(G\), \(\hslash\) (rychlosti světla, gravitační
-    konstanty a Planckovy konstanty), které dají přirozenou jednotku pro délku, čas, hmotnost a
-    energii.
+\begin{fyzexam}{Nalezněte takové kombinace konstant \(c\), \(G\), \(\hslash\) (rychlosti světla,
+  gravitační konstanty a Planckovy konstanty), které dají přirozenou jednotku pro délku, čas,
+  hmotnost a energii.}{exam025}  
     \begin{subequations}\label{fyz:eq750} 
       \begin{align}
         c       &= \SI{3e8}{\m\per\s}                              \label{fyz:eq750a}  \\
@@ -12,9 +10,9 @@
       \end{align}
     \end{subequations}
 
-    \textbf{Řešení}: Pokusíme se vytvořit výraz pro délku \(l_0\), čas \(t_0\), hmotnost \(m_0\) a
-    energii \(E_0\). Začneme délkou tak, že napíšeme součin výše uvedených tří konstant, s neznámými
-    exponenty \(α\), \(β\), \(γ\): 
+    Pokusíme se vytvořit výraz pro délku \(l_0\), čas \(t_0\), hmotnost \(m_0\) a energii \(E_0\).
+    Začneme délkou tak, že napíšeme součin výše uvedených tří konstant, s neznámými exponenty \(α\),
+    \(β\), \(γ\): 
     \begin{equation*}
       l_0 = c^αG^β\hslash^γ.
     \end{equation*}
@@ -22,15 +20,15 @@
     rozměrovou v metrech, kilogramech a sekundách. Napíšeme nyní rozměrové části vytvořeného výrazu:
     \begin{equation*}
       \mathrm{m^1kg^0s^0} = \si{\m}^α\si{\s}^{-α}                   %c
-                            \si{\kg}^{β}\si{\m}^{3β}\si{\s}^{-2β}   %G
-                            \si{\kg}^γ\si{\m}^{-2γ}\si{\s}^{-γ}.     %hslash
+                            \si{\kg}^{-β}\si{\m}^{3β}\si{\s}^{-2β}   %G
+                            \si{\kg}^γ\si{\m}^{2γ}\si{\s}^{-γ}.    %hslash
     \end{equation*}
     Nyní zapíšeme soustavu rovnic pro exponenty u metru, kilogramu a sekundy:
-    \begin{align*}
-      1 &=   α + 3β + 2γ    \\
-      0 &=     -  β +  γ    \\
-      0 &= - α - 2β + -γ    
-    \end{align*}
+    \begin{alignat*}{9}
+      &\;1 &=&   &α &+ &3β &\;+ &2γ    \\
+      &\;0 &=&   &  &- & β &\;+ & γ    \\
+      &\;0 &=& - &α &- &2β &\;- & γ    
+    \end{alignat*}
     Řešením této soustavy získáme jednoznačné řešení pro exponenty
     \begin{equation*}
       α =−3/2;\quad β=1/2;\quad γ=1/2. 
@@ -45,5 +43,4 @@
         E_0&=\sqrt{\dfrac{\hslash c^5}{G}}\approx \SI{e19}{\giga\electronvolt},\label{fyz:eq751d}
       \end{align}
     \end{subequations} 
-  \end{example}
-\end{mdframed}
+\end{fyzexam}

@@ -82,6 +82,9 @@
 
 \RequirePackage{tikzpagenodes}
 \RequirePackage{layouts}
+    % https://tex.stackexchange.com/questions/60477/remove-space-after-figure-and-before-text
+    \setlength{\textfloatsep}{1\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
+    \setlength{\intextsep}{5pt}
 % ~~~~~~~~ ‘Floating’ figures ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \RequirePackage{float}      % \Load {float} before {hyperref}
 \RequirePackage{amsmath}    % \Load {amsmath} before {hyperref}:
@@ -112,9 +115,6 @@
                                % line of the caption.
 %   parindent={-1em}           % sets the paragraph indention
     }
-    % https://tex.stackexchange.com/questions/60477/remove-space-after-figure-and-before-text
-    \setlength{\textfloatsep}{1\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
-  \setlength{\intextsep}{5pt}
 
 \RequirePackage[labelfont=bf,list=true]{subcaption}    % typesetting of sub-captions     
 % \RequirePackage{subfig}        % Multipart figures 

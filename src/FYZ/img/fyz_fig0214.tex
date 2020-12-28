@@ -1,0 +1,67 @@
+%Tok povrchem krychle. Gaussova věta
+%xelatex -enable-write18 -shell-escape fyz_fig0214.tex
+
+\documentclass{standalone}
+\usepackage{xltxtra}
+\usepackage{tikz}
+\usetikzlibrary{intersections, calc}
+\usepackage{tikz-3dplot}
+\begin{document}
+
+  \begin{tikzpicture}
+    \coordinate (dS) at (1.5,0.5);
+    \fill [name path=teleso,ball color=gray!10!brown,opacity=0.50,line width=1,draw=black] 
+          plot [smooth cycle] coordinates 
+          { (0,0) (1,-1) (3,0) (2.5,2) (3,3) (3,4) (2,5) (-1,3) };
+    \draw (3,4) node[right]{$S_a$};      
+    \draw (0,0) node[below, left=1mm]{$S_b$};
+    % ploska dS      
+    \shade[bottom color=gray!10!brown,opacity=0.50, shading angle=60]
+          (dS) rectangle +(0.5,0.5); 
+    \node [below] at (dS) {$dS$};
+    \draw [->] (dS) ++ (0.25,0.25) -- +(30:0.5) node[right]{$\vec{n}$};
+    \draw [->] (dS) ++ (0.25,0.25) -- +(60:0.7) node[right]{$\vec{C}$};
+    % text
+    \draw [fill=black] (2,4) circle (0.05) node[above, black]{$V_1$};
+    \draw [fill=black] (1,0.5) circle (0.05) node[above, black]{$V_2$};
+    % line - division of object             
+    \path [name path=line1](-1.5,3) -- (3,2);  %path
+    % Intersections
+    \path [name intersections={of=teleso and line1, name=cross}];
+    % ellipse 
+    \coordinate (A) at (cross-1);
+    \coordinate (B) at (cross-2);  
+    \fill [color=cyan, opacity=0.25] let \p1=(A),\p2=(B),
+          \n1={atan2(\y2-\y1,\x2-\x1)},\n2={veclen(\y2-\y1,\x2-\x1)} in
+          [rotate=\n1] ($ (A)!0.5!(B) $) ellipse (\n2/2 and 0.7cm);
+    % vector n1
+    \draw [->, thick] let \p1=(A),\p2=(B),
+          \n1= {atan2(\y2-\y1,\x2-\x1)} in
+          ($ (A)!0.5!(B) $) -- +(90+\n1:1)  node[right]{$\vec{n}_1$};  % relative
+    % vector n2 
+    \draw [->, dashed, thick] let \p1=(A),\p2=(B),
+          \n1= {atan2(\y2-\y1,\x2-\x1)} in 
+          ($ (A)!0.5!(B) $) -- +(-90+\n1:1) node[right]{$\vec{n}_2$};  % relative
+
+    % elipse solid part       
+    \draw[very thick,cyan] let \p1=(A), \p2=(B),
+          \n1={atan2(\y2-\y1,\x2-\x1)},
+          \n2={veclen(\y2-\y1,\x2-\x1)}
+          in [rotate=\n1] ($ (A)!0.5!(B)+(0:\n2/2)$) 
+          arc[start angle=0, delta angle=180,
+              x radius=\n2/2,
+              y radius=0.7cm];
+    
+    % elipse dashed part     
+    \draw[very thick,dashed,cyan] let \p1=(A), \p2=(B),
+         \n1={atan2(\y2-\y1,\x2-\x1)},
+         \n2={veclen(\y2-\y1,\x2-\x1)}
+         in [rotate=\n1] ($ (A)!0.5!(B)+(180:\n2/2)$) 
+         arc[start angle=180,
+             delta angle=180,
+             x radius=\n2/2,
+             y radius=0.7cm];
+
+    \draw (2,2.5) node[black] {$S_{ab}$};                
+  \end{tikzpicture}                         
+\end{document}
