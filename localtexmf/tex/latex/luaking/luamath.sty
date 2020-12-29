@@ -4,6 +4,7 @@
 \NeedsTeXFormat{LaTeX2e}
 
 \RequirePackage{graphicx}  % interface for optional arguments to the \includegraphics command.
+\RequirePackage{suffix}
 % luafigure:
 % #1: optional -> "shrink" value (default value to 0.8)
 % #2: mandatory -> image
@@ -16,6 +17,14 @@
     \caption{#3}
     \label{#4}
   \end{figure}  
+}
+\newcommand{\luagraphicx}[4][0.8]{%
+  \begin{figure*}[ht!]
+    \centering
+    \includegraphics[width=#1\linewidth,height=#1\textheight,keepaspectratio]{#2}
+    \caption{#3}
+    \label{#4}
+  \end{figure*}  
 }
 % ~~~~~~~~ Color ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
 \RequirePackage{LuaMyColor} 
