@@ -10,15 +10,13 @@
 \RequirePackage{LuaMyColor}
 \RequirePackage{etoolbox} % programming tools geared primarily towards LaTeX class and package
 % ~~~~~~~~ Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% polyglossia, which is needed for various international languages, implicitly loads fontspec
-
-% There is one important difference between the font handling in LuaLaTeX and XeLaTeX: While LuaLaTeX
-% allows you to access all your fonts by file name or font name, XeLaTeX restricts this:
-%       * System fonts in your system font directory (the fonts visible to other programs) 
-%         can only be called by the font name (like "TeX Gyre Termes"). 
-%       * Fonts installed in the TeX directories can only be called by their file names.
 % https://tex.stackexchange.com/questions/338781
-\RequirePackage{fontspec} 
+% https://tex.stackexchange.com/questions/268370
+\RequirePackage{polyglossia}
+  \setdefaultlanguage{czech}
+  \setotherlanguage{greek} 
+
+\RequirePackage{fontspec}
   % \setmainfont{Cambria}  
   % \setmainfont{Latin Modern Roman}
   % \setmainfont{XCharter} % https://tex.stackexchange.com/questions/349113/ 
