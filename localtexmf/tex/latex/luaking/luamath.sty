@@ -220,9 +220,8 @@
 %                                     MATH environment 
 % ==================================================================================================
 \RequirePackage{xparse}
-\RequirePackage{amsmath}
 \RequirePackage{nccmath}                % fleqn environment
-\RequirePackage{amssymb, amsthm, amsbsy}
+% \RequirePackage{amssymb, amsthm, amsbsy}
 \RequirePackage{diffcoeff}              % writing of differential coefficients in all their variety
 \RequirePackage{commath}
 \RequirePackage{empheq}                 % EMPHasizing EQuations
@@ -231,7 +230,7 @@
 % package bm doesn't works with unicode-math package !! 
 % \RequirePackage{bm}                   % bold symbols in maths mode
 \newcommand*{\bm}[1]{\symbf{#1}}        % bold symbols
-\RequirePackage{mathtools}              % extension package to amsmath 
+% \RequirePackage{mathtools}              % extension package to amsmath 
 \RequirePackage{cuted}                  % temporarily leave two columns mode
 \RequirePackage{bigints}                % write big integrals  
 \RequirePackage{xfrac}                  % typeset fractions in the form ‘n/d’
@@ -245,18 +244,7 @@
 % A warning is given if the equation is too large by 10 percent. Otherwise the exceed is recorded
 % in the .log file only.
 \resizegathersetup{warningthreshold=0.1}
-% Experimental Unicode mathematical typesetting: The unicode-math package
-\RequirePackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math} 
-% \setmathfont{Cambria Math}
-% \setmathfont{Tex Gyre Termes}
-% \setmathfont{Tex Gyre Math}
 
-% https://tex.stackexchange.com/questions/504856/
-% http://www.gust.org.pl/projects/e-foundry/math/misfortunes02.pdf
-% \setmathfont{texgyrebonum-math.otf}
-\setmathfont{texgyrepagella-math.otf}
-% \setmathfontface\mathrm{Tex Gyre Termes}
-% \setmathfontface\mathrm{Latin Modern Math}
 
 % Run METAFONT on *.mf ﬁle to generate *.tfm ﬁles. For example:
 % mf \mode=localfont; input vect5.mf
@@ -285,7 +273,6 @@
 
 \DeclareMathOperator\erf{erf}
 \DeclareMathOperator\cotg{cotg}
-\DeclareMathOperator\arctg{arctg}
 \DeclareMathOperator\arccotg{arccotg}
 \DeclareMathOperator\sgn{sgn}
 \DeclareMathOperator{\ppm}{ppm}
@@ -328,23 +315,23 @@
 \newcommand\Myperm[2][^n]{\prescript{#1\mkern-2.5mu}{}P_{#2}} % Permutation
 \newcommand\Mycomb[2][^n]{\prescript{#1\mkern-0.5mu}{}C_{#2}} % Combination
 \newcommand{\textoverline}[1]{$\overline{\mbox{#1}}$}         % \overline outside of math mode
- % ~~~~~~~~ Proof environment ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  % \renewcommand{\qedsymbol}{$\blacksquare$} % \heartsuit
+%  % ~~~~~~~~ Proof environment ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%   % \renewcommand{\qedsymbol}{$\blacksquare$} % \heartsuit
 
-  % https://tex.stackexchange.com/questions/62020/
-  \renewcommand*{\proofname}{Důkaz}
-  % https://tex.stackexchange.com/questions/8089/changing-style-of-proof
-  \makeatletter
-    \renewenvironment{proof}[1][\proofname]{\par
-      \pushQED{\qed}%
-      \normalfont\topsep6\p@\@plus6\p@\relax
-      \trivlist
-      \item[\hskip\labelsep\bfseries
-      #1\@addpunct{:}]\ignorespaces
-    }{
-      \popQED\endtrivlist\@endpefalse
-    }
-  \makeatother
+%   % https://tex.stackexchange.com/questions/62020/
+%   \renewcommand*{\proofname}{Důkaz}
+%   % https://tex.stackexchange.com/questions/8089/changing-style-of-proof
+%   \makeatletter
+%     \renewenvironment{proof}[1][\proofname]{\par
+%       \pushQED{\qed}%
+%       \normalfont\topsep6\p@\@plus6\p@\relax
+%       \trivlist
+%       \item[\hskip\labelsep\bfseries
+%       #1\@addpunct{:}]\ignorespaces
+%     }{
+%       \popQED\endtrivlist\@endpefalse
+%     }
+%   \makeatother
  % ~~~~~~~~ Equation environment ~~~~~~~~~~~~~~~~~~~~~~~~~~
  \newenvironment{luaequ}{\useshortskip\equation}{\endequation}
 %  \AtBeginEnvironment{equation}{\color{red}}

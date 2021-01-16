@@ -10,6 +10,25 @@
 \input{ebook}
 \RequirePackage{fix-cm}
 \documentclass{scrbook}
+
+% https://tex.stackexchange.com/questions/8513/how-to-find-out-where-a-macro-is-defined
+\usepackage{filehook,currfile}
+\newwrite\finder
+\immediate\openout\finder=\jobname.fnd
+
+\def\searchmacro#1{
+  \AtBeginOfFiles{%
+    \ifdefined#1
+      \expandafter\def\csname \currfilename:found\endcsname{}%
+    \fi}
+  \AtEndOfFiles{%
+    \ifdefined#1
+      \unless\ifcsname \currfilename:found\endcsname
+        \immediate\write\finder{found in '\currfilename'}%
+    \fi\fi}}
+
+\searchmacro\uv
+
 \usepackage{luakoma}
 \usepackage{lualayout}
 \usepackage{luamath} 
@@ -21,7 +40,7 @@
 \providecommand\DebugMode{true}
 \providecommand\eBookMode{true}
 %============================= L * U * A * K * I* N * G ============================================
-% \listfiles
+\listfiles
 \setcounter{tocdepth}{\partnumdepth}      % depth of TOC
 \begin{document}
 \ifthenelse{\equal{\DebugMode}{true}}{

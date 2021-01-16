@@ -10,20 +10,38 @@
 \RequirePackage{LuaMyColor}
 \RequirePackage{etoolbox} % programming tools geared primarily towards LaTeX class and package
 % ~~~~~~~~ Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% https://tex.stackexchange.com/questions/338781
-% https://tex.stackexchange.com/questions/268370
-\RequirePackage{polyglossia}
-  \setdefaultlanguage{czech}
-  \setotherlanguage{greek} 
+% https://tex.stackexchange.com/questions/455788/
+\usepackage[main=czech,greek,russian,ngerman]{babel}
+  \babelfont[greek]{rm}{Cambria}
+  \babelfont[russian]{rm}{Cambria}
+  \babelfont[ngerman]{rm}{Cambria}
 
-\RequirePackage{fontspec}
-  % \setmainfont{Cambria}  
-  % \setmainfont{Latin Modern Roman}
+% Experiences typesetting OpenType math with LuaLaTEX and XeLaTEX
+% https://www.tug.org/~vieth/papers/context2010/context-paper.pdf
+
+% mathtools package loads the amsmath package automatically
+\RequirePackage{mathtools}   
+% Experimental Unicode mathematical typesetting: The unicode-math package
+\RequirePackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math} 
+% \setmathfont{Cambria Math} {Tex Gyre Termes} {Tex Gyre Math}
+
+% https://tex.stackexchange.com/questions/504856/
+% http://www.gust.org.pl/projects/e-foundry/math/misfortunes02.pdf
+% \setmathfont{texgyrebonum-math.otf}
+\setmathfont{texgyrepagella-math.otf}
+% \setmathfontface\mathrm{Tex Gyre Termes}
+% \setmathfontface\mathrm{Latin Modern Math}
+
+% https://tex.stackexchange.com/questions/338781
+% \RequirePackage{fontspec}
+  % \setmainfont{Cambria}  {Latin Modern Roman}
   % \setmainfont{XCharter} % https://tex.stackexchange.com/questions/349113/ 
   % \setmainfont[Script=Greek]{Cambria}
   % \setmainfont{TeX Gyre Pagella}
   \setmainfont{TeX Gyre Termes}
-\RequirePackage[style=british]{csquotes}
+
+
+%  \RequirePackage[style=british]{csquotes}
 % https://www.semipol.de/2018/06/12/latex-best-practices.html#put-each-sentence-on-a-single-line
 \RequirePackage[
   activate={true,nocompatibility},
@@ -50,7 +68,7 @@
 % ~~~~~~~~ Chapter style ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 % ~~~~~~~~ České uvozovky ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- \newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft}   % nahradit knihovnou csquotes
+% \newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft}   % babel
 % ~~~~~~~~ Geometry ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \RequirePackage{calc}
 % The total body width and height would be defined:
