@@ -1,3 +1,15 @@
+% ====================== LAYOUT IFORMATION =========================================================
+\ifthenelse{\equal{\DebugMode}{true}}{
+  \overfullrule=1cm                       % Obviously Visible Bad Box Warnings
+  \begin{itemize}
+    \item Textwidth [mm]:      \uselengthunit{mm}\printlength{\textwidth}
+    \item Textwidth [pt]:      \uselengthunit{pt}\printlength{\textwidth}
+    \item Textheight [mm]:     \uselengthunit{mm}\printlength{\textheight}
+    \item Textheight [pt]:     \uselengthunit{pt}\printlength{\textheight}
+  \end{itemize}
+}
+{
+% ========================== DEBUG was off==========================================================
 % https://en.wikipedia.org/wiki/Monument_Valley#/media/File:Forrest_Gump_Point_Monument_Valley_November_2018_001.jpg
 % https://tex.stackexchange.com/questions/287672/
 \backgroundsetup{%
@@ -12,25 +24,26 @@
   anchor=below left,
   }
 
-\begin{titlepage}
-\BgThispage
-  \begin{center}
-    \vspace*{2cm}
-    % {\fontsize{32}{40}\selectfont\textcolor{white}{\textbf{LUAKING}}\par}
-    \includegraphics[width=0.9\linewidth]{luaking_title2.png}\par
-    \vspace{1cm}
-    \includegraphics[width=0.8\linewidth]{luaking_title3.png}\par
-    \vspace{1cm}
-    {\textcolor{black!5}{\Large\textsc{Jaroslav Fait}}\par}
-    \vspace{1\baselineskip}
-    {\textcolor{black!5}{\large\today}\par}
-    \vfill
-    {\textcolor{black!10}{University of West Bohemia}\par}
-    {\textcolor{black!10}{Faculty of Electrical Engineering}\par}
-    \vspace{0.3cm}
-    {\textcolor{black!10}{\footnotesize\luatexbanner}\par}
-    {\textcolor{black!10}{\footnotesize and also \KOMAScriptVersion}}
-    \vspace*{0.3cm} 
-    % \hrule
-  \end{center}
-\end{titlepage}
+  \begin{titlepage}
+  \BgThispage
+    \begin{center}
+      \vspace*{2cm}
+      % {\fontsize{32}{40}\selectfont\textcolor{white}{\textbf{LUAKING}}\par}
+      \includegraphics[width=0.9\linewidth]{luaking_title2.png}\par
+      \vspace{1cm}
+      \includegraphics[width=0.8\linewidth]{luaking_title3.png}\par
+      \vspace{1cm}
+      {\textcolor{black!5}{\Large\textsc{Jaroslav Fait}}\par}
+      \vspace{1\baselineskip}
+      {\textcolor{black!5}{\large\today}\par}
+      \vfill
+      {\textcolor{black!10}{University of West Bohemia}\par}
+      {\textcolor{black!10}{Faculty of Electrical Engineering}\par}
+      \vspace{0.3cm}
+      {\textcolor{black!10}{\footnotesize\luatexbanner}\par}
+      {\textcolor{black!10}{\footnotesize and also \KOMAScriptVersion}}
+      \vspace*{0.3cm} 
+      % \hrule
+    \end{center}
+  \end{titlepage}
+}

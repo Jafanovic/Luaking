@@ -1,38 +1,15 @@
 % !TeX program = lualatex
 % !TeX encoding = UTF-8
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% \makeatletter
-% \renewcommand{\PackageInfo}[2]{}% Remove package information
-% \renewcommand{\@font@info}[1]{}% Remove font information
-% \renewcommand{\@latex@info}[1]{}% Remove LaTeX information
-% \makeatother
 
 \input{ebook}
-\RequirePackage{fix-cm}
+
 \documentclass{scrbook}
-
-% https://tex.stackexchange.com/questions/8513/how-to-find-out-where-a-macro-is-defined
-\usepackage{filehook,currfile}
-\newwrite\finder
-\immediate\openout\finder=\jobname.fnd
-
-\def\searchmacro#1{
-  \AtBeginOfFiles{%
-    \ifdefined#1
-      \expandafter\def\csname \currfilename:found\endcsname{}%
-    \fi}
-  \AtEndOfFiles{%
-    \ifdefined#1
-      \unless\ifcsname \currfilename:found\endcsname
-        \immediate\write\finder{found in '\currfilename'}%
-    \fi\fi}}
-
-\searchmacro\uv
-
-\usepackage{luakoma}
-\usepackage{lualayout}
-\usepackage{luamath} 
-\usepackage{wikiWWWrefs}
+  \usepackage{luadebug}
+  \usepackage{luakoma}
+  \usepackage{lualayout}
+  \usepackage{luamath} 
+  \usepackage{wikiWWWrefs}
 
 % https://tex.stackexchange.com/questions/102173/
 \allowdisplaybreaks
@@ -42,19 +19,19 @@
 %============================= L * U * A * K * I* N * G ============================================
 \listfiles
 \setcounter{tocdepth}{\partnumdepth}      % depth of TOC
+
 \begin{document}
 \ifthenelse{\equal{\DebugMode}{true}}{
-  \overfullrule=1cm                       % Obviously Visible Bad Box Warnings
-  \begin{itemize}
-    \item Textwidth [mm]:      \uselengthunit{mm}\printlength{\textwidth}
-    \item Textwidth [pt]:      \uselengthunit{pt}\printlength{\textwidth}
-    \item Textheight [mm]:     \uselengthunit{mm}\printlength{\textheight}
-    \item Textheight [pt]:     \uselengthunit{pt}\printlength{\textheight}
-  \end{itemize}
   \input{booktitle}
+  \begin{alignat*}{2}
+    f-g         &: \mathcal{D}\ni x\,\rightarrow\, (f-g)(x)&&=f(x)+(-g)(x) \\
+                &                                          &&=f(x)-g(x),  \\
+    \frac{f}{g} &: \bar{D}\ni x\,\rightarrow\, 
+                               \left(\frac{f}{g}\right)(x) &&= f(g)^{-1}(x) = \frac{f(x)}{g(x)}, 
+  \end{alignat*}
   % Debug mode ON
   % \input{../src/MAI/MAT}
-  \input{../src/FYZ/FYZ}
+  % \input{../src/FYZ/FYZ}
   % \input{../src/TKY/TKY}
   % \input{../src/TEO/TEO}
   % \input{../src/AES/AES}

@@ -1,0 +1,29 @@
+
+% package: lualayout
+% ==================================================================================================
+%                                     Debug Package 
+% ==================================================================================================
+
+% \makeatletter
+% \renewcommand{\PackageInfo}[2]{}% Remove package information
+% \renewcommand{\@font@info}[1]{}% Remove font information
+% \renewcommand{\@latex@info}[1]{}% Remove LaTeX information
+% \makeatother
+
+% https://tex.stackexchange.com/questions/8513/how-to-find-out-where-a-macro-is-defined
+\RequirePackage{filehook,currfile}
+\newwrite\finder
+\immediate\openout\finder=\jobname.fnd
+
+\def\searchmacro#1{
+  \AtBeginOfFiles{%
+    \ifdefined#1
+      \expandafter\def\csname \currfilename:found\endcsname{}%
+    \fi}
+  \AtEndOfFiles{%
+    \ifdefined#1
+      \unless\ifcsname \currfilename:found\endcsname
+        \immediate\write\finder{found in '\currfilename'}%
+    \fi\fi}}
+
+\searchmacro\eth

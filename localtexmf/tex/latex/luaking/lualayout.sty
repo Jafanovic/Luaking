@@ -20,9 +20,15 @@
 % https://www.tug.org/~vieth/papers/context2010/context-paper.pdf
 
 \RequirePackage{nccmath}    % load: first nccmath than background (\nr macro clash)
+                            % fleqn environment
 
 % mathtools package loads the amsmath package automatically
-\RequirePackage{mathtools}   
+\RequirePackage{mathtools}  
+
+% https://tex.stackexchange.com/questions/547150/latex-command-is-already-defined-error 
+% load math font packages such as amssymb, dsfont, mathrsfs and wasysym before loading unicode-math
+\RequirePackage{amssymb, amsthm, amsbsy}
+
 % Experimental Unicode mathematical typesetting: The unicode-math package
 \RequirePackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math} 
 % \setmathfont{Cambria Math} {Tex Gyre Termes} {Tex Gyre Math}
@@ -128,17 +134,17 @@
     singlelinecheck=false,
     format={plain},            % plain >> Typesets the captions as a normal 
                                % paragraph. {options: plain, hang}
-    belowskip={10pt},           % sets the skip below caption
+    belowskip={10pt},          % sets the skip below caption
 %   indention={1em},           % setup an extra indention starting at the second 
                                % line of the caption.
 %   parindent={-1em}           % sets the paragraph indention
     }
 
 \RequirePackage[labelfont=bf,list=true]{subcaption}    % typesetting of sub-captions     
-% \RequirePackage{subfig}        % Multipart figures 
+% \RequirePackage{subfig}      % Multipart figures 
 % command-clofdepth-already-defined-when-using-packages-subfigure-and-tocloft  
           
-% \RequirePackage{wrapfig}       % Floats, Figures and aptions
+% \RequirePackage{wrapfig}     % Floats, Figures and aptions
 \RequirePackage{rotating}      % sidewaysfigure environment
 % --- Bibliography ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % how-to-fix-the-incompatility-between-biber-and-biblatex-versions
