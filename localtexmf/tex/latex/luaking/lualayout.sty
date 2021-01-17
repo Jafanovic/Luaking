@@ -19,6 +19,8 @@
 % Experiences typesetting OpenType math with LuaLaTEX and XeLaTEX
 % https://www.tug.org/~vieth/papers/context2010/context-paper.pdf
 
+\RequirePackage{nccmath}    % load: first nccmath than background (\nr macro clash)
+
 % mathtools package loads the amsmath package automatically
 \RequirePackage{mathtools}   
 % Experimental Unicode mathematical typesetting: The unicode-math package
@@ -79,7 +81,7 @@
 % \addtolength{\evensidemargin}{-.875in}
 % \addtolength{\topmargin}{-.875in}
 
-\RequirePackage{nccmath}    % load: first nccmath than background (\nr macro clash)
+% \RequirePackage{nccmath}    % load: first nccmath than background (\nr macro clash)
 
 \RequirePackage[pages=some,placement=top]{background}
 
@@ -103,7 +105,7 @@
     \setlength{\intextsep}{5pt}
 % ~~~~~~~~ ‘Floating’ figures ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \RequirePackage{float}      % \Load {float} before {hyperref}
-\RequirePackage{amsmath}    % \Load {amsmath} before {hyperref}:
+% \RequirePackage{amsmath}    % \Load {amsmath} before {hyperref}:
                             % https://tex.stackexchange.com/questions/975/
                             % https://tex.stackexchange.com/questions/65926/
 % see example grain0019.tex
