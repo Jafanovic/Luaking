@@ -8,7 +8,7 @@
   Umíme počítat jejich limity v bodech \emph{vlastních} i \emph{nevlastních}, umíme je derivovat i
   integrovat. Totéž dokážeme provádět i s vektorovými funkcemi jedné proměnné. Každý vektor je totiž
   dán svými složkami, takže každá vektorová funkce je zadána tolika „obyčejnými“ skalárními
-  funkcemi, kolik má daný vektor složek. S vektoroVými funkcemi jedné proměnné jsme pracovali při
+  funkcemi, kolik má daný vektor složek. S vektorovými funkcemi jedné proměnné jsme pracovali při
   zadávání trajektorií hmotných bodů a výpočtech jejich dalších charakteristik (rychlost, zrychlení,
   křivost trajektorie, apod). Tou jedinou proměnnou byl obvykle čas. Veličiny popisující objekty a
   děje v přírodě, ať již jsou tyto veličiny skaláry či vektory, však většinou závisí na více
@@ -19,9 +19,9 @@
   \emph{potenciál},
   \begin{equation*}
     \vec{g}(\vec{r}) = - \kappa\dfrac{M_Z}{r^2}\left(\dfrac{\vec{r}}{r}\right),\,
-    V(\vec{r}) = -\kappa\dfrac{M_Z}{r}, \, r\geq R_Z
+    V(\vec{r}) = -\kappa\dfrac{M_Z}{r}, \, r\geq R_Z.
   \end{equation*}
-  V předchozích Vztazích jsou \(M_Z\) a \(R_Z\) hmotnost a poloměr Země, \(\vec{r}\) je polohový
+  V předchozích vztazích jsou \(M_Z\) a \(R_Z\) hmotnost a poloměr Země, \(\vec{r}\) je polohový
   vektor místa, v němž pole zjištujeme, vzhledem ke středu Země. Skalární i vektorové veličiny
   popisující elektrické a magnetické pole nábojů a proudů, rychlosti elementů proudící kapaliny nebo
   plynu a řada dalších fyzikálních veličin jsou nejen funkcemi času, ale také polohy bodu, v němž je
@@ -33,12 +33,12 @@
   časem mění. Nebo naopak v daném okamžiku sledujeme rozdílnost pole v bodech velmi blízkých danému
   bodu. Obecně se samozřejmě mění všechny proměnné a s nimi i hodnoty skalární funkce nebo složky
   vektorové funkce. Jak takové obecné změny co nejvýstižněji popsat, uvidíme právě v této kapitole.
-  Setkáme se v ní s \emph{parciální derivací}, která vystihuje, jak rychle se mění hodnota funkce se
-  změnou jedné z proměnných. Dále poznáme obecnější, \emph{směrovou derivaci}, která popisuje
+  Setkáme se v ní s \textbf{parciální derivací}, která vystihuje, jak rychle se mění hodnota funkce
+  se změnou jedné z proměnných. Dále poznáme obecnější, \textbf{směrovou derivaci}, která popisuje
   rychlost změny funkční hodnoty, mění-li se všechny proměnné, ale tak, že bod, který reprezentuje
   soubor jejich hodnot, se pohybuje v prostoru proměnných po libovolné přímce (nikoli jen po jedné
-  souřadnicové ose, jako tomu je u parciálních derivací). A konečně zavedeme pojmy \emph{úplného
-  diferenciálu} a \emph{Jacobiho zobrazení}, které popisují změnu hodnot skalární či vektorové
+  souřadnicové ose, jako tomu je u parciálních derivací). A konečně zavedeme pojmy \textbf{úplného
+  diferenciálu} a \textbf{Jacobiho zobrazení}, které popisují změnu hodnot skalární či vektorové
   funkce v lineární aproximaci, mění-li se hodnoty proměnných zcela obecně.
 
   Stejně jako u funkcí jedné proměnné je základem pro definici veličin popisujících rychlost změny
@@ -48,14 +48,14 @@
   limit funkcí jedné proměnné. Proto se jím zabývá podstatná část poměrně rozsáhlého odstavce
   \ref{mai:IIchapVIsecII} poté, co je v odstavci \ref{mai:IIchapVIsecI} věnována značná pozornost
   různým typům definičních oborů funkcí. Čtenář, který se chce rychle propracovat k praktickým
-  výpočtům a spokojí se vatím s intuitivním pochopením pojmu limity funkce více proměnných
+  výpočtům a spokojí se zatím s intuitivním pochopením pojmu limity funkce více proměnných
   (založeným na dobré znalosti definice a vlastností limit funkcí jedné proměnné), může k nim v
   podstatě rovnou přejít s vědomím, že sice bude umět prakticky provádět různé standardní operace s
   funkcemi více proměnných, ale nebude si pravděpodobně vědět rady s netypickými případy. K
   důkladnému pročtení odstavců \ref{mai:IIchapVIsecI} a \ref{mai:IIchapVIsecII} se může samozřejmě
   vrátit kdykoli.
 
-  \section{Podmonožiny euklidovských prostorů \(\mathcal{R}^n\)}\label{mai:IIchapVIsecI}
+  \section{Podmonožiny euklidovských prostorů \(\mathcal{R}^n\)}\label{mai:IIchapVIsecI}  
     S definičními obory funkcí jedné proměnné to bylo docela jednoduché. Byly to Většinou intervaly
     - otevřené intervaly nebo jejich sjednocení, uzavřené intervaly, popřípadě intervaly uzavřené
     jen z jedné strany. Také zde figurovala okolí bodů, ať již ryzí, z nichž byl daný bod vyloučen,
@@ -67,26 +67,27 @@
     věnovat trochu podrobněji. Dejme tomu, že nějaká fyzikální, nebo i nefyzikální veličina bude
     záviset na \(n\) proměnných. Každá z nich může nabývat nějakých hodnot. Funkční hodnota naší
     funkce bude tak jednoznačně určena souborem \(n\) hodnot jednotlivých proměnných. Tuto
-    \(n\)-tici budeme považovat za bod v prostoru \(mathcal{R}^n\). S \(n\)-ticemi jsme již
+    \(n\)-tici budeme považovat za bod v prostoru \(\mathcal{R}^n\). S \(n\)-ticemi jsme již
     pracovali v algebře, takže takový popis známe. V algebře jsme však s nimi prováděli algebraické
-    operace, sčítání a násobení číslem. Měli jsme tedy v \(mathcal{R}^n\) zavedenou
-    \textbf{algebraickou strukturu}. Pro práci s funkcemi a pro sledování jejich změn \uv{bod od bodu}
-    potřebujeme v \(mathcal{R}^n\) ještě jinou strukturu. Ta je tvořena okolími, podobně jako tomu
-    bylo u funkcí jedné proměnné. Taková struktura se nazývá \emph{topologická} a matematická
+    operace, sčítání a násobení číslem. Měli jsme tedy v \(\mathcal{R}^n\) zavedenou
+    \textbf{algebraickou strukturu}. Pro práci s funkcemi a pro sledování jejich změn \uv{bod od
+    bodu} potřebujeme v \(\mathcal{R}^n\) ještě jinou strukturu. Ta je tvořena okolími, podobně jako
+    tomu bylo u funkcí jedné proměnné. Taková struktura se nazývá \emph{topologická} a matematická
     disciplína, která se zabývá topologickými strukturami, se jmenuje \textbf{topologie}.
 
     Topologickými strukturami se nebudeme zabývat v celé obecnosti, i když je to velmi zajímavé.
-    Budeme pracovat pouze se speciálním typem, takzvanou euklidovskou topologtí v \(mathcal{R}^n\).
+    Budeme pracovat pouze se speciálním typem, takzvanou \textbf{euklidovskou topologií} v
+    \(\mathcal{R}^n\).
 
     \subsection{Okolí bodů, otevřené a uzavřené množiny}
-    S pojmem okolí bodu jsme se setkali hned v první části druhé kapitoly prvního dílu. Vzpomínáte?
-    Šlo tehdy o okolí bodu \(a\) na reálné ose \(mathcal{R}\). Okolím jsme rozuměli otevřený
-    interval \((a - \delta_1,a + \delta_2)\), \(\delta_1, \delta_2 > O\), ryzím okolím pak množinu
-    \((a - \delta_1, a + \delta_2)\backslash{a}\), tj. sjednocení otevřených intervalů \((a -
-    \delta_1, a) \cup (a, a + \delta_2)\). Sjednocení jakýchkoli otevřených intervalů jsme později
-    nazývali otevřenou množinou, doplňky otevřených množin v \(mathcal{R}\) byly uzavřené množiny.
-    Vybudovali jsme tak na \(mathcal{R}\) \emph{euklidovskou topologii} (dodatek F prvního dílu).
-    Podobná bude situace i ve vícerozměrném případě, tedy v \(mathcal{R}^n\).
+      S pojmem okolí bodu jsme se setkali hned v dílu \ref{part:MAI}}. Vzpomínáme? Šlo tehdy o okolí
+      bodu \(a\) na reálné ose \(\mathcal{R}\). Okolím jsme rozuměli otevřený interval \((a -
+      \delta_1,a + \delta_2)\), \(\delta_1, \delta_2 > 0\), ryzím okolím pak množinu \((a -
+      \delta_1, a + \delta_2)\backslash{a}\), tj. sjednocení otevřených intervalů \((a - \delta_1,
+      a) \cup (a, a + \delta_2)\). Sjednocení jakýchkoli otevřených intervalů jsme později nazývali
+      otevřenou množinou, doplňky otevřených množin v \(\mathcal{R}\) byly uzavřené množiny.
+      Vybudovali jsme tak na \(\mathcal{R}\) \emph{euklidovskou topologii} (dodatek F prvního dílu).
+      Podobná bude situace i ve vícerozměrném případě, tedy v \(\mathcal{R}^n\).
 
   \section{Skalární funkce více proměnných}\label{mai:IIchapVIsecII}
     V předchozím odstavci jsme si vcelku důkladně připravili pojmy týkající se vhodných definičních
