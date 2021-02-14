@@ -6,7 +6,10 @@
 % http://www.macfreek.nl/memory/LaTeX_package_conflicts
 
 \NeedsTeXFormat{LaTeX2e}
-\RequirePackage[svgnames,x11names,dvipsnames]{xcolor}
+\RequirePackage[svgnames,x11names,dvipsnames,table]{xcolor}
+% \RequirePackage{colortbl}                  % Color tables - pckg requires color and arrays packages
+  \newcolumntype{a}{>{\columncolor{Gray}}c}
+  \newcolumntype{b}{>{\columncolor{white}}c}
   % Define my colors
   \definecolor{Blue}{rgb}{0.3,0.3,0.9}
   \definecolor{lstgray}{gray}{0.9}

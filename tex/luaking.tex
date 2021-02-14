@@ -1,7 +1,6 @@
 % !TeX program = lualatex
 % !TeX encoding = UTF-8
 % ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 \input{ebook}
 
 \documentclass{scrbook}
@@ -11,98 +10,53 @@
   \usepackage{luamath} 
   \usepackage{wikiWWWrefs}
 
-% https://tex.stackexchange.com/questions/102173/
-\allowdisplaybreaks
+  \hypersetup{psdextra}
 
 \providecommand\DebugMode{true}
 \providecommand\eBookMode{true}
 %============================= L * U * A * K * I* N * G ============================================
-\listfiles
-\setcounter{tocdepth}{\partnumdepth}      % depth of TOC
+% \listfiles
+% \setcounter{tocdepth}{\partnumdepth}      % depth of TOC
 
 \begin{document}
-% \ifthenelse{\equal{\DebugMode}{true}}{
-% \input{booktitle}
-%   \begin{alignat*}{2}
-%     f-g         &: \mathcal{D}\ni x\,\rightarrow\, (f-g)(x)&&=f(x)+(-g)(x) \\
-%                 &                                          &&=f(x)-g(x),  \\
-%     \frac{f}{g} &: \bar{D}\ni x\,\rightarrow\, 
-%                                \left(\frac{f}{g}\right)(x) &&= f(g)^{-1}(x) = \frac{f(x)}{g(x)}, 
-%   \end{alignat*}
-  % Debug mode ON
-  \begin{table}[ht!]
-    \catcode`\-=12
-    \centering
-    \begin{tabular}{lc|c|}
-      % \cline{2-3}
-      \multicolumn{1}{l|}{} & \textbf{integrální tvar} & \textbf{diferenciální tvar} \\
-      \hline
-      \multicolumn{1}{|l|}{1. MR} & $\oint\vec{H}\cdot \dd{\vec{l}} = I$ & $\rot{H} = \vec{J}$ \\ 
-      % \cline{1-3}
-      \hline
-      \multicolumn{1}{|l|}{4. MR} & $\oint\vec{B}\cdot \dd{\vec{S}} = 0$ & $\diver{B} = 0$ \\
-      % \cline{1-3}
-      & & $\vec{B} = \mu \vec{H}$ \\
-      \cline{3-3}
-    \end{tabular}
-    \caption{Základní rovnice magnetického stacionárního pole}
-  \end{table}
+\shorthandoff{-}
 
-  % \begin{table}[ht!]
-  %   \centering
-  %   \begin{tabular}{m{0.1\linewidth}|m{0.29\linewidth}|m{0.34\linewidth}|}
-  %     \cline{2-3}
-  %     \multicolumn{1}{l|}{} 
-  %       & \textbf{integrální tvar} & \textbf{diferenciální tvar}                              \\
-  %     \hline        
-  %     \multicolumn{1}{|m{0.19\linewidth}|}{2. MR}         
-  %       & \(\bigointsss\vec{E}\cdot \dd{\vec{l}} = 0\) & \(\rot{E} = 0\)                      \\ 
-  %     \cline{1-3}       
-  %     \hline        
-  %     \multicolumn{1}{|m{0.19\linewidth}|}{Zákon kontinuity}        
-  %       & \(\bigointsss\vec{J}\cdot \dd{\vec{S}}=0\) & \(\diver{J}=0\)                        \\
-  %     \cline{1-3}       
-  %     \multicolumn{1}{|m{0.19\linewidth}|}{Ohmův zákon}       
-  %       & \(I=GU=\dfrac{U}{R}\) & \(\vec{J} = \gamma\vec{E} = \dfrac{1}{\rho}\vec{E}\)        \\
-  %     \cline{1-3}
-  %   \end{tabular}
-  %   \caption{Základní rovnice stacionárního proudového pole}
-  % \end{table}
-
+\ifthenelse{\equal{\DebugMode}{true}}{
+  % debug is true
   % \input{../src/MAI/MAT}
   % \input{../src/FYZ/FYZ}
   % \input{../src/TKY/TKY}
   % \input{../src/TEO/TEO}
-  % \input{../src/AES/AES}
+  \input{../src/AES/AES}
   % \input{../src/CES/CES}
   % \input{../src/RAE/RAE}
   % \input{../src/PVE/PVE}
   % \input{../src/EPR/EPR}
   % \input{../src/ZZT/ZZT}
   % \input{../src/APE/APE}
-  % \backmatter
+  \backmatter
   % \listoftodos
 
-% }
-% { % DEBUG was off
-%   \hbadness=99999
-%   \frontmatter
-%     \input{booktitle}
-%     \tableofcontents
-%   \mainmatter 
-%     \setcounter{page}{3} 
-%     \input{../src/MAI/MAT}
-%     \input{../src/FYZ/FYZ}
-%     \input{../src/TKY/TKY}
-%     \input{../src/TEO/TEO}
-%     \input{../src/AES/AES}
-%     \input{../src/CES/CES}
-%     \input{../src/RAE/RAE}
-%     \input{../src/PVE/PVE}
-%     \input{../src/EPR/EPR}
-%     \input{../src/ZZT/ZZT}
-%     \input{../src/APE/APE}
-%     % \input{../src/NJ/NJ}
-%   \backmatter
-% }
+}
+{ % DEBUG was off
+  \hbadness=99999
+  \frontmatter
+    \input{booktitle}
+    \tableofcontents
+  \mainmatter 
+    \setcounter{page}{3} 
+    \input{../src/MAI/MAT}
+    \input{../src/FYZ/FYZ}
+    \input{../src/TKY/TKY}
+    \input{../src/TEO/TEO}
+    \input{../src/AES/AES}
+    \input{../src/CES/CES}
+    \input{../src/RAE/RAE}
+    \input{../src/PVE/PVE}
+    \input{../src/EPR/EPR}
+    \input{../src/ZZT/ZZT}
+    \input{../src/APE/APE}
+    % \input{../src/NJ/NJ}
+  \backmatter
+}
 \end{document}

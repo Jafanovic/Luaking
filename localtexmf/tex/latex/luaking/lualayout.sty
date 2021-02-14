@@ -9,47 +9,55 @@
 \RequirePackage{printlen} % Print lengths using specified units
 \RequirePackage{LuaMyColor}
 \RequirePackage{etoolbox} % programming tools geared primarily towards LaTeX class and package
+% ~~~~~~~~ Geometry ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\RequirePackage{calc}
+% The total body width and height would be defined:
+%      width := textwidth (+ marginparsep + marginparwidth)
+%     height := textheight (+ headheight + headsep + footskip)
+\RequirePackage{geometry} 
+% \addtolength{\oddsidemargin}{-.875in}
+% \addtolength{\evensidemargin}{-.875in}
+% \addtolength{\topmargin}{-.875in}
 % ~~~~~~~~ Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % https://tex.stackexchange.com/questions/455788/
-\usepackage[main=czech,greek,russian,ngerman]{babel}
+\RequirePackage[main=czech,greek,russian,ngerman]{babel}
   \babelfont[greek]{rm}{Cambria}
   \babelfont[russian]{rm}{Cambria}
   \babelfont[ngerman]{rm}{Cambria}
+\RequirePackage{csquotes}
 
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Experiences typesetting OpenType math with LuaLaTEX and XeLaTEX
 % https://www.tug.org/~vieth/papers/context2010/context-paper.pdf
 
+% The package extends the amsmath package adding some math commands from  NCC-LATEX. It also
+% improves spacing control before display equations and ﬁxes bug of ignoring the \displaybreak in
+% the amsmath version of the equation environment. All options are passed to the amsmath package.
 \RequirePackage{nccmath}    % load: first nccmath than background (\nr macro clash)
                             % fleqn environment
 
+
+
 % mathtools package loads the amsmath package automatically
 \RequirePackage{mathtools}  
+  \allowdisplaybreaks         % The amsmath package
 
 % https://tex.stackexchange.com/questions/547150/latex-command-is-already-defined-error 
 % load math font packages such as amssymb, dsfont, mathrsfs and wasysym before loading unicode-math
 \RequirePackage{amssymb, amsthm, amsbsy}
 
-% Experimental Unicode mathematical typesetting: The unicode-math package
+% % Experimental Unicode mathematical typesetting: The unicode-math package
 \RequirePackage[warnings-off={mathtools-colon, mathtools-overbracket}]{unicode-math} 
-% \setmathfont{Cambria Math} {Tex Gyre Termes} {Tex Gyre Math}
-
-% https://tex.stackexchange.com/questions/504856/
-% http://www.gust.org.pl/projects/e-foundry/math/misfortunes02.pdf
-% \setmathfont{texgyrebonum-math.otf}
-\setmathfont{texgyrepagella-math.otf}
-% \setmathfontface\mathrm{Tex Gyre Termes}
-% \setmathfontface\mathrm{Latin Modern Math}
+  % https://tex.stackexchange.com/questions/504856/
+  % http://www.gust.org.pl/projects/e-foundry/math/misfortunes02.pdf
+  % \setmathfont{texgyrebonum-math.otf} {Cambria Math} {Tex Gyre Termes} {Tex Gyre Math}
+  \setmathfont{texgyrepagella-math.otf}
+  % \setmathfontface\mathrm{Tex Gyre Termes} {Latin Modern Math}
 
 % https://tex.stackexchange.com/questions/338781
 % \RequirePackage{fontspec}
-  % \setmainfont{Cambria}  {Latin Modern Roman}
-  % \setmainfont{XCharter} % https://tex.stackexchange.com/questions/349113/ 
-  % \setmainfont[Script=Greek]{Cambria}
-  % \setmainfont{TeX Gyre Pagella}
-  \setmainfont{TeX Gyre Termes}
+\setmainfont{TeX Gyre Termes}   %  {TeX Gyre Pagella}
 
-
-%  \RequirePackage[style=british]{csquotes}
 % https://www.semipol.de/2018/06/12/latex-best-practices.html#put-each-sentence-on-a-single-line
 \RequirePackage[
   activate={true,nocompatibility},
@@ -73,21 +81,6 @@
     \part[\textcolor{red}{#1: #2}]{#1}\label{part:#3}
   \end{titlepage}
 }  
-% ~~~~~~~~ Chapter style ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-% ~~~~~~~~ České uvozovky ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-% \newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft}   % babel
-% ~~~~~~~~ Geometry ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\RequirePackage{calc}
-% The total body width and height would be defined:
-%      width := textwidth (+ marginparsep + marginparwidth)
-%     height := textheight (+ headheight + headsep + footskip)
-\RequirePackage{geometry} 
-% \addtolength{\oddsidemargin}{-.875in}
-% \addtolength{\evensidemargin}{-.875in}
-% \addtolength{\topmargin}{-.875in}
-
-% \RequirePackage{nccmath}    % load: first nccmath than background (\nr macro clash)
 
 \RequirePackage[pages=some,placement=top]{background}
 
@@ -104,24 +97,23 @@
   }
 }
 
-\RequirePackage{tikzpagenodes}
-\RequirePackage{layouts}
-    % https://tex.stackexchange.com/questions/60477/remove-space-after-figure-and-before-text
-    \setlength{\textfloatsep}{1\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
-    \setlength{\intextsep}{5pt}
-% ~~~~~~~~ ‘Floating’ figures ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\RequirePackage{float}      % \Load {float} before {hyperref}
-% \RequirePackage{amsmath}    % \Load {amsmath} before {hyperref}:
-                            % https://tex.stackexchange.com/questions/975/
-                            % https://tex.stackexchange.com/questions/65926/
-% see example grain0019.tex
-\RequirePackage[
-    open,
-    openlevel=2,
-    atend
-  ]{bookmark}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% \RequirePackage{tikzpagenodes}
+% \RequirePackage{layouts}
+%     % https://tex.stackexchange.com/questions/60477/remove-space-after-figure-and-before-text
+%     \setlength{\textfloatsep}{1\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
+%     \setlength{\intextsep}{5pt}
+
+%                             % https://tex.stackexchange.com/questions/975/
+%                             % https://tex.stackexchange.com/questions/65926/
+% % see example grain0019.tex
+% \RequirePackage[
+%     open,
+%     openlevel=2,
+%     atend
+%   ]{bookmark}
     
-% Package hyperref needs to be loaded before !
+
 \RequirePackage{caption}       % Captions
   \captionsetup{
     font={footnotesize},       % 
@@ -138,15 +130,13 @@
 %   indention={1em},           % setup an extra indention starting at the second 
                                % line of the caption.
 %   parindent={-1em}           % sets the paragraph indention
-    }
+  }
 
 \RequirePackage[labelfont=bf,list=true]{subcaption}    % typesetting of sub-captions     
-% \RequirePackage{subfig}      % Multipart figures 
-% command-clofdepth-already-defined-when-using-packages-subfigure-and-tocloft  
-          
-% \RequirePackage{wrapfig}     % Floats, Figures and aptions
-\RequirePackage{rotating}      % sidewaysfigure environment
-% --- Bibliography ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+% \RequirePackage{rotating}      % sidewaysfigure environment
+
+% ~~~~~~~~~~~~~~ Bibliography ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % how-to-fix-the-incompatility-between-biber-and-biblatex-versions
 % https://tex.stackexchange.com/questions/309991/
 % Bibliography with UTF8 support
@@ -169,34 +159,37 @@
 
 % ~~~~~~~~~~~~~ Code Highlighting ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \RequirePackage{LuaCodeLst}
-% ~~~~~~~~~~~~ Tables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\RequirePackage{booktabs} 
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Tables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% \RequirePackage{colortbl}                  % Color tables - pckg requires color and arrays packages
+% \newcolumntype{a}{>{\columncolor{Gray}}c}  % moved to luaMycolor
+% \newcolumntype{b}{>{\columncolor{white}}c}
+% Czech babel gives problems with cmidrule and cline
+% https://tex.stackexchange.com/questions/111999/slovak-and-czech-babel-gives-problems-with-cmidrule-and-cline
+\RequirePackage{booktabs}
+
 \RequirePackage{tabularx}
-\RequirePackage{longtable}
 \RequirePackage{multirow}                  % Columns spanning multiple rows 
 \RequirePackage{multicol}                  % Using by Listings package see:
-                                           % https://tex.stackexchange.com/questions/34098/ 
+%                                          % https://tex.stackexchange.com/questions/34098/ 
 % This LATEX package provides the command \tablefootnote to be used in a table or sidewaystable 
 % environment, where \footnote will not work and when using \footnotemark and \footnotetext and 
 % adjusting the counters (including Hfootnote) manually is either too much work or would not 
 % even work (sidewaystable).
 \RequirePackage{tablefootnote}
-\renewcommand{\arraystretch}{1.5}          % factor for stretching the height of the lines -
-                                           % modification is global
-\RequirePackage{array}                     % implementation tabular and array
-\RequirePackage{longtable}                                              
+% \renewcommand{\arraystretch}{1.5}          % factor for stretching the height of the lines -
+%                                            % modification is global
+\RequirePackage{array}                       % implementation tabular and array
+% \newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
 % tex.stackexchange.com/questions/12703 
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
-\RequirePackage{colortbl}                  % Color tables - pckg requires color and arrays packages
 % \newcolumntype{C}[1]{>{\centering}m{#1}} % buňka bude centrovaná horizontálně i vertikálně -
                                            % nutný balík array !  
                                            % http://tex.stackexchange.com/questions/94799/
-\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
-\newcolumntype{a}{>{\columncolor{Gray}}c}
-\newcolumntype{b}{>{\columncolor{white}}c}
+
 % ~~~~~~~~~~~~ Matrix ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % https://tex.stackexchange.com/questions/14071/how-can-i-increase-the-line-spacing-in-a-matrix
 \makeatletter
@@ -208,7 +201,7 @@
 \makeatother
 
 % ~~~~~~~~ Enumeration lists ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\RequirePackage[inline]{enumitem}          % provides extensions  LaTeX's list environments 
+\RequirePackage[inline]{enumitem}          % provides extensions LaTeX's list environments 
 
 % ~~~~~~~~ Attache file into PDF ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % insert pages of external PDF documents without `Overfull \hbox' and `Overfull \vbox' warnings
@@ -237,19 +230,19 @@
     width=#1pt,height=#2pt,
     addresource=../media/#3.mp4,
     flashvars={ src=../media/#3.mp4 &loop=true &scaleMode=stretch}
-  ]{}{StrobeMediaPlayback.swf}            % VPlayer.swf StrobeMediaPlayback.swf
+  ]{}{StrobeMediaPlayback.swf}          % VPlayer.swf StrobeMediaPlayback.swf
   }
  
 
 % ~~~~~~~~ ToDo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Incompatibility between mdframed and todonotes - problem: Float losts!
 % https://tex.stackexchange.com/questions/126948/incompatibility-between-mdframed-and-todonotes
-\RequirePackage[]{todonotes}
+\RequirePackage{todonotes}                % "inline" todonote inside the text instead of 
+%                                         % placing it in the margin
+
 % ~~~~~~~~ Ohter user commands ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 \newcommand{\wikitextrule}{\noindent\rule[-0.5pt]{\linewidth}{1pt}}
-% ~~~~~~~~ Title page design ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-\newcommand{\LuaTitlePage}[3]{
-}
+
 % ~~~~~~~~ Hyperref ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % hyperref should be loaded before geometry. Otherwise the resulted PDF size will become wrong.
 % https://tex.stackexchange.com/questions/24445/
@@ -269,6 +262,8 @@
     filecolor=magenta,      % color of file links
     urlcolor=cyan,          % color of external links
     pdfencoding=unicode,
+    psdextra,               % short names are available. Then \geq can directly be used
+                            % instead of \textgeq.
     pdfauthor={Jaroslav Fait},
     pdftitle={Technická knižnice inženýra},
     pdfkeywords={Math, Physics, Electronics}, % list of keywords

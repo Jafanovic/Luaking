@@ -223,14 +223,15 @@
 % ==================================================================================================
 \RequirePackage{xparse}
 % \RequirePackage{nccmath}                % fleqn environment
-% \RequirePackage{amssymb, amsthm, amsbsy}
+% \RequirePackage{amssymb, amsthm, amsbsy} % https://tex.stackexchange.com/questions/528831/
 \RequirePackage{diffcoeff}              % writing of differential coefficients in all their variety
-\RequirePackage{commath}
+% \RequirePackage{commath}              % smazat 
 \RequirePackage{empheq}                 % EMPHasizing EQuations
 \newcommand*\widefbox[1]{\fbox{\hspace{1em}#1\hspace{1em}}}
 \RequirePackage{epigraph}               % \epigraph style
 % package bm doesn't works with unicode-math package !! 
 % \RequirePackage{bm}                   % bold symbols in maths mode
+                                        %  package is for legacy 8-bit fonts.
 \newcommand*{\bm}[1]{\symbf{#1}}        % bold symbols
 % \RequirePackage{mathtools}              % extension package to amsmath 
 \RequirePackage{cuted}                  % temporarily leave two columns mode
@@ -270,9 +271,8 @@
 \newcommand{\ratioset}{\mathbb{Q}}
 % Matrix
 \newcommand{\matr}[1]{\mathbf{#1}}
+
 % Math symbols
-
-
 \DeclareMathOperator\erf{erf}
 \DeclareMathOperator\cotg{cotg}
 \DeclareMathOperator\arccotg{arccotg}
@@ -289,7 +289,7 @@
 \DeclareMathOperator{\argcoth}{argcoth}
 \DeclareMathOperator{\cotgh}{cotgh}
 
-% \newcommand\abs[1]{\ensuremath{\lvert#1\rvert}} % https://tex.stackexchange.com/questions/97631/
+\newcommand\abs[1]{\ensuremath{\lvert#1\rvert}} % https://tex.stackexchange.com/questions/97631/
                                                   % replaced by commath package
 \newcommand{\dx}{\hspace{2pt}dx}
 % https://tex.stackexchange.com/questions/84302/
