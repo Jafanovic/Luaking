@@ -9,106 +9,108 @@
 \setchaptertoc
 \chapter{LTI systém}\label{tky:IchII}
   \twocolumn[\section{Vlastnosti a popis lineárních systému}\label{tky:IchIIsecI}]
-    Na soustavu obvodů můžeme nahlížet jako na seskupení (množinu) navzájem souvisejících součástí, 
-    ke kterému je určen vstupní signál $x$, zvaný buzení a výstupní signál $y$, označovaný jako 
-    odezva. Z hlediska vlastností jde o systém představující "černou skříňku", jejíž vlastnosti 
-    můžeme identifikovat analýzou vstupního a výstupního signálu \cite{Bicak2007}.        
+    Na soustavu obvodů můžeme nahlížet jako na seskupení (množinu) navzájem souvisejících součástí,
+    ke kterému je určen vstupní signál \(x\), zvaný \emph{buzení} a výstupní signál \(y\),
+    označovaný jako \emph{odezva}. Z hlediska vlastností jde o systém představující "černou
+    skříňku", jejíž vlastnosti můžeme identifikovat analýzou vstupního a výstupního signálu
+    \cite{Bicak2007}.   
 
     \luagraphic[0.8]{tky_fig005.pdf}{Symbol soustavy s jedním vstupem a jedním výstupem}{tky:fig005}
-    \begin{itemize}
-      \item Systémy se spojitým časem (na vstupu i výstupu pracují se spojitými signály) - relace  
+
+    \begin{description}[leftmargin=3em,labelindent=1em, style=nextline]
+      \item[Systémy se spojitým časem] (na vstupu i výstupu pracují se spojitými signály) - relace  
             mezi vstupem a výstupem můžeme symbolicky zapsat:
             \begin{equation}\label{tky:eq005}
-              y(t)=\mathcal{S}\{x(t)\}
+              y(t)=S\{x(t)\}
             \end{equation}
-            kde $S$ je obecný popis systémové funkce, přiřazující vstupní veličině $x(t)$ odezvu 
-            $y(t)$. Z rovnice je zřejmé, že u spojité (analogové) soustavy výstupní signál závisí 
+            kde \(S\) je obecný popis systémové funkce, přiřazující vstupní veličině \(x(t)\) odezvu 
+            \(y(t)\). Z rovnice je zřejmé, že u spojité (analogové) soustavy výstupní signál závisí 
             na všech hodnotách vstupního signálu, nikoli jen na některých jeho hodnotách v určitých 
             časových okamžicích.
-      \item Systémy pracující s diskrétním časem lze obdobně symbolicky vyjádřit relací  
+            \luagraphic[0.8]{tky_fig015.pdf}{Systém se spojitým časem}{tky:fig015} 
+      \item[Systémy pracující s diskrétním časem] lze obdobně symbolicky vyjádřit relací  
             vstup/výstup ve tvaru:
             \begin{equation}\label{tky:eq022}
-              y[n]=\mathcal{S}\{x[n]\}
+              y[n]=S\{x[n]\}
             \end{equation}
-            kde $\mathcal{S}$ je tentokráte systémový operátor přiřazení posloupnosti 
-            $x[n]\rightarrow y[n]$. U diskrétních systémů se zpracovávají posloupnosti hodnot 
-            signálů, získaných vzorkováním spojitého signálu
-    \end{itemize}
+            kde \(S\) je tentokráte systémový operátor přiřazení posloupnosti \(x[n]\rightarrow
+            y[n]\). U diskrétních systémů se zpracovávají posloupnosti hodnot signálů, získaných
+            vzorkováním spojitého signálu
+            \luagraphic[0.8]{tky_fig016.pdf}{Systém s diskrétním časem}{tky:fig016}     
+      \item[Linearita systémů] ve spojité diskrétní oblasti má velký význam, neboť dovoluje využívat
+            princip superpozice k zjednodušování úloh jejich analýzy  a syntézy.
+
+            Předpokládejme, že na vstupu lineárního diskrétního systému jsou přivedeny dva signály
+            \(x_1[n]\) a \(x_2[n]\). Účinky obou vstupních signálů na výstupní signál lze zkoumat
+            odděleně a podle \emph{principu superpozice} je na výstupu sečíst. Označme dílčí odezvy
+            \(y_1[n]=S\{x_1[n]\}\) a \(y_2[n]=S\{x_2 [n]\}\), potom je
+            \begin{equation}\label{tky:eq007}
+              y[n]= y_1[n]+y_2[n]=S\{x_1[n]+x_2[n]\}
+            \end{equation}
+            Analogický vztah platí i pro lineární spojitý systém, tedy
+            \begin{equation}\label{tky:eq008}
+              y(t)= y_1(t)+ y_2(t)=S\{x_1(t)+x_2(t)\}
+            \end{equation}
+            Z uvedeného vyplývá významná vlastnost lineárního systému. \emph{Výstupní spektrum může
+            obsahovat pouze ty frekvence, které jsou ve spektru vstupního signálu a žádné jiné.} 
+
+      \item[Systém časově invariantní] je charakterizován tím, že události jsou v čase závislé pouze
+            na časovém intervalu (rozdílu časových událostí), nikoliv na každém časovém okamžiku
+            samostatně. Systém je časově invariantní, jestliže časový posun ve vstupní signálu vede
+            ke stejnému posunu výstupního signálu. Odezva diskrétního systému na posunutý vstupní
+            signál \(x[n-m]\) je pak určen vztahem
+            \begin{equation}\label{tky:eq009}
+              y[n-m]= S\{x[n-m]\}
+            \end{equation}
+            a obdobně pro odezvu spojité soustavy na posunutý (zpožděný) vstupní signál
+            \(x(t-\tau)\) platí analogicky rovnice
+            \begin{equation}\label{tky:eq010}
+              y(t-\tau)= S\{x(t-\tau)\}.
+            \end{equation}
+    \end{description}
+
+    Takový systém má konstantní parametry a je popsaný \emph{diferenčními rovnicemi s konstantními
+    koeficienty}. 
     
-    \subsection{Linearita, časová invariance a kauzalita}\label{tky:IchIIsecIssecI}
-      \textbf{Linearita systémů} ve spojité diskrétní oblasti má velký význam, neboť dovoluje
-      využívat princip superpozice k zjednodušování úloh jejich analýzy  a syntézy.
-
-      Předpokládejme, že na vstupu lineárního diskrétního systému jsou přivedeny dva signály
-      $x_1[n]$ a $x_2[n]$. Účinky obou vstupních signálů na výstupní signál lze zkoumat odděleně a
-      podle principu superpozice je na výstupu sečíst. Označme dílčí odezvy
-      $y_1[n]=\mathcal{S}\{x_1[n]\}$ a $y_2[n]=\mathcal{S}\{x_2 [n]\}$, potom je
-      \begin{equation}\label{tky:eq007}
-        y[n]= y_1[n]+y_2[n]=S\{x_1[n]+x_2[n]\}
-      \end{equation}
-      Analogický vztah platí i pro lineární spojitý systém, tedy
-      \begin{equation}\label{tky:eq008}
-        y(t)= y_1(t)+ y_2(t)=S\{x_1(t)+x_2(t)\}
-      \end{equation}
-      Z uvedeného vyplývá významná vlastnost lineárního systému. Výstupní spektrum může obsahovat
-      pouze ty frekvence, které jsou ve spektru vstupního signálu a žádné jiné. 
-
-      Jedná-li se o \textbf{systém časově invariantní}, jsou události v čase závislé pouze na
-      časovém intervalu (rozdílu časových událostí), nikoliv na každém časovém okamžiku samostatně.
-      Systém je časově invariantní, jestliže časový posun ve vstupní signálu vede ke stejnému posunu
-      výstupního signálu. Odezva diskrétního systému na posunutý vstupní signál $x[n-m]$ je pak
-      určen vztahem
-      \begin{equation}\label{tky:eq009}
-        y[n-m]= \mathcal{S}\{x[n-m]\}
-      \end{equation}
-      a obdobně pro odezvu spojité soustavy na posunutý (zpožděný) vstupní signál $x(t-\tau)$ platí
-      analogicky rovnice
-      \begin{equation}\label{tky:eq010}
-        y(t-\tau)= \mathcal{S}\{x(t-\tau)\}.
-      \end{equation}
-
-      Takový systém má konstantními parametry a je popsaný \emph{diferenčními rovnicemi s
-      konstantními koeficienty}. 
-      
-      Zcela obecně se LTI systém vyznačuje ještě dalšími vlastnostmi, z nichž jsou pro analýzu
-      významnější kauzalita a stabilita. 
-      \begin{itemize}
-        \item \textbf{Kauzální, příčinný systém} - výstupní signál závisí pouze na současných a
-              minulých hodnotách vstupního signálu \(x[n]\), nikoliv na budoucích hodnotách, nikoliv
-              na budoucích hodnotách. Nicméně existují významné struktury (např. filtry), při
-              jejichž návrhu vycházíme z vlastností nerealizovatelné - ideální struktury, které
-              vhodnou metodou aproximace vyjádříme realizovatelnou strukturou. U LTI systémů může
-              být otázka kauzality převedena na vlastnosti impulzní odezvy - viz. odst.
-              \ref{tky:IchIIsecIssecII}. Při uložení signálu do paměti lze realizovat i nekauzální
-              systém, který ale nepracuje v reálném čase. 
-        \item \textbf{Stabilní systém} - omezený vstup (v hodnotách) produkuje též omezený výstup.
-              Jinak - není-li vstup divergentní, pak ani výstup nebude divergentní. Uvedené bude
-              splněno, jestliže pro hodnoty impulzní odezvy \(h[n]\) bude platit
-              \begin{equation*}
-                \sum_{n=-\infty}^\infty\abs{h[n]} <\infty.
-              \end{equation*}
-              Problém stability se vyskytuje u rekurzivních struktur (struktury se zpětnou vazbou). 
-      \end{itemize}
-      
+    Zcela obecně se \textsc{LTI} systém vyznačuje ještě dalšími vlastnostmi, z nichž jsou pro
+    analýzu významnější kauzalita a stabilita. 
+    \begin{description}[leftmargin=3em,labelindent=1em, style=nextline]
+      \item[Kauzální, příčinný systém] - výstupní signál závisí pouze na současných a
+            minulých hodnotách vstupního signálu \(x[n]\), nikoliv na budoucích hodnotách, nikoliv
+            na budoucích hodnotách. Nicméně existují významné struktury (např. filtry), při jejichž
+            návrhu vycházíme z vlastností nerealizovatelné - ideální struktury, které vhodnou
+            metodou aproximace vyjádříme realizovatelnou strukturou. U \textsc{LTI} systémů může být
+            otázka kauzality převedena na vlastnosti impulzní odezvy - viz. odst.
+            \ref{tky:IchIIsecIssecII}. Při uložení signálu do paměti lze realizovat i nekauzální
+            systém, který ale nepracuje v reálném čase. 
+      \item[Stabilní systém] - omezený vstup (v hodnotách) produkuje též omezený výstup.
+            Jinak - není-li vstup divergentní, pak ani výstup nebude divergentní. Uvedené bude
+            splněno, jestliže pro hodnoty impulzní odezvy \(h[n]\) bude platit
+            \begin{equation*}
+              \sum_{n=-\infty}^\infty\abs{h[n]} <\infty.
+            \end{equation*}
+            Problém stability se vyskytuje u rekurzivních struktur (struktury se zpětnou vazbou). 
+    \end{description}      
 
     \subsection{Konvoluce v diskrétních systémech}\label{tky:IchIIsecIssecII}
-      Významnou charakteristikou lineárních časově invariantních systémů \emph{LTI} je
+      Významnou charakteristikou lineárních časově invariantních systémů \textsc{LTI} je
       \textbf{impulsní odezva}. Její znalost umožňuje stanovit odezvu systému na obecný signál, lze 
       ji využít i při syntéze systému \cite{Bicak2007}.
 
-      Mějme diskrétní LTI systém \ref{tky:fig002}, na jehož vstup je přiveden \emph{jednotkový
-      diskrétní impuls}\footnote{Nesmíme zaměňovat s Diracovým (také jednotkovým) impulsem.}.
-      Jednotkový impuls je posloupnost $\delta[n]=0$ pro všechna $n$ s výjimkou $\delta[0]=1$.
-      Odezva systému na jednotkový impuls $\delta[n]$ se nazývá impulsní odezva a platí
+      Mějme diskrétní \textsc{LTI} systém \ref{tky:fig002}, na jehož vstup je přiveden
+      \emph{jednotkový diskrétní impuls}\footnote{Nesmíme zaměňovat s Diracovým (také jednotkovým)
+      impulsem.}. Jednotkový impuls je posloupnost \(\delta[n]=0\) pro všechna \(n\) s výjimkou
+      \(\delta[0]=1\). Odezva systému na jednotkový impuls \(\delta[n]\) se nazývá impulsní odezva a
+      platí
       \begin{equation}\label{tky:eq011}
-        h[n]= \mathcal{S}\{\delta[n]\}.
+        h[n]= S\{\delta[n]\}.
       \end{equation}
       Vzhledem časové invariantnosti, posunutému jednotkovému impulsu odpovídá posunutá impulsní
       odezva, tedy
       \begin{equation}\label{tky:eq012}
-        h[n-m]= \mathcal{S}\{\delta[n-m]\}.
+        h[n-m]= S\{\delta[n-m]\}.
       \end{equation}
-      \emph{Jednotkový skok} $1[n]$ je posloupnost jedniček od počátku časové osy $n=0$,
+      \emph{Jednotkový skok} \(1[n]\) je posloupnost jedniček od počátku časové osy \(n=0\),
       kterou můžeme zapsat součtem
       \begin{align}
         1[n]&= \sum_{m=0}^n\delta[n-m]                  \nonumber \\
@@ -117,7 +119,7 @@
       \emph{Odezva systému na jednotkový skok} $\mathrm{1}[n]$ se nazývá \textbf{přechodová odezva}
       $s[n]$ a platí
       \begin{align}
-        s[n]&= \mathcal{S}\{1[n]\}= S\{\sum_{m=0}^n\delta[n-m]\}        \nonumber \\
+        s[n]&= S\{1[n]\}= S\{\sum_{m=0}^n\delta[n-m]\}        \nonumber \\
             &=\sum_{m=0}^nS\{\delta[n-m]\}.                             \label{tky:eq014}
       \end{align}
 
@@ -160,9 +162,9 @@
       součásti vstupního signálu, které v rovnici (\ref{tky:eq015}) tvoří vážené jednotlivé impulsy,
       ze kterých je signál složen
       \begin{align}
-        y[n]=\mathcal{S}\{x[n]\}
-          &=\mathcal{S}\{\sum_{m=-\infty}^{\infty}x[m]\delta[n-m]\}  \nonumber \\
-          &=\sum_{m=-\infty}^{\infty}x[m]\mathcal{S}\{\delta[n-m]\}. \label{tky:eq016}
+        y[n]=S\{x[n]\}
+          &=S\{\sum_{m=-\infty}^{\infty}x[m]\delta[n-m]\}  \nonumber \\
+          &=\sum_{m=-\infty}^{\infty}x[m]S\{\delta[n-m]\}. \label{tky:eq016}
       \end{align}
       Protože platí (\ref{tky:eq011}) a v důsledku časové invariance vyplývá z rovnice
       \ref{tky:eq016} \textbf{konvoluční suma} 
@@ -197,7 +199,7 @@
       \begin{equation}\label{tky:eq025}
         N_y = N_x + N_h - 1.
       \end{equation}
-      Rovnice \ref{tky:eq019} a \ref{tky:eq024} určují způsob výpočtu výstupního signálu LTI
+      Rovnice \ref{tky:eq019} a \ref{tky:eq024} určují způsob výpočtu výstupního signálu \textsc{LTI}
       systému. Výstupní signál \(y[n]\) je dán součtem prvků impulsové odezvy a vstupního signálu,
       přičemž buď vstupní signál \ref{tky:eq019} nebo impulsová odezva \ref{tky:eq024} jsou otočeny
       v čase \cite[s.~14]{Davidek1996}.
@@ -288,7 +290,7 @@
   
   \section{Popis spojitých a diskrétních systémů, přenosová funkce}\label{tky:IchIIsecIII}
     \subsection{Spojité systémy}\label{tky:IchIIsecIIIssecI}
-      Lineární časově invariantní (LTI) spojitý systém je obecně popsán soustavou
+      Lineární časově invariantní (\textsc{LTI}) spojitý systém je obecně popsán soustavou
       integrodiferenciálních rovnic s konstantními koeficienty, kterou lze postupným derivováním
       změnit na soustavu diferenciálních rovnic. Předpokládejme budící (nezávislou) veličinu
       $x(t)$ a odezvou (závislou) výstupní veličinu $y(t)$, pak eliminací ostatních proměnných bude
@@ -364,7 +366,7 @@
       Algoritmus výpočtu impulsní odezvy z přenosové funkce je založen na výpočtu  reziduí a 
       rozkladu racionálně lomené funkce $H(p)=\frac{Q(p)}{N(p)}$ na částečné zlomky. Pokud má tato 
       funkce jednoduché póly, rozklad má tvar\footnote{Násobnost kořenů $N(p)$ neuvažujeme, protože 
-      se v LTI obvodech neuplatňuje}.
+      se v \textsc{LTI} obvodech neuplatňuje}.
       \begin{align}
          H(p)&=\frac{Q(p)}{N(p)} 
               =\sum_{\mu=1}^{n}\frac{k_\mu}{p-p_{\infty_\mu}}                  \nonumber \\

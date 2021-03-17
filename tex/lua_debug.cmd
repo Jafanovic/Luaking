@@ -14,9 +14,11 @@ set /a starttime=(%starthour%*60*60*100)+(%startmins%*60*100)+(%startsecs%*100)+
 
 :TimeThis
 REM --synctex=1 Gzipped versions of t
-lualatex.exe \providecommand{\DebugMode}{true}\input{%root_file%.tex} -synctex=1 -interaction=nonstopmode -shell-escape -halt-on-error -jobname=%root_file% 
+lualatex.exe \providecommand{\DebugMode}{true}\input{%root_file%.tex} -synctex=1 %
+  -interaction=nonstopmode -shell-escape -halt-on-error -jobname=%root_file% 
 
-REM lualatex -synctex=1 -interaction=nonstopmode -shell-escape -halt-on-error -jobname=luaking "&pdflatex" mylatexformat.ltx """luaking.tex""
+REM lualatex -synctex=1 -interaction=nonstopmode -shell-escape -halt-on-error -jobname=luaking %
+REM "&pdflatex" mylatexformat.ltx """luaking.tex""
 
 set endtime=%time%
 set endcsec=%endTIME:~9,2%

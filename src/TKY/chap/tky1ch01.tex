@@ -3,69 +3,119 @@
 % \tikzset{external/figure name/.add={ch01_}{}}
 %======================= Kapitola: Základy technické kybernetiky ===================================
 \setchaptertoc
-\chapter{Základy technické kybernetiky}
+\chapter{Základy technické kybernetiky}\label{tky:IchapI}
+  \section{Vznik a vývoj kybernetiky}\label{tky:IchapIsecI}
+    V časopise \casopisVesmir píše \textsc{Ivan M. Havel} na téma \uv{Kybernetika} následující: Před
+    padesáti lety vznikla podivná věda: kybernetika. Na rozdíl od jiných věd si za předmět svého
+    studia nezvolila nějaké věci, jako třeba šicí stroje nebo žáby, nýbrž určité vztahy, vlivy a
+    jevy, které se v různých převlecích vyskytují na jinak zcela nepodobných místech. V rámci „čisté
+    “ kybernetiky (na rozdíl od jejích aplikovaných verzí) jsou staronové pojmy – jako například
+    zpětná vazba, řízení, regulace, automaty, sdělování, signál, informace, zpráva, komunikace,
+    adaptace, stabilita, sebeorganizace, sebereprodukce – studovány především s důrazem na ty
+    aspekty, které je osvobozují od konkrétních nositelů. Kybernetické zkoumání se tak vydalo napříč
+    klasickými vědními obory – přesně v pojetí transdisciplinarity (\cite{Vesmir1998_11}).
 
-  \section{Vznik a vývoj kybernetiky}
-    Kybernetika je jedním z nejmladších vědních oborů a její vznik spadá do čtyřicátých let 
-    dvacátého století. Vznik je úzce spjat s vývojem mnoha jiných vědních oborů jako matematická 
-    logika, fyziologie, neurofyziologie a s rozvojem některých technických oborů jako je 
-    elektronika, výpočetní technika, řídicí technika. Kybernetika není vědou, která by pouze 
-    přebírala poznatky jiných věd. Ona hledá to, co jednotlivé vědní obory spojuje, postihuje 
-    určité společné rysy různých vědních oborů a má snahu o jejich integraci. 
+    Kybernetické myšlení nebylo možná cizí ani myslitelům starověku. Mezi zlomky od
+    \textsc{Hérakleita z Efesu} (cca 500 př. K.) najdeme například pozoruhodnou větu:
+    \begin{center}
+      \uv{Jedno je moudré: vědět, \\ že důmysl všechno řídí skrze vše.}
+    \end{center}  
 
-    \begin{figure}[ht!]
-      \centering
-      \includegraphics[width=0.8\linewidth]{Norbert_Wiener.jpg}
-      \caption{Norbert Wiener (26. listopadu 1894 - 18. brezna 1964) byl americký matematik, který 
-               je považován za zakladatele kybernetiky. }
-      \label{tky:fig003}
-    \end{figure}
-  
-    Historicky poskytlo impuls ke vzniku kybernetiky řešení problému řízeni palby protiletadlového 
-    dělostřelectva za 2. světové války. Na tomto úkolu pracoval také americký matematik 
-    \emph{Norbert Wiener}. Výsledkem matematického i konstrukčního úsilí bylo, že mířič - člověk 
-    byl nahrazen přístrojem - zaměřovačem, který snímal údaje o současné poloze letadla, z ní 
-    vypočítával polohu v budoucích okamžicích a servomechanismem se přenášela informace od 
-    zaměřovače a počítače na kanóny. Norbert Wiener pak jako první zpracoval teorii 
-    automatizovaných systémů řízeni pro účely protiletecké obrany. Tuto teorii zobecnil pro všechny 
-    druhy technických, biologických a společenských systémů. Shrnul ji ve své proslulé knize 
-    \emph{Kybernetika neboli řízení a sdělování v živých organismech a strojích}. Tato kniha vyšla 
-    v roce \num{1948} a stala se světovým vědeckým bestsellerem. Svého autora proslavila jako 
-    zakladatele kybernetiky.
+    \luagraphic[1]{tky_fig003.jpg}{\wikiNorbertWiener (\textasteriskcentered 26. listopadu 1894 -
+      \textdagger 18. brezna 1964) byl americký matematik, který je považován za zakladatele
+      kybernetiky. Kredit: monoskop.org}{tky:fig003}
+
+    Nalákán slovem „řídí“ – \emph{kybernésai} – dovoluji si tuto větu s jistou interpretační
+    smělostí číst jako oslavu kybernetiky. Každé řízení, nejen bicyklu, lodi nebo firmy, je ovládání
+    či usměrňování něčeho (možná velkého, hmotného a odporujícího) bez vynaložení síly. Pravda,
+    nějaká síla tu musí být, ta však je podstatně menší a zpravidla nezávislá na velikosti,
+    hmotnosti a odporu toho, co je řízeno. Pak onen „důmysl“, který všechno řídí, má-li působit
+    jinak než silou, musí být založen na informaci. S informací (v kvalitativním či sémantickém
+    smyslu) je tu spojeno několikero činností: měření, pozorování či vnímání, rozpoznání toho, co je
+    relevantní, rozhodnutí o tom, co se má dít, sdělení tohoto rozhodnutí tomu, co je řízeno,
+    případně schopnost si z toho všeho brát ponaučení a tvořit operativní model světa i sebe sama.
+    Pokud jde o ono řízení „všeho skrze vše“, lze nejspíš odkázat na vyznavače celistvosti, dle
+    nichž je vše se vším propojeno rozsáhlou sítí vztahů, vazeb a kontextů (představte si jen
+    přírodní ekosystém). Takto lze Hérakleitův zlomek převést do jazyka kybernetiky. A ten, jakkoli
+    abstraktní, nabízí básnické metafory – třeba spojení řízení s důmyslem.
+
+
+    Rozmanité definice kybernetiky mají jedno společné: nevymezují její hranice. Je to asi dobře –
+    jinak by z ní byla jen další disciplína mezi ostatními, proti původnímu záměru. Takto je
+    kybernetika tematicky otevřená a neměli bychom se zdráhat spojovat s ní rozličné novější
+    myšlenky, nápady a směry bádání: od celulárních automatů, neuronových sítí, molekulárních a
+    kvantových počítačů, kolektivních a kooperativních jevů, adaptivních, samoorganizujících a
+    autopoietických systémů a genetických algoritmů až po inteligentní roboty, virtuální realitu a
+    internetovou síť.
+ 
+    Historicky poskytlo impuls ke vzniku novodobé kybernetiky řešení problému řízení palby
+    protiletadlového dělostřelectva za 2. světové války. Na tomto úkolu pracoval také americký
+    matematik \textsc{Norbert Wiener}. Výsledkem matematického i konstrukčního úsilí bylo, že mířič
+    - člověk byl nahrazen přístrojem - zaměřovačem, který snímal údaje o současné poloze letadla, z
+    ní vypočítával polohu v budoucích okamžicích a servomechanismem se přenášela informace od
+    zaměřovače a počítače na kanóny. \textsc{Norbert Wiener} pak jako první zpracoval teorii
+    automatizovaných systémů řízení pro účely protiletecké obrany. Tuto teorii zobecnil pro všechny
+    druhy technických, biologických a společenských systémů. Shrnul ji ve své proslulé knize
+    \emph{Kybernetika neboli řízení a sdělování v živých organismech a strojích} \cite{Wiener1961}.
+    Tato kniha vyšla v roce \num{1948} a stala se světovým vědeckým bestsellerem. Svého autora
+    proslavila jako zakladatele kybernetiky (\cite[s.~6]{Svarc1986}).
+
+    \luagraphic[0.8]{tky_fig003b.jpg}{V roce 1948 vydal Wiener knihu s názvem \emph{Kybernetika aneb
+      řízení a přenos informací v živém organismu a ve stroji}
+      (\foreignlanguage{english}{Cybernetics: or Control and Communication in the Animal and the
+      Machine, Paris: Hermann \& Cie, 1948}) v níž odhalil a formuloval zákonitosti při přenosu a
+      zpracování informací. Objasnil podobnost v činnosti počítacích strojů a nervové soustavy. Jako
+      zástupci Hermann Editions se M. Freymannovi podařilo najít kompromis a práva na knihu získal
+      francouzský vydavatel. Poté, co spolu žili v Mexiku, byli Freymann a Wiener přátelé a byl to
+      Freymann, kdo navrhl, aby Wiener napsal tuto knihu. V roce 1950 napsal populárnější výklad
+      kybernetiky pro širší veřejnost pod názvem \emph{Kybernetika a společnost}. Kredit:
+      monoskop.org}{tky:fig003b}
     
-    Řešení praktických (a bohužel vojenských) problémů použití elektronických počítačů k řízení 
-    střel inspirovalo Wienera ke studiu řízení se zpětnou vazbou. Spolu s neurofyziologem 
-    \emph{Arturem Rosenbluethem} hledali analogie k technickým zpětnovazebním systémům pro navádění 
-    střel na pohyblivý cil. Takovou analogii nalezli u některých biologických systémů - konkrétně v 
-    nervové soustavě živých organismů. Myšlenka zpětné vazby u živých a neživých systémů se stala 
-    základem kybernetické koncepce vyložené v citované knize. Hledáni analogií mezi živým 
-    organismem a strojem (případně také společnosti) znamená postihnout společné znaky zdánlivě 
-    naprosto různorodých systémů. A tyto analogie pak vedou k používáni matematického a logického 
+    Řešení praktických (a bohužel vojenských) problémů použití elektronických počítačů k řízení
+    střel inspirovalo Wienera ke studiu řízení se zpětnou vazbou. Spolu s neurofyziologem
+    \textsc{Arturem Rosenbluethem} hledali analogie k technickým zpětnovazebním systémům pro
+    navádění střel na pohyblivý cíl. Takovou analogii nalezli u některých biologických systémů -
+    konkrétně v nervové soustavě živých organismů. Myšlenka zpětné vazby u živých a neživých systémů
+    se stala základem kybernetické koncepce vyložené v citované knize. Hledání analogií mezi živým
+    organismem a strojem (případně také společnosti) znamená postihnout společné znaky zdánlivě
+    naprosto různorodých systémů. A tyto analogie pak vedou k používáni matematického a logického
     aparátu i tam, kde to dosud nebylo možné.
     
-    Nemůžeme ovšem nevidět všechny předcházející tendence a faktory v historii společnosti, které 
-    vedly ke vzniku kybernetiky. Bylo by nesprávné tvrdit, že pouze Norbert Wiener a několik jeho 
-    spolupracovníků vytvořilo kybernetiku. Její vznik byl pokračováním určité tendence, která se 
-    projevovala již dávno předtím. Kybernetiku musíme chápat jako výsledek rozvoje materiálních sil 
-    lidské společnosti a rozvoje vědeckého poznáváni světa.
+    Nemůžeme ovšem nevidět všechny předcházející tendence a faktory v historii společnosti, které
+    vedly ke vzniku kybernetiky. Bylo by nesprávné tvrdit, že pouze \textsc{Norbert Wiener} a
+    několik jeho spolupracovníků vytvořilo kybernetiku. Její vznik byl pokračováním určité tendence,
+    která se projevovala již dávno předtím. Kybernetiku musíme chápat jako výsledek rozvoje
+    materiálních sil lidské společnosti a rozvoje vědeckého poznáváni světa.
     
-    Název kybernetika pochází z řeckého slova \uv{kybernétés} neboli \uv{kormidelník}, \uv{člověk 
-    řídící loď}. Objevuje se v dílech řeckých filosofů, např. v Platonově díle Dialogy; zde se 
-    tímto termínem vyjadřuje \uv{umění řídit lodě a administrativně spravovat provincie}. V 
-    novověku použil termín kybernetika A. M. Ampére v encyklopedii a to ve smyslu \uv{vědy o řízení 
-    společnosti}. Termín se neujal a tak to byl až Wiener, který jím nazval nově vznikající vědní 
-    obor. \cite[s.~6]{Svarc1986}.
+    Kybernetika jako taková vznikla na základě celé řady interdisciplinárních setkání významných
+    poválečných intelektuálů v průběhu let 1944 – 1953, mezi které patřili \textsc{Wiener},
+    \textsc{John von Neumann}, \textsc{Warren McCulloh}, \textsc{Claudie Shannon}, \textsc{Heinz von
+    Foerster}, \textsc{W. Ross Ashby} \cite{Ashby1956}, \textsc{Gregory Bateson} a \textsc{Margaret
+    Mead}. Pod záštitou nadace \textsc{Josiaha Macyho Jr.} vešla tato setkání ve známost jako Macyho
+    konference o kybernetice. Z původního zaměření na stroje a zvířata se zájem kybernetiky rychle
+    rozšiřuje na oblasti vědomí (\textsc{Bateson} a \textsc{Ashby}) a sociálních systémů (tj.
+    Stafford Beerova kybernetika managementu), čímž se vrací k původnímu Platonovu pojetí
+    kybernetiky jakožto vědy o kontrole vztahů ve společnosti. 
+    
+    Samotný název kybernetika \foreignlanguage{greek}{κυβερνητικός} pochází z řeckého slova
+    \uv{kybernétés} neboli \uv{kormidelník}, \uv{člověk řídící loď\,}. Objevuje se v dílech řeckých
+    filosofů, např. v Platonově díle Dialogy\footnote{Platónova díla mají vesměs formu dialogu
+    (rozhovoru), kde většinou vystupuje Sókratés jako hlavní postava.}; zde se tímto termínem
+    vyjadřuje \uv{umění řídit lodě a administrativně spravovat provincie}. V novověku použil termín
+    kybernetika \textsc{A. M. Ampére} v encyklopedii a to ve smyslu \uv{vědy o řízení společnosti}.
+    Termín se neujal a tak to byl až Wiener, který jím nazval nově vznikající vědní obor.
+    (\cite[s.~6]{Svarc1986}).
 
     \subsection{Základní pojmy kybernetiky a její vymezení}
-      Pro kybernetiku jsou charakteristická tři základní hlediska, z kterých nazírá na problémy a z 
-      kterých dané problémy řeší. Jsou to
+      Pro kybernetiku jsou charakteristická tři základní hlediska \ref{tky:fig004}, z kterých nazírá
+      na problémy a z kterých dané problémy řeší.
 
-      \luagraphic[0.8]{tky_fig004.pdf}{Základní hlediska kybernetiky}{tky:fig004}
+      \luagraphic[0.8]{tky_fig004a.pdf}{Základní hlediska kybernetiky
+        (\cite[s.~7]{Svarc1986})}{tky:fig004}
       
-      
-      Tím se dostáváme k nejzákladnějších pojmů kybernetiky: \textbf{systém}. \textbf{informace} a 
-      \textbf{řízení}, Z těchto hledisek se pak vyvinuly základní obory teoretické kybernetiky - 
-      teorie systémů, teorie informace a \hyperlink{tky:regulace}{teorie řízení}.
+      Tím se dostáváme k nejzákladnějších pojmů kybernetiky: \textbf{systém}, \textbf{informace} a
+      \textbf{řízení}, Z těchto hledisek se pak vyvinuly základní obory teoretické kybernetiky -
+      teorie systémů, teorie informace a \hyperlink{tky:regulace}{teorie řízení} (kapitola \ref{}).
       
       Jako příklad vysvětlující tato hlediska kybernetiky si zvolme automobil. Automobil je z 
       hlediska konstruktéra složité technické zařízení, sloužící k dopravě osob a nákladu, které je 
@@ -73,29 +123,37 @@
       vznětovým, k provozu jsou nezbytné látky jako benzín, oleje, voda, ... .To vše je důležité a 
       podstatné z hlediska konstruktéra automobilu, ale ne z hlediska kybernetiky.
 
-      \luagraphic[0.8]{tky_fig001.pdf}{ }{tky:fig001}
+      \luagraphic[1]{tky_fig017.pdf}{Automobil}{tky:fig017}
 
-      Jaká jsou tedy hlediska kybernetiky? Kybernetika vidí v automobilu především tzv. 
-      \textbf{dynamický systém}, jehož činnost je spojena s člověkem - řidičem a je ve vztahu k 
-      okolnímu světu. Automobil uvažovaný jako systém se skládá ze dvou podsystémů (subsystémů). 
-      Prvním z nich je vlastní vozidlo, druhým je člověk. Každý podsystém se pak skládá z 
-      elementárních jednotek, vzájemně propojených, tzv. \emph{prvků systému}. Mezi prvky systému 
-      existují různé vztahy. Ale nejenom mezi prvky nebo podsystémy existuji vztahy.
+      Jaká jsou tedy hlediska kybernetiky? Kybernetika vidí v automobilu především tzv.
+      \textbf{dynamický systém}, jehož činnost je spojena s člověkem - řidičem a je ve vztahu k
+      okolnímu světu (\ref{tky:fig017}). Automobil uvažovaný jako systém se skládá ze dvou
+      podsystémů (subsystémů). Prvním z nich je vlastní vozidlo, druhým je člověk
+      (\ref{tky:fig001}). Každý podsystém se pak skládá z elementárních jednotek, vzájemně
+      propojených, tzv. \emph{prvků systému}. Mezi prvky systému existují různé vztahy. Ale nejenom
+      mezi prvky nebo podsystémy existuji vztahy.
 
       Automobil není izolovaným systémem a proto má také četné vztahy k okolí. K okolí \uv{systému 
       automobil} patří ty části okolního světa, které mají vliv na jeho činnost. Jsou to např. 
       vozovka, křižovatky, zatáčky, jiná vozidla, chodci, dopravní značky apod. Na všechny vlivy 
       okolí reaguje systém automobil určitým způsobem. Reakce systému na okolí se nazývá 
-      \textbf{chováni systému}. Pokud sleduje kybernetika automobil tímto způsobem, jedná se o 
-      \emph{systémové hledisko} kybernetiky  (obr. \ref{tky:fig001}). Předběžně si vymezme pojem 
-      systém jako soubor prvků, mezi nimiž existuji nějaké funkční vztahy. Sledujeme-li vzájemné 
-      působeni systému a jeho okolí, jde o druhé základní kybernetické hledisko. Poněvadž se toto 
-      působeni realizuje výměnou informaci mezi systémem a okolím, mluvíme o \emph{informačním 
-      hledisku}. Pod pojmem informace si představíme zprávu, která má pro některé ze zúčastněných 
-      systémů určitý význam. Nositelem informace jsou tzv. \textbf{signály}.
+      \textbf{chování systému}. 
+
+      \luagraphic[0.8]{tky_fig001.pdf}{Automobil jako dynamický systém
+        (\cite[s.~7]{Svarc1986})}{tky:fig001}
       
-      Doposud jsme uvažovali prostou výměnu informaci mezi dvěma systémy. Je-li ale informace 
-      využívána přijímacím systémem pro další činnost, pro dosaženi určitého předem stanoveného 
+      Pokud sleduje kybernetika automobil tímto způsobem, jedná se o \emph{systémové hledisko}
+      kybernetiky  (obr. \ref{tky:fig001}). Předběžně si vymezme pojem systém jako soubor prvků,
+      mezi nimiž existuji nějaké funkční vztahy. 
+      
+      Sledujeme-li vzájemné působeni systému a jeho okolí, jde o druhé základní kybernetické
+      hledisko. Poněvadž se toto působení realizuje výměnou informací mezi systémem a okolím,
+      mluvíme o \emph{informačním hledisku}. Pod pojmem informace si představíme zprávu, která má
+      pro některé ze zúčastněných systémů určitý význam. Nositelem informace jsou tzv.
+      \textbf{signály}.
+      
+      Doposud jsme uvažovali prostou výměnu informací mezi dvěma systémy. Je-li ale informace 
+      využívána přijímacím systémem pro další činnost, pro dosažení určitého předem stanoveného 
       cíle, pak už se jedná o \emph{řízení}. Pojem řízení vymezíme jako \emph{proces výměny 
       informace mezi dvěma systémy}, který se uskutečňuje plánovitě pro dosažení určitého cíle. Při 
       řízení se uplatňuje informační působení řídicího systému na řízený systém. Tím se dostáváme k 
@@ -104,9 +162,9 @@
       
       Vraťme se k našemu automobilu. Systém automobil má dva podsystémy vozidlo a řidiče. Mezi nimi 
       probíhá informační výměna, jejíž cílem je pohyb automobilu po stanovené dráze, např. v přímém 
-      směru. Řidič reaguje na nerovnosti vozovky nebo na boční vítr, které vychyluji vozidlo z 
+      směru. Řidič reaguje na nerovnosti vozovky nebo na boční vítr, které vychyluje vozidlo z 
       přímého směru tím, že pootáčí volantem. Řidič je tedy řídícím systémem a vozidlo řízeným 
-      systémem a výměna informací probíhá za účelem udrženi pohybu vozidla v přímém směru - jedná 
+      systémem a výměna informací probíhá za účelem udržení pohybu vozidla v přímém směru - jedná 
       se o \textbf{proces řízení}.
       
       Všimněme si momentu, že řidič otáčí volantem na základě toho, jaký účinek vyvolalo předchozí 
@@ -130,7 +188,7 @@
       motoru, algoritmus vyjíždění automobilu, algoritmus předjíždění, atd. Algoritmy jsou objektem 
       zkoumání jednoho z oborů teoretické kybernetiky - \emph{teorie algoritmů}.
       
-      Pe předběžném objasnění základních hledisek kybernetiky a základních pojmů kybernetiky je 
+      Po předběžném objasnění základních hledisek kybernetiky a základních pojmů kybernetiky je 
       možné se pokusit vyložit, ce vlastně kybernetika je a čím se zabývá. Jednotlivý autoři, kteří 
       se pokoušejí podat definici kybernetiky, protěžují více nebo méně některé ze tří základních 
       kybernetických hledisek (hledisko systémové, hledisko informační, hledisko řízení). Většina 
@@ -143,7 +201,7 @@
       kybernetikou jako jsou objekty společenské a ekonomické a neuvažuje systémy matematické, 
       lingvistické a další a z technických systémů dnes tak různorodých se omezuje jen na stroje. 
       Ani informační hledisko této definice není úplné, protože se omezuje pouze na přenos 
-      informaci a neuvažuje dnes tak důležité procesy uchování a zpracováni informace.
+      informací a neuvažuje dnes tak důležité procesy uchování a zpracováni informace.
       
       Podobnými nedostatky se vyznačovaly definice kybernetiky dalších autorů. Byl to vždy 
       jednostranný přístup a neúplnost jednotlivých hledisek. Proto nelze žádnou z definic 
@@ -161,49 +219,31 @@
       
     \subsection{Rozdělení kybernetiky}
       Z praktického hlediska můžeme kybernetiku rozdělit podle přístupu a aplikací:
-      \begin{itemize}[noitemsep]
-        \item \textbf{teoretická kybernetika},
-        \item \textbf{aplikovaná kybernetika}.
-      \end{itemize}
-
-      \emph{Teoretická kybernetika} studuje především obecné vlastnosti a chování systémů. Zabývá 
-      se obecným popisem vlastností a chování systémů. Z tohoto pohledu zahrnuje teoretická 
-      kybernetika \emph{teorii systémů} a \emph{teoretickou informatiku}.
       
-      \emph{Aplikovaná kybernetika} představuje použití kybernetického přístupu při analýze, 
+    \begin{description}[leftmargin=3em,labelindent=1em, style=nextline]
+      \item[Teoretická kybernetika] studuje především obecné vlastnosti a chování systémů. Zabývá 
+            se obecným popisem vlastností a chování systémů. Z tohoto pohledu zahrnuje teoretická 
+            kybernetika \emph{teorii systémů} a \emph{teoretickou informatiku}.
+      
+      \item[Aplikovaná kybernetika] představuje použití kybernetického přístupu při analýze, 
       modelování a simulaci a návrhu systémů, dále aplikuje poznatky kybernetiky do dalších 
       oblastí. Aplikovaná kybernetika zasahuje do mnohých oblastí lidské činnosti - zahrnuje totiž 
       mj. následující obory:
-      
-      \begin{itemize}\addtolength{\itemsep}{-0.1\baselineskip}
-        \item \textbf{Teoretická kybernetika}
-              \begin{itemize}\addtolength{\itemsep}{-0.1\baselineskip}
-                \item \emph{Dynamické systémy}: zpětná vazba, stavový popis, stochastické systémy,
-                      řízení, aj.
-                \item \emph{Přenos informace}: informační entropie, kapacita komunikačního kanálu, 
-                      aj. 
-                \item \emph{Umělá inteligence}: strojové vnímání a učení, multi-agentní systémy, 
-                      robotika, modelování neuronových sítí, konekcionismus, vazba člověk-stroj, ...
-                \item \emph{Teorie rozhodování}, her, teorie složitosti, chaotické systémy, aj.
-              \end{itemize}
-        \item \textbf{Informatika}
-        \item \textbf{Biokybernetika}
-        \item \textbf{...}
-      \end{itemize}
-      
-  \section{Teorie systémů}
+    \end{description}
+ 
+  \section{Teorie systémů}\label{tky:IchapIsecII}
      Teorie systémů je jedna ze základních disciplin teoretické kybernetiky. Na druhé straně je ale 
      teorie systémů součásti tzv. \emph{obecné teorie systémů}, jejíž principy rozpracoval americký 
      biolog Ludwig von Bertalanffy. Pokusme se o vymezení vztahu mezi kybernetikou a teorií systémů.
      \cite[s.~11]{Svarc1986}.
      
      Obecná teorie systémů studuje systémy libovolné povahy, přičemž se zajímá o charakter prvků 
-     systému, charakter vazeb mezi prvky a chováni systému. Důležitým pojmem je zde \textbf{vazba 
+     systému, charakter vazeb mezi prvky a chování systému. Důležitým pojmem je zde \textbf{vazba 
      mezi prvky} a pojem \textbf{chování systémů}. Zatímco obecná teorie systémů se zajímá o 
      libovolný druh vazeb mezi prvky a libovolné chování systémů, kybernetiku zajímá specifický 
      druh vazeb a specifické chování. Kybernetika studuje pouze ty vazby, které jsou realizovány 
-     přenosem informace a chování, které lze zahrnout pod \textbf{pojmem řízení}. A to je náplni 
-     teorie systémů jako discipliny teoretické kybernetiky.
+     přenosem informace a chování, které lze zahrnout pod \textbf{pojmem řízení}. A to je náplní 
+     teorie systémů jako disciplíny teoretické kybernetiky.
      
      \textbf{Přenos informace} a \textbf{řízení} nejsou od sebe \emph{oddělitelné}. Aspoň tak, že 
      není možné řízení bez přenosu informace. Je však už sporné, je-li každý přenos informace již 
@@ -264,11 +304,11 @@
         celek, jehož strukturu nechceme, nebo již nemůžeme v rámci analýzy rozlišit.
       \end{definition}
        
-       \begin{note}
+       \begin{tcnote}
          \textbf{Rozlišovací úrovní} se označuje stupeň podrobnosti zkoumání systému. Změnou        
          rozlišovací úrovně se může dřívější prvek systému stát podsystémem, popřípadě i systémem a 
          naopak. Dekompozicí systému na jednodušší prvky, se zvyšuje rozlišovací úroveň.
-       \end{note}
+       \end{tcnote}
        
      \subsection{Klasifikace systémů}
        Někdy rozlišujeme pojem \textbf{statický} a \textbf{dynamický systém}, ale spíš známe pouze 
@@ -304,7 +344,7 @@
     chápáni příliš zúženo, neboť kybernetika sleduje přenos informace mezi dvěma nebo více systémy 
     s tím, že cílem přenosu může být řízení chování některého ze systému. Kybernetika říká, že 
     informace je jakékoliv sdělení, kterého lze reálně (právě nyní) nebe potenciálně (v budoucnu 
-    při vhodné příležitosti) použit k řízeni systému.
+    při vhodné příležitosti) použit k řízení systému.
     
     Pojem informace je \emph{pojmem abstraktním} a jako takový má \emph{nehmotnou povahy}. 
     Současně však informace má smysl jen ve spojení s hmotou a to jak z hlediska přenosu, tak z 

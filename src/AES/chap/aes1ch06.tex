@@ -246,26 +246,24 @@
       výsledný fázový posuv (časový rozdíl vztažený na periodu) mezi výstupním a vstupním signálem
       jako rozdíl fázi výstupního signálu \(\varphi_2\) a vstupního signálu \(\varphi_1\). Modul
       přenosu \(K_U\) je bezrozměrné číslo a často se udává v logaritmické míře, kdy platí \(K_U
-      [\si{\decibel}] = 20 \log{K_U}\). Toto běžné používané vyjádření umožňuje grafické
-      znázornění velkého rozsahu hodnot.
+      [\si{\decibel}] = 20 \log{K_U}\). Toto běžné používané vyjádření umožňuje grafické znázornění
+      velkého rozsahu hodnot.
 
       Modul a argument (fázi) přenosu lze takto vypočítat jen pro konkrétní kmitočet harmonického
-      signálu \(omega\). Pro praktické použití je výhodné přenosové vlastnosti vyjádřit jako
-      funkce kmitočtu, kdy pro každý kmitočet lze vypočítat odpovídající přenos. Závislost přenosu
-      na kmitočtu je komplexní funkcí kmitočtu \(\mathbb{K_U}(j\omega)\) či \(\mathbb{K_U}(jf)\),
-      kde \(\omega = 2\pi f\) nebo \(\mathbb{K_U}(p)\), kde běžně uvažujeme \(p = j\omega\).
-      Komplexní kmitočet \(p\) má obecně tvar \(p = \sigma + j\omega\) a hlubší význam (viz kap.
+      signálu \(omega\). Pro praktické použití je výhodné přenosové vlastnosti vyjádřit jako funkce
+      kmitočtu, kdy pro každý kmitočet lze vypočítat odpovídající přenos. Závislost přenosu na
+      kmitočtu je komplexní funkcí kmitočtu \(\mathbb{K_U}(j\omega)\) či \(\mathbb{K_U}(jf)\), kde
+      \(\omega = 2\pi f\) nebo \(\mathbb{K_U}(p)\), kde běžně uvažujeme \(p = j\omega\). Komplexní
+      kmitočet \(p\) má obecně tvar \(p = \sigma + j\omega\) a hlubší význam (viz kap.
       \todo[inline]{1.2.5, obr, 1.16}).
       
-      \begin{mdframed}[style=mdnote]
-        \begin{note}
-          Dále pro zjednodušeni budeme v textu pro přenos napětí misto \(\mathbb{K_U}\) používat
-          pouze symbol \(\mathbb{K}\) bez indexu \(U\), protože přenos proudu či přenos výkonu se
-          využívá jen vyjimečně, např. v tzv. proudovém módu. Taktéž pro zjednodušení nebudeme
-          rozlišovat komplexni přenos označením symbolem nad písmenem, ale jen uvedením proměnné
-          jako komplexni \((j\omega, p)\). 
-        \end{note}
-      \end{mdframed}
+      \begin{tcnote}  
+        Dále pro zjednodušeni budeme v textu pro přenos napětí misto \(\mathbb{K_U}\) používat pouze
+        symbol \(\mathbb{K}\) bez indexu \(U\), protože přenos proudu či přenos výkonu se využívá
+        jen vyjimečně, např. v tzv. proudovém módu. Taktéž pro zjednodušení nebudeme rozlišovat
+        komplexni přenos označením symbolem nad písmenem, ale jen uvedením proměnné jako komplexni
+        \((j\omega, p)\). 
+      \end{tcnote}
 
       Přenosová funkce má nejčastěji tvar \textbf{racionální lomené funkce} \(\mathbb{K}(j\omega)\) 
       \begin{subequations}
@@ -279,17 +277,17 @@
                   \label{aes:eq027b}
         \end{align}
       \end{subequations}      
-      kde řád polynomu čitatele \(m\) je menší nebo roven řádu jmenovatele \(n\) (\(m \leq n\).
-      Tuto komplexni funkci opět můžeme rozdělit na modulovou a argumentovou část a obě veličiny
+      kde řád polynomu čitatele \(m\) je menší nebo roven řádu jmenovatele \(n\) (\(m \leq n\)).
+      Tuto komplexní funkci opět můžeme rozdělit na modulovou a argumentovou část a obě veličiny
       vynést v závislosti na kmitočtu jako \emph{modulovou charakteristiku} \(K(\omega)\) a
-      \emph{argumentovou kmitočtovou charakteristiku} \(\varphi(\omega)\), často také nazyvanou
+      \emph{argumentovou kmitočtovou charakteristiku} \(\varphi(\omega)\), často také nazývanou
       amplitudovou a fázovou kmitočtovou charakteristikou (vyjádřeno z hlediska signálu) - viz obr.
-      \ref{aes:fig027}. Je nutno podotknout že v praxi je nejvice zavedená formálně, ne zcela
+      \ref{aes:fig027}. Je nutno podotknout, že v praxi je nejvíce zavedená formálně, ne zcela
       správně kombinace označení - modulová a fázová charakteristika. Vzhledem k tomu, že tato
-      záměna prakticky ekvivalentnich pojmů nepřináší podstatné problémy, budeme toto označení též
+      záměna prakticky ekvivalentních pojmů nepřináší podstatné problémy, budeme toto označení též
       používat.
       
-      Příklady modulových kmitočtových charakteristik (v lineárnich a logaritmických osách) pro
+      Příklady modulových kmitočtových charakteristik (v lineárních a logaritmických osách) pro
       ideální a reálný filtr typu dolní propust a fázové charakteristiky jsou uvedeny na obr.
       \ref{aes:fig027}. 
       
@@ -302,12 +300,12 @@
 
       \begin{figure}[ht!]
         \centering  
-        \subcaptionbox{\label{aes:fig027c}}{\luafigure[0.3]{aes_fig027c.jpg}}  
-        \subcaptionbox{\label{aes:fig027a}}{\luafigure[0.3]{aes_fig027a.jpg}}
-        \subcaptionbox{\label{aes:fig027b}}{\luafigure[0.3]{aes_fig027b.jpg}}
+        \subcaptionbox{\label{aes:fig027c}}{\luafigure[0.8]{aes_fig027c.jpg}}  \\
+        \subcaptionbox{\label{aes:fig027a}}{\luafigure[0.8]{aes_fig027a.jpg}}  \\
+        \subcaptionbox{\label{aes:fig027b}}{\luafigure[0.8]{aes_fig027b.jpg}}
         \caption{Příklady kmitočtových charakteristik ideálniho a reálného filtru typu dolni
-        propust: a) modulové kmitočtové charakteristiky v lineárnim měřítku, b) modulové
-                kmitočtové charakterestiky v logaritmickém měřítku, c) fázová charakteristika
+                 propust: a) modulové kmitočtové charakteristiky v lineárnim měřítku, b) modulové
+                 kmitočtové charakterestiky v logaritmickém měřítku, c) fázová charakteristika
                 (\cite[s.~27]{HajekSedlacek2002})}
         \label{aes:fig027}
       \end{figure}
@@ -330,48 +328,44 @@
       
       \begin{figure}[ht!]
         \centering  
-        \begin{tabular}{cc}
-          \subcaptionbox{\label{aes:fig028a}}{\luafigure[0.45]{aes_fig028a.jpg}}
-          \subcaptionbox{\label{aes:fig028b}}{\luafigure[0.45]{aes_fig028b.jpg}}    
-        \end{tabular}
+        \subcaptionbox{\label{aes:fig028a}}{\luafigure[0.9]{aes_fig028a.jpg}}   \\
+        \subcaptionbox{\label{aes:fig028b}}{\luafigure[0.9]{aes_fig028b.jpg}}    
         \caption{Průchod harmonického signálu kmitočtovým filtrem typu dolní propust: a) signál s
                 nižším kmitočtem v propustném pásmu filtru, b) signál s vyšším kmitočtem v
                 nepropustném pásmu filtru (\cite[s.~28]{HajekSedlacek2002})}
         \label{aes:fig028}
       \end{figure}
-      \begin{mdframed}[style=mdnote]
-        \begin{note}
-          V případě, kdy je signál téměř beze změny amplitudy přenesen ze vstupu na výstup filtru
-          hovoříme o \textbf{přenosu} filtru. V případě spojení filtrů se zesilovači či u filtrů
-          ARC běžně dochází k zesílení signálu a mluvíme o pojmu \textbf{zisk}. Oba případy jsou
-          definovány stejnou přenosovou funkcí \(K\). V případě, že je amplituda signálu na
-          výstupu výrazně potlačena, se místo termínu přenos používá termín \textbf{potlačení}
-          nebo \textbf{útlum}, který je převrácenou hodnotou přenosu (záporná hodnota přenosu v
-          [dB]).
-        \end{note}
-      \end{mdframed}
+
+      \begin{tcnote}  
+        V případě, kdy je signál téměř beze změny amplitudy přenesen ze vstupu na výstup filtru
+        hovoříme o \textbf{přenosu} filtru. V případě spojení filtrů se zesilovači či u filtrů ARC
+        běžně dochází k zesílení signálu a mluvíme o pojmu \textbf{zisk}. Oba případy jsou
+        definovány stejnou přenosovou funkcí \(K\). V případě, že je amplituda signálu na výstupu
+        výrazně potlačena, se místo termínu přenos používá termín \textbf{potlačení} nebo
+        \textbf{útlum}, který je převrácenou hodnotou přenosu (záporná hodnota přenosu v [dB]).
+      \end{tcnote}
       
     \subsection{Průchod neharmonického signálu filtrem}
       Vliv kmitočtových a fázových charakteristik filtru na procházejici signál je dobře patrný na
       neharmonickém signálu. Obr. \ref{aes:fig029}  ukazuje v časové i kmitočtové oblasti typický
-      případ - průchod obdélníkového signálu filtrem typu dolní propust (obecnější případ signálu
-      s třemi různými harmonickými složkami pro různé typy ideálnich filtrů je naznačen na obr.
+      případ - průchod obdélníkového signálu filtrem typu dolní propust (obecnější případ signálu s
+      třemi různými harmonickými složkami pro různé typy ideálnich filtrů je naznačen na obr.
       \ref{aes:fig035}). Obdélníkový signál lze rozložit na základní harmonické složky. Výslednou
       amplitudu a fázi každé jednotlivé složky po průchodu filtrem můžeme vypočitat obdobně jako v
-      předchozím případě obvodu s jedním harmonickým signálem - výslednou amplitudu každé
-      harmonické složky určime vynásobením modulem přenosu a výslednou fázi přičtenim fázového
-      posunu pro daný kmitočet (tyto hodnoty ziskáme pro daný kmitočet z modulové a fázové
-      kmitočtové charakteristiky filtru). Časový průbéh vysledného signálu je potom dán součtem
-      výsledných harmonických složek. Vliv modulové charakteristiky filtru na přenos signálu je
-      zřejmý z obr \ref{aes:fig029}. Stejnosměrná a první harmonická složka signálu projdou
-      filtrem typu dolní propust nezměněny. Vyšší harmonické složky jsou oproti nim již potlačené,
-      což se v časové oblasti projevuje potlačenim ostrých hran impulzů. Poněkud komplikovanějši
-      je situace u fázové charakteristiky, kdy velká nelinearita fázové charakteristiky může vést,
-      např. až k překmitům a velké změně výstupniho signálu v časové oblasti. 
+      předchozím případě obvodu s jedním harmonickým signálem - výslednou amplitudu každé harmonické
+      složky určime vynásobením modulem přenosu a výslednou fázi přičtenim fázového posunu pro daný
+      kmitočet (tyto hodnoty ziskáme pro daný kmitočet z modulové a fázové kmitočtové
+      charakteristiky filtru). Časový průbéh vysledného signálu je potom dán součtem výsledných
+      harmonických složek. Vliv modulové charakteristiky filtru na přenos signálu je zřejmý z obr
+      \ref{aes:fig029}. Stejnosměrná a první harmonická složka signálu projdou filtrem typu dolní
+      propust nezměněny. Vyšší harmonické složky jsou oproti nim již potlačené, což se v časové
+      oblasti projevuje potlačenim ostrých hran impulzů. Poněkud komplikovanějši je situace u fázové
+      charakteristiky, kdy velká nelinearita fázové charakteristiky může vést, např. až k překmitům
+      a velké změně výstupniho signálu v časové oblasti. 
 
       \begin{figure}[ht!]
         \centering
-        \includegraphics[width=0.6\linewidth]{aes_fig029.jpg}
+        \includegraphics[width=1\linewidth]{aes_fig029.jpg}
         \caption{Průchod neharmonického signálu filtrem (\cite[s.~29]{HajekSedlacek2002})}
         \label{aes:fig029}    
       \end{figure}
@@ -409,10 +403,10 @@
       charakteristiky se také používá názvů \textbf{přechodná a impulzní charakteristika}. 
 
       \begin{figure}[ht!]
-        \centering  luafigure
-        \subcaptionbox{\label{aes:fig030a}}{\luafigure[0.3]{aes_fig030a.jpg}}
-        \subcaptionbox{\label{aes:fig030b}}{\luafigure[0.3]{aes_fig030b.jpg}}
-        \subcaptionbox{\label{aes:fig030c}}{\luafigure[0.3]{aes_fig030c.jpg}}  
+        \centering
+        \subcaptionbox{\label{aes:fig030a}}{\luafigure[0.7]{aes_fig030a.jpg}}  \\
+        \subcaptionbox{\label{aes:fig030b}}{\luafigure[0.7]{aes_fig030b.jpg}}  \\
+        \subcaptionbox{\label{aes:fig030c}}{\luafigure[0.7]{aes_fig030c.jpg}}  
         \caption{a) Modulová charakteristika, b) odezva na jednotkový skok (přechodná
                 charakteristika), c)odezva na jednotkový impulz (impulzní charakteristika) pro filtr
                 typu DP (\cite[s.~30]{HajekSedlacek2002})}
@@ -435,7 +429,7 @@
 
       \begin{figure}[ht!]
         \centering
-        \includegraphics[width=0.6\linewidth]{aes_fig031.jpg}
+        \includegraphics[width=1\linewidth]{aes_fig031.jpg}
         \caption{Průchod neharmonického signálu filtrem (\cite[s.~31]{HajekSedlacek2002})}
         \label{aes:fig031}    
       \end{figure}
@@ -467,13 +461,13 @@
 
         \begin{figure}[ht!]
           \centering  
-          \subcaptionbox{\label{aes:fig032a}}{\luafigure[0.48]{aes_fig032a.jpg}}   \\
-          \subcaptionbox{\label{aes:fig032b}}{\luafigure[0.48]{aes_fig032b.jpg}}   \\
-          \subcaptionbox{\label{aes:fig032c}}{\luafigure[0.48]{aes_fig032c.jpg}}   \\
-          \subcaptionbox{\label{aes:fig032d}}{\luafigure[0.48]{aes_fig032d.jpg}}   
+          \subcaptionbox{\label{aes:fig032a}}{\luafigure[0.8]{aes_fig032a.jpg}}   \\
+          \subcaptionbox{\label{aes:fig032b}}{\luafigure[0.8]{aes_fig032b.jpg}}   \\
+          \subcaptionbox{\label{aes:fig032c}}{\luafigure[0.8]{aes_fig032c.jpg}}   \\
+          \subcaptionbox{\label{aes:fig032d}}{\luafigure[0.8]{aes_fig032d.jpg}}   
           \caption{Souvislost průběhů modulových charakteristik a časové odezvy na jednotkový skok
-                  pro filtry typu DP, HP, PP a PZ. Filtry typu DP a HP mají střední hodnotu Q,
-                  filtry typu PP a PZ nízkou hodnotu Q (relativně velkou šířku pásma)
+                  pro filtry typu DP, HP, PP a PZ. Filtry typu DP a HP mají střední hodnotu \(Q\),
+                  filtry typu PP a PZ nízkou hodnotu \(Q\) (relativně velkou šířku pásma)
                   (\cite[s.~32]{HajekSedlacek2002})}
                   \label{aes:fig032}
         \end{figure}
@@ -488,8 +482,8 @@
 
         \begin{figure}[ht!]
           \centering  
-          \subcaptionbox{\label{aes:fig033a}}{\luafigure[0.8]{aes_fig033a.jpg}}      \\
-          \subcaptionbox{\label{aes:fig033b}}{\luafigure[0.8]{aes_fig033b.jpg}}
+          \subcaptionbox{\label{aes:fig033a}}{\luafigure[1]{aes_fig033a.jpg}}      \\
+          \subcaptionbox{\label{aes:fig033b}}{\luafigure[1]{aes_fig033b.jpg}}
           \caption{Souvislost průběhu fázové charakteristiky, kmitočtové závislosti skupinového
                   zpoždění a časové odezvy na jednotkový skok: a) pro téměř lineární fázovou
                   charakteristiku v propustném pásmu, b) pro nelineární fázovou charakteristiku
@@ -497,83 +491,81 @@
                   \label{aes:fig033}
         \end{figure}
 
-        \begin{mdframed}[style=mdnote]
-          \begin{note}
-            \begin{itemize}[noitemsep]
-              \item Čím důrazněji vyžadujeme zachováni tvaru procházejícího signálu, tím více musíme
-                    dbát nejen na kmitočtovou nezávislost modulové charakteristiky v propustném
-                    pásmu filtru, ale i na linearitu fázové charakteristiky filtru (kon- stantní
-                    skupinové zpoždění). 
-              \item Modulová a fázová charakteristika spolu úzce souvisí, a proto při požadavku na
-                    lineární fázovou charakteristiku musíme volit odpovídající (hladký a méně strmý)
-                    průběh modulové charakteristiky (viz kap. 2.3.10). 
-            \end{itemize}
-          \end{note}
-        \end{mdframed}
+        \begin{tcnote}
+          \begin{itemize}[noitemsep]
+            \item Čím důrazněji vyžadujeme zachováni tvaru procházejícího signálu, tím více musíme
+                  dbát nejen na kmitočtovou nezávislost modulové charakteristiky v propustném
+                  pásmu filtru, ale i na linearitu fázové charakteristiky filtru (kon- stantní
+                  skupinové zpoždění). 
+            \item Modulová a fázová charakteristika spolu úzce souvisí, a proto při požadavku na
+                  lineární fázovou charakteristiku musíme volit odpovídající (hladký a méně strmý)
+                  průběh modulové charakteristiky (viz kap. 2.3.10). 
+          \end{itemize}
+        \end{tcnote}
 
     \subsection{Základní typy filtrů}
-        Jak již bylo dříve řečeno, kmitočtové filtry můžeme dělit podle různých hledisek a
-        vlastností. Podle funkce filtru a odpovídajícího tvaru kmitočtových charakteristik je
-        dělíme do tří základních skupin:
-        \begin{enumerate}[leftmargin=2cm,rightmargin=1cm, label=\emph{\alph*}),noitemsep]
-          \item selektivni filtry, 
-          \item korekční filtry a 
-          \item fázovací (zpožďovací) obvody.
-        \end{enumerate}
+      Jak již bylo dříve řečeno, kmitočtové filtry můžeme dělit podle různých hledisek a vlastností.
+      Podle funkce filtru a odpovídajícího tvaru kmitočtových charakteristik je dělíme do tří
+      základních skupin:
+      \begin{enumerate}[leftmargin=0.5cm,rightmargin=1cm, label=\emph{\alph*}),noitemsep]
+        \item selektivni filtry, 
+        \item korekční filtry a 
+        \item fázovací (zpožďovací) obvody.
+      \end{enumerate}
          
-        \subsubsection{Selektivní filtry}
-          První skupinu tvoří filtry, které mají za úkol potlačení přenosu kmitočto- vých složek
-          signálu v nepropustném pásmu. Podle rozložení propustného a nepropustného pásma (viz obr.
-          1.11) jsou to:
-          \begin{enumerate}[leftmargin=2cm,rightmargin=1cm, label=\emph{\alph*}),noitemsep]
-            \item \textbf{dolní propust (DP)}, propouští složky signálu s kmitočty nižšími než mezní
-                  kmitočet \(F_M\), 
-            \item \textbf{horní propust (HP)}, propouští složky signálu o kmitočtech vyšších než je
-                  mezní kmitočet \(F_M\), 
-            \item \textbf{pásmová propust (PP)}, propouští složky signálu mezi mezním dolním a
-                  horním kmitočtem \(F_{M1}\) a \(F_{M2}\) 
-            \item \textbf{pásmová zádrž (PZ)}, nepropouští složky signálu mezi mezním dolním a
-                  horním kmitočtem \(F_{M1}\) a \(F_{M2}\)    
-          \end{enumerate}
+      \subsubsection{Selektivní filtry}
+        První skupinu tvoří filtry, které mají za úkol potlačení přenosu kmitočtových složek
+        signálu v nepropustném pásmu. Podle rozložení propustného a nepropustného pásma (viz obr.
+        1.11) jsou to:
+        \begin{enumerate}[leftmargin=0.5cm,rightmargin=1cm, label=\emph{\alph*}),noitemsep]
+          \item \textbf{dolní propust (DP)}, propouští složky signálu s kmitočty nižšími než mezní
+                kmitočet \(F_M\), 
+          \item \textbf{horní propust (HP)}, propouští složky signálu o kmitočtech vyšších než je
+                mezní kmitočet \(F_M\), 
+          \item \textbf{pásmová propust (PP)}, propouští složky signálu mezi mezním dolním a
+                horním kmitočtem \(F_{M1}\) a \(F_{M2}\) 
+          \item \textbf{pásmová zádrž (PZ)}, nepropouští složky signálu mezi mezním dolním a
+                horním kmitočtem \(F_{M1}\) a \(F_{M2}\)    
+        \end{enumerate}
 
-          \begin{figure}[ht!]  %\ref{aes:fig034}
-            \centering
-            \includegraphics[width=0.5\linewidth]{aes_fig034.jpg}
-            \caption{Ideální modulové charakterestiky základních typů selektivních filtrů
-                     (\cite[s.~34]{HajekSedlacek2002})}
-            \label{aes:fig034}    
-          \end{figure}
+        \begin{figure}[ht!]  %\ref{aes:fig034}
+          \centering
+          \includegraphics[width=0.8\linewidth]{aes_fig034.jpg}
+          \caption{Ideální modulové charakterestiky základních typů selektivních filtrů
+                    (\cite[s.~34]{HajekSedlacek2002})}
+          \label{aes:fig034}    
+        \end{figure}
 
-          V ideálním případě je modul přenosu filtru v propustném pásmu konstantni (např. \(K_U =
-          1\) a v nepropustném pásmu nulový. Působení jednotlivých typů filtrů na procházející
-          signál ukazuje obr. \ref{aes:fig035}, který na přikladu různých druhů signálů názorné
-          objasňuje funkci a použití těchto typů filtrů. 
+        V ideálním případě je modul přenosu filtru v propustném pásmu konstantni (např. \(K_U = 1\)
+        a v nepropustném pásmu nulový. Působení jednotlivých typů filtrů na procházející signál
+        ukazuje obr. \ref{aes:fig035}, který na přikladu různých druhů signálů názorné objasňuje
+        funkci a použití těchto typů filtrů. 
 
-          \begin{figure}[ht!]  %\ref{aes:fig035}  
-            \centering
-            \includegraphics[width=0.9\linewidth]{aes_fig035.jpg}
-            \caption{Příklad průchodu neharmonického signálu základními typy filtrů: časový průběh
-                    vstupního signálu a jeho amplitudové spektrum (složen ze tří harmonických
-                    signálů \(F_l\), \(F_2\) a \(F_3\)) a časové průběhy výstupních signálů a jejich
-                    spektra po průchodu filtry typu DP, HP, PP a PZ
-                    (\cite[s.~35]{HajekSedlacek2002})}
-            \label{aes:fig035}    
-          \end{figure}
+        \begin{figure}[ht!]  %\ref{aes:fig035}  
+          \centering
+          \includegraphics[width=0.9\linewidth]{aes_fig035.jpg}
+          \caption{Příklad průchodu neharmonického signálu základními typy filtrů: časový průběh
+                  vstupního signálu a jeho amplitudové spektrum (složen ze tří harmonických
+                  signálů \(F_l\), \(F_2\) a \(F_3\)) a časové průběhy výstupních signálů a jejich
+                  spektra po průchodu filtry typu DP, HP, PP a PZ
+                  (\cite[s.~35]{HajekSedlacek2002})}
+          \label{aes:fig035}    
+        \end{figure}
         
-        \subsubsection{Korekční filtry}
-          Na rozdíl od předchozí skupiny selektivních filtrů je hlavním cílem těchto filtrů taková
-          kmitočtová závislost přenosu \(K_2\), která koriguje přenos některých bloků přenosového
-          řetězce \(K_1\) tak, aby modul přenosu celé soustavy \(K\) byl konstantní. Názorné je to v
-          případě vyjádření přenosů v logaritmické míře (v dB), kdy výsledný přenos je součtem
-          dílčích přenosů bloků spojených v kaskádě, jak to ukazuje obr. \ref{aes:fig036}. 
+      \subsubsection{Korekční filtry}
+        Na rozdíl od předchozí skupiny selektivních filtrů je hlavním cílem těchto filtrů taková
+        kmitočtová závislost přenosu \(K_2\), která koriguje přenos některých bloků přenosového
+        řetězce \(K_1\) tak, aby modul přenosu celé soustavy \(K\) byl konstantní. Názorné je to v
+        případě vyjádření přenosů v logaritmické míře (v dB), kdy výsledný přenos je součtem dílčích
+        přenosů bloků spojených v kaskádě, jak to ukazuje obr. \ref{aes:fig036}. 
 
-          \begin{figure}[ht!]  %\ref{aes:fig036}  
-            \centering
-            \includegraphics[width=0.9\linewidth]{aes_fig036.jpg}
-            \caption{Příklad použití korekčního filtru pro korekci přenosu \(K\), tak, aby výsledný
-                    modul přenosu \(K\) byl konstantní (\cite[s.~36]{HajekSedlacek2002})}
-            \label{aes:fig036}    
-          \end{figure}
+        \begin{figure}[ht!]  %\ref{aes:fig036}  
+          \centering
+          \includegraphics[width=0.9\linewidth]{aes_fig036.jpg}
+          \caption{Příklad použití korekčního filtru pro korekci přenosu \(K\), tak, aby výsledný
+                  modul přenosu \(K\) byl konstantní (\cite[s.~36]{HajekSedlacek2002})}
+          \label{aes:fig036}    
+        \end{figure}
 
         \subsubsection{Fázovací (zpožďovací) filtry}
           Pro předchozí dvě skupiny filtrů byly určující především vlastnosti modulových
@@ -588,17 +580,15 @@
 
           \begin{figure}[ht!]
             \centering  
-            \subcaptionbox{\label{aes:fig037a}}{\luafigure[0.3]{aes_fig037a.jpg}}
-            \subcaptionbox{\label{aes:fig037b}}{\luafigure[0.3]{aes_fig037b.jpg}}
-            \subcaptionbox{\label{aes:fig037c}}{\luafigure[0.3]{aes_fig037c.jpg}}  
+            \subcaptionbox{\label{aes:fig037a}}{\luafigure[0.7]{aes_fig037a.jpg}}    \\
+            \subcaptionbox{\label{aes:fig037b}}{\luafigure[0.7]{aes_fig037b.jpg}}    \\
+            \subcaptionbox{\label{aes:fig037c}}{\luafigure[0.7]{aes_fig037c.jpg}}  
             \caption{Kmitočtové charakteristiky zpožďovacího obvodu: a) modulová, b) fázová,
-                    c)skupinové zpoždění
-                    (\cite[s.~36]{HajekSedlacek2002})}
-                    \label{aes:fig037}
+                    c)skupinové zpoždění (\cite[s.~36]{HajekSedlacek2002})}
+            \label{aes:fig037}
           \end{figure}
 
-        \begin{mdframed}[style=mdnote]
-          \begin{note}
+          \begin{tcnote}
             V anglosaské technické literatuře se pro označení základních typů filtrů používají jiné
             zkratky: DP - LP (\emph{low pass}), HP - HP (\emph{high-pass}), PP - BP
             (\emph{band-pass}): PZ - BR (\emph{band-reject}) a pro fázovací (všepropustný) článek FČ
@@ -606,8 +596,7 @@
             pojem \emph{notch} (zářez), takže označení filtrů typu DPN (dolní propust s nulou
             přenosu - kap. \todo[inline]{missing chapter 2.2.5}) odpovídá anglická zkratka LPN
             (\emph{Iow-pass notch}).            
-          \end{note}
-        \end{mdframed} 
+          \end{tcnote}
 
     \subsection{Řád přenosové funkce filtru a jeho praktický význam a volba}
       V předchozím textu byl uveden přenos realizovatelného filtru jako racionální lomená funkce
@@ -742,15 +731,15 @@
           \mathbb{K}(p) 
             &= \frac{\Omega_0^2}{\Omega_N}\cdot
                \frac{p^2 + \Omega_N^2}{p^2 + p\Omega_0/Q + \Omega_N^2}     \nonumber \\
-            &=\num{0.585}\frac{p^2 + 4}{p^2 + \num{0.6}p + \num{2.34}}
-             =\num{0.585}\frac{(p-j2)(p+j2)}{(p+\num{0.3}-j\num{1.5})(p+\num{0.3}+j\num{1.5})}            
+            &=\num{0.585}\frac{p^2 + 4}{p^2 + \num{0.6}p + \num{2.34}}     \nonumber \\
+            &=\num{0.585}\frac{(p-j2)(p+j2)}{(p+\num{0.3}-j\num{1.5})(p+\num{0.3}+j\num{1.5})}            
         \end{align}
 
         \begin{figure}[ht!]
           \centering  
-          \subcaptionbox{\label{aes:fig040a}}{\luafigure[0.3]{aes_fig040a.jpg}}
-          \subcaptionbox{\label{aes:fig040b}}{\luafigure[0.3]{aes_fig040b.jpg}}
-          \subcaptionbox{\label{aes:fig040c}}{\luafigure[0.3]{aes_fig040c.jpg}}  
+          \subcaptionbox{\label{aes:fig040a}}{\luafigure[0.7]{aes_fig040a.jpg}}         \\
+          \subcaptionbox{\label{aes:fig040b}}{\luafigure[0.7]{aes_fig040b.jpg}}         \\
+          \subcaptionbox{\label{aes:fig040c}}{\luafigure[0.7]{aes_fig040c.jpg}}  
           \caption{Příklady komplexní přenosové funkce 2. řádu typu DPN a způsoby jejího grafického
                   znázornění: a) trojrozměrně, b) průměty pólů a nulových bodů přenosu v komplexní
                   rovině \(p\), c) modulová charakteristika jako řez trojrozměrné funkce v rovině
@@ -770,112 +759,55 @@
           proměnné \(jf\) [\si{\Hz}] (viz poznámka v úvodu této kapitoly) 
           \begin{align}\label{aes:eq033}
             \frac{(p-p_{ai})(p-p_{ai})}{(p-p_{bi})(p-p_{bi})}
-              &= \frac{p^2 + a_{i1}p + a_{i0}}{p^2 + b_{i1}p + b_{i0}}        
-               = \frac{p^2 + p\dfrac{\Omega_{Ni}}{\Omega_{Ni}} +\Omega^2_{Ni}}
-                      {p^2 + p\dfrac{\Omega_{0i}}{\Omega_{i}} +\Omega^2_{0i}}        \nonumber  \\   
-              &\Leftrightarrow
-                 \frac{(j\omega)^2 + j\omega\dfrac{\Omega_{Ni}}{\Omega_{Ni}} +\Omega^2_{Ni}}
-                      {(j\omega)^2 + j\omega\dfrac{\Omega_{0i}}{\Omega_{i}} +\Omega^2_{0i}}
-               = \frac{-\omega^2   + j\omega\dfrac{\Omega_{Ni}}{\Omega_{Ni}} +\Omega^2_{Ni}}
-                      {-\omega^2   + j\omega\dfrac{\Omega_{0i}}{\Omega_{i}} +\Omega^2_{0i}} 
-                                                                                      \nonumber  \\   
-              &\Leftrightarrow
-                 \frac{(jf)^2 + jf\dfrac{F_{Ni}}{Q_{Ni}} + F^2_{Ni}}
-                      {(jf)^2 + jf\dfrac{F_{0i}}{Q_{i}}  + F^2_{0i}}
-               = \frac{-f^2   + jf\dfrac{F_{Ni}}{Q_{Ni}} + F^2_{Ni}}
-                      {-f^2   + jf\dfrac{F_{0i}}{Q_{i}}  + F^2_{0i}}. 
+              &= \frac{p^2 + a_{i1}p + a_{i0}}{p^2 + b_{i1}p + b_{i0}}          \nonumber \\ 
+              &= \frac{p^2 + p\dfrac{\Omega_{Ni}}{\Omega_{Ni}} +\Omega^2_{Ni}}
+                      {p^2 + p\dfrac{\Omega_{0i}}{\Omega_{i}} +\Omega^2_{0i}}        
+          \end{align}
+          \begin{align}\label{aes:eq040}   
+            &\Leftrightarrow
+             \frac{(j\omega)^2 + j\omega\dfrac{\Omega_{Ni}}{\Omega_{Ni}} +\Omega^2_{Ni}}
+                  {(j\omega)^2 + j\omega\dfrac{\Omega_{0i}}{\Omega_{i}} +\Omega^2_{0i}}
+            =\frac{-\omega^2   + j\omega\dfrac{\Omega_{Ni}}{\Omega_{Ni}} +\Omega^2_{Ni}}
+                  {-\omega^2   + j\omega\dfrac{\Omega_{0i}}{\Omega_{i}} +\Omega^2_{0i}} \nonumber \\   
+            &\Leftrightarrow
+              \frac{(jf)^2 + jf\dfrac{F_{Ni}}{Q_{Ni}} + F^2_{Ni}}
+                   {(jf)^2 + jf\dfrac{F_{0i}}{Q_{i}}  + F^2_{0i}}
+            = \frac{-f^2   + jf\dfrac{F_{Ni}}{Q_{Ni}} + F^2_{Ni}}
+                   {-f^2   + jf\dfrac{F_{0i}}{Q_{i}}  + F^2_{0i}}. 
           \end{align}
           Obdobně pro 1. řád platí
           \begin{equation}\label{aes:eq034}
             \frac{(p-p_{ai})}{(p-p_{bi})} = \frac{p + \Omega_N}{p + \Omega_0} \Leftrightarrow
-            \frac{j\omega + \Omega_N}{j\omega + \Omega_0}\qquad\text{resp.}\qquad
+            \frac{j\omega + \Omega_N}{j\omega + \Omega_0}\quad\text{resp.}\quad
             \frac{jf + F_N}{jf + F_0}.
           \end{equation}
                     
           Z uvedených vztahů vyplývá, že u \emph{jmenovatelů přenosových funkcí} prvního řádu
           vystupuje jeden parametr - mezní kmitočet \(\Omega_0\), resp. \(F_0\) a u druhého řádu dva
           parametry-rezonanční kmitočet \(\Omega_0\), resp. \(F_0\) a \emph{činitel jakosti} \(Q\).
-          Tyto parametry mají zjevný fyzikální význam (\todo[inline]{viz kap. 2.1, 2.2}) a jsou velmi často
-          používány. 
+          Tyto parametry mají zjevný fyzikální význam (\todo[inline]{viz kap. 2.1, 2.2}) a jsou
+          velmi často používány. 
           
           \emph{Čitatel přenosové funkce} musí mít jeden koeficient nenulový, ostatní koeficienty
           mívají obvykle nulovou hodnotu (tomu odpovídá poloha nulových bodů přenosu v nule, či
-          nekonečnu). Tím je určen typ filtru (DP, HP, PP - \todo[inline]{viz kap. 2.2}). V případě filtru
-          2. řádu typu pásmová zádrž (či jeho variant DPN nebo HPN) je nulový koeficient pouze
-          jeden, a to \(Q_N = \infty\) neboli \(a_{i1} = 0\). Pak má kmitočet nuly přenosu
+          nekonečnu). Tím je určen typ filtru (DP, HP, PP - \todo[inline]{viz kap. 2.2}). V případě
+          filtru 2. řádu typu pásmová zádrž (či jeho variant DPN nebo HPN) je nulový koeficient
+          pouze jeden, a to \(Q_N = \infty\) neboli \(a_{i1} = 0\). Pak má kmitočet nuly přenosu
           \(\Omega_N\), resp. \(F_N\) konečnou hodnotu, zjevný fyzikální význam a v komplexní rovině
           se vyskytuje pouze na ose \(j\omega\) (viz obr. \ref{aes:fig040}). Podrobněji opět v kap.
-          \todo[inline]{viz kap. 2.2}. Po dosazení rovnice (\ref{aes:eq033}) do přenosové funkce vyššího
-          řádu (\ref{aes:eq035}) dostaneme pro sudý řád \(n\) při úhlovém kmitočtu \(\omega\) V
-          [\si{\radian\per\sec}] přenosovou funkci ve tvaru součinu \(n/2\) přenosových funkcí 2.
-          řádu
+          \todo[inline]{viz kap. 2.2}. Po dosazení rovnice (\ref{aes:eq033}) do přenosové funkce
+          vyššího řádu (\ref{aes:eq035}) dostaneme pro sudý řád \(n\) při úhlovém kmitočtu
+          \(\omega\) V [\si{\radian\per\sec}] přenosovou funkci ve tvaru součinu \(n/2\) přenosových
+          funkcí 2. řádu
           
 
   \section{Obecný postup při návrhu kmitočtových filtrů}
     \begin{figure}[ht!]  %\ref{aes:fig039}
       \centering
-      \includegraphics[width=0.5\linewidth]{aes_fig039.jpg}
+      \includegraphics[width=0.8\linewidth]{aes_fig039.jpg}
       \caption{Diagram možného postupu při návrhu kmitočtových filtrů
               (\cite[s.~44]{HajekSedlacek2002})}
       \label{aes:fig039}    
     \end{figure}
-
-  
-  \section{Přenosové vlastnosti a charakteristiky základních typů filtrů}
-    \subsection{Filtry s přenosovou funkcí 1. řádu}
-    \subsection{Filtry s přenosovou funkcí 2. řádu}
-    \subsection{Přenosové funkce vyšších řádů}
-    \subsection{Citlivost a tolerance přenosových vlastností filtrů} 
-  \section{Návrh filtrů RC a RLC 1. a 2. řádu}
-    \subsection{Návrh filtrů RC}
-    \subsection{Návrh filtrů RLC 2. řádu}
-    \subsection{Návrh fázovacích článků RLC 1. a 2. řádu}     
-  \section{Filtry RLC vyšších řádů}
-    
-  \section{Filtry ARC 2. řádu}
-    \subsection{Základní principy funkce filtrů ARC}
-      Při realizaci filtrů RLC pro nízké kmitočty jsou největší problémy s kvalitou, rozměry a
-      cenou cívek. Proto se pro nízké kmitočty s výhodou nahrazují \textbf{aktivními filtry RC}
-      (filtry ARC). Jejich základní princip spočívá v "náhradě" cívky pomocí zapojení
-      \emph{aktivního prvku} (operační zesilovač, tranzistor) se dvěma rezistory a kapacitory.
-      Nahradit cívku můžeme v zásadě dvěma základními způsoby. První spočívá v použití obvodu,
-      který přímo nahrazuje cívku jako dvojpól a vykazuje mezi určitými svorkami příslušnou
-      indukčnost. Druhý princip, jak bude ukázáno dále, nahrazuje cívku nepřímo, pomoci
-      transformace výchozího LRC obvodu na ekvivalentně se chovající strukturu RCD, která indukční
-      prvek neobsahuje, ale na druhou stranu potřebuje \emph{syntetický prvek D} - dvojný kapacitor
-      (kmitočtově závislý negativní rezistor).
-
-    \subsection{Obvody s náhradou cívky}
-      Aktivní filtry ARC, které vycházejí z filtru RLC a využívají k tomu přímou či nepřímou
-      náhradu cívek, mají velké množství různých variant zapojeni. Objasnění jejich funkce
-      představuje i řadu různých pohledů na činnost filtru. V oblasti návrhu ARC filtru převažují
-      dva hlavni přístupy. Velmi názorný je takový přístup, který vytváří obvody, vykazující na
-      vstupních svorkách induktivní impedanci. Ty lze využít jako přímou náhradu indukčnosti ve
-      filtru RLC. Zřejmě nejčastější je ale takový pohled, kdy vytváříme celý obvod ARC s
-      přenosovou funkci 2. řádu jako ekvivalenci obvodu LRC 2. řádu, přičemž přímá náhrada cívky v
-      obvodu nemusí být na první pohled zřejmá.
-
-    \subsection{Stavební prvky filtrů ARC a základní vlivy jejich reálných vlastností}
-      Stavebními prvky filtrů ARC jsou rezistory, kapacitory a aktivní prvky, jak již bylo
-      naznačeno v předešlém textu. I pro nejjednodušší posouzení funkce, klasifikaci a výběr
-      optimálního zapojeni filtrů ARC je potřeba rozumět alespoň základním vlivům reálných
-      vlastnosti těchto stavebních prvků na výsledné parametry ARC obvodu.
-
-      \subsection{Vliv reálných odporů a kondenzátorů}
-        ($C_1$, i $C_2$) vytvářejí se zbytkem obvodu rezonanční obvod RLC, lze vliv jejich ztrát
-        modelovat sériovým či paralelním spojením ideálního kapacitoru s rezistorem. Tento vliv lze
-        posuzovat v principu shodně jako u filtrů RLC. Při ideálních vlastnostech zbývající části
-        obvodu určuje hodnotu činitele jakosti celkového obvodu činitel jakosti reálného
-        kondenzátoru $Q_c = \frac{1}{tg\delta}$. Jeho hodnota musí být proto podstatně vyšší než
-        výsledná funkční hodnota činitele jakosti celého obvodu (alespoň \(\num{10}\times\)). Při
-        nižších hodnotách je třeba tento vliv brát v úvahu a pokud je to možné, kompenzujeme jej
-        snížením vnějšího zatlumení tak, aby výsledné \emph{Q} odpovídalo požadovanému. Je potřebné
-        si uvědomit, že ztráty kondenzátorů může obdobně zvýšit i sériové či paralelní spojení
-        kondenzátorů s parazitními odpory, jako je např. vnitřní odpor zdroje, parazitní vstupní a
-        výstupní odpor aktivních prvků apod.
-        
-  \section{Filtry ARC vyšších řádů}
-  \section{Filtry se spínanými kapacitory}
-  \section{Zváštní typy a aplikace kmitočtových filtrů}      
 
 %---------------------------------------------------------------------------------------------------

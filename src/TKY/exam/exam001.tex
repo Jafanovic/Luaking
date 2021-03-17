@@ -1,10 +1,8 @@
-% !TeX spellcheck = cs_CZ Lineární obvody a systémy - Jan Bičák  - strana 10 Popis spojitých systémů
+% !TeX spellcheck = cs_CZ 
 %===================================================================================================
-\begin{mdframed}[style=mdexam]
-  \begin{example}\label{tky:exam001}
-    Uvažujme LTI systém, popsaný svou impulzní odezvou: \(h[n] = \{0.45, 1.72, 0.62\}\). Na jeho
-    vstupu působí posloupnost \(x[n] = \{2,  0.95\}\). Úkolem  je vypočítat vzorky výstupní
-    posloupnosti \(y[n]\).
+  \begin{tkyexam}{Uvažujme LTI systém, popsaný svou impulzní odezvou: \(h[n] = \{\num{0.45},\:
+    \num{1.72},\:\num{0.62}\}\). Na jeho vstupu působí posloupnost \(x[n] = \{2,\:\num{0.95}\}\).
+    Úkolem  je vypočítat vzorky výstupní posloupnosti \(y[n]\).}{exam001}
 
     \noindent\textbf{Řešení:} Podle (\ref{tky:eq025}) bude délka výstupní posloupnosti \(N_y = 2 + 3
     - 1= 4\) s pořadovými indexy 0 až 3. Pro její výpočet rozepíšeme vztah (\ref{tky:eq024}):
@@ -24,7 +22,7 @@
     \end{align*} 
     Pro výstupní posloupnost tedy platí:
     \begin{equation*}
-      y[n] = \{\num{0.9}, \num{3.8675}, \num{2.8740}, \num{0.589}\}
+      y[n] = \{\num{0.9},\:\num{3.8675},\:\num{2.8740},\:\num{0.589}\}
     \end{equation*}
     Situaci názorně shrnuje obr. \ref{tky:fig011}
 
@@ -40,11 +38,11 @@
     snadný výpočet lineární diskrétní konvoluce, jak dokumentuje výpis \ref{tky:lst001}. Vyzkoušejme
     si, že obrátíme-li pořadí proměnných v příkazu \lstinline[style=luaMatlabText]!conv!, vyjde
     shodný výsledek (komutace symbolů).
-  \end{example} 
+
   \begin{lstlisting}[style=luaMatlabText,gobble=4, label={tky:lst001}]
     h = [0.45, 1.72, 0.62];
     x = [2,  0.95];
     y = conv(x,h)
   \end{lstlisting}
 
-\end{mdframed}
+\end{tkyexam}
