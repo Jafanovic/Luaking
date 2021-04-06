@@ -1,4 +1,5 @@
 REM https://stackoverflow.com/questions/673523/
+REM https://stackoverflow.com/questions/69068/split-long-commands-in-multiple-lines-through-windows-batch-file
 echo WIKING LuaTEX compile
 
 @echo off
@@ -13,8 +14,7 @@ set starthour=%STARTTIME:~0,2%
 set /a starttime=(%starthour%*60*60*100)+(%startmins%*60*100)+(%startsecs%*100)+(%startcsec%)
 
 :TimeThis
-REM --synctex=1 Gzipped versions of t
-lualatex.exe \providecommand{\DebugMode}{true}\input{%root_file%.tex} -synctex=1 %
+lualatex.exe \providecommand{\DebugMode}{true}\input{%root_file%.tex} -synctex=1 ^
   -interaction=nonstopmode -shell-escape -halt-on-error -jobname=%root_file% 
 
 REM lualatex -synctex=1 -interaction=nonstopmode -shell-escape -halt-on-error -jobname=luaking %
@@ -33,4 +33,5 @@ set /a timetakens= %timetaken% / 100
 set timetaken=%timetakens%.%timetaken:~-2%
 
 echo.
+echo ~~~~~~~~~~~~
 echo Took: %timetaken% sec.
