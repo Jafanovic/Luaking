@@ -1,0 +1,42 @@
+% !TeX program = lualatex
+% !TeX encoding = UTF-8
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\input{ebook}
+
+\documentclass{scrbook}
+  \usepackage{xr-hyper}
+  \usepackage{luadebug}
+  \usepackage{luakoma}
+  \usepackage{lualayout}
+  \usepackage{luamath} 
+  \usepackage{wikiWWWrefs}
+
+\providecommand\DebugMode{true}
+\providecommand\eBookMode{true}
+%============================= L * U * A * K * I* N * G ============================================
+% \listfiles
+\setcounter{tocdepth}{\partnumdepth}      % depth of TOC
+
+\externaldocument[]{vol02}[vol02.pdf] 
+
+\begin{document}
+  \hbadness=99999
+  \frontmatter
+    \input{booktitle}
+    \tableofcontents
+  \mainmatter 
+    \setcounter{page}{3} 
+
+    This is a test for math.
+    \begin{equation}
+        E=mc^2 \label{mai:eq00001}
+    \end{equation}
+    This is a second test for math.
+    \begin{equation}
+        r = \sqrt{x^2 + y^2} \label{mai:eq00002}
+    \end{equation}
+    In document B Eq.~~(\ref{fyz:eq00001}) 
+
+    \input{../src/MAI/MAT}
+  \backmatter
+\end{document}
