@@ -4,7 +4,7 @@
 \input{ebook}
 
 \documentclass{scrbook}
-  \usepackage{xr-hyper} % To create hyperlinks to referenced objects in external documents
+  % \usepackage{xr-hyper} % To create hyperlinks to referenced objects in external documents
   \usepackage{luadebug}
   \usepackage{luakoma}
   \usepackage{lualayout}
@@ -17,9 +17,11 @@
 % \listfiles
 \setcounter{tocdepth}{\partnumdepth}      % depth of TOC
 
-\externaldocument[]{vol01}[vol01.pdf] 
+% \externaldocument[]{vol01}[vol01.pdf] 
 
 \begin{document}
+\shorthandoff{-}
+
   \hbadness=99999
   \frontmatter
     \input{booktitle}
@@ -33,6 +35,27 @@
       \mathrm{e}^{i\pi}-1=0 \label{fyz:eq00001}
     \end{equation}
 
-    \input{../src/FYZ/FYZ}
+    \begin{table}[ht!]
+      \centering
+      \begin{tabular}{m{0.1\linewidth}|m{0.29\linewidth}|m{0.34\linewidth}|}
+        \cline{2-3}
+        \multicolumn{1}{l|}{} 
+          & \textbf{integrální tvar} & \textbf{diferenciální tvar}                              \\
+        \hline        
+        \multicolumn{1}{|m{0.19\linewidth}|}{2. MR}         
+          & \(\bigointsss\vec{E}\cdot \dd{\vec{l}} = 0\) & \(\rot{E} = 0\)                      \\ 
+        \cline{1-3}       
+        \hline        
+        \multicolumn{1}{|m{0.19\linewidth}|}{Zákon kontinuity}        
+          & \(\bigointsss\vec{J}\cdot \dd{\vec{S}}=0\) & \(\diver{J}=0\)                        \\
+        \cline{1-3}       
+        \multicolumn{1}{|m{0.19\linewidth}|}{Ohmův zákon}       
+          & \(I=GU=\dfrac{U}{R}\) & \(\vec{J} = \gamma\vec{E} = \dfrac{1}{\rho}\vec{E}\)        \\
+        \cline{1-3}
+      \end{tabular}
+      \caption{Základní rovnice stacionárního proudového pole}
+    \end{table}
+
+    % \input{../src/FYZ/FYZ}
   \backmatter
 \end{document}
