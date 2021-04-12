@@ -4,7 +4,7 @@
 \input{ebook}
 
 \documentclass{scrbook}
-  % \usepackage{xr-hyper} % To create hyperlinks to referenced objects in external documents
+  \usepackage{xr-hyper} % To create hyperlinks to referenced objects in external documents
   \usepackage{luadebug}
   \usepackage{luakoma}
   \usepackage{lualayout}
@@ -17,10 +17,10 @@
 % \listfiles
 \setcounter{tocdepth}{\partnumdepth}      % depth of TOC
 
-% \externaldocument[]{vol01}[vol01.pdf] 
+\externaldocument[]{vol01}[vol01.pdf] 
 
 \begin{document}
-\shorthandoff{-}
+  \shorthandoff{-}
 
   \hbadness=99999
   \frontmatter
@@ -56,6 +56,6 @@
       \caption{Základní rovnice stacionárního proudového pole}
     \end{table}
 
-    % \input{../src/FYZ/FYZ}
+    \input{../src/FYZ/FYZ}
   \backmatter
 \end{document}
