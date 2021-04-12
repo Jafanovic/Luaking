@@ -27,3 +27,62 @@
     \fi\fi}}
 
 \searchmacro\shorthandoff
+
+\MHInternalSyntaxOn
+
+  \renewcommand\MultlinedHook{
+    % from amsmath
+    \renewenvironment{subarray}[1]{% <--- this needs to be renewenv
+      \vcenter\bgroup
+      \Let@ \restore@math@cr \default@tag
+      \let\math@cr@@\AMS@math@cr@@  % <--- the fix
+      \baselineskip \Umathstacknumup \scriptstyle
+      \advance\baselineskip \Umathstackdenomdown \scriptstyle
+      \lineskip \Umathstackvgap \scriptstyle
+      \lineskiplimit \lineskip
+      \ialign\bgroup\ifx c##1\hfil\fi
+      \Ustartmath
+      \m@th\scriptstyle####
+      \Ustopmath
+      \hfil\crcr
+    }{%
+      \crcr\egroup\egroup
+    }
+    % from mathtools
+    \renewenvironment{crampedsubarray}[1]{% <-- same
+      \vcenter\bgroup
+      \Let@ \restore@math@cr \default@tag
+      \let\math@cr@@\AMS@math@cr@@  % <--- the fix
+      \baselineskip \Umathstacknumup \scriptstyle
+      \advance\baselineskip \Umathstackdenomdown \scriptstyle
+      \lineskip \Umathstackvgap \scriptstyle
+      \lineskiplimit \lineskip
+      \ialign\bgroup\ifx c##1\hfil\fi
+      \Ustartmath
+        \crampedscriptstyle{####}
+      \Ustopmath
+      \hfil\crcr
+    }{%
+      \crcr\egroup\egroup
+    }
+    % from mathtools
+    \def\MT_smallmatrix_begin:N ##1{%
+      \Let@\restore@math@cr\default@tag
+      \let\math@cr@@\AMS@math@cr@@  % <--- the fix
+      \baselineskip6\ex@ \lineskip1.5\ex@ \lineskiplimit\lineskip
+      \csname MT_smallmatrix_##1_begin:\endcsname
+    }
+    % from amsmath
+    \renewenvironment{smallmatrix}{\null\,\vcenter\bgroup
+      \Let@\restore@math@cr\default@tag
+      \let\math@cr@@\AMS@math@cr@@  % <--- the fix
+      \baselineskip6\ex@ \lineskip1.5\ex@ \lineskiplimit\lineskip
+      \ialign\bgroup\hfil$\m@th\scriptstyle####$\hfil&&\thickspace\hfil
+      $\m@th\scriptstyle####$\hfil\crcr
+    }{%
+      \crcr\egroup\egroup\,%
+    }
+  }
+
+
+\MHInternalSyntaxOff
