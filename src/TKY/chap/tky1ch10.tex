@@ -51,47 +51,44 @@
       \item \textbf{Snímače tepelného toku}
     \end{enumerate}  
        
-      \subsection{Elektrické teploměry}
-        \subsection{Odporové snímače}
-          Odporové snímače využívají princip změny elektrického opdoru vlivem změny teplot.
-          Základním požadavkem kladeným na materiál snímače je co největší a stálý teplontí
-          součinitel odporu a zároveň co největší měrný odpor. Pro tyto účely se používají kovové a
-          polovodičové materiály.
-          
-          \subsubsection{Kovové odporové snímače} 
-            Jsou to především čisté kovy, které se používají pro realizaci vlastního odporového
-            článku. Požadavkem je, aby nereagovaly s izolačním nebo ochranným krytem. Jakékoliv
-            chemické nebo fyzikální vlivy by mohly způsobit nestálost odporu při stálé teplotě,
-            Použitý materiál nemá vykazovat změnu teplotního součinitele odporu s časem (stárnutí) a
-            hysterezi. Nejčastěji používanými materiály je \emph{platina, nikl, měď, slitina
-            stříbro-zlato} a další \cite[s.~96]{Zehnula1983}.
-             
-            Platina je výhodná pro velkou chemickou stálost, vysokou teplotou tavení a možností
-            dosažení vysoké čistoty. Pro snímače teploty se používá tzv. fyzikálně  čistá platina,
-            jejíž čistota se pohybuje kolem 99,93 až 99,99 \% Pt. Měření ukázala, že změny
-            základního odporu u sériově vyráběných přesných teploměru se pohybí kolem
-            \num{5e-6}$R_o$ (což odpovídá \SI{0.001}{\kelvin}), u nejlepších teploměrů je tato
-            hodnota ještě o řád menší. Proto se používá platina pro etalonový teplměr v oblasti
-            teplot \SI{-259.34}{\degreeCelsius} až \SI{630.74}{\degreeCelsius}.
+    \subsection{Elektrické teploměry}
+      \subsubsection{Odporové snímače}
+        Odporové snímače využívají princip změny elektrického opdoru vlivem změny teplot. Základním
+        požadavkem kladeným na materiál snímače je co největší a stálý teplontí součinitel odporu a
+        zároveň co největší měrný odpor. Pro tyto účely se používají kovové a polovodičové
+        materiály.
+        
+        \subsubsection{Kovové odporové snímače} 
+          Jsou to především čisté kovy, které se používají pro realizaci vlastního odporového
+          článku. Požadavkem je, aby nereagovaly s izolačním nebo ochranným krytem. Jakékoliv
+          chemické nebo fyzikální vlivy by mohly způsobit nestálost odporu při stálé teplotě,
+          Použitý materiál nemá vykazovat změnu teplotního součinitele odporu s časem (stárnutí) a
+          hysterezi. Nejčastěji používanými materiály je \emph{platina, nikl, měď, slitina
+          stříbro-zlato} a další \cite[s.~96]{Zehnula1983}.
             
-            Závislost odporu na teplotě pro rozsah \num{0} až \SI{630}{\degreeCelsius} se vyjadřuje
-            rovnicí
-            \begin{equation}\label{SAC:kov_Ro1}
-              R_\vartheta = R_0(1 + A\vartheta + B\vartheta^2)
-            \end{equation}
-            kde 
-            \begin{labeling}{$\omega t+\varphi_0$}
-              \setlength{\itemindent}{2cm}
-              \item[\(R_0\)]          \(\ldots\) \emph{odpor při \SI{0}{\degreeCelsius}}, 
-              \item[\(\vartheta\)]    \(\ldots\) \emph{teplota ve \si{\degreeCelsius}}, 
-              \item[\(A\)]            \(\ldots\) \emph{konst (\SI{3.9075e-3}{\per\degreeCelsius})},
-              \item[\(B\)]            \(\ldots\) \emph{konst (\SI{-0.575e-6}{\per\degreeCelsius})}. 
-            \end{labeling}
- 
-             V rozmezí od \SI{0}{\degreeCelsius} do \SI{-190}{\degreeCelsius} se vyjadřuje
-             závislost odporu na teplotě rovnicí
-             \begin{equation}\label{SAC:kov_Ro2}
-               R_\vartheta = R_0[1 + A\vartheta + B\vartheta^2 + C(\vartheta - 100)\vartheta^3)]
-             \end{equation}
+          Platina je výhodná pro velkou chemickou stálost, vysokou teplotou tavení a možností
+          dosažení vysoké čistoty. Pro snímače teploty se používá tzv. fyzikálně  čistá platina,
+          jejíž čistota se pohybuje kolem 99,93 až 99,99 \% Pt. Měření ukázala, že změny
+          základního odporu u sériově vyráběných přesných teploměru se pohybují kolem
+          \num{5e-6} \(R_o\) (což odpovídá \SI{0.001}{\kelvin}), u nejlepších teploměrů je tato
+          hodnota ještě o řád menší. Proto se používá platina pro etalonový teplměr v oblasti
+          teplot \SI{-259.34}{\degreeCelsius} až \SI{630.74}{\degreeCelsius}.
+          
+          Závislost odporu na teplotě pro rozsah \num{0} až \SI{630}{\degreeCelsius} se vyjadřuje
+          rovnicí
+          \begin{equation}\label{SAC:kov_Ro1}
+            R_\vartheta = R_0(1 + A\vartheta + B\vartheta^2)
+          \end{equation}
+          kde 
+          \begin{description}[leftmargin=5em,labelindent=2em, style=nextline]
+            \item[\(R_0\)]        \(\ldots\) \emph{odpor při \SI{0}{\degreeCelsius}}, 
+            \item[\(\vartheta\)]  \(\ldots\) \emph{teplota ve \si{\degreeCelsius}}, 
+            \item[\(A\)]          \(\ldots\) \emph{konst (\SI{3.9075e-3}{\per\degreeCelsius})},
+            \item[\(B\)]          \(\ldots\) \emph{konst (\SI{-0.575e-6}{\per\degreeCelsius})}. 
+          \end{description}
 
-    \todo[inline]{Kapitola Sensor\_Temp je pahýl}           
+          V rozmezí od \SI{0}{\degreeCelsius} do \SI{-190}{\degreeCelsius} se vyjadřuje
+          závislost odporu na teplotě rovnicí
+          \begin{equation}\label{SAC:kov_Ro2}
+            R_\vartheta = R_0[1 + A\vartheta + B\vartheta^2 + C(\vartheta - 100)\vartheta^3)]
+          \end{equation}       
