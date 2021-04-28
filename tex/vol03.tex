@@ -5,20 +5,20 @@
 
 \documentclass{scrbook}
   \usepackage{xr-hyper} % To create hyperlinks to referenced objects in external documents
-  \usepackage{luadebug}
   \usepackage{luakoma}
   \usepackage{lualayout}
   \usepackage{luamath} 
   \usepackage{wikiWWWrefs}
+  \usepackage{luadebug}
 
-\providecommand\DebugMode{true}
+\providecommand\DebugMode{false}
 \providecommand\eBookMode{true}
 %============================= L * U * A * K * I* N * G ============================================
 % \listfiles
 \setcounter{tocdepth}{\partnumdepth}      % depth of TOC
 
-\externaldocument[]{vol01}[vol01.pdf] 
-\externaldocument[]{vol02}[vol02.pdf] 
+\externaldocument[vol01:]{vol01}[vol01.pdf] 
+\externaldocument[vol02:]{vol02}[vol02.pdf] 
 
 \begin{document}
   \shorthandoff{-}
@@ -29,16 +29,6 @@
     \tableofcontents
   \mainmatter 
     \setcounter{page}{3} 
-
-    As was shown in Eq.~(\ref{mai:eq00001}) is it
-    ... or in Eq.~(\ref{mai:eq00002}) is ...
-
-    \begin{equation}
-      \int\mathrm{e}^{i\pi}-1=0 \label{tky:eq00001}
-    \end{equation}
-
-    In document B Eq.~~(\ref{fyz:eq00001}) 
-
     \input{../src/TKY/TKY}
     \input{../src/TEO/TEO}
     \input{../src/AES/AES}
@@ -48,6 +38,6 @@
     \input{../src/EPR/EPR}
     \input{../src/ZZT/ZZT}
     \input{../src/APE/APE}
-    \input{../src/NJ/NJ}
+    % \input{../src/NJ/NJ}
   \backmatter
 \end{document}

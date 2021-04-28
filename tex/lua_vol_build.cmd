@@ -20,6 +20,7 @@ biber %root_file%.bcf
 
 set root_file=vol03
 lualatex.exe \providecommand{\DebugMode}{false}\input{%root_file%.tex} -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=%root_file% 
+REM lualatex.exe \providecommand{\DebugMode}{false}\input{vol03.tex} -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=vol03
 echo Generate requested bibliography
 biber %root_file%.bcf
 
