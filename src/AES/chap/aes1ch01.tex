@@ -293,42 +293,39 @@
                 jistou zkušenost s praktickou realizací. Při neuvažování parazitních prvků vlastně
                 analyzujeme neúplný model obvodu.                          
         \end{itemize}
-        \begin{mdframed}[style=mdnote]
-          \begin{note}
-            Vliv výrobního rozptylu si ukažme na příkladu (nevhodného) nastavení pracovního body
-            zesilovače v zapojení \texttt{SE}. Zapojení je velmi citlivé na parametry tranzistoru.
-            Předpokládejme, že máme konkrétní kus tranzistoru \texttt{Philips/NXP BC546A}, který
-            změříme a na základě změřených hodnot vytvoříme model. V tom případě bude chyba mezi
-            simulací a měřením např. kolektorového proudu řádu procent.
-            
-            {\centering
-            \captionsetup{type=figure}
-              \subcaptionbox{\label{aes:fig013a}}{\luafigure[.45]{aes_fig013a.png}} 
-              \hspace{1em} 
-              \subcaptionbox{\label{aes:fig013b}}{\luafigure[.45]{aes_fig013b.png}}  
-            \captionof{figure}{a) Nastavení pracovního bodu; b) model a skutečné prvky 
-                       (\cite[s.~6]{KolkaBiolek2011})
-            \label{aes:fig013}}
-           \par}
 
-          Uvažme nyní, že použijeme jiný kus téhož typu a stále stejný model. Podle údajů
-          katalogového listu leží proudový zesilovací činitel \(h_{21E}(\beta)\) v rozmezí \num{110}
-          až \num{220}. U druhého tranzistoru bude parametr h21e jiný, dopředu neznámý. I kdybychom
-          vytvořili dokonalý model pro první tranzistor, tak při použití druhého tranzistoru
-          dostaneme odchylku v řádu desítek procent.
+        \begin{tcnote}
+          Vliv výrobního rozptylu si ukažme na příkladu (nevhodného) nastavení pracovního body
+          zesilovače v zapojení \texttt{SE}. Zapojení je velmi citlivé na parametry tranzistoru.
+          Předpokládejme, že máme konkrétní kus tranzistoru \texttt{Philips/NXP BC546A}, který
+          změříme a na základě změřených hodnot vytvoříme model. V tom případě bude chyba mezi
+          simulací a měřením např. kolektorového proudu řádu procent.
+          
+          {\centering
+          \captionsetup{type=figure}
+            \subcaptionbox{\label{aes:fig013a}}{\luafigure[.45]{aes_fig013a.png}} 
+            \hspace{1em} 
+            \subcaptionbox{\label{aes:fig013b}}{\luafigure[.45]{aes_fig013b.png}}  
+          \captionof{figure}{a) Nastavení pracovního bodu; b) model a skutečné prvky
+                      (\cite[s.~6]{KolkaBiolek2011}) \label{aes:fig013}} \par}
 
-          V praxi se navíc vytvářejí modely spíše pro typické hodnoty, které ani nemusí popisovat
-          konkrétní existující kus. Na obr. \ref{aes:fig013b}  je to ilustrováno graficky (pro
-          případ, kdyby měl model jen dva parametry). Je tedy zřejmé, že otázka: \uv{Jakou hodnotu
-          bude mít kolektorový proud?} je nesprávně položena. Správně položená otázka zní: \uv{V
-          jakém rozsahu se může nacházet kolektorový proud, když uvážíme výrobní rozptyl všech
-          prvků?} Pak teprve můžeme porovnávat simulaci a realitu.
+        Uvažme nyní, že použijeme jiný kus téhož typu a stále stejný model. Podle údajů katalogového
+        listu leží proudový zesilovací činitel \(h_{21E}(\beta)\) v rozmezí \num{110} až \num{220}.
+        U druhého tranzistoru bude parametr h21e jiný, dopředu neznámý. I kdybychom vytvořili
+        dokonalý model pro první tranzistor, tak při použití druhého tranzistoru dostaneme odchylku
+        v řádu desítek procent.
 
-          Musíme se tedy smířit s tím, že model vždy vyjadřuje jen parametry jednoho (hypotetického)
-          prvku. Dobrý model musí navíc věrně postihovat např. závislost parametrů na teplotě,
-          frekvenci, nebo kolektorovém proudu.
-        \end{note} 
-      \end{mdframed} 
+        V praxi se navíc vytvářejí modely spíše pro typické hodnoty, které ani nemusí popisovat
+        konkrétní existující kus. Na obr. \ref{aes:fig013b}  je to ilustrováno graficky (pro případ,
+        kdyby měl model jen dva parametry). Je tedy zřejmé, že otázka: \uv{Jakou hodnotu bude mít
+        kolektorový proud?} je nesprávně položena. Správně položená otázka zní: \uv{V jakém rozsahu
+        se může nacházet kolektorový proud, když uvážíme výrobní rozptyl všech prvků?} Pak teprve
+        můžeme porovnávat simulaci a realitu.
+
+        Musíme se tedy smířit s tím, že model vždy vyjadřuje jen parametry jednoho (hypotetického)
+        prvku. Dobrý model musí navíc věrně postihovat např. závislost parametrů na teplotě,
+        frekvenci, nebo kolektorovém proudu.
+      \end{tcnote} 
 
   \section{Modelování základních obvodů}
     \subsection{Typické uspořádání simulačních programů}
@@ -378,13 +375,11 @@
       nazývat jen soupis prvků. Někdy se tak ovšem říká i celému vstupnímu souboru, obsahujícímu
       také příkazy.
       
-      \begin{mdframed}[style=mdnote]
-        \begin{note}
-          Uživatel simulačního programu je prakticky vždy nucen pracovat i s textovými soubory
-          knihoven nebo netlistů, například při zahrnování nového modelu do knihovny nebo hledání
-          chyb podle hlášení simulátoru.
-        \end{note}
-      \end{mdframed}
+      \begin{tcnote}
+        Uživatel simulačního programu je prakticky vždy nucen pracovat i s textovými soubory
+        knihoven nebo netlistů, například při zahrnování nového modelu do knihovny nebo hledání
+        chyb podle hlášení simulátoru.
+      \end{tcnote}
 
       Vstupní soubor z obr. \ref{aes:fig015} je možné \uv{odsimulovat} programem
       \texttt{PSpice}. Hlavní textový soubor nazveme např. jako \texttt{obvod.cir}
@@ -399,46 +394,41 @@
       k provádění různých analýz, ukládání výsledků a nastavování parametrů algoritmů pro numerické
       řešení.
 
-      \begin{mdframed}[style=mdnote]
-        \begin{note}
-          Syntaktická pravidla:
-          \begin{itemize}[noitemsep]
-            \item První řádek vždy slouží jako hlavička (nadpis),
-                  \texttt{PSpice} jej ignoruje\footnote{na obr. \ref{aes:fig015} je to
-                  řádek: \texttt{* obvod}}. 
-            \item Prázdné řádky, vícenásobné mezery a další „bílé znaky“ se ignorují. 
-            \item Malá a velká písmena se nerozlišují. 
-            \item Na pořadí řádků nezáleží (s výjimkou prvního a posledního řádku). 
-            \item Názvy všech obvodových prvků musí být jedinečné. 
-            \item Každý řádek (s výjimkou hlavičky) začíná jedním z těchto symbolů: 
-                  \begin{itemize}[noitemsep]
-                    \item \textbf{znak 'A' až 'Z'} - definice obvodového prvku (např. R pro
-                          rezistor\footnote{Jednotlivé verze SPICE se mohou mírně lišit v přiřazení
-                          znaků k prvkům.}).
-                    \item \textbf{znak '*'} - obsah řádku je chápán jako komentář. 
-                    \item \textbf{znak '+'} - řádek je pokračováním předchozího
-                          řádku\footnote{Používá se pro zlepšení čitelnosti.}. 
-                    \item \textbf{znak '.'} - příkaz simulátoru (např. \texttt{.DC} provede
-                          stejnosměrnou analýzu).
-                  \end{itemize}
-            \item Vše, co je napravo od znaku středník ';', je chápáno jako komentář.
-            \item Soubor končí příkazem \texttt{.END}. 
-            \item Uzly se značí alfanumerickým řetězcem bez mezer. Původní standard dovoloval jen
-                  označení celými čísly. Jeden z uzlů musí být označen jako O (nula).
-            \item Čísla se zapisují v přirozeném tvaru (\num{0.25}) vždy s desetinnou tečkou, v
-                  exponenciálním tvaru (1e-3), nebo je možné použít standardní technické přípony
-                  (\texttt{f, u, m, k, meg, g, t}). Mezi číslem a příponou se nesmí psát mezera.
-                  Ostatní znaky za číslem se ignorují (\texttt{1uF = 1u}). Přípona \texttt{m} i
-                  \texttt{M} znamená \texttt{mili} (\num{e-3}) - nerozlišují se malá a velká
-                  písmena. 
-            \item Od \texttt{PSpice} verze 15 je možné využívat i tzv. Evropský způsob, kdy se
-                  přípona píše místo desetinné tečky. Např. \texttt{4k7 = 4.7k}. Místo desetinné
-                  tečky je také možné použít \texttt{R} pro rezistory, \texttt{L} pro induktory a
-                  \texttt{C} pro kapacitory. Např. \texttt{1R2 = \SI{1.2}{\ohm}}, ale jen u
-                  rezistoru.
-          \end{itemize}
-        \end{note}
-      \end{mdframed}
+      \begin{tcnote}
+        Syntaktická pravidla:
+        \begin{itemize}[noitemsep]
+          \item První řádek vždy slouží jako hlavička (nadpis), \texttt{PSpice} jej
+                ignoruje\footnote{na obr. \ref{aes:fig015} je to řádek: \texttt{* obvod}}. 
+          \item Prázdné řádky, vícenásobné mezery a další „bílé znaky“ se ignorují. 
+          \item Malá a velká písmena se nerozlišují. 
+          \item Na pořadí řádků nezáleží (s výjimkou prvního a posledního řádku). 
+          \item Názvy všech obvodových prvků musí být jedinečné. 
+          \item Každý řádek (s výjimkou hlavičky) začíná jedním z těchto symbolů: 
+                \begin{itemize}[noitemsep]
+                  \item \textbf{znak 'A' až 'Z'} - definice obvodového prvku (např. R pro
+                        rezistor\footnote{Jednotlivé verze SPICE se mohou mírně lišit v přiřazení
+                        znaků k prvkům.}).
+                  \item \textbf{znak '*'} - obsah řádku je chápán jako komentář. 
+                  \item \textbf{znak '+'} - řádek je pokračováním předchozího řádku\footnote{Používá
+                        se pro zlepšení čitelnosti.}. 
+                  \item \textbf{znak '.'} - příkaz simulátoru (např. \texttt{.DC} provede
+                        stejnosměrnou analýzu).
+                \end{itemize}
+          \item Vše, co je napravo od znaku středník ';', je chápáno jako komentář.
+          \item Soubor končí příkazem \texttt{.END}. 
+          \item Uzly se značí alfanumerickým řetězcem bez mezer. Původní standard dovoloval jen
+                označení celými čísly. Jeden z uzlů musí být označen jako O (nula).
+          \item Čísla se zapisují v přirozeném tvaru (\num{0.25}) vždy s desetinnou tečkou, v
+                exponenciálním tvaru (1e-3), nebo je možné použít standardní technické přípony
+                (\texttt{f, u, m, k, meg, g, t}). Mezi číslem a příponou se nesmí psát mezera.
+                Ostatní znaky za číslem se ignorují (\texttt{1uF = 1u}). Přípona \texttt{m} i
+                \texttt{M} znamená \texttt{mili} (\num{e-3}) - nerozlišují se malá a velká písmena. 
+          \item Od \texttt{PSpice} verze 15 je možné využívat i tzv. Evropský způsob, kdy se přípona
+                píše místo desetinné tečky. Např. \texttt{4k7 = 4.7k}. Místo desetinné tečky je také
+                možné použít \texttt{R} pro rezistory, \texttt{L} pro induktory a \texttt{C} pro
+                kapacitory. Např. \texttt{1R2 = \SI{1.2}{\ohm}}, ale jen u rezistoru.
+        \end{itemize}
+      \end{tcnote}
 
       \subsubsection{Definice prvků}
         Řádek netlistu, který definuje obvodový prvek, začíná pevně daným znakem. Jednotlivé
@@ -503,21 +493,19 @@
       bodu. Pro některé úlohy mohou iterace divergovat (vzdalují se od průsečíku). V takovém případě
       program oznámí, že pracovní bod nebyl nalezen.
 
-      \begin{mdframed}[style=mdnote]
-        \begin{note}
-          Vlastnosti metody použité pro výpočet pracovního bodu je možné formulovat do následujících
-          bodů:
-          \begin{itemize}[noitemsep]
-            \item Nalezení pracovního bodu není garantováno. Problémy se mohou vyskytnout u obvodů s
-                  vysokým ziskem (operační zesilovače) nebo s ostrými nelinearitami (příliš
-                  idealizované behaviorální modely).
-            \item Čím lépe odhadneme výchozí bod, tím rychlejší a spolehlivější bude konvergence. 
-            \item V případě existence více pracovních bodů najde metoda vždy jen jeden v závislosti
-                  na výchozím bodu. 
-            \item Řešení neposkytne informaci o stabilitě nalezeného pracovního bodu.
-          \end{itemize}
-        \end{note}
-      \end{mdframed}    
+      \begin{tcnote}
+        Vlastnosti metody použité pro výpočet pracovního bodu je možné formulovat do následujících
+        bodů:
+        \begin{itemize}[noitemsep]
+          \item Nalezení pracovního bodu není garantováno. Problémy se mohou vyskytnout u obvodů s
+                vysokým ziskem (operační zesilovače) nebo s ostrými nelinearitami (příliš
+                idealizované behaviorální modely).
+          \item Čím lépe odhadneme výchozí bod, tím rychlejší a spolehlivější bude konvergence. 
+          \item V případě existence více pracovních bodů najde metoda vždy jen jeden v závislosti
+                na výchozím bodu. 
+          \item Řešení neposkytne informaci o stabilitě nalezeného pracovního bodu.
+        \end{itemize}
+      \end{tcnote}
 
     \subsection{Analýza v časové oblasti}
       Analýza odpovídá laboratornímu experimentu, kdy obvod, na jehož vstup je připojený signální
@@ -571,20 +559,18 @@
       globálních podmínek simulátoru. Následující odstavec uvádí některá doporučení, založená na
       praktických zkušenostech uživatelů:
 
-      \begin{mdframed}[style=mdnote]
-        \begin{note}
-          \begin{itemize}[noitemsep]
-            \item Používat spojité a hladké funkce při vytváření modelů. Doplnit nelinearitu o
-                  parazitní kapacitu (paralelně ke zdroji proudu) či indukčnost (sériově ke zdroji
-                  napětí).
-            \item Zmenšit délku simulačního intervalu, snížit požadavek na přesnost. 
-            \item Nepoužívat ideální impulzní signály (s nulovou délkou hrany). Např. ideální
-                  jednotkový skok není stejně možné v praxi realizovat. Nastavíme-li délku hrany o
-                  \num{4} řády kratší než je nejmenší časová konstanta v obvodu (stačí odhad), tak
-                  dostaneme číselně stejný výsledek jako pro ideální signál.
-          \end{itemize}
-        \end{note}
-      \end{mdframed}
+      \begin{tcnote}
+        \begin{itemize}[noitemsep]
+          \item Používat spojité a hladké funkce při vytváření modelů. Doplnit nelinearitu o
+                parazitní kapacitu (paralelně ke zdroji proudu) či indukčnost (sériově ke zdroji
+                napětí).
+          \item Zmenšit délku simulačního intervalu, snížit požadavek na přesnost. 
+          \item Nepoužívat ideální impulzní signály (s nulovou délkou hrany). Např. ideální
+                jednotkový skok není stejně možné v praxi realizovat. Nastavíme-li délku hrany o
+                \num{4} řády kratší než je nejmenší časová konstanta v obvodu (stačí odhad), tak
+                dostaneme číselně stejný výsledek jako pro ideální signál.
+        \end{itemize}
+      \end{tcnote}
 
       \subsection{Stabilita integrační metody}
         Při numerickém řešení v časové oblasti se \emph{soustava algebraicko-diferenciálních rovnic}

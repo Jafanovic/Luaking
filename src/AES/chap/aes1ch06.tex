@@ -657,30 +657,28 @@
       podle (\ref{aes:eq031b}). Pro jednoduchost bude popis koeficientů bez doplňujících indexů, jak
       byly původně použity pro obecnou nenormovanou přenosovou funkci (\ref{aes:eq028}) - tedy
       \(a_i\), \(b_i\). 
-      
-      \begin{mdframed}[style=mdnote]
-        \begin{note}
-          Prakticky se používá kmitočet \(f\) v jednotkách [\si{\Hz}], ale v některých teoretických
-          vypočtech je vhodnější vyjádření pomoci úhlového kmitočtu \(\omega = 2\pi f\). Kombinace
-          těchto vyjádření může přinášet problémy při práci s koeficienty \(a_i\), \(b_i\)
-          přenosových funkcí (\ref{aes:eq031a}) a (\ref{aes:eq031b}). Když např. vyjadřujeme
-          přenosovou funkci 2. řádu (1.12) s rezonančním kmitočtem \(F_0 = \SI{1}{\kHz}\) se
-          zobrazením v kmitočtových charakteristikách osou v [\si{\Hz}], musíme jako parametr
-          \(b_0\) dosadit hodnotu \num{39478417.6} namisto hodnoty \num{e6}, což je dosti
-          nepraktické. Přenosovou funkci s proměnou kmitočtu \(f\) [\si{Hz}] Ize vyjádřit ve tvaru 
-          \begin{equation*}
-            \mathbb{K}(j\omega) 
-              = \frac{a'_{m}(jf)^m + a'_{m-1}(jf)^{m-1} + \cdots + a'_{1}(jf) + a'_{0}}
-                    {b'_{n}(jf)^n + b'_{n-1}(jf)^{n-1} + \cdots + b'_{1}(jf) + b'_0} 
-          \end{equation*}
-          kde pro koeficienty platí \(a'_{m} = a_m\), \(a'_{m-1} = a_{m-1}/(2\pi)\), \(a'_{m-2} =
-          a_{m-2}/(2\pi)^2\), \(\ldots\), \(a'_1=a_1/(2\pi)^{m-1}\), \(a'_0=a_0/(2\pi)^{m}\) a
-          obdobně \(b'_n = b_n\), \(b'_{n-1} = b_{n-1}/(2\pi)\), \(b'_{n-2} = b_{n-2}/(2\pi)^{2}\),
-          \(\ldots\), \(b'_{1} = b_{1}/(2\pi)^{n-1}\), \(b'_0 = b_0/(2\pi)^n\). Při výpočtu přenosu
-          tak lze pracovat s dvěma odlišnými typy koeficientů.
-        \end{note}
-      \end{mdframed}
 
+      \begin{tcnote}
+        Prakticky se používá kmitočet \(f\) v jednotkách [\si{\Hz}], ale v některých teoretických
+        vypočtech je vhodnější vyjádření pomoci úhlového kmitočtu \(\omega = 2\pi f\). Kombinace
+        těchto vyjádření může přinášet problémy při práci s koeficienty \(a_i\), \(b_i\)
+        přenosových funkcí (\ref{aes:eq031a}) a (\ref{aes:eq031b}). Když např. vyjadřujeme
+        přenosovou funkci 2. řádu (1.12) s rezonančním kmitočtem \(F_0 = \SI{1}{\kHz}\) se
+        zobrazením v kmitočtových charakteristikách osou v [\si{\Hz}], musíme jako parametr
+        \(b_0\) dosadit hodnotu \num{39478417.6} namisto hodnoty \num{e6}, což je dosti
+        nepraktické. Přenosovou funkci s proměnou kmitočtu \(f\) [\si{Hz}] Ize vyjádřit ve tvaru 
+        \begin{equation*}
+          \mathbb{K}(j\omega) 
+            = \frac{a'_{m}(jf)^m + a'_{m-1}(jf)^{m-1} + \cdots + a'_{1}(jf) + a'_{0}}
+                  {b'_{n}(jf)^n + b'_{n-1}(jf)^{n-1} + \cdots + b'_{1}(jf) + b'_0} 
+        \end{equation*}
+        kde pro koeficienty platí \(a'_{m} = a_m\), \(a'_{m-1} = a_{m-1}/(2\pi)\), \(a'_{m-2} =
+        a_{m-2}/(2\pi)^2\), \(\ldots\), \(a'_1=a_1/(2\pi)^{m-1}\), \(a'_0=a_0/(2\pi)^{m}\) a
+        obdobně \(b'_n = b_n\), \(b'_{n-1} = b_{n-1}/(2\pi)\), \(b'_{n-2} = b_{n-2}/(2\pi)^{2}\),
+        \(\ldots\), \(b'_{1} = b_{1}/(2\pi)^{n-1}\), \(b'_0 = b_0/(2\pi)^n\). Při výpočtu přenosu
+        tak lze pracovat s dvěma odlišnými typy koeficientů.
+      \end{tcnote}
+ 
       \subsubsection{Rozklad přenosové funkce filtru pomocí pólů a nul přenosu v komplexní rovině p}
         Protože z hodnot koeficientů přenosových funkcí vyšších řádů nejsou přenosové vlastnosti
         filtru dobře patrné, je snaha rozložit tyto funkce na dílčí funkce nižších řádů. K tomuto

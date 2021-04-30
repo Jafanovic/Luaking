@@ -64,7 +64,7 @@
  
       Uvedeme nyní některé jednoduché příklady.
       %-------------------------------------
-        \input{../src/MAI/exam/exam118.tex}
+      \input{../src/MAI/exam/exam118.tex}
       %-------------------------------------
 
       Často používáme pro nezávisle proměnnou jiného oznčení než \(x\). Funkcí primitivní k funkci
@@ -680,28 +680,27 @@
           \sec^{-1} \frac{x}{a}                                    &      \label{mai:eq133}     
       \end{flalign}
     
-      \begin{mdframed}[style=mdnote]
-        \begin{note}  
-          \(\argsinh x\), \(\argcosh x\), \(\argtanh x\), \(\argcoth x\) jsou funkce inverzní k
-          hyperbolickým funkcím. Značení těchto funkcí není jednotné. Správné zkratky jsou ty, které
-          specifikuje norma \texttt{ISO 80000-2}. Skládají se z \uv{ar} následovaných zkratkou
-          odpovídající hyperbolické funkce (např. arsinh, arcosh).
 
-          Nicméně, předpona \uv{arc} - následovaná odpovídající hyperbolickou funkcí (např. arcsinh,
-          arccosh) je také běžně vidět, analogicky s nomenklaturou pro inverzní trigonometrické
-          funkce. Není to však správné pojmenování, protože prefix \uv{arc} je zkratka pro
-          \textbf{arcus}, zatímco prefix \uv{ar} znamená \textbf{area}. 
+      \begin{tcnote}  
+        \(\argsinh x\), \(\argcosh x\), \(\argtanh x\), \(\argcoth x\) jsou funkce inverzní k
+        hyperbolickým funkcím. Značení těchto funkcí není jednotné. Správné zkratky jsou ty, které
+        specifikuje norma \texttt{ISO 80000-2}. Skládají se z \uv{ar} následovaných zkratkou
+        odpovídající hyperbolické funkce (např. arsinh, arcosh).
 
-          Autoři jako prof. K. Rektorys upřednostňují použití označení \(\argsinh\), \(\argcosh\),
-          \(\argtanh\) atd., kde předpona \uv{arg} je zkratkou latinského \textbf{argumentu}. V
-          počítačové vědě se to často zkracuje na asinh.
+        Nicméně, předpona \uv{arc} - následovaná odpovídající hyperbolickou funkcí (např. arcsinh,
+        arccosh) je také běžně vidět, analogicky s nomenklaturou pro inverzní trigonometrické
+        funkce. Není to však správné pojmenování, protože prefix \uv{arc} je zkratka pro
+        \textbf{arcus}, zatímco prefix \uv{ar} znamená \textbf{area}. 
 
-          Používá se také zápis \(\sinh^{-1}(x)\), \(\cosh^{-1}(x)\) atd., a to navzdory
-          skutečnosti, že je třeba dbát na to, aby nedošlo k nesprávným interpretacím horního indexu
-          \(-1\) jako mocniny, na rozdíl od zkratky pro označení inverzní funkce
-          (např. \(\cosh^{-1}(x)\) versus \(\cosh(x)^{-1}\)).
-        \end{note}
-      \end{mdframed}
+        Autoři jako prof. K. Rektorys upřednostňují použití označení \(\argsinh\), \(\argcosh\),
+        \(\argtanh\) atd., kde předpona \uv{arg} je zkratkou latinského \textbf{argumentu}. V
+        počítačové vědě se to často zkracuje na asinh.
+
+        Používá se také zápis \(\sinh^{-1}(x)\), \(\cosh^{-1}(x)\) atd., a to navzdory skutečnosti,
+        že je třeba dbát na to, aby nedošlo k nesprávným interpretacím horního indexu \(-1\) jako
+        mocniny, na rozdíl od zkratky pro označení inverzní funkce (např. \(\cosh^{-1}(x)\) versus
+        \(\cosh(x)^{-1}\)).
+      \end{tcnote}
 
     \subsection{Elementárnost primitivních funkcí}\label{mai:IchapVIIsecIIssecII} 
       Třebaže ke každé spojité funkci existuje primitivní funkce, nelze v mnoha případech tuto
@@ -1027,27 +1026,26 @@
         $}
       \end{equation*}
 
-      \begin{mdframed}[style=mdmathlemma] 
-        \begin{lemma}\label{mai:lemma010}
-          Každý mnohočlen
-          \begin{equation*}
-            Q(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_1x + a_0
-          \end{equation*}
-          s reálnými koeficienty lze (až na pořadí faktorů jednoznačně) rozložit takto (srov.
-          příklad \ref{mai:exam135}):
-          \begin{equation}\label{mai:eq159}
-            Q(x) = a_n(x-\alpha_1)^{k_1}(x-\alpha_2)^{k_2}\ldots                   \notag \\
-            \ldots(x-\alpha_i)^{k_i}(x^2+p_1x+q_1)^{l_1}(x^2+p_2x+q_2)^{l_2}\ldots \notag \\ 
-            \ldots(x^2+p_jx+q_j)^{l_j}.
-          \end{equation}
-          Přitom čísla \(\alpha_1, \alpha_2, \ldots \alpha_i\), \(p_1, q_1, p_2, q_2, \ldots \) jsou
-          reálná a kvadratické výrazy v \ref{mai:eq157} nejsou rozložitelné v reálné lineární
-          činitele - mají tedy záporný diskriminant tj. platí
-          \begin{equation}\label{mai:eq160}
-            \frac{p^2}{4}-q<0.
-          \end{equation} 
-        \end{lemma}
-      \end{mdframed}
+      \begin{mathlemma}{Věta o mnohočlenech s reálnými koeficienty}{lemma010}
+        Každý mnohočlen
+        \begin{equation*}
+          Q(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_1x + a_0
+        \end{equation*}
+        s reálnými koeficienty lze (až na pořadí faktorů jednoznačně) rozložit takto (srov.
+        příklad \ref{mai:exam135}):
+        \begin{equation}\label{mai:eq159}
+          Q(x) = a_n(x-\alpha_1)^{k_1}(x-\alpha_2)^{k_2}\ldots                   \notag \\
+          \ldots(x-\alpha_i)^{k_i}(x^2+p_1x+q_1)^{l_1}(x^2+p_2x+q_2)^{l_2}\ldots \notag \\ 
+          \ldots(x^2+p_jx+q_j)^{l_j}.
+        \end{equation}
+        Přitom čísla \(\alpha_1, \alpha_2, \ldots \alpha_i\), \(p_1, q_1, p_2, q_2, \ldots \) jsou
+        reálná a kvadratické výrazy v \ref{mai:eq157} nejsou rozložitelné v reálné lineární
+        činitele - mají tedy záporný diskriminant tj. platí
+        \begin{equation}\label{mai:eq160}
+          \frac{p^2}{4}-q<0.
+        \end{equation} 
+      \end{mathlemma}
+
 
       Tvar rozkladu \ref{mai:eq160} vznikne ze známého rozkladu polynomu \(Q(x)\) v součin
       kořenových činitelů takto: Pokud \(\alpha\) je reálný kořen, zůstává činitel \(x-\alpha\) v

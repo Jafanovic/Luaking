@@ -1,0 +1,46 @@
+% !TeX program = lualatex
+% !TeX encoding = UTF-8
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\input{ebook}
+
+\documentclass{scrbook}
+  \usepackage{xr-hyper} % To create hyperlinks to referenced objects in external documents
+  \usepackage{luakoma}
+  \usepackage{lualayout}
+  \usepackage{luamath} 
+  \usepackage{wikiWWWrefs}
+  \usepackage{luadebug}
+
+\providecommand\DebugMode{false}
+\providecommand\eBookMode{true}
+%============================= L * U * A * K * I* N * G ============================================
+% \listfiles
+\setcounter{tocdepth}{\partnumdepth}      % depth of TOC
+
+\externaldocument[vol01:]{vol01}[vol01.pdf] 
+\externaldocument[vol02:]{vol02}[vol02.pdf] 
+\externaldocument[vol03:]{vol03}[vol03.pdf] 
+% \externaldocument[vol04:]{vol04}[vol04.pdf] 
+
+
+\begin{document}
+  \shorthandoff{-}
+  
+  \hbadness=99999
+  \frontmatter
+    \input{booktitle}
+    \tableofcontents
+  \mainmatter 
+    \setcounter{page}{3} 
+    \input{../src/TKY/TKY}
+    \input{../src/TEO/TEO}
+    \input{../src/AES/AES}
+    \input{../src/CES/CES}
+    \input{../src/RAE/RAE}
+    \input{../src/PVE/PVE}
+    \input{../src/EPR/EPR}
+    \input{../src/ZZT/ZZT}
+    \input{../src/APE/APE}
+    % \input{../src/NJ/NJ}
+  \backmatter
+\end{document}
