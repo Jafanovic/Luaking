@@ -38,6 +38,7 @@ DEL /F /S *.synctex(busy)
 DEL /F /S *.xdv
 DEL /F /S *.fdb
 DEL /F /S *.fls
+DEL /F /S *.fnd
 DEL /F /S *.fdb_latexmk
 
 for /r %%F in (*) do if %%~zF==0 del "%%F"

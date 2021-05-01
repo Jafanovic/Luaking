@@ -2,14 +2,14 @@ echo Multibook compile
 SETLOCAL
 
 echo FIRST ROUND   
-color 07
+color 06
 set root_file=vol01
 lualatex.exe \providecommand{\DebugMode}{false}\input{%root_file%.tex} -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=%root_file% 
 REM lualatex.exe \providecommand{\DebugMode}{false}\input{vol01.tex} -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=vol01 
 echo Generate requested bibliography
 biber %root_file%.bcf
 
-color 06
+color 07
 set root_file=vol02
 lualatex.exe \providecommand{\DebugMode}{false}\input{%root_file%.tex} -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=%root_file% 
 REM lualatex.exe \providecommand{\DebugMode}{false}\input{vol02.tex} -synctex=1 -interaction=nonstopmode -halt-on-error -jobname=vol02
