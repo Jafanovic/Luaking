@@ -13,11 +13,11 @@
   \usetikzlibrary{calc}
 
   \newcommand{\MyXYcross}{%
-    \draw[name path=axeX,->] (\xmin,\zero)  -- (\xmax,\zero)  node[right] {$x$} coordinate(x axis);
-    \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {$y$} coordinate(y axis);
+    \draw[name path=axeX,->] (\xmin,\zero)  -- (\xmax,\zero)  node[right] {\(x\)} coordinate(x axis);
+    \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {\(y\)} coordinate(y axis);
     \path[name intersections={of=axeX and axeY, name=pocatek}]; 
     \node[below left] at (pocatek-1) {$0$};
-    \draw[fill=white] (pocatek-1) circle(2pt);  
+    \draw[] (pocatek-1) circle(2pt);  
 }
 
 \begin{document} 
@@ -38,14 +38,14 @@
       \draw[name path=asmyptote3, color=brown, smooth] plot[domain=-3:3] ({1},\x);
       % xticks and yticks
           \foreach \x in {1,2,3}{
-            \node at (+\x, 0) [below, fill=white] {$\x$};
-            \node at (-\x, 0) [below, fill=white] {$-\x$};
+            \node at (+\x, 0) [below] {$\x$};
+            \node at (-\x, 0) [below, ] {$-\x$};
             \draw[] (\x,0) -- +(0,+0.1); 
             \draw[] (-\x,0) -- +(0,+0.1); 
           }
           \foreach \y in {1,2,3}{
-            \node at (0,+\y) [left, fill=white] {$\y$}; 
-            \node at (0,-\y) [left, fill=white] {$-\y$};
+            \node at (0,+\y) [left] {$\y$}; 
+            \node at (0,-\y) [left] {$-\y$};
             \draw[] (0,+\y) -- +(+0.1,0); 
             \draw[] (0,-\y) -- +(+0.1,0);
           } 
@@ -59,7 +59,7 @@
     
     \begin{scope}[draw=black,line join=round, miter limit=4.00,line width=0.5pt,y=1pt,x=1pt] 
       \MyXYcross; 
-      \node at (\xmax-30,\ymax-50) [left, fill=white] {$f(x):y=\dfrac{1+x^2}{1-x^2}$};
+      \node at (\xmax-30,\ymax-50) [left, ] {$f(x):y=\dfrac{1+x^2}{1-x^2}$};
     \end{scope}
   \end{tikzpicture} 
 \end{document}

@@ -9,8 +9,8 @@
   \usetikzlibrary{calc}
 
   \newcommand{\MyXYcross}{%
-    \draw[name path=axeX,->] (\xmin,\zero)  -- (\xmax,\zero)  node[right] {$x$} coordinate(x axis);
-    \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {$y$} coordinate(y axis);
+    \draw[name path=axeX,->] (\xmin,\zero)  -- (\xmax,\zero)  node[right] {\(x\)} coordinate(x axis);
+    \draw[name path=axeY,->] (\phase,\ymin) -- (\phase,\ymax) node[left]  {\(y\)} coordinate(y axis);
     \path[name intersections={of=axeX and axeY, name=pocatek}]; 
     \node[below left] at (pocatek-1) {$0$};
     \draw[fill=white] (pocatek-1) circle(2pt);  

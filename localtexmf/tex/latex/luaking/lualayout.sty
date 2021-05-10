@@ -25,7 +25,10 @@
   \babelfont[russian]{rm}{Cambria}
   \babelfont[ngerman]{rm}{Cambria}
   \babelfont[english]{rm}{Cambria}
-\RequirePackage{csquotes}
+
+  \shorthandoff{-} % \usepackage[czech]{babel} ktivuje znak spojovníku -, což může činit potíže,
+                   % např. při používání maker \cline nebo při psaní znaku minus v matematice. 
+\RequirePackage[czech]{csquotes} % https://tex.stackexchange.com/questions/194830/
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 % Experiences typesetting OpenType math with LuaLaTEX and XeLaTEX
