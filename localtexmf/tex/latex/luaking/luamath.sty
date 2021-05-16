@@ -11,7 +11,7 @@
 % #2: mandatory -> image
 % https://tex.stackexchange.com/questions/91616/
 \newcommand{\luafigure}[2][0.8]{
-  \includegraphics[width=#1\linewidth,height=#1\textheight,keepaspectratio]{#2}}
+  \includegraphics[width=#1\linewidth]{#2}}
 
   \newcommand{\luagraphic}[4][0.8]{%
   \begin{figure}[ht!]
@@ -154,6 +154,18 @@
   colback=green!5!white,
   colframe=green!75!black,
   fonttitle=\itshape,        % \bfseries,
+  enforce breakable,         % breakable,
+  compress page,
+  enhanced,
+  arc=1pt,
+  left=0pt,
+  right=0pt
+}{fyz}  
+
+\newtcbtheorem[auto counter,number within=chapter]{fyzpostulate}{Postulát}{%
+  colback=blue!5!white,
+  colframe=blue!75!black,
+  fonttitle=\bfseries,       % \bfseries,
   enforce breakable,         % breakable,
   compress page,
   enhanced,

@@ -15,6 +15,11 @@
 %---------------------------------------------------------------------------------------------------
 % Setting path to image 
 \graphicspath{{../src/FYZ/img/}}
+\ifthenelse{ \equal{\DebugMode}{true} }{% Debug mode ON
+  \input{../src/FYZ/chap/fey1ch15.tex}
+  \printbibliography[title={Seznam literatury}, heading=bibliography]
+}
+{ % Debug mode OFF
 %---------------------------------------------------------------------------------------------------
 %           ####### #     # ####### ### #    #    #       ### ### 
 %           #        #   #       #   #  #   #    # #       #   #
@@ -24,15 +29,9 @@
 %           #          #     #       #  #   #  #     #     #   #
 %           #          #    ####### ### #    # #     #    ### ###
 %---------------------------------------------------------------------------------------------------
-\ifthenelse{ \equal{\DebugMode}{true} }{% Debug mode ON
-  % \input{../src/FYZ/chap/fey2ch20.tex}
-  % \input{../src/FYZ/chap/fey2ch31.tex}  
-  % \input{../src/FYZ/chap/fey2ch10.tex}
-  % \input{../src/FYZ/chap/fey2ch42.tex}
-}{ % Debug mode OFF
-  \LuaPartBckgrnd{titleBG_fractal1.png}
-  \LuaPartTitle{FYZ II}{Fyzika II}{FYZII}
-  \parttoc
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{FYZ II}{Fyzika II}{FYZII}
+\parttoc
 %==== Kapitola Princip nejmenší akce ===============================================================
 \input{../src/FYZ/chap/fey2ch19.tex}
 %==== Kapitola Tenzory =============================================================================
@@ -49,7 +48,6 @@
 \input{../src/FYZ/chap/fey2ch41.tex}
 %=== Seznam literatury ============================================================================= 
 \printbibliography[title={Seznam literatury}, heading=bibliography]
-}
 
 %---------------------------------------------------------------------------------------------------
 %           ####### #     # ####### ### #    #    #       ### ### ###
@@ -60,14 +58,9 @@
 %           #          #     #       #  #   #  #     #     #   #   #
 %           #          #    ####### ### #    # #     #    ### ### ###
 %---------------------------------------------------------------------------------------------------
-\ifthenelse{ \equal{\DebugMode}{true} }{%  DEBUG was on
-% \input{../src/FYZ/chap/fey2ch01.tex}
-% \input{../src/FYZ/chap/fey2ch02.tex}   
-% \input{../src/FYZ/chap/fey2ch03.tex}   
-}{ % DEBUG was off
-  \LuaPartBckgrnd{titleBG_fractal1.png}
-  \LuaPartTitle{FYZ III}{Elektřina a magnetizmus}{FYZIII}
-  \parttoc
+\LuaPartBckgrnd{titleBG_fractal1.png}
+\LuaPartTitle{FYZ III}{Elektřina a magnetizmus}{FYZIII}
+\parttoc
 %==== Kapitola: Elektromagnetizmus==================================================================
 \input{../src/FYZ/chap/fey2ch01.tex}
 %==== Kapitola: Diferenciální počet vektorových polí ===============================================
@@ -154,7 +147,6 @@
 \input{../src/TEO/chap/magn1ch03.tex}
 %==== Seznam literatury ============================================================================ 
 \printbibliography[title={Seznam literatury}, heading=bibliography]
-}
 
 %---------------------------------------------------------------------------------------------------
 %           ####### #     # ####### ### #    #    #       ### #     # 
@@ -165,18 +157,14 @@
 %           #          #     #       #  #   #  #     #     #    # #   
 %           #          #    ####### ### #    # #     #    ###    #  
 %---------------------------------------------------------------------------------------------------
-\ifthenelse{ \equal{\DebugMode}{true} }{% Debug mode ON
-  % \input{../src/FYZ/chap/kul1ch01.tex}
-}{ % DEBUG was off
-  \LuaPartBckgrnd{fyz_title05.jpg}
-  \LuaPartTitle{AFYZ I}{Kosmologie}{AFYZI}
-  \parttoc
+\LuaPartBckgrnd{fyz_title05.jpg}
+\LuaPartTitle{AFYZ I}{Kosmologie}{AFYZI}
+\parttoc
 %==== Kapitola: Historie Astrofyziky ===============================================================
 \input{../src/FYZ/chap/kul1ch01.tex}  
 \input{../src/FYZ/chap/kul1ch02.tex}  
 %=== Seznam literatury =======================================================================-===== 
 \printbibliography[title={Seznam literatury}, heading=bibliography]
-} % DEBUG was off
 
 %---------------------------------------------------------------------------------------------------
 %           ####### #     # ####### ### #    #    #       #     # 
@@ -188,14 +176,10 @@
 %           #          #    ####### ### #    # #     #       #  
 %---------------------------------------------------------------------------------------------------
 % https://www.nytimes.com/2015/11/24/science/a-century-ago-einsteins-theory-of-relativity-changed-everything.html
-\ifthenelse{ \equal{\DebugMode}{true} }{% Debug mode ON
-  % \input{../src/FYZ/chap/fey1ch15.tex}
-  % \input{../src/FYZ/chap/fey1ch16.tex} 
-  % \input{../src/FYZ/chap/fey1ch17.tex}
-}{ % DEBUG was off
-  \LuaPartBckgrnd{fyz_title03.jpg}
-  \LuaPartTitle{FYZ V}{Relativita}{FYZV}
-  \parttoc
+
+\LuaPartBckgrnd{fyz_title03.jpg}
+\LuaPartTitle{FYZ V}{Relativita}{FYZV}
+\parttoc
 %==== Kapitola: Speciální teorie relativity ========================================================
 \input{../src/FYZ/chap/fey1ch15.tex}
 %==== Kapitola: Relativistická energie a hybnost ===================================================
