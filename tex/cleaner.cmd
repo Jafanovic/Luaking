@@ -6,7 +6,7 @@ DEL /F /S *.upb
 DEL /F /S *.bak
 DEL /F /S *.bcf
 DEL /F /S *.blg
-DEL /F /S *.bbl
+REM DEL /F /S *.bbl
 DEL /F /S *.fdb
 DEL /F /S *.fls
 DEL /F /S *.fnd
