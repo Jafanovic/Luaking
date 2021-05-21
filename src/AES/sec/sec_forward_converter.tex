@@ -19,31 +19,31 @@
   Stejnosměrný meziobvod (ss. mezilehlý obvod, DC-bus, zwischenkreis) bývá napěťového typu, tj. 
   vůči následujícímu měniči se chová jako (téměř) ideální zdroj konstantního napětí \(U_d\) 
   nulovou vnitřní impedancí. Bývá realizován buď LC-filtrem, nebo samostatným sběracím 
-  kondenzátorem o velké kapacitě. Dvojcestným usměrněním sítě 1 x \SI{230}{\volt} vznikne na 
-  sběracím kondenzátoru ss. mezilehlé napětí \(U_d\) o hladině přibližně \SI{300}{\volt}. 
-  Šestipulsním usměrněním sítě 3 x \SI{400}{\volt} vznikne ss. napětí o jmenovité střední hodnotě 
-  \SI{542}{\volt}.
+  kondenzátorem o velké kapacitě. Dvojcestným usměrněním sítě 1 x \qty{230}{\volt} vznikne na 
+  sběracím kondenzátoru ss. mezilehlé napětí \(U_d\) o hladině přibližně \qty{300}{\volt}. 
+  Šestipulsním usměrněním sítě 3 x \qty{400}{\volt} vznikne ss. napětí o jmenovité střední hodnotě 
+  \qty{542}{\volt}.
   
-  Na hladině \SI{542}{\volt} se obvykle používají tranzistory IGBT se závěrným napětím 
-  \SI{1200}{\volt}, které pracují na spínacím kmitočtu od \SI{25}{\kilo\hertz} do 
-  \SI{60}{\kilo\hertz} (podle přenášeného výkonu). Kmitočet je ve většině případů omezen 
+  Na hladině \qty{542}{\volt} se obvykle používají tranzistory IGBT se závěrným napětím 
+  \qty{1200}{\volt}, které pracují na spínacím kmitočtu od \qty{25}{\kilo\hertz} do 
+  \qty{60}{\kilo\hertz} (podle přenášeného výkonu). Kmitočet je ve většině případů omezen 
   především přepínacími ztrátami v tranzistorech IGBT.
   
-  Na hladině \SI{300}{\volt} bývají převážně používány tranzistory MOSFET se závěrným napětím 
-  \SI{600}{\volt}. Tranzistory jsou v současnosti tak rychlé, že mohou pracovat na spínacím 
-  kmitočtu až do \SI{300}{\kilo\hertz}. Pracovní kmitočet ležívá typicky v oblasti 
-  \SI{40}{\kilo\hertz} až \SI{120}{\kilo\hertz}. Jediným důvodem ke zvyšování kmitočtu je 
+  Na hladině \qty{300}{\volt} bývají převážně používány tranzistory MOSFET se závěrným napětím 
+  \qty{600}{\volt}. Tranzistory jsou v současnosti tak rychlé, že mohou pracovat na spínacím 
+  kmitočtu až do \qty{300}{\kilo\hertz}. Pracovní kmitočet ležívá typicky v oblasti 
+  \qty{40}{\kilo\hertz} až \qty{120}{\kilo\hertz}. Jediným důvodem ke zvyšování kmitočtu je 
   zmenšování objemu transformátoru i výstupní tlumivky. Zvyšování kmitočtu nad 
-  \SI{200}{\kilo\hertz} není výhodné z následujících důvodů:
+  \qty{200}{\kilo\hertz} není výhodné z následujících důvodů:
   \begin{itemize}[noitemsep]
-    \item Mezní kmitočet manganato-zinečnatých feritů leží kolem \SI{450}{\kilo\hertz}, tudíž 
-          v pásmu nad \SI{200}{\kilo\hertz} prudce rostou hysterezní ztráty (viz komplexní 
+    \item Mezní kmitočet manganato-zinečnatých feritů leží kolem \qty{450}{\kilo\hertz}, tudíž 
+          v pásmu nad \qty{200}{\kilo\hertz} prudce rostou hysterezní ztráty (viz komplexní 
           permeabilita v kap. 6.4.4.). Ztráty je nutno omezovat snižováním maximální pracovní 
           indukce \(B_{max}\), což působí proti zmenšování transformátoru.
-     \item V oblasti nad \SI{200}{\kilo\hertz} začínají narůstat problémy se skinefektem ve  
+     \item V oblasti nad \qty{200}{\kilo\hertz} začínají narůstat problémy se skinefektem ve  
           vinutí transformátoru (nikoli ve vinutí tlumivky, v ní je proud téměř hladký). Na 
-          kmitočtu \SI{200}{\kilo\hertz} činí hloubka vniku již pouze \(\delta\cong\) 
-          \SI{0,14}{\mm}, viz kap. 4. Nutné je použití vf. lanka nejen na sekundám (málo závitů a 
+          kmitočtu \qty{200}{\kilo\hertz} činí hloubka vniku již pouze \(\delta\cong\) 
+          \qty{0,14}{\mm}, viz kap. 4. Nutné je použití vf. lanka nejen na sekundám (málo závitů a 
           velký průřez), ale i na primáni (více závitů a menší průřez). Výsledkem je pokles 
           činitele plnění ve vinutí, který působí proti zmenšování transformátoru.
     \item S rostoucím pracovním kmitočtem/dramaticky roste reaktance \(2\pi f L_{2,K}\) 

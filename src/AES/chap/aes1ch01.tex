@@ -127,8 +127,8 @@
       \textbf{parametrická analýza}, kdy je krokován vybraný parametr (napětí, odpor, teplota,
       atd.). Výsledkem je svazek křivek. \textbf{Citlivostní analýza} poskytuje informace o tom, jak
       změna prvku ovlivní chování obvodu. Např. u oscilátoru můžeme údajem o citlivosti v
-      \si{\Hz\per\percent} stanovit, o kolik \si{\Hz} se změní kmitočet při změně parametru
-      sledovaného prvku o \SI{1}{\percent}. Analýza \textbf{Monte Carlo} simuluje hromadnou výrobu
+      \unit{\Hz\per\percent} stanovit, o kolik \unit{\Hz} se změní kmitočet při změně parametru
+      sledovaného prvku o \qty{1}{\percent}. Analýza \textbf{Monte Carlo} simuluje hromadnou výrobu
       náhodným generováním hodnot parametrů prvků. Pak je možné statisticky vyhodnotit míru
       „výrobního“rozptylu sledovaného parametru. Analýza \textbf{Worst-Case} zjišťuje nejhorší
       možnou kombinaci parametrů prvků v rámci jejich tolerančních intervalů. Obvykle se jedná o
@@ -276,7 +276,7 @@
                 Pomineme-li problémy prvků popsaných ve frekvenční oblasti a tzv. špatně podmíněné
                 úlohy, tak je možné říci, že přesnost výpočtu má uživatel pod kontrolou
                 prostřednictvím parametrů RELTOL, ABSTOL a VNTOL (\todo[inline]{blíže v kap. 1.4.2.1}).
-                Obvykle je nastavena relativní chyba \SI{0.1}{\percent}. Požadování vyšší přesnosti
+                Obvykle je nastavena relativní chyba \qty{0.1}{\percent}. Požadování vyšší přesnosti
                 zpomalí simulaci nebo může v krajním případě vést k jejímu selhání. Je také
                 diskutabilní, zdali požadovat výrazně vyšší přesnost simulace, než mohou mít měřicí
                 přístroje v laboratoři. 
@@ -285,7 +285,7 @@
                 identifikace parametrů na základě měření.
           \item \textbf{Výrobní rozptyl}: Výrobní rozptyl je značný zejména u polovodičů. Např.
                 proudový zesilovací činitel bipolárního tranzistoru může mít toleranci až
-                \SI{\pm50}{\percent}.
+                \qty{\pm50}{\percent}.
           \item \textbf{ Odhad parazitních prvků}: Dalším problémem jsou parazitní vlastnosti
                 propojovacích vodičů mezi prvky. To, co je nakresleno v editoru schématu jako vodič,
                 vlastně představuje ideální spoj bez parazitní indukčnosti, odporu i kapacity.
@@ -355,7 +355,7 @@
       (\cite[s.~8]{KolkaBiolek2011})}{aes:fig014}      
 
       Na obr. \ref{aes:fig015} je příklad organizace souborů pro stejnosměrnou analýzu jednoduchého
-      obvodu s diodou, kdy napětí stejnosměrného zdroje je rozmítáno od \SI{-3}{\V} do \SI{+3}{\V}.
+      obvodu s diodou, kdy napětí stejnosměrného zdroje je rozmítáno od \qty{-3}{\V} do \qty{+3}{\V}.
       Vstupní soubor je vygenerován automaticky editorem schématu nebo může být editován ručně.
       První část tvoří popis samotného obvodu. Každému prvku odpovídá jeden řádek. Parametry zdroje
       napětí (\texttt{V\_V1}) a rezistoru (\texttt{R\_R1}) jsou plně popsané v netlistu. Uzly jsou
@@ -367,7 +367,7 @@
       (\cite[s.~9]{KolkaBiolek2011})}{aes:fig015}      
 
       Jméno knihovního souboru je uvedeno v příkazu \texttt{.LIB}. V poslední části jsou příkazy pro
-      rozmítání stejnosměrné složky \(V_1\) s krokem \SI{50}{\mV}. Příkaz \texttt{.PROBE} určuje, že
+      rozmítání stejnosměrné složky \(V_1\) s krokem \qty{50}{\mV}. Příkaz \texttt{.PROBE} určuje, že
       napětí obou uzlů se budou ukládat pro zpracování v postprocesoru (zobrazení grafů). Model z
       knihovny (příkaz \texttt{.model...}) může být umístěný v hlavním souboru. V tom případě
       knihovnu nepotřebujeme a celá úloha je definovaná jen jedním souborem. Tento styl je výhodný,
@@ -426,7 +426,7 @@
           \item Od \texttt{PSpice} verze 15 je možné využívat i tzv. Evropský způsob, kdy se přípona
                 píše místo desetinné tečky. Např. \texttt{4k7 = 4.7k}. Místo desetinné tečky je také
                 možné použít \texttt{R} pro rezistory, \texttt{L} pro induktory a \texttt{C} pro
-                kapacitory. Např. \texttt{1R2 = \SI{1.2}{\ohm}}, ale jen u rezistoru.
+                kapacitory. Např. \texttt{1R2 = \qty{1.2}{\ohm}}, ale jen u rezistoru.
         \end{itemize}
       \end{tcnote}
 
@@ -542,7 +542,7 @@
       (např. \num{50} až \num{100} hodnot). Zdola je krok omezen přesností zobrazení čísel v
       počítači. Předpokládejme, že je čas v simulátoru reprezentován proměnnou typu double s
       přesností \num{15} míst. Pokud by např. došlo ke zkrácení kroku z důvodu velmi strmé hrany na
-      \(\Delta t = \num{e-20}\) v čase \(t = \SI{1}{\second}\), tak nový časový okamžik bude opět
+      \(\Delta t = \num{e-20}\) v čase \(t = \qty{1}{\second}\), tak nový časový okamžik bude opět
       \(\num{1} + \num{e-20} \approx 1\), protože je čas reprezentován omezeným počtem míst. Výpočet
       by se proto zastavil. Pro krok je možné formulovat podmínku
 
@@ -618,7 +618,7 @@
         \subsection{Střídavá analýza}
 
         \luagraphic[1]{aes_fig022.png}{Výsledky střídavé analýzy - modulová charakteristika v
-        \protect\si{\protect\decibel}. (\cite[s.~79]{KolkaBiolek2011})}{aes:fig022}  
+        \unit{\decibel}. (\cite[s.~79]{KolkaBiolek2011})}{aes:fig022}  
 
         \luagraphic[1]{aes_fig023.png}{Výpočet střídavé odezvy integračního článku.
         (\cite[s.~79]{KolkaBiolek2011})}{aes:fig023}  
@@ -650,9 +650,9 @@
     Ve světě elektroniky (obr. \ref{SPICE:Basso_intro}), musí různé druhy elektronických obvodů 
     vzájemně spolupracovat (logické obvody, analogové obvody, mikroprocesory, atd.). Bohužel tyto 
     obvody nepracují s jediným napájecím napětím: mikroprocesor nebo signálový procesor (DSP), bude 
-    potřebovat například zdroj \SI{3.3}{\volt}, analogové obvody mohou vyžadovat symetrické nápení 
-    \SI{\pm15}{\volt}. Ovšem externí napájecí zdroj je zpravidla jen jeden (např. síťové napájení 
-    \SI{230}{\volt}, baterie). Vzniká tak otázka, jakým způsobem z tohoto zdroje realizovat tolik 
+    potřebovat například zdroj \qty{3.3}{\volt}, analogové obvody mohou vyžadovat symetrické nápení 
+    \qty{\pm15}{\volt}. Ovšem externí napájecí zdroj je zpravidla jen jeden (např. síťové napájení 
+    \qty{230}{\volt}, baterie). Vzniká tak otázka, jakým způsobem z tohoto zdroje realizovat tolik 
     napájecích úrovní. Řešení spočívá ve vložení tzv. převodníku mezi zdroj a napájený obvod, který 
     přizpůsobí napájecí napětí konkrétním požadavkům obvodu.
     

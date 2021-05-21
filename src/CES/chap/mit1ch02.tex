@@ -76,7 +76,7 @@
     případně obě realizovány jedinou společnou paměťovou jednotkou.
 
     \luagraphic[0.6]{ces_fig009.jpg}{První komerčně dostupný 4b procesor \texttt{4004} s frekvencí
-      \SI{108}{\kHz} od firmy Intel. Obsahoval \num{2300} tranzistorů a jeho výkon odpovídal 0.06
+      \qty{108}{\kHz} od firmy Intel. Obsahoval \num{2300} tranzistorů a jeho výkon odpovídal 0.06
       MIPS (dále obsahoval 16 4bitových registrů, \num{45} jedno a dvou bitových instrukcí. čtyř
       úrovňový adresový zásobník a 12bitový programový čítač. Procesor musel být doplněn čtyřmi
       dalšími podpůrnými obvody 4001 až 4004.}{ces:fig009}
@@ -1906,7 +1906,7 @@
       \emph{Phase Locked Loop}) ve funkci násobiče kmitočtu. Násobící činitel je dán obsahem 
       řídicího registru, při nulování počítače je kmitočet nastaven na minimum. Vzhledem k násobení 
       postačí rezonátor s nižším kmitočtem. Často se používají levné a malé „hodinkové" rezonátory 
-      s rezonančním kmitočtem \SI{32.768}{\kilo\hertz}. Oscilátor s nízkým kmitočtem má menší 
+      s rezonančním kmitočtem \qty{32.768}{\kilo\hertz}. Oscilátor s nízkým kmitočtem má menší 
       rušivé vyzařování a menší příkon.
       
       Hodinové impulzy vstupují do procesoru, kde určují základní \textbf{takty}. Strojový cyklus 
@@ -2828,7 +2828,7 @@
       stav \texttt{„1"} (povoleno čtení) a na vstup \texttt{OE} je přiváděn řídicí signál 
       \textoverline{\texttt{PSEN}}, kterým je vyvoláváno čtení programu. Během mazání a 
       programování je třeba na vývod \(U_{PP}\) přivést programovací napětí (kolem 
-      \SI{12}{\volt}), během čtení programu vyhovuje napětí o velikosti \(U_{CC}\). Spínač 
+      \qty{12}{\volt}), během čtení programu vyhovuje napětí o velikosti \(U_{CC}\). Spínač 
       \(U_{PP}\) musí během programování sepnout proud několika desítek mA při malém napěťovém 
       úbytku (tolerance \(U_{PP}\) jsou řádově jen desetiny V). K ovládání multiplexeru i spínače 
       \(U_{PP}\) lze využít např. dva bity výstupní brány jednočipového mikropočítače.
@@ -2848,9 +2848,9 @@
         \item Zvýšit napětí na vývodu \(U_PP\).
         \item Zapsat příkaz \emph{„erase1"}.
         \item Zapsat příkaz \emph{„erase2"}.
-        \item Odpočítat čas na mazání (\SI{10}{\milli\second}).
+        \item Odpočítat čas na mazání (\qty{10}{\milli\second}).
         \item Zapsat příkaz \emph{„erase-verify"}.
-        \item Odpočítat čas na prodlevu (\SI{6}{\micro\second}).
+        \item Odpočítat čas na prodlevu (\qty{6}{\micro\second}).
         \item Čtení: je obsah \texttt{FF{\scriptsize H}}?
         \begin{itemize}
           \item Pokud není \texttt{FF{\scriptsize H}}, opakovat mazání od kroku 2.
@@ -2868,9 +2868,9 @@
         \item Zvýšit napětí na vývodu \(U_{PP}\).
         \item Zapsat příkaz \emph{„program"}
         \item Zapsat data na příslušnou adresu.
-        \item Odpočítat čas na programování na této adrese (\SI{10}{\milli\second}).
+        \item Odpočítat čas na programování na této adrese (\qty{10}{\milli\second}).
         \item Zapsat příkaz \emph{„program-verify"}.
-        \item Odpočítat čas na prodlevu (\SI{6}{\micro\second}).
+        \item Odpočítat čas na prodlevu (\qty{6}{\micro\second}).
         \item Přečíst a zkontrolovat data.
         \begin{itemize}
           \item Pokud data nesouhlasí, opakovat se stejnou adresou od kroku 2. 
@@ -3262,7 +3262,7 @@
         když periferní hodinové impulzy mají nižší kmitočet než hodinové impulzy procesoru, je 
         často i tento kmitočet příliš vysoký pro účely časování. Např. pro ovládání technologických 
         zařízení jsou zapotřebí časové intervaly řádu milisekund až mnoha sekund. Při kmitočtu 
-        hodinových impulzů \SI{20}{\mega\hertz} (pro procesor) by to vyžadovalo čítač nejméně 
+        hodinových impulzů \qty{20}{\mega\hertz} (pro procesor) by to vyžadovalo čítač nejméně 
         24bitový. Proto je ve většině mikrokontrolérů ještě další dělič kmitočtu pro jednotku 
         čítačů/časovačů. Patřičný dělicí poměr lze vybrat multiplexerem \texttt{MX2}.
         
@@ -3434,8 +3434,8 @@
         Je třeba zdůraznit, že záchytná jednotka ke své činnosti potřebuje programovou podporu, tj. 
         obslužné podprogramy, vyvolávané požadavky na přerušení. I zde je důležité uvažovat latenci 
         přerušení, tak aby  obsahy záchytných registrů byly přečteny včas. Bude samozřejmě záležet 
-        na aplikaci - tak např. při měření kmitočtu sítě \SI{50}{\hertz} je perioda 
-        \SI{20}{\milli\second} jistě dostatečně dlouhá pro spolehlivé přečtení registrů za každé 
+        na aplikaci - tak např. při měření kmitočtu sítě \qty{50}{\hertz} je perioda 
+        \qty{20}{\milli\second} jistě dostatečně dlouhá pro spolehlivé přečtení registrů za každé 
         situace. Naopak časově kritické situace nastávají např. v řídicím počítači pro rychloběžný 
         spalovací motor.
         
@@ -4479,7 +4479,7 @@
                   
         Vysoké napěťové úrovně na výstupu zvyšují odolnost proti rušení, vyžadují však další dvě 
         napájecí napětí. Řada výrobců proto dodává členy, ve kterých jsou již integrovány napěťové 
-        měniče, takže postačuje napájení \SI{5}{\volt}.
+        měniče, takže postačuje napájení \qty{5}{\volt}.
         
         Vazební členy pro \texttt{RS 232} jsou \textbf{dvoustavové}, takže je nelze od vedení
         odpojovat. Není proto možné spojovat paralelně několik vysílačů. Možnost spojení do sítě je
@@ -4670,8 +4670,8 @@
         zabezpečena.
         
         Co se týče kmitočtu synchronizačních impulzů, existují tři verze 
-        \texttt{I{\textsuperscript{2}}C}: \emph{standardní} (\SI{100}{\kilo\hertz}), \emph{rychlá} 
-        (\SI{400}{\kilo\hertz}) a \emph{vysoce rychlá} (do \SI{3.4}{\mega\hertz}). 
+        \texttt{I{\textsuperscript{2}}C}: \emph{standardní} (\qty{100}{\kilo\hertz}), \emph{rychlá} 
+        (\qty{400}{\kilo\hertz}) a \emph{vysoce rychlá} (do \qty{3.4}{\mega\hertz}). 
         \texttt{I{\textsuperscript{2}}C} má navíc zajímavou vlastnost, jak pomalý přijímač může 
         pozastavit příliš rychlé hodinové impulzy. Vyplývá to z připojení na sběrnici přes otevřené 
         kolektory. Přijímač může udržet na vodiči \texttt{SCL} stav \texttt{0}, i když vysílač by 
@@ -4740,7 +4740,7 @@
       
       Analogové obvody se šestnácti a vícebitovými převodníky představují velmi náročný systém. Pro 
       ilustraci - při rozsahu vstupních napětí 0 až +5 V a 16bitovém převodníku odpovídá nejnižšímu 
-      bitu napěťový přírůstek pouhých \SI{76}{\micro\volt}. Nemá-li být přesnost převodníku 
+      bitu napěťový přírůstek pouhých \qty{76}{\micro\volt}. Nemá-li být přesnost převodníku 
       degradována, musí být sumární hodnota rušení, offsetů a driftů použitých operačních 
       zesilovačů a úbytků na vodičích ještě  menší. To vyžaduje dokonalé stínění, perfektní plošné 
       spoje a velmi kvalitní součástky. Tomu samozřejmě odpovídá i cena.
@@ -4759,7 +4759,7 @@
       jiných ale ne. Ze známé doby nabíjení je nutné spočítat maximální přípustný odpor zdroje 
       signálu - jeho větší hodnota zvyšuje chybu převodu. Realistické hodnoty jsou řádu několika 
       \(k\Omega\). Velikost paměťového kondenzátoru jsou desítky pF, doba sepnutí spínače je kolem 
-      \SI{1}{\micro\second}. Špička vstupního proudu je omezena v konstrukci vnitřních obvodů podle 
+      \qty{1}{\micro\second}. Špička vstupního proudu je omezena v konstrukci vnitřních obvodů podle 
       obr. \ref{MIT:fig_adrspace82}, kde v prvé fázi je paměťový kondenzátor nabíjen přes 
       jednoduchý zesilovač, ve druhé fázi pak rovnou z multiplexeru. Většinu náboje kondenzátoru 
       tak dodá zesilovač, ale konečná hodnota napětí není závislá na vlastnostech zesilovače 

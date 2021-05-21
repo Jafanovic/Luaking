@@ -24,10 +24,10 @@
   tak jak je znázorněno na obr. \ref{ape:fig001}, můžeme hodnotu odporu vodiče stanovit podle 
   známého vzorce
   \begin{equation}\label{ape:eq001}
-    R_{\vartheta_0} = \varrho\dfrac{l}{S} = \varrho\dfrac{l}{t\cdot w} \qquad[\si{\ohm}]
+    R_{\vartheta_0} = \varrho\dfrac{l}{S} = \varrho\dfrac{l}{t\cdot w} \qquad[\unit{\ohm}]
   \end{equation}
-  kde \(\varrho\ldots\) \emph{měrný elektrický odpor} [\si{\ohm\m}], \(l\ldots\) \emph{délka 
-  vodiče} [\si{\m}] a \(S\ldots\) \emph{průřez vodiče} [\si{\m\squared}]. Symboly \(t\) a \(w\) 
+  kde \(\varrho\ldots\) \emph{měrný elektrický odpor} [\unit{\ohm\m}], \(l\ldots\) \emph{délka 
+  vodiče} [\unit{\m}] a \(S\ldots\) \emph{průřez vodiče} [\unit{\m\squared}]. Symboly \(t\) a \(w\) 
   odpovídají kótování z obrázku \ref{ape:fig001}.
   
   \luagraphic[0.9]{ape_fig001.pdf}{Odpor vodiče plošného spoje 
@@ -35,8 +35,8 @@
 
   Závislost odporu na teplotě je dána vztahem \cite[s.~24]{Necasek1972} 
   \begin{equation}\label{ape:eq002}
-    R_\vartheta = R_0\cdot[1+\alpha(\vartheta - \vartheta_0)] \qquad[\si{\ohm};\si{\ohm}, 
-    \si{1\per\degreeCelsius}, \si{\degreeCelsius}]
+    R_\vartheta = R_0\cdot[1+\alpha(\vartheta - \vartheta_0)] \qquad[\unit{\ohm};\unit{\ohm}, 
+    \unit{1\per\degreeCelsius}, \unit{\degreeCelsius}]
   \end{equation}
   kde \(\alpha\ldots\) \emph{teplotní odporový součinitel}, \(R_\vartheta\ldots\) výsledný odpor 
   teplého vodiče,  \(R_{\vartheta_0}\ldots\) odpor vodiče při výchozí teplotě, \(\vartheta\) 
@@ -44,12 +44,12 @@
   
   Oteplení 
   \begin{equation}\label{ape:eq003}
-    \Delta\vartheta = \vartheta - \vartheta_0 \qquad[\si{\degreeCelsius}; \si{\degreeCelsius}]
+    \Delta\vartheta = \vartheta - \vartheta_0 \qquad[\unit{\degreeCelsius}; \unit{\degreeCelsius}]
   \end{equation}
   
   Konečná teplota
   \begin{equation}\label{ape:eq004}
-    \vartheta = \vartheta_0 + \Delta\vartheta \qquad[\si{\degreeCelsius}; \si{\degreeCelsius}]
+    \vartheta = \vartheta_0 + \Delta\vartheta \qquad[\unit{\degreeCelsius}; \unit{\degreeCelsius}]
   \end{equation}
 
 \section{Skin efekt}
@@ -83,17 +83,17 @@
       \multicolumn{2}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Soustava}} & \cellcolor[HTML]{C0C0C0} \\ \cline{1-2}
       \rowcolor[HTML]{C0C0C0} 
       \textbf{Imp./U.S.} & \textbf{SI} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\textbf{\begin{tabular}[c]{@{}c@{}}tloušťka\\ fólie \end{tabular}}} \\ \hline
-        \US{1/2}{\oz\per\ft^2} & \SI{152}{\g\per\m^2} & \SI{17.5}{\micro\m} \\ \hline
-        \US{1}{\oz\per\ft^2}   & \SI{305}{\g\per\m^2} & \SI{35}{\micro\m}   \\ \hline
-        \US{3}{\oz\per\ft^2}   & \SI{915}{\g\per\m^2} & \SI{105}{\micro\m}  \\ \hline
+        \US{0.5}{\oz\per\ft^2} & \qty{152}{\g\per\m^2} & \qty{17.5}{\micro\m} \\ \hline
+        \US{1}{\oz\per\ft^2}   & \qty{305}{\g\per\m^2} & \qty{35}{\micro\m}   \\ \hline
+        \US{3}{\oz\per\ft^2}   & \qty{915}{\g\per\m^2} & \qty{105}{\micro\m}  \\ \hline
       \end{tabular}%
       % }
       \caption{Převodní tabulka}
       \end{table}
 
-      Příklady výpočtu: Převod je následující: \(\US{1}{\oz} = \SI{28.35}{\gram}\), \(\US{1}{\ft} =
-      \SI{30.48}{\cm}\), \(\US{1}{\ft^2} = \SI{.093}{\m^2} = \SI{930}{\cm^2}\), Specifická hustota
-      mědi \(\SI{8.9}{\gram\per\cm^3}\) Volume = weight : specific weight = 28,35 g : 8,9 g/cm3 =
+      Příklady výpočtu: Převod je následující: \(\US{1}{\oz} = \qty{28.35}{\gram}\), \(\US{1}{\ft} =
+      \qty{30.48}{\cm}\), \(\US{1}{\ft^2} = \qty{.093}{\m^2} = \qty{930}{\cm^2}\), Specifická hustota
+      mědi \(\qty{8.9}{\gram\per\cm^3}\) Volume = weight : specific weight = 28,35 g : 8,9 g/cm3 =
       3,185 cm3 Foil thickness = volume : surface = 3,185 cm3 : 930 cm2 = 0,00342 cm = 35 µm
 
 
@@ -108,19 +108,18 @@
       \label{ape:fig002}
     \end{figure}
     
-    Například pro spoj s průřezem \SI{0.1}{\mm\squared} a oteplení \SI{100}{\degreeCelsius} 
-    dostaneme proudovou hustotu \SI{100}{\A\per\mm\squared} (viz graf \ref{ape:fig002a}). Maximální 
+    Například pro spoj s průřezem \qty{0.1}{\mm\squared} a oteplení \qty{100}{\degreeCelsius} 
+    dostaneme proudovou hustotu \qty{100}{\A\per\mm\squared} (viz graf \ref{ape:fig002a}). Maximální 
     provozní teplota je dána takzvaným bodem měknutí základního materiálu, který je u \texttt{FR4} 
-    \SI{125}{\degreeCelsius}. 
+    \qty{125}{\degreeCelsius}. 
     
    
     \begin{figure}[ht!] %\ref{ape:fig003}
       \centering
-      \subcaptionbox{pro průřez vodiče od \protect\SI{0.1}{\protect\mm\protect\squared} do
-        \protect\SI{0.5}{\protect\mm\protect\squared}
+      \subcaptionbox{pro průřez vodiče od \qty{0.1}{\mm\squared} do \qty{0.5}{\mm\squared}
         \label{ape:fig003a}}{\luafigure[1]{ape_fig003a.png}}        \\
-      \subcaptionbox{Závislost pro průřez vodiče od \protect\SI{0.01}{\protect\mm\protect\squared}
-        do \protect\SI{0.1}{\protect\mm\protect\squared}]
+      \subcaptionbox{Závislost pro průřez vodiče od \qty{0.01}{\mm\squared}
+        do \qty{0.1}{\mm\squared}]
         \label{ape:fig003b}}{\luafigure[1]{ape_fig003b.png}}   
       \caption{Křivky závislosti stejnosměrné proudové zatížitelnosti na průřezu plošného spoje pro
         různé oteplení (\cite[s.~10]{IPC2152}).}
@@ -133,8 +132,8 @@
     také vznik značných mechanických sil vlivem průtoku proudu a tepelné dilatace. 
     
     \begin{example}
-      Požadovaný protékající proud je \SI{8}{\A} s maximálním teplotním nárůstem 
-      \SI{30}{\degreeCelsius}. Jak široký vodič je nutné použít, má-li deska \SI{35}{\micro\m} Cu 
+      Požadovaný protékající proud je \qty{8}{\A} s maximálním teplotním nárůstem 
+      \qty{30}{\degreeCelsius}. Jak široký vodič je nutné použít, má-li deska \qty{35}{\micro\m} Cu 
       fólii (\num{1} \(oz/ft^2\))?       
     \end{example}
     

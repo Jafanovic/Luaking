@@ -378,14 +378,14 @@
 \RequirePackage[version=4]{mhchem}
 \RequirePackage{cancel}                % \cancel command
 \RequirePackage{siunitx}
+  \AtBeginDocument{\robustify\pi}      % make \pi robust, unicode-math uses \mitpi
  \sisetup{
     output-decimal-marker = {,},       % set the comma as decimal point 
-    fraction-function =   \dfrac,      % \sfrac, \dfrac, \tfrac, fraction
-    separate-uncertainty = true,
-    multi-part-units=single,
-    % input-complex-roots = i, 
-    output-complex-root = \ensuremath{\imath},
-    % output-complex-root = \ensuremath{\mathrm{j}},
+    fraction-command =   \dfrac,       % \sfrac, \dfrac, \tfrac, fraction 
+    uncertainty-mode = separate,
+    input-digits = 0123456789\pi,      % https://tex.stackexchange.com/questions/597998/
+    separate-uncertainty-units = single,
+    output-complex-root = \ensuremath{\imath}, % \ensuremath{\mathrm{j}},
     exponent-product = {\cdot},        % exponent-product option example: \times, \ldots
     math-micro=\text{µ},text-micro=µ,  % http://tex.stackexchange.com/questions/33965
     range-phrase=%                     % https://tex.stackexchange.com/questions/13493
@@ -393,7 +393,6 @@
       \else
         \;{až}\;                       % https://tex.stackexchange.com/questions/74353/
       \fi,                             %
-    separate-uncertainty,
     number-math-rm=\mathnormal         % https://tex.stackexchange.com/questions/33140/
  }
 

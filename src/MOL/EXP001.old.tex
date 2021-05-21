@@ -13,7 +13,7 @@
 \newpage
   \section{Zadání}
     Úkolem je postavit nízkopříkonový transceiver vhodný pro bezdrátový přenos dat na frekvenci 
-    \SI{468}{\MHz} mezi řídicím systémem (embedded PC) a senzory na vzdálenost minimálně 2000 m 
+    \qty{468}{\MHz} mezi řídicím systémem (embedded PC) a senzory na vzdálenost minimálně 2000 m 
     ve volném terénu.
   
   \section{Popis obvodu SPIRIT1}  
@@ -267,14 +267,14 @@
         drain-source capacitance (Cds) of the output MOS devices. Silicon Laboratories states that the 
         value of this internal shunt drain capacitance is approximately:          
         \begin{equation}\label{EXP001:eq_spirit03}
-          C_{SHUNT} ~ \SI{2.5}{pF}
+          C_{SHUNT} ~ \qty{2.5}{pF}
         \end{equation}          
         
         Assuming a desired operating frequency of Fo = 470 MHz as an example, the following value for ZLOAD 
         may be calculated:
         \begin{equation}\label{EXP001:eq_spirit04}
           Z_{LOAD(470\,MHz)} = 
-            \left(\frac{0.2815}{2\pi\cdot\SI{470}{MHz}\cdot\SI{2.5}{pF}}\right)e^{j49.0524°} =
+            \left(\frac{0.2815}{2\pi\cdot\qty{470}{MHz}\cdot\qty{2.5}{pF}}\right)e^{j49.0524°} =
             24.87 + j28.66\Omega
         \end{equation} 
         
@@ -288,7 +288,7 @@
         Continuing the design example of 470 MHz and assuming a desired output power of +20 dBm (100 mW), 
         the required value of VDD\_PA may be calculated:
         \begin{equation}\label{EXP001:eq_spirit06}
-          V_{DD_{PA}} =\sqrt{\frac{\SI{0.1}{W}}{2\pi^2\SI{470}{MHz}\cdot\SI{2.5}{pF}}} = \SI{2.076}{V}
+          V_{DD_{PA}} =\sqrt{\frac{\qty{0.1}{W}}{2\pi^2\qty{470}{MHz}\cdot\qty{2.5}{pF}}} = \qty{2.076}{V}
         \end{equation}
         This equation states that if the voltage supplied to the top of pull-up inductor LCHOKE is equal to 
         2.076 V and the previously-calculated value of load impedance ZLOAD is presented to the chip, the 
@@ -318,12 +318,12 @@
         Continuing the design example of 470 MHz for +20 dBm output power, the following calculations are 
         made:
         \begin{equation}\label{EXP001:eq_spirit10}
-          I_{DD_{PA}} = 2\pi^2\cdot\SI{470}{MHz}\cdot\SI{2.5}{pF}\cdot\SI{2.076}{V} = \SI{48.16}{mA}
+          I_{DD_{PA}} = 2\pi^2\cdot\qty{470}{MHz}\cdot\qty{2.5}{pF}\cdot\qty{2.076}{V} = \qty{48.16}{mA}
         \end{equation} 
         Assuming a general chip supply voltage of VDD = 3.3 V, the required value of RDC may be calculated 
         as:
         \begin{equation}\label{EXP001:eq_spirit11}
-          R_{DC} = \frac{\SI{3.3}{V} - \SI{2.076}{V}}{\SI{48.16}{mA}}  = \SI{25.41}{\ohm}
+          R_{DC} = \frac{\qty{3.3}{V} - \qty{2.076}{V}}{\qty{48.16}{mA}}  = \qty{25.41}{\ohm}
         \end{equation} 
         
         Theoretically, this value of resistance must be placed in series with LCHOKE in order to drop the 
@@ -402,7 +402,7 @@
           \item Minimal insertion loss at the desired operating frequency
           \item Lowest filter order possible to achieve harmonic attenuation required to meet regulatory 
                 standard
-          \item impedance transformation (i.e. \SI{50}{\ohm} input and \SI{50}{\ohm} output 
+          \item impedance transformation (i.e. \qty{50}{\ohm} input and \qty{50}{\ohm} output 
                 impedance)          
         \end{itemize}
         
@@ -507,7 +507,7 @@
       than 0.5 dB; many customers may view this as an acceptable trade-off for the reduction in the bill of 
       materials (BOM).
       
-      The RXp and RXn inputs of the Si446x/Si4362 RX LNA internally contain high value (~\SI{15}{k\ohm}) 
+      The RXp and RXn inputs of the Si446x/Si4362 RX LNA internally contain high value (~\qty{15}{k\ohm}) 
       pull-down resistors to GND. As a result, supplying a dc voltage to these pins is not recommended; use 
       of external ac-coupling to these pins is suggested. This is inherently supplied by capacitor CR2 of 
       Figure \ref{EXP001:fig_spirit07}.
@@ -607,7 +607,7 @@
         following:
         
         \begin{equation}\label{EXP001:eq_spirit13}
-          L_M = \frac{1}{\omega_0\cdot\sqrt{\left(\dfrac{1}{\SI{50}{\ohm}\cdot R_{LNA}}\right) - 
+          L_M = \frac{1}{\omega_0\cdot\sqrt{\left(\dfrac{1}{\qty{50}{\ohm}\cdot R_{LNA}}\right) - 
                          \left(\dfrac{1}{R_{LNA}}\right)^2}}
         \end{equation}
         
@@ -635,7 +635,7 @@
         line of constant resistance until arriving at the center of the Smith Chart. The required value of 
         total capacitance is given by the following:
         \begin{equation}\label{EXP001:eq_spirit15}
-          C_{TOTAL} = \frac{1}{\omega_0\cdot\SI{50}{\ohm}\sqrt{\dfrac{R_{LNA}}{\SI{50}{\ohm}}-1}}
+          C_{TOTAL} = \frac{1}{\omega_0\cdot\qty{50}{\ohm}\sqrt{\dfrac{R_{LNA}}{\qty{50}{\ohm}}-1}}
         \end{equation}
         Using this equation, or by employing graphical methods on the Smith Chart, the total series 
         capacitance required to reach the 50 Ω origin of the Smith Chart is found to be CTOTAL = 2.33 pF.
@@ -702,7 +702,7 @@
         As the required value of inductance LM has already been determined, the required value for CR1 
         follows immediately from the previously-derived equation for LM.
         \begin{equation}\label{EXP001:eq_spirit17}
-          C_{R1} = 2\cdot\frac{\sqrt{\frac{R_{LNA}}{\SI{50}{\ohm}}-1}}{\omega_0\cdot R_{LNA}}
+          C_{R1} = 2\cdot\frac{\sqrt{\frac{R_{LNA}}{\qty{50}{\ohm}}-1}}{\omega_0\cdot R_{LNA}}
         \end{equation}
         Using this equation, the value for this capacitor is determined to be CR1 = 4.16 pF. It is then a 
         simple matter to allocate the remaining portion of total required series capacitive reactance to CR2.
@@ -815,7 +815,7 @@
         
         \begin{align}
           L_{R2}  &= \frac{\sqrt{\Re{Z_{ANT}}\cdot R_{LNA}}}{\omega_0} 
-                   = \frac{\sqrt{\SI{50}{\ohm}\cdot R_{LNA}}}{\omega_0}  \label{EXP001:eq_spirit20}      \\ 
+                   = \frac{\sqrt{\qty{50}{\ohm}\cdot R_{LNA}}}{\omega_0}  \label{EXP001:eq_spirit20}      \\ 
           C_{R2}  &= \frac{1}{\omega_0^2\cdot L_{R2}}                    \label{EXP001:eq_spirit21}      \\ 
           C_{R1}  &= 2\cdot C_{R2}                                       \label{EXP001:eq_spirit22}      \\ 
           L_{LNA} &= \frac{1}{\omega_0^2\cdot C_{LNA}}                   \label{EXP001:eq_spirit23}      \\ 
@@ -873,7 +873,7 @@
         \begin{equation}
           X_{LR2} = \omega_0\cdot L_{R2} 
                   = \sqrt{\Re{Z_{ANT}\cdot R_{LNA}}} 
-                  = \sqrt{\SI{50}{\ohm}\cdot R_{LNA}}
+                  = \sqrt{\qty{50}{\ohm}\cdot R_{LNA}}
         \end{equation}
                 
   \section{Modification of Class-E Match for Direct Tie Board Configuration}

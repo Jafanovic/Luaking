@@ -277,15 +277,15 @@
   \section{Numerické řešení rovnic}\label{fyz:IchapIXsecVI}
     Pusťme se nyní do skutečného řešení naší úlohy. Zvolíme třeba \(\varepsilon = \num{0.100}\) 
     sekundy. Provedeme-li všechny výpočty a uvidíme, že \(\varepsilon\) nebylo dost malé, můžeme se 
-    vrátit a výpočty provádět s \(\varepsilon = \SI{0.010}{\s}\). Ptáme se, jaké je 
+    vrátit a výpočty provádět s \(\varepsilon = \qty{0.010}{\s}\). Ptáme se, jaké je 
     \(x(\num{0.1})\), vycházíme-li z počáteční hodnoty \(x(0) = \num{1.00}\). Bude rovno původní 
-    poloze \(x(0)\) zvětšené o rychlost (která je nulová) násobenou \SI{0.10}{\s}. Proto je 
+    poloze \(x(0)\) zvětšené o rychlost (která je nulová) násobenou \qty{0.10}{\s}. Proto je 
     \(x(0,1)\) stále rovno \num{1.00}, neboť pohyb ještě nezačal. Nová rychlost v čase 
-    \SI{0.10}{\s} bude rovna původní rychlosti \(v(0) = 0\) zvětšené o součin \(\varepsilon\) a 
+    \qty{0.10}{\s} bude rovna původní rychlosti \(v(0) = 0\) zvětšené o součin \(\varepsilon\) a 
     zrychlení. Zrychlení je \(-x(0) = \num{-1.00}\). Je tedy
     \begin{align*}
       v(\num{0.1}) &= \num{0.00} - \num{0.10}\cdot\num{1.00} = -\num{0.10}. \\ 
-      \shortintertext{V čase \SI{0.20}{\s} máme}
+      \shortintertext{V čase \qty{0.20}{\s} máme}
       x(\num{0.2}) &= x(0,1) + \varepsilon v(0,1)   \\
                    &= \num{1.00} - \num{0.10}\cdot\num{0.10} = \num{0.99}   \\
       \shortintertext{a dále}
@@ -294,11 +294,11 @@
     \end{align*}
     V tomto procesu můžeme pokračovat, a tak vypočítat celý pohyb, což je naším úkolem. V praxi 
     však používáme určité triky, které nám umožní zvětšit přesnost. Kdybychom pokračovali v začatém 
-    postupu, získali bychom jen přibližný obraz o pohybu, neboť \(\varepsilon= \SI{0.100}{\s}\) je 
+    postupu, získali bychom jen přibližný obraz o pohybu, neboť \(\varepsilon= \qty{0.100}{\s}\) je 
     jen velmi hrubý krok. Pro zvýšení přesnosti bychom museli zvolit velmi malý interval, např. 
     \num{0.01}. Abychom tak prošli dostatečné dlouhý časový interval, museli bychom provést velké 
     množství početních cyklů. Práci si proto zorganizujeme tak, abychom zvýšili přesnost výpočtu 
-    při původním intervalu \(\varepsilon= \SI{0.10}{\s}\). Toho lze dosáhnout rafinovaným zlepšením 
+    při původním intervalu \(\varepsilon= \qty{0.10}{\s}\). Toho lze dosáhnout rafinovaným zlepšením 
     metody analýzy.
 
     Všimněme si, že nová poloha je vlastně stará poloha zvětšená o součin intervalu a rychlosti. 
@@ -348,7 +348,7 @@
     malou rychlost směrem nahoru (zápornou) a zmenšuje se vzdálenost od rovnovážné polohy. 
     Zrychlení je pak sice trochu menší, ale ještě stále se zvyšuje rychlost. Rychlost se však 
     zvyšuje stále méně a méně, až při přechodu bodem \(x = 0\) přibližně v čase \(t = 
-    \SI{1.5}{\s}\) dojde k opačnému pohybu: poloha \(x\) bude záporná a zrychlení tedy kladné. 
+    \qty{1.5}{\s}\) dojde k opačnému pohybu: poloha \(x\) bude záporná a zrychlení tedy kladné. 
     Rychlost se zmenšuje. Bude zajímavé porovnat údaje v tabulce s funkcí \(x = \cos t\). Takové 
     porovnání najdeme na obr. \ref{fyz:fig0102}. Je vidět shoda s našimi výpočty s přesností na tři 
     platné číslice! Později uvidíme, že \(x = \cos t\) je přesné matematické řešení naší pohybové 
@@ -383,7 +383,7 @@
         \hline 
       \end{tabular}} 
       \caption{Řešení rovnice \(\der{v_x}{t} = -x\), interval \(\varepsilon =
-        \protect\SI{0.1}{\protect\s}\)  (\cite[s.~130]{Feynman01})}
+        \qty{0.1}{\s}\)  (\cite[s.~130]{Feynman01})}
       \label{fyz:tab006}
      \end{table}
 
@@ -539,8 +539,8 @@
       \label{fyz:tab001}
     \end{table*}
    
-    Trajektorie protíná osu \(x\) v okamžiku \(t = \SI{2.101}{\s}\); perioda oběhu je 
-    \SI{4.20}{\s}; \(v_x = 0\) v okamžiku \(t = \SI{2.086}{\s}\). Trajektorie vytíná na ose \(x\) 
+    Trajektorie protíná osu \(x\) v okamžiku \(t = \qty{2.101}{\s}\); perioda oběhu je 
+    \qty{4.20}{\s}; \(v_x = 0\) v okamžiku \(t = \qty{2.086}{\s}\). Trajektorie vytíná na ose \(x\) 
     úsek \(x= \num{1.022}\); délka hlavní poloosy je rovna \((\num{1.022} + \num{0.500})/2 = 
     \num{0.761}\); \(v_y = \num{0,796}\). Předpovídaná doba polovičního oběhu 
     \(\pi(\num{0.761})^{3/2} = \pi(\num{0.663}) = \num{2.082}\).
@@ -583,9 +583,9 @@
       \label{fyz:fig0104}
     \end{figure}
     
-    Kdyby počítači trvalo sčítání \SI{1}{\us}, násobení asi \SI{10}{\us}. Bude-li v 
+    Kdyby počítači trvalo sčítání \qty{1}{\us}, násobení asi \qty{10}{\us}. Bude-li v 
     jednom výpočetním cyklu nějaké úlohy například \num{30} násobení, pak takový cyklus potrvá 
-    \SI{300}{\us}. Pak můžeme za jednu sekundu provést \num{3000} výpočetních cyklů. Kdybychom 
+    \qty{300}{\us}. Pak můžeme za jednu sekundu provést \num{3000} výpočetních cyklů. Kdybychom 
     chtěli pracovat s přesností na jednu miliardtinu, potřebovali bychom \num{4e5} cyklů k pokrytí 
     jednoho oběhu planety kolem Slunce. To odpovídá výpočetnímu času 130 sekund, tedy asi dvěma 
     minutám. Touto metodou tedy můžeme vypočítat pohyb Jupiteru kolem Slunce s přesností na 

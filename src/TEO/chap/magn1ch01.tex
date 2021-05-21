@@ -42,7 +42,7 @@
     \begin{tcnote}
       Jaký je vztah jednotky magnetické indukce k ostatním základním jednotkám soustavy \textbf{SI}? 
       \begin{align*}
-        \SI{1}{\tesla}
+        \qty{1}{\tesla}
           &= 1\frac{V\cdot s}{m^2} = 1\frac{N}{A\cdot m} = 1\frac{Wb}{m^2}          \\
           &= 1\frac{kg}{C\cdot s} = 1\frac{kg}{A\cdot s^2} = 1\frac{N\cdot s}{C \cdot m}
       \end{align*}
@@ -685,9 +685,10 @@
       \begin{equation}\label{TEO:eq113}
         \int_{l}\vec{E}(t)\cdot \dd{\vec{l}} = -\der{}{t}\int_{S}\vec{B}(t)\cdot \dd{\vec{S}}.
       \end{equation}
-      Jednotky jsou [\si{V}; \si{\per\s},\si{\V\s\per\square\m}, \si{\m\square}]. Tím jsme získali
-      II. Maxwellovu rovnici v \emph{integrálním} tvaru. Na levé straně rovnice (\ref{TEO:eq113})
-      převedeme křivkový integrál pomocí \textbf{Stokesovy věty} na integrál plošný:
+      Jednotky jsou [\unit{\V}; \unit{\per\s},\unit{\V\s\per\square\m}, \unit{\square\m}]. Tím jsme
+      získali II. Maxwellovu rovnici v \emph{integrálním} tvaru. Na levé straně rovnice
+      (\ref{TEO:eq113}) převedeme křivkový integrál pomocí \textbf{Stokesovy věty} na integrál
+      plošný:
       \begin{equation*}
         \int_{l}\vec{E}(t)\cdot \dd{\vec{l}} = \int_{S}\rot{E}(t)\cdot \dd{\vec{S}}.
       \end{equation*}
@@ -702,7 +703,7 @@
       navzájem:
       \begin{equation*}
         \rot{E}(t) = -\der{\vec{B}(t)}{t} \quad 
-          [\si{\V\per\square\m}; \si{\V\s\per\square\m}, \si{\per\s}].
+          [\unit{\V\per\square\m}; \unit{\V\s\per\square\m}, \unit{\per\s}].
       \end{equation*}
       Tak jsme získali \textbf{II. Maxwellovu rovnici v diferenciálním tvaru}.
       
@@ -716,13 +717,12 @@
           dS_z= \dd{x}\cdot \dd{y}.
         \end{equation*}
               
-        Ploška \(dS\) je součásti roviny \(x-y\). Levý přední roh plochy má souřadnice \((x,y)\). 
-        pravý zadní roh má souřadnice \((x+\dd{x}, y+\dd{y})\). Z hlediska topologie se opět jedná o 
-        \emph{orientovanou} a \emph{uzavřenou plochu}, která je ohraničena hraniční křivkou \(l\). 
-        Kladný smysl oběhu křivky je zvolen \emph{proti} směru hodinových ručiček (pravotočivý 
-        šroub v souřadné soustavě \(x, y, z\)). Křivka \(l\) se skládá ze čtyř \emph{hran} 
-        označených \(a, b, c, d\). Na hrany \(a, c\) působí složky \(E_x\), \(E_x+dE_x\) 
-        elektrického pole. Na hrany 
+        Ploška \(dS\) je součásti roviny \(x-y\). Levý přední roh plochy má souřadnice \((x,y)\).
+        pravý zadní roh má souřadnice \((x+\dd{x}, y+\dd{y})\). Z hlediska topologie se opět jedná o
+        \emph{orientovanou} a \emph{uzavřenou plochu}, která je ohraničena hraniční křivkou \(l\).
+        Kladný smysl oběhu křivky je zvolen \emph{proti} směru hodinových ručiček (pravotočivý šroub
+        v souřadné soustavě \(x, y, z\)). Křivka \(l\) se skládá ze čtyř \emph{hran} označených \(a,
+        b, c, d\). Na hrany \(a, c\) působí složky \(E_x\), \(E_x+dE_x\) elektrického pole. Na hrany
         \(b, d\) působí složky \(E_y\),\(E_y + dE_y\), Složky mají tyto vlastnosti:
         \begin{itemize}[noitemsep]
           \item Složka \(E_x\) se mění podél souřadné osy \(y\) se strmostí, která je rovna 
@@ -777,7 +777,7 @@
                        = \frac{\dd{u_z}}{dS_z}                         \nonumber  \\
                       &= \frac{du_a + du_b + du_c + du_d}{dS_z}.       \label{TEO:eq117}
         \end{align}
-        Jednotky jsou [\si{\V\per\square\m}; \si{\V\per\m}, \si{\per\m}]. Ostatní dvě složky získáme
+        Jednotky jsou [\unit{\V\per\square\m}; \unit{\V\per\m}, \unit{\per\m}]. Ostatní dvě složky získáme
         systematickou cyklickou záměnou všech indexů. Poznamenejme, že elementární napětí
         \(\dd{u_z}\) na obvodu diferenciální smyčky (\(dS_z\) se též nazývá \emph{elementární
         cirkulací vektoru} \(\vec{E}\). Z uvedených jednotek je zřejmé, že \(\rot{E}\) má význam
@@ -941,7 +941,7 @@
         Analogicky k elektrickému napětí \(u\) byl v magnetismu zaveden pojem \textbf{magnetického 
         napětí} \(u_m\):
         \begin{equation}\label{TEO:eq124}
-          u_m \equiv i = \int_l \vec{H}\cdot \dd{\vec{l}} \quad [\si{\A}; \si{\A\per\m}, \si{m}].
+          u_m \equiv i = \int_l \vec{H}\cdot \dd{\vec{l}} \quad [\unit{\A}; \unit{\A\per\m}, \unit{m}].
         \end{equation} 
         Z rozměrů fyzikálních jednotek plyne, že magnetické napětí má význam celkového proudu \(i\)
         protékajícího plochou \(S\), která je ohraničena uzavřenou hraniční křivkou \(l\). Velikost
@@ -986,10 +986,10 @@
         \sisetup{per-mode=fraction}
         \begin{align}
           \rot{H} &= \vec{J}   \quad 
-            \left[\si{\A\per\square\m}\right], \quad\text{nebo}              \label{TEO:eq131a} \\
+            \left[\unit{\A\per\square\m}\right], \quad\text{nebo}              \label{TEO:eq131a} \\
           \rot{H} &= \vec{J} + \pder{\vec{D}}{t}. \quad
-          \left[\si{\A\per\square\m}; \si{\A\per\square\m},
-            \si{\A\s\per\square\m}, \si{\per\s}\right]                       \label{TEO:eq131b}
+          \left[\unit{\A\per\square\m}; \unit{\A\per\square\m},
+            \unit{\A\s\per\square\m}, \unit{\per\s}\right]                       \label{TEO:eq131b}
         \end{align}
       \end{subequations}
       Tím jsme získali I. Maxwellovu rovnici v \emph{diferenciálním} tvaru. Posuvný dielektrický
@@ -1002,14 +1002,14 @@
                       = \frac{\dd{u_z}}{dS_z}                                                  \\
                      &= \frac{du_a + du_b + du_c + du_d}{dS_z}.
       \end{align*}
-      Jednotky jsou [\si{\V\per\m^2}; \si{\V\per\m}, \si{\per\m}]. Pro \emph{z}-složku vektoru
+      Jednotky jsou [\unit{\V\per\m^2}; \unit{\V\per\m}, \unit{\per\m}]. Pro \emph{z}-složku vektoru
       \(\rot{H}\) lze psát analogicky:
       \begin{align*}
         (\rot{H})_z &= \left(\pder{H_y}{x} - \pder{H_x}{y}\right)
                      = \frac{di_z}{dS_z}                                                   \\
                     &= \frac{di_a + di_b + di_c + di_d}{dS_z} = J_z.
       \end{align*}
-      Jednotky jsou [\si{\A\per\m^2}; \si{\A\per\m}, \si{\per\m}].
+      Jednotky jsou [\unit{\A\per\m^2}; \unit{\A\per\m}, \unit{\per\m}].
 
       \luagraphic[0.8]{teo_fig057.png}{Geometrická interpretace \emph{z}-složky \((\rot{H}_z)\)
         vektoru \(\rot{H}\).}{teo:fig057}
@@ -1194,7 +1194,7 @@
       \item Siločáry elektrické intenzity \(\vec{E}\) nebo \(\vec{D}\) jsou \emph{neuzavřené} 
             křivky, které mají začátek ve „zřídlu“ +Q a konec ve „zřídlu“ -Q.
     
-      \item Siločáry magnetické intenzity \(\vec{H}\) nebo \(\vec{B}\) jsou naopak \emph{uzavřené} 
+      \item Siločáry magnetické intenzity \(\vec{H}\) nebo \(\vec{B}\) jsou naopak \emph{uzavřené}
             křivky (tj. „víry“), které  nemají ani začátek ani konec, protože neexistuje magnetický
             náboj v podobě magnetického monopolu. V magnetismu tedy neexistuje analogie v podobě
             „+zřídla“ a „-zřídla“. Odtud plyne, že objemová hustota magnetických monopolů
@@ -1243,16 +1243,16 @@
     \end{equation*} 
     Celkový tok plochou \(S\) je tedy opravdu nulový.
     
-  \section{Biotův-Savartův zákon}\label{ES:sec10}
-    \textsc{H. Ch. Oersted}\footnote{Hans Christian Oersted (1777-1851), fyzik a chemik, působil na
-    univerzitě v Kodani. Ve víře v jednotnou přírodní sílu hledal souvislosti mezi přírodními jevy
-    na první pohled nesouvisejícími.} zveřejnil v roce 1820 své experimentální výsledky, týkající se
-    silového působení elektrického proudu na magnetku kompasu. Jeho výsledky však byly pouze
-    kvalitativní. Zanedlouho poté odvodili \textsc{J. B. Biot}\footnote{Jean Baptisté Biot
-    (1774-1862), fyzik, působil na Sorboně. Zabýval se elektrodynamikou a optikou.} se \textsc{F.
-    Savartem}\footnote{Felix Savart (1791-1841), lékař, později působil jako fyzik na Sorboně.
-    Zabýval se elektrodynamikou a akustikou.} na základě složitých experimentů kvantitativní vztah
-    pro výpočet síly působící na magnetku, který upravil Laplace do tvaru
+  \section{Biotův-Savartův zákon}\label{ES:sec10} \textsc{H. Ch. Oersted}\footnote{Hans Christian
+    Oersted (1777-1851), fyzik a chemik, působil na univerzitě v Kodani. Ve víře v jednotnou
+    přírodní sílu hledal souvislosti mezi přírodními jevy na první pohled nesouvisejícími.}
+    zveřejnil v roce 1820 své experimentální výsledky, týkající se silového působení elektrického
+    proudu na magnetku kompasu. Jeho výsledky však byly pouze kvalitativní. Zanedlouho poté odvodili
+    \textsc{J. B. Biot}\footnote{Jean Baptisté Biot (1774-1862), fyzik, působil na Sorboně. Zabýval
+    se elektrodynamikou a optikou.} se \textsc{F. Savartem}\footnote{Felix Savart (1791-1841),
+    lékař, později působil jako fyzik na Sorboně. Zabýval se elektrodynamikou a akustikou.} na
+    základě složitých experimentů kvantitativní vztah pro výpočet síly působící na magnetku, který
+    upravil Laplace do tvaru
     \begin{equation}\label{TEO:eq133}
       d\vec{F} = KI\frac{\dd{\vec{l}}\times \vec{r}}{r^3}
     \end{equation} 
@@ -1331,12 +1331,12 @@
     Jiným zvláštním případem, vykazujícím geometrickou symetrii, je výpočet pole v rotační ose
     kruhového závitu nebo válcové cívky ( např. \emph{Helmholtzovy cívky}). 
     
-  \section{Elektromagnetické síly}\label{ES:sec11}
-    Cílem této kapitoly je ukázat jednotné fyzikální principy vedoucí ke vzniku mechanických sil.
+  \section{Elektromagnetické síly}\label{ES:sec11} Cílem této kapitoly je ukázat jednotné fyzikální
+    principy vedoucí ke vzniku mechanických sil.
     
     \subsection{Vznik mechanických sil v elektromagnetickém poli}
-      Koná-li síla \(F\) práci na dráze \(l\) a mění-li během pohybu svoji velikost, nelze použít k 
-      výpočtu mechanické práce rovnici \(W_{mech}= Fl\), nýbrž je nutno použít její diferenciální 
+      Koná-li síla \(F\) práci na dráze \(l\) a mění-li během pohybu svoji velikost, nelze použít k
+      výpočtu mechanické práce rovnici \(W_{mech}= Fl\), nýbrž je nutno použít její diferenciální
       obdobu
       \begin{equation}\label{TEO:eq136}
         dW_{mech} = Fdl
@@ -1386,13 +1386,13 @@
           &= \frac{W}{S_{Fe}l} = \frac{1}{2}i^2N^2\mu_0\frac{1}{l^2}              \\
           &= \frac{1}{2}H^2\mu_0 = \frac{1}{2}BH = \frac{1}{2}\frac{B^2}{\mu_0}.
       \end{align*}
-      Podobně v případě vzduchového kondenzátoru lze sílu určit pomocí elektrostatické energie 
+      Podobně v případě vzduchového kondenzátoru lze sílu určit pomocí elektrostatické energie
       nashromážděné v prostoru mezi elektrodami:
       \begin{equation}\label{TEO:eq142}
         W = \frac{1}{2}u^2C = \frac{1}{2}u^2\varepsilon_0\frac{S}{l}.
       \end{equation}
-      Z rovnic (\ref{TEO:eq142}) a (\ref{TEO:eq138}) plyne, že ve vzduchové mezeře 
-      kondenzátoru vznikne síla
+      Z rovnic (\ref{TEO:eq142}) a (\ref{TEO:eq138}) plyne, že ve vzduchové mezeře kondenzátoru
+      vznikne síla
       \begin{align*}
         F  = \frac{dW}{dl} 
           &= \frac{1}{2}u^2\varepsilon_0\frac{S}{l^2}
@@ -1408,8 +1408,8 @@
           &= \frac{1}{2}DES          
            = \frac{1}{2}\frac{D^2}{\varepsilon_0}S.
       \end{align*}
-      Z rovnice (\ref{TEO:eq142}) vyplývá, že objemová hustota energie elektrického pole 
-      mezi elektrodami kondenzátoru je identicky rovna mechanickému tlaku:
+      Z rovnice (\ref{TEO:eq142}) vyplývá, že objemová hustota energie elektrického pole mezi
+      elektrodami kondenzátoru je identicky rovna mechanickému tlaku:
       \begin{align*}
         w  = \frac{W}{V} 
           &= \frac{W}{Sl} 
@@ -1417,7 +1417,7 @@
           &= \frac{1}{2}E^2\varepsilon_0 = \frac{1}{2}DE 
            = \frac{1}{2}\frac{D^2}{\varepsilon_0}.
       \end{align*}
-      Je zajímavé, že v případě elektromagnetu i kondenzátoru je tlak ve vzduchové mezeře roven 
+      Je zajímavé, že v případě elektromagnetu i kondenzátoru je tlak ve vzduchové mezeře roven
       objemové hustotě energie v téže mezeře, tj. \(p = w\).
       
       Pro dokreslení fyzikálních souvislostí porovnejme tento výsledek s termodynamikou plynů. U 
@@ -1432,23 +1432,23 @@
       směru\footnote{Předpokládáme, že pólové nástavce jsou v zákrytu. Při vychýleni jednoho z 
       nástavců do strany sice vznikne v mezeře i boční síla, ale to je zcela jiné geometrické 
       uspořádání, které neuvažujeme.}, proto platí \(p = w\). Nositelé \emph{elektromagnetických 
-      silových interakcí} jsou fotony\footnote{Na této skutečnosti je založena Feynmanova teorie 
-      kvantové elektrodynamiky.}. Ty plní ve vzduchové mezeře elektromagnetu nebo 
-      kondenzátoru podobnou roli jako molekuly plynu v nádobě. Rozdíl je pouze v tom, že vznikající 
-      síla je přitažlivá, nikoli odpudivá a že fotony působí v jediném směru (při dané geometrické 
+      silových interakcí} jsou fotony\footnote{Na této skutečnosti je založena Feynmanova teorie
+      kvantové elektrodynamiky.}. Ty plní ve vzduchové mezeře elektromagnetu nebo kondenzátoru
+      podobnou roli jako molekuly plynu v nádobě. Rozdíl je pouze v tom, že vznikající síla je
+      přitažlivá, nikoli odpudivá a že fotony působí v jediném směru (při dané geometrické
       konfiguraci).
       
-      Analogicky k rovnici (\ref{TEO:eq141}) lze určit mechanický tlak uvnitř železného 
-      jádra elektromagnetu, lokalizovaný ve \emph{vnitřním objemu železa} o relativní permeabilitě 
+      Analogicky k rovnici (\ref{TEO:eq141}) lze určit mechanický tlak uvnitř železného jádra
+      elektromagnetu, lokalizovaný ve \emph{vnitřním objemu železa} o relativní permeabilitě
       \(\mu_{r_{Fe}}\)
       \begin{equation}\label{TEO:eq143}
        p = \frac{1}{2}\frac{B^2}{\mu_0\mu_{r_{Fe}}}.
       \end{equation}
-      Vnitřní mechanický tlak v železe je vnějšímu pozorovateli experimentálně nedostupný. Nicméně 
-      existuje a vidíme, že je řádově 2000krát menší oproti tlaku v mezeře. Stejný je i poměr 
-      hustot energií v železe a v mezeře. To nás plně oprávnilo k původnímu zanedbání železa při 
-      výpočtu síly. Všimněme si, že při \emph{konstantním} toku \(\Phi = BS_{Fe} = \text{konst}\). 
-      platí tyto zákonitosti:
+      Vnitřní mechanický tlak v železe je vnějšímu pozorovateli experimentálně nedostupný. Nicméně
+      existuje a vidíme, že je řádově 2000krát menší oproti tlaku v mezeře. Stejný je i poměr hustot
+      energií v železe a v mezeře. To nás plně oprávnilo k původnímu zanedbání železa při výpočtu
+      síly. Všimněme si, že při \emph{konstantním} toku \(\Phi = BS_{Fe} = \text{konst}\). platí
+      tyto zákonitosti:
       \begin{itemize}[noitemsep]
         \item Magnetická síla je tím menší, čím je permeabilita obvodu větší, viz rovnice     
               (\ref{TEO:eq143}).
@@ -1460,40 +1460,40 @@
       \begin{itemize}[noitemsep]
         \item Magnetická síla, tedy i potenciální energie soustavy, je tím menší, čím větší je    
               magnetická vodivost obvodu.
-        \item Tlakové pole vznikající v magnetickém obvodu zaujme vždy takové prostorové rozložení, 
-              které se snaží zdeformovat obvod do tvaru, v němž je potenciální energie obvodu co 
-              nejmenší\footnote{Z podobných důvodů působí síla na těleso umístěné v gravitačním 
-              poli. Gravitační síla má takový směr. že se snaží zmenšit potenciální energii \(mgh\) 
+        \item Tlakové pole vznikající v magnetickém obvodu zaujme vždy takové prostorové rozložení,
+              které se snaží zdeformovat obvod do tvaru, v němž je potenciální energie obvodu co
+              nejmenší\footnote{Z podobných důvodů působí síla na těleso umístěné v gravitačním
+              poli. Gravitační síla má takový směr. že se snaží zmenšit potenciální energii \(mgh\)
               tělesa na nulu.}, tj. v němž je magnetická vodivost obvodu co největší.
       \end{itemize}
       
       V důsledku obou zobecněných zákonitostí vznikají následující jevy:
       \begin{itemize}[noitemsep]
-        \item Je-li součástí obvodu vzduchová mezera, tlakové pole se snaží zkrátit její délku na 
+        \item Je-li součástí obvodu vzduchová mezera, tlakové pole se snaží zkrátit její délku na
               nulu.
         \item Proudovodič ve tvaru uzavřené smyčky, umístěný volně v prostoru, se tlakové pole   
               snaží \emph{roztáhnout} do co největší plochy, tj. napnout vodič do kružnice.
-        \item Dva paralelní vodiče, kterými protékají proudy \emph{opačných} směrů, se 
-              \emph{odpuzuji} (v podstatě se jedná o podlouhlou uzavřenou smyčku z předchozího 
-              bodu). U transformátoru se odpuzuje sekundární vinutí od primárního (opačné směry 
-              proudů). Podobně vzduchová cívka napájená střídavým proudem se odpuzuje od kovové 
+        \item Dva paralelní vodiče, kterými protékají proudy \emph{opačných} směrů, se
+              \emph{odpuzuji} (v podstatě se jedná o podlouhlou uzavřenou smyčku z předchozího
+              bodu). U transformátoru se odpuzuje sekundární vinutí od primárního (opačné směry
+              proudů). Podobně vzduchová cívka napájená střídavým proudem se odpuzuje od kovové
               nemagnetické desky, ve které vznikají vířivé proudy.
         \item Dva paralelní vodiče, kterými protékají proudy \emph{souhlasných} směrů, se 
               \emph{přitahuji}. U transformátoru se vzájemně přitahují závity téhož vinutí.
       \end{itemize}
       
-      Z uvedených skutečností je zřejmé, že existence magnetické síly nesouvisí s přítomností 
-      železa. V magnetickém obvodu, obsahujícím společně železo i vzduchovou mezeru, plní železo 
-      roli pouhého „soustřeďovače siločar“ do objemu vzduchové mezery. V mezeře se pak jedná o 
-      silovou interakci čistě mezi magnetickým \emph{polem} a \emph{vakuem}. Pro lepší pochopení 
-      elektromagnetických sil je vhodné nahlížet na vakuum jako na „pružný materiál“\footnote{Při 
-      řešení teoretických fyzikálních problémů je často užitečný „inženýrský přistup“. Z 
-      psychologických důvodů proto není na škodu považovat vakuum za plnohodnotný „konstrukční“ 
-      materiál, u kterého známe s jistotou tři jeho materiálové konstanty: \(\varepsilon_0\), 
-      \(\mu_0\) a měrnou hmotnost \(\varrho = 0\).}, který je magnetickým polem 
-      deformován do takového tvaru, aby magnetická vodivost tohoto „materiálu“ byla co 
-      \emph{největší}. Jinak řečeno, aktivní objem vakua je silou nucen zaujmout takový tvar, aby 
-      celková potenciální energie pole byla co \emph{nejmenší}.
+      Z uvedených skutečností je zřejmé, že existence magnetické síly nesouvisí s přítomností
+      železa. V magnetickém obvodu, obsahujícím společně železo i vzduchovou mezeru, plní železo
+      roli pouhého „soustřeďovače siločar“ do objemu vzduchové mezery. V mezeře se pak jedná o
+      silovou interakci čistě mezi magnetickým \emph{polem} a \emph{vakuem}. Pro lepší pochopení
+      elektromagnetických sil je vhodné nahlížet na vakuum jako na „pružný materiál“\footnote{Při
+      řešení teoretických fyzikálních problémů je často užitečný „inženýrský přistup“. Z
+      psychologických důvodů proto není na škodu považovat vakuum za plnohodnotný „konstrukční
+      “materiál, u kterého známe s jistotou tři jeho materiálové konstanty: \(\varepsilon_0\),
+      \(\mu_0\) a měrnou hmotnost \(\varrho = 0\).}, který je magnetickým polem deformován do
+      takového tvaru, aby magnetická vodivost tohoto „materiálu“ byla co \emph{největší}. Jinak
+      řečeno, aktivní objem vakua je silou nucen zaujmout takový tvar, aby celková potenciální
+      energie pole byla co \emph{nejmenší}.
       
       V	případě \emph{rotačního} pohybuje možno modifikovat rovnici (\ref{TEO:eq138}) pro 
       výpočet \emph{momentu síly}. Stačí vynásobit obě strany rovnice délkou ramena \(r\), na němž 
@@ -1507,20 +1507,19 @@
       \begin{equation*}
         \boxed{M = \frac{dW_{mech}}{d\alpha} = \frac{dW}{d\alpha}}
       \end{equation*}
-      kde \(\alpha\) je úhel natočení. Rovnice je vhodná pro přímý výpočet momentu všech 
-      \emph{reluktančních motorů}, jejichž princip je založen na tom, že magnetická vodivost 
+      kde \(\alpha\) je úhel natočení. Rovnice je vhodná pro přímý výpočet momentu všech
+      \emph{reluktančních motorů}, jejichž princip je založen na tom, že magnetická vodivost
       vzduchové mezery se výrazně mění s úhlem natočení hřídele.
       
-      Rovnici (\ref{TEO:eq138}) lze interpretovat tak, že síla je rovna \emph{strmosti}, s 
-      jakou se mění energie soustavy v závislosti na změně délkové souřadnice \(l\). Ve složitějším 
-      geometrickém uspořádání soustavy lze rovnici (\ref{TEO:eq138}) zobecnit do vektorového 
-      tvaru
+      Rovnici (\ref{TEO:eq138}) lze interpretovat tak, že síla je rovna \emph{strmosti}, s jakou se
+      mění energie soustavy v závislosti na změně délkové souřadnice \(l\). Ve složitějším
+      geometrickém uspořádání soustavy lze rovnici (\ref{TEO:eq138}) zobecnit do vektorového tvaru
       \begin{equation*}
        \vec{F} = -\vec{i}\frac{dW}{\dd{x}} -\vec{j}\frac{dW}{\dd{y}} -\vec{k}\frac{dW}{\dd{z}} 
                = - \grad{W},
       \end{equation*}
-      kde \(\vec{i}, \vec{j}, \vec{k},\) jsou jednotkové vektory ve směru příslušných os. Síla je 
-      pak nejobecněji definována jako záporně vzatý gradient (vektor) ze skalární funkce 
+      kde \(\vec{i}, \vec{j}, \vec{k},\) jsou jednotkové vektory ve směru příslušných os. Síla je
+      pak nejobecněji definována jako záporně vzatý gradient (vektor) ze skalární funkce
       \(W(x,y,z)\).
       
     \subsection{Lorentzova síla}
@@ -1529,28 +1528,27 @@
       \begin{equation}\label{TEO:eq144}
         \vec{F}=q(\vec{E}+\vec{v}\times\vec{B}),
       \end{equation}
-      ve které první člen vyjadřuje Coulombovu\footnote{Charles Augustin de Coulomb (1736-1806), 
-      absolvent vojenské školy v Paříži. Zákon síly mezi dvěma bodovými náboji odhalil v období 
-      1785 až 1789 v soukromí. Později jmenován členem pařížské Akademie věd.} elektrostatickou 
-      sílu, působící na náboj \(Q\) umístěný v elektrickém poli \(\vec{E}\) a druhý člen vyjadřuje 
-      Lorentzovu\footnote{Henrik Antoon Lorentz (1853-1928), teoretický fyzik, působil na 
-      univerzitě v Leidenu. R. 1902 obdržel Nobelovu cenu za fyziku.} sílu, která působí na 
-      náboj, pohybující se relativní rychlostí \(v\) vůči magnetickému poli \(B\). Lorentz 
-      formuloval obě složky síly zcela obecně, tj. pro náboj pohybující se i relativistickou 
-      rychlostí \(v \rightarrow c\), a to pomocí známých Lorentzových transformací. Pro 
-      dokreslení historických souvislostí lze dodat, že Coulombův zákon pro náboje pohybující se 
-      nižšími nerelativistickými rychlostmi korigoval už Weber ve druhé polovině 19. stol.
-      a elektrické pole E, vytvořené relativisticky se pohybujícím nábojem, odvodil 
-      Heaviside\footnote{Oliver Heaviside (1850-1925), technik britské telegrafní společnosti, 
-      vynálezce duplexního telegrafu. Později soukromý vědec, samouk.} již r. 1888, tj. 17 let před 
-      vznikem speciální teorie relativity. 
+      ve které první člen vyjadřuje Coulombovu\footnote{Charles Augustin de Coulomb (1736-1806),
+      absolvent vojenské školy v Paříži. Zákon síly mezi dvěma bodovými náboji odhalil v období 1785
+      až 1789 v soukromí. Později jmenován členem pařížské Akademie věd.} elektrostatickou sílu,
+      působící na náboj \(Q\) umístěný v elektrickém poli \(\vec{E}\) a druhý člen vyjadřuje
+      Lorentzovu\footnote{Henrik Antoon Lorentz (1853-1928), teoretický fyzik, působil na univerzitě
+      v Leidenu. R. 1902 obdržel Nobelovu cenu za fyziku.} sílu, která působí na náboj, pohybující
+      se relativní rychlostí \(v\) vůči magnetickému poli \(B\). Lorentz formuloval obě složky síly
+      zcela obecně, tj. pro náboj pohybující se i relativistickou rychlostí \(v \rightarrow c\), a
+      to pomocí známých Lorentzových transformací. Pro dokreslení historických souvislostí lze
+      dodat, že Coulombův zákon pro náboje pohybující se nižšími nerelativistickými rychlostmi
+      korigoval už Weber ve druhé polovině 19. stol. a elektrické pole E, vytvořené relativisticky
+      se pohybujícím nábojem, odvodil Heaviside\footnote{Oliver Heaviside (1850-1925), technik
+      britské telegrafní společnosti, vynálezce duplexního telegrafu. Později soukromý vědec,
+      samouk.} již r. 1888, tj. 17 let před vznikem speciální teorie relativity. 
       
-      V běžné inženýrské praxi lze zcela zanedbat Coulombovy síly oproti silám Lorentzovým. Navíc 
-      je průměrná transportní (nikoli okamžitá) rychlost volných elektronů v kovech velmi malá, 
-      řádově dosahuje \si{\cm/\s}, tudíž není nutno uvažovat relativistické efekty. Pak 
-      můžeme uvažovat pouze druhý člen v rovnici (\ref{TEO:eq144}), pomocí něhož lze snadno 
-      odvodit elementární Lorentzovu sílu \(dF\), působící na vodič o diferenciální délce \(dl\), 
-      který se nachází v magnetickém poli \(B\).
+      V běžné inženýrské praxi lze zcela zanedbat Coulombovy síly oproti silám Lorentzovým. Navíc je
+      průměrná transportní (nikoli okamžitá) rychlost volných elektronů v kovech velmi malá, řádově
+      dosahuje \unit{\cm/\s}, tudíž není nutno uvažovat relativistické efekty. Pak můžeme uvažovat
+      pouze druhý člen v rovnici (\ref{TEO:eq144}), pomocí něhož lze snadno odvodit elementární
+      Lorentzovu sílu \(dF\), působící na vodič o diferenciální délce \(dl\), který se nachází v
+      magnetickém poli \(B\).
        
       Protéká-li vodičem proud \(I\), z rovnice plyne:
       \begin{equation*}
@@ -1559,8 +1557,8 @@
                  = I\dd{t}\,\frac{\dd{\vec{l}}}{\dd{t}}\times\vec{B}
                  = I\,\vec{l}\times\vec{B}.
       \end{equation*}
-      Díky vektorovému součinu je síla \(d\vec{F}\) vždy \emph{kolmá} na oba vektory \(\dd{\vec{l}}\) a 
-      \(\vec{B}\) a v absolutní hodnotě má velikost
+      Díky vektorovému součinu je síla \(d\vec{F}\) vždy \emph{kolmá} na oba vektory
+      \(\dd{\vec{l}}\) a \(\vec{B}\) a v absolutní hodnotě má velikost
       \begin{equation*}
               dF=I\,dl\,B\sin\alpha,
       \end{equation*}
@@ -1604,18 +1602,16 @@
 
 
     \subsection{Síla mezi dvěma dlouhými rovnoběžnými vodiči}      
-      V kapitole \ref{ES:sec10} bylo pomocí Biotova-Savartova zákona odvozeno magnetické pole \(B\) 
-      dlouhého přímého vodiče. Siločáry pole máji tvar soustředných kružnic, v jejichž středu leží 
-      příslušný vodič. Protéká-li vodičem označeným 1 proud \(I_1\) pak vodič vybudí ve vzdálenosti 
-      \(R\) magnetickou indukci
-      pro moment síly:
+      V kapitole \ref{ES:sec10} bylo pomocí Biotova-Savartova zákona odvozeno magnetické pole \(B\)
+      dlouhého přímého vodiče. Siločáry pole máji tvar soustředných kružnic, v jejichž středu leží
+      příslušný vodič. Protéká-li vodičem označeným 1 proud \(I_1\) pak vodič vybudí ve vzdálenosti
+      \(R\) magnetickou indukci pro moment síly:
       \begin{equation}\label{TEO:eq146}
         B_1 = \mu_0\frac{I_1}{2\pi R}.
       \end{equation}
-      Ve vzdálenosti \(R\) umístíme rovnoběžně s vodičem 1 další vodič, označený 2. Pak se vodič 2 
-      nachází v magnetickém poli o velikosti \(B_1\). Protéká-li vodičem 2 proud \(I_2\), pak podle 
-      rovnice (\ref{TEO:eq145}) na něj působí síla
-       pro moment síly:
+      Ve vzdálenosti \(R\) umístíme rovnoběžně s vodičem 1 další vodič, označený 2. Pak se vodič 2
+      nachází v magnetickém poli o velikosti \(B_1\). Protéká-li vodičem 2 proud \(I_2\), pak podle
+      rovnice (\ref{TEO:eq145}) na něj působí síla pro moment síly:
       \begin{equation}\label{TEO:eq147}
         F_{1,2} = B_1 I_2 l = \mu_0\frac{I_1}{2\pi R}I_2 l.
       \end{equation}
@@ -1623,15 +1619,14 @@
       \begin{equation}\label{TEO:eq148}
         \frac{F_{1,2}}{l} = \mu_0\frac{I_1I_2}{2\pi R}.
       \end{equation}
-      Záměnou obou vodičů, tj. záměnou indexů v rovnicích (\ref{TEO:eq146}) a 
-      (\ref{TEO:eq147}) lze snadno dokázat, že mezi vodiči platí \emph{zákon akce a reakce} 
-      ve tvaru \(F_{1,2} = F_{2,1}\) . Síla je přitažlivá, mají-li oba proudy stejný směr, 
-      odpudivá, mají-li směr opačný. Rovnice (\ref{TEO:eq148}) slouží k \emph{dynamické 
-      definici} jednotky elektrického proudu \SI{1}{\A}:
+      Záměnou obou vodičů, tj. záměnou indexů v rovnicích (\ref{TEO:eq146}) a (\ref{TEO:eq147}) lze
+      snadno dokázat, že mezi vodiči platí \emph{zákon akce a reakce} ve tvaru \(F_{1,2} = F_{2,1}\)
+      . Síla je přitažlivá, mají-li oba proudy stejný směr, odpudivá, mají-li směr opačný. Rovnice
+      (\ref{TEO:eq148}) slouží k \emph{dynamické definici} jednotky elektrického proudu \qty{1}{\A}:
       
       Vakuum má z historických důvodů magnetickou permeabilitu
       \begin{equation*}
-        \mu_0= 4\pi\times10^{-7}\,\si{\henry/\m} \cong l,256\times10^{-6}\,\si{\henry/\m}.
+        \mu_0= 4\pi\times10^{-7}\,\unit{\henry\per\m} \cong l,256\times10^{-6}\,\unit{\henry\per\m}.
       \end{equation*}
       Protéká-li oběma rovnoběžnými dlouhými vodiči stejný proud \(I\), síla na jednotku délky 
       vodiče bude mít velikost

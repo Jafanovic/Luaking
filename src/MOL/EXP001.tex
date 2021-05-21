@@ -23,8 +23,8 @@ range-phrase = { \translate{to (numerical range)} },
     Postavme nízkopříkonový transceiver vhodný pro bezdrátový přenos dat na velké vzdálenosti mezi 
     řídicím systémem (embedded PC) a senzory. Parametry jsou následující:
     \begin{itemize}[noitemsep]
-      \item frekvence \SI{468}{\MHz}  
-      \item vzdálenost \SI{2000}{\meter} 
+      \item frekvence \qty{468}{\MHz}  
+      \item vzdálenost \qty{2000}{\meter} 
     \end{itemize}
     
     \begin{tcnote}
@@ -186,10 +186,10 @@ range-phrase = { \translate{to (numerical range)} },
         \item stanovit hodnoty \(L_0, C_0\) taky aby vznikl sériový rezonanční článek pro \(f_0\); 
         \item vypočítat hodnotu \(Z_{LOAD}\) na frekvenci \(f_0\). Je nutné do výpočtu zahrunout 
               také hodnotu tzv. \emph{shunt drain capacitance} 
-              (\(C_{SHUNT} = \sim\SI{2.5}{\pF}\)\footnote{v katalogovém listu bohužel není uvedena, 
+              (\(C_{SHUNT} = \sim\qty{2.5}{\pF}\)\footnote{v katalogovém listu bohužel není uvedena, 
               tato hodnota se uvádí pro Si4438 RFIC od Silicon Labs} okolo frekvence 490 MHz);
         \item stanovit hodnoty \(L_X\) a \(C_M\) pro dosažení přizpůsobení mezi impedancí antény 
-              \(R_{ANT} = \SI{50}{\ohm}\)) a vypočítanou hodnotu \(Z_{LOAD}\);
+              \(R_{ANT} = \qty{50}{\ohm}\)) a vypočítanou hodnotu \(Z_{LOAD}\);
         \item návrh dolní propusti (\emph{Low-pass filter});
         \item provést přizpůsobení vstupu RX - návrh 4-prvkového článku (tzv. balun), který má 
               dvě funkce: impedančně přizpůsobit a konvertovat anténní signál typu single-ended na 
@@ -215,9 +215,9 @@ range-phrase = { \translate{to (numerical range)} },
         
         Přesná hodnota indukčnosti tedy není kritická, avšak doporučují se následující hodnoty: 
         \begin{itemize}[noitemsep]
-          \item \(\SI{315}{\MHz} : \sim\SI{390}{\nano\henry}\)
-          \item \(\SI{470}{\MHz} : \sim\SI{220}{\nano\henry}\)
-          \item \(\SI{915}{\MHz} : \sim\SI{100}{\nano\henry}\)
+          \item \(\qty{315}{\MHz} : \sim\qty{390}{\nano\henry}\)
+          \item \(\qty{470}{\MHz} : \sim\qty{220}{\nano\henry}\)
+          \item \(\qty{915}{\MHz} : \sim\qty{100}{\nano\henry}\)
         \end{itemize}
         Těmto hodnotám plně vyhovují induktory o velikosti 0402 nebo 0603.
         
@@ -281,14 +281,14 @@ range-phrase = { \translate{to (numerical range)} },
         devices. Silicon Laboratories states that the value of this internal shunt drain 
         capacitance is approximately:          
         \begin{equation}\label{EXP001:eq_spirit03}
-          C_{SHUNT} \sim \SI{2.5}{pF}
+          C_{SHUNT} \sim \qty{2.5}{pF}
         \end{equation}          
         
         Assuming a desired operating frequency of Fo = 470 MHz as an example, the following value 
         for ZLOAD may be calculated:
         \begin{equation}\label{EXP001:eq_spirit04}
           Z_{LOAD(470\,MHz)} = 
-            \left(\frac{0.2815}{2\pi\cdot\SI{470}{MHz}\cdot\SI{2.5}{pF}}\right)e^{j49.0524°} =
+            \left(\frac{0.2815}{2\pi\cdot\qty{470}{MHz}\cdot\qty{2.5}{pF}}\right)e^{j49.0524°} =
             24.87 + j28.66\Omega
         \end{equation} 
         
@@ -302,7 +302,7 @@ range-phrase = { \translate{to (numerical range)} },
         Continuing the design example of 470 MHz and assuming a desired output power of +20 dBm 
         (100 mW), the required value of VDD\_PA may be calculated:
         \begin{equation}\label{EXP001:eq_spirit06}
-          V_{DD_{PA}} =\sqrt{\frac{\SI{0.1}{W}}{2\pi^2\SI{470}{MHz}\cdot\SI{2.5}{pF}}} = \SI{2.076}{V}
+          V_{DD_{PA}} =\sqrt{\frac{\qty{0.1}{W}}{2\pi^2\qty{470}{MHz}\cdot\qty{2.5}{pF}}} = \qty{2.076}{V}
         \end{equation}
         This equation states that if the voltage supplied to the top of pull-up inductor LCHOKE is 
         equal to 2.076 V and the previously-calculated value of load impedance ZLOAD is presented 
@@ -332,12 +332,12 @@ range-phrase = { \translate{to (numerical range)} },
         Continuing the design example of 470 MHz for +20 dBm output power, the following 
         calculations are made:
         \begin{equation}\label{EXP001:eq_spirit10}
-          I_{DD_{PA}} = 2\pi^2\cdot\SI{470}{MHz}\cdot\SI{2.5}{pF}\cdot\SI{2.076}{V} = \SI{48.16}{mA}
+          I_{DD_{PA}} = 2\pi^2\cdot\qty{470}{MHz}\cdot\qty{2.5}{pF}\cdot\qty{2.076}{V} = \qty{48.16}{mA}
         \end{equation} 
         Assuming a general chip supply voltage of VDD = 3.3 V, the required value of RDC may be 
         calculated as:
         \begin{equation}\label{EXP001:eq_spirit11}
-          R_{DC} = \frac{\SI{3.3}{V} - \SI{2.076}{V}}{\SI{48.16}{mA}}  = \SI{25.41}{\ohm}
+          R_{DC} = \frac{\qty{3.3}{V} - \qty{2.076}{V}}{\qty{48.16}{mA}}  = \qty{25.41}{\ohm}
         \end{equation} 
         
         Theoretically, this value of resistance must be placed in series with LCHOKE in order to 
@@ -422,7 +422,7 @@ range-phrase = { \translate{to (numerical range)} },
           \item Minimal insertion loss at the desired operating frequency
           \item Lowest filter order possible to achieve harmonic attenuation required to meet 
                 regulatory standard
-          \item impedance transformation (i.e. \SI{50}{\ohm} input and \SI{50}{\ohm} output 
+          \item impedance transformation (i.e. \qty{50}{\ohm} input and \qty{50}{\ohm} output 
                 impedance)          
         \end{itemize}
         
@@ -534,7 +534,7 @@ range-phrase = { \translate{to (numerical range)} },
       this as an acceptable trade-off for the reduction in the bill of materials (BOM).
       
       The RXp and RXn inputs of the Si446x/Si4362 RX LNA internally contain high value 
-      (~\SI{15}{k\ohm}) pull-down resistors to GND. As a result, supplying a dc voltage to these 
+      (~\qty{15}{k\ohm}) pull-down resistors to GND. As a result, supplying a dc voltage to these 
       pins is not recommended; use of external ac-coupling to these pins is suggested. This is 
       inherently supplied by capacitor CR2 of Figure \ref{EXP001:fig_spirit07}.
 
@@ -639,7 +639,7 @@ range-phrase = { \translate{to (numerical range)} },
         inductance LM is given by the following:
         
         \begin{equation}\label{EXP001:eq_spirit13}
-          L_M = \frac{1}{\omega_0\cdot\sqrt{\left(\dfrac{1}{\SI{50}{\ohm}\cdot R_{LNA}}\right) - 
+          L_M = \frac{1}{\omega_0\cdot\sqrt{\left(\dfrac{1}{\qty{50}{\ohm}\cdot R_{LNA}}\right) - 
                          \left(\dfrac{1}{R_{LNA}}\right)^2}}
         \end{equation}
         
@@ -667,7 +667,7 @@ range-phrase = { \translate{to (numerical range)} },
         the reactance along a line of constant resistance until arriving at the center of the Smith 
         Chart. The required value of total capacitance is given by the following:
         \begin{equation}\label{EXP001:eq_spirit15}
-          C_{TOTAL} = \frac{1}{\omega_0\cdot\SI{50}{\ohm}\sqrt{\dfrac{R_{LNA}}{\SI{50}{\ohm}}-1}}
+          C_{TOTAL} = \frac{1}{\omega_0\cdot\qty{50}{\ohm}\sqrt{\dfrac{R_{LNA}}{\qty{50}{\ohm}}-1}}
         \end{equation}
         Using this equation, or by employing graphical methods on the Smith Chart, the total series 
         capacitance required to reach the 50 Ω origin of the Smith Chart is found to be CTOTAL = 2.33 pF.
@@ -734,7 +734,7 @@ range-phrase = { \translate{to (numerical range)} },
         As the required value of inductance LM has already been determined, the required value for 
         CR1 follows immediately from the previously-derived equation for LM.
         \begin{equation}\label{EXP001:eq_spirit17}
-          C_{R1} = 2\cdot\frac{\sqrt{\frac{R_{LNA}}{\SI{50}{\ohm}}-1}}{\omega_0\cdot R_{LNA}}
+          C_{R1} = 2\cdot\frac{\sqrt{\frac{R_{LNA}}{\qty{50}{\ohm}}-1}}{\omega_0\cdot R_{LNA}}
         \end{equation}
         Using this equation, the value for this capacitor is determined to be CR1 = 4.16 pF. It is 
         then a simple matter to allocate the remaining portion of total required series capacitive 
@@ -855,7 +855,7 @@ range-phrase = { \translate{to (numerical range)} },
         
         \begin{align}
           L_{R2}  &= \frac{\sqrt{\Re{Z_{ANT}}\cdot R_{LNA}}}{\omega_0} 
-                   = \frac{\sqrt{\SI{50}{\ohm}\cdot R_{LNA}}}{\omega_0} 
+                   = \frac{\sqrt{\qty{50}{\ohm}\cdot R_{LNA}}}{\omega_0} 
                    \label{EXP001:eq_spirit20}   \\ 
           C_{R2}  &= \frac{1}{\omega_0^2\cdot L_{R2}}          \label{EXP001:eq_spirit21}   \\ 
           C_{R1}  &= 2\cdot C_{R2}                             \label{EXP001:eq_spirit22}   \\ 
@@ -917,7 +917,7 @@ range-phrase = { \translate{to (numerical range)} },
         \begin{equation}\label{EXP001:eq_spirit26}
           X_{LR2} = \omega_0\cdot L_{R2} 
                   = \sqrt{\Re{Z_{ANT}\cdot R_{LNA}}} 
-                  = \sqrt{\SI{50}{\ohm}\cdot R_{LNA}}
+                  = \sqrt{\qty{50}{\ohm}\cdot R_{LNA}}
         \end{equation}
         
         This equation states that the inductive reactance of LR2 is equal to the geometric mean of 
@@ -934,13 +934,13 @@ range-phrase = { \translate{to (numerical range)} },
           Q_{LNA} &= \frac{R_{LNA}}{X_{LM}} 
                    = \frac{R_{LNA}}{\omega_0\cdot L_{M}}    \nonumber \\
                   &= \frac{R_{LNA}}{2\omega_0\cdot L_{R2}} 
-                   = \frac{R_{LNA}}{2\sqrt{\SI{50}{\ohm}\cdot R_{LNA}}}
-                   = \sqrt[0,5]{\frac{R_{LNA}}{\SI{50}{\ohm}}}        \label{EXP001:eq_spirit27} \\ 
+                   = \frac{R_{LNA}}{2\sqrt{\qty{50}{\ohm}\cdot R_{LNA}}}
+                   = \sqrt[0,5]{\frac{R_{LNA}}{\qty{50}{\ohm}}}        \label{EXP001:eq_spirit27} \\ 
           Q_{ANT} &= \frac{X_{CR1}}{R_{ANT}} 
                    = \frac{X_{CR2}}{2\cdot R_{ANT}}         \nonumber \\
                   &= \frac{X_{LR2}}{2\cdot R_{ANT}} 
-                   = \frac{\sqrt{\SI{50}{\ohm}\cdot R_{LNA}}}{2\cdot \SI{50}{\ohm}}
-                   = \sqrt[\frac{1}{2}]{\frac{R_{LNA}}{\SI{50}{\ohm}}}  \label{EXP001:eq_spirit28}  
+                   = \frac{\sqrt{\qty{50}{\ohm}\cdot R_{LNA}}}{2\cdot \qty{50}{\ohm}}
+                   = \sqrt[\frac{1}{2}]{\frac{R_{LNA}}{\qty{50}{\ohm}}}  \label{EXP001:eq_spirit28}  
         \end{align}
         
         It is well known that the locus of all impedance points with the same Q-factor describes an 
@@ -965,8 +965,8 @@ range-phrase = { \translate{to (numerical range)} },
         Q value is ~1.6 as shown in Equation 
         \ref{EXP001:eq_spirit29}.
         \begin{equation}\label{EXP001:eq_spirit29}
-          Q_{LNA} = \sqrt[\frac{1}{2}]{\frac{R_{LNA}}{\SI{50}{\ohm}}}
-                  = \sqrt[\frac{1}{2}]{\frac{\SI{513}{\ohm}}{\SI{50}{\ohm}}}
+          Q_{LNA} = \sqrt[\frac{1}{2}]{\frac{R_{LNA}}{\qty{50}{\ohm}}}
+                  = \sqrt[\frac{1}{2}]{\frac{\qty{513}{\ohm}}{\qty{50}{\ohm}}}
                   = 1,60165
         \end{equation}
         
@@ -977,7 +977,7 @@ range-phrase = { \translate{to (numerical range)} },
         This then suggests a graphical solution to the problem of constructing a 4-element match network:
         \begin{itemize}[noitemsep]
           \item Plot both RLNA and RANT on the Smith Chart
-          \item Calculate \(Q_{LNA} = \sqrt[\frac{1}{2}]{\frac{R_{LNA}}{\SI{50}{\ohm}}}\)
+          \item Calculate \(Q_{LNA} = \sqrt[\frac{1}{2}]{\frac{R_{LNA}}{\qty{50}{\ohm}}}\)
           \item Construct a constant-Q ellipse on the Smith Chart with this value of Q
           \item Plot the intersection of the constant-RANT impedance circle (e.g., 50 circle) with 
                 this ellipse
@@ -1085,9 +1085,9 @@ range-phrase = { \translate{to (numerical range)} },
       Konektorem \textbf{typu N} (obr.\ref{EXP001:fig_Ncon}), byl vůbec první konektor určený pro 
       koaxiální kabel umožňující přenášet mikrovlnné signály. Tento konektor byl zaveden americkým 
       inženýrem Paulem Neillem v Bellových laboratořích kolem roku 1940, po kterém je i pojmenován. 
-      Pro svojí robustnost, byl původně určen pro signály do \SI{1}{\giga\hertz} ve vojenských 
-      aplikaci, ale v dnešní době běžně zvládá signály o frekvencích okolo \SI{11}{\giga\hertz}. 
-      Konektor se vyrábí s impedancí \SI{50}{\ohm} a \SI{70}{\ohm}.
+      Pro svojí robustnost, byl původně určen pro signály do \qty{1}{\giga\hertz} ve vojenských 
+      aplikaci, ale v dnešní době běžně zvládá signály o frekvencích okolo \qty{11}{\giga\hertz}. 
+      Konektor se vyrábí s impedancí \qty{50}{\ohm} a \qty{70}{\ohm}.
       
       \begin{figure}[ht!]    %\ref{EXP001:fig_Ncon}
         \centering  
@@ -1105,8 +1105,8 @@ range-phrase = { \translate{to (numerical range)} },
       Konektor \textbf{typu SMA} (\textbf{S}ub\textbf{M}iniature version \textbf{A}), byl navrhnut 
       v roce 1960. Jedná se o minimalistickou variantu konektoru se šroubovacím mechanismem, 
       dimenzovaným až pro 500 spojovacích cyklů. Použití ve zhoršených klimatických podmínkách se 
-      nedoporučuje. Konektor má impedanci \SI{50}{\ohm} a je možné jím přenášet signály do 
-      frekvence \SI{18}{\giga\hertz}.
+      nedoporučuje. Konektor má impedanci \qty{50}{\ohm} a je možné jím přenášet signály do 
+      frekvence \qty{18}{\giga\hertz}.
 
       \begin{wrapfigure}[12]{r}{5cm}   %\ref{ES:fig_amp_law}
         \centering
