@@ -469,9 +469,9 @@
 
     Nyní sestavíme tabulku, podle níž můžeme vypočítat všechny imaginární mocniny čísla \num{10},
     tj. příslušné \(x\) a \(y\). Začneme tím, že jako první mocnitel vezmeme \(1/1024\), o němž
-    předpokládáme, že je velmi přesně roven \(1 + \num{2.3025i}/1024\), tedy 
+    předpokládáme, že je velmi přesně roven \(1 + \complexnum{2.3025i}/1024\), tedy 
     \begin{equation}\label{fyz:eq700}
-      10^{i/1024}=\num{1.00000+0.0022486i},
+      10^{i/1024}=\complexnum{1.00000+0.0022486i},
     \end{equation}
   
     \begin{table}[ht!]
@@ -480,20 +480,20 @@
       \begin{tabular}{@{}l|lr@{}}
         \toprule
         mocnitel \(s\)   & \(\num{1024} s\)  & \multicolumn{1}{c}{\(10^{\imath s}\)}  \\ \hline
-        \(\imath/1024\) & \num{1   }        &  *\(\num{+1.00000+0.00225i}\)               \\
-        \(\imath/512 \) & \num{2   }        &   \(\num{+1.00000+0.00450i}\)               \\
-        \(\imath/256 \) & \num{4   }        &   \(\num{+0.99996+0.00900i}\)               \\
-        \(\imath/128 \) & \num{8   }        &   \(\num{+0.99984+0.01800i}\)               \\
-        \(\imath/64  \) & \num{16  }        &   \(\num{+0.99936+0.03599i}\)               \\
-        \(\imath/32  \) & \num{32  }        &   \(\num{+0.99742+0.07193i}\)               \\
-        \(\imath/16  \) & \num{64  }        &   \(\num{+0.98967+0.14349i}\)               \\
-        \(\imath/8   \) & \num{128 }        &   \(\num{+0.95885+0.28402i}\)               \\
-        \(\imath/4   \) & \num{256 }        &   \(\num{+0.83872+0.54467i}\)               \\
-        \(\imath/2   \) & \num{512 }        &   \(\num{+0.40679+0.91365i}\)               \\
-        \(\imath/1   \) & \num{1024}        &   \(\num{-0.66928+0.74332i}\)               \\ 
-                        & \multicolumn{2}{l}{* Má být \num{0.0022486i}}               \\\bottomrule
+        \(\imath/1024\) & \num{1   }        &  *\(\complexnum{+1.00000+0.00225i}\)    \\
+        \(\imath/512 \) & \num{2   }        &   \(\complexnum{+1.00000+0.00450i}\)    \\
+        \(\imath/256 \) & \num{4   }        &   \(\complexnum{+0.99996+0.00900i}\)    \\
+        \(\imath/128 \) & \num{8   }        &   \(\complexnum{+0.99984+0.01800i}\)    \\
+        \(\imath/64  \) & \num{16  }        &   \(\complexnum{+0.99936+0.03599i}\)    \\
+        \(\imath/32  \) & \num{32  }        &   \(\complexnum{+0.99742+0.07193i}\)    \\
+        \(\imath/16  \) & \num{64  }        &   \(\complexnum{+0.98967+0.14349i}\)    \\
+        \(\imath/8   \) & \num{128 }        &   \(\complexnum{+0.95885+0.28402i}\)    \\
+        \(\imath/4   \) & \num{256 }        &   \(\complexnum{+0.83872+0.54467i}\)    \\
+        \(\imath/2   \) & \num{512 }        &   \(\complexnum{+0.40679+0.91365i}\)    \\
+        \(\imath/1   \) & \num{1024}        &   \(\complexnum{-0.66928+0.74332i}\)    \\ 
+                        & \multicolumn{2}{l}{* Má být \complexnum{0.0022486i}}        \\\bottomrule
       \end{tabular}
-      \caption{Postupné druhé mocniny čísla \(10^{\imath/1024}=\num{1+0.0022486i}\)}
+      \caption{Postupné druhé mocniny čísla \(10^{\imath/1024}=\complexnum{1+0.0022486i}\)}
       \label{fyz:tab012}
     \end{table}
 
@@ -509,22 +509,23 @@
 
     Která čísla z tabulky \ref{fyz:tab012} musíme navzájem vynásobit, abychom dostali ryze
     imaginární číslo? Po několika pokusech zjistíme, že \(x\) bude nejmenší, když vynásobíme
-    „\num{512}“ a „\num{128}“. To nám dává \num{0.13056+0.99144i}. Dále zjistíme, že toto číslo
-    musíme vynásobit číslem, jehož imaginární část je přibližně rovna reálné části, kterou chceme
-    odstranit. Proto zvolíme „\num{64}“,jehož imaginární část je \num{0.14349}, neboť toto číslo je
-    nejblíže k \num{0.13056}. Dostáváme \num{-0.01350+0.99993i}. To jsme přestřelili, proto musíme
-    dělit \num{0.99996+0.00900i}. jak se to dělá? Změnou znaménka u \(\imath\) a vynásobením
-    \num{0.99996-0.00900i} (což nám pomůže, protože \(x^2 + y^2 =1\)).Budeme-li takto pokračovat,
-    zjistíme, že mocnitel, na který je třeba umocnit \num{10}, abychom dostali \(\imath\), je
+    „\num{512}“ a „\num{128}“. To nám dává \complexnum{0.13056+0.99144i}. Dále zjistíme, že toto
+    číslo musíme vynásobit číslem, jehož imaginární část je přibližně rovna reálné části, kterou
+    chceme odstranit. Proto zvolíme „\num{64}“,jehož imaginární část je \num{0.14349}, neboť toto
+    číslo je nejblíže k \num{0.13056}. Dostáváme \complexnum{-0.01350+0.99993i}. To jsme
+    přestřelili, proto musíme dělit \complexnum{0.99996+0.00900i}. jak se to dělá? Změnou znaménka u
+    \(\imath\) a vynásobením \complexnum{0.99996-0.00900i} (což nám pomůže, protože \(x^2 + y^2
+    =1\)).Budeme-li takto pokračovat, zjistíme, že mocnitel, na který je třeba umocnit \num{10},
+    abychom dostali \(\imath\), je
     (\(\num{512}+\num{128}+\num{64}-\num{4}-\num{2}+\num{0.20})\imath/1024\) neboli
-    \(\num{698.20i}/1024\). Umocníme-li \num{10} na tento mocnitel, dostaneme \(\imath\). Proto
-    \(\log_{10}\imath = \num{0.68226i}\).
+    \(\complexnum{698.20i}/1024\). Umocníme-li \num{10} na tento mocnitel, dostaneme \(\imath\).
+    Proto \(\log_{10}\imath = \complexnum{0.68226i}\).
 
   \section{Imaginární exponenty}\label{fyz:IchapXXIIsecVI}
     K dalšímu studiu umocňování na komplexní mocnitele se podívejme na postupné mocnin) čísla
     \num{10} (máme na mysli zvětšení mocnitele po každém kroku o jednotku a ne jeho zdvojnásobení).
-    Tak se dostaneme dále s tab. \ref {fyz:tab012} a uvidíme, co se bude dít se zápornými znaménky.
-    Vezmeme si \(10^{\imath/8}\) a vyšší mocniny, jak je uvedeno v tabulce \ref {fyz:tab013}.
+    Tak se dostaneme dále s tab. \ref{fyz:tab012} a uvidíme, co se bude dít se zápornými znaménky.
+    Vezmeme si \(10^{\imath/8}\) a vyšší mocniny, jak je uvedeno v tabulce \ref{fyz:tab013}.
     Vidíme, že \(x\) klesá, projde nulou až téměř k hodnotě \num{-1} (kdybychom měli hodnoty pro
     \(p\) mezi \num{10} a \num{11}, zřejmě by se \(x\) dostalo na hodnotu \num{-1}) a vrací se zpět.
     Podobně se mění i hodnota pro \(y\).
@@ -535,25 +536,25 @@
       \begin{tabular}{cr}
         \toprule
         \(p\)        & \multicolumn{1}{c}{\(10^{\imath \frac{p}{8}}\)}  \\ \hline
-        0            & \(\num{+1.00000+0.00000i}\)                          \\
-        1            & \(\num{+0.95882+0.28402i}\)                          \\
-        2            & \(\num{+0.83867+0.54465i}\)                          \\
-        3            & \(\num{+0.64944+0.76042i}\)                          \\
-        4            & \(\num{+0.40672+0.91356i}\)                          \\
-        5            & \(\num{+0.13050+0.99146i}\)                          \\
-        6            & \(\num{-0.15647+0.98770i}\)                          \\
-        7            & \(\num{-0.43055+0.90260i}\)                          \\
-        8            & \(\num{-0.66917+0.74315i}\)                          \\
-        9            & \(\num{-0.85268+0.52249i}\)                          \\
-        10           & \(\num{-0.96596+0.25880i}\)                          \\
-        11           & \(\num{-0.99969-0.02620i}\)                          \\
-        12           & \(\num{-0.95104-0.30905i}\)                          \\
-        14           & \(\num{-0.62928-0.77717i}\)                          \\
-        16           & \(\num{-0.10447-0.99453i}\)                          \\
-        18           & \(\num{+0.45454-0.89098i}\)                          \\
-        20           & \(\num{+0.86648-0.49967i}\)                          \\
-        22           & \(\num{+0.99884+0.05287i}\)                          \\
-        24           & \(\num{+0.80890+0.58836i}\)                          \\ \bottomrule
+        0            & \(\complexnum{+1.00000+0.00000i}\)               \\
+        1            & \(\complexnum{+0.95882+0.28402i}\)               \\
+        2            & \(\complexnum{+0.83867+0.54465i}\)               \\
+        3            & \(\complexnum{+0.64944+0.76042i}\)               \\
+        4            & \(\complexnum{+0.40672+0.91356i}\)               \\
+        5            & \(\complexnum{+0.13050+0.99146i}\)               \\
+        6            & \(\complexnum{-0.15647+0.98770i}\)               \\
+        7            & \(\complexnum{-0.43055+0.90260i}\)               \\
+        8            & \(\complexnum{-0.66917+0.74315i}\)               \\
+        9            & \(\complexnum{-0.85268+0.52249i}\)               \\
+        10           & \(\complexnum{-0.96596+0.25880i}\)               \\
+        11           & \(\complexnum{-0.99969-0.02620i}\)               \\
+        12           & \(\complexnum{-0.95104-0.30905i}\)               \\
+        14           & \(\complexnum{-0.62928-0.77717i}\)               \\
+        16           & \(\complexnum{-0.10447-0.99453i}\)               \\
+        18           & \(\complexnum{+0.45454-0.89098i}\)               \\
+        20           & \(\complexnum{+0.86648-0.49967i}\)               \\
+        22           & \(\complexnum{+0.99884+0.05287i}\)               \\
+        24           & \(\complexnum{+0.80890+0.58836i}\)               \\ \bottomrule
       \end{tabular}
       \caption{Postupné mocniny čísla \(10^{\imath/8}\)}
       \label{fyz:tab013}
@@ -604,13 +605,13 @@
 
     Je i perioda stejná? Vypočítejme, na jakou mocninu je třeba umocnit \(e\), abychom dostali
     \(i\)? Jaký je logaritmus \(i\) při základu \(e\)? Pro základ \num{10} jsme to již počítali.
-    Bylo by to \num{0.68226i}. Když přejdeme k základu \(e\), musíme to vynásobit \num{2.3025}, což
-    je \num{1.5709}. Tuto hodnotu budeme nazývat „algebraickým \(\pi/2\)“. Vidíme však, že od
-    správné hodnoty \(\pi/2\) se liší jen na posledním desetinném místě, což je způsobeno chybami v
-    našich výpočtech! Nejdříve jsme tedy sestrojili čistě algebraickou cestou dvě nové funkce, sinus
-    a kosinus, jež patří do algebry a jen do algebry. Nakonec jsme v nich však objevili právě ty
-    funkce, s nimiž pracujeme v geometrii, takže mezi algebrou a geometrií zcela určitě existuje
-    spojení.
+    Bylo by to \complexnum{0.68226i}. Když přejdeme k základu \(e\), musíme to vynásobit
+    \num{2.3025}, což je \num{1.5709}. Tuto hodnotu budeme nazývat „algebraickým \(\pi/2\)“. Vidíme
+    však, že od správné hodnoty \(\pi/2\) se liší jen na posledním desetinném místě, což je
+    způsobeno chybami v našich výpočtech! Nejdříve jsme tedy sestrojili čistě algebraickou cestou
+    dvě nové funkce, sinus a kosinus, jež patří do algebry a jen do algebry. Nakonec jsme v nich
+    však objevili právě ty funkce, s nimiž pracujeme v geometrii, takže mezi algebrou a geometrií
+    zcela určitě existuje spojení.
 
     \begin{figure}[ht!] %\ref{fyz:fig0414}
       \centering
