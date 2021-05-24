@@ -268,6 +268,9 @@
 \RequirePackage{xfrac}                  % typeset fractions in the form "n/d"
 \RequirePackage{polynom}                % implements macros for manipulating
                                         % polynomials - command \polylongdiv
+  \xpatchcmd{\polylongdiv}
+    {\begingroup}
+    {\begingroup\shorthandoff{-}}{}{}   % https://tex.stackexchange.com/questions/598293/
 \RequirePackage{scalerel}
 \RequirePackage{relsize}    % https://tex.stackexchange.com/questions/39181/big-integral-sign
 % https://tex.stackexchange.com/questions/237046
