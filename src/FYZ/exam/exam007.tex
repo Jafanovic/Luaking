@@ -1,11 +1,24 @@
-% !TeX spellcheck = cs_CZ
-\begin{mdframed}[style=mdexam]
-\begin{example}
-  Jestliže platí, že \(\rot{A} = \rot{B}\), plyne z toho že \(\vec{A}=\vec{B}\)?\newline  
-  \textbf{Řešení:} 
+\begin{fyzexam}{Derivace polí}{exam007}
+  \begin{enumerate}
+    \item Jestliže platí, že \(\rot{A} = \rot{B}\), plyne z toho že \(\vec{A}=\vec{B}\)?
+    \item Vypočtěte gradient skalárního pole \(\varphi(r) = \abs{\vec{r}} = r\).
+  \end{enumerate}
+  
+\tcbsubtitle[before skip=\baselineskip]{Řešení I:}  
   Nikoliv. Mějme následující funkci \(\vec{A} = \vec{B} + \grad{\varPsi}\), kde 
   \(\varPsi(\vec{r})\) je libovolná skalární funkce (tedy \(\vec{A}\neq\vec{B}\)), pak platí
   \[\rot{A} = \rot{B} +\mathrm{rot}\;\grad{\varPsi} = \rot{B}\] (rotace gradientu je pro 
   spojité funkce vždy nulová, viz \ref{fyz:eq239} kapitola \ref{fyz:IIchapIIsecVII})
-\end{example}
-\end{mdframed}
+
+\tcbsubtitle[before skip=\baselineskip]{Řešení II:}  
+  Gradient vypočteme po složkách.
+  \begin{equation*}
+    \pder{\varphi}{x} = \pder{\sqrt{x^2+y^2+z^2}}{x} = \dfrac{x}{\sqrt{x^2+y^2+z^2}} = \dfrac{x}{r}.
+  \end{equation*}
+  Podobné vztahy dostaneme i pro ostatní složky
+  \begin{equation*}
+    \pder{\varphi}{y} = \dfrac{y}{r} \qquad \pder{\varphi}{z} = \dfrac{z}{r}
+  \end{equation*}
+  Tedy \(\grad{\varphi} = \left(\frac{x}{r}, \frac{y}{r}, \frac{z}{r}\right) =
+  \dfrac{\vec{r}}{r} = \vec{r}_0\). Výsledkem je jednotkový vektor ve směru \(\vec{r}\).
+\end{fyzexam}

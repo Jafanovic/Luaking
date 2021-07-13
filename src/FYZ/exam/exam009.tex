@@ -1,18 +1,17 @@
-% !TeX spellcheck = cs_CZ
-\begin{mdframed}[style=mdexam]
-\begin{example}
+\begin{fyzexam}{Divergence el. pole bodového náboje}{exam009}
   Nalezněte divergenci elektrického pole bodového náboje v celém prostoru (pro 
   \textbf{bodový náboj} je \(r\rightarrow0\), \(\varrho\rightarrow\infty\)).
-  (zdroj: \librariaALDBR)\newline  
-  \textbf{Řešení:}
+  (zdroj: \librariaALDBR)
+
+\tcbsubtitle[before skip=\baselineskip]{Řešení:}  
   Elektrické pole v okolí bodového náboje je dáno \hyperlink{fyz:IIchapIVsecII}{Coulombovým zákonem}
   \[\vec{E} = \frac{Q}{4\cdot\pi\cdot r^2}\vec{n}_0,\] kde \(r\) je vzdálenost daného místa od
   náboje, \(\vec{n}_0\) je jednotkový vektor \(\vec{n}_0 = \left(\dfrac{x}{r}, \dfrac{y}{r},
   \dfrac{z}{r}\right)\) mířící od náboje. Elektrické pole má tedy složky \(\left(k =
   \dfrac{Q}{4\cdot\pi\cdot r^2}\right)\)
   \begin{equation*}
-    E_x = k\left(\frac{x}{r^3}\right), \qquad
-    E_y = k\left(\frac{y}{r^3}\right), \qquad
+    E_x = k\left(\frac{x}{r^3}\right), \quad
+    E_y = k\left(\frac{y}{r^3}\right), \quad
     E_z = k\left(\frac{z}{r^3}\right).
   \end{equation*}
   Pro výpočet divergence budeme potřebovat derivaci vzdálenosti podle jednotlivých
@@ -34,7 +33,7 @@
   \end{align*}
   Podobně bude
   \begin{equation*}
-    \pder{E_y}{y} = k\dfrac{r^2-3y^2}{r^5} \qquad a \qquad
+    \pder{E_y}{y} = k\dfrac{r^2-3y^2}{r^5} \quad a \quad
     \pder{E_z}{z} = k\dfrac{r^2-3z^2}{r^5},
   \end{equation*}
   takže pro divergenci máme
@@ -44,5 +43,4 @@
   \end{align*}
   Divergence elektrického pole je tedy v celém prostoru nulová (nejsou v něm zřídla toku) kromě 
   množiny \(r = 0\), ve které se toto zřídlo (zdroj pole - singulární hustota náboje) nachází.
-\end{example}
-\end{mdframed}
+\end{fyzexam}

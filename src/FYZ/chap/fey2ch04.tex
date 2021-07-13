@@ -7,8 +7,6 @@
 %====================Kapitola:Elektrostatika========================================================
 \setchaptertoc
 \chapter{Elektrostatika}\label{fyz:IIchapIV}
-
-
   %----------------------- Statika -----------------------------------------------------------------
   \section{Statika}\label{fyz:IIchapIVsecI}
     \cite[s.~63]{Feynman02} Nyní začněme s podrobným studiem teorie elektromagnetizmu. Celý     
@@ -134,10 +132,12 @@
     Elektrické pole \(\vec{E}(1)\) je vektor, takže rovnicí (\ref{fyz:eq280}) myslíme ve 
     skutečnosti tři rovnice pro  každou složku jednu. Explicitně vypíšeme x-ovou složku, pro kterou 
     z rovnice (\ref{fyz:eq280}) vyplývá, že
-    \begin{equation*}             %\label{fyz:fey_eq_elstat12}
-      E_x(x,y,z) = \frac{q_2}{4\pi\varepsilon_0}
-                   \frac{x_1-x_2}{[(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2]^{\frac{3}{2}}}
-    \end{equation*}
+    \begin{equation*} 
+      \begin{multlined}
+        E_x(x,y,z) = \frac{q_2}{4\pi\varepsilon_0}\cdot \\
+                     \frac{x_1-x_2}{[(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2]^{\frac{3}{2}}}
+      \end{multlined}
+    \end{equation*}  
     Podobně pro ostatní složky.
      
     Je-li víc nábojů, je pole \(\vec{E}\) v nějakém bodě \(1\) součtem příspěvků od každého z 
@@ -145,14 +145,16 @@
     (\ref{fyz:eq280}). Bude-li \(q_j\) označovat velikost \(j\)-tého náboje a  
     \(\vec{r}_{1j}\) je vektor posunutí z polohy 
     \(q_j\) do bodu \(1\), píšeme
-    \begin{align}
-      \vec{E}(1) &= \sum\limits_{j=1}\frac{1}{4\pi\varepsilon_0}\frac{q_j}{r^2_{1j}}\vec{e}_{1j}
-                    \label{fyz:eq276}    \\
-      \shortintertext{což, samozřejmě, znamená, že}
-      E_x(x,y,z) &= \sum\limits_{j=1}\frac{q_j}{4\pi\varepsilon_0}
-                    \frac{x_1-x_j}{[(x_1-x_j)^2+(y_1-y_j)^2+(z_1-z_j)^2]^{\frac{3}{2}}} 
-                                         \nonumber  
-    \end{align}     
+    \begin{equation}  \label{fyz:eq276} 
+      \vec{E}(1) = \sum\limits_{j=1}\frac{1}{4\pi\varepsilon_0}\frac{q_j}{r^2_{1j}}\vec{e}_{1j}                     
+    \end{equation}
+    což, samozřejmě, znamená, že
+    \begin{equation*} 
+      \begin{multlined}
+      E_x(x,y,z) = \sum\limits_{j=1}\frac{q_j}{4\pi\varepsilon_0}\cdot  \\
+                    \frac{x_1-x_j}{[(x_1-x_j)^2+(y_1-y_j)^2+(z_1-z_j)^2]^{\frac{3}{2}}}
+      \end{multlined} 
+    \end{equation*}    
     a analogicky pro další složky.
     
     Často je pohodlnější nebrat v úvahu fakt, že náboje existují jako diskrétní objekty - protony a 
@@ -166,7 +168,7 @@
     \end{equation}
     \begin{figure}[ht!]
       \centering
-      \includegraphics[width=0.6\linewidth]{fyz_fig0202.pdf}
+      \includegraphics[width=0.8\linewidth]{fyz_fig0202.pdf}
       \caption{Elektrické pole \(\vec{E}\) v bodě \(1\) nějakého rozdělení nábojů získáme 
                integrálem přes toto rozdělení. Bod \(1\) se může nacházet i uvnitř rozdělení}
       \label{fyz:fig0202}
@@ -208,12 +210,14 @@
     vypočítat vždy integrál přímo. I přesto se však nyní pokusíme být v této záležitosti důvtipnými 
     a budeme pokračovat analýzou některých jiných vlastností elektrického pole.
     
-    \begin{gather}\label{fyz:eq284}
-      E_x(x_1, y_1, z_1) = 
-        \frac{1}{4\pi\varepsilon_0}
-        \bigints\limits_{\substack{\text{celý}\\\text{prostor}}}\varrho(x_2, y_2, z_2)
-        \frac{x_1-x_2}{[(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2]^{\frac{3}{2}}}\dd{x_2}\dd{y_2}\dd{z_2} 
-    \end{gather} 
+    \begin{equation}\label{fyz:eq284}
+      \begin{multlined}
+        E_x(x_1, y_1, z_1) = \frac{1}{4\pi\varepsilon_0}                                   
+          \bigints\limits_{\substack{\text{celý}\\\text{prostor}}}\varrho(x_2, y_2, z_2)\cdot   \\
+          \frac{x_1-x_2}{[(x_1-x_2)^2+(y_1-y_2)^2+(z_1-z_2)^2]^{\frac{3}{2}}}
+          \dd{x_2}\dd{y_2}\dd{z_2}
+      \end{multlined} 
+    \end{equation} 
 
   %----------------------- Elektrický potenciál ----------------------------------------------------
   \section{Elektrický potenciál}\label{fyz:IIchapIVsecIII}
@@ -233,7 +237,7 @@
 
     \begin{figure}[ht!]  %\ref{fyz:fig0044}
       \centering
-      \includegraphics[width=0.6\linewidth]{fyz_fig0044.pdf}
+      \includegraphics[width=0.7\linewidth]{fyz_fig0044.pdf}
       \caption{Práce konaná při přenesení náboje z \(a\) do \(b\) je rovna záporně vzatému 
         integrálu ze skalárního součinu \(\vec{F}\cdot d\vec{s}\) po dráze z \(a\) do \(b\)}
       \label{fyz:fig0044}
@@ -273,14 +277,17 @@
     pohybu. Dále na dráze z \(a'\) do \(b\) má intenzita pole směr pohybu a mění se jako 
     \(\frac{1}{r^2}\). Práce vykonaná přenosem zkušebního náboje z \(a\) do \(b\) bude
     \begin{equation}\label{fyz:eq286}
-     -\int_{a}^{b}\vec{E}\dd{\vec{s}} = 
-       -\frac{q}{4\pi\varepsilon_0}\int_{a'}^{b}\frac{\dd{r}}{r^2} = 
-       -\frac{q}{4\pi\varepsilon_0}\left(\frac{1}{r_{a}}-\frac{1}{r_{b}}\right).  
+      \begin{multlined}
+        -\int_{a}^{b}\vec{E}\dd{\vec{s}} = 
+        -\frac{q}{4\pi\varepsilon_0}\int_{a'}^{b}\frac{\dd{r}}{r^2} =              \\
+        -\frac{q}{4\pi\varepsilon_0}\left(\frac{1}{r_{a}}-\frac{1}{r_{b}}\right).  
+      \end{multlined}
     \end{equation}
+
     \begin{figure}[ht!]
       \centering
-      \subcaptionbox{\label{fyz:fig0203a}}{\luafigure[0.45]{fyz_fig0203a.pdf}}
-      \subcaptionbox{\label{fyz:fig0203b}}{\luafigure[0.45]{fyz_fig0203b.pdf}}  
+      \subcaptionbox{\label{fyz:fig0203a}}{\luafigure[0.8]{fyz_fig0203a.pdf}}   \\
+      \subcaptionbox{\label{fyz:fig0203b}}{\luafigure[0.8]{fyz_fig0203b.pdf}}  
       \caption{Přenášením zkušebního náboje z a do b po obou těchto drahách se koná stejná práce}
       \label{fyz:fig0203}
     \end{figure}
@@ -348,12 +355,14 @@
     superpozice platí tedy i pro potenciály. Stejnými úvahami, kterými jsme našli elektrické pole 
     skupiny nábojů a rozdělení nábojů, můžeme dostat úplné vzorce i pro potenciál \(\varphi\) v 
     nějakém bodě, který označíme \(1\):
+    \begin{subequations}\label{fyz:eq1007}
     \begin{align}
      \varphi(1) &= 
-       \sum\limits_{j}\frac{q_j}{4\pi\epsilon_0}\frac{1}{r_{1j}}     \label{fyz:fey_eq_elstat24} \\ 
+       \sum\limits_{j}\frac{q_j}{4\pi\epsilon_0}\frac{1}{r_{1j}}     \label{fyz:eq1007a} \\ 
      \varphi(1) &= 
-       \frac{1}{4\pi\epsilon_0}\int\frac{\varrho(2)}{r_{12}}\dd{V_2} \label{fyz:fey_eq_elstat25}
+       \frac{1}{4\pi\epsilon_0}\int\frac{\varrho(2)}{r_{12}}\dd{V_2} \label{fyz:eq1007b}
     \end{align}
+    \end{subequations}
      	    
     Zapamatujte si, že potenciál \(\varphi\) má fyzikální význam: je to potenciální energie, kterou 
     by měl jednotkový náboj, přenesl-li by se z nějakého vztažného bodu do daného bodu v prostoru.
@@ -384,14 +393,14 @@
     \end{equation}    
     Tato rovnice představuje diferenciální tvar vztahu (\ref{fyz:fey_eq_elstat22}). Jakoukoliv 
     úlohu, v níž jsou dány náboje, je možné řešit výpočtem potenciálu pomocí 
-    (\ref{fyz:fey_eq_elstat24}) nebo (\ref{fyz:fey_eq_elstat25}) a použitím vztahu 
+    (\ref{fyz:eq1007a}) nebo (\ref{fyz:eq1007b}) a použitím vztahu 
     (\ref{fyz:fey_eq_elstat27}) pro výpočet pole. Vztah (\ref{fyz:fey_eq_elstat27}) souhlasí i s 
     tím, co jsme zjistili o vektorovém počtu: pro každé skalární pole platí
     \begin{equation}\label{fyz:fey_eq_elstat28}
      \int\limits_{a}^{b}\ngrad{\varphi}\cdot\dd{\vec{s}} = \varphi(b) - \varphi(a)
     \end{equation}     
     
-    Podle vztahu (\ref{fyz:fey_eq_elstat25}) je skalární potenciál \(\varphi\) dán trojrozměrným 
+    Podle vztahu (\ref{fyz:eq1007b}) je skalární potenciál \(\varphi\) dán trojrozměrným 
     integrálem podobným tomu, který jsme měli pro \(\vec{E}\). Je proto vůbec výhodné počítat 
     \(\varphi\) místo \(\vec{E}\)? Ano. Pro \(\varphi\) máme jen jeden integrál, zatímco pro 
     \(\vec{E}\) jsou zapotřebí tři integrály, neboť jde o vektor. Kromě toho \(\frac{1}{r}\) je 
@@ -475,7 +484,7 @@
     
     \begin{figure}[ht!]  % \ref{fyz:fig0204}
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig0204.pdf}
+      \includegraphics[width=0.9\linewidth]{fyz_fig0204.pdf}
       \caption{Tok vektoru \(\vec{E}\) z plochy \(S\) je roven nule}
      \label{fyz:fig0204} 
     \end{figure}
@@ -495,7 +504,7 @@
     
     \begin{figure}[ht!]
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig0205.pdf}
+      \includegraphics[width=0.9\linewidth]{fyz_fig0205.pdf}
       \caption{Tok vektoru \(\vec{E}\) z plochy \(S\) je roven nule}
       \label{fyz:fig0205} 
     \end{figure}
@@ -514,7 +523,7 @@
       
     \begin{figure}[ht!]
       \centering
-      \includegraphics[width=0.7\linewidth]{fyz_fig0206.pdf}
+      \includegraphics[width=0.9\linewidth]{fyz_fig0206.pdf}
       \caption{Každý objem lze považovat za úplně složený z infinitezimálních komolých kuželů. Tok 
                \(\vec{E}\) z jednoho konce kuželového segmentu se rovná zápornému toku z druhého 
                konce. Celkový tok z plochy \(S\) je proto roven nule.}
@@ -531,7 +540,7 @@
 
     \begin{figure}[ht!]
       \centering                  
-      \includegraphics[width=0.6\linewidth]{fyz_fig0207.pdf}
+      \includegraphics[width=0.9\linewidth]{fyz_fig0207.pdf}
       \caption{Nachází-li se náboj uvnitř plochy, tok z ní není roven nule.}
       \label{fyz:fig0207}  
     \end{figure} 

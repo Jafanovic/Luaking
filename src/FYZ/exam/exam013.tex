@@ -1,17 +1,76 @@
 % !TeX spellcheck = cs_CZ
-\begin{mdframed}[style=mdexam]
-\begin{example}\label{fyz:fey_exam013}
-    Vypočtěte gradient skalárního pole \(\varphi(r) = \abs{\vec{r}} = r\)\newline  
-  \textbf{Řešení:} Gradient vypočteme po složkách.
-  \begin{equation*}
-    \pder{\varphi}{x} = \pder{\sqrt{x^2+y^2+z^2}}{x} = \dfrac{x}{\sqrt{x^2+y^2+z^2}} = \dfrac{x}{r}.
-  \end{equation*}
-  Podobné vztahy dostaneme i pro ostatní složky
-  \begin{equation*}
-    \pder{\varphi}{y} = \dfrac{y}{r} \qquad\qquad \pder{\varphi}{z} = \dfrac{z}{r}
-  \end{equation*}
-  Tedy \(\grad{\varphi} = \left(\frac{x}{r}, \frac{y}{r}, \frac{z}{r}\right) =
-  \dfrac{\vec{r}}{r} = \vec{r}_0\). Výsledkem je jednotkový vektor ve směru \(\vec{r}\).
+\begin{fyzexam}{Deskový kondenzátor}{exam013}
+  Mějme nabitý deskový kondenzátor \(C\) (obr. \ref{teo:fig013a}). Zvětšíme jeho kapacitu, například
+  tím, že zvětšíme plochu jeho elektrod, nebo připojíme paralelně druhý stejné velikosti, viz obr.
+  \ref{teo:fig019b}. Otázka zní, jak velká energie bude uložena v elektrostatickém poli obou
+  kondeznátorů? Bude energie po rozdělení náboje mezi oba kondenzátory rovna původní energii
+  nabitého kondenzátoru? Pokud ne, vysvětlete kam se část energie transformovala. 
+  
+  {\centering
+    \vspace{1em}
+    \captionsetup{type=figure, skip=1pt}
+    \subcaptionbox{\label{fyz:fig0959a}}{\luafigure[0.15]{fyz_fig0959a.pdf}}           
+    \hfill
+    \subcaptionbox{\label{fyz:fig0959b}}{\luafigure[0.55]{fyz_fig0959b.pdf}}
+    \captionof{figure}{K příkladu \ref{fyz:exam013}: a) Nabitý kondenzátor s rovnoběžnými
+    rovinnými elektrodami; b) Rozložení náboje na obou kondenzátorech stejné velikosti.
+    }
+    \label{fyz:fig0959}
+  \par}
 
-\end{example}
-\end{mdframed}
+\tcbsubtitle[before skip=\baselineskip]{Řešení:}      
+  Je-li dielektrikum kondenzátoru lineární, pak pro energii elektrického pole akumulované v
+  nabitém kondenzátoru platí. Podrobněji například v kapitole \ref{fyz:IIchapVsecXIX}.
+  \begin{equation}
+    W = \frac{1}{2}CU^2 \;\text{nebo}\; W = \frac{1}{2}\frac{Q^2}{C} \;\text{kde}\; 
+    C = \frac{Q}{U}
+  \end{equation}
+  Předpokládejme ustálený stav po připojení druhého kondenzátoru, jak je znázorněno na obr.
+  \ref{fyz:fig0959b}. V obvodu nepředpokládáme přítomnost odporu, který by způsobil ztrátu energie,
+  vyzářené v podobě tepla. Kapacita je dvojnásobná a náboj zůstal stejný. Na každém kondenzátoru
+  tedy očekáváme polovinu původního náboje. Sečteme-li energii uloženou v elektrických polích obou
+  kondenzátorů dostaneme
+  \begin{align*}
+    W^* &= \frac{1}{2}\frac{(\frac{1}{2}Q)^2}{C} + \frac{1}{2}\frac{(\frac{1}{2}Q)^2}{C}   \\
+        &= \frac{(\frac{1}{2}Q)^2}{C} =\frac{1}{4}\frac{Q^2}{C}                 
+          \xrightarrow[C\rightarrow2C]{}
+          \frac{1}{2}\frac{Q^2}{(2C)} = \frac{1}{2}W 
+  \end{align*}
+  Kupodivu, polovina energie prostě chybí a jelikož platí zákon zachování energie\footnote{viz
+  partie Fyzika \ref{vol02:part:FYZI}, kapitola \ref{vol02:fyz:IchapIV})}, nezbývá nic jiného než
+  uznat, že elektrický obvod dle \ref{fyz:fig0959b}, nemodeluje fyzikální problém dost věrně. Tím
+  jsme dospěli k závěru, že je nutné do obvodu dodat rezistor, tak jak je znázorněno na obrázku
+  \ref{fyz:fig0960}.
+  
+  Abychom mohli určit tepelné ztráty na rezistoru dané integrálem \(\int_{0}^{\infty}
+  Ri^2(t)\dd{t}\), nejdříve sestavíme jednoduchou diferenciální rovnici prvního řádu aplikací II.
+  Kirchhoffova zákona, ze které odvodíme vzorec pro časovou závislost proudu \(i(t) =
+  \diff{Q(t)}{t}\). 
+  \begin{align*}
+    \frac{Q_0 - Q(t)}{C} - Ri(t) - \frac{Q(t)}{C}           &= 0 \quad/\der{ }{t}             \\
+    -\frac{i(t)}{C} - R\der{i(t)}{t} - \frac{i(t)}{C} &= 0                              \\
+                                        \der{i(t)}{t} &= - \frac{2}{RC}i(t) \quad/\int  \\
+                                                  i(t) &= I_0e^{-\frac{2}{RC}t}
+  \end{align*}
+  
+  {\centering
+  \captionsetup{type=figure}
+  \luafigure[0.6]{fyz_fig0960.pdf}
+  \captionof{figure}{Rezistor \(R\) představuje ztráty, které nebyly v obvodu na obrázku 
+    \ref{fyz:fig0959} předpokládány} 
+  \label{fyz:fig0960}
+  \par}
+
+  Nyní můžeme stanovit energii disipované na rezitoru \(R\)
+  \begin{align*}
+    W   &= \int_{0}^{\infty}Ri^2(t)\dd{t} = RI_0^2\int_{0}^{\infty}e^{-\frac{4}{RC}t}\dd{t}   \\
+    \shortintertext{Do integrované funkce dosadíme novou proměnnou \(u = \frac{4}{RC}t\), \(\dd{u} 
+                    = \frac{4}{RC}\dd{t}\), \(\dd{t} = \frac{RC}{4}\dd{u}\)}
+        &= RI_0^2\int_{0}^{\infty}e^{-u}\frac{RC}{4}\dd{u} 
+        = R^2I_0^2\frac{C}{4}\underbrace{\int_{0}^{\infty}e^{-u}\dd{u}}_1 
+    \end{align*}
+  Jelikož platí \[I_0 = \frac{U}{R}=\frac{Q}{CR}\] dostaneme po dosazení
+  \[\cancel{R^2}\frac{Q^2}{C^2\cancel{R^2}}\frac{C}{4} = \frac{Q^2}{4C}= \frac{1}{2}W.\] Nyní je
+  vše v pořádku. Druhá polovina energie je disipována na rezistoru a navíc z výsledku vyplývá, že
+  vůbec nezávisí na \(R\)!
+\end{fyzexam}
